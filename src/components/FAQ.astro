@@ -1,0 +1,51 @@
+---
+const faqs = [
+  {
+    q: "How accurate is this food nutrition calculator?",
+    a: "The nutrition values provided are well-researched estimates based on standard databases. However, actual nutrition may vary slightly based on the specific brand, preparation method, and exact serving size."
+  },
+  {
+    q: "Can I calculate a full meal?",
+    a: "Yes! You can add as many different foods as you want to your list. The calculator will automatically sum up the total calories, protein, carbs, and fat for your entire meal or recipe."
+  },
+  {
+    q: "Can I use it for Indian foods?",
+    a: "Absolutely. We have specifically included common Indian staples like Roti, Dal, Rajma, Paneer, Dosa, Poha, and more, complete with standard portion sizes like 'bowls' or 'pieces'."
+  },
+  {
+    q: "Does it require login?",
+    a: "No login is required. The tool is 100% free to use instantly. We do not track or save your meal data on any servers."
+  },
+  {
+    q: "Can it calculate protein?",
+    a: "Yes, it calculates total Protein, Carbohydrates, Fat, and Fiber in addition to Calories."
+  },
+  {
+    q: "Are values exact or estimated?",
+    a: "All nutritional values are estimates. Natural foods vary in macronutrient content, and cooking methods (like adding oil) will change the final nutritional profile."
+  }
+];
+---
+
+<section id="faq" class="py-24 bg-[var(--color-canvas)] border-b border-[var(--color-hairline)]">
+  <div class="max-w-[800px] mx-auto px-4 md:px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-semibold text-[var(--color-ink)] tracking-tight mb-4">
+        Frequently asked questions
+      </h2>
+    </div>
+
+    <div class="space-y-8">
+      {faqs.map((faq) => (
+        <div class="bg-[var(--color-canvas-soft)] p-6 rounded-lg border border-[var(--color-hairline)] shadow-sm">
+          <h3 class="font-semibold text-lg text-[var(--color-ink)] mb-2">{faq.q}</h3>
+          <p class="text-[var(--color-body)] leading-relaxed">{faq.a}</p>
+        </div>
+      ))}
+    </div>
+    
+    <div id="disclaimer" class="mt-16 p-6 bg-[var(--color-canvas-soft-2)] rounded-lg text-sm text-[var(--color-mute)] text-center border border-[var(--color-hairline)]">
+      <strong>Disclaimer:</strong> Nutrition values are estimates and may vary by brand, recipe, preparation method, and serving size. This tool is for general informational use and does not constitute medical advice.
+    </div>
+  </div>
+</section>

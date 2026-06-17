@@ -1,0 +1,551 @@
+---
+---
+<section id="calculator" class="py-24 bg-[var(--color-canvas-soft)] border-b border-[var(--color-hairline)] relative z-10">
+  <div class="max-w-[1400px] mx-auto px-4 md:px-6">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-semibold text-[var(--color-ink)] tracking-tight mb-4">
+        Build your meal
+      </h2>
+      <p class="text-[var(--color-body)] text-lg max-w-2xl mx-auto">
+        Search the USDA database, use our verified local foods, or type a natural language meal description.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      
+      <!-- Input Section (Left) -->
+      <div class="lg:col-span-2 bg-[var(--color-canvas)] rounded-xl border border-[var(--color-hairline)] shadow-[var(--shadow-level-2)] overflow-hidden flex flex-col">
+        
+        <!-- Tabs -->
+        <div class="flex border-b border-[var(--color-hairline)] bg-[var(--color-canvas-soft)]">
+          <button id="tab-manual" class="flex-1 py-4 text-sm font-semibold text-[var(--color-ink)] border-b-2 border-[var(--color-ink)] transition-colors">
+            Manual Search
+          </button>
+          <button id="tab-nl" class="flex-1 py-4 text-sm font-medium text-[var(--color-body)] hover:text-[var(--color-ink)] border-b-2 border-transparent transition-colors">
+            Smart Meal Input <span class="ml-2 text-xs bg-purple-100 text-purple-700 px-2 py-0.5 rounded-full font-semibold">AI</span>
+          </button>
+        </div>
+
+        <div class="p-6 border-b border-[var(--color-hairline)] bg-[var(--color-canvas-soft-2)] relative min-h-[160px]">
+          
+          <!-- Manual Form -->
+          <form id="calculator-form" class="flex flex-col sm:flex-row gap-4 transition-opacity duration-300">
+            <div class="flex-1 relative">
+              <label for="food-search" class="block text-xs font-semibold text-[var(--color-ink)] uppercase tracking-wider mb-2">Food Item</label>
+              <input type="text" id="food-search" placeholder="Search foods (e.g. Chicken breast, Oatmeal)..." autocomplete="off"
+                class="w-full h-12 px-4 rounded-md bg-[var(--color-canvas)] border border-[var(--color-hairline-strong)] text-[var(--color-ink)] placeholder-[var(--color-mute)] focus:outline-none focus:border-[var(--color-link)] focus:ring-1 focus:ring-[var(--color-link)] transition-colors shadow-sm"
+              />
+              <div id="autocomplete-dropdown" class="absolute z-50 w-full mt-1 bg-[var(--color-canvas)] border border-[var(--color-hairline)] rounded-md shadow-[var(--shadow-level-4)] max-h-60 overflow-y-auto hidden">
+                <!-- Populated via JS -->
+              </div>
+            </div>
+
+            <div class="w-full sm:w-24">
+              <label for="quantity" class="block text-xs font-semibold text-[var(--color-ink)] uppercase tracking-wider mb-2">Qty</label>
+              <input type="number" id="quantity" min="0.1" step="any" value="1"
+                class="w-full h-12 px-4 rounded-md bg-[var(--color-canvas)] border border-[var(--color-hairline-strong)] text-[var(--color-ink)] focus:outline-none focus:border-[var(--color-link)] focus:ring-1 focus:ring-[var(--color-link)] transition-colors shadow-sm"
+              />
+            </div>
+
+            <div class="w-full sm:w-32">
+              <label for="unit" class="block text-xs font-semibold text-[var(--color-ink)] uppercase tracking-wider mb-2">Unit</label>
+              <select id="unit" class="w-full h-12 px-4 rounded-md bg-[var(--color-canvas)] border border-[var(--color-hairline-strong)] text-[var(--color-ink)] focus:outline-none focus:border-[var(--color-link)] focus:ring-1 focus:ring-[var(--color-link)] transition-colors shadow-sm appearance-none cursor-pointer">
+                <option value="serving">serving</option>
+                <option value="oz">oz</option>
+                <option value="g">g</option>
+                <option value="lb">lb</option>
+                <option value="cup">cup</option>
+                <option value="piece">piece</option>
+              </select>
+            </div>
+
+            <div class="w-full sm:w-auto flex items-end">
+              <button type="submit" id="add-btn" disabled class="w-full h-12 px-6 rounded-md bg-[var(--color-primary)] text-[var(--color-on-primary)] font-medium hover:bg-black transition-colors disabled:opacity-50 disabled:cursor-not-allowed shadow-sm">
+                Add
+              </button>
+            </div>
+          </form>
+
+          <!-- NL Form -->
+          <div id="nl-form" class="hidden flex flex-col gap-4 absolute inset-6">
+            <label for="nl-input" class="block text-xs font-semibold text-[var(--color-ink)] uppercase tracking-wider">Describe your meal</label>
+            <textarea id="nl-input" rows="3" placeholder="e.g. 2 scrambled eggs, 2 slices of whole wheat toast, and 1 cup of orange juice" class="w-full p-4 rounded-md bg-[var(--color-canvas)] border border-[var(--color-hairline-strong)] text-[var(--color-ink)] resize-none focus:outline-none focus:border-[var(--color-link)] focus:ring-1 focus:ring-[var(--color-link)] transition-colors shadow-sm"></textarea>
+            <div class="flex justify-between items-center">
+              <span class="text-xs text-[var(--color-mute)]">Uses AI to parse ingredients, then verifies with USDA.</span>
+              <button id="nl-submit" class="h-10 px-6 rounded-md bg-[var(--color-primary)] text-[var(--color-on-primary)] font-medium hover:bg-black transition-colors shadow-sm flex items-center gap-2">
+                Parse & Add
+                <span id="nl-spinner" class="hidden w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
+              </button>
+            </div>
+          </div>
+
+          <div id="error-msg" class="text-[var(--color-error)] text-sm mt-4 hidden bg-[var(--color-error-soft)] p-3 rounded-md"></div>
+        </div>
+
+        <!-- Added Items List -->
+        <div class="p-0 flex-1 flex flex-col">
+          <div id="ai-warning" class="hidden p-3 bg-yellow-50 text-yellow-800 text-sm border-b border-yellow-200">
+            <strong>Warning:</strong> Some items use AI-estimated nutrition because verified USDA/local data was unavailable. Use as a rough guide only.
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse min-w-[600px]">
+              <thead>
+                <tr class="bg-[var(--color-canvas-soft)] border-b border-[var(--color-hairline)] text-[var(--color-body)] text-xs uppercase tracking-wider">
+                  <th class="px-6 py-4 font-semibold w-1/2">Food & Source</th>
+                  <th class="px-6 py-4 font-semibold text-right">Amount</th>
+                  <th class="px-6 py-4 font-semibold text-right">Calories</th>
+                  <th class="px-6 py-4 font-semibold text-center w-16"></th>
+                </tr>
+              </thead>
+              <tbody id="meal-list" class="divide-y divide-[var(--color-hairline)] text-sm">
+                <tr id="empty-state">
+                  <td colspan="4" class="px-6 py-12 text-center text-[var(--color-mute)]">
+                    Your meal is empty. Add foods to see nutrition facts.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="p-4 border-t border-[var(--color-hairline)] bg-[var(--color-canvas-soft-2)] flex justify-between items-center mt-auto">
+            <span class="text-sm text-[var(--color-body)]" id="item-count">0 items (0 USDA, 0 Local, 0 LLM)</span>
+            <button id="clear-all-btn" class="text-sm text-[var(--color-error)] hover:text-[var(--color-error-deep)] hidden transition-colors font-medium">Clear All</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Results Section -->
+      <div class="lg:col-span-1 flex flex-col gap-6">
+        <div class="bg-[var(--color-primary)] text-[var(--color-on-primary)] rounded-xl p-8 shadow-[var(--shadow-level-4)]">
+          <h3 class="text-white/80 text-sm font-medium uppercase tracking-wider mb-2">Total Calories</h3>
+          <div class="text-5xl font-bold tracking-tight mb-1" id="total-cals">0</div>
+          <div class="text-white/60 text-sm">kcal</div>
+        </div>
+
+        <div class="bg-[var(--color-canvas)] rounded-xl border border-[var(--color-hairline)] shadow-[var(--shadow-level-2)] p-6">
+          <h3 class="text-[var(--color-ink)] text-lg font-semibold mb-6 tracking-tight">Macronutrients</h3>
+          <div class="space-y-5">
+            <div>
+              <div class="flex justify-between items-end mb-2">
+                <span class="text-[var(--color-body)] font-medium">Protein</span>
+                <span class="text-[var(--color-ink)] font-bold text-lg"><span id="total-protein">0</span><span class="text-sm text-[var(--color-mute)] ml-1">g</span></span>
+              </div>
+              <div class="w-full bg-[var(--color-canvas-soft-2)] rounded-full h-2 overflow-hidden">
+                <div class="bg-blue-500 h-2 rounded-full transition-all duration-500" style="width: 0%" id="bar-protein"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between items-end mb-2">
+                <span class="text-[var(--color-body)] font-medium">Carbs</span>
+                <span class="text-[var(--color-ink)] font-bold text-lg"><span id="total-carbs">0</span><span class="text-sm text-[var(--color-mute)] ml-1">g</span></span>
+              </div>
+              <div class="w-full bg-[var(--color-canvas-soft-2)] rounded-full h-2 overflow-hidden">
+                <div class="bg-cyan-400 h-2 rounded-full transition-all duration-500" style="width: 0%" id="bar-carbs"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between items-end mb-2">
+                <span class="text-[var(--color-body)] font-medium">Fat</span>
+                <span class="text-[var(--color-ink)] font-bold text-lg"><span id="total-fat">0</span><span class="text-sm text-[var(--color-mute)] ml-1">g</span></span>
+              </div>
+              <div class="w-full bg-[var(--color-canvas-soft-2)] rounded-full h-2 overflow-hidden">
+                <div class="bg-purple-400 h-2 rounded-full transition-all duration-500" style="width: 0%" id="bar-fat"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-[var(--color-canvas)] rounded-xl border border-[var(--color-hairline)] shadow-[var(--shadow-level-2)] p-6">
+          <h3 class="text-[var(--color-ink)] text-sm font-semibold uppercase tracking-wider mb-4">Other details</h3>
+          <div class="flex justify-between py-2 border-b border-[var(--color-hairline)] text-sm">
+            <span class="text-[var(--color-body)]">Fiber</span>
+            <span class="font-medium"><span id="total-fiber">0</span>g</span>
+          </div>
+          <div class="flex justify-between py-2 border-b border-[var(--color-hairline)] text-sm">
+            <span class="text-[var(--color-body)]">Sugar</span>
+            <span class="font-medium"><span id="total-sugar">0</span>g</span>
+          </div>
+          <div class="flex justify-between py-2 text-sm">
+            <span class="text-[var(--color-body)]">Sodium</span>
+            <span class="font-medium"><span id="total-sodium">0</span>mg</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // UI Elements
+  const tabManual = document.getElementById('tab-manual');
+  const tabNl = document.getElementById('tab-nl');
+  const formManual = document.getElementById('calculator-form');
+  const formNl = document.getElementById('nl-form');
+  const searchInput = document.getElementById('food-search');
+  const dropdown = document.getElementById('autocomplete-dropdown');
+  const qtyInput = document.getElementById('quantity');
+  const unitSelect = document.getElementById('unit');
+  const addBtn = document.getElementById('add-btn');
+  const nlInput = document.getElementById('nl-input');
+  const nlSubmit = document.getElementById('nl-submit');
+  const nlSpinner = document.getElementById('nl-spinner');
+  const mealList = document.getElementById('meal-list');
+  const emptyState = document.getElementById('empty-state');
+  const clearAllBtn = document.getElementById('clear-all-btn');
+  const itemCountEl = document.getElementById('item-count');
+  const errorMsg = document.getElementById('error-msg');
+  const aiWarning = document.getElementById('ai-warning');
+
+  // State
+  let mealItems = []; // Array of detailed food items with requested qty/unit
+  let selectedSearchResult = null;
+  let searchDebounceTimeout = null;
+
+  // Formatting helpers
+  const fmt = (num) => Number((num || 0).toFixed(1));
+
+  function showError(msg) {
+    errorMsg.textContent = msg;
+    errorMsg.classList.remove('hidden');
+    setTimeout(() => errorMsg.classList.add('hidden'), 5000);
+  }
+
+  // Tabs
+  tabManual.addEventListener('click', () => {
+    tabManual.classList.add('font-semibold', 'border-[var(--color-ink)]');
+    tabManual.classList.remove('font-medium', 'text-[var(--color-body)]', 'border-transparent');
+    tabNl.classList.add('font-medium', 'text-[var(--color-body)]', 'border-transparent');
+    tabNl.classList.remove('font-semibold', 'border-[var(--color-ink)]');
+    formManual.classList.remove('opacity-0', 'pointer-events-none');
+    formNl.classList.add('hidden');
+  });
+
+  tabNl.addEventListener('click', () => {
+    tabNl.classList.add('font-semibold', 'border-[var(--color-ink)]');
+    tabNl.classList.remove('font-medium', 'text-[var(--color-body)]', 'border-transparent');
+    tabManual.classList.add('font-medium', 'text-[var(--color-body)]', 'border-transparent');
+    tabManual.classList.remove('font-semibold', 'border-[var(--color-ink)]');
+    formManual.classList.add('opacity-0', 'pointer-events-none');
+    formNl.classList.remove('hidden');
+  });
+
+  // Search Logic
+  searchInput.addEventListener('input', (e) => {
+    const q = e.target.value.trim();
+    selectedSearchResult = null;
+    addBtn.disabled = true;
+    
+    if (q.length < 2) {
+      dropdown.classList.add('hidden');
+      return;
+    }
+
+    clearTimeout(searchDebounceTimeout);
+    searchDebounceTimeout = setTimeout(async () => {
+      try {
+        const res = await fetch(`/api/foods/search?q=${encodeURIComponent(q)}`);
+        if (!res.ok) throw new Error();
+        const results = await res.json();
+        
+        if (results.length > 0) {
+          dropdown.innerHTML = results.map(f => `
+            <div class="p-3 hover:bg-[var(--color-canvas-soft)] cursor-pointer text-sm border-b border-[var(--color-hairline)] last:border-0 flex justify-between items-center" data-id="${f.id}" data-name="${f.name.replace(/"/g, '&quot;')}" data-source="${f.source}">
+              <div>
+                <div class="font-medium text-[var(--color-ink)] leading-snug">${f.name}</div>
+                <div class="text-xs text-[var(--color-mute)] mt-0.5">${f.category}</div>
+              </div>
+              <div class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 rounded ${f.source === 'USDA' ? 'bg-green-100 text-green-700' : 'bg-blue-100 text-blue-700'}">${f.source}</div>
+            </div>
+          `).join('');
+          
+          // Add LLM fallback option
+          dropdown.innerHTML += `
+            <div class="p-3 hover:bg-[var(--color-canvas-soft)] cursor-pointer text-sm border-t border-[var(--color-hairline-strong)] flex justify-between items-center bg-yellow-50/50" data-llm-query="${q.replace(/"/g, '&quot;')}">
+              <div>
+                <div class="font-medium text-[var(--color-ink)]">Not found? Estimate with AI</div>
+                <div class="text-xs text-[var(--color-mute)]">Use LLM to guess nutrition for "${q}"</div>
+              </div>
+              <div class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 rounded bg-yellow-100 text-yellow-700">LLM</div>
+            </div>
+          `;
+
+          dropdown.classList.remove('hidden');
+        } else {
+          dropdown.innerHTML = `
+            <div class="p-4 text-sm text-[var(--color-mute)] text-center border-b border-[var(--color-hairline)]">No verified matches found.</div>
+            <div class="p-3 hover:bg-[var(--color-canvas-soft)] cursor-pointer text-sm flex justify-between items-center bg-yellow-50/50" data-llm-query="${q.replace(/"/g, '&quot;')}">
+              <div>
+                <div class="font-medium text-[var(--color-ink)]">Estimate with AI</div>
+                <div class="text-xs text-[var(--color-mute)]">Use LLM to guess nutrition for "${q}"</div>
+              </div>
+              <div class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 rounded bg-yellow-100 text-yellow-700">LLM</div>
+            </div>
+          `;
+          dropdown.classList.remove('hidden');
+        }
+      } catch (err) {
+        dropdown.innerHTML = `<div class="p-4 text-sm text-[var(--color-error)] text-center">Search failed.</div>`;
+        dropdown.classList.remove('hidden');
+      }
+    }, 400);
+  });
+
+  dropdown.addEventListener('click', async (e) => {
+    const item = e.target.closest('[data-id]');
+    const llmItem = e.target.closest('[data-llm-query]');
+    
+    if (item) {
+      selectedSearchResult = { id: item.getAttribute('data-id'), source: item.getAttribute('data-source') };
+      searchInput.value = item.getAttribute('data-name');
+      dropdown.classList.add('hidden');
+      addBtn.disabled = false;
+    } else if (llmItem) {
+      const q = llmItem.getAttribute('data-llm-query');
+      searchInput.value = q;
+      selectedSearchResult = { id: 'llm', query: q, source: 'LLM' };
+      dropdown.classList.add('hidden');
+      addBtn.disabled = false;
+    }
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!searchInput.contains(e.target) && !dropdown.contains(e.target)) {
+      dropdown.classList.add('hidden');
+    }
+  });
+
+  async function fetchDetails(id, source, query = '') {
+    if (source === 'LLM') {
+      const res = await fetch('/api/foods/llm-estimate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ query })
+      });
+      if (!res.ok) throw new Error("Failed to get LLM estimate");
+      return await res.json();
+    } else {
+      const res = await fetch(`/api/foods/details?id=${id}`);
+      if (!res.ok) throw new Error("Failed to get details");
+      return await res.json();
+    }
+  }
+
+  function calculateAddedNutrition(details, quantity, unit) {
+    const gPerUnit = details.standardUnits[unit] || details.standardUnits['serving'] || 100;
+    const totalGrams = quantity * gPerUnit;
+    const multiplier = totalGrams / 100;
+
+    const n = details.nutritionPer100g;
+    return {
+      calories: n.calories * multiplier,
+      protein: n.protein * multiplier,
+      carbs: n.carbs * multiplier,
+      fat: n.fat * multiplier,
+      fiber: n.fiber * multiplier,
+      sugar: n.sugar ? n.sugar * multiplier : 0,
+      sodium: n.sodium ? n.sodium * multiplier : 0,
+    };
+  }
+
+  function getBadgeClasses(source) {
+    if (source === 'USDA') return 'bg-green-100 text-green-700 border border-green-200';
+    if (source === 'Local') return 'bg-blue-100 text-blue-700 border border-blue-200';
+    return 'bg-yellow-100 text-yellow-800 border border-yellow-200';
+  }
+
+  // Add Item Manual
+  formManual.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!selectedSearchResult) return;
+
+    const qty = parseFloat(qtyInput.value);
+    const unit = unitSelect.value;
+    
+    addBtn.disabled = true;
+    const originalText = addBtn.textContent;
+    addBtn.textContent = '...';
+
+    try {
+      const details = await fetchDetails(selectedSearchResult.id, selectedSearchResult.source, selectedSearchResult.query);
+      const nut = calculateAddedNutrition(details, qty, unit);
+      
+      mealItems.push({
+        id: Date.now().toString(),
+        name: details.name,
+        source: details.source,
+        quantity: qty,
+        unit: unit,
+        nutrition: nut
+      });
+
+      searchInput.value = '';
+      qtyInput.value = '1';
+      selectedSearchResult = null;
+      renderMeal();
+    } catch (err) {
+      showError(err.message || "Failed to add food.");
+    } finally {
+      addBtn.textContent = originalText;
+      addBtn.disabled = true;
+    }
+  });
+
+  // Natural Language Parse
+  nlSubmit.addEventListener('click', async () => {
+    const text = nlInput.value.trim();
+    if (!text) return;
+
+    nlSubmit.disabled = true;
+    nlSpinner.classList.remove('hidden');
+    errorMsg.classList.add('hidden');
+
+    try {
+      // 1. Parse Meal
+      const parseRes = await fetch('/api/parse-meal', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text })
+      });
+      
+      if (!parseRes.ok) throw new Error("Failed to parse meal using AI.");
+      const parsedItems = await parseRes.json();
+
+      if (!Array.isArray(parsedItems) || parsedItems.length === 0) {
+        throw new Error("AI could not understand any foods in that description.");
+      }
+
+      // 2. Resolve each item
+      for (const item of parsedItems) {
+        // Search first
+        const searchRes = await fetch(`/api/foods/search?q=${encodeURIComponent(item.query)}`);
+        let details = null;
+        
+        if (searchRes.ok) {
+          const results = await searchRes.json();
+          if (results.length > 0) {
+            // Pick first USDA or local match
+            details = await fetchDetails(results[0].id, results[0].source);
+          }
+        }
+        
+        // If search failed, fallback to LLM
+        if (!details) {
+          details = await fetchDetails('llm', 'LLM', item.query);
+        }
+
+        // Add
+        const qty = parseFloat(item.quantity) || 1;
+        const unit = item.unit || 'serving';
+        const nut = calculateAddedNutrition(details, qty, unit);
+
+        mealItems.push({
+          id: Date.now().toString() + Math.random(),
+          name: details.name,
+          source: details.source,
+          quantity: qty,
+          unit: unit,
+          nutrition: nut
+        });
+      }
+
+      nlInput.value = '';
+      renderMeal();
+      // Switch back to manual tab just so user sees the form is clean? Or stay.
+      // Let's stay on NL tab but clear input.
+    } catch (err) {
+      showError(err.message || "Something went wrong.");
+    } finally {
+      nlSubmit.disabled = false;
+      nlSpinner.classList.add('hidden');
+    }
+  });
+
+  window.removeMealItem = function(id) {
+    mealItems = mealItems.filter(item => item.id !== id);
+    renderMeal();
+  }
+
+  clearAllBtn.addEventListener('click', () => {
+    mealItems = [];
+    renderMeal();
+  });
+
+  function renderMeal() {
+    let totals = { calories: 0, protein: 0, carbs: 0, fat: 0, fiber: 0, sugar: 0, sodium: 0 };
+    let usdaCount = 0; let localCount = 0; let llmCount = 0;
+
+    if (mealItems.length === 0) {
+      mealList.innerHTML = '';
+      mealList.appendChild(emptyState);
+      clearAllBtn.classList.add('hidden');
+      itemCountEl.textContent = '0 items';
+      aiWarning.classList.add('hidden');
+    } else {
+      if (mealList.contains(emptyState)) mealList.removeChild(emptyState);
+      
+      mealList.innerHTML = mealItems.map(item => {
+        totals.calories += item.nutrition.calories;
+        totals.protein += item.nutrition.protein;
+        totals.carbs += item.nutrition.carbs;
+        totals.fat += item.nutrition.fat;
+        totals.fiber += item.nutrition.fiber;
+        totals.sugar += item.nutrition.sugar;
+        totals.sodium += item.nutrition.sodium;
+
+        if (item.source === 'USDA') usdaCount++;
+        else if (item.source === 'Local') localCount++;
+        else llmCount++;
+
+        return `
+          <tr class="hover:bg-[var(--color-canvas-soft-2)] transition-colors">
+            <td class="px-6 py-4">
+              <div class="font-medium text-[var(--color-ink)] leading-snug truncate max-w-[250px]" title="${item.name}">${item.name}</div>
+              <div class="mt-1">
+                <span class="inline-block text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded ${getBadgeClasses(item.source)}">
+                  ${item.source === 'LLM' ? 'LLM Estimate' : item.source}
+                </span>
+              </div>
+            </td>
+            <td class="px-6 py-4 text-right text-[var(--color-body)] whitespace-nowrap">
+              ${item.quantity} ${item.unit}
+            </td>
+            <td class="px-6 py-4 text-right font-medium text-[var(--color-ink)]">
+              ${Math.round(item.nutrition.calories)}
+            </td>
+            <td class="px-6 py-4 text-center">
+              <button onclick="removeMealItem('${item.id}')" class="text-[var(--color-mute)] hover:text-[var(--color-error)] transition-colors" title="Remove item">
+                <svg class="w-5 h-5 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                </svg>
+              </button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+      
+      clearAllBtn.classList.remove('hidden');
+      itemCountEl.textContent = `${mealItems.length} items (${usdaCount} USDA, ${localCount} Local, ${llmCount} LLM)`;
+
+      if (llmCount > 0) {
+        aiWarning.classList.remove('hidden');
+      } else {
+        aiWarning.classList.add('hidden');
+      }
+    }
+
+    document.getElementById('total-cals').textContent = Math.round(totals.calories);
+    document.getElementById('total-protein').textContent = fmt(totals.protein);
+    document.getElementById('total-carbs').textContent = fmt(totals.carbs);
+    document.getElementById('total-fat').textContent = fmt(totals.fat);
+    document.getElementById('total-fiber').textContent = fmt(totals.fiber);
+    document.getElementById('total-sugar').textContent = totals.sugar > 0 ? fmt(totals.sugar) : 'N/A';
+    document.getElementById('total-sodium').textContent = totals.sodium > 0 ? Math.round(totals.sodium) : 'N/A';
+
+    const totalMacroWeight = totals.protein + totals.carbs + totals.fat || 1;
+    document.getElementById('bar-protein').style.width = `${(totals.protein / totalMacroWeight) * 100}%`;
+    document.getElementById('bar-carbs').style.width = `${(totals.carbs / totalMacroWeight) * 100}%`;
+    document.getElementById('bar-fat').style.width = `${(totals.fat / totalMacroWeight) * 100}%`;
+  }
+
+  // Initial render
+  renderMeal();
+</script>

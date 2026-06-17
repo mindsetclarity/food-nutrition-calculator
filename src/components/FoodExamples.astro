@@ -1,0 +1,31 @@
+---
+---
+<section id="foods" class="py-24 bg-[var(--color-canvas)] border-b border-[var(--color-hairline)] overflow-hidden">
+  <div class="max-w-[1400px] mx-auto px-4 md:px-6">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+      <div>
+        <h2 class="text-3xl md:text-4xl font-semibold text-[var(--color-ink)] tracking-tight mb-4">
+          Popular ingredients
+        </h2>
+        <p class="text-[var(--color-body)] text-lg max-w-xl">
+          Start calculating instantly with our pre-loaded database of everyday foods, including common Indian staples.
+        </p>
+      </div>
+      <a href="#calculator" class="text-[var(--color-link)] font-medium hover:underline inline-flex items-center gap-1">
+        Try the calculator
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+    </div>
+
+    <!-- A simple scrolling marquee or flex wrap of tags -->
+    <div class="flex flex-wrap gap-3">
+      {['Rice', 'Roti', 'Dal', 'Paneer', 'Egg', 'Chicken', 'Banana', 'Oats', 'Milk', 'Rajma', 'Chole', 'Poha', 'Dosa', 'Upma', 'Mixed Vegetables'].map((food) => (
+        <div class="px-5 py-3 rounded-full bg-[var(--color-canvas-soft)] border border-[var(--color-hairline)] text-[var(--color-ink)] font-medium text-sm hover:border-[var(--color-hairline-strong)] transition-colors cursor-default select-none shadow-sm">
+          {food}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
