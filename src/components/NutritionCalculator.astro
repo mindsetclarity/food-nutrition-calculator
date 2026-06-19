@@ -200,6 +200,8 @@
   let selectedSearchResult = null;
   let searchDebounceTimeout = null;
 
+  import { getFromCache, setInCache, generateCacheKey } from '../lib/performance/clientCache';
+
   // Formatting helpers
   const fmt = (num) => Number((num || 0).toFixed(1));
 
@@ -239,21 +241,34 @@
       return;
     }
 
+    let searchAbortController = null;
+
     clearTimeout(searchDebounceTimeout);
     searchDebounceTimeout = setTimeout(async () => {
+      if (searchAbortController) searchAbortController.abort();
+      searchAbortController = new AbortController();
+      
       try {
-        const res = await fetch(`/api/foods/search?q=${encodeURIComponent(q)}`);
-        if (!res.ok) throw new Error();
-        const results = await res.json();
+        const cacheKey = generateCacheKey('/api/foods/search', { q });
+        let results = getFromCache(cacheKey);
+
+        if (!results) {
+          const res = await fetch(`/api/foods/search?q=${encodeURIComponent(q)}`, {
+            signal: searchAbortController.signal
+          });
+          if (!res.ok) throw new Error();
+          results = await res.json();
+          setInCache(cacheKey, results, 15);
+        }
         
-        if (results.length > 0) {
+        if (results && results.length > 0) {
           dropdown.innerHTML = results.map(f => `
             <div class="p-3 hover:bg-[var(--color-canvas-soft)] cursor-pointer text-sm border-b border-[var(--color-hairline)] last:border-0 flex justify-between items-center" data-id="${f.id}" data-name="${f.name.replace(/"/g, '&quot;')}" data-source="${f.source}">
               <div>
                 <div class="font-medium text-[var(--color-ink)] leading-snug">${f.name}</div>
                 <div class="text-xs text-[var(--color-mute)] mt-0.5">${f.category}</div>
               </div>
-              <div class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 rounded ${f.source === 'USDA' ? 'bg-green-100 text-green-700' : 'bg-blue-100 text-blue-700'}">${f.source}</div>
+              <div class="text-[10px] uppercase font-bold tracking-wider px-2 py-1 rounded ${f.source === 'USDA' ? 'bg-green-100 text-green-800' : 'bg-blue-100 text-blue-800'}">${f.source}</div>
             </div>
           `).join('');
           
@@ -283,6 +298,7 @@
           dropdown.classList.remove('hidden');
         }
       } catch (err) {
+        if (err.name === 'AbortError') return;
         dropdown.innerHTML = `<div class="p-4 text-sm text-[var(--color-error)] text-center">Search failed.</div>`;
         dropdown.classList.remove('hidden');
       }
@@ -323,9 +339,15 @@
       if (!res.ok) throw new Error("Failed to get LLM estimate");
       return await res.json();
     } else {
-      const res = await fetch(`/api/foods/details?id=${id}`);
-      if (!res.ok) throw new Error("Failed to get details");
-      return await res.json();
+      const cacheKey = generateCacheKey('/api/foods/details', { id });
+      let details = getFromCache(cacheKey);
+      if (!details) {
+        const res = await fetch(`/api/foods/details?id=${id}`);
+        if (!res.ok) throw new Error("Failed to get details");
+        details = await res.json();
+        setInCache(cacheKey, details, 30);
+      }
+      return details;
     }
   }
 
@@ -347,8 +369,8 @@
   }
 
   function getBadgeClasses(source) {
-    if (source === 'USDA') return 'bg-green-100 text-green-700 border border-green-200';
-    if (source === 'Local') return 'bg-blue-100 text-blue-700 border border-blue-200';
+    if (source === 'USDA') return 'bg-green-100 text-green-800 border border-green-200';
+    if (source === 'Local') return 'bg-blue-100 text-blue-800 border border-blue-200';
     return 'bg-yellow-100 text-yellow-800 border border-yellow-200';
   }
 
@@ -421,7 +443,7 @@
         
         if (searchRes.ok) {
           const results = await searchRes.json();
-          if (results.length > 0) {
+          if (results && results.length > 0) {
             // Pick first USDA or local match
             details = await fetchDetails(results[0].id, results[0].source);
           }
@@ -509,10 +531,10 @@
               ${item.quantity} ${item.unit}
             </td>
             <td class="px-6 py-4 text-right font-medium text-[var(--color-ink)]">
-              ${Math.round(item.nutrition.calories)}
+              ${item.nutrition.calories !== null && item.nutrition.calories !== undefined ? Math.round(item.nutrition.calories) : '<span aria-hidden="true">&mdash;</span><span class="sr-only">No data</span>'}
             </td>
             <td class="px-6 py-4 text-center">
-              <button onclick="removeMealItem('${item.id}')" class="text-[var(--color-mute)] hover:text-[var(--color-error)] transition-colors" title="Remove item">
+              <button onclick="removeMealItem('${item.id}')" class="text-[var(--color-mute)] hover:text-[var(--color-error)] transition-colors" title="Remove item" aria-label="Remove item">
                 <svg class="w-5 h-5 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                 </svg>

@@ -1,14 +1,27 @@
 ---
 import '../styles/global.css';
+import MotionObserver from '../components/site/MotionObserver.astro';
+import Header from '../components/site/Header.astro';
+import Footer from '../components/site/Footer.astro';
+import SeoHead from '../components/seo/SeoHead.astro';
+import type { JsonLdSchema } from '../lib/seo/types';
 
 interface Props {
 	title?: string;
 	description?: string;
+  canonicalPath?: string;
+  noindex?: boolean;
+  ogType?: string;
+  jsonLd?: JsonLdSchema | JsonLdSchema[];
 }
 
 const { 
-	title = "Food Nutrition Calculator | Simple, Fast & Free",
-	description = "Calculate calories, protein, carbs, fat, and more for everyday foods, meals, and recipes. Fast, simple, and privacy-friendly." 
+	title,
+	description,
+  canonicalPath = Astro.url.pathname,
+  noindex,
+  ogType,
+  jsonLd
 } = Astro.props;
 ---
 
@@ -21,20 +34,28 @@ const {
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
 		
-		<!-- SEO -->
-		<title>{title}</title>
-		<meta name="description" content={description} />
-		<meta property="og:title" content={title} />
-		<meta property="og:description" content={description} />
-		<meta property="og:type" content="website" />
-		<meta property="og:url" content="https://foodnutritioncalculator.com" />
+		<SeoHead 
+      title={title} 
+      description={description} 
+      canonicalPath={canonicalPath} 
+      noindex={noindex} 
+      ogType={ogType} 
+      jsonLd={jsonLd} 
+    />
 		
 		<!-- Inter Font Fallback (Similar to Geist) -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 	</head>
-	<body class="bg-[var(--color-canvas-soft)] text-[var(--color-ink)] min-h-screen flex flex-col">
+	<body class="bg-[var(--color-canvas-soft)] text-[var(--color-ink)] min-h-screen flex flex-col no-body-overflow-guard">
+		<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-white focus:text-brand-600 focus-ring rounded-md m-4 shadow-premium">
+			Skip to content
+		</a>
+		<Header />
 		<slot />
+		<Footer />
+		<MotionObserver />
+		<div id="a11y-status" class="sr-only" aria-live="polite" aria-atomic="true"></div>
 	</body>
 </html>

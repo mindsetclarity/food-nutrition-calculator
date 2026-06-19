@@ -1,0 +1,538 @@
+---
+import { Icon } from 'astro-icon/components';
+import MealTextParser from './MealTextParser.astro';
+import SourceBadge from '../ui/SourceBadge.astro';
+---
+<section id="calculator" class="py-12 md:py-20 bg-warm-ivory relative z-10 min-h-screen">
+  <div class="max-w-[1400px] mx-auto px-4 md:px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      
+      <!-- Input Section (Left) -->
+      <div class="lg:col-span-2 luxury-card overflow-hidden flex flex-col bg-pure-card">
+        
+        <div class="p-6 md:p-8 border-b border-border-soft bg-white/50 relative">
+          
+          <MealTextParser />
+          
+          <div class="flex items-center gap-4 my-8">
+            <div class="h-px bg-border-soft flex-1"></div>
+            <span class="text-[11px] font-bold text-muted-text uppercase tracking-widest">Or add manually</span>
+            <div class="h-px bg-border-soft flex-1"></div>
+          </div>
+
+          <form id="calc-form" class="flex flex-col sm:flex-row gap-4">
+            <div class="flex-1 relative">
+              <label for="food-search" class="block text-[11px] font-bold text-ink-navy uppercase tracking-widest mb-2">Food Item</label>
+              <div class="relative">
+                <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-soft-slate" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                <input type="text" id="food-search" placeholder="Search foods (e.g. oats, banana, avocado)..." autocomplete="off"
+                  class="w-full h-14 pl-12 pr-4 rounded-[var(--radius-button)] bg-white border border-border-soft text-ink-navy placeholder-soft-slate focus-premium transition-shadow shadow-sm disabled:opacity-50 text-[15px]"
+                />
+              </div>
+              <div id="autocomplete-dropdown" class="absolute z-50 w-full mt-2 bg-white border border-border-soft rounded-xl shadow-premium max-h-80 overflow-y-auto hidden">
+                <!-- Results go here -->
+              </div>
+            </div>
+
+            <div class="w-full sm:w-28 relative">
+              <label for="quantity" class="block text-[11px] font-bold text-ink-navy uppercase tracking-widest mb-2">Qty</label>
+              <input type="number" id="quantity" min="0" step="any"
+                class="w-full h-14 px-4 rounded-[var(--radius-button)] bg-white border border-border-soft text-ink-navy focus-premium transition-shadow shadow-sm disabled:opacity-50 text-[15px] font-medium"
+                disabled
+              />
+            </div>
+
+            <div class="w-full sm:w-36 relative">
+              <label for="unit" class="block text-[11px] font-bold text-ink-navy uppercase tracking-widest mb-2">Unit</label>
+              <select id="unit" class="w-full h-14 px-4 rounded-[var(--radius-button)] bg-white border border-border-soft text-ink-navy focus-premium transition-shadow shadow-sm appearance-none cursor-pointer disabled:opacity-50 text-[15px] font-medium" disabled>
+                <option value="">--</option>
+              </select>
+              <svg class="absolute right-4 top-[38px] w-4 h-4 text-soft-slate pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </div>
+
+            <div class="w-full sm:w-auto flex items-end">
+              <button type="submit" id="add-btn" disabled class="w-full h-14 px-8 rounded-[var(--radius-button)] bg-ink-navy text-white font-medium hover:bg-deep-slate transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-ink hover:shadow-premium interactive-button text-[15px]">
+                Add
+              </button>
+            </div>
+          </form>
+
+          <div id="fallback-notice" class="text-xs font-medium text-amber-800 bg-amber-50 border border-amber-200 mt-4 p-3 rounded-[var(--radius-button)] hidden flex items-start gap-2">
+            <svg class="w-4 h-4 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+            <span class="message-text"></span>
+          </div>
+
+          <div id="selected-food-info" class="hidden mt-6 p-4 bg-white border border-border-soft rounded-[var(--radius-button)] flex items-center justify-between shadow-sm">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-mint-wash text-usda-emerald flex items-center justify-center font-bold border border-emerald-soft text-lg">✓</div>
+              <div>
+                <div id="selected-food-name" class="font-bold text-ink-navy text-[15px]"></div>
+                <div class="mt-1" id="selected-food-badge-container"></div>
+              </div>
+            </div>
+            <button type="button" id="clear-selection-btn" class="text-xs font-semibold text-soft-slate hover:text-ink-navy px-3 py-1.5 rounded bg-slate-50 hover:bg-slate-100 transition-colors border border-border-soft">Change</button>
+          </div>
+
+          <div id="error-msg" class="text-red-700 text-sm mt-4 hidden bg-red-50 p-3 rounded-[var(--radius-button)] border border-red-100"></div>
+        </div>
+
+        <!-- Added Items List -->
+        <div class="p-0 flex-1 flex flex-col bg-white">
+          <div class="responsive-table-wrap">
+            <table class="w-full text-left border-collapse min-w-[600px]">
+              <thead>
+                <tr class="bg-slate-50 border-b border-border-soft text-soft-slate text-[11px] font-bold uppercase tracking-widest">
+                  <th class="px-6 md:px-8 py-4 w-1/2">Food & Source</th>
+                  <th class="px-6 md:px-8 py-4 text-right">Amount</th>
+                  <th class="px-6 md:px-8 py-4 text-right">Calories</th>
+                  <th class="px-6 py-4 text-center w-16"></th>
+                </tr>
+              </thead>
+              <tbody id="meal-list" class="divide-y divide-border-soft text-[15px]">
+                <tr id="empty-state">
+                  <td colspan="4" class="px-6 py-20 text-center text-soft-slate">
+                    <div class="flex flex-col items-center justify-center">
+                      <div class="mb-6 text-6xl opacity-30">🥗</div>
+                      <p class="font-bold text-ink-navy text-lg mb-2">No foods added yet</p>
+                      <p class="text-[15px] mb-6 max-w-sm mx-auto">Try searching for vegetarian staples like <strong class="text-ink-navy font-semibold">oats</strong>, <strong class="text-ink-navy font-semibold">lentils</strong>, or <strong class="text-ink-navy font-semibold">avocado</strong>.</p>
+                      <div class="flex flex-wrap justify-center gap-2 max-w-md">
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 border border-border-soft rounded-full text-xs font-medium text-ink-navy">🍌 banana</span>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 border border-border-soft rounded-full text-xs font-medium text-ink-navy">🌾 oats</span>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 border border-border-soft rounded-full text-xs font-medium text-ink-navy">🥑 avocado</span>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 border border-border-soft rounded-full text-xs font-medium text-ink-navy">🧆 chickpeas</span>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="p-6 md:p-8 border-t border-border-soft bg-slate-50 flex justify-between items-center mt-auto">
+            <div class="flex items-center gap-2">
+              <span class="text-[13px] font-bold text-ink-navy uppercase tracking-wider">Source Summary:</span>
+              <span class="text-[13px] text-soft-slate font-medium" id="source-summary">0 items</span>
+            </div>
+            <button id="clear-all-btn" class="text-[13px] text-red-600 hover:text-red-700 hidden transition-colors font-bold uppercase tracking-wider bg-red-50 hover:bg-red-100 px-4 py-2 rounded border border-red-100">Clear All</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Results Section -->
+      <div class="lg:col-span-1 flex flex-col gap-6 relative">
+        <div class="sticky top-28 space-y-6">
+          <div class="bg-ink-navy text-white rounded-[var(--radius-card)] p-8 shadow-premium overflow-hidden relative">
+            <div class="absolute -right-12 -top-12 w-48 h-48 bg-usda-emerald rounded-full opacity-20 blur-3xl"></div>
+            <h3 class="text-white/70 text-[11px] font-bold uppercase tracking-widest mb-3 relative z-10">Total Calories</h3>
+            <div class="flex items-baseline gap-2 relative z-10">
+              <div class="text-6xl font-black tracking-tighter" id="total-cals">0</div>
+              <div class="text-white/60 font-semibold">kcal</div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-[var(--radius-card)] border border-border-soft shadow-soft p-6 md:p-8">
+            <h3 class="text-ink-navy text-lg font-bold mb-6 tracking-tight flex items-center justify-between">
+              Macronutrients
+              <span class="text-[10px] bg-mint-wash text-usda-emerald px-2 py-1 rounded font-bold uppercase tracking-wider">Deterministic</span>
+            </h3>
+            <div class="space-y-6">
+              <div>
+                <div class="flex justify-between items-end mb-2.5">
+                  <span class="text-soft-slate font-semibold text-sm">Protein</span>
+                  <span class="text-ink-navy font-black text-xl"><span id="total-protein">0</span><span class="text-sm text-soft-slate ml-0.5 font-bold">g</span></span>
+                </div>
+                <div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
+                  <div class="bg-usda-emerald h-2.5 rounded-full transition-all duration-700 ease-out" style="width: 0%" id="bar-protein"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between items-end mb-2.5">
+                  <span class="text-soft-slate font-semibold text-sm">Carbs</span>
+                  <span class="text-ink-navy font-black text-xl"><span id="total-carbs">0</span><span class="text-sm text-soft-slate ml-0.5 font-bold">g</span></span>
+                </div>
+                <div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
+                  <div class="bg-nutrient-amber h-2.5 rounded-full transition-all duration-700 ease-out" style="width: 0%" id="bar-carbs"></div>
+                </div>
+              </div>
+              <div>
+                <div class="flex justify-between items-end mb-2.5">
+                  <span class="text-soft-slate font-semibold text-sm">Fat</span>
+                  <span class="text-ink-navy font-black text-xl"><span id="total-fat">0</span><span class="text-sm text-soft-slate ml-0.5 font-bold">g</span></span>
+                </div>
+                <div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
+                  <div class="bg-berry-accent h-2.5 rounded-full transition-all duration-700 ease-out" style="width: 0%" id="bar-fat"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-[var(--radius-card)] border border-border-soft shadow-soft p-6 md:p-8">
+            <h3 class="text-ink-navy text-[11px] font-bold uppercase tracking-widest mb-5">Micronutrients & Details</h3>
+            <div class="flex justify-between py-3 border-b border-border-soft text-[15px]">
+              <span class="text-soft-slate font-medium">Fiber</span>
+              <span class="font-bold text-ink-navy"><span id="total-fiber">0</span>g</span>
+            </div>
+            <div class="flex justify-between py-3 border-b border-border-soft text-[15px]">
+              <span class="text-soft-slate font-medium">Sugar</span>
+              <span class="font-bold text-ink-navy"><span id="total-sugar">0</span>g</span>
+            </div>
+            <div class="flex justify-between py-3 text-[15px]">
+              <span class="text-soft-slate font-medium">Sodium</span>
+              <span class="font-bold text-ink-navy"><span id="total-sodium">0</span>mg</span>
+            </div>
+          </div>
+          
+          <div class="bg-slate-50 border border-border-soft rounded-lg p-4">
+            <p class="text-[11px] text-soft-slate leading-relaxed font-medium">
+              <strong class="text-ink-navy">Nutrition Estimates:</strong> Food searches prioritize USDA FoodData Central when configured. If USDA data is unavailable, local fallback data is shown and clearly labeled.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { calculateFoodItem, calculateMealTotals } from '../../lib/nutrition/calculateNutrition';
+  import { hasKnownNutrient } from '../../lib/nutrition/nutrientUtils';
+
+  // State
+  let addedItems = [];
+  let currentSelectedFood = null;
+  let searchDebounceTimeout = null;
+  let currentAbortController = null;
+
+  // DOM Elements
+  const searchInput = document.getElementById('food-search');
+  const dropdown = document.getElementById('autocomplete-dropdown');
+  const qtyInput = document.getElementById('quantity');
+  const unitSelect = document.getElementById('unit');
+  const addBtn = document.getElementById('add-btn');
+  const calcForm = document.getElementById('calc-form');
+  const errorMsg = document.getElementById('error-msg');
+  const fallbackNotice = document.getElementById('fallback-notice');
+  const fallbackNoticeText = fallbackNotice.querySelector('.message-text');
+  
+  const selectedFoodInfo = document.getElementById('selected-food-info');
+  const selectedFoodName = document.getElementById('selected-food-name');
+  const selectedFoodBadgeContainer = document.getElementById('selected-food-badge-container');
+  const clearSelectionBtn = document.getElementById('clear-selection-btn');
+  
+  const mealList = document.getElementById('meal-list');
+  const emptyState = document.getElementById('empty-state');
+  const clearAllBtn = document.getElementById('clear-all-btn');
+  const sourceSummaryEl = document.getElementById('source-summary');
+
+  function showError(msg) {
+    errorMsg.textContent = msg;
+    errorMsg.classList.remove('hidden');
+    setTimeout(() => errorMsg.classList.add('hidden'), 5000);
+  }
+
+  // Handle Search Input
+  searchInput.addEventListener('input', (e) => {
+    const q = e.target.value.trim();
+    if (q.length < 2) {
+      dropdown.classList.add('hidden');
+      if (currentAbortController) currentAbortController.abort();
+      fallbackNotice.classList.add('hidden');
+      return;
+    }
+    
+    clearTimeout(searchDebounceTimeout);
+    
+    dropdown.innerHTML = `<div class="p-6 text-[15px] font-medium text-soft-slate text-center flex items-center justify-center gap-2"><svg class="animate-spin h-5 w-5 text-usda-emerald" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Searching...</div>`;
+    dropdown.classList.remove('hidden');
+    fallbackNotice.classList.add('hidden');
+
+    searchDebounceTimeout = setTimeout(async () => {
+      if (currentAbortController) currentAbortController.abort();
+      currentAbortController = new AbortController();
+
+      try {
+        const res = await fetch(`/api/foods/search?q=${encodeURIComponent(q)}`, { signal: currentAbortController.signal });
+        if (!res.ok) throw new Error("Search failed");
+        
+        const data = await res.json();
+        
+        if (data.fallbackUsed) {
+          fallbackNoticeText.textContent = data.message || "USDA data is unavailable right now, so local fallback results are shown.";
+          fallbackNotice.classList.remove('hidden');
+        } else {
+          fallbackNotice.classList.add('hidden');
+        }
+
+        if (data.results && data.results.length > 0) {
+          dropdown.innerHTML = data.results.map(f => {
+            const isUsda = f.source === 'usda';
+            const badgeClasses = isUsda 
+              ? "bg-mint-wash text-usda-emerald border-emerald-soft" 
+              : "bg-slate-50 text-soft-slate border-border-soft";
+            return `
+            <button type="button" class="w-full text-left p-4 hover:bg-slate-50 cursor-pointer border-b border-border-soft last:border-0 flex justify-between items-center transition-colors" 
+              data-id="${f.id}" data-fdcid="${f.fdcId}" data-source="${f.source}">
+              <div>
+                <div class="font-bold text-ink-navy text-[15px]">${f.displayName}</div>
+                <div class="text-[11px] font-medium text-soft-slate mt-1 tracking-wide">${f.brandName ? f.brandName + ' • ' : ''}${f.dataType || 'Food'}</div>
+              </div>
+              <div class="text-[10px] uppercase font-bold tracking-widest px-2 py-1 rounded border ${badgeClasses}">${f.sourceLabel || (isUsda ? 'USDA' : 'Local')}</div>
+            </button>
+          `}).join('');
+        } else {
+          dropdown.innerHTML = `<div class="p-6 text-[15px] font-medium text-soft-slate text-center">No foods found. Try <strong class="text-ink-navy">oats</strong>, <strong class="text-ink-navy">banana</strong>, or <strong class="text-ink-navy">lentils</strong>.</div>`;
+        }
+      } catch (err) {
+        if (err.name !== 'AbortError') {
+          dropdown.innerHTML = `<div class="p-6 text-[15px] font-medium text-red-600 text-center">Search failed. Please try again.</div>`;
+        }
+      }
+    }, 300);
+  });
+
+  // Handle Selection
+  dropdown.addEventListener('click', async (e) => {
+    const item = e.target.closest('button[data-id]');
+    if (!item) return;
+    
+    const id = item.getAttribute('data-id');
+    const fdcId = item.getAttribute('data-fdcid');
+    const source = item.getAttribute('data-source');
+    
+    dropdown.classList.add('hidden');
+    searchInput.disabled = true;
+    searchInput.value = 'Loading details...';
+    fallbackNotice.classList.add('hidden');
+    
+    try {
+      let url = `/api/foods/details?`;
+      if (source === 'usda' && fdcId && fdcId !== '0') {
+        url += `fdcId=${fdcId}`;
+      } else {
+        url += `id=${encodeURIComponent(id)}&source=local`;
+      }
+      
+      const res = await fetch(url);
+      if (!res.ok) throw new Error("Failed to load details");
+      const data = await res.json();
+      
+      if (data.ok && data.food) {
+        selectFood(data.food);
+      } else {
+        throw new Error(data.message || "Invalid food data");
+      }
+    } catch (err) {
+      showError("Food details could not be loaded. Try another result.");
+      searchInput.disabled = false;
+      searchInput.value = '';
+      searchInput.focus();
+    }
+  });
+
+  // Hide dropdown on click outside
+  document.addEventListener('click', (e) => {
+    if (!searchInput.contains(e.target) && !dropdown.contains(e.target)) {
+      dropdown.classList.add('hidden');
+    }
+  });
+
+  function selectFood(food) {
+    currentSelectedFood = food;
+    
+    // Update UI
+    searchInput.classList.add('hidden');
+    searchInput.disabled = false;
+    searchInput.value = '';
+    
+    selectedFoodInfo.classList.remove('hidden');
+    selectedFoodName.textContent = food.displayName;
+    
+    const isUsda = food.source === 'usda';
+    const badgeClasses = isUsda 
+      ? "bg-mint-wash text-usda-emerald border-emerald-soft" 
+      : "bg-slate-50 text-soft-slate border-border-soft";
+    
+    selectedFoodBadgeContainer.innerHTML = `<span class="text-[10px] uppercase font-bold tracking-widest px-2 py-0.5 rounded border ${badgeClasses} inline-block">${food.sourceLabel || (isUsda ? 'USDA' : 'Local')}</span>`;
+    
+    // Enable and populate quantity & unit
+    qtyInput.disabled = false;
+    unitSelect.disabled = false;
+    addBtn.disabled = false;
+    
+    qtyInput.value = food.defaultQuantity || 1;
+    
+    // Populate units
+    let options = '<option value="g">g</option><option value="oz">oz</option><option value="lb">lb</option>';
+    if (food.servingSizes) {
+      food.servingSizes.forEach(serving => {
+        options += `<option value="${serving.unit}">${serving.unit}</option>`;
+      });
+    }
+    unitSelect.innerHTML = options;
+    
+    if (food.defaultUnit) {
+      const optionExists = Array.from(unitSelect.options).some(opt => opt.value === food.defaultUnit);
+      if (optionExists) {
+        unitSelect.value = food.defaultUnit;
+      }
+    }
+  }
+
+  function clearSelection() {
+    currentSelectedFood = null;
+    searchInput.value = '';
+    searchInput.classList.remove('hidden');
+    selectedFoodInfo.classList.add('hidden');
+    
+    qtyInput.value = '';
+    qtyInput.disabled = true;
+    unitSelect.innerHTML = '<option value="">--</option>';
+    unitSelect.disabled = true;
+    addBtn.disabled = true;
+    
+    searchInput.focus();
+  }
+
+  clearSelectionBtn.addEventListener('click', clearSelection);
+
+  // Add item
+  calcForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!currentSelectedFood) return;
+    
+    const qty = parseFloat(qtyInput.value);
+    const unit = unitSelect.value;
+    
+    if (isNaN(qty) || qty <= 0) {
+      showError('Enter a quantity greater than zero.');
+      return;
+    }
+    if (!unit) {
+      showError('Please select a valid unit.');
+      return;
+    }
+
+    const input = {
+      food: currentSelectedFood,
+      quantity: qty,
+      unit: unit
+    };
+    
+    const calculatedItem = calculateFoodItem(input);
+    
+    if (!calculatedItem.validation.isValid) {
+      showError(calculatedItem.validation.error || 'This unit is not available for the selected food.');
+      return;
+    }
+
+    addedItems.push(calculatedItem);
+    clearSelection();
+    updateMealUI();
+    const el = document.getElementById('a11y-status');
+    if (el) el.textContent = `${calculatedItem.displayName} added to meal.`;
+  });
+
+  window.addEventListener('add-parsed-items', (e: any) => {
+    const itemsToAdd = e.detail.items;
+    let addedCount = 0;
+    
+    itemsToAdd.forEach(({ food, quantity, unit }) => {
+      const input = { food, quantity, unit };
+      const calculatedItem = calculateFoodItem(input);
+      if (calculatedItem.validation.isValid) {
+        addedItems.push(calculatedItem);
+        addedCount++;
+      } else {
+        showError(`Failed to add ${food.displayName}: ${calculatedItem.validation.error}`);
+      }
+    });
+    
+    if (addedCount > 0) {
+      updateMealUI();
+    }
+  });
+
+  window.removeMealItem = function(id) {
+    addedItems = addedItems.filter(item => item.id !== id);
+    updateMealUI();
+    const el = document.getElementById('a11y-status');
+    if (el) el.textContent = 'Item removed from meal';
+  };
+
+  clearAllBtn.addEventListener('click', () => {
+    addedItems = [];
+    updateMealUI();
+    const el = document.getElementById('a11y-status');
+    if (el) el.textContent = 'All items cleared from meal';
+  });
+
+  function updateMealUI() {
+    const mealTotals = calculateMealTotals(addedItems);
+    
+    if (addedItems.length === 0) {
+      mealList.innerHTML = '';
+      mealList.appendChild(emptyState);
+      clearAllBtn.classList.add('hidden');
+      sourceSummaryEl.textContent = '0 items';
+    } else {
+      if (mealList.contains(emptyState)) mealList.removeChild(emptyState);
+      
+      mealList.innerHTML = addedItems.map(item => {
+        const isUsda = item.source === 'usda';
+        const badgeClasses = isUsda 
+          ? "bg-mint-wash text-usda-emerald border-emerald-soft" 
+          : "bg-slate-50 text-soft-slate border-border-soft";
+
+        return `
+        <tr class="hover:bg-slate-50 transition-colors group">
+          <td class="px-6 md:px-8 py-5">
+            <div class="font-bold text-ink-navy text-[15px] leading-snug pr-4">${item.displayName}</div>
+            <div class="mt-1.5">
+              <span class="inline-block text-[10px] uppercase font-bold tracking-widest px-2 py-0.5 rounded border ${badgeClasses}">
+                ${item.sourceLabel || (isUsda ? 'USDA' : 'Local')}
+              </span>
+            </div>
+          </td>
+          <td class="px-6 md:px-8 py-5 text-right whitespace-nowrap">
+            <div class="font-bold text-ink-navy text-[15px]">${item.quantity} ${item.unit}</div>
+            <div class="text-[11px] font-semibold text-soft-slate mt-1 uppercase tracking-wider">${Math.round(item.grams)}g</div>
+          </td>
+          <td class="px-6 md:px-8 py-5 text-right">
+            <div class="font-black text-ink-navy text-lg">${item.nutrients.calories !== null ? Math.round(item.nutrients.calories) : '<span aria-hidden="true">&mdash;</span><span class="sr-only">No data</span>'}</div>
+            <div class="text-[10px] font-bold text-soft-slate uppercase tracking-widest mt-0.5">kcal</div>
+          </td>
+          <td class="px-6 py-5 text-center">
+            <button onclick="removeMealItem('${item.id}')" class="w-8 h-8 rounded-full flex items-center justify-center text-soft-slate hover:text-red-600 hover:bg-red-50 transition-colors tap-target opacity-50 group-hover:opacity-100" title="Remove ${item.displayName}" aria-label="Remove ${item.displayName}">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </td>
+        </tr>
+      `}).join('');
+      
+      clearAllBtn.classList.remove('hidden');
+      sourceSummaryEl.textContent = mealTotals.sourceSummary.summaryLabel || `${mealTotals.itemCount} items`;
+    }
+
+    const n = mealTotals.nutrients;
+    const formatN = (val) => val !== null && val !== undefined ? Number(val).toFixed(1) : 'N/A';
+    const formatInt = (val) => val !== null && val !== undefined ? Math.round(val) : 'N/A';
+
+    document.getElementById('total-cals').textContent = formatInt(mealTotals.calories);
+    document.getElementById('total-protein').textContent = formatN(n.protein);
+    document.getElementById('total-carbs').textContent = formatN(n.carbohydrates);
+    document.getElementById('total-fat').textContent = formatN(n.fat);
+    document.getElementById('total-fiber').textContent = formatN(n.fiber);
+    document.getElementById('total-sugar').textContent = formatN(n.sugar);
+    document.getElementById('total-sodium').textContent = formatInt(n.sodium);
+
+    const p = hasKnownNutrient(n.protein) ? n.protein : 0;
+    const c = hasKnownNutrient(n.carbohydrates) ? n.carbohydrates : 0;
+    const f = hasKnownNutrient(n.fat) ? n.fat : 0;
+    const totalMacro = p + c + f || 1;
+    
+    document.getElementById('bar-protein').style.width = `${(p / totalMacro) * 100}%`;
+    document.getElementById('bar-carbs').style.width = `${(c / totalMacro) * 100}%`;
+    document.getElementById('bar-fat').style.width = `${(f / totalMacro) * 100}%`;
+  }
+</script>

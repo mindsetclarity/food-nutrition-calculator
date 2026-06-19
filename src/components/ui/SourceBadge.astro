@@ -1,0 +1,32 @@
+---
+import Badge from './Badge.astro';
+
+import { normalizeSource, getSourceLabel } from '../../lib/safety/sourceGuards';
+
+interface Props {
+  source?: string | null;
+  class?: string;
+}
+
+const { source, class: className = '' } = Astro.props;
+
+function getConfig(rawSource?: string | null) {
+  const normalized = normalizeSource(rawSource);
+  const text = getSourceLabel(normalized);
+  
+  switch (normalized) {
+    case 'usda': return { variant: 'success', text };
+    case 'local': return { variant: 'default', text };
+    case 'llm_estimate': return { variant: 'warning', text };
+    case 'estimated': return { variant: 'warning', text };
+    case 'unknown': return { variant: 'warning', text };
+    default: return { variant: 'warning', text: 'Unknown' };
+  }
+}
+
+const config = getConfig(source);
+---
+
+<Badge variant={config.variant as any} class={className}>
+  {config.text}
+</Badge>

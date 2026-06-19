@@ -1,0 +1,15 @@
+---
+import type { LearnArticle } from '../../lib/learn/types';
+import LearnArticleCard from './LearnArticleCard.astro';
+
+interface Props {
+  articles: LearnArticle[];
+}
+
+const { articles } = Astro.props;
+---
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+  {articles.map(article => (
+    <LearnArticleCard article={article} />
+  ))}
+</div>

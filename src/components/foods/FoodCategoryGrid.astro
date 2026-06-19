@@ -1,0 +1,72 @@
+---
+import { getUniqueCategories } from '../../lib/foods';
+import type { FoodItem } from '../../lib/nutrition/types';
+
+interface Props {
+  foods: FoodItem[];
+}
+const { foods } = Astro.props;
+const categories = getUniqueCategories(foods);
+---
+<div class="mb-4">
+  <div class="flex flex-wrap gap-2" id="category-filters">
+    <button type="button" class="category-filter-btn active bg-ink-navy text-white px-5 py-2 rounded-[var(--radius-button)] text-[11px] font-bold uppercase tracking-widest shadow-ink transition-all" data-category="all">
+      All
+    </button>
+    {categories.map(cat => (
+      <button type="button" class="category-filter-btn bg-slate-100 text-soft-slate hover:text-ink-navy hover:bg-slate-200 px-5 py-2 rounded-[var(--radius-button)] text-[11px] font-bold uppercase tracking-widest transition-colors" data-category={cat.toLowerCase()}>
+        {cat}
+      </button>
+    ))}
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const filterBtns = document.querySelectorAll('.category-filter-btn');
+    const foodCards = document.querySelectorAll('.food-card');
+    const searchInput = document.getElementById('directory-search') as HTMLInputElement;
+    const emptyState = document.getElementById('food-empty-state');
+    
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const target = e.currentTarget as HTMLButtonElement;
+        const category = target.getAttribute('data-category') || 'all';
+        
+        // Update active state
+        filterBtns.forEach(b => {
+          b.classList.remove('bg-ink-navy', 'text-white', 'shadow-ink');
+          b.classList.add('bg-slate-100', 'text-soft-slate');
+        });
+        target.classList.remove('bg-slate-100', 'text-soft-slate');
+        target.classList.add('bg-ink-navy', 'text-white', 'shadow-ink');
+        
+        // Reset search
+        if (searchInput) {
+          searchInput.value = '';
+        }
+        
+        // Filter cards
+        let matchCount = 0;
+        foodCards.forEach(card => {
+          const cardCat = card.getAttribute('data-category') || '';
+          
+          if (category === 'all' || cardCat === category) {
+            (card as HTMLElement).style.display = '';
+            matchCount++;
+          } else {
+            (card as HTMLElement).style.display = 'none';
+          }
+        });
+        
+        if (emptyState) {
+          if (matchCount === 0) {
+            emptyState.classList.remove('hidden');
+          } else {
+            emptyState.classList.add('hidden');
+          }
+        }
+      });
+    });
+  });
+</script>

@@ -1,0 +1,60 @@
+---
+import type { FoodItem } from '../../lib/nutrition/types';
+import MacroRing from '../ui/MacroRing.astro';
+
+interface Props {
+  food: FoodItem;
+}
+
+const { food } = Astro.props;
+const slug = food.name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+const url = `/foods/${slug}`;
+
+const protein = food.nutrientsPer100g?.protein || 0;
+const carbs = food.nutrientsPer100g?.carbohydrates || 0;
+const fat = food.nutrientsPer100g?.fat || 0;
+const calories = food.nutrientsPer100g?.calories || 0;
+---
+<a href={url} 
+   class="food-card group luxury-card bg-white p-6 relative border border-border-soft flex flex-col hover:-translate-y-1 transition-all duration-300"
+   data-name={food.name.toLowerCase()}
+   data-category={(food.category || '').toLowerCase()}>
+   
+  <div class="flex justify-between items-start mb-4">
+    <div class="pr-4">
+      <h3 class="text-[15px] font-bold text-ink-navy group-hover:text-usda-emerald transition-colors leading-snug line-clamp-2">
+        {food.name}
+      </h3>
+      {food.category && (
+        <span class="text-[11px] font-medium text-soft-slate mt-1 block uppercase tracking-wider">{food.category}</span>
+      )}
+    </div>
+    
+    <!-- We can use a simple mini ring if we want, but since MacroRing expects a big size, let's just do a tiny CSS ring or simple numbers. Let's just use simple numbers here for cards. -->
+    <div class="text-right shrink-0 bg-slate-50 p-2 rounded">
+      <div class="text-[10px] font-bold uppercase tracking-widest text-soft-slate">Per 100g</div>
+      <div class="flex items-baseline justify-end">
+        <span class="text-xl font-black text-ink-navy">{Math.round(calories)}</span>
+      </div>
+    </div>
+  </div>
+  
+  <div class="mt-auto pt-4 border-t border-border-soft grid grid-cols-3 gap-2">
+    <div>
+      <div class="text-[10px] uppercase font-bold tracking-widest text-soft-slate mb-1">Protein</div>
+      <div class="text-[13px] font-bold text-ink-navy">{Number(protein).toFixed(1)}<span class="text-soft-slate font-medium ml-0.5">g</span></div>
+    </div>
+    <div>
+      <div class="text-[10px] uppercase font-bold tracking-widest text-soft-slate mb-1">Carbs</div>
+      <div class="text-[13px] font-bold text-ink-navy">{Number(carbs).toFixed(1)}<span class="text-soft-slate font-medium ml-0.5">g</span></div>
+    </div>
+    <div>
+      <div class="text-[10px] uppercase font-bold tracking-widest text-soft-slate mb-1">Fat</div>
+      <div class="text-[13px] font-bold text-ink-navy">{Number(fat).toFixed(1)}<span class="text-soft-slate font-medium ml-0.5">g</span></div>
+    </div>
+  </div>
+  
+  <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+    <svg class="w-5 h-5 text-usda-emerald" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+  </div>
+</a>

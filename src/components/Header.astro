@@ -1,24 +1,54 @@
 ---
 ---
-<header class="sticky top-0 z-50 bg-[var(--color-canvas)]/80 backdrop-blur-md border-b border-[var(--color-hairline)]">
-  <div class="max-w-[1400px] mx-auto px-4 md:px-6 h-16 flex items-center justify-between">
-    <a href="/" class="font-semibold text-lg tracking-tight flex items-center gap-2">
-      <svg class="w-6 h-6 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+<header class="sticky top-0 z-50 bg-pure-card backdrop-blur-md border-b border-border-soft">
+  <div class="site-container h-16 flex items-center justify-between gap-2">
+    <a href="/" class="font-semibold text-lg tracking-tight flex items-center gap-2 min-w-0 shrink">
+      <svg class="w-6 h-6 text-usda-emerald shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
       </svg>
-      Food Nutrition Calculator
+      <span class="truncate">Food Nutrition Calculator</span>
     </a>
     
-    <nav class="hidden md:flex items-center gap-6 text-sm">
-      <a href="#calculator" class="text-[var(--color-body)] hover:text-[var(--color-ink)] transition-colors">Calculator</a>
-      <a href="#how-it-works" class="text-[var(--color-body)] hover:text-[var(--color-ink)] transition-colors">How it works</a>
-      <a href="#faq" class="text-[var(--color-body)] hover:text-[var(--color-ink)] transition-colors">FAQ</a>
+    <nav class="hidden lg:flex items-center gap-6 text-sm">
+      <a href="/foods" class="text-soft-slate hover:text-ink-navy transition-colors font-medium">Foods</a>
+      <a href="/calculator" class="text-soft-slate hover:text-ink-navy transition-colors font-medium">Calculator</a>
+      <a href="/recipe-nutrition-calculator" class="text-soft-slate hover:text-ink-navy transition-colors font-medium">Recipes</a>
     </nav>
     
-    <div class="flex items-center gap-4">
-      <a href="#calculator" class="bg-[var(--color-primary)] text-[var(--color-on-primary)] hover:bg-[var(--color-primary)]/90 transition-colors px-4 py-2 rounded-full text-sm font-medium">
-        Start Calculating
+    <div class="flex items-center gap-2 shrink-0">
+      <a href="/calculator" class="bg-ink-navy text-white hover:bg-ink-navy/90 transition-colors px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap">
+        Start
       </a>
+      <button id="mobile-menu-btn" class="lg:hidden p-2 text-ink-navy focus-premium rounded-md" aria-label="Menu" aria-expanded="false">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+        </svg>
+      </button>
     </div>
   </div>
+  
+  <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-border-soft absolute top-full left-0 right-0 shadow-lg p-4 flex-col gap-4">
+    <a href="/foods" class="block text-ink-navy font-medium py-2">Foods</a>
+    <a href="/calculator" class="block text-ink-navy font-medium py-2">Calculator</a>
+    <a href="/recipe-nutrition-calculator" class="block text-ink-navy font-medium py-2">Recipes</a>
+  </div>
 </header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  if (btn && menu) {
+    btn.addEventListener('click', () => {
+      const isHidden = menu.classList.contains('hidden');
+      if (isHidden) {
+        menu.classList.remove('hidden');
+        menu.classList.add('flex');
+        btn.setAttribute('aria-expanded', 'true');
+      } else {
+        menu.classList.add('hidden');
+        menu.classList.remove('flex');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+</script>

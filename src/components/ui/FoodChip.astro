@@ -1,0 +1,14 @@
+---
+interface Props {
+  label: string;
+  icon?: string;
+  class?: string;
+}
+
+const { label, icon, class: className = '' } = Astro.props;
+---
+
+<div class={`inline-flex items-center gap-1.5 px-3 py-1.5 bg-pure-card border border-border-soft rounded-full shadow-sm text-[13px] font-medium text-ink-navy hover:shadow-premium hover:-translate-y-0.5 transition-all duration-300 ${className}`} aria-hidden="true">
+  {icon && <span class="text-sm">{icon}</span>}
+  {label}
+</div>

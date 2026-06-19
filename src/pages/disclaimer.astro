@@ -1,0 +1,202 @@
+---
+import TrustPageShell from '../components/trust/TrustPageShell.astro';
+import LegalTOC from '../components/trust/LegalTOC.astro';
+import LegalSection from '../components/trust/LegalSection.astro';
+import TrustCard from '../components/trust/TrustCard.astro';
+import TrustBulletList from '../components/trust/TrustBulletList.astro';
+import TrustBulletListItem from '../components/trust/TrustBulletListItem.astro';
+import Button from '../ui/Button.astro';
+
+const badges = [
+  "Not medical advice",
+  "Values are estimates",
+  "Source-labeled",
+  "Review required"
+];
+
+const toc = [
+  { id: 'not-medical-advice', label: '1. Not Medical Advice' },
+  { id: 'nutrition-estimates', label: '2. Nutrition Values Are Estimates' },
+  { id: 'data-sources', label: '3. Data Source Limitations' },
+  { id: 'ai-parsing', label: '4. AI Parsing Limitations' },
+  { id: 'allergy-safety', label: '5. Allergy and Safety Notice' },
+  { id: 'label-notice', label: '6. Nutrition Facts-style Label Notice' },
+  { id: 'no-guarantee', label: '7. No Accuracy Guarantee' },
+  { id: 'user-responsibility', label: '8. User Responsibility' },
+  { id: 'consult-professional', label: '9. When to Consult a Professional' }
+];
+---
+<TrustPageShell
+  title="Nutrition Disclaimer | Food Nutrition Calculator"
+  description="Read important nutrition, medical, accuracy, data source, AI parsing, allergy, and Nutrition Facts-style label disclaimers for Food Nutrition Calculator."
+  eyebrow="Nutrition Disclaimer"
+  badges={badges}
+>
+  <div class="legal-layout">
+    <LegalTOC items={toc} />
+    
+    <div class="legal-content">
+      <section class="mb-8">
+        <TrustCard title="Quick summary" icon="⚠️">
+          <TrustBulletList>
+            <TrustBulletListItem>Food Nutrition Calculator is for general nutrition education and personal planning.</TrustBulletListItem>
+            <TrustBulletListItem>Nutrition values are estimates, not guaranteed exact measurements.</TrustBulletListItem>
+            <TrustBulletListItem>USDA data is prioritized when available, and local fallback values are clearly labeled.</TrustBulletListItem>
+            <TrustBulletListItem>AI may help parse food or recipe text, but it does not own final nutrition totals.</TrustBulletListItem>
+            <TrustBulletListItem>Nutrition Facts-style labels are previews for personal use, not commercial packaging labels.</TrustBulletListItem>
+            <TrustBulletListItem>Users with medical conditions, allergies, or special dietary needs should consult a qualified professional.</TrustBulletListItem>
+          </TrustBulletList>
+        </TrustCard>
+      </section>
+
+      <LegalSection id="not-medical-advice" heading="1. Not medical advice">
+        <TrustBulletList>
+          <TrustBulletListItem>The website is not a doctor, dietitian, nutritionist, or medical provider.</TrustBulletListItem>
+          <TrustBulletListItem>Results are for general education and personal nutrition planning only.</TrustBulletListItem>
+          <TrustBulletListItem>The website does not diagnose, treat, cure, or prevent any disease.</TrustBulletListItem>
+          <TrustBulletListItem>Do not use this website for emergency health decisions.</TrustBulletListItem>
+          <TrustBulletListItem>For medical conditions, eating disorders, pregnancy, allergies, diabetes, kidney disease, heart disease, or specialized diets, consult a qualified healthcare professional.</TrustBulletListItem>
+        </TrustBulletList>
+      </LegalSection>
+
+      <LegalSection id="nutrition-estimates" heading="2. Nutrition values are estimates">
+        <TrustBulletList>
+          <TrustBulletListItem>Calories, macros, and nutrients can vary by brand.</TrustBulletListItem>
+          <TrustBulletListItem>Cooked and raw weights can differ.</TrustBulletListItem>
+          <TrustBulletListItem>Preparation methods can change nutrition values.</TrustBulletListItem>
+          <TrustBulletListItem>Serving sizes may not match the portion a user actually eats.</TrustBulletListItem>
+          <TrustBulletListItem>Restaurant and packaged foods may differ from database values.</TrustBulletListItem>
+          <TrustBulletListItem>Some nutrients may be unavailable from the selected source.</TrustBulletListItem>
+          <TrustBulletListItem>Measurement errors can happen when using cups, spoons, pieces, or approximate servings.</TrustBulletListItem>
+        </TrustBulletList>
+        <div class="bg-emerald-50 border border-emerald-100 p-4 rounded-xl mt-4 text-[15px] text-emerald-900">
+          <strong>Note:</strong> For the most precise result, users should verify package labels, weigh foods when practical, and review source labels.
+        </div>
+      </LegalSection>
+
+      <LegalSection id="data-sources" heading="3. Data source limitations">
+        <TrustBulletList>
+          <TrustBulletListItem>USDA FoodData Central is prioritized when live USDA search is configured and available.</TrustBulletListItem>
+          <TrustBulletListItem>Local fallback data may be used when USDA data is unavailable or a match cannot be found.</TrustBulletListItem>
+          <TrustBulletListItem>Local fallback values are estimates and should be reviewed.</TrustBulletListItem>
+          <TrustBulletListItem>Different food databases may report slightly different values.</TrustBulletListItem>
+          <TrustBulletListItem>Search results depend on the food name, brand, preparation state, and selected match.</TrustBulletListItem>
+          <TrustBulletListItem>Source labels help users understand where the value came from.</TrustBulletListItem>
+        </TrustBulletList>
+        <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl mt-4 text-[15px] text-slate-700">
+          Food Nutrition Calculator may use USDA FoodData Central as a data source when configured. This does not mean the website is certified, endorsed, or approved by USDA.
+        </div>
+      </LegalSection>
+
+      <LegalSection id="ai-parsing" heading="4. AI parsing limitations">
+        <TrustBulletList>
+          <TrustBulletListItem>AI may help parse meal descriptions, food text, or recipe ingredients.</TrustBulletListItem>
+          <TrustBulletListItem>AI can misunderstand quantities, units, brands, preparation methods, or ingredients.</TrustBulletListItem>
+          <TrustBulletListItem>AI may suggest a food candidate that still needs user review.</TrustBulletListItem>
+          <TrustBulletListItem>AI does not own final nutrition totals.</TrustBulletListItem>
+          <TrustBulletListItem>Final calculations should come from resolved food data and deterministic nutrition math.</TrustBulletListItem>
+          <TrustBulletListItem>Users should review parsed items before relying on totals.</TrustBulletListItem>
+        </TrustBulletList>
+        <div class="bg-purple-50 border border-purple-200 p-4 rounded-xl mt-4 text-[15px] text-purple-900">
+          <strong>Important:</strong> AI is an input helper, not the source of verified nutrition truth.
+        </div>
+      </LegalSection>
+
+      <LegalSection id="allergy-safety" heading="5. Allergy and safety notice">
+        <TrustBulletList>
+          <TrustBulletListItem>The website does not verify allergens.</TrustBulletListItem>
+          <TrustBulletListItem>The website does not guarantee ingredient safety.</TrustBulletListItem>
+          <TrustBulletListItem>Food names may not include every ingredient or cross-contact risk.</TrustBulletListItem>
+          <TrustBulletListItem>Packaged products can change ingredients over time.</TrustBulletListItem>
+          <TrustBulletListItem>Users with allergies must check product labels and manufacturer information.</TrustBulletListItem>
+          <TrustBulletListItem>Users with medical dietary restrictions should consult a qualified professional.</TrustBulletListItem>
+        </TrustBulletList>
+      </LegalSection>
+
+      <LegalSection id="label-notice" heading="6. Nutrition Facts-style label notice">
+        <TrustBulletList>
+          <TrustBulletListItem>The label generated by the website is a Nutrition Facts-style preview.</TrustBulletListItem>
+          <TrustBulletListItem>It is designed for personal nutrition planning and recipe estimation.</TrustBulletListItem>
+          <TrustBulletListItem>It is not an official commercial packaging label.</TrustBulletListItem>
+          <TrustBulletListItem>It is not FDA-approved, FDA-certified, or a substitute for regulatory compliance.</TrustBulletListItem>
+          <TrustBulletListItem>Businesses should consult qualified labeling/regulatory professionals before using nutrition labels commercially.</TrustBulletListItem>
+        </TrustBulletList>
+      </LegalSection>
+
+      <LegalSection id="no-guarantee" heading="7. No accuracy guarantee">
+        <TrustBulletList>
+          <TrustBulletListItem>The website tries to provide useful estimates, but exact accuracy is not guaranteed.</TrustBulletListItem>
+          <TrustBulletListItem>Food data may be incomplete, outdated, or unavailable.</TrustBulletListItem>
+          <TrustBulletListItem>User-entered quantities may be approximate.</TrustBulletListItem>
+          <TrustBulletListItem>Search matches may not always represent the exact food eaten.</TrustBulletListItem>
+          <TrustBulletListItem>API providers or data services may be unavailable.</TrustBulletListItem>
+          <TrustBulletListItem>The website may contain errors, interruptions, or missing information.</TrustBulletListItem>
+        </TrustBulletList>
+      </LegalSection>
+
+      <LegalSection id="user-responsibility" heading="8. User responsibility">
+        <TrustBulletList>
+          <TrustBulletListItem>Review food matches before relying on totals.</TrustBulletListItem>
+          <TrustBulletListItem>Check serving sizes and units carefully.</TrustBulletListItem>
+          <TrustBulletListItem>Verify package labels for branded or packaged foods.</TrustBulletListItem>
+          <TrustBulletListItem>Treat local fallback and estimated values as approximate.</TrustBulletListItem>
+          <TrustBulletListItem>Use professional guidance for medical or diet-specific needs.</TrustBulletListItem>
+          <TrustBulletListItem>Do not use the website as the only basis for health decisions.</TrustBulletListItem>
+        </TrustBulletList>
+      </LegalSection>
+
+      <LegalSection id="consult-professional" heading="9. When to consult a professional">
+        <p class="mb-4 text-soft-slate">Consult a qualified healthcare professional if you:</p>
+        <TrustBulletList>
+          <TrustBulletListItem>have diabetes, kidney disease, heart disease, digestive disease, or another medical condition</TrustBulletListItem>
+          <TrustBulletListItem>are pregnant, breastfeeding, or managing a child's diet</TrustBulletListItem>
+          <TrustBulletListItem>have food allergies or severe intolerances</TrustBulletListItem>
+          <TrustBulletListItem>have a history of eating disorders</TrustBulletListItem>
+          <TrustBulletListItem>need medical nutrition therapy</TrustBulletListItem>
+          <TrustBulletListItem>are making major diet changes for health reasons</TrustBulletListItem>
+        </TrustBulletList>
+      </LegalSection>
+
+      <section class="mt-16 mb-8">
+        <h2 class="text-2xl font-black text-ink-navy mb-6">Learn how the system works</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <a href="/methodology" class="block p-5 bg-white border border-border-soft rounded-xl hover:shadow-md transition-shadow">
+            <h3 class="font-bold text-ink-navy mb-1">Methodology &rarr;</h3>
+            <p class="text-sm text-soft-slate m-0">How we calculate estimates.</p>
+          </a>
+          <a href="/data-sources" class="block p-5 bg-white border border-border-soft rounded-xl hover:shadow-md transition-shadow">
+            <h3 class="font-bold text-ink-navy mb-1">Data Sources &rarr;</h3>
+            <p class="text-sm text-soft-slate m-0">Where our data comes from.</p>
+          </a>
+          <a href="/privacy" class="block p-5 bg-white border border-border-soft rounded-xl hover:shadow-md transition-shadow">
+            <h3 class="font-bold text-ink-navy mb-1">Privacy Policy &rarr;</h3>
+            <p class="text-sm text-soft-slate m-0">How we handle data.</p>
+          </a>
+          <a href="/terms" class="block p-5 bg-white border border-border-soft rounded-xl hover:shadow-md transition-shadow">
+            <h3 class="font-bold text-ink-navy mb-1">Terms of Use &rarr;</h3>
+            <p class="text-sm text-soft-slate m-0">Rules for using our tools.</p>
+          </a>
+        </div>
+      </section>
+
+      <section class="mt-8 mb-16 bg-mint-wash border border-emerald-100 rounded-2xl p-8 text-center">
+        <h2 class="text-2xl font-black text-ink-navy mb-3">Use results as a guide, not a diagnosis.</h2>
+        <p class="text-emerald-900 mb-8 max-w-xl mx-auto">
+          Start calculating with source-labeled estimates, and review the foods, servings, and data sources before relying on totals.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+          <Button href="/calculator" variant="primary" class="bg-usda-emerald hover:bg-emerald-700 text-white shadow-premium border-none w-full sm:w-auto justify-center">
+            Start Calculating
+          </Button>
+          <Button href="/methodology" variant="secondary" class="bg-white hover:bg-gray-50 text-ink-navy border-gray-200 w-full sm:w-auto justify-center">
+            Read Methodology
+          </Button>
+          <Button href="/data-sources" variant="quiet" class="text-soft-slate hover:text-ink-navy hover:bg-black/5 w-full sm:w-auto justify-center">
+            View Data Sources
+          </Button>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</TrustPageShell>

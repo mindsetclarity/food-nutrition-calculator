@@ -1,0 +1,30 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<div class={`flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-4 ${className}`}>
+  
+  <div class="flex items-center gap-2 bg-mint-wash border border-emerald-soft rounded-md px-3 py-2 shrink-0">
+    <div class="w-2 h-2 rounded-full bg-usda-emerald"></div>
+    <span class="text-xs font-bold text-usda-emerald tracking-wide uppercase">USDA-first</span>
+  </div>
+
+  <svg class="hidden sm:block w-4 h-4 text-border-soft rotate-[-90deg] sm:rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+  
+  <div class="flex items-center gap-2 bg-slate-50 border border-border-soft rounded-md px-3 py-2 shrink-0">
+    <div class="w-2 h-2 rounded-full bg-soft-slate"></div>
+    <span class="text-xs font-bold text-soft-slate tracking-wide uppercase">Local Fallback</span>
+  </div>
+
+  <svg class="hidden sm:block w-4 h-4 text-border-soft rotate-[-90deg] sm:rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+
+  <div class="flex items-center gap-2 bg-indigo-50 border border-indigo-100 rounded-md px-3 py-2 shrink-0">
+    <div class="w-2 h-2 rounded-full bg-indigo-400"></div>
+    <span class="text-xs font-bold text-indigo-700 tracking-wide uppercase">AI Assist</span>
+  </div>
+
+</div>

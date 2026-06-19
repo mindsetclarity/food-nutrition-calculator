@@ -1,0 +1,42 @@
+---
+import type { FoodItem } from '../../lib/nutrition/types';
+
+interface Props {
+  food: FoodItem;
+}
+
+const { food } = Astro.props;
+const servings = food.servingSizes || [];
+---
+<div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 sm:p-8 h-full">
+  <h3 class="text-lg font-bold text-gray-900 mb-4">Common Serving Sizes</h3>
+  
+  {servings.length > 0 ? (
+    <ul class="divide-y divide-gray-100">
+      {servings.map(serving => (
+        <li class="py-3 flex justify-between items-center">
+          <span class="text-gray-700 font-medium">{serving.label}</span>
+          <span class="text-gray-500 text-sm bg-gray-50 px-2 py-1 rounded-md border border-gray-100">
+            {serving.grams}g
+          </span>
+        </li>
+      ))}
+      {food.defaultUnit && !servings.find(s => s.unit === food.defaultUnit) && (
+        <li class="py-3 flex justify-between items-center">
+          <span class="text-gray-700 font-medium">Default Unit</span>
+          <span class="text-gray-500 text-sm bg-gray-50 px-2 py-1 rounded-md border border-gray-100">
+            {food.defaultUnit}
+          </span>
+        </li>
+      )}
+    </ul>
+  ) : (
+    <div class="text-gray-500 text-sm py-4">
+      No specific serving sizes available. Standard base is 100g.
+    </div>
+  )}
+  
+  <p class="text-xs text-gray-400 mt-4 border-t border-gray-100 pt-4">
+    Serving weights vary by brand and preparation.
+  </p>
+</div>

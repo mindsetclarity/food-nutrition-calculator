@@ -1,0 +1,16 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<li class={`flex items-start ${className}`}>
+  <svg class="h-5 w-5 text-usda-emerald mt-0.5 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+  </svg>
+  <div class="text-[15px] text-soft-slate leading-relaxed">
+    <slot />
+  </div>
+</li>

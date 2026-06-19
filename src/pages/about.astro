@@ -1,0 +1,133 @@
+---
+import TrustPageShell from '../components/trust/TrustPageShell.astro';
+import TrustTOC from '../components/trust/TrustTOC.astro';
+import TrustCard from '../components/trust/TrustCard.astro';
+import TrustBulletList from '../components/trust/TrustBulletList.astro';
+import TrustBulletListItem from '../components/trust/TrustBulletListItem.astro';
+import NutritionTruthHierarchy from '../components/trust/NutritionTruthHierarchy.astro';
+import SafetyDisclaimerBlock from '../components/trust/SafetyDisclaimerBlock.astro';
+
+const badges = [
+  "No login required",
+  "USDA-first where available",
+  "Source-labeled estimates",
+  "Not medical advice"
+];
+
+const toc = [
+  { id: "quick-summary", label: "Quick summary" },
+  { id: "what-you-can-do", label: "What you can do" },
+  { id: "what-makes-us-different", label: "What makes it different" },
+  { id: "nutrition-truth", label: "Nutrition truth" },
+  { id: "ai-boundary", label: "AI boundary" },
+  { id: "limitations", label: "Limitations" }
+];
+---
+<TrustPageShell
+  title="About Food Nutrition Calculator | USDA-First Nutrition Tools"
+  description="Food Nutrition Calculator helps users estimate calories, macros, recipes, meals, and food comparisons with USDA-first data, local fallback labels, and deterministic nutrition math."
+  eyebrow="About Food Nutrition Calculator"
+  badges={badges}
+>
+
+  <TrustTOC sections={toc} />
+
+  <h2 id="quick-summary">Quick summary</h2>
+  <TrustCard title="What is Food Nutrition Calculator?">
+    <p>Food Nutrition Calculator is built to make nutrition tracking easier to understand without aggressive paywalls or hidden data sources.</p>
+    <TrustBulletList>
+      <TrustBulletListItem><strong>Search foods:</strong> Calculate calories, macros, and key nutrients for single ingredients.</TrustBulletListItem>
+      <TrustBulletListItem><strong>Paste recipes:</strong> Estimate total and per-serving nutrition for home-cooked meals.</TrustBulletListItem>
+      <TrustBulletListItem><strong>Build meal totals:</strong> Add breakfast, lunch, dinner, snacks, and drinks together.</TrustBulletListItem>
+      <TrustBulletListItem><strong>Compare foods:</strong> Put foods side by side using consistent nutrition data.</TrustBulletListItem>
+      <TrustBulletListItem><strong>Learn:</strong> Understand how calories, macros, serving sizes, labels, and USDA data work.</TrustBulletListItem>
+    </TrustBulletList>
+  </TrustCard>
+
+  <h2 id="what-you-can-do">What you can do here</h2>
+  <p>We provide a suite of free, professional-grade tools:</p>
+  
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+    <TrustCard title="Food Nutrition Calculator" icon="🔍">
+      <TrustBulletList>
+        <TrustBulletListItem>Search for raw and packaged foods</TrustBulletListItem>
+        <TrustBulletListItem>Add exact quantities and serving units</TrustBulletListItem>
+        <TrustBulletListItem>See source-labeled nutritional totals</TrustBulletListItem>
+      </TrustBulletList>
+    </TrustCard>
+
+    <TrustCard title="Recipe Nutrition Calculator" icon="🍲">
+      <TrustBulletList>
+        <TrustBulletListItem>Paste messy ingredient lists</TrustBulletListItem>
+        <TrustBulletListItem>Review matched food items</TrustBulletListItem>
+        <TrustBulletListItem>Calculate per-serving nutrition labels</TrustBulletListItem>
+      </TrustBulletList>
+    </TrustCard>
+
+    <TrustCard title="Meal Calorie Calculator" icon="🍽️">
+      <TrustBulletList>
+        <TrustBulletListItem>Build out meal sections</TrustBulletListItem>
+        <TrustBulletListItem>See meal-specific calorie counts</TrustBulletListItem>
+        <TrustBulletListItem>Track full-day macro totals</TrustBulletListItem>
+      </TrustBulletList>
+    </TrustCard>
+
+    <TrustCard title="Compare Foods" icon="⚖️">
+      <TrustBulletList>
+        <TrustBulletListItem>Compare calories, macros, fiber, sodium</TrustBulletListItem>
+        <TrustBulletListItem>Use a consistent 100g or per-serving basis</TrustBulletListItem>
+      </TrustBulletList>
+    </TrustCard>
+
+    <TrustCard title="Foods Directory" icon="📋">
+      <TrustBulletList>
+        <TrustBulletListItem>Browse common food nutrition pages</TrustBulletListItem>
+        <TrustBulletListItem>View standard serving sizes and labels</TrustBulletListItem>
+      </TrustBulletList>
+    </TrustCard>
+
+    <TrustCard title="Learn Hub" icon="📚">
+      <TrustBulletList>
+        <TrustBulletListItem>Understand calories, macros, and labels</TrustBulletListItem>
+        <TrustBulletListItem>Learn about serving sizes and USDA data</TrustBulletListItem>
+      </TrustBulletList>
+    </TrustCard>
+  </div>
+
+  <h2 id="what-makes-us-different">What makes it different?</h2>
+  <p>Many calculators hide where their data comes from. We believe in transparency.</p>
+  <TrustBulletList class="bg-white border border-border-soft p-6 rounded-2xl">
+    <TrustBulletListItem><strong>Source transparency:</strong> Results clearly show where the values came from using explicit badges.</TrustBulletListItem>
+    <TrustBulletListItem><strong>USDA-first approach:</strong> USDA FoodData Central is prioritized when available and configured.</TrustBulletListItem>
+    <TrustBulletListItem><strong>Local fallback labels:</strong> Local fallback estimates are clearly labeled so you know when verified data isn't used.</TrustBulletListItem>
+    <TrustBulletListItem><strong>Deterministic math:</strong> Final nutrition totals are strictly calculated from resolved food data.</TrustBulletListItem>
+    <TrustBulletListItem><strong>AI boundary:</strong> AI helps parse text but does not own final nutrition numbers.</TrustBulletListItem>
+    <TrustBulletListItem><strong>Reviewable flow:</strong> Users can always review unclear ingredients and source matches before trusting a total.</TrustBulletListItem>
+  </TrustBulletList>
+
+  <h2 id="nutrition-truth">Nutrition truth hierarchy</h2>
+  <NutritionTruthHierarchy />
+
+  <h2 id="ai-boundary">What users should review (AI boundary)</h2>
+  <p>We use AI to translate messy human text (e.g., "a handful of almonds") into structured database queries. However, AI does not calculate the final calories or macros.</p>
+  <TrustBulletList>
+    <TrustBulletListItem>The AI's job is to parse text and suggest likely food names.</TrustBulletListItem>
+    <TrustBulletListItem>The exact foods are resolved deterministically from a dataset.</TrustBulletListItem>
+    <TrustBulletListItem>The mathematical engine calculates the totals based on the parsed quantity.</TrustBulletListItem>
+    <TrustBulletListItem>Users must review the parsed items to ensure the AI did not misinterpret an ingredient.</TrustBulletListItem>
+  </TrustBulletList>
+
+  <h2 id="limitations">Important limitations</h2>
+  <p>While we strive for high accuracy, all nutrition tracking is inherently an estimation.</p>
+  <TrustBulletList class="bg-white border border-border-soft p-6 rounded-2xl mb-8">
+    <TrustBulletListItem>Nutrition values are estimates, not absolute guarantees.</TrustBulletListItem>
+    <TrustBulletListItem>Brands, preparation methods, and serving sizes can change actual values.</TrustBulletListItem>
+    <TrustBulletListItem>Some nutrients may be unavailable from the selected source database.</TrustBulletListItem>
+    <TrustBulletListItem>AI parsing can misunderstand messy text or ambiguous queries.</TrustBulletListItem>
+    <TrustBulletListItem>The site provides general education, not medical advice.</TrustBulletListItem>
+    <TrustBulletListItem>Users with allergies, medical conditions, or special dietary needs should consult qualified professionals.</TrustBulletListItem>
+  </TrustBulletList>
+
+  <SafetyDisclaimerBlock />
+
+</TrustPageShell>

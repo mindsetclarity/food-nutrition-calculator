@@ -1,0 +1,55 @@
+---
+---
+<div id="day-totals-panel" class="hidden bg-ink-navy rounded-[var(--radius-card)] shadow-premium overflow-hidden mb-8 relative border border-deep-slate">
+  <div class="absolute inset-0 opacity-10 bg-[radial-gradient(var(--color-usda-emerald)_1px,transparent_1px)] [background-size:24px_24px]"></div>
+  <div class="absolute -right-20 -top-20 w-64 h-64 bg-usda-emerald rounded-full opacity-20 blur-[100px] pointer-events-none"></div>
+  
+  <div class="relative px-6 py-8 sm:px-10 sm:py-10 z-10">
+    <div class="flex flex-col sm:flex-row justify-between items-center mb-8 border-b border-deep-slate/50 pb-6">
+      <div>
+        <h2 class="text-2xl sm:text-3xl font-black text-white leading-tight tracking-tight">Daily Totals</h2>
+        <p id="day-item-count" class="text-usda-emerald font-bold mt-1 tracking-wide text-sm">0 items added</p>
+      </div>
+      <button id="clear-all-btn" class="mt-4 sm:mt-0 px-6 py-2.5 bg-white/5 hover:bg-red-600/90 text-white rounded-[var(--radius-button)] text-[13px] font-bold tracking-widest uppercase transition-colors border border-white/10 hover:border-red-500">
+        Clear All Meals
+      </button>
+    </div>
+    
+    <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-4 text-center">
+      <div class="bg-deep-slate/40 rounded-xl p-4 border border-white/5 backdrop-blur-sm">
+        <p class="text-[10px] text-white/60 font-bold uppercase tracking-widest mb-1.5">Calories</p>
+        <p id="day-cal" class="text-3xl font-black text-white">0</p>
+      </div>
+      
+      <div class="bg-deep-slate/40 rounded-xl p-4 border border-white/5 backdrop-blur-sm">
+        <p class="text-[10px] text-white/60 font-bold uppercase tracking-widest mb-1.5">Protein</p>
+        <p id="day-pro" class="text-xl font-bold text-white">0<span class="text-[13px] font-medium text-white/60 ml-0.5">g</span></p>
+      </div>
+      
+      <div class="bg-deep-slate/40 rounded-xl p-4 border border-white/5 backdrop-blur-sm">
+        <p class="text-[10px] text-white/60 font-bold uppercase tracking-widest mb-1.5">Carbs</p>
+        <p id="day-carb" class="text-xl font-bold text-white">0<span class="text-[13px] font-medium text-white/60 ml-0.5">g</span></p>
+      </div>
+      
+      <div class="bg-deep-slate/40 rounded-xl p-4 border border-white/5 backdrop-blur-sm">
+        <p class="text-[10px] text-white/60 font-bold uppercase tracking-widest mb-1.5">Fat</p>
+        <p id="day-fat" class="text-xl font-bold text-white">0<span class="text-[13px] font-medium text-white/60 ml-0.5">g</span></p>
+      </div>
+      
+      <div class="bg-deep-slate/40 rounded-xl p-4 border border-white/5 backdrop-blur-sm">
+        <p class="text-[10px] text-white/60 font-bold uppercase tracking-widest mb-1.5">Fiber</p>
+        <p id="day-fib" class="text-xl font-bold text-white">0<span class="text-[13px] font-medium text-white/60 ml-0.5">g</span></p>
+      </div>
+      
+      <div class="bg-deep-slate/40 rounded-xl p-4 border border-white/5 backdrop-blur-sm">
+        <p class="text-[10px] text-white/60 font-bold uppercase tracking-widest mb-1.5">Sugar</p>
+        <p id="day-sug" class="text-xl font-bold text-white">0<span class="text-[13px] font-medium text-white/60 ml-0.5">g</span></p>
+      </div>
+      
+      <div class="bg-deep-slate/40 rounded-xl p-4 border border-white/5 backdrop-blur-sm sm:col-span-2 lg:col-span-1">
+        <p class="text-[10px] text-white/60 font-bold uppercase tracking-widest mb-1.5">Sodium</p>
+        <p id="day-sod" class="text-xl font-bold text-white">0<span class="text-[13px] font-medium text-white/60 ml-0.5">mg</span></p>
+      </div>
+    </div>
+  </div>
+</div>

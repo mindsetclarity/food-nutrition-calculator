@@ -1,0 +1,47 @@
+---
+import { formatCalories, formatGramValue } from '../../lib/nutrition-label/formatLabelValue';
+import type { NutritionLabelNutrients } from '../../lib/nutrition-label/types';
+
+interface Props {
+  nutrients: NutritionLabelNutrients;
+  sourceSummary?: any;
+}
+
+const { nutrients, sourceSummary } = Astro.props;
+
+const calories = formatCalories(nutrients.calories);
+const protein = formatGramValue(nutrients.protein);
+const carbs = formatGramValue(nutrients.carbohydrates);
+const fat = formatGramValue(nutrients.fat);
+
+const hasLocal = sourceSummary && sourceSummary.localFallbackCount > 0;
+---
+<div class="bg-[var(--color-canvas)] border border-[var(--color-hairline-strong)] rounded-lg p-4 shadow-sm flex flex-col gap-3 max-w-sm">
+  <div class="flex justify-between items-end border-b border-[var(--color-hairline)] pb-2">
+    <div>
+      <span class="block text-[10px] uppercase font-bold text-[var(--color-mute)] tracking-wider">Calories</span>
+      <span class="text-2xl font-bold text-[var(--color-ink)]">{calories}</span>
+    </div>
+    {hasLocal && (
+      <span class="px-2 py-0.5 bg-blue-50 text-blue-800 text-[10px] font-bold uppercase tracking-wider rounded border border-blue-200">Local Fallback</span>
+    )}
+    {!hasLocal && (
+      <span class="px-2 py-0.5 bg-green-50 text-green-800 text-[10px] font-bold uppercase tracking-wider rounded border border-green-200">USDA-first</span>
+    )}
+  </div>
+  
+  <div class="grid grid-cols-3 gap-2 text-sm">
+    <div>
+      <span class="block text-[10px] font-semibold text-[var(--color-mute)]">Protein</span>
+      <span class="font-medium text-[var(--color-ink)]">{protein}g</span>
+    </div>
+    <div>
+      <span class="block text-[10px] font-semibold text-[var(--color-mute)]">Carbs</span>
+      <span class="font-medium text-[var(--color-ink)]">{carbs}g</span>
+    </div>
+    <div>
+      <span class="block text-[10px] font-semibold text-[var(--color-mute)]">Fat</span>
+      <span class="font-medium text-[var(--color-ink)]">{fat}g</span>
+    </div>
+  </div>
+</div>

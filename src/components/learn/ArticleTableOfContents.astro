@@ -1,0 +1,19 @@
+---
+import type { TocItem } from '../../lib/learn/tableOfContents';
+
+interface Props {
+  items: TocItem[];
+}
+
+const { items } = Astro.props;
+---
+<div class="bg-gray-50 rounded-2xl p-6 sticky top-24">
+  <h3 class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-4">Table of Contents</h3>
+  <nav class="space-y-3">
+    {items.map(item => (
+      <a href={`#${item.id}`} class="block text-sm font-medium text-gray-600 hover:text-emerald-600 transition-colors">
+        {item.label}
+      </a>
+    ))}
+  </nav>
+</div>

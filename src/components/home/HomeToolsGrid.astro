@@ -1,0 +1,113 @@
+---
+const tools = [
+  {
+    title: "Food Nutrition Calculator",
+    benefit: "Search foods and calculate source-labeled nutrition in seconds.",
+    trust: "USDA-first database",
+    cta: "Calculate Food",
+    href: "/calculator",
+    accent: "🍌",
+    colSpan: "md:col-span-2 lg:col-span-2",
+  },
+  {
+    title: "Recipe Nutrition Calculator",
+    benefit: "Paste ingredients and turn a recipe into per-serving nutrition.",
+    trust: "Deterministic math",
+    cta: "Analyze Recipe",
+    href: "/recipe-nutrition-calculator",
+    accent: "🥣",
+    colSpan: "md:col-span-1 lg:col-span-1",
+  },
+  {
+    title: "Meal Calorie Calculator",
+    benefit: "Build breakfast, lunch, dinner, snacks, and drinks into a full-day total.",
+    trust: "No login required",
+    cta: "Build a Meal",
+    href: "/meal-calorie-calculator",
+    accent: "🥗",
+    colSpan: "md:col-span-1 lg:col-span-1",
+  },
+  {
+    title: "Compare Foods",
+    benefit: "Side-by-side nutrition comparison with consistent serving basis.",
+    trust: "Source-labeled estimates",
+    cta: "Compare Now",
+    href: "/compare-foods",
+    accent: "🥑 vs 🍠",
+    colSpan: "md:col-span-2 lg:col-span-2",
+  },
+  {
+    title: "Food Nutrition Facts Directory",
+    benefit: "Browse our library of common food nutrition profiles.",
+    trust: "Local fallback included",
+    cta: "Browse Library",
+    href: "/foods",
+    accent: "🌾",
+    colSpan: "md:col-span-2 lg:col-span-1",
+  },
+  {
+    title: "Learn Food Nutrition",
+    benefit: "Understand calories, macros, labels, and USDA data.",
+    trust: "Educational guides",
+    cta: "Read Guides",
+    href: "/learn",
+    accent: "📖",
+    colSpan: "md:col-span-1 lg:col-span-2",
+  }
+];
+---
+
+<section class="py-24 bg-warm-ivory relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="text-center max-w-2xl mx-auto mb-16 reveal-hidden" data-reveal>
+      <h2 class="text-3xl md:text-4xl font-extrabold text-ink-navy tracking-tight mb-4">
+        A complete suite for <span class="text-usda-emerald">nutrition planning</span>
+      </h2>
+      <p class="text-lg text-soft-slate">
+        Six powerful tools connected by one source-transparent database.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6">
+      {tools.map((tool, index) => (
+        <a href={tool.href} class={`group block luxury-card p-8 relative overflow-hidden focus-premium reveal-hidden ${tool.colSpan}`} style={`transition-delay: ${index * 100}ms`} data-reveal>
+          <div class="absolute -right-6 -top-6 text-6xl opacity-10 group-hover:opacity-20 group-hover:scale-110 transition-all duration-500 transform rotate-12">
+            {tool.accent}
+          </div>
+          
+          <div class="relative z-10 h-full flex flex-col">
+            <h3 class="text-xl font-bold text-ink-navy mb-3 group-hover:text-usda-emerald transition-colors">{tool.title}</h3>
+            <p class="text-[15px] text-soft-slate mb-6 flex-grow">{tool.benefit}</p>
+            
+            <div class="mt-auto">
+              <div class="flex items-center text-xs text-muted-text font-medium mb-4">
+                <svg class="w-4 h-4 text-fresh-leaf mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                {tool.trust}
+              </div>
+              <div class="inline-flex items-center text-[15px] font-semibold text-ink-navy group-hover:text-usda-emerald transition-colors">
+                {tool.cta}
+                <svg class="w-4 h-4 ml-1.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+              </div>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  // Simple intersection observer for reveals
+  document.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+
+    document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+  });
+</script>

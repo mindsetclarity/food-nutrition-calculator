@@ -1,0 +1,13 @@
+---
+interface Props {
+  size?: "thin" | "medium" | "thick";
+}
+const { size = "thin" } = Astro.props;
+
+const heightClass = {
+  thin: "h-[1px]",
+  medium: "h-[4px]",
+  thick: "h-[8px]"
+}[size];
+---
+<div class={`w-full bg-black ${heightClass}`} aria-hidden="true"></div>

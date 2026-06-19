@@ -1,0 +1,46 @@
+---
+import FoodSearchFilter from './FoodSearchFilter.astro';
+import FoodCategoryGrid from './FoodCategoryGrid.astro';
+import FoodCard from './FoodCard.astro';
+import FoodEmptyState from './FoodEmptyState.astro';
+
+import { getAllFoodPages, sortFoodsForDirectory } from '../../lib/foods';
+
+const foods = sortFoodsForDirectory(getAllFoodPages());
+---
+
+<main id="main-content" class="min-h-screen bg-warm-ivory pb-24 relative z-10">
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
+    <div class="luxury-card bg-pure-card overflow-hidden">
+      <div class="p-6 md:p-8 bg-white/50 border-b border-border-soft">
+        <FoodSearchFilter />
+        <FoodCategoryGrid foods={foods} />
+      </div>
+      <div class="p-6 md:p-8">
+        <div id="food-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {foods.map(food => (
+            <FoodCard food={food} />
+          ))}
+        </div>
+        
+        <FoodEmptyState />
+      </div>
+    </div>
+  </section>
+  
+  {/* Trust / Disclaimer */}
+  <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 text-center border-t border-border-soft pt-12">
+    <div class="bg-white rounded-[var(--radius-card)] p-8 sm:p-10 shadow-sm border border-border-soft">
+      <h3 class="text-[15px] font-bold text-ink-navy mb-3">About These Values</h3>
+      <p class="text-soft-slate text-[13px] font-medium leading-relaxed mb-6 max-w-2xl mx-auto">
+        These food pages use the local fallback database for common foods. Nutrition values are estimates and can vary by brand, preparation method, and serving size. Use the calculator for USDA-first live search where available.
+      </p>
+      <div class="flex flex-wrap justify-center gap-6 text-[13px] font-bold uppercase tracking-widest">
+        <a href="/calculator" class="text-usda-emerald hover:text-fresh-leaf transition-colors">Food Calculator</a>
+        <a href="/recipe-nutrition-calculator" class="text-usda-emerald hover:text-fresh-leaf transition-colors">Recipe Calculator</a>
+        <a href="/compare-foods" class="text-usda-emerald hover:text-fresh-leaf transition-colors">Compare Foods</a>
+        <a href="/meal-calorie-calculator" class="text-usda-emerald hover:text-fresh-leaf transition-colors">Meal Calculator</a>
+      </div>
+    </div>
+  </section>
+</main>

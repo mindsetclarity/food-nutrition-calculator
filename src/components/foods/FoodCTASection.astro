@@ -1,0 +1,31 @@
+---
+import type { FoodItem } from '../../lib/nutrition/types';
+
+interface Props {
+  food: FoodItem;
+}
+
+const { food } = Astro.props;
+---
+<div class="bg-emerald-900 rounded-3xl overflow-hidden shadow-xl mt-12 relative" data-reveal>
+  <!-- Background Pattern -->
+  <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#10b981 1px, transparent 1px); background-size: 24px 24px;"></div>
+  
+  <div class="relative px-6 py-12 sm:px-12 sm:py-16 text-center max-w-3xl mx-auto">
+    <h2 class="text-3xl sm:text-4xl font-black text-white mb-6">Calculate this food in a meal</h2>
+    <p class="text-emerald-100 text-lg mb-10 max-w-2xl mx-auto">
+      Add {food.displayName.toLowerCase()} to the food calculator to see how it fits into your daily macros, or analyze an entire recipe.
+    </p>
+    
+    <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
+      <a href={`/calculator?food=${food.slug}`} class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-bold rounded-xl text-emerald-900 bg-white hover:bg-emerald-50 shadow-md hover:shadow-lg transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-emerald-900 focus:ring-white interactive-button">
+        Open Food Calculator
+        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+      </a>
+      
+      <a href="/recipe-nutrition-calculator" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 border border-emerald-700 text-lg font-bold rounded-xl text-white bg-emerald-800 hover:bg-emerald-700 shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-emerald-900 focus:ring-emerald-500 interactive-button">
+        Analyze a Recipe
+      </a>
+    </div>
+  </div>
+</div>

@@ -1,87 +1,86 @@
 import type { APIRoute } from 'astro';
-import { localFoods } from '../../../data/foods';
+import { getFoodById } from '../../../lib/nutrition/foodSearch';
+import { getUsdaFoodDetails } from '../../../lib/usda/client';
+import { normalizeUsdaFoodDetails } from '../../../lib/usda/normalize';
 
 export const GET: APIRoute = async ({ request }) => {
-  const url = new URL(request.url);
-  const id = url.searchParams.get('id');
-
-  if (!id) {
-    return new Response(JSON.stringify({ error: "Missing ID" }), { 
-      status: 400, headers: { 'Content-Type': 'application/json' } 
-    });
-  }
-
-  if (id.startsWith('local-')) {
-    const food = localFoods.find(f => f.id === id);
-    if (food) {
-      return new Response(JSON.stringify(food), { 
-        status: 200, headers: { 'Content-Type': 'application/json' } 
-      });
-    }
-    return new Response(JSON.stringify({ error: "Not found in local DB" }), { 
-      status: 404, headers: { 'Content-Type': 'application/json' } 
-    });
-  }
-
-  const usdaApiKey = import.meta.env.USDA_API_KEY;
-  if (!usdaApiKey) {
-    return new Response(JSON.stringify({ error: "USDA key missing and not local" }), { 
-      status: 500, headers: { 'Content-Type': 'application/json' } 
-    });
-  }
-
   try {
-    const res = await fetch(`https://api.nal.usda.gov/fdc/v1/food/${id}?api_key=${usdaApiKey}`);
-    if (res.ok) {
-      const data = await res.json();
-      
-      const findNutrient = (name: string, unitName: string = '') => {
-        const nut = data.foodNutrients.find((n: any) => 
-          n.nutrient?.name?.toLowerCase().includes(name.toLowerCase()) &&
-          (unitName === '' || n.nutrient?.unitName?.toLowerCase() === unitName.toLowerCase())
-        );
-        return nut ? nut.amount : 0;
-      };
+    const url = new URL(request.url);
+  const fdcIdStr = url.searchParams.get('fdcId');
+  const idStr = url.searchParams.get('id');
+  const sourceStr = url.searchParams.get('source');
 
-      let servingGrams = 100;
-      if (data.servingSize && data.servingSizeUnit === 'g') {
-        servingGrams = data.servingSize;
-      }
-
-      const foodItem = {
-        id: data.fdcId.toString(),
-        name: data.description,
-        category: data.foodCategory?.description || 'USDA Food',
-        source: 'USDA',
-        defaultUnit: 'serving',
-        standardUnits: {
-          'g': 1,
-          'oz': 28.35,
-          'lb': 453.59,
-          'serving': servingGrams
-        },
-        nutritionPer100g: {
-          calories: findNutrient('Energy', 'kcal'),
-          protein: findNutrient('Protein', 'g'),
-          carbs: findNutrient('Carbohydrate', 'g'),
-          fat: findNutrient('Total lipid (fat)', 'g'),
-          fiber: findNutrient('Fiber, total dietary', 'g'),
-          sugar: findNutrient('Sugars, total', 'g'),
-          sodium: findNutrient('Sodium', 'mg')
-        }
-      };
-
-      return new Response(JSON.stringify(foodItem), { 
-        status: 200, headers: { 'Content-Type': 'application/json' } 
-      });
-    }
-    return new Response(JSON.stringify({ error: "USDA API error" }), { 
-      status: res.status, headers: { 'Content-Type': 'application/json' } 
-    });
-  } catch (err) {
-    console.error("USDA Details Error:", err);
-    return new Response(JSON.stringify({ error: "Internal error" }), { 
-      status: 500, headers: { 'Content-Type': 'application/json' } 
-    });
+  if (!fdcIdStr && !idStr) {
+    return new Response(JSON.stringify({
+      ok: false,
+      food: null,
+      fallbackUsed: false,
+      message: "Food details could not be loaded."
+    }), { status: 400, headers: { 'Content-Type': 'application/json' } });
   }
-}
+
+  // Handle local explicit requests
+  if (sourceStr === 'local' || (idStr && idStr.startsWith('local_'))) {
+    const localId = idStr || '';
+    const food = getFoodById(localId);
+    if (food) {
+      return new Response(JSON.stringify({
+        ok: true,
+        food,
+        fallbackUsed: false,
+        message: null
+      }), { status: 200, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'public, max-age=300, s-maxage=3600' } });
+    }
+  }
+
+    // Handle USDA requests
+    if (fdcIdStr) {
+      const fdcId = parseInt(fdcIdStr, 10);
+      if (!isNaN(fdcId)) {
+        let usdaRes;
+        try {
+          usdaRes = await getUsdaFoodDetails(fdcId);
+        } catch (e) {
+          usdaRes = { ok: false, data: null };
+        }
+        if (usdaRes.ok && usdaRes.data) {
+        return new Response(JSON.stringify({
+          ok: true,
+          food: normalizeUsdaFoodDetails(usdaRes.data),
+          fallbackUsed: false,
+          message: null
+        }), { status: 200, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'public, max-age=300, s-maxage=3600' } });
+      }
+    }
+  }
+
+  // Fallback to local if USDA fails but an ID was provided
+  if (idStr) {
+    const food = getFoodById(idStr);
+    if (food) {
+      return new Response(JSON.stringify({
+        ok: true,
+        food,
+        fallbackUsed: true,
+        message: "USDA details unavailable, falling back to local."
+      }), { status: 200, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'public, max-age=300, s-maxage=3600' } });
+    }
+  }
+
+    return new Response(JSON.stringify({
+      ok: false,
+      food: null,
+      fallbackUsed: false,
+      message: "Food details could not be found."
+    }), { status: 404, headers: { 'Content-Type': 'application/json' } });
+
+  } catch (error) {
+    console.error("Safe Details API Error:", error instanceof Error ? error.message : "Unknown error");
+    return new Response(JSON.stringify({
+      ok: false,
+      food: null,
+      fallbackUsed: false,
+      message: "An internal server error occurred while fetching food details."
+    }), { status: 500, headers: { 'Content-Type': 'application/json' } });
+  }
+};

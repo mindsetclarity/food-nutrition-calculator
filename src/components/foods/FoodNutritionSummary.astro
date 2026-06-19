@@ -1,0 +1,51 @@
+---
+import type { FoodItem } from '../../lib/nutrition/types';
+
+interface Props {
+  food: FoodItem;
+}
+
+const { food } = Astro.props;
+const nutrients = food.nutrientsPer100g || {};
+
+const formatNum = (val: number | null | undefined) => {
+  if (val == null) return '—';
+  if (val >= 100) return Math.round(val).toString();
+  return Number(val).toFixed(1).replace(/\.0$/, '');
+};
+
+const summaryItems = [
+  { label: 'Calories', value: formatNum(nutrients.calories), unit: 'kcal' },
+  { label: 'Protein', value: formatNum(nutrients.protein), unit: 'g' },
+  { label: 'Carbs', value: formatNum(nutrients.carbohydrates), unit: 'g' },
+  { label: 'Fat', value: formatNum(nutrients.fat), unit: 'g' },
+  { label: 'Fiber', value: formatNum(nutrients.fiber), unit: 'g' },
+  { label: 'Sugar', value: formatNum(nutrients.sugar), unit: 'g' },
+  { label: 'Sodium', value: formatNum(nutrients.sodium), unit: 'mg' },
+];
+---
+<div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 sm:p-8">
+  <h2 class="text-xl font-black text-gray-900 mb-6 flex items-center">
+    Nutrition per 100g
+    <span class="ml-2 text-sm font-normal text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full">Base Value</span>
+  </h2>
+  
+  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4">
+    {summaryItems.map(item => (
+      <div class="bg-gray-50 rounded-xl p-4 border border-gray-100 flex flex-col justify-center text-center">
+        <span class="text-xs text-gray-500 font-medium mb-1 uppercase tracking-wider">{item.label}</span>
+        <div class="flex items-baseline justify-center space-x-1">
+          <span class="text-2xl font-black text-gray-900">{item.value}</span>
+          {item.value !== '—' && (
+            <span class="text-sm font-bold text-gray-600">{item.unit}</span>
+          )}
+        </div>
+      </div>
+    ))}
+  </div>
+  
+  <div class="mt-4 text-xs text-gray-500 flex items-center">
+    <svg class="w-4 h-4 mr-1 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+    Values are estimates and can vary based on brand or preparation.
+  </div>
+</div>

@@ -1,0 +1,27 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import PageHeader from '../../components/site/PageHeader.astro';
+import FoodsDirectoryShell from '../../components/foods/FoodsDirectoryShell.astro';
+
+import { getFoodsDirectorySeo } from '../../lib/foods';
+import { buildWebPageSchema } from '../../lib/seo/schema';
+import { siteConfig } from '../../lib/seo/siteConfig';
+
+const seo = getFoodsDirectorySeo();
+
+const jsonLd = buildWebPageSchema({
+  name: "Food Nutrition Facts | Calories & Macros for Common Foods",
+  description: "Browse calories, macros, serving sizes, and nutrition facts for common US foods. Use the calculator for USDA-first food nutrition search.",
+  url: `${siteConfig.siteUrl}/foods`
+});
+---
+
+<SiteLayout title={seo.title} description={seo.description} jsonLd={jsonLd}>
+  <PageHeader 
+    title="Nutrition Directory" 
+    description="Browse common foods in our deterministic database. Fast, exact, and judgment-free." 
+    breadcrumbs={[{ label: 'Directory' }]} 
+    chipType="foods"
+  />
+  <FoodsDirectoryShell />
+</SiteLayout>

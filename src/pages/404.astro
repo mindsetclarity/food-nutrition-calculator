@@ -1,0 +1,44 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/ui/Button.astro';
+
+const navLinks = [
+  { name: 'Food Nutrition Calculator', href: '/calculator' },
+  { name: 'Recipe Nutrition Analyzer', href: '/recipe-nutrition-calculator' },
+  { name: 'Compare Foods', href: '/compare-foods' },
+  { name: 'Meal Calorie Calculator', href: '/meal-calorie-calculator' },
+  { name: 'Browse Foods Directory', href: '/foods' },
+  { name: 'Learn Hub', href: '/learn' }
+];
+---
+<Layout title="Page Not Found | Food Nutrition Calculator" description="The page you're looking for may have moved, or the food/article link may not exist." noindex={true}>
+  <main id="main-content" class="min-h-[70vh] flex flex-col justify-center bg-gray-50/50 py-24">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-amber-100 text-amber-600 mb-8">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-black text-gray-900 tracking-tight mb-6">Page not found</h1>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto mb-12">
+        The page you're looking for may have moved, or the food/article link may not exist. Try searching with one of our main tools below.
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
+        {navLinks.map(link => (
+          <a 
+            href={link.href}
+            class="flex items-center justify-between p-4 bg-white border border-gray-200 rounded-xl hover:border-emerald-500 hover:shadow-md transition-all group"
+          >
+            <span class="font-bold text-gray-800 group-hover:text-emerald-700 transition-colors">{link.name}</span>
+            <svg class="w-5 h-5 text-gray-400 group-hover:text-emerald-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+          </a>
+        ))}
+      </div>
+
+      <div class="mt-12">
+        <Button href="/" variant="outline" class="w-full sm:w-auto justify-center">
+          Back to Homepage
+        </Button>
+      </div>
+    </div>
+  </main>
+</Layout>

@@ -1,0 +1,41 @@
+---
+import Card from '../ui/Card.astro';
+import Button from '../ui/Button.astro';
+
+interface Props {
+  title: string;
+  futureFeatures: string[];
+}
+const { title, futureFeatures } = Astro.props;
+---
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-grow flex flex-col w-full">
+  <Card variant="elevated" class="flex-grow flex flex-col items-center justify-center p-8 sm:p-12 text-center w-full animate-fade-up">
+    <div class="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center mb-6 border border-border shadow-inner">
+      <svg class="w-8 h-8 text-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+      </svg>
+    </div>
+    <h2 class="text-2xl font-bold text-foreground mb-2">{title} is under construction</h2>
+    <p class="text-muted mb-8 max-w-xl mx-auto">This page is part of our Phase 5+ implementation plan. We are currently building the foundation for a premium, USDA-first nutrition experience.</p>
+    
+    <div class="text-left bg-background p-6 rounded-xl border border-border w-full max-w-md mx-auto">
+      <h3 class="text-sm font-semibold text-foreground uppercase tracking-wider mb-3">Planned Features</h3>
+      <ul class="space-y-3">
+        {futureFeatures.map(feature => (
+          <li class="flex items-start">
+            <svg class="w-5 h-5 text-brand-500 mr-3 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            <span class="text-sm text-foreground">{feature}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+    
+    <div class="mt-8">
+      <Button href="/" variant="subtle" size="sm" class="hover-lift">
+        &larr; Return to Homepage
+      </Button>
+    </div>
+  </Card>
+</div>

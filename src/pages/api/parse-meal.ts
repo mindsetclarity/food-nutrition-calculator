@@ -1,64 +1,95 @@
 import type { APIRoute } from 'astro';
+import { validateParseMealRequest } from '../../lib/meal-parser/validation';
+import { basicFallbackParse } from '../../lib/meal-parser/basicParser';
+import { normalizeParsedMeal } from '../../lib/meal-parser/normalizeParsedMeal';
+import { inputLimits } from '../../lib/safety/inputLimits';
+import { generateJSONWithLLM } from '../../lib/llm/client';
+import { buildMealParseSystemPrompt, buildMealParseUserPrompt } from '../../lib/llm/prompts';
+import type { ParseMealApiResponse } from '../../lib/meal-parser/types';
 
 export const POST: APIRoute = async ({ request }) => {
   try {
-    const { text } = await request.json();
-    if (!text) {
-      return new Response(JSON.stringify({ error: "No text provided" }), { status: 400 });
+    const body = await request.json();
+    const validation = validateParseMealRequest(body);
+
+    if (!validation.isValid || !validation.sanitizedText) {
+      const errRes: ParseMealApiResponse = {
+        ok: false,
+        provider: "none",
+        model: null,
+        input: { textLength: 0, mode: "meal" },
+        parsed: { items: [], overallConfidence: 0, needsClarification: true, clarifyingQuestions: [], warnings: [] },
+        warnings: [],
+        message: validation.error || "Invalid request."
+      };
+      return new Response(JSON.stringify(errRes), { status: 400, headers: { 'Content-Type': 'application/json' } });
     }
 
-    const provider = import.meta.env.LLM_PROVIDER || 'gemini';
-    const geminiKey = import.meta.env.GEMINI_API_KEY;
-    const openaiKey = import.meta.env.OPENAI_API_KEY;
+    if (validation.sanitizedText.length > inputLimits.parseMealMaxChars) {
+      const errRes: ParseMealApiResponse = {
+        ok: false,
+        provider: "none",
+        model: null,
+        input: { textLength: validation.sanitizedText.length, mode: "meal" },
+        parsed: { items: [], overallConfidence: 0, needsClarification: true, clarifyingQuestions: [], warnings: [] },
+        warnings: [],
+        message: `Input is too long. Please limit to ${inputLimits.parseMealMaxChars} characters.`
+      };
+      return new Response(JSON.stringify(errRes), { status: 400, headers: { 'Content-Type': 'application/json' } });
+    }
+
+    const mode = body.mode === 'recipe' ? 'recipe' : 'meal';
+
+    const llmRequest = {
+      task: "meal_parse" as const,
+      messages: [
+        { role: "system" as const, content: buildMealParseSystemPrompt() },
+        { role: "user" as const, content: buildMealParseUserPrompt(validation.sanitizedText) }
+      ],
+      responseFormat: "json" as const
+    };
+
+    const llmRes = await generateJSONWithLLM(llmRequest);
     
-    // We only support Gemini in this scaffold for simplicity, 
-    // but the architecture allows others.
-    if (provider === 'gemini' && geminiKey) {
-      const prompt = `
-You are a food parser. Extract the food items, quantities, and units from the following text.
-Text: "${text}"
+    let parsedData: any = null;
+    let providerName = llmRes.provider;
+    let modelName = llmRes.model;
+    let warnings = [...llmRes.warnings];
 
-Rules:
-- Respond ONLY with a valid JSON array of objects.
-- Each object must have: "query" (string), "quantity" (number), "unit" (string: g, oz, lb, serving, cup, tbsp, tsp, piece, slice, can, bottle, packet, scoop).
-- If unit is unknown, guess the closest matching unit or default to "serving".
-- Do not add markdown backticks.
-
-Example text: "2 scrambled eggs and a cup of orange juice"
-Output: [{"query": "scrambled eggs", "quantity": 2, "unit": "piece"}, {"query": "orange juice", "quantity": 1, "unit": "cup"}]
-`;
-
-      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${import.meta.env.LLM_MODEL || 'gemini-2.5-flash'}:generateContent?key=${geminiKey}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          contents: [{ parts: [{ text: prompt }] }],
-          generationConfig: {
-            temperature: 0.1,
-          }
-        })
-      });
-
-      if (!res.ok) {
-        throw new Error("Gemini API error");
-      }
-
-      const data = await res.json();
-      let responseText = data.candidates?.[0]?.content?.parts?.[0]?.text || '[]';
-      // Clean up markdown if any
-      responseText = responseText.replace(/```json/g, '').replace(/```/g, '').trim();
-      
-      const parsed = JSON.parse(responseText);
-      return new Response(JSON.stringify(parsed), { status: 200, headers: { 'Content-Type': 'application/json' } });
-
-    } else if (provider === 'openai' && openaiKey) {
-       // OpenAI implementation placeholder
-       throw new Error("OpenAI not fully implemented in scaffold");
+    if (llmRes.ok && llmRes.json) {
+      parsedData = normalizeParsedMeal(llmRes.json);
     } else {
-      return new Response(JSON.stringify({ error: "LLM API key missing or provider unsupported" }), { status: 500 });
+      providerName = "basic";
+      warnings.push("LLM unavailable or failed to parse. Using basic fallback.");
+      parsedData = basicFallbackParse(validation.sanitizedText);
     }
-  } catch (err) {
-    console.error("Parse Meal Error:", err);
-    return new Response(JSON.stringify({ error: "Internal or parsing error" }), { status: 500 });
+
+    const response: ParseMealApiResponse = {
+      ok: true,
+      provider: providerName,
+      model: modelName,
+      input: {
+        textLength: validation.sanitizedText.length,
+        mode
+      },
+      parsed: parsedData,
+      warnings,
+      message: null
+    };
+
+    return new Response(JSON.stringify(response), { status: 200, headers: { 'Content-Type': 'application/json' } });
+
+  } catch (error: any) {
+    console.error("Parse Meal API Error:", error);
+    const errRes: ParseMealApiResponse = {
+      ok: false,
+      provider: "none",
+      model: null,
+      input: { textLength: 0, mode: "meal" },
+      parsed: { items: [], overallConfidence: 0, needsClarification: true, clarifyingQuestions: [], warnings: [] },
+      warnings: [],
+      message: "An internal server error occurred while parsing."
+    };
+    return new Response(JSON.stringify(errRes), { status: 500, headers: { 'Content-Type': 'application/json' } });
   }
 }

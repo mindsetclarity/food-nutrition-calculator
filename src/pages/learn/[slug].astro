@@ -1,0 +1,26 @@
+---
+import { getAllLearnArticles, getLearnArticleBySlug } from '../../lib/learn';
+import LearnArticleLayout from '../../components/learn/LearnArticleLayout.astro';
+import type { LearnArticle } from '../../lib/learn/types';
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const articles = getAllLearnArticles();
+  return articles.map(article => ({
+    params: { slug: article.slug },
+    props: { article },
+  }));
+}
+
+interface Props {
+  article: LearnArticle;
+}
+
+const { article } = Astro.props;
+
+if (!article) {
+  return new Response(null, { status: 404, statusText: 'Not found' });
+}
+---
+<LearnArticleLayout article={article} />

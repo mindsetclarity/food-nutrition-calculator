@@ -1,0 +1,25 @@
+---
+interface Props {
+  variant?: 'info' | 'warning' | 'success' | 'danger';
+  title?: string;
+  class?: string;
+}
+
+const { variant = 'info', title, class: className = '' } = Astro.props;
+
+const variantStyles = {
+  info: "bg-slate-50 text-slate-800 border-slate-200",
+  warning: "bg-warning-bg text-warning-text border-warning-bg",
+  success: "bg-success-bg text-success-text border-success-bg",
+  danger: "bg-danger-bg text-danger-text border-danger-bg",
+};
+
+const classes = `p-4 rounded-md border ${variantStyles[variant]} ${className}`;
+---
+
+<div class={classes}>
+  {title && <h4 class="text-sm font-semibold mb-1">{title}</h4>}
+  <div class="text-sm opacity-90">
+    <slot />
+  </div>
+</div>

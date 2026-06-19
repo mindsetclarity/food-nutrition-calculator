@@ -1,0 +1,51 @@
+---
+---
+<div class="mb-8">
+  <label for="directory-search" class="sr-only">Search directory</label>
+  <div class="relative">
+    <div class="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
+      <svg class="h-5 w-5 text-soft-slate" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+    </div>
+    <input 
+      type="search" 
+      id="directory-search" 
+      class="block w-full pl-12 pr-4 h-14 text-[15px] border border-border-soft rounded-[var(--radius-button)] bg-white focus-premium transition-shadow text-ink-navy placeholder-soft-slate shadow-sm" 
+      placeholder="Filter foods..."
+    >
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('directory-search') as HTMLInputElement;
+    const foodCards = document.querySelectorAll('.food-card');
+    const emptyState = document.getElementById('food-empty-state');
+    
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        const query = (e.target as HTMLInputElement).value.toLowerCase().trim();
+        let matchCount = 0;
+        
+        foodCards.forEach(card => {
+          const name = card.getAttribute('data-name') || '';
+          const category = card.getAttribute('data-category') || '';
+          
+          if (name.includes(query) || category.includes(query)) {
+            (card as HTMLElement).style.display = '';
+            matchCount++;
+          } else {
+            (card as HTMLElement).style.display = 'none';
+          }
+        });
+        
+        if (emptyState) {
+          if (matchCount === 0 && query.length > 0) {
+            emptyState.classList.remove('hidden');
+          } else {
+            emptyState.classList.add('hidden');
+          }
+        }
+      });
+    }
+  });
+</script>

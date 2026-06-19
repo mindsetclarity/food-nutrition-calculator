@@ -1,0 +1,27 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+
+const trustItems = [
+  { title: "USDA-First", description: "Verified nutrition data" },
+  { title: "No Login", description: "Start calculating instantly" },
+  { title: "Transparent", description: "Clear data sources" },
+  { title: "All-in-One", description: "Foods, meals & recipes" },
+];
+---
+
+<div class={`bg-slate-900 text-slate-200 py-6 border-y border-slate-800 ${className}`}>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center divide-x divide-slate-800">
+      {trustItems.map((item, index) => (
+        <div class={`flex flex-col items-center justify-center animate-fade-up px-4`} style={`animation-delay: ${index * 100}ms`}>
+          <span class="text-sm font-semibold text-white tracking-wide">{item.title}</span>
+          <span class="text-xs text-slate-400 mt-1">{item.description}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>

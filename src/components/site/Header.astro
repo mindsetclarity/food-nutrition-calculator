@@ -1,0 +1,104 @@
+---
+import Button from '../ui/Button.astro';
+import NavigationLink from './NavigationLink.astro';
+
+const navLinks = [
+  { name: 'Calculator', href: '/calculator' },
+  { name: 'Recipe', href: '/recipe-nutrition-calculator' },
+  { name: 'Meal', href: '/meal-calorie-calculator' },
+  { name: 'Foods', href: '/foods' },
+  { name: 'Compare', href: '/compare-foods' },
+  { name: 'Learn', href: '/learn' },
+];
+---
+
+<header class="sticky top-0 z-40 w-full backdrop-blur-xl bg-warm-ivory/85 border-b border-border-soft shadow-sm transition-all duration-300">
+  <div class="site-container">
+    <div class="flex justify-between items-center h-[72px]">
+      <div class="flex items-center hover-lift shrink-0">
+        <a href="/" class="flex items-center gap-2 text-[22px] font-semibold tracking-tight focus-ring rounded-md text-ink-navy">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-mint-wash text-usda-emerald border border-emerald-soft shadow-sm">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          </span>
+          <span class="text-usda-emerald">Food</span> <span class="text-ink-navy hidden sm:inline">Nutrition Calculator</span><span class="sm:hidden text-ink-navy">NC</span>
+        </a>
+      </div>
+      
+      <nav class="hidden lg:flex space-x-1 xl:space-x-2 items-center" aria-label="Desktop navigation">
+        {navLinks.map((link) => (
+          <NavigationLink href={link.href} class="text-[14px] xl:text-[15px] font-medium px-2 xl:px-3 py-2 rounded-md hover:bg-slate-100/50" activeClass="text-usda-emerald font-semibold bg-mint-wash/50" inactiveClass="text-soft-slate hover:text-ink-navy">
+            {link.name}
+          </NavigationLink>
+        ))}
+      </nav>
+
+      <div class="hidden lg:flex items-center space-x-4 shrink-0">
+        <Button href="/calculator" variant="primary" size="sm" class="hover-lift interactive-button shadow-ink">
+          Start Calculating
+        </Button>
+      </div>
+      
+      <div class="flex lg:hidden items-center shrink-0">
+        <button id="mobile-menu-btn" type="button" class="text-soft-slate hover:text-ink-navy focus-premium p-2 rounded-md transition-colors tap-target" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open main menu">
+          <svg class="h-6 w-6 menu-icon-open transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg class="h-6 w-6 menu-icon-close hidden transition-transform duration-200 scale-90" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="lg:hidden hidden bg-warm-ivory border-b border-border-soft shadow-premium absolute w-full left-0 top-[72px] origin-top motion-fade-in transition-all h-[calc(100vh-72px)] overflow-y-auto">
+    <nav class="px-4 pt-4 pb-6 space-y-2" aria-label="Mobile navigation">
+      {navLinks.map((link) => (
+        <NavigationLink href={link.href} class="block px-4 py-3.5 text-base font-medium rounded-xl hover:bg-slate-100/50 active:bg-slate-200/50 transition-colors" activeClass="text-usda-emerald bg-mint-wash" inactiveClass="text-deep-slate">
+          {link.name}
+        </NavigationLink>
+      ))}
+      <div class="mt-8 pt-6 border-t border-border-soft flex flex-col space-y-4 px-2">
+        <Button href="/calculator" variant="primary" class="w-full justify-center interactive-button py-3.5 text-base">
+          Start Calculating
+        </Button>
+        <Button href="/recipe-nutrition-calculator" variant="secondary" class="w-full justify-center interactive-button py-3.5 text-base">
+          Analyze a Recipe
+        </Button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const iconOpen = document.querySelector('.menu-icon-open');
+  const iconClose = document.querySelector('.menu-icon-close');
+
+  if (btn && menu && iconOpen && iconClose) {
+    const toggleMenu = () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      menu.classList.toggle('hidden');
+      iconOpen.classList.toggle('hidden');
+      iconClose.classList.toggle('hidden');
+      document.body.style.overflow = expanded ? '' : 'hidden';
+      if (!expanded) {
+        btn.setAttribute('aria-label', 'Close main menu');
+      } else {
+        btn.setAttribute('aria-label', 'Open main menu');
+      }
+    };
+
+    btn.addEventListener('click', toggleMenu);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') {
+        toggleMenu();
+        btn.focus();
+      }
+    });
+  }
+</script>

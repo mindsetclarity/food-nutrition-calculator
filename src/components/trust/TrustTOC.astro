@@ -1,0 +1,22 @@
+---
+interface Props {
+  sections: { id: string; label: string }[];
+}
+
+const { sections } = Astro.props;
+---
+
+<div class="bg-white border border-border-soft rounded-2xl p-6 shadow-sm mb-12">
+  <h2 class="text-sm font-bold text-ink-navy uppercase tracking-wider mb-4">On this page</h2>
+  <nav>
+    <ul class="flex flex-wrap gap-x-6 gap-y-3 m-0 p-0 list-none">
+      {sections.map(section => (
+        <li>
+          <a href={`#${section.id}`} class="text-[15px] font-semibold text-usda-emerald hover:text-emerald-800 hover:underline transition-colors flex items-center">
+            {section.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</div>
