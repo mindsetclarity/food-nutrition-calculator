@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro';
-import { getFoodById } from '../../../lib/nutrition/foodSearch';
+import { getFoodByIdOrSlug } from '../../../lib/foods/foodIndex';
 import { getUsdaFoodDetails } from '../../../lib/usda/client';
 import { normalizeUsdaFoodDetails } from '../../../lib/usda/normalize';
 
@@ -22,7 +22,7 @@ export const GET: APIRoute = async ({ request }) => {
   // Handle local explicit requests
   if (sourceStr === 'local' || (idStr && idStr.startsWith('local_'))) {
     const localId = idStr || '';
-    const food = getFoodById(localId);
+    const food = getFoodByIdOrSlug(localId);
     if (food) {
       return new Response(JSON.stringify({
         ok: true,
@@ -56,7 +56,7 @@ export const GET: APIRoute = async ({ request }) => {
 
   // Fallback to local if USDA fails but an ID was provided
   if (idStr) {
-    const food = getFoodById(idStr);
+    const food = getFoodByIdOrSlug(idStr);
     if (food) {
       return new Response(JSON.stringify({
         ok: true,

@@ -1,7 +1,8 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
-import PageHeader from '../components/site/PageHeader.astro';
+import CalculatorHero from '../components/calculator/CalculatorHero.astro';
 import CalculatorShell from '../components/calculator/CalculatorShell.astro';
+import CalculatorSEOFAQ from '../components/calculator/CalculatorSEOFAQ.astro';
 import { buildSoftwareApplicationSchema } from '../lib/seo/schema';
 import { siteConfig } from '../lib/seo/siteConfig';
 
@@ -15,11 +16,7 @@ const jsonLd = buildSoftwareApplicationSchema({
 });
 ---
 <SiteLayout title={title} description={description} jsonLd={jsonLd}>
-  <PageHeader 
-    title="Food Nutrition Calculator" 
-    description="Search foods, add servings, and calculate precise nutritional totals with USDA-first data." 
-    breadcrumbs={[{ label: 'Calculator' }]} 
-    chipType="calculator"
-  />
+  <CalculatorHero />
   <CalculatorShell />
+  <CalculatorSEOFAQ />
 </SiteLayout>

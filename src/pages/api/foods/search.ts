@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro';
-import { searchLocalFoods } from '../../../lib/nutrition/foodSearch';
+import { searchLocalFoods } from '../../../lib/foods/foodSearch';
 import { searchUsdaFoods } from '../../../lib/usda/client';
 import { normalizeUsdaSearchResults } from '../../../lib/usda/normalize';
 import type { NormalizedSearchResult } from '../../../lib/usda/types';
@@ -45,26 +45,26 @@ export const GET: APIRoute = async ({ request }) => {
   const localResultsRaw = searchLocalFoods(q).slice(0, limit);
   
   const localResults: NormalizedSearchResult[] = localResultsRaw.map(f => ({
-    id: f.id,
+    id: f.item.id,
     fdcId: 0,
-    slug: f.slug,
-    name: f.name,
-    displayName: f.displayName,
-    description: f.name,
+    slug: f.item.slug,
+    name: f.item.name,
+    displayName: f.item.displayName,
+    description: f.item.name,
     brandName: null,
     dataType: null,
     source: 'usda', // Will be overridden to 'local' below, but needed for type matching before cast
     ...({ source: 'local' }),
-    sourceLabel: f.sourceLabel as any,
-    isEstimated: f.isEstimated,
+    sourceLabel: f.item.sourceLabel as any,
+    isEstimated: f.item.isEstimated,
     nutrientsPreview: {
-      calories: f.nutrientsPer100g.calories,
-      protein: f.nutrientsPer100g.protein,
-      carbohydrates: f.nutrientsPer100g.carbohydrates,
-      fat: f.nutrientsPer100g.fat,
-      fiber: f.nutrientsPer100g.fiber,
-      sugar: f.nutrientsPer100g.sugar,
-      sodium: f.nutrientsPer100g.sodium
+      calories: f.item.nutrientsPer100g.calories,
+      protein: f.item.nutrientsPer100g.protein,
+      carbohydrates: f.item.nutrientsPer100g.carbohydrates,
+      fat: f.item.nutrientsPer100g.fat,
+      fiber: f.item.nutrientsPer100g.fiber,
+      sugar: f.item.nutrientsPer100g.sugar,
+      sodium: f.item.nutrientsPer100g.sodium
     }
   } as unknown as NormalizedSearchResult));
 

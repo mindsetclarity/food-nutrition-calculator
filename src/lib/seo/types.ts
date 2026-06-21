@@ -5,6 +5,7 @@ export interface SeoMetadata {
   description: string;
   canonicalPath?: string;
   noindex?: boolean;
+  keywords?: string;
 }
 
 export interface OpenGraphMetadata {
@@ -38,4 +39,6 @@ export interface PageSeoInput {
   canonicalPath?: string;
   noindex?: boolean;
   ogType?: string;
+  ogImage?: string;
+  keywords?: string;
 }

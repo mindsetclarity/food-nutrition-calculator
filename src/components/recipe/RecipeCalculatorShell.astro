@@ -2,28 +2,34 @@
 import { Icon } from 'astro-icon/components';
 import NutritionFactsLabel from '../nutrition-label/NutritionFactsLabel.astro';
 ---
-<section class="py-12 md:py-20 bg-warm-ivory relative z-10 min-h-screen">
-  <div class="max-w-[1400px] mx-auto px-4 md:px-6">
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<section class="py-12 bg-warm-ivory relative z-10 min-h-screen">
+  <div class="max-w-[1200px] mx-auto px-4 md:px-6">
+    
+    <!-- Step Indicator -->
+    <div class="flex items-center justify-center gap-4 md:gap-8 mb-8 text-[11px] font-bold uppercase tracking-widest text-soft-slate">
+      <span class="flex items-center gap-2"><span class="w-5 h-5 rounded-full bg-slate-200 flex items-center justify-center text-ink-navy">1</span> Paste recipe</span>
+      <span class="w-8 h-px bg-slate-200 hidden sm:block"></span>
+      <span class="flex items-center gap-2"><span class="w-5 h-5 rounded-full bg-slate-200 flex items-center justify-center text-ink-navy">2</span> Review matches</span>
+      <span class="w-8 h-px bg-slate-200 hidden sm:block"></span>
+      <span class="flex items-center gap-2"><span class="w-5 h-5 rounded-full bg-slate-200 flex items-center justify-center text-ink-navy">3</span> See totals</span>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
       
       <!-- Input Section (Left) -->
-      <div class="lg:col-span-2 flex flex-col gap-6">
+      <div class="lg:col-span-7 flex flex-col gap-6">
         
-        <div class="luxury-card overflow-hidden bg-pure-card">
-          <div class="p-6 md:p-8 border-b border-border-soft bg-white/50 relative">
+        <div class="bg-white rounded-[var(--radius-card)] shadow-soft border border-border-soft overflow-hidden">
+          <div class="p-6 md:p-8 bg-white relative">
             
-            <div class="mb-6">
-              <h3 class="text-[11px] font-bold text-ink-navy uppercase tracking-widest mb-2 flex items-center gap-2">
-                <svg class="w-4 h-4 text-usda-emerald" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                AI Recipe Parser
-              </h3>
-              <p class="text-[13px] text-soft-slate font-medium">Paste ingredients. We match each line with USDA-first deterministic data. Total macros are calculated perfectly.</p>
+            <div class="mb-4 text-[13px] text-soft-slate">
+              <p>AI helps read your text. Final totals come from food data.</p>
             </div>
 
             <form id="recipe-form" class="space-y-5">
               <div>
                 <label for="recipe-name" class="block text-[11px] font-bold text-ink-navy uppercase tracking-widest mb-2">Recipe Name (Optional)</label>
-                <input type="text" id="recipe-name" placeholder="e.g. Protein Oat Bowl" class="w-full h-14 px-4 rounded-[var(--radius-button)] bg-white border border-border-soft text-ink-navy placeholder-soft-slate focus-premium transition-shadow shadow-sm text-[15px]">
+                <input type="text" id="recipe-name" placeholder="e.g. Protein Oat Bowl" class="w-full h-14 px-4 rounded-[var(--radius-button)] bg-white border border-border-soft text-ink-navy placeholder-soft-slate focus-premium transition-shadow shadow-sm text-base">
               </div>
               
               <div>
@@ -31,17 +37,17 @@ import NutritionFactsLabel from '../nutrition-label/NutritionFactsLabel.astro';
                   <label for="recipe-ingredients" class="block text-[11px] font-bold text-ink-navy uppercase tracking-widest">Ingredients</label>
                   <span class="text-[10px] uppercase font-bold tracking-widest text-usda-emerald bg-mint-wash px-2 py-0.5 rounded border border-emerald-soft">1 per line</span>
                 </div>
-                <textarea id="recipe-ingredients" rows="6" placeholder="1 cup rolled oats&#10;1 banana&#10;2 tbsp peanut butter&#10;1 cup whole milk&#10;1 scoop protein powder" class="w-full p-4 rounded-[var(--radius-button)] bg-white border border-border-soft text-ink-navy placeholder-soft-slate focus-premium transition-shadow shadow-sm resize-y text-[15px] leading-relaxed"></textarea>
+                <textarea id="recipe-ingredients" rows="6" placeholder="1 cup rolled oats&#10;1 banana&#10;2 tbsp peanut butter&#10;1 cup whole milk&#10;1 scoop protein powder" class="w-full p-4 rounded-[var(--radius-button)] bg-white border border-border-soft text-ink-navy placeholder-soft-slate focus-premium transition-shadow shadow-sm resize-y text-base leading-relaxed"></textarea>
               </div>
 
               <div>
                 <label for="recipe-servings" class="block text-[11px] font-bold text-ink-navy uppercase tracking-widest mb-2">Servings / Yield</label>
-                <input type="number" id="recipe-servings" value="2" min="1" max="100" class="w-full sm:w-1/3 h-14 px-4 rounded-[var(--radius-button)] bg-white border border-border-soft text-ink-navy focus-premium transition-shadow shadow-sm text-[15px] font-bold">
+                <input type="number" id="recipe-servings" value="2" min="1" max="100" class="w-full sm:w-1/3 h-14 px-4 rounded-[var(--radius-button)] bg-white border border-border-soft text-ink-navy focus-premium transition-shadow shadow-sm text-base font-bold">
               </div>
 
               <div class="flex flex-wrap items-center gap-3 pt-6 border-t border-border-soft">
                 <button type="submit" id="parse-recipe-btn" class="h-14 px-8 rounded-[var(--radius-button)] bg-ink-navy text-white text-[15px] font-semibold hover:bg-deep-slate transition-colors disabled:opacity-50 shadow-ink hover:shadow-premium interactive-button">
-                  Parse recipe
+                  Analyze Recipe
                 </button>
                 <button type="button" id="example-recipe-btn" class="text-[11px] font-bold tracking-widest uppercase text-usda-emerald hover:text-fresh-leaf hover:underline px-4 py-2 interactive-button">
                   Use example
@@ -59,9 +65,12 @@ import NutritionFactsLabel from '../nutrition-label/NutritionFactsLabel.astro';
           </div>
         </div>
 
-        <div id="review-section" class="luxury-card overflow-hidden bg-pure-card hidden flex-col">
+        <div id="review-section" class="bg-white rounded-[var(--radius-card)] shadow-soft border border-border-soft overflow-hidden hidden flex-col">
           <div class="p-6 md:p-8 border-b border-border-soft bg-slate-50 flex justify-between items-center">
-            <h3 class="text-lg font-bold text-ink-navy">Review Ingredients</h3>
+            <div>
+              <h3 class="text-lg font-bold text-ink-navy">Review matches</h3>
+              <p class="text-xs text-soft-slate mt-1">Check the food matches and amounts before calculating totals.</p>
+            </div>
             <span id="provider-notice" class="text-[10px] uppercase font-bold tracking-widest bg-amber-100 text-amber-800 border border-amber-200 px-2 py-1 rounded hidden"></span>
           </div>
           
@@ -73,90 +82,105 @@ import NutritionFactsLabel from '../nutrition-label/NutritionFactsLabel.astro';
       </div>
 
       <!-- Results Section (Right) -->
-      <div class="lg:col-span-1 flex flex-col gap-6 relative">
+      <div class="lg:col-span-5 flex flex-col gap-6 relative">
         <div class="sticky top-28 space-y-6">
-          <div class="bg-ink-navy text-white rounded-[var(--radius-card)] p-8 shadow-premium overflow-hidden relative">
-            <div class="absolute -right-12 -top-12 w-48 h-48 bg-usda-emerald rounded-full opacity-20 blur-3xl"></div>
-            <h3 class="text-white/70 text-[11px] font-bold uppercase tracking-widest mb-3 relative z-10 flex items-center gap-2">
-              Per Serving
-              <span class="bg-white/10 text-white px-2 py-0.5 rounded text-[9px]"><span id="serving-divider-label">2</span> servings</span>
-            </h3>
-            <div class="flex items-baseline gap-2 relative z-10 mb-6">
-              <div class="text-6xl font-black tracking-tighter" id="ps-cals">0</div>
-              <div class="text-white/60 font-semibold">kcal</div>
-            </div>
-            
-            <div class="grid grid-cols-3 gap-4 border-t border-white/20 pt-6 relative z-10">
-              <div>
-                <div class="text-white/60 text-[10px] font-bold uppercase tracking-widest mb-1.5">Protein</div>
-                <div class="font-black text-xl"><span id="ps-pro">0</span><span class="text-sm font-medium text-white/60 ml-0.5">g</span></div>
-              </div>
-              <div>
-                <div class="text-white/60 text-[10px] font-bold uppercase tracking-widest mb-1.5">Carbs</div>
-                <div class="font-black text-xl"><span id="ps-carbs">0</span><span class="text-sm font-medium text-white/60 ml-0.5">g</span></div>
-              </div>
-              <div>
-                <div class="text-white/60 text-[10px] font-bold uppercase tracking-widest mb-1.5">Fat</div>
-                <div class="font-black text-xl"><span id="ps-fat">0</span><span class="text-sm font-medium text-white/60 ml-0.5">g</span></div>
-              </div>
-            </div>
+
+          <div id="totals-empty-state" class="bg-white rounded-[var(--radius-card)] border border-border-soft shadow-soft p-8 text-center text-soft-slate">
+            <svg class="w-12 h-12 mx-auto mb-4 text-slate-200" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+            <p class="font-bold text-ink-navy mb-1">Paste ingredients to begin.</p>
+            <p class="text-sm">Use one ingredient per line. You can review matches before totals are calculated.</p>
           </div>
 
-          <div class="bg-white rounded-[var(--radius-card)] border border-border-soft shadow-soft p-6 md:p-8">
-            <h3 class="text-ink-navy text-[11px] font-bold uppercase tracking-widest mb-5 border-b border-border-soft pb-3">Total Recipe Nutrition</h3>
-            <div class="space-y-4 text-[15px]">
-              <div class="flex justify-between items-center">
-                <span class="text-soft-slate font-medium">Calories</span>
-                <span class="font-black text-ink-navy text-lg" id="tot-cals">0</span>
+          <div id="totals-dashboard" class="hidden space-y-6">
+            <div class="bg-ink-navy text-white rounded-[var(--radius-card)] p-8 shadow-premium overflow-hidden relative">
+              <div class="absolute -right-12 -top-12 w-48 h-48 bg-usda-emerald rounded-full opacity-20 blur-3xl"></div>
+              <h3 class="text-white/70 text-[11px] font-bold uppercase tracking-widest mb-3 relative z-10 flex items-center gap-2">
+                Per Serving
+                <span class="bg-white/10 text-white px-2 py-0.5 rounded text-[9px]"><span id="serving-divider-label">2</span> servings</span>
+              </h3>
+              <div class="flex items-baseline gap-2 relative z-10 mb-6">
+                <div class="text-5xl font-black tracking-tighter" id="ps-cals">0</div>
+                <div class="text-white/60 font-semibold">kcal</div>
               </div>
-              <div class="flex justify-between items-center">
-                <span class="text-soft-slate font-medium">Protein</span>
-                <span class="font-bold text-ink-navy"><span id="tot-pro">0</span>g</span>
-              </div>
-              <div class="flex justify-between items-center">
-                <span class="text-soft-slate font-medium">Carbs</span>
-                <span class="font-bold text-ink-navy"><span id="tot-carbs">0</span>g</span>
-              </div>
-              <div class="flex justify-between items-center">
-                <span class="text-soft-slate font-medium">Fat</span>
-                <span class="font-bold text-ink-navy"><span id="tot-fat">0</span>g</span>
-              </div>
-              <div class="flex justify-between items-center pt-4 border-t border-border-soft mt-2">
-                <span class="text-soft-slate font-medium">Fiber</span>
-                <span class="font-bold text-ink-navy"><span id="tot-fib">0</span>g</span>
-              </div>
-              <div class="flex justify-between items-center">
-                <span class="text-soft-slate font-medium">Sugar</span>
-                <span class="font-bold text-ink-navy"><span id="tot-sug">0</span>g</span>
-              </div>
-              <div class="flex justify-between items-center">
-                <span class="text-soft-slate font-medium">Sodium</span>
-                <span class="font-bold text-ink-navy"><span id="tot-sod">0</span>mg</span>
+              
+              <div class="grid grid-cols-3 gap-4 border-t border-white/20 pt-6 relative z-10">
+                <div>
+                  <div class="text-white/60 text-[10px] font-bold uppercase tracking-widest mb-1.5">Protein</div>
+                  <div class="font-black text-xl"><span id="ps-pro">0</span><span class="text-sm font-medium text-white/60 ml-0.5">g</span></div>
+                </div>
+                <div>
+                  <div class="text-white/60 text-[10px] font-bold uppercase tracking-widest mb-1.5">Carbs</div>
+                  <div class="font-black text-xl"><span id="ps-carbs">0</span><span class="text-sm font-medium text-white/60 ml-0.5">g</span></div>
+                </div>
+                <div>
+                  <div class="text-white/60 text-[10px] font-bold uppercase tracking-widest mb-1.5">Fat</div>
+                  <div class="font-black text-xl"><span id="ps-fat">0</span><span class="text-sm font-medium text-white/60 ml-0.5">g</span></div>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="bg-slate-50 rounded-[var(--radius-card)] border border-border-soft p-5 text-[11px] text-soft-slate leading-relaxed font-medium">
-            <p class="mb-3"><strong class="text-ink-navy">Important:</strong> Recipe nutrition values are estimates and may vary by brand, preparation method, ingredient weight, and serving size.</p>
-            <p>USDA FoodData Central is prioritized when available. Local fallback values are clearly labeled.</p>
+            <div class="mt-4 transform -rotate-1 hover:rotate-0 transition-transform duration-300">
+              <NutritionFactsLabel 
+                 title="Nutrition Facts"
+                 servingLabel="1 serving"
+                 nutrients={{
+                   calories: null,
+                   protein: null,
+                   carbohydrates: null,
+                   fat: null,
+                   fiber: null,
+                   sugar: null,
+                   sodium: null
+                 }}
+              />
+              <p class="text-[10px] text-center text-soft-slate mt-2">For personal planning only. Not a commercial packaging label.</p>
+            </div>
+
+            <details class="bg-white rounded-[var(--radius-card)] border border-border-soft shadow-soft group">
+              <summary class="p-4 font-bold text-sm text-ink-navy cursor-pointer list-none flex items-center justify-between outline-none focus-visible:ring-2 focus-visible:ring-usda-emerald">
+                Show ingredient breakdown
+                <svg class="w-5 h-5 text-soft-slate group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              </summary>
+              <div class="p-6 border-t border-border-soft">
+                <h4 class="text-[11px] font-bold uppercase tracking-widest mb-3 text-ink-navy">Total Recipe Nutrition</h4>
+                <div class="space-y-3 text-sm mb-6">
+                  <div class="flex justify-between items-center">
+                    <span class="text-soft-slate font-medium">Calories</span>
+                    <span class="font-black text-ink-navy" id="tot-cals">0</span>
+                  </div>
+                  <div class="flex justify-between items-center">
+                    <span class="text-soft-slate font-medium">Protein</span>
+                    <span class="font-bold text-ink-navy"><span id="tot-pro">0</span>g</span>
+                  </div>
+                  <div class="flex justify-between items-center">
+                    <span class="text-soft-slate font-medium">Carbs</span>
+                    <span class="font-bold text-ink-navy"><span id="tot-carbs">0</span>g</span>
+                  </div>
+                  <div class="flex justify-between items-center">
+                    <span class="text-soft-slate font-medium">Fat</span>
+                    <span class="font-bold text-ink-navy"><span id="tot-fat">0</span>g</span>
+                  </div>
+                  <div class="flex justify-between items-center pt-3 border-t border-border-soft mt-1">
+                    <span class="text-soft-slate font-medium">Fiber</span>
+                    <span class="font-bold text-ink-navy"><span id="tot-fib">0</span>g</span>
+                  </div>
+                  <div class="flex justify-between items-center">
+                    <span class="text-soft-slate font-medium">Sugar</span>
+                    <span class="font-bold text-ink-navy"><span id="tot-sug">0</span>g</span>
+                  </div>
+                  <div class="flex justify-between items-center">
+                    <span class="text-soft-slate font-medium">Sodium</span>
+                    <span class="font-bold text-ink-navy"><span id="tot-sod">0</span>mg</span>
+                  </div>
+                </div>
+                
+                <div class="bg-slate-50 rounded p-4 text-[11px] text-soft-slate leading-relaxed font-medium">
+                  <p>USDA data is used when available. Local estimates are clearly labeled. AI may help parse text but does not calculate final totals.</p>
+                </div>
+              </div>
+            </details>
           </div>
           
-          <div class="mt-8 transform -rotate-1 hover:rotate-0 transition-transform duration-300">
-            <NutritionFactsLabel 
-               title="Nutrition Facts"
-               servingLabel="1 serving"
-               nutrients={{
-                 calories: null,
-                 protein: null,
-                 carbohydrates: null,
-                 fat: null,
-                 fiber: null,
-                 sugar: null,
-                 sodium: null
-               }}
-            />
-          </div>
-
         </div>
       </div>
     </div>
@@ -202,6 +226,9 @@ import NutritionFactsLabel from '../nutrition-label/NutritionFactsLabel.astro';
   const totSug = document.getElementById('tot-sug');
   const totSod = document.getElementById('tot-sod');
 
+  const totalsEmptyState = document.getElementById('totals-empty-state');
+  const totalsDashboard = document.getElementById('totals-dashboard');
+
   let parsedIngredients = [];
   
   const formatN = (val) => val !== null && val !== undefined ? Number(val).toFixed(1) : 'N/A';
@@ -242,7 +269,7 @@ import NutritionFactsLabel from '../nutrition-label/NutritionFactsLabel.astro';
     }
     
     parseBtn.disabled = true;
-    parseBtn.textContent = 'Parsing...';
+    parseBtn.textContent = 'Reading ingredients...';
     errorEl.classList.add('hidden');
     reviewSection.classList.add('hidden');
     parsedIngredients = [];
@@ -279,7 +306,7 @@ import NutritionFactsLabel from '../nutrition-label/NutritionFactsLabel.astro';
       showError(err.message || 'Failed to parse recipe.');
     } finally {
       parseBtn.disabled = false;
-      parseBtn.textContent = 'Parse recipe';
+      parseBtn.textContent = 'Analyze Recipe';
     }
   });
 
@@ -325,15 +352,15 @@ import NutritionFactsLabel from '../nutrition-label/NutritionFactsLabel.astro';
         <div class="grid grid-cols-12 gap-3 items-end">
           <div class="col-span-12 sm:col-span-6">
             <label class="block text-[10px] font-bold text-ink-navy uppercase tracking-widest mb-1.5">Ingredient Search</label>
-            <input type="text" aria-label="Ingredient Search" class="edit-query w-full h-10 px-3 text-[13px] font-medium rounded bg-white border border-border-soft text-ink-navy focus:outline-none focus:border-usda-emerald focus:ring-1 focus:ring-usda-emerald transition-colors" value="${item.usdaSearchQuery || item.foodName}">
+            <input type="text" aria-label="Ingredient Search" class="edit-query w-full h-10 px-3 text-base font-medium rounded bg-white border border-border-soft text-ink-navy focus:outline-none focus:border-usda-emerald focus:ring-1 focus:ring-usda-emerald transition-colors" value="${item.usdaSearchQuery || item.foodName}">
           </div>
           <div class="col-span-6 sm:col-span-3">
             <label class="block text-[10px] font-bold text-ink-navy uppercase tracking-widest mb-1.5">Qty</label>
-            <input type="number" aria-label="Quantity" min="0" step="any" class="edit-qty w-full h-10 px-3 text-[13px] font-medium rounded bg-white border border-border-soft text-ink-navy focus:outline-none focus:border-usda-emerald focus:ring-1 focus:ring-usda-emerald transition-colors" value="${item.quantity || ''}">
+            <input type="number" aria-label="Quantity" min="0" step="any" class="edit-qty w-full h-10 px-3 text-base font-medium rounded bg-white border border-border-soft text-ink-navy focus:outline-none focus:border-usda-emerald focus:ring-1 focus:ring-usda-emerald transition-colors" value="${item.quantity || ''}">
           </div>
           <div class="col-span-6 sm:col-span-3">
             <label class="block text-[10px] font-bold text-ink-navy uppercase tracking-widest mb-1.5">Unit</label>
-            <input type="text" aria-label="Unit" class="edit-unit w-full h-10 px-3 text-[13px] font-medium rounded bg-white border border-border-soft text-ink-navy focus:outline-none focus:border-usda-emerald focus:ring-1 focus:ring-usda-emerald transition-colors" value="${item.unit || ''}">
+            <input type="text" aria-label="Unit" class="edit-unit w-full h-10 px-3 text-base font-medium rounded bg-white border border-border-soft text-ink-navy focus:outline-none focus:border-usda-emerald focus:ring-1 focus:ring-usda-emerald transition-colors" value="${item.unit || ''}">
           </div>
         </div>
         
@@ -342,7 +369,7 @@ import NutritionFactsLabel from '../nutrition-label/NutritionFactsLabel.astro';
             ${statusHtml}
           </div>
           <button type="button" class="resolve-btn text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 bg-white border border-border-soft rounded text-ink-navy hover:bg-slate-50 transition-colors shrink-0 disabled:opacity-50 shadow-sm">
-            Find Match
+            Update Match
           </button>
         </div>
         
@@ -502,6 +529,14 @@ import NutritionFactsLabel from '../nutrition-label/NutritionFactsLabel.astro';
     
     servingDividerLabel.textContent = servings.toString();
     
+    if (parsedIngredients.length === 0) {
+      totalsEmptyState.classList.remove('hidden');
+      totalsDashboard.classList.add('hidden');
+    } else {
+      totalsEmptyState.classList.add('hidden');
+      totalsDashboard.classList.remove('hidden');
+    }
+
     const validCalculatedItems = parsedIngredients
       .filter(i => i.calculated !== null)
       .map(i => i.calculated);

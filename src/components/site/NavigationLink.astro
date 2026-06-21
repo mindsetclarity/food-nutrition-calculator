@@ -15,7 +15,7 @@ const {
   exact = false 
 } = Astro.props;
 
-const pathname = new URL(Astro.request.url).pathname;
+const pathname = Astro.url.pathname;
 const isActive = exact ? pathname === href : pathname.startsWith(href) && (pathname.length === href.length || pathname[href.length] === '/');
 
 const finalClass = `${className} ${isActive ? activeClass : inactiveClass} transition-colors focus-ring rounded-sm`;

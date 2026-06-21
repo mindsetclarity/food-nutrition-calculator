@@ -27,6 +27,7 @@ export function buildOpenGraphMetadata(input: PageSeoInput): OpenGraphMetadata {
     title: buildTitle(input.title),
     description: buildMetaDescription(input.description),
     type: input.ogType || "website",
+    image: input.ogImage || siteConfig.defaultOgImage,
   };
 }
 
@@ -35,6 +36,7 @@ export function buildTwitterMetadata(input: PageSeoInput): TwitterMetadata {
     card: siteConfig.twitterCard,
     title: buildTitle(input.title),
     description: buildMetaDescription(input.description),
+    image: input.ogImage || siteConfig.defaultOgImage,
   };
 }
 
@@ -44,6 +46,7 @@ export function buildSeoMetadata(input: PageSeoInput): SeoMetadata {
     description: buildMetaDescription(input.description),
     canonicalPath: input.canonicalPath,
     noindex: input.noindex || false,
+    keywords: input.keywords || siteConfig.defaultKeywords,
   };
 }
 
@@ -52,5 +55,7 @@ export function getDefaultSeo(): PageSeoInput {
     title: siteConfig.defaultTitle,
     description: siteConfig.defaultDescription,
     canonicalPath: "/",
+    ogImage: siteConfig.defaultOgImage,
+    keywords: siteConfig.defaultKeywords,
   };
 }

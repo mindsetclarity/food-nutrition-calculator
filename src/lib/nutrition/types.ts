@@ -14,15 +14,19 @@ export interface NutrientProfile {
 }
 
 export interface ServingSize {
+  id?: string;
   unit: string;
   label: string;
   grams: number;
+  quantity?: number;
+  isDefault?: boolean;
 }
 
 export interface FoodItem {
   id: string;
   slug: string;
-  name: string;
+  name: string; // Keep for backward compatibility
+  searchName: string;
   displayName: string;
   aliases: string[];
   category: string;
@@ -31,11 +35,24 @@ export interface FoodItem {
   source: FoodSource;
   sourceLabel: string;
   isEstimated: boolean;
-  defaultUnit: string;
-  defaultQuantity: number;
+  defaultUnit?: string;
+  defaultQuantity?: number;
   servingSizes: ServingSize[];
   nutrientsPer100g: NutrientProfile;
   tags?: string[];
+  commonNames?: string[];
+  brandType?: string;
+  preparationState?: string;
+  cookedState?: string;
+  defaultServing?: string;
+  usdaQueryHints?: string[];
+  compareGroup?: string;
+  recipeIngredientType?: string;
+  mealUseCases?: string[];
+  density?: number;
+  notes?: string;
+  warnings?: string[];
+  updatedAt?: string;
   commonUses?: string[];
   usdaSearchTerms?: string[];
   usda?: {

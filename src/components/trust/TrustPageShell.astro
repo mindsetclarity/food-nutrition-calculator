@@ -11,9 +11,10 @@ interface Props {
   eyebrow: string;
   badges?: string[];
   updatedAt?: string;
+  showCta?: boolean;
 }
 
-const { title, description, eyebrow, badges = [], updatedAt } = Astro.props;
+const { title, description, eyebrow, badges = [], updatedAt, showCta = true } = Astro.props;
 
 const jsonLd = buildWebPageSchema({
   name: title,
@@ -33,6 +34,6 @@ const jsonLd = buildWebPageSchema({
       </div>
     </div>
     
-    <TrustCTASection />
+    {showCta && <TrustCTASection />}
   </main>
 </Layout>

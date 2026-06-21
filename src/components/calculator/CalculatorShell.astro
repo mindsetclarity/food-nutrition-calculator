@@ -1,32 +1,32 @@
 ---
 import { Icon } from 'astro-icon/components';
-import MealTextParser from './MealTextParser.astro';
 import SourceBadge from '../ui/SourceBadge.astro';
 ---
-<section id="calculator" class="py-12 md:py-20 bg-warm-ivory relative z-10 min-h-screen">
-  <div class="max-w-[1400px] mx-auto px-4 md:px-6">
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<section id="calculator" class="py-12 bg-warm-ivory relative z-10 min-h-screen">
+  <div class="max-w-[1200px] mx-auto px-4 md:px-6">
+    
+    <!-- Step Indicator -->
+    <div class="flex items-center justify-center gap-4 md:gap-8 mb-8 text-[11px] font-bold uppercase tracking-widest text-soft-slate">
+      <span class="flex items-center gap-2"><span class="w-5 h-5 rounded-full bg-slate-200 flex items-center justify-center text-ink-navy">1</span> Search</span>
+      <span class="w-8 h-px bg-slate-200 hidden sm:block"></span>
+      <span class="flex items-center gap-2"><span class="w-5 h-5 rounded-full bg-slate-200 flex items-center justify-center text-ink-navy">2</span> Add amount</span>
+      <span class="w-8 h-px bg-slate-200 hidden sm:block"></span>
+      <span class="flex items-center gap-2"><span class="w-5 h-5 rounded-full bg-slate-200 flex items-center justify-center text-ink-navy">3</span> Review totals</span>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
       
-      <!-- Input Section (Left) -->
-      <div class="lg:col-span-2 luxury-card overflow-hidden flex flex-col bg-pure-card">
-        
-        <div class="p-6 md:p-8 border-b border-border-soft bg-white/50 relative">
-          
-          <MealTextParser />
-          
-          <div class="flex items-center gap-4 my-8">
-            <div class="h-px bg-border-soft flex-1"></div>
-            <span class="text-[11px] font-bold text-muted-text uppercase tracking-widest">Or add manually</span>
-            <div class="h-px bg-border-soft flex-1"></div>
-          </div>
+      <!-- Input Section (Left Column) -->
+      <div class="lg:col-span-7 flex flex-col gap-6">
+        <div class="bg-white rounded-[var(--radius-card)] shadow-soft border border-border-soft p-6 md:p-8">
 
           <form id="calc-form" class="flex flex-col sm:flex-row gap-4">
             <div class="flex-1 relative">
               <label for="food-search" class="block text-[11px] font-bold text-ink-navy uppercase tracking-widest mb-2">Food Item</label>
               <div class="relative">
                 <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-soft-slate" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-                <input type="text" id="food-search" placeholder="Search foods (e.g. oats, banana, avocado)..." autocomplete="off"
-                  class="w-full h-14 pl-12 pr-4 rounded-[var(--radius-button)] bg-white border border-border-soft text-ink-navy placeholder-soft-slate focus-premium transition-shadow shadow-sm disabled:opacity-50 text-[15px]"
+                <input type="text" id="food-search" placeholder="Search banana, oats, chicken breast, rice..." autocomplete="off"
+                  class="w-full h-14 pl-12 pr-4 rounded-[var(--radius-button)] bg-white border border-border-soft text-ink-navy placeholder-soft-slate focus-premium transition-shadow shadow-sm disabled:opacity-50 text-base"
                 />
               </div>
               <div id="autocomplete-dropdown" class="absolute z-50 w-full mt-2 bg-white border border-border-soft rounded-xl shadow-premium max-h-80 overflow-y-auto hidden">
@@ -37,21 +37,21 @@ import SourceBadge from '../ui/SourceBadge.astro';
             <div class="w-full sm:w-28 relative">
               <label for="quantity" class="block text-[11px] font-bold text-ink-navy uppercase tracking-widest mb-2">Qty</label>
               <input type="number" id="quantity" min="0" step="any"
-                class="w-full h-14 px-4 rounded-[var(--radius-button)] bg-white border border-border-soft text-ink-navy focus-premium transition-shadow shadow-sm disabled:opacity-50 text-[15px] font-medium"
+                class="w-full h-14 px-4 rounded-[var(--radius-button)] bg-white border border-border-soft text-ink-navy focus-premium transition-shadow shadow-sm disabled:opacity-50 text-base font-medium"
                 disabled
               />
             </div>
 
             <div class="w-full sm:w-36 relative">
               <label for="unit" class="block text-[11px] font-bold text-ink-navy uppercase tracking-widest mb-2">Unit</label>
-              <select id="unit" class="w-full h-14 px-4 rounded-[var(--radius-button)] bg-white border border-border-soft text-ink-navy focus-premium transition-shadow shadow-sm appearance-none cursor-pointer disabled:opacity-50 text-[15px] font-medium" disabled>
+              <select id="unit" class="w-full h-14 px-4 rounded-[var(--radius-button)] bg-white border border-border-soft text-ink-navy focus-premium transition-shadow shadow-sm appearance-none cursor-pointer disabled:opacity-50 text-base font-medium" disabled>
                 <option value="">--</option>
               </select>
               <svg class="absolute right-4 top-[38px] w-4 h-4 text-soft-slate pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </div>
 
             <div class="w-full sm:w-auto flex items-end">
-              <button type="submit" id="add-btn" disabled class="w-full h-14 px-8 rounded-[var(--radius-button)] bg-ink-navy text-white font-medium hover:bg-deep-slate transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-ink hover:shadow-premium interactive-button text-[15px]">
+              <button type="submit" id="add-btn" disabled class="w-full h-14 px-8 rounded-[var(--radius-button)] bg-ink-navy text-white font-medium hover:bg-deep-slate transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-ink hover:shadow-premium interactive-button text-base">
                 Add
               </button>
             </div>
@@ -77,115 +77,113 @@ import SourceBadge from '../ui/SourceBadge.astro';
         </div>
 
         <!-- Added Items List -->
-        <div class="p-0 flex-1 flex flex-col bg-white">
+        <div class="bg-white rounded-[var(--radius-card)] shadow-soft border border-border-soft overflow-hidden">
+          <div class="p-4 border-b border-border-soft bg-slate-50 flex items-center justify-between">
+            <h3 class="text-sm font-bold text-ink-navy">Selected Foods</h3>
+            <button id="clear-all-btn" class="text-[11px] text-red-600 hover:text-red-700 hidden transition-colors font-bold uppercase tracking-wider bg-red-50 hover:bg-red-100 px-3 py-1.5 rounded border border-red-100">Clear All</button>
+          </div>
           <div class="responsive-table-wrap">
-            <table class="w-full text-left border-collapse min-w-[600px]">
-              <thead>
-                <tr class="bg-slate-50 border-b border-border-soft text-soft-slate text-[11px] font-bold uppercase tracking-widest">
-                  <th class="px-6 md:px-8 py-4 w-1/2">Food & Source</th>
-                  <th class="px-6 md:px-8 py-4 text-right">Amount</th>
-                  <th class="px-6 md:px-8 py-4 text-right">Calories</th>
-                  <th class="px-6 py-4 text-center w-16"></th>
-                </tr>
-              </thead>
+            <table class="w-full text-left border-collapse min-w-[500px]">
               <tbody id="meal-list" class="divide-y divide-border-soft text-[15px]">
                 <tr id="empty-state">
-                  <td colspan="4" class="px-6 py-20 text-center text-soft-slate">
-                    <div class="flex flex-col items-center justify-center">
-                      <div class="mb-6 text-6xl opacity-30">🥗</div>
-                      <p class="font-bold text-ink-navy text-lg mb-2">No foods added yet</p>
-                      <p class="text-[15px] mb-6 max-w-sm mx-auto">Try searching for vegetarian staples like <strong class="text-ink-navy font-semibold">oats</strong>, <strong class="text-ink-navy font-semibold">lentils</strong>, or <strong class="text-ink-navy font-semibold">avocado</strong>.</p>
-                      <div class="flex flex-wrap justify-center gap-2 max-w-md">
-                        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 border border-border-soft rounded-full text-xs font-medium text-ink-navy">🍌 banana</span>
-                        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 border border-border-soft rounded-full text-xs font-medium text-ink-navy">🌾 oats</span>
-                        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 border border-border-soft rounded-full text-xs font-medium text-ink-navy">🥑 avocado</span>
-                        <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 border border-border-soft rounded-full text-xs font-medium text-ink-navy">🧆 chickpeas</span>
-                      </div>
+                  <td colspan="4" class="px-6 py-12 text-center text-soft-slate">
+                    <p class="font-bold text-ink-navy text-base mb-1">Start by adding one food.</p>
+                    <p class="text-sm mb-6 max-w-sm mx-auto">Search for a food above, choose the amount, and your totals will appear here.</p>
+                    <div class="flex flex-wrap justify-center gap-2 max-w-md">
+                      <span class="inline-block px-3 py-1 bg-slate-50 border border-border-soft rounded-full text-xs font-medium text-ink-navy">banana</span>
+                      <span class="inline-block px-3 py-1 bg-slate-50 border border-border-soft rounded-full text-xs font-medium text-ink-navy">oatmeal</span>
+                      <span class="inline-block px-3 py-1 bg-slate-50 border border-border-soft rounded-full text-xs font-medium text-ink-navy">Greek yogurt</span>
+                      <span class="inline-block px-3 py-1 bg-slate-50 border border-border-soft rounded-full text-xs font-medium text-ink-navy">brown rice</span>
+                      <span class="inline-block px-3 py-1 bg-slate-50 border border-border-soft rounded-full text-xs font-medium text-ink-navy">apple</span>
                     </div>
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
-          <div class="p-6 md:p-8 border-t border-border-soft bg-slate-50 flex justify-between items-center mt-auto">
-            <div class="flex items-center gap-2">
-              <span class="text-[13px] font-bold text-ink-navy uppercase tracking-wider">Source Summary:</span>
-              <span class="text-[13px] text-soft-slate font-medium" id="source-summary">0 items</span>
-            </div>
-            <button id="clear-all-btn" class="text-[13px] text-red-600 hover:text-red-700 hidden transition-colors font-bold uppercase tracking-wider bg-red-50 hover:bg-red-100 px-4 py-2 rounded border border-red-100">Clear All</button>
-          </div>
         </div>
       </div>
 
       <!-- Results Section -->
-      <div class="lg:col-span-1 flex flex-col gap-6 relative">
+      <div class="lg:col-span-5 flex flex-col gap-6 relative">
         <div class="sticky top-28 space-y-6">
-          <div class="bg-ink-navy text-white rounded-[var(--radius-card)] p-8 shadow-premium overflow-hidden relative">
-            <div class="absolute -right-12 -top-12 w-48 h-48 bg-usda-emerald rounded-full opacity-20 blur-3xl"></div>
-            <h3 class="text-white/70 text-[11px] font-bold uppercase tracking-widest mb-3 relative z-10">Total Calories</h3>
-            <div class="flex items-baseline gap-2 relative z-10">
-              <div class="text-6xl font-black tracking-tighter" id="total-cals">0</div>
-              <div class="text-white/60 font-semibold">kcal</div>
-            </div>
+          
+          <div id="totals-empty-state" class="bg-white rounded-[var(--radius-card)] border border-border-soft shadow-soft p-8 text-center text-soft-slate">
+            <svg class="w-12 h-12 mx-auto mb-4 text-slate-200" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+            <p class="font-bold text-ink-navy mb-1">Add a food to see totals.</p>
+            <p class="text-sm">Totals will appear here once you select your first item.</p>
           </div>
 
-          <div class="bg-white rounded-[var(--radius-card)] border border-border-soft shadow-soft p-6 md:p-8">
-            <h3 class="text-ink-navy text-lg font-bold mb-6 tracking-tight flex items-center justify-between">
-              Macronutrients
-              <span class="text-[10px] bg-mint-wash text-usda-emerald px-2 py-1 rounded font-bold uppercase tracking-wider">Deterministic</span>
-            </h3>
-            <div class="space-y-6">
-              <div>
-                <div class="flex justify-between items-end mb-2.5">
-                  <span class="text-soft-slate font-semibold text-sm">Protein</span>
-                  <span class="text-ink-navy font-black text-xl"><span id="total-protein">0</span><span class="text-sm text-soft-slate ml-0.5 font-bold">g</span></span>
-                </div>
-                <div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
-                  <div class="bg-usda-emerald h-2.5 rounded-full transition-all duration-700 ease-out" style="width: 0%" id="bar-protein"></div>
-                </div>
-              </div>
-              <div>
-                <div class="flex justify-between items-end mb-2.5">
-                  <span class="text-soft-slate font-semibold text-sm">Carbs</span>
-                  <span class="text-ink-navy font-black text-xl"><span id="total-carbs">0</span><span class="text-sm text-soft-slate ml-0.5 font-bold">g</span></span>
-                </div>
-                <div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
-                  <div class="bg-nutrient-amber h-2.5 rounded-full transition-all duration-700 ease-out" style="width: 0%" id="bar-carbs"></div>
-                </div>
-              </div>
-              <div>
-                <div class="flex justify-between items-end mb-2.5">
-                  <span class="text-soft-slate font-semibold text-sm">Fat</span>
-                  <span class="text-ink-navy font-black text-xl"><span id="total-fat">0</span><span class="text-sm text-soft-slate ml-0.5 font-bold">g</span></span>
-                </div>
-                <div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
-                  <div class="bg-berry-accent h-2.5 rounded-full transition-all duration-700 ease-out" style="width: 0%" id="bar-fat"></div>
-                </div>
+          <div id="totals-dashboard" class="hidden space-y-6">
+            <div class="bg-ink-navy text-white rounded-[var(--radius-card)] p-6 md:p-8 shadow-premium overflow-hidden relative">
+              <div class="absolute -right-12 -top-12 w-48 h-48 bg-usda-emerald rounded-full opacity-20 blur-3xl"></div>
+              <h3 class="text-white/70 text-[11px] font-bold uppercase tracking-widest mb-2 relative z-10">Total Calories</h3>
+              <div class="flex items-baseline gap-2 relative z-10">
+                <div class="text-5xl font-black tracking-tighter" id="total-cals">0</div>
+                <div class="text-white/60 font-semibold">kcal</div>
               </div>
             </div>
-          </div>
 
-          <div class="bg-white rounded-[var(--radius-card)] border border-border-soft shadow-soft p-6 md:p-8">
-            <h3 class="text-ink-navy text-[11px] font-bold uppercase tracking-widest mb-5">Micronutrients & Details</h3>
-            <div class="flex justify-between py-3 border-b border-border-soft text-[15px]">
-              <span class="text-soft-slate font-medium">Fiber</span>
-              <span class="font-bold text-ink-navy"><span id="total-fiber">0</span>g</span>
+            <div class="bg-white rounded-[var(--radius-card)] border border-border-soft shadow-soft p-6">
+              <h3 class="text-ink-navy text-sm font-bold mb-5 tracking-tight flex items-center justify-between">
+                Macronutrients
+              </h3>
+              <div class="space-y-4">
+                <div>
+                  <div class="flex justify-between items-end mb-1.5">
+                    <span class="text-soft-slate font-semibold text-sm">Protein</span>
+                    <span class="text-ink-navy font-black"><span id="total-protein">0</span><span class="text-sm text-soft-slate ml-0.5 font-bold">g</span></span>
+                  </div>
+                  <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
+                    <div class="bg-usda-emerald h-2 rounded-full transition-all duration-700 ease-out" style="width: 0%" id="bar-protein"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between items-end mb-1.5">
+                    <span class="text-soft-slate font-semibold text-sm">Carbs</span>
+                    <span class="text-ink-navy font-black"><span id="total-carbs">0</span><span class="text-sm text-soft-slate ml-0.5 font-bold">g</span></span>
+                  </div>
+                  <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
+                    <div class="bg-nutrient-amber h-2 rounded-full transition-all duration-700 ease-out" style="width: 0%" id="bar-carbs"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between items-end mb-1.5">
+                    <span class="text-soft-slate font-semibold text-sm">Fat</span>
+                    <span class="text-ink-navy font-black"><span id="total-fat">0</span><span class="text-sm text-soft-slate ml-0.5 font-bold">g</span></span>
+                  </div>
+                  <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
+                    <div class="bg-berry-accent h-2 rounded-full transition-all duration-700 ease-out" style="width: 0%" id="bar-fat"></div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="flex justify-between py-3 border-b border-border-soft text-[15px]">
-              <span class="text-soft-slate font-medium">Sugar</span>
-              <span class="font-bold text-ink-navy"><span id="total-sugar">0</span>g</span>
-            </div>
-            <div class="flex justify-between py-3 text-[15px]">
-              <span class="text-soft-slate font-medium">Sodium</span>
-              <span class="font-bold text-ink-navy"><span id="total-sodium">0</span>mg</span>
-            </div>
+
+            <details class="bg-white rounded-[var(--radius-card)] border border-border-soft shadow-soft group">
+              <summary class="p-4 font-bold text-sm text-ink-navy cursor-pointer list-none flex items-center justify-between outline-none focus-visible:ring-2 focus-visible:ring-usda-emerald">
+                Show detailed nutrients
+                <svg class="w-5 h-5 text-soft-slate group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              </summary>
+              <div class="p-6 border-t border-border-soft">
+                <div class="flex justify-between py-2 border-b border-border-soft text-sm">
+                  <span class="text-soft-slate font-medium">Fiber</span>
+                  <span class="font-bold text-ink-navy"><span id="total-fiber">0</span>g</span>
+                </div>
+                <div class="flex justify-between py-2 border-b border-border-soft text-sm">
+                  <span class="text-soft-slate font-medium">Sugar</span>
+                  <span class="font-bold text-ink-navy"><span id="total-sugar">0</span>g</span>
+                </div>
+                <div class="flex justify-between py-2 text-sm mb-4">
+                  <span class="text-soft-slate font-medium">Sodium</span>
+                  <span class="font-bold text-ink-navy"><span id="total-sodium">0</span>mg</span>
+                </div>
+                <p class="text-[11px] text-soft-slate leading-relaxed font-medium bg-slate-50 p-3 rounded">
+                  <strong class="text-ink-navy">Note:</strong> USDA data is used when available. Local estimates are clearly labeled.
+                </p>
+              </div>
+            </details>
           </div>
           
-          <div class="bg-slate-50 border border-border-soft rounded-lg p-4">
-            <p class="text-[11px] text-soft-slate leading-relaxed font-medium">
-              <strong class="text-ink-navy">Nutrition Estimates:</strong> Food searches prioritize USDA FoodData Central when configured. If USDA data is unavailable, local fallback data is shown and clearly labeled.
-            </p>
-          </div>
         </div>
       </div>
     </div>
@@ -221,7 +219,9 @@ import SourceBadge from '../ui/SourceBadge.astro';
   const mealList = document.getElementById('meal-list');
   const emptyState = document.getElementById('empty-state');
   const clearAllBtn = document.getElementById('clear-all-btn');
-  const sourceSummaryEl = document.getElementById('source-summary');
+  
+  const totalsEmptyState = document.getElementById('totals-empty-state');
+  const totalsDashboard = document.getElementById('totals-dashboard');
 
   function showError(msg) {
     errorMsg.textContent = msg;
@@ -256,7 +256,7 @@ import SourceBadge from '../ui/SourceBadge.astro';
         const data = await res.json();
         
         if (data.fallbackUsed) {
-          fallbackNoticeText.textContent = data.message || "USDA data is unavailable right now, so local fallback results are shown.";
+          fallbackNoticeText.textContent = data.message || "USDA search is unavailable right now. Showing local estimates where available.";
           fallbackNotice.classList.remove('hidden');
         } else {
           fallbackNotice.classList.add('hidden');
@@ -279,7 +279,7 @@ import SourceBadge from '../ui/SourceBadge.astro';
             </button>
           `}).join('');
         } else {
-          dropdown.innerHTML = `<div class="p-6 text-[15px] font-medium text-soft-slate text-center">No foods found. Try <strong class="text-ink-navy">oats</strong>, <strong class="text-ink-navy">banana</strong>, or <strong class="text-ink-navy">lentils</strong>.</div>`;
+          dropdown.innerHTML = `<div class="p-6 text-[15px] font-medium text-soft-slate text-center">No foods found. Try a simpler name like 'banana' or 'rice'.</div>`;
         }
       } catch (err) {
         if (err.name !== 'AbortError') {
@@ -431,25 +431,7 @@ import SourceBadge from '../ui/SourceBadge.astro';
     if (el) el.textContent = `${calculatedItem.displayName} added to meal.`;
   });
 
-  window.addEventListener('add-parsed-items', (e: any) => {
-    const itemsToAdd = e.detail.items;
-    let addedCount = 0;
-    
-    itemsToAdd.forEach(({ food, quantity, unit }) => {
-      const input = { food, quantity, unit };
-      const calculatedItem = calculateFoodItem(input);
-      if (calculatedItem.validation.isValid) {
-        addedItems.push(calculatedItem);
-        addedCount++;
-      } else {
-        showError(`Failed to add ${food.displayName}: ${calculatedItem.validation.error}`);
-      }
-    });
-    
-    if (addedCount > 0) {
-      updateMealUI();
-    }
-  });
+
 
   window.removeMealItem = function(id) {
     addedItems = addedItems.filter(item => item.id !== id);
@@ -472,9 +454,14 @@ import SourceBadge from '../ui/SourceBadge.astro';
       mealList.innerHTML = '';
       mealList.appendChild(emptyState);
       clearAllBtn.classList.add('hidden');
-      sourceSummaryEl.textContent = '0 items';
+      
+      totalsEmptyState.classList.remove('hidden');
+      totalsDashboard.classList.add('hidden');
     } else {
       if (mealList.contains(emptyState)) mealList.removeChild(emptyState);
+      
+      totalsEmptyState.classList.add('hidden');
+      totalsDashboard.classList.remove('hidden');
       
       mealList.innerHTML = addedItems.map(item => {
         const isUsda = item.source === 'usda';
@@ -511,7 +498,6 @@ import SourceBadge from '../ui/SourceBadge.astro';
       `}).join('');
       
       clearAllBtn.classList.remove('hidden');
-      sourceSummaryEl.textContent = mealTotals.sourceSummary.summaryLabel || `${mealTotals.itemCount} items`;
     }
 
     const n = mealTotals.nutrients;

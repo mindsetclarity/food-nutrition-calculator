@@ -47,7 +47,7 @@ import MealSummary from './MealSummary.astro';
             <input 
               type="search" 
               id="meal-search-input" 
-              class="block w-full pl-12 pr-4 h-14 text-[15px] border border-border-soft rounded-[var(--radius-button)] bg-white text-ink-navy focus-premium transition-colors placeholder-soft-slate" 
+              class="block w-full pl-12 pr-4 h-14 text-base border border-border-soft rounded-[var(--radius-button)] bg-white text-ink-navy focus-premium transition-colors placeholder-soft-slate" 
               placeholder="Search foods (e.g. oats, banana, chickpeas)..."
               autocomplete="off"
             >
@@ -81,11 +81,11 @@ import MealSummary from './MealSummary.astro';
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
             <div>
               <label for="food-qty" class="block text-[11px] font-bold text-ink-navy uppercase tracking-widest mb-2">Amount</label>
-              <input type="number" id="food-qty" min="0.1" step="0.1" class="block w-full h-14 px-4 text-[15px] border border-border-soft rounded-[var(--radius-button)] focus-premium transition-shadow text-ink-navy font-bold" value="1">
+              <input type="number" id="food-qty" min="0.1" step="0.1" class="block w-full h-14 px-4 text-base border border-border-soft rounded-[var(--radius-button)] focus-premium transition-shadow text-ink-navy font-bold" value="1">
             </div>
             <div>
               <label for="food-unit" class="block text-[11px] font-bold text-ink-navy uppercase tracking-widest mb-2">Unit</label>
-              <select id="food-unit" class="block w-full h-14 px-4 text-[15px] border border-border-soft rounded-[var(--radius-button)] focus-premium transition-shadow text-ink-navy font-medium bg-white"></select>
+              <select id="food-unit" class="block w-full h-14 px-4 text-base border border-border-soft rounded-[var(--radius-button)] focus-premium transition-shadow text-ink-navy font-medium bg-white"></select>
             </div>
           </div>
           

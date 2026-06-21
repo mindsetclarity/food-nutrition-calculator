@@ -15,37 +15,77 @@
   </div>
 </div>
 
+<div id="load-more-container" class="mt-8 text-center hidden">
+  <button id="load-more-btn" class="px-6 py-3 bg-white border border-border-soft rounded-[var(--radius-button)] text-sm font-bold text-ink-navy hover:bg-surface-off-white hover:text-usda-emerald transition-colors shadow-sm">
+    Load More Foods
+  </button>
+</div>
+
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('directory-search') as HTMLInputElement;
     const foodCards = document.querySelectorAll('.food-card');
     const emptyState = document.getElementById('food-empty-state');
+    const loadMoreContainer = document.getElementById('load-more-container');
+    const loadMoreBtn = document.getElementById('load-more-btn');
     
-    if (searchInput) {
-      searchInput.addEventListener('input', (e) => {
-        const query = (e.target as HTMLInputElement).value.toLowerCase().trim();
-        let matchCount = 0;
+    let currentLimit = 100;
+    let currentQuery = '';
+    
+    function renderCards() {
+      let matchCount = 0;
+      let visibleCount = 0;
+      
+      foodCards.forEach(card => {
+        const name = (card.getAttribute('data-name') || '').toLowerCase();
+        const category = (card.getAttribute('data-category') || '').toLowerCase();
         
-        foodCards.forEach(card => {
-          const name = card.getAttribute('data-name') || '';
-          const category = card.getAttribute('data-category') || '';
-          
-          if (name.includes(query) || category.includes(query)) {
+        if (name.includes(currentQuery) || category.includes(currentQuery)) {
+          matchCount++;
+          if (visibleCount < currentLimit) {
             (card as HTMLElement).style.display = '';
-            matchCount++;
+            visibleCount++;
           } else {
             (card as HTMLElement).style.display = 'none';
           }
-        });
-        
-        if (emptyState) {
-          if (matchCount === 0 && query.length > 0) {
-            emptyState.classList.remove('hidden');
-          } else {
-            emptyState.classList.add('hidden');
-          }
+        } else {
+          (card as HTMLElement).style.display = 'none';
         }
       });
+      
+      if (emptyState) {
+        if (matchCount === 0 && currentQuery.length > 0) {
+          emptyState.classList.remove('hidden');
+        } else {
+          emptyState.classList.add('hidden');
+        }
+      }
+      
+      if (loadMoreContainer) {
+        if (visibleCount < matchCount) {
+          loadMoreContainer.classList.remove('hidden');
+        } else {
+          loadMoreContainer.classList.add('hidden');
+        }
+      }
     }
+    
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        currentQuery = (e.target as HTMLInputElement).value.toLowerCase().trim();
+        currentLimit = 100; // Reset limit on new search
+        renderCards();
+      });
+    }
+    
+    if (loadMoreBtn) {
+      loadMoreBtn.addEventListener('click', () => {
+        currentLimit += 100;
+        renderCards();
+      });
+    }
+    
+    // Initial render
+    renderCards();
   });
 </script>

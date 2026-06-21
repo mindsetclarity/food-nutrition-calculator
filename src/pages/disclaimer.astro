@@ -5,7 +5,7 @@ import LegalSection from '../components/trust/LegalSection.astro';
 import TrustCard from '../components/trust/TrustCard.astro';
 import TrustBulletList from '../components/trust/TrustBulletList.astro';
 import TrustBulletListItem from '../components/trust/TrustBulletListItem.astro';
-import Button from '../ui/Button.astro';
+import Button from '../components/ui/Button.astro';
 
 const badges = [
   "Not medical advice",
@@ -26,7 +26,7 @@ const toc = [
   { id: 'consult-professional', label: '9. When to Consult a Professional' }
 ];
 ---
-<TrustPageShell
+<TrustPageShell showCta={false}
   title="Nutrition Disclaimer | Food Nutrition Calculator"
   description="Read important nutrition, medical, accuracy, data source, AI parsing, allergy, and Nutrition Facts-style label disclaimers for Food Nutrition Calculator."
   eyebrow="Nutrition Disclaimer"

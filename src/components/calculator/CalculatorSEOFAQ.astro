@@ -1,0 +1,86 @@
+---
+import { buildFAQPageSchema } from '../../lib/seo/schema';
+
+const faqs = [
+  {
+    question: "How do I use a nutrition calculator?",
+    answer: "To use our nutrition calculator, simply type the food or ingredient you want to analyze in the search bar. Select the appropriate portion size, and the calculator will instantly display the calorie count and macronutrient breakdown, including protein, carbs, and fats. You can add multiple items to calculate the total nutrition for a complete meal or recipe."
+  },
+  {
+    question: "What is a recipe nutrition calculator?",
+    answer: "A recipe nutrition calculator is a tool that allows you to input multiple ingredients and their quantities to determine the overall nutritional value of a complete dish. It sums up calories, macronutrients, and micronutrients for the entire recipe and can even break it down per serving, making it easier to track your dietary intake when cooking at home."
+  },
+  {
+    question: "How do I view detailed nutrition data?",
+    answer: "Once you search for a food item and add it to the calculator, click on the item to expand its details. Our calculator provides a comprehensive breakdown of macronutrients (proteins, fats, carbohydrates) as well as essential micronutrients, vitamins, and minerals, all sourced from reliable USDA data."
+  },
+  {
+    question: "What is the food calorie calculator?",
+    answer: "The food calorie calculator is a free online tool designed to help you find the exact number of calories in various foods. Whether you're tracking raw ingredients, cooked meals, or packaged goods, this calculator gives you accurate calorie counts to help you meet your weight loss, maintenance, or muscle gain goals."
+  },
+  {
+    question: "What is a nutrient calculator?",
+    answer: "A nutrient calculator goes beyond just counting calories. It provides a detailed analysis of the specific nutrients in your food, including carbohydrates, sugars, dietary fiber, proteins, saturated fats, sodium, and vitamins. This helps you ensure you're getting a balanced diet aligned with your health objectives."
+  },
+  {
+    question: "What is a nutrient intake calculator?",
+    answer: "A nutrient intake calculator helps you track and manage your daily consumption of essential nutrients. By logging what you eat throughout the day, the calculator aggregates your intake, allowing you to compare your totals against recommended daily allowances and adjust your diet accordingly."
+  },
+  {
+    question: "How to calculate daily nutrient needs?",
+    answer: "Calculating your daily nutrient needs depends on your age, gender, weight, height, and physical activity level. While our calculator focuses on the food you consume, you can use standard Basal Metabolic Rate (BMR) and Total Daily Energy Expenditure (TDEE) formulas alongside our tool to balance the nutrients in your meals with your body's specific requirements."
+  },
+  {
+    question: "Why should I use a nutrient calculator?",
+    answer: "Using a nutrient calculator empowers you to make informed dietary choices. It takes the guesswork out of meal planning, helping you monitor portion sizes, manage weight, ensure adequate protein intake, control sodium or sugar consumption, and ultimately build healthier eating habits supported by accurate data."
+  },
+  {
+    question: "how much nutrition per day calculator",
+    answer: "If you're wondering 'how much nutrition per day' you need, our calculator can help you track the exact amounts of macronutrients and calories you consume against your personal goals. By logging all your daily meals, you can ensure you hit your targets for proteins, fats, and carbs each day."
+  },
+  {
+    question: "how much nutrition do i need calculator",
+    answer: "To find out 'how much nutrition do I need', you should first establish your daily caloric and macronutrient goals based on your lifestyle. Then, use our calculator to log your meals and verify that the food you are eating meets those specific nutritional thresholds without exceeding them."
+  },
+  {
+    question: "which wich online nutrition calculator",
+    answer: "While we focus on raw ingredients and general recipes, you can use our calculator as an alternative to specific restaurant calculators like the 'Which Wich online nutrition calculator' by manually entering the bread, meats, cheeses, and toppings you choose for your sandwich to get an accurate nutritional breakdown."
+  },
+  {
+    question: "which wich nutrition facts calculator",
+    answer: "You can recreate your favorite sandwich orders using our tool as a substitute 'Which Wich nutrition facts calculator'. Simply input each individual component of your sub—such as turkey, provolone, and whole wheat bread—to calculate the total calories and nutrition facts."
+  },
+  {
+    question: "what i ate today nutrition calculator",
+    answer: "Our tool functions perfectly as a 'what I ate today nutrition calculator'. You can search and add every meal, snack, and beverage you consumed throughout the day into the calculator to get a complete, accurate summary of your daily calorie and nutrient intake."
+  }
+];
+
+const jsonLd = buildFAQPageSchema(faqs);
+---
+
+<section class="py-16 md:py-24 bg-[var(--color-canvas)] border-t border-[var(--color-hairline)]">
+  <div class="max-w-[800px] mx-auto px-4 md:px-6">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-semibold text-[var(--color-ink)] tracking-tight mb-4">
+        Nutrition Calculator FAQs
+      </h2>
+      <p class="text-[var(--color-body)] text-lg">
+        Answers to common questions about using our tools to calculate calories, macros, and track your daily nutrition.
+      </p>
+    </div>
+
+    <div class="space-y-6">
+      {faqs.map((faq) => (
+        <div class="bg-[var(--color-canvas-soft)] p-6 rounded-xl border border-[var(--color-hairline)] shadow-sm hover:shadow-md transition-shadow">
+          <h3 class="font-semibold text-lg md:text-xl text-[var(--color-ink)] mb-3">{faq.question}</h3>
+          <div>
+            <p class="text-[var(--color-body)] leading-relaxed">{faq.answer}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>

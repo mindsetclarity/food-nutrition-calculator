@@ -3,6 +3,7 @@ import Button from '../ui/Button.astro';
 import NavigationLink from './NavigationLink.astro';
 
 const navLinks = [
+  { name: 'Home', href: '/', exact: true },
   { name: 'Calculator', href: '/calculator' },
   { name: 'Recipe', href: '/recipe-nutrition-calculator' },
   { name: 'Meal', href: '/meal-calorie-calculator' },
@@ -26,7 +27,7 @@ const navLinks = [
       
       <nav class="hidden lg:flex space-x-1 xl:space-x-2 items-center" aria-label="Desktop navigation">
         {navLinks.map((link) => (
-          <NavigationLink href={link.href} class="text-[14px] xl:text-[15px] font-medium px-2 xl:px-3 py-2 rounded-md hover:bg-slate-100/50" activeClass="text-usda-emerald font-semibold bg-mint-wash/50" inactiveClass="text-soft-slate hover:text-ink-navy">
+          <NavigationLink href={link.href} exact={link.exact} class="text-[14px] xl:text-[15px] font-medium px-2 xl:px-3 py-2 rounded-md hover:bg-slate-100/50" activeClass="text-usda-emerald font-semibold bg-mint-wash/50" inactiveClass="text-soft-slate hover:text-ink-navy">
             {link.name}
           </NavigationLink>
         ))}
@@ -55,7 +56,7 @@ const navLinks = [
   <div id="mobile-menu" class="lg:hidden hidden bg-warm-ivory border-b border-border-soft shadow-premium absolute w-full left-0 top-[72px] origin-top motion-fade-in transition-all h-[calc(100vh-72px)] overflow-y-auto">
     <nav class="px-4 pt-4 pb-6 space-y-2" aria-label="Mobile navigation">
       {navLinks.map((link) => (
-        <NavigationLink href={link.href} class="block px-4 py-3.5 text-base font-medium rounded-xl hover:bg-slate-100/50 active:bg-slate-200/50 transition-colors" activeClass="text-usda-emerald bg-mint-wash" inactiveClass="text-deep-slate">
+        <NavigationLink href={link.href} exact={link.exact} class="block px-4 py-3.5 text-base font-medium rounded-xl hover:bg-slate-100/50 active:bg-slate-200/50 transition-colors" activeClass="text-usda-emerald bg-mint-wash" inactiveClass="text-deep-slate">
           {link.name}
         </NavigationLink>
       ))}
@@ -99,6 +100,15 @@ const navLinks = [
         toggleMenu();
         btn.focus();
       }
+    });
+
+    const mobileLinks = menu.querySelectorAll('a');
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (btn.getAttribute('aria-expanded') === 'true') {
+          toggleMenu();
+        }
+      });
     });
   }
 </script>
