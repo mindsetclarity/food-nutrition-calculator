@@ -1,4 +1,4 @@
-import { FoodSourceSearchResult } from './sourceTypes';
+import type { FoodSourceSearchResult } from './sourceTypes';
 
 export function mergeFoodSourceResults(
   usdaResults: FoodSourceSearchResult[],

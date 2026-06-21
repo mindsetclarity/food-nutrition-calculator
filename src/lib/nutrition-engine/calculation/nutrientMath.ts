@@ -1,4 +1,4 @@
-import { NutritionNutrients, NutritionTotals } from '../types';
+import type { NutritionNutrients, NutritionTotals } from '../types';
 
 export function sanitizeNutritionTotals(totals: Partial<NutritionTotals>): NutritionTotals {
   return {

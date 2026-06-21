@@ -1,10 +1,11 @@
-import { FoodSearchInput, FoodSearchResponse, FoodSearchResult, SearchIndexedFood } from './searchTypes';
+import type { FoodSearchInput, FoodSearchResponse, FoodSearchResult, SearchIndexedFood } from './searchTypes';
 import { normalizeSearchOptions, isSearchTooShort } from './searchGuards';
 import { normalizeFoodQuery, tokenizeFoodQuery } from './normalizeQuery';
 import { expandQueryWithSynonyms } from './synonymMap';
 import { getDefaultLocalFoodSearchIndex } from './foodIndex';
 import { scoreFoodSearchResult } from './foodScoring';
-import { createWarning, EngineWarning } from '../warnings';
+import { createWarning } from '../warnings';
+import type { EngineWarning } from '../warnings';
 import { createMemoryCache, MemoryCache, compactSearchResult } from '../performance';
 
 const localSearchCache = createMemoryCache<FoodSearchResponse>({

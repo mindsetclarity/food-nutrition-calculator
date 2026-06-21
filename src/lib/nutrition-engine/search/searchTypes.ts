@@ -1,7 +1,7 @@
-import { EngineFoodItem, NutritionServingUnit } from '../types';
-import { SourceProvider } from '../sourceTypes';
-import { EngineWarning } from '../warnings';
-import { EngineConfidence } from '../confidence';
+import type { EngineFoodItem, NutritionServingUnit } from '../types';
+import type { SourceProvider } from '../sourceTypes';
+import type { EngineWarning } from '../warnings';
+import type { EngineConfidence } from '../confidence';
 
 export type FoodSearchMode = "calculator" | "recipe" | "directory" | "compare" | "meal";
 

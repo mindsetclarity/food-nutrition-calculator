@@ -1,7 +1,8 @@
-import { ResolvedIngredient } from '../recipe/recipeTypes';
-import { NutritionTotals, NutritionNutrients } from '../types';
+import type { ResolvedIngredient } from '../recipe/recipeTypes';
+import type { NutritionTotals, NutritionNutrients } from '../types';
 import { calculateNutrientsForGrams, addNutritionTotals, divideNutritionTotals, sanitizeNutritionTotals, roundNutritionTotals } from './nutrientMath';
-import { createWarning, EngineWarning } from '../warnings';
+import { createWarning } from '../warnings';
+import type { EngineWarning } from '../warnings';
 
 export function calculateIngredientNutrition(ingredient: ResolvedIngredient): NutritionNutrients | undefined {
   if (ingredient.status !== 'resolved' && ingredient.status !== 'needs_review') return undefined;

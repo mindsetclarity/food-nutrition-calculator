@@ -1,9 +1,9 @@
-import { EngineWarning } from '../warnings';
-import { EngineConfidence } from '../confidence';
-import { SourceSummary } from '../sourceTypes';
-import { NutritionTotals, NutritionNutrients } from '../types';
-import { FoodSourceSearchResult } from '../sources/sourceTypes';
-import { ResolvedQuantity } from '../quantity/quantityTypes';
+import type { EngineWarning } from '../warnings';
+import type { EngineConfidence } from '../confidence';
+import type { SourceSummary } from '../sourceTypes';
+import type { NutritionTotals, NutritionNutrients } from '../types';
+import type { FoodSourceSearchResult } from '../sources/sourceTypes';
+import type { ResolvedQuantity } from '../quantity/quantityTypes';
 
 export interface RecipeOptions {
   preferUsda?: boolean;

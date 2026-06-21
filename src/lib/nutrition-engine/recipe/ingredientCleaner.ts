@@ -1,4 +1,4 @@
-import { IngredientLine } from './recipeTypes';
+import type { IngredientLine } from './recipeTypes';
 
 export function normalizeIngredientWhitespace(line: string): string {
   return line.replace(/\s+/g, ' ').trim();

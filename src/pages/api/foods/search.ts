@@ -1,6 +1,8 @@
 import type { APIRoute } from 'astro';
 import { searchCalculatorFoods } from '../../../lib/nutrition-engine';
 
+export const prerender = false;
+
 export const GET: APIRoute = async ({ request, url }) => {
   try {
     const headers = Object.fromEntries(request.headers.entries());

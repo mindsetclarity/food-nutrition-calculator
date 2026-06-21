@@ -1,4 +1,4 @@
-import { SearchIndexedFood, FoodSearchInput, FoodSearchResult, FoodSearchMatchType } from './searchTypes';
+import type { SearchIndexedFood, FoodSearchInput, FoodSearchResult, FoodSearchMatchType } from './searchTypes';
 import { getSynonymCandidates } from './synonymMap';
 import { highConfidence, mediumConfidence, lowConfidence } from '../confidence';
 import { hasPartialNutrientData } from '../engineGuards';

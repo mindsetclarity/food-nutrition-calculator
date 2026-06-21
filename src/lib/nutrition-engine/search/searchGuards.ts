@@ -1,4 +1,4 @@
-import { FoodSearchInput, FoodSearchMode } from './searchTypes';
+import type { FoodSearchInput, FoodSearchMode } from './searchTypes';
 
 export function sanitizeSearchQuery(query: string | undefined | null): string {
   if (!query) return '';

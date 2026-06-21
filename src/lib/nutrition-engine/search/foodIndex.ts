@@ -1,5 +1,5 @@
-import { EngineFoodItem } from '../types';
-import { SearchIndexedFood } from './searchTypes';
+import type { EngineFoodItem } from '../types';
+import type { SearchIndexedFood } from './searchTypes';
 import { normalizeFoodText, tokenizeFoodQuery } from './normalizeQuery';
 
 let defaultIndexCache: SearchIndexedFood[] | null = null;

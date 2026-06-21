@@ -2,7 +2,7 @@ import { searchUsdaFoods } from './usdaSearch';
 import { getUsdaFoodDetails } from './usdaDetails';
 import { searchLocalFoodSource, getLocalFoodSourceById } from './localFoodSource';
 import { mergeFoodSourceResults } from './sourceMerger';
-import { FoodSourceSearchInput, FoodSourceSearchResult, SourceResolverResult, ResolvedFoodSource } from './sourceTypes';
+import type { FoodSourceSearchInput, FoodSourceSearchResult, SourceResolverResult, ResolvedFoodSource } from './sourceTypes';
 import { EngineResult, createRecoverableError, createWarning } from '../index';
 import { hasUsdaApiKey } from './usdaClient';
 import { createMemoryCache, createRequestDeduper, MemoryCache } from '../performance';

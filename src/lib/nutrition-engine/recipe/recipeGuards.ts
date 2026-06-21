@@ -1,4 +1,4 @@
-import { RecipeInput } from './recipeTypes';
+import type { RecipeInput } from './recipeTypes';
 import { createWarning } from '../warnings';
 
 export function sanitizeRecipeName(name?: string): string {

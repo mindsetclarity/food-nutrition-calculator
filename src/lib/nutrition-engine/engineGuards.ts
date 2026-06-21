@@ -1,5 +1,5 @@
-import { NutritionNutrients, NutritionTotals } from './types';
-import { SourceProvider } from './sourceTypes';
+import type { NutritionNutrients, NutritionTotals } from './types';
+import type { SourceProvider } from './sourceTypes';
 
 export function isFiniteNumber(value: any): value is number {
   return typeof value === 'number' && Number.isFinite(value);

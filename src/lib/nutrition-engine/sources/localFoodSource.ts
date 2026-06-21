@@ -1,6 +1,6 @@
 import { searchLocalFoods, getFoodByIdFromIndex, getFoodBySlugFromIndex } from '../search/index';
-import { FoodSourceSearchInput, FoodSourceSearchResult, ResolvedFoodSource } from './sourceTypes';
-import { EngineFoodItem } from '../types';
+import type { FoodSourceSearchInput, FoodSourceSearchResult, ResolvedFoodSource } from './sourceTypes';
+import type { EngineFoodItem } from '../types';
 import { EngineResult, createRecoverableError, createWarning } from '../index';
 
 export function mapLocalFoodToSourceResult(food: EngineFoodItem, score: number, matchReason: string, confidence: any): FoodSourceSearchResult {

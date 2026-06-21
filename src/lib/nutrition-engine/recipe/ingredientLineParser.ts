@@ -1,6 +1,7 @@
-import { ParsedIngredientLine } from './recipeTypes';
+import type { ParsedIngredientLine } from './recipeTypes';
 import { parseQuantityText } from '../quantity';
-import { createWarning, EngineWarning } from '../warnings';
+import { createWarning } from '../warnings';
+import type { EngineWarning } from '../warnings';
 import { mediumConfidence, lowConfidence, highConfidence, mergeConfidence } from '../confidence';
 import { shouldSkipIngredientLine, cleanIngredientLine } from './ingredientCleaner';
 

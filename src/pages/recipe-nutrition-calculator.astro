@@ -34,11 +34,11 @@ import NutritionLabel from '../components/nutrition-label/NutritionLabel.astro';
               <textarea id="recipe-ingredients" rows="8" placeholder="1 cup rolled oats&#10;1 banana&#10;2 tbsp peanut butter&#10;1 cup almond milk" class="w-full p-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-blue-500"></textarea>
             </div>
             
-            <div class="flex gap-4">
-              <button id="btn-analyze" class="flex-1 py-2 px-4 bg-blue-600 text-white font-medium rounded hover:bg-blue-700 transition">
+            <div class="flex flex-col sm:flex-row gap-4">
+              <button id="btn-analyze" class="flex-1 py-3 sm:py-2 px-4 bg-blue-600 text-white font-medium rounded hover:bg-blue-700 transition text-base sm:text-sm">
                 Analyze Recipe
               </button>
-              <button id="btn-example" class="py-2 px-4 bg-gray-100 text-gray-700 font-medium rounded hover:bg-gray-200 transition">
+              <button id="btn-example" class="w-full sm:w-auto py-3 sm:py-2 px-4 bg-gray-100 text-gray-700 font-medium rounded hover:bg-gray-200 transition text-base sm:text-sm">
                 Example
               </button>
             </div>
@@ -195,8 +195,8 @@ import NutritionLabel from '../components/nutrition-label/NutritionLabel.astro';
       
       // Render ingredients
       els.ingList.innerHTML = data.ingredients.map(ing => `
-        <div class="p-3 bg-gray-50 border rounded text-sm flex justify-between items-start">
-          <div>
+        <div class="p-3 bg-gray-50 border rounded text-sm flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+          <div class="min-w-0 flex-1 break-words w-full">
             <div class="font-medium text-gray-900">${ing.originalText}</div>
             <div class="text-xs text-gray-600 mt-1">
               ${ing.calculatedItem ? `
@@ -206,9 +206,9 @@ import NutritionLabel from '../components/nutrition-label/NutritionLabel.astro';
                 <span class="text-red-500">Unresolved match</span>
               `}
             </div>
-            ${ing.warnings.length > 0 ? `<div class="text-yellow-700 text-xs mt-1 border-l-2 border-yellow-400 pl-2">${ing.warnings.map(w=>w.message).join('<br>')}</div>` : ''}
+            ${ing.warnings.length > 0 ? `<div class="text-yellow-700 text-xs mt-1 border-l-2 border-yellow-400 pl-2 break-words">${ing.warnings.map(w=>w.message).join('<br>')}</div>` : ''}
           </div>
-          <div class="text-right font-bold">
+          <div class="text-left sm:text-right font-bold shrink-0">
             ${ing.calculatedItem ? Math.round(ing.calculatedItem.nutrients.calories || 0) + ' kcal' : ''}
           </div>
         </div>

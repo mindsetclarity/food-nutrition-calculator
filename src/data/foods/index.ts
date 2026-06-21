@@ -13,6 +13,7 @@ import {
   bakingFoods, 
   sauceDressingFoods 
 } from './other-categories';
+import { usdaFoods } from './generated/index';
 
 export const localFoods = [
   ...fruitFoods,
@@ -28,4 +29,5 @@ export const localFoods = [
   ...preparedMealFoods,
   ...bakingFoods,
   ...sauceDressingFoods,
+  ...usdaFoods,
 ];

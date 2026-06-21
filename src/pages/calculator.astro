@@ -142,15 +142,15 @@ import SourceBadge from '../components/ui/SourceBadge.astro';
       }
 
       html += results.map(r => `
-        <div class="flex items-center justify-between p-3 bg-gray-50 border rounded-lg hover:bg-gray-100 transition">
-          <div>
-            <div class="font-medium">${r.displayName}</div>
-            <div class="text-xs text-gray-500 mt-1">
-              ${r.calories ? r.calories + ' kcal' : 'N/A'} 
-              <span class="inline-block px-2 py-0.5 ml-2 text-xs rounded bg-gray-200">${r.source.toUpperCase()}</span>
+        <div class="flex items-center justify-between p-3 bg-gray-50 border rounded-lg hover:bg-gray-100 transition gap-2">
+          <div class="min-w-0 flex-1">
+            <div class="font-medium truncate" title="${r.displayName}">${r.displayName}</div>
+            <div class="text-xs text-gray-500 mt-1 flex items-center flex-wrap gap-1">
+              <span>${r.calories ? r.calories + ' kcal' : 'N/A'}</span>
+              <span class="inline-block px-2 py-0.5 text-xs rounded bg-gray-200">${r.source.toUpperCase()}</span>
             </div>
           </div>
-          <button onclick="addFood('${r.id}', '${r.source}')" class="px-3 py-1 bg-blue-600 text-white rounded shadow hover:bg-blue-700 text-sm">
+          <button onclick="addFood('${r.id}', '${r.source}')" class="shrink-0 px-3 py-1 bg-blue-600 text-white rounded shadow hover:bg-blue-700 text-sm">
             Add
           </button>
         </div>
@@ -243,39 +243,40 @@ import SourceBadge from '../components/ui/SourceBadge.astro';
 
     function renderSelectedItems(items) {
       els.selectedItems.innerHTML = items.map(item => `
-        <div class="flex items-start justify-between p-4 bg-gray-50 border rounded-lg">
-          <div class="flex-1">
-            <div class="font-medium text-lg">${item.displayName}</div>
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 bg-gray-50 border rounded-lg gap-4">
+          <div class="flex-1 min-w-0 w-full">
+            <div class="font-medium text-lg break-words">${item.displayName}</div>
             
-            <div class="flex items-center gap-2 mt-2">
+            <div class="flex flex-wrap items-center gap-2 mt-2">
               <input type="number" step="0.1" min="0.1" value="${item.quantity}" 
                 onchange="updateFoodQuantity('${item.id}', this.value, '${item.unit}', '${item.resolvedServing?.servingId || ''}')"
                 class="w-20 p-1 border border-gray-300 rounded text-sm" />
               
-              <select onchange="updateFoodUnit('${item.id}', this.value)" class="p-1 border border-gray-300 rounded text-sm max-w-[150px]">
+              <select onchange="updateFoodUnit('${item.id}', this.value)" class="p-1 border border-gray-300 rounded text-sm max-w-[150px] truncate">
                 <option value="${item.unit}" selected>${item.resolvedServing?.servingLabel || item.unit}</option>
-                <!-- Wait, normally we'd list other available units here. For simplicity in Phase 9, we just show the resolved one, or allow switching to grams. -->
                 <option value="g">grams</option>
                 <option value="oz">oz</option>
               </select>
             </div>
 
-            <div class="text-xs text-gray-500 mt-2 flex items-center gap-2">
+            <div class="text-xs text-gray-500 mt-2 flex flex-wrap items-center gap-2">
               <span>${Math.round(item.grams)}g</span>
               <span class="inline-block px-2 py-0.5 rounded bg-gray-200">${item.source.toUpperCase()}</span>
             </div>
             
             ${item.warnings.length > 0 ? `
-              <div class="mt-2 text-xs text-yellow-700 bg-yellow-50 p-2 rounded">
+              <div class="mt-2 text-xs text-yellow-700 bg-yellow-50 p-2 rounded break-words">
                 ${item.warnings.map(w => w.message).join(' | ')}
               </div>
             ` : ''}
           </div>
           
-          <div class="text-right ml-4">
-            <div class="font-bold">${Math.round(item.nutrients.calories || 0)} kcal</div>
-            <div class="text-xs text-gray-500">${Math.round(item.nutrients.protein || 0)}g P</div>
-            <button onclick="removeFood('${item.id}')" class="mt-2 text-xs text-red-600 hover:underline">Remove</button>
+          <div class="text-left sm:text-right w-full sm:w-auto border-t sm:border-0 pt-3 sm:pt-0 flex flex-row sm:flex-col justify-between sm:justify-start items-center sm:items-end">
+            <div>
+              <div class="font-bold">${Math.round(item.nutrients.calories || 0)} kcal</div>
+              <div class="text-xs text-gray-500">${Math.round(item.nutrients.protein || 0)}g P</div>
+            </div>
+            <button onclick="removeFood('${item.id}')" class="mt-0 sm:mt-2 text-sm sm:text-xs text-red-600 hover:underline shrink-0">Remove</button>
           </div>
         </div>
       `).join('');
