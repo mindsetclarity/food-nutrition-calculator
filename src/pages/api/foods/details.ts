@@ -34,8 +34,9 @@ export const GET: APIRoute = async ({ request }) => {
   }
 
     // Handle USDA requests
-    if (fdcIdStr) {
-      const fdcId = parseInt(fdcIdStr, 10);
+    if (sourceStr === 'usda' || fdcIdStr) {
+      const cleanId = (fdcIdStr || idStr || '').replace('usda-', '');
+      const fdcId = parseInt(cleanId, 10);
       if (!isNaN(fdcId)) {
         let usdaRes;
         try {

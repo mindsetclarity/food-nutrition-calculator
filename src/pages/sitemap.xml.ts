@@ -23,6 +23,8 @@ export const GET: APIRoute = async ({ site }) => {
     { path: '/foods', priority: '0.8', changefreq: 'weekly' },
     { path: '/learn', priority: '0.8', changefreq: 'weekly' },
     { path: '/about', priority: '0.5', changefreq: 'monthly' },
+    { path: '/contact', priority: '0.8', changefreq: 'monthly' },
+    { path: '/methodology', priority: '0.6', changefreq: 'monthly' },
     { path: '/privacy', priority: '0.5', changefreq: 'monthly' },
     { path: '/terms', priority: '0.5', changefreq: 'monthly' },
     { path: '/disclaimer', priority: '0.5', changefreq: 'monthly' },

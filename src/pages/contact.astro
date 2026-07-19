@@ -15,6 +15,7 @@ const toc = [
   title="Contact Us | Food Nutrition Calculator"
   description="Get in touch with the Food Nutrition Calculator team for support, feedback, and business inquiries."
   eyebrow="Contact Us"
+  showCta={false}
 >
   <div class="legal-layout flex flex-col md:flex-row gap-8">
     <div class="md:w-1/3">
@@ -35,18 +36,20 @@ const toc = [
 
       <LegalSection id="send-message" heading="2. Send a Message">
         <p class="mb-6">Have a specific question, bug report, or feature request? Drop us a message below.</p>
-        <form class="bg-white border border-border-soft p-6 rounded-2xl shadow-sm flex flex-col gap-4" onsubmit="event.preventDefault(); alert('Message sending is currently simulated. Thank you for your feedback!');">
+        <form action="https://formsubmit.co/mindsetclarityofficial@gmail.com" method="POST" class="bg-white border border-border-soft p-6 rounded-2xl shadow-sm flex flex-col gap-4">
+          <!-- Requires email verification on first submission -->
+          <input type="hidden" name="_subject" value="New Contact Form Submission">
           <div class="flex flex-col gap-1">
             <label for="name" class="text-sm font-medium text-ink-navy">Name</label>
-            <input type="text" id="name" placeholder="Your name" class="w-full px-4 py-2 rounded-lg border border-border-soft focus:outline-none focus:ring-2 focus:ring-usda-emerald/50" required />
+            <input type="text" id="name" name="name" placeholder="Your name" class="w-full px-4 py-2 rounded-lg border border-border-soft focus:outline-none focus:ring-2 focus:ring-usda-emerald/50" required />
           </div>
           <div class="flex flex-col gap-1">
             <label for="email" class="text-sm font-medium text-ink-navy">Email Address</label>
-            <input type="email" id="email" placeholder="you@example.com" class="w-full px-4 py-2 rounded-lg border border-border-soft focus:outline-none focus:ring-2 focus:ring-usda-emerald/50" required />
+            <input type="email" id="email" name="email" placeholder="you@example.com" class="w-full px-4 py-2 rounded-lg border border-border-soft focus:outline-none focus:ring-2 focus:ring-usda-emerald/50" required />
           </div>
           <div class="flex flex-col gap-1">
             <label for="topic" class="text-sm font-medium text-ink-navy">Topic</label>
-            <select id="topic" class="w-full px-4 py-2 rounded-lg border border-border-soft focus:outline-none focus:ring-2 focus:ring-usda-emerald/50">
+            <select id="topic" name="topic" class="w-full px-4 py-2 rounded-lg border border-border-soft focus:outline-none focus:ring-2 focus:ring-usda-emerald/50">
               <option>General Support</option>
               <option>Bug Report</option>
               <option>Feature Request</option>
@@ -55,7 +58,7 @@ const toc = [
           </div>
           <div class="flex flex-col gap-1">
             <label for="message" class="text-sm font-medium text-ink-navy">Message</label>
-            <textarea id="message" rows="4" placeholder="How can we help?" class="w-full px-4 py-2 rounded-lg border border-border-soft focus:outline-none focus:ring-2 focus:ring-usda-emerald/50" required></textarea>
+            <textarea id="message" name="message" rows="4" placeholder="How can we help?" class="w-full px-4 py-2 rounded-lg border border-border-soft focus:outline-none focus:ring-2 focus:ring-usda-emerald/50" required></textarea>
           </div>
           <Button type="submit" variant="primary" class="bg-usda-emerald hover:bg-emerald-700 text-white shadow-premium border-none w-full justify-center mt-2">
             Send Message
