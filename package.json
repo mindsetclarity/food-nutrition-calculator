@@ -12,7 +12,8 @@
     "astro": "astro",
     "deploy": "node scripts/deploy.mjs",
     "test:nemotron": "node --experimental-strip-types scripts/test-nemotron.mjs",
-    "test:usda": "node --experimental-strip-types scripts/test-usda-normalize.mjs"
+    "test:usda": "node --experimental-strip-types scripts/test-usda-normalize.mjs",
+    "test:meal-parser": "node --experimental-strip-types scripts/test-basic-meal-parser.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
