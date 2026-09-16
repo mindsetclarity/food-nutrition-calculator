@@ -2,6 +2,7 @@
 import SiteLayout from '../layouts/SiteLayout.astro';
 import RecipeHero from '../components/recipe/RecipeHero.astro';
 import RecipeCalculatorShell from '../components/recipe/RecipeCalculatorShell.astro';
+import ToolSeoFaq from '../components/seo/ToolSeoFaq.astro';
 import { buildSoftwareApplicationSchema } from '../lib/seo/schema';
 import { siteConfig } from '../lib/seo/siteConfig';
 
@@ -13,9 +14,89 @@ const jsonLd = buildSoftwareApplicationSchema({
   description: description,
   url: `${siteConfig.siteUrl}/recipe-nutrition-calculator`
 });
+
+const seoSections = [
+  {
+    heading: "Turn any recipe into nutrition facts",
+    paragraphs: [
+      "Cooking at home gives you complete control over what you eat, right up until someone asks how many calories are in it. Our <strong>recipe nutrition calculator</strong> closes that gap. Paste your ingredient list the way you would write it, tell the tool how many servings the dish makes, and it returns the calories, protein, carbohydrates and fat for the whole recipe and for a single portion.",
+      "You do not need to convert anything by hand. The parser reads ordinary recipe lines &mdash; two cups of flour, 400 g chicken thigh, a tablespoon of olive oil &mdash; and matches each one to a nutrition record. What used to mean twenty minutes with a spreadsheet and a search engine becomes a single paste."
+    ]
+  },
+  {
+    heading: "Per-serving numbers are the ones that matter",
+    paragraphs: [
+      "A lasagne might contain 4,800 calories in total, which sounds alarming and tells you almost nothing. Divided across eight servings it is 600 calories a plate, which is a perfectly ordinary dinner. This is why the <strong>nutrition calculator for recipes</strong> always shows both figures side by side, with the serving count under your control.",
+      "Getting the serving count right is the single most important input you provide. Be honest about how the dish is actually eaten in your house rather than how a cookbook says it should be divided. If a recipe claims six servings and your family routinely gets four out of it, enter four &mdash; the per-serving number is only useful if it reflects the plate in front of you."
+    ]
+  },
+  {
+    heading: "How ingredient matching and source labelling work",
+    paragraphs: [
+      "Each ingredient is matched against USDA FoodData Central first, the reference dataset used throughout the United States for nutrition analysis. When an ingredient has no USDA record &mdash; an unusual brand, a regional product, a very specific preparation &mdash; the calculator falls back to a curated value and marks it clearly rather than silently guessing.",
+      "Those source labels appear next to the results, so you can see how much of your recipe rests on primary data. If a key ingredient matched to something more generic than you intended, edit that line and re-run it. A minute spent correcting one ingredient match usually improves the accuracy of the whole dish more than anything else you can do."
+    ]
+  },
+  {
+    heading: "What a recipe calculator can and cannot know",
+    paragraphs: [
+      "Nutrition analysis of a cooked dish is an estimate, and it is worth understanding why. Water evaporates during cooking, which concentrates everything measured by weight. Some fat is left in the pan rather than eaten. Produce varies by variety and season. Cuts of meat differ in fat content even under the same name. None of this is a flaw in the arithmetic; it is the nature of real food.",
+      "What the calculator does give you is a consistent, well-sourced baseline and, more usefully, a reliable read on relative change. If you swap cream for milk or halve the oil, the direction and rough size of that change are dependable even when the absolute figure carries some uncertainty."
+    ]
+  },
+  {
+    heading: "Who uses a free recipe nutrition calculator",
+    paragraphs: [
+      "Home cooks use it to find out what their favourite dishes actually cost them nutritionally. Food bloggers and recipe writers use it to publish a nutrition panel without paying for analysis software. Meal preppers use it to portion a batch accurately. People cooking for specific needs &mdash; higher protein, lower sodium, controlled carbohydrates &mdash; use it to test a change before committing a whole week of meals to it.",
+      "The tool is completely free, works without an account, and places no limit on how many recipes you run. For a single ingredient, the <a class=\"underline\" href=\"/calculator\">nutrition calculator</a> gives you a full label, and the <a class=\"underline\" href=\"/meal-calorie-calculator\">meal calorie calculator</a> lets you fit a finished recipe into a complete day of eating."
+    ]
+  }
+];
+
+const faqs = [
+  {
+    question: "How do I calculate the nutrition of a recipe?",
+    answer: "Paste your full ingredient list into the calculator, including quantities and units, then set the number of servings the recipe makes. The tool matches each ingredient to a nutrition record, adds them together, and shows calories, protein, carbohydrates and fat for both the entire recipe and a single serving."
+  },
+  {
+    question: "How does the calculator work out calories per serving?",
+    answer: "It totals the nutrition of every ingredient in the recipe and divides by the serving count you entered. Because the serving count is your input, it is also the number that most affects the result, so setting it to reflect how the dish is really portioned in your household matters more than any other adjustment."
+  },
+  {
+    question: "Do I need to convert cups and tablespoons to grams?",
+    answer: "No. The parser handles ordinary recipe measurements including cups, tablespoons, teaspoons, ounces and grams, along with common descriptions like a medium onion. Entering weights in grams will always be the most precise option, but it is not required to get a usable result."
+  },
+  {
+    question: "Is the recipe nutrition calculator free?",
+    answer: "Yes, completely. There is no account, no email capture, no trial period and no cap on the number of recipes you can analyse. Every nutrient the tool can calculate is shown to every user without a premium tier."
+  },
+  {
+    question: "How accurate is recipe nutrition analysis?",
+    answer: "It is a high-quality estimate rather than a laboratory measurement. Cooking losses, evaporation, fat left in the pan and natural variation between ingredients all move the true value. The figures are reliable enough for everyday dietary decisions and very reliable for comparing one version of a recipe against another."
+  },
+  {
+    question: "Can I use it to publish nutrition facts with my recipes?",
+    answer: "Many recipe writers do exactly that. If you publish the results, label them clearly as estimates and state the serving size you used. Where a legally required nutrition panel is involved, such as for a product sold at retail, use a certified laboratory analysis instead."
+  },
+  {
+    question: "What happens if an ingredient is not recognised?",
+    answer: "The calculator either matches it to the closest available record or flags it so you can correct the line. Rewriting the ingredient in plainer terms, for example writing plain yogurt instead of a brand name, usually produces a better match on the second attempt."
+  },
+  {
+    question: "Does it account for cooking losses?",
+    answer: "The analysis is based on the ingredients you put in, which is the standard approach to recipe nutrition. It does not attempt to model water lost to evaporation or fat left behind in the pan, so dishes that shed a lot of either may come out slightly conservative on a per-weight basis."
+  }
+];
 ---
 
 <SiteLayout title={title} description={description} jsonLd={jsonLd}>
   <RecipeHero />
   <RecipeCalculatorShell />
+  <ToolSeoFaq
+    seoHeading="Recipe Nutrition Calculator: Calories and Macros Per Serving"
+    sections={seoSections}
+    faqHeading="Recipe Nutrition Calculator FAQs"
+    faqIntro="Common questions about calculating recipe calories, macros and per-serving nutrition facts."
+    faqs={faqs}
+  />
 </SiteLayout>

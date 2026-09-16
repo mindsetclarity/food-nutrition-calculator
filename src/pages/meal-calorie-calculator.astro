@@ -2,6 +2,7 @@
 import SiteLayout from '../layouts/SiteLayout.astro';
 import PageHeader from '../components/site/PageHeader.astro';
 import MealCalorieShell from '../components/meal/MealCalorieShell.astro';
+import ToolSeoFaq from '../components/seo/ToolSeoFaq.astro';
 import { buildSoftwareApplicationSchema } from '../lib/seo/schema';
 import { siteConfig } from '../lib/seo/siteConfig';
 
@@ -13,14 +14,94 @@ const jsonLd = buildSoftwareApplicationSchema({
   description: description,
   url: `${siteConfig.siteUrl}/meal-calorie-calculator`
 });
+
+const seoSections = [
+  {
+    heading: "A meal calorie calculator built around whole days",
+    paragraphs: [
+      "Most calorie tools answer one food at a time. That is useful for a lookup, but it is not how anybody actually eats. This <strong>meal calorie calculator</strong> is organised the way a day is organised: breakfast, lunch, dinner, snacks and drinks, each as its own section, each with its own running total, all feeding into a single daily figure at the bottom of the page.",
+      "You add foods by searching for them, set the portion you actually ate, and the numbers update immediately. Because each meal is tallied separately, you can see at a glance which part of the day is carrying your calories. That is usually far more actionable than a single daily number, since it points at a specific meal you can change rather than a vague instruction to eat less."
+    ]
+  },
+  {
+    heading: "Calculate meal calories and macros together",
+    paragraphs: [
+      "Calories on their own describe energy, not diet quality. Alongside the calorie count for each meal, the tool breaks out protein, carbohydrates and fat, and shows the same split for your full-day totals. This matters because two 600-calorie lunches can behave completely differently: one built around chicken, rice and vegetables leaves you satisfied, while one built around pastry and juice usually does not.",
+      "The macro breakdown updates live as you add or remove items, so you can experiment. Swap the side, halve the dressing, add a serving of yogurt, and watch what it does to the day. Used this way the tool becomes a planning instrument rather than just a record of what already happened."
+    ]
+  },
+  {
+    heading: "Plan ahead or log after the fact",
+    paragraphs: [
+      "There are two honest ways to use a <strong>daily calorie calculator</strong>, and both work here. You can plan forward, laying out a day before you shop or cook so you know your targets are achievable. Or you can log backward, entering what you actually ate to get a truthful picture of a typical day. Planning forward tends to change behaviour; logging backward tends to reveal surprises, particularly around drinks and snacks.",
+      "Snacks and beverages get their own sections deliberately. They are the categories people most reliably forget, and they are frequently the difference between a day that hits its target and one that quietly misses it by several hundred calories."
+    ]
+  },
+  {
+    heading: "USDA-first data with visible sources",
+    paragraphs: [
+      "Every food you add is matched against USDA FoodData Central where a record exists, which is the standard reference for nutrition data in the United States. When a branded or regional item has no USDA entry, the tool uses a curated fallback value and labels it as such, so you can see at a glance how much of your day rests on primary data and how much does not.",
+      "Nutrition values are accurate estimates, not exact measurements. Portion size is judged by eye, produce varies naturally, and cooking method shifts the numbers. Treat your daily total as a well-informed approximation and look at the trend across several days rather than fixating on a single figure."
+    ]
+  },
+  {
+    heading: "Who uses a daily calorie calculator",
+    paragraphs: [
+      "People managing their weight use it to find out where their calories actually come from before trying to cut any. Athletes and people trying to gain muscle use it to confirm that they are eating enough, which is a more common problem than it sounds. Anyone cooking for a family uses it to check that a planned menu is balanced across the day rather than front-loaded or protein-light.",
+      "It is free, needs no account, and nothing you enter is required to leave your browser to produce a result. If you want to go deeper on a single ingredient, the <a class=\"underline\" href=\"/calculator\">nutrition calculator</a> gives you the full label, and the <a class=\"underline\" href=\"/compare-foods\">compare foods tool</a> helps you choose between two options before you commit them to a meal."
+    ]
+  }
+];
+
+const faqs = [
+  {
+    question: "How do I calculate the calories in a meal?",
+    answer: "Pick the meal section you want, search for each food in that meal, and set the portion size you ate. The calculator adds each item to that meal's running total and updates the calorie and macro figures instantly. Repeat for every meal and the daily totals panel sums the whole day for you."
+  },
+  {
+    question: "How many calories should I eat per day?",
+    answer: "That depends on your age, sex, height, weight, activity level and goal, and it is a question for a standard BMR or TDEE calculation rather than for this tool. This calculator tells you what you are actually eating, which is the figure you then compare against whatever daily target you have set."
+  },
+  {
+    question: "Can I plan a day before I eat it?",
+    answer: "Yes, and it is one of the better ways to use the tool. Build breakfast, lunch and dinner in advance, see where the daily total lands, and adjust portions or swap items before you shop or cook. Planning forward tends to change what you eat far more than logging backward does."
+  },
+  {
+    question: "Does it track macros as well as calories?",
+    answer: "It does. Protein, carbohydrates and fat are shown for each individual meal and again for your full-day totals, so you can see not just how much you ate but how the energy was distributed across the three macronutrients."
+  },
+  {
+    question: "Are drinks and snacks included?",
+    answer: "Yes, both have dedicated sections. They are separated out on purpose because they are the two categories people most often leave out of a mental calorie tally, and they are frequently where an otherwise well-planned day goes over target."
+  },
+  {
+    question: "How accurate are the meal calorie totals?",
+    answer: "They are high-quality estimates. The underlying nutrition values come from USDA data where available, but portion sizes are estimated by eye, ingredients vary naturally, and cooking changes the result. Watch the pattern over a week rather than treating any single day's total as an exact measurement."
+  },
+  {
+    question: "Do I need an account to use the meal calorie calculator?",
+    answer: "No. The calculator is free and works immediately with no sign-up, no email and no paywall. Every meal section, the macro breakdown and the daily totals panel are available to everyone."
+  },
+  {
+    question: "Can I use it for more than one day?",
+    answer: "The tool is built around a single day at a time, which keeps the picture focused and the totals meaningful. To review a longer period, work through one day at a time and record the daily totals wherever you normally keep notes."
+  }
+];
 ---
 
 <SiteLayout title={title} description={description} jsonLd={jsonLd}>
-  <PageHeader 
-    title="Meal Calorie Planner" 
-    description="Build full days of eating with USDA-first precision. Plan your macros meal by meal." 
-    breadcrumbs={[{ label: 'Meal Planner' }]} 
+  <PageHeader
+    title="Meal Calorie Planner"
+    description="Build full days of eating with USDA-first precision. Plan your macros meal by meal."
+    breadcrumbs={[{ label: 'Meal Planner' }]}
     chipType="meal"
   />
   <MealCalorieShell />
+  <ToolSeoFaq
+    seoHeading="Meal Calorie Calculator: Breakfast, Lunch, Dinner and Daily Totals"
+    sections={seoSections}
+    faqHeading="Meal Calorie Calculator FAQs"
+    faqIntro="Common questions about calculating meal calories, macros and full-day nutrition totals."
+    faqs={faqs}
+  />
 </SiteLayout>

@@ -1,0 +1,64 @@
+---
+import { buildFAQPageSchema } from '../../lib/seo/schema';
+
+interface Section {
+  heading: string;
+  paragraphs: string[];
+}
+
+interface Faq {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  seoHeading: string;
+  sections: Section[];
+  faqHeading: string;
+  faqIntro: string;
+  faqs: Faq[];
+}
+
+const { seoHeading, sections, faqHeading, faqIntro, faqs } = Astro.props;
+
+const jsonLd = buildFAQPageSchema(faqs);
+---
+
+<section class="py-16 md:py-24 bg-[var(--color-canvas)] border-t border-[var(--color-hairline)]">
+  <div class="max-w-[800px] mx-auto px-4 md:px-6">
+    <h2 class="text-3xl md:text-4xl font-semibold text-[var(--color-ink)] tracking-tight mb-6">
+      {seoHeading}
+    </h2>
+
+    {sections.map((section) => (
+      <div class="mt-8 first:mt-0">
+        <h3 class="text-xl md:text-2xl font-semibold text-[var(--color-ink)] mb-3">{section.heading}</h3>
+        {section.paragraphs.map((paragraph) => (
+          <p class="text-[var(--color-body)] leading-relaxed mb-4" set:html={paragraph} />
+        ))}
+      </div>
+    ))}
+  </div>
+</section>
+
+<section class="py-16 md:py-24 bg-[var(--color-canvas)] border-t border-[var(--color-hairline)]">
+  <div class="max-w-[800px] mx-auto px-4 md:px-6">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-semibold text-[var(--color-ink)] tracking-tight mb-4">
+        {faqHeading}
+      </h2>
+      <p class="text-[var(--color-body)] text-lg">{faqIntro}</p>
+    </div>
+
+    <div class="space-y-6">
+      {faqs.map((faq) => (
+        <div class="bg-[var(--color-canvas-soft)] p-6 rounded-xl border border-[var(--color-hairline)] shadow-sm hover:shadow-md transition-shadow">
+          <h3 class="font-semibold text-lg md:text-xl text-[var(--color-ink)] mb-3">{faq.question}</h3>
+          <p class="text-[var(--color-body)] leading-relaxed">{faq.answer}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>

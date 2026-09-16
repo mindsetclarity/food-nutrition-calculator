@@ -2,6 +2,7 @@
 import SiteLayout from '../layouts/SiteLayout.astro';
 import PageHeader from '../components/site/PageHeader.astro';
 import CompareFoodsShell from '../components/compare/CompareFoodsShell.astro';
+import ToolSeoFaq from '../components/seo/ToolSeoFaq.astro';
 import { buildSoftwareApplicationSchema } from '../lib/seo/schema';
 import { siteConfig } from '../lib/seo/siteConfig';
 
@@ -13,14 +14,94 @@ const jsonLd = buildSoftwareApplicationSchema({
   description: description,
   url: `${siteConfig.siteUrl}/compare-foods`
 });
+
+const seoSections = [
+  {
+    heading: "What the food comparison calculator does",
+    paragraphs: [
+      "Our <strong>food comparison calculator</strong> puts two foods next to each other and shows you exactly where they differ. Instead of opening two nutrition labels in separate tabs and doing mental arithmetic, you search for both items once and read a single table. Every row &mdash; calories, protein, carbohydrates, sugars, fiber, total fat, saturated fat, sodium and the key micronutrients &mdash; is lined up so the gap between the two foods is immediately visible.",
+      "This makes the tool useful for the everyday decisions that actually shape a diet. Is Greek yogurt really higher in protein than regular yogurt? How much more sodium is in canned beans than dried ones? Does brown rice beat white rice by enough to matter? When you <strong>compare two foods side by side</strong>, those questions stop being guesswork and become a number you can act on."
+    ]
+  },
+  {
+    heading: "Per 100 g or per serving &mdash; the basis matters",
+    paragraphs: [
+      "Most nutrition comparisons on the internet mislead because they quietly compare different amounts of food. A 30 g handful of almonds looks lighter than a 250 g bowl of oatmeal, but per 100 g the almonds carry roughly four times the calories. Our comparison tool lets you switch the basis between <strong>per 100 g</strong> and <strong>per serving</strong>, so you always know which question you are answering.",
+      "Use the per-100 g basis when you want to judge a food's inherent nutrient density, because that is the fairest like-for-like view. Switch to the per-serving basis when you want to know what a realistic portion actually contributes to your day. Both views are legitimate; the mistake is mixing them without noticing."
+    ]
+  },
+  {
+    heading: "Built on USDA-first nutrition data",
+    paragraphs: [
+      "A comparison is only as trustworthy as the numbers behind it. This <strong>nutrition comparison tool</strong> draws on USDA FoodData Central as its primary source, the same reference dataset used by dietitians and food manufacturers across the United States. Where a USDA record exists, we use it and label it clearly. Where one does not, typically for branded or regional items, we fall back to carefully curated values and tell you that we have done so.",
+      "That source labelling appears directly beneath each comparison, so you are never asked to trust an unattributed figure. Natural variation in produce, differences in cut and grade, and the effects of cooking all move real-world values around, which is why every result here is an accurate estimate rather than a laboratory certificate."
+    ]
+  },
+  {
+    heading: "How to compare foods nutrition the right way",
+    paragraphs: [
+      "Start by choosing the two foods you are genuinely deciding between, not two foods you already know are different. Comparing a doughnut with broccoli tells you nothing useful; comparing chicken breast with chicken thigh, or olive oil with butter, tells you a great deal. Next, pick the basis that matches your decision. Then read the difference summary rather than the raw columns, because it states the gap in plain terms.",
+      "Finally, look past calories. Two foods with near-identical energy content can behave very differently once you account for protein, fiber and sodium. A food that wins on calories and loses on every other row is rarely the better choice."
+    ]
+  },
+  {
+    heading: "Who this tool is for",
+    paragraphs: [
+      "Anyone running a swap in their diet benefits from being able to <strong>compare foods nutrition</strong> before committing to it. People managing weight use it to find lower-calorie substitutions that do not sacrifice protein. Athletes use it to pick the higher-protein option between two similar ingredients. People watching blood pressure use it to spot the hidden sodium difference between a fresh and a processed version of the same food. Cooks use it to decide which fat, flour or dairy product to build a recipe around.",
+      "The tool is free, requires no account, and works on mobile as readily as on desktop. When you have finished comparing, our <a class=\"underline\" href=\"/calculator\">nutrition calculator</a> and <a class=\"underline\" href=\"/meal-calorie-calculator\">meal calorie calculator</a> let you take the winning food straight into a full day of eating."
+    ]
+  }
+];
+
+const faqs = [
+  {
+    question: "How do I compare two foods side by side?",
+    answer: "Search for your first food in the left panel and your second in the right panel. As soon as both are selected, the comparison table fills in automatically with calories, protein, carbohydrates, fat and the main micronutrients for each food, along with a plain-language summary of the biggest differences between them."
+  },
+  {
+    question: "Should I compare foods per 100 g or per serving?",
+    answer: "Use per 100 g when you want a fair like-for-like view of how nutrient-dense each food is, because it removes portion size from the equation. Use per serving when you want to know what a realistic helping actually adds to your day. The basis toggle on this page switches between the two without losing your selections."
+  },
+  {
+    question: "Where does the nutrition data come from?",
+    answer: "Values come from USDA FoodData Central wherever a matching record exists, with clearly labelled fallback data used only when no USDA entry is available. Each comparison shows its source beneath the table so you always know which dataset produced the numbers you are reading."
+  },
+  {
+    question: "Can I compare a raw food with a cooked one?",
+    answer: "Yes, and it is often the most revealing comparison you can run. Cooking changes water content, which changes everything measured per 100 g. Searching for both the raw and the cooked form of the same ingredient shows you how much the preparation method shifts the calorie and macro numbers."
+  },
+  {
+    question: "Is the food comparison calculator free?",
+    answer: "Yes. Comparing foods is completely free, unlimited, and requires no account or sign-up. There is no premium tier gating the nutrients you can see, so every row of the comparison table is available to everyone."
+  },
+  {
+    question: "How accurate are the comparison results?",
+    answer: "They are high-quality estimates rather than exact measurements. Real foods vary with variety, growing conditions, cut, grade and cooking method, so even laboratory analyses of the same food differ from one another. The relative difference between two foods is usually far more reliable than either absolute number on its own."
+  },
+  {
+    question: "Can I compare more than two foods at once?",
+    answer: "The tool is designed around a focused two-food comparison, because that is the decision most people are actually making. To evaluate several foods, run them as a series of head-to-head comparisons, or add them all to the meal calorie calculator to see how each one affects your daily totals."
+  },
+  {
+    question: "Does the comparison include micronutrients?",
+    answer: "Yes. Beyond calories and macros, the table covers key micronutrients such as sodium, potassium, calcium and iron where the underlying dataset provides them. Fields left blank mean the source record does not report that nutrient, not that the food contains none of it."
+  }
+];
 ---
 
 <SiteLayout title={title} description={description} jsonLd={jsonLd}>
-  <PageHeader 
-    title="Compare Foods" 
-    description="See exactly how two foods differ in calories and macros. No judgments, just deterministic facts." 
-    breadcrumbs={[{ label: 'Compare Foods' }]} 
+  <PageHeader
+    title="Compare Foods"
+    description="See exactly how two foods differ in calories and macros. No judgments, just deterministic facts."
+    breadcrumbs={[{ label: 'Compare Foods' }]}
     chipType="compare"
   />
   <CompareFoodsShell />
+  <ToolSeoFaq
+    seoHeading="Compare Foods: A Side-by-Side Nutrition Comparison Tool"
+    sections={seoSections}
+    faqHeading="Food Comparison FAQs"
+    faqIntro="Common questions about comparing calories, macros and micronutrients between two foods."
+    faqs={faqs}
+  />
 </SiteLayout>

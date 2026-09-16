@@ -12,6 +12,7 @@ import NutritionLabelPreview from '../components/home/NutritionLabelPreview.astr
 import LearnTrustSection from '../components/home/LearnTrustSection.astro';
 import HomeCTA from '../components/home/HomeCTA.astro';
 import HomeSeoContent from '../components/home/HomeSeoContent.astro';
+import HomeFAQ from '../components/home/HomeFAQ.astro';
 
 import { buildWebSiteSchema, buildOrganizationSchema } from '../lib/seo/schema';
 
@@ -37,4 +38,5 @@ const jsonLd = [buildWebSiteSchema(), buildOrganizationSchema()];
   <LearnTrustSection />
   <HomeCTA />
   <HomeSeoContent />
+  <HomeFAQ />
 </SiteLayout>
