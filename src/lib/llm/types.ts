@@ -1,4 +1,4 @@
-export type LLMProviderName = "mock" | "gemini" | "openai" | "deepseek";
+export type LLMProviderName = "mock" | "gemini" | "openai" | "deepseek" | "nemotron";
 
 export type LLMTask = "meal_parse" | "recipe_parse" | "food_query_suggestions" | "generic";
 

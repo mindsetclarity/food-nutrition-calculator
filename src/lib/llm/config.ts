@@ -5,6 +5,7 @@ export function getLLMProviderName(): LLMProviderName {
   if (provider === 'gemini') return 'gemini';
   if (provider === 'openai') return 'openai';
   if (provider === 'deepseek') return 'deepseek';
+  if (provider === 'nemotron') return 'nemotron';
   return 'mock';
 }
 
@@ -13,6 +14,7 @@ export function getLLMModel(provider?: LLMProviderName): string {
   if (p === 'gemini') return import.meta.env.GEMINI_MODEL || 'gemini-2.5-flash';
   if (p === 'openai') return import.meta.env.OPENAI_MODEL || 'gpt-4o-mini';
   if (p === 'deepseek') return import.meta.env.DEEPSEEK_MODEL || 'deepseek-chat';
+  if (p === 'nemotron') return import.meta.env.NEMOTRON_MODEL || 'nvidia/llama-3.1-nemotron-ultra-253b-v1';
   return import.meta.env.LLM_MODEL || 'mock-food-parser';
 }
 
@@ -28,6 +30,7 @@ export function getLLMBaseUrl(provider: LLMProviderName): string {
   if (provider === 'gemini') return import.meta.env.GEMINI_BASE_URL || 'https://generativelanguage.googleapis.com/v1beta';
   if (provider === 'openai') return import.meta.env.OPENAI_BASE_URL || 'https://api.openai.com/v1';
   if (provider === 'deepseek') return import.meta.env.DEEPSEEK_BASE_URL || 'https://api.deepseek.com';
+  if (provider === 'nemotron') return import.meta.env.NVIDIA_BASE_URL || 'https://integrate.api.nvidia.com/v1';
   return '';
 }
 
@@ -37,6 +40,7 @@ export function isLLMConfigured(provider?: LLMProviderName): boolean {
   if (p === 'gemini') return !!import.meta.env.GEMINI_API_KEY;
   if (p === 'openai') return !!import.meta.env.OPENAI_API_KEY;
   if (p === 'deepseek') return !!import.meta.env.DEEPSEEK_API_KEY;
+  if (p === 'nemotron') return !!import.meta.env.NVIDIA_API_KEY;
   return false;
 }
 

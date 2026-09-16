@@ -4,16 +4,21 @@ import { mockProvider } from './providers/mock';
 import { geminiProvider } from './providers/gemini';
 import { openaiProvider } from './providers/openai';
 import { deepseekProvider } from './providers/deepseek';
+import { nemotronProvider } from './providers/nemotron';
 import { safeParseJSON } from './json';
+
+/** The single provider registry. Adding a provider means adding it here only. */
+export const allProviders: LLMProvider[] = [
+  mockProvider,
+  geminiProvider,
+  openaiProvider,
+  deepseekProvider,
+  nemotronProvider
+];
 
 export function getLLMProvider(): LLMProvider {
   const providerName = getLLMProviderName();
-  
-  if (providerName === 'gemini') return geminiProvider;
-  if (providerName === 'openai') return openaiProvider;
-  if (providerName === 'deepseek') return deepseekProvider;
-  
-  return mockProvider;
+  return allProviders.find((p) => p.name === providerName) ?? mockProvider;
 }
 
 export async function generateWithLLM(request: LLMRequest): Promise<LLMResponse> {

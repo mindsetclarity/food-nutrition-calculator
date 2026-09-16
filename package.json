@@ -10,7 +10,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "deploy": "node scripts/deploy.mjs"
+    "deploy": "node scripts/deploy.mjs",
+    "test:nemotron": "node --experimental-strip-types scripts/test-nemotron.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
