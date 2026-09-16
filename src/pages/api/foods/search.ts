@@ -2,6 +2,9 @@ import type { APIRoute } from 'astro';
 import { searchLocalFoods } from '../../../lib/foods/foodSearch';
 import { searchUsdaFoods } from '../../../lib/usda/client';
 import { normalizeUsdaSearchResults } from '../../../lib/usda/normalize';
+import { rankUsdaSearchFoods } from '../../../lib/usda/ranking';
+
+const USDA_CANDIDATE_POOL = 50;
 import type { NormalizedSearchResult } from '../../../lib/usda/types';
 import { inputLimits, isValidSearchQuery } from '../../../lib/safety/inputLimits';
 
@@ -25,7 +28,9 @@ export const GET: APIRoute = async ({ request }) => {
     // Try USDA if available
     let usdaRes;
     try {
-      usdaRes = await searchUsdaFoods(q, limit);
+      // USDA's first few results are mostly Branded products, so pull a wider
+      // candidate pool for rankUsdaSearchFoods to pick the generic food from.
+      usdaRes = await searchUsdaFoods(q, USDA_CANDIDATE_POOL);
     } catch (e) {
       usdaRes = { ok: false, data: null, error: 'usda timeout or fetch failed' };
     }
@@ -35,7 +40,7 @@ export const GET: APIRoute = async ({ request }) => {
       ok: true,
       query: q,
       source: "usda",
-      results: normalizeUsdaSearchResults(usdaRes.data.foods),
+      results: normalizeUsdaSearchResults(rankUsdaSearchFoods(usdaRes.data.foods, q).slice(0, limit)),
       fallbackUsed: false,
       message: null
     }), { status: 200, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'public, max-age=300, s-maxage=3600' } });

@@ -26,7 +26,8 @@ export function removeStopWords(tokens: string[]): string[] {
 
 export function singularizeSimple(token: string): string {
   if (token.endsWith('ies')) return token.slice(0, -3) + 'y';
-  if (token.endsWith('es') && token.match(/(s|sh|ch|x|z)es$/)) return token.slice(0, -2);
+  // "potatoes", "tomatoes", "mangoes" -> "potato" etc.; plain -s left "potatoe".
+  if (token.endsWith('es') && token.match(/(s|sh|ch|x|z|o)es$/)) return token.slice(0, -2);
   if (token.endsWith('s') && !token.endsWith('ss')) return token.slice(0, -1);
   return token;
 }
