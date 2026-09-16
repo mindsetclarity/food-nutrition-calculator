@@ -51,29 +51,52 @@ export function normalizeUsdaSearchResults(foods: UsdaSearchFood[]): NormalizedS
   return foods.map(normalizeUsdaSearchResult);
 }
 
-export function extractNutrientsPer100g(foodNutrients?: { nutrient: { name: string, unitName: string }, amount?: number }[]): NutrientProfile {
+/**
+ * USDA returns two different foodNutrients shapes. Foundation and SR Legacy entries
+ * nest the descriptor under .nutrient; Branded entries frequently carry only
+ * { type, id, amount } with no descriptor at all. Reading item.nutrient.name
+ * unguarded threw on every Branded food and took out the whole details route,
+ * so name and unit are resolved defensively from either shape here - the one
+ * place every caller funnels through.
+ */
+type UsdaNutrientEntry = {
+  nutrient?: { name?: string; unitName?: string };
+  nutrientName?: string;
+  unitName?: string;
+  amount?: number;
+};
+
+export function extractNutrientsPer100g(foodNutrients?: UsdaNutrientEntry[]): NutrientProfile {
   const profile: NutrientProfile = {
     calories: null, protein: null, carbohydrates: null, fat: null,
     fiber: null, sugar: null, sodium: null, saturatedFat: null,
     cholesterol: null, potassium: null
   };
 
-  if (!foodNutrients) return profile;
+  if (!Array.isArray(foodNutrients)) return profile;
 
   for (const item of foodNutrients) {
-    if (item.amount === undefined || item.amount === null) continue;
-    
-    const key = mapUsdaNutrientName(item.nutrient.name);
+    if (!item || item.amount === undefined || item.amount === null) continue;
+
+    const name = item.nutrient?.name ?? item.nutrientName;
+    if (!name) continue; // Branded entries with no descriptor cannot be mapped.
+
+    const key = mapUsdaNutrientName(name);
     if (!key) continue;
 
-    if (key === 'calories' && item.nutrient.unitName.toLowerCase() !== 'kcal') {
-      continue;
-    }
+    // Energy is reported in both kcal and kJ; only kcal belongs in calories.
+    const unit = item.nutrient?.unitName ?? item.unitName;
+    if (key === 'calories' && unit?.toLowerCase() !== 'kcal') continue;
 
     profile[key] = item.amount;
   }
 
   return profile;
+}
+
+/** A food with no calories is unusable for a nutrition calculator. */
+export function hasUsableNutrients(profile: NutrientProfile): boolean {
+  return typeof profile.calories === 'number';
 }
 
 export function createServingSizesFromUsda(food: UsdaFoodDetails): ServingSize[] {

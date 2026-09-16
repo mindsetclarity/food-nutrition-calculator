@@ -1,7 +1,7 @@
 import type { APIRoute } from 'astro';
 import { getFoodByIdOrSlug } from '../../../lib/foods/foodIndex';
 import { getUsdaFoodDetails } from '../../../lib/usda/client';
-import { normalizeUsdaFoodDetails } from '../../../lib/usda/normalize';
+import { normalizeUsdaFoodDetails, hasUsableNutrients } from '../../../lib/usda/normalize';
 
 export const GET: APIRoute = async ({ request }) => {
   try {
@@ -45,13 +45,20 @@ export const GET: APIRoute = async ({ request }) => {
           usdaRes = { ok: false, data: null };
         }
         if (usdaRes.ok && usdaRes.data) {
-        return new Response(JSON.stringify({
-          ok: true,
-          food: normalizeUsdaFoodDetails(usdaRes.data),
-          fallbackUsed: false,
-          message: null
-        }), { status: 200, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'public, max-age=300, s-maxage=3600' } });
-      }
+          const usdaFood = normalizeUsdaFoodDetails(usdaRes.data);
+          // Branded records routinely carry no nutrient descriptors at all.
+          // Returning that food would add a silent 0 kcal item to the user's
+          // totals, so treat it as unavailable and let the local fallback below
+          // have a go instead.
+          if (hasUsableNutrients(usdaFood.nutrientsPer100g)) {
+            return new Response(JSON.stringify({
+              ok: true,
+              food: usdaFood,
+              fallbackUsed: false,
+              message: null
+            }), { status: 200, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'public, max-age=300, s-maxage=3600' } });
+          }
+        }
     }
   }
 
