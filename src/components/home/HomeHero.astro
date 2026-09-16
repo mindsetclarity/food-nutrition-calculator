@@ -1,0 +1,71 @@
+---
+import Button from '../ui/Button.astro';
+import HomeNutritionPreview from './HomeNutritionPreview.astro';
+import FoodChip from '../ui/FoodChip.astro';
+---
+
+<section class="relative pt-20 pb-20 lg:pt-28 lg:pb-24 overflow-hidden">
+  <!-- Subtle Background Enhancements -->
+  <div class="absolute inset-0 bg-warm-ivory -z-10"></div>
+  <div class="absolute inset-0 bg-[radial-gradient(var(--color-emerald-soft)_1px,transparent_1px)] [background-size:24px_24px] opacity-20 -z-10"></div>
+  
+  <div class="site-container">
+    <div class="flex flex-col lg:flex-row items-center gap-16 lg:gap-12">
+      
+      <!-- Text Content (Left) -->
+      <div class="w-full lg:w-1/2 motion-fade-up text-left">
+        <div class="inline-flex items-center px-3 py-1 rounded-full bg-mint-wash border border-emerald-soft text-usda-emerald text-sm font-semibold mb-6 shadow-sm">
+          <span class="flex w-2 h-2 rounded-full bg-fresh-leaf mr-2 animate-pulse"></span>
+          USDA-first nutrition intelligence
+        </div>
+        
+        <h1 class="text-[40px] md:text-5xl lg:text-[56px] font-extrabold text-ink-navy tracking-tight mb-6 leading-[1.1]">
+          A smarter nutrition calculator for <span class="text-usda-emerald inline-block">foods</span>, <span class="text-usda-emerald inline-block">meals</span>, and <span class="text-usda-emerald inline-block">recipes.</span>
+        </h1>
+        
+        <p class="mt-4 text-lg text-soft-slate mb-10 leading-relaxed max-w-lg">
+          Search foods, analyze recipes, compare meals, and generate Nutrition Facts-style summaries with USDA-first data, local fallback labels, and deterministic nutrition math.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 mb-8">
+          <Button href="/calculator" variant="primary" size="lg" class="shadow-ink hover:shadow-premium">
+            Start Calculating
+          </Button>
+          <Button href="/recipe-nutrition-calculator" variant="secondary" size="lg">
+            Analyze a Recipe
+          </Button>
+        </div>
+
+        <div class="text-xs text-muted-text flex items-center flex-wrap gap-2 mb-10 border-l-2 border-mint-wash pl-3 py-1">
+          <span>No login required</span> &middot; 
+          <span>Source-labeled estimates</span> &middot; 
+          <span>AI parsing never owns final nutrition totals</span>
+        </div>
+
+        <!-- Decorative Vegetarian Chips -->
+        <div class="flex flex-wrap gap-2 max-w-md motion-delay-200 motion-fade-in">
+          <FoodChip icon="🍌" label="banana" />
+          <FoodChip icon="🌾" label="oats" />
+          <FoodChip icon="🥑" label="avocado" />
+          <FoodChip icon="🧆" label="chickpeas" />
+          <FoodChip icon="🍚" label="brown rice" />
+          <FoodChip icon="🫐" label="berries" />
+        </div>
+      </div>
+      
+      <!-- Product Preview (Right) -->
+      <div class="w-full lg:w-1/2 motion-scale-in motion-delay-300 relative lg:pl-10">
+        <HomeNutritionPreview />
+        
+        <!-- Floating decorative elements -->
+        <div class="absolute -top-6 -right-6 motion-float hidden lg:block" style="animation-delay: -2s;">
+          <FoodChip icon="🥣" label="Greek yogurt" class="shadow-ink bg-white/90 backdrop-blur-md" />
+        </div>
+        <div class="absolute -bottom-8 -left-4 motion-float hidden lg:block" style="animation-delay: -5s;">
+          <FoodChip icon="🍲" label="lentils" class="shadow-ink bg-white/90 backdrop-blur-md" />
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>

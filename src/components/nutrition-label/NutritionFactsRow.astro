@@ -1,0 +1,45 @@
+---
+import type { NutritionLabelRow } from '../../lib/nutrition-label/types';
+import { formatNutritionAmount } from '../../lib/nutrition-label/formatLabelValue';
+import NutritionFactsDivider from './NutritionFactsDivider.astro';
+
+interface Props extends NutritionLabelRow {}
+
+const { label, amount, unit, percentDailyValue, indentLevel, bold, unavailable, nutrientKey } = Astro.props;
+
+const paddingLeftClass = {
+  0: "pl-0",
+  1: "pl-4",
+  2: "pl-8"
+}[indentLevel] || "pl-0";
+
+const formattedAmount = unavailable ? "—" : formatNutritionAmount(amount, unit);
+const dvKeyMapping: Record<string, string> = {
+  fat: "totalFat",
+  saturatedFat: "saturatedFat",
+  cholesterol: "cholesterol",
+  sodium: "sodium",
+  carbohydrates: "totalCarbohydrate",
+  fiber: "fiber",
+  addedSugars: "addedSugars",
+  protein: "protein",
+  vitaminD: "vitaminD",
+  calcium: "calcium",
+  iron: "iron",
+  potassium: "potassium"
+};
+
+const dvKey = dvKeyMapping[nutrientKey] || "";
+---
+<div class={`label-row-wrapper ${unavailable ? 'hidden' : ''}`} data-nutrient-row={nutrientKey}>
+  <NutritionFactsDivider size="thin" />
+  <div class={`flex justify-between items-center py-1 text-sm ${paddingLeftClass}`}>
+    <div class="flex gap-1 items-baseline">
+      <span class={bold ? "font-bold text-black" : "text-black"}>{label}</span>
+      <span class="text-black nutrient-amount" data-unit={unit}>{formattedAmount}</span>
+    </div>
+    <span class={`font-bold text-black nutrient-dv ${percentDailyValue === null || percentDailyValue === undefined ? 'hidden' : ''}`} data-dv-key={dvKey}>
+      {percentDailyValue}%
+    </span>
+  </div>
+</div>

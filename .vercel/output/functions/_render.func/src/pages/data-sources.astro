@@ -1,0 +1,132 @@
+---
+import TrustPageShell from '../components/trust/TrustPageShell.astro';
+import TrustTOC from '../components/trust/TrustTOC.astro';
+import TrustCard from '../components/trust/TrustCard.astro';
+import TrustBulletList from '../components/trust/TrustBulletList.astro';
+import TrustBulletListItem from '../components/trust/TrustBulletListItem.astro';
+import NutritionTruthHierarchy from '../components/trust/NutritionTruthHierarchy.astro';
+
+const badges = [
+  "USDA-first",
+  "Local fallback labeled",
+  "Source badges",
+  "AI parsing boundary"
+];
+
+const toc = [
+  { id: "hierarchy", label: "Data hierarchy" },
+  { id: "usda", label: "USDA FoodData Central" },
+  { id: "local-fallback", label: "Local fallback database" },
+  { id: "ai-parsing", label: "AI parsing assistance" },
+  { id: "source-badges", label: "Source badge guide" },
+  { id: "limitations", label: "Limitations" }
+];
+---
+<TrustPageShell showCta={false}
+  title="Data Sources | USDA, Local Fallback & AI Parsing"
+  description="Food Nutrition Calculator uses a USDA-first approach, local fallback estimates, and clearly labeled AI parsing assistance to keep nutrition results transparent and reviewable."
+  eyebrow="Data Sources"
+  badges={badges}
+>
+
+  <TrustTOC sections={toc} />
+
+  <p class="lead text-xl text-soft-slate mb-10">
+    Trusting a nutrition calculator means knowing exactly where the numbers come from. We do not hide our data behind proprietary walls. Here is a breakdown of the sources that power our tools and why source transparency matters.
+  </p>
+
+  <h2 id="hierarchy">Nutrition data hierarchy</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
+    <TrustCard title="1. USDA FoodData Central">
+      <p>Primary source when configured and available. We prioritize lab-tested Foundation Foods.</p>
+    </TrustCard>
+    <TrustCard title="2. Local fallback database">
+      <p>Common food estimates used when live USDA data is unavailable, ensuring reliability.</p>
+    </TrustCard>
+    <TrustCard title="3. AI parsing assistance">
+      <p>Helps interpret text into database queries, but does not own final nutrition totals.</p>
+    </TrustCard>
+  </div>
+
+  <h2 id="usda">USDA FoodData Central</h2>
+  <p>Our preferred source of nutritional truth is the United States Department of Agriculture (USDA) FoodData Central.</p>
+  <TrustBulletList class="bg-white border border-border-soft p-6 rounded-2xl">
+    <TrustBulletListItem><strong>Prioritization:</strong> USDA FoodData Central is prioritized when live search is configured.</TrustBulletListItem>
+    <TrustBulletListItem><strong>Broad coverage:</strong> It provides broad food data across many categories, including Foundation Foods, SR Legacy, and Branded Foods.</TrustBulletListItem>
+    <TrustBulletListItem><strong>Search dependence:</strong> Results depend on search terms, data availability, and selected matches.</TrustBulletListItem>
+    <TrustBulletListItem><strong>Source labeling:</strong> Source labels help users understand when USDA data is used.</TrustBulletListItem>
+  </TrustBulletList>
+  
+  <div class="bg-slate-50 border border-slate-200 rounded-xl p-5 my-6 text-sm text-soft-slate">
+    <strong>Note:</strong> Food Nutrition Calculator may use USDA FoodData Central as a data source when configured. This does not mean the website is endorsed or certified by USDA.
+  </div>
+
+  <h2 id="local-fallback">Local fallback database</h2>
+  <p>Web APIs can experience downtime or rate limits. To ensure our calculator never completely breaks, we maintain a curated local dataset.</p>
+  <TrustBulletList class="bg-white border border-border-soft p-6 rounded-2xl">
+    <TrustBulletListItem><strong>Reliability:</strong> Local fallback data helps keep common food lookups usable.</TrustBulletListItem>
+    <TrustBulletListItem><strong>Estimates:</strong> Local values are baseline estimates, not lab-verified absolutes.</TrustBulletListItem>
+    <TrustBulletListItem><strong>Specificity:</strong> Local data may be less specific than deep USDA data.</TrustBulletListItem>
+    <TrustBulletListItem><strong>Variability:</strong> Brand, preparation, and serving size can affect final values.</TrustBulletListItem>
+    <TrustBulletListItem><strong>Transparency:</strong> Local fallback values should remain clearly labeled in the user interface.</TrustBulletListItem>
+  </TrustBulletList>
+
+  <h2 id="ai-parsing">AI parsing assistance</h2>
+  <p>For complex tools like the Recipe Calculator, typing out individual ingredients is tedious. We utilize Large Language Models (LLMs) as an intelligent text-parsing layer.</p>
+  <TrustBulletList class="bg-white border border-border-soft p-6 rounded-2xl">
+    <TrustBulletListItem><strong>Text translation:</strong> AI may help parse meal or recipe text.</TrustBulletListItem>
+    <TrustBulletListItem><strong>Suggestions:</strong> AI can suggest food candidates or search terms.</TrustBulletListItem>
+    <TrustBulletListItem><strong>Prone to errors:</strong> AI can misunderstand quantities, units, or ambiguous ingredients.</TrustBulletListItem>
+    <TrustBulletListItem><strong>Boundary:</strong> AI does not calculate final nutrition totals.</TrustBulletListItem>
+    <TrustBulletListItem><strong>User review:</strong> Users should review parsed results before trusting totals.</TrustBulletListItem>
+  </TrustBulletList>
+
+  <h2 id="source-badges">Source badge guide</h2>
+  <p>By showing you badges, you can make an informed decision about how much trust to place in a specific number.</p>
+  
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-8">
+    <div class="flex items-start p-4 border border-emerald-100 bg-emerald-50 rounded-xl">
+      <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-mint-wash text-usda-emerald uppercase tracking-wider border border-emerald-100 mr-4 shrink-0 mt-1">USDA</span>
+      <div>
+        <h4 class="font-bold text-emerald-900 text-sm mb-1">USDA Data</h4>
+        <p class="text-[13px] text-emerald-800 m-0">This means the selected food was matched directly to USDA FoodData Central.</p>
+      </div>
+    </div>
+    
+    <div class="flex items-start p-4 border border-border-soft bg-slate-50 rounded-xl">
+      <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-white text-soft-slate uppercase tracking-wider border border-border-soft mr-4 shrink-0 mt-1">Local</span>
+      <div>
+        <h4 class="font-bold text-ink-navy text-sm mb-1">Local database</h4>
+        <p class="text-[13px] text-soft-slate m-0">This means a local fallback estimate was used instead of live USDA data.</p>
+      </div>
+    </div>
+    
+    <div class="flex items-start p-4 border border-purple-100 bg-purple-50 rounded-xl">
+      <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-white text-purple-700 uppercase tracking-wider border border-purple-200 mr-4 shrink-0 mt-1">AI Parsed</span>
+      <div>
+        <h4 class="font-bold text-purple-900 text-sm mb-1">AI parsing assist</h4>
+        <p class="text-[13px] text-purple-800 m-0">This means AI helped interpret text. Users should review the match carefully.</p>
+      </div>
+    </div>
+    
+    <div class="flex items-start p-4 border border-amber-100 bg-amber-50 rounded-xl">
+      <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-white text-amber-700 uppercase tracking-wider border border-amber-200 mr-4 shrink-0 mt-1">Needs Review</span>
+      <div>
+        <h4 class="font-bold text-amber-900 text-sm mb-1">Unknown / Needs review</h4>
+        <p class="text-[13px] text-amber-800 m-0">This means the system could not confidently resolve the food or quantity.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2 id="limitations">Limitations</h2>
+  <TrustBulletList class="bg-white border border-border-soft p-6 rounded-2xl">
+    <TrustBulletListItem>Nutrition values are estimates.</TrustBulletListItem>
+    <TrustBulletListItem>Food brands can vary significantly.</TrustBulletListItem>
+    <TrustBulletListItem>Cooked and raw foods can differ in weight and nutrient density.</TrustBulletListItem>
+    <TrustBulletListItem>Serving sizes can vary across products.</TrustBulletListItem>
+    <TrustBulletListItem>Search matches should always be reviewed.</TrustBulletListItem>
+    <TrustBulletListItem>Some nutrients may be unavailable.</TrustBulletListItem>
+    <TrustBulletListItem>This website is not medical advice.</TrustBulletListItem>
+  </TrustBulletList>
+
+</TrustPageShell>

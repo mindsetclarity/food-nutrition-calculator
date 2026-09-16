@@ -1,0 +1,637 @@
+---
+import MealExampleButtons from './MealExampleButtons.astro';
+import MealEmptyState from './MealEmptyState.astro';
+import MealNotice from './MealNotice.astro';
+import MealSourceSummary from './MealSourceSummary.astro';
+import DayTotalsPanel from './DayTotalsPanel.astro';
+import MealMacroBreakdown from './MealMacroBreakdown.astro';
+import MealSection from './MealSection.astro';
+import MealSummary from './MealSummary.astro';
+---
+
+<main id="main-content" class="min-h-screen bg-warm-ivory pb-24 relative z-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
+    <DayTotalsPanel />
+    <MealMacroBreakdown />
+    <MealNotice />
+    
+    <MealExampleButtons />
+    <MealEmptyState />
+    
+    <div id="meal-sections-container" class="space-y-8 mt-12">
+      <!-- Meal sections injected here -->
+    </div>
+    
+    <MealSourceSummary />
+  </div>
+</main>
+
+{/* Search Modal Template */}
+<template id="meal-search-modal-template">
+  <div class="fixed inset-0 z-50 flex items-center justify-center bg-ink-navy/80 backdrop-blur-sm p-4 hidden" id="meal-search-modal">
+    <div class="bg-pure-card rounded-[var(--radius-card)] shadow-premium w-full max-w-2xl max-h-[90vh] flex flex-col overflow-hidden border border-border-soft">
+      <div class="px-6 md:px-8 py-6 border-b border-border-soft flex justify-between items-center bg-white/50">
+        <h3 class="text-xl font-bold text-ink-navy" id="search-modal-title">Add to Meal</h3>
+        <button type="button" class="close-modal-btn text-soft-slate hover:text-ink-navy focus:outline-none bg-white p-2 rounded-full shadow-sm border border-border-soft tap-target transition-colors" aria-label="Close modal">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+      </div>
+      
+      <div class="p-6 md:p-8 flex-grow overflow-y-auto bg-white custom-scrollbar">
+        <div id="search-view">
+          <div class="relative mb-8">
+            <div class="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
+              <svg class="h-5 w-5 text-soft-slate" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            </div>
+            <label for="meal-search-input" class="sr-only">Search for food</label>
+            <input 
+              type="search" 
+              id="meal-search-input" 
+              class="block w-full pl-12 pr-4 h-14 text-base border border-border-soft rounded-[var(--radius-button)] bg-white text-ink-navy focus-premium transition-colors placeholder-soft-slate" 
+              placeholder="Search foods (e.g. oats, banana, chickpeas)..."
+              autocomplete="off"
+            >
+          </div>
+          
+          <div id="meal-search-loading" class="hidden py-10 text-center text-soft-slate font-medium text-[15px] flex flex-col items-center justify-center">
+            <svg class="animate-spin h-8 w-8 text-usda-emerald mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            <p>Searching USDA database...</p>
+          </div>
+          
+          <ul id="meal-search-results" class="space-y-2"></ul>
+        </div>
+        
+        <div id="details-view" class="hidden">
+          <button type="button" id="back-to-search-btn" class="mb-6 inline-flex items-center text-[11px] font-bold uppercase tracking-widest text-soft-slate hover:text-ink-navy transition-colors bg-slate-50 px-3 py-1.5 rounded border border-border-soft">
+            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+            Back to search
+          </button>
+          
+          <div class="bg-white rounded-[var(--radius-card)] p-6 border border-border-soft mb-8 shadow-sm flex items-start justify-between">
+            <div>
+              <h4 id="selected-food-name" class="text-xl font-bold text-ink-navy mb-1">Food Name</h4>
+              <p id="selected-food-cat" class="text-[13px] font-medium text-soft-slate">Category</p>
+            </div>
+            <div id="selected-food-badges"></div>
+          </div>
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+            <div>
+              <label for="food-qty" class="block text-[11px] font-bold text-ink-navy uppercase tracking-widest mb-2">Amount</label>
+              <input type="number" id="food-qty" min="0.1" step="0.1" class="block w-full h-14 px-4 text-base border border-border-soft rounded-[var(--radius-button)] focus-premium transition-shadow text-ink-navy font-bold" value="1">
+            </div>
+            <div>
+              <label for="food-unit" class="block text-[11px] font-bold text-ink-navy uppercase tracking-widest mb-2">Unit</label>
+              <select id="food-unit" class="block w-full h-14 px-4 text-base border border-border-soft rounded-[var(--radius-button)] focus-premium transition-shadow text-ink-navy font-medium bg-white"></select>
+            </div>
+          </div>
+          
+          <div class="flex justify-end gap-3 pt-6 border-t border-border-soft">
+            <button type="button" class="close-modal-btn px-6 h-12 text-[15px] text-ink-navy font-bold bg-white border border-border-soft rounded-[var(--radius-button)] hover:bg-slate-50 transition-colors interactive-button shadow-sm">Cancel</button>
+            <button type="button" id="add-food-btn" class="px-8 h-12 text-[15px] text-white font-bold bg-ink-navy rounded-[var(--radius-button)] hover:bg-deep-slate transition-colors shadow-ink hover:shadow-premium interactive-button">Add to Meal</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+{/* Section Card Template */}
+<template id="meal-section-template">
+  <div class="meal-section-card luxury-card overflow-hidden bg-pure-card mb-8">
+    <!-- Header -->
+    <div class="px-6 md:px-8 py-6 bg-white/50 border-b border-border-soft flex flex-wrap gap-4 justify-between items-center">
+      <div>
+        <h3 class="section-title text-2xl font-bold text-ink-navy tracking-tight">Breakfast</h3>
+        <p class="section-count text-[11px] uppercase tracking-widest font-bold text-usda-emerald mt-1">0 items</p>
+      </div>
+      <div class="flex gap-3">
+        <button type="button" class="clear-section-btn text-[11px] uppercase tracking-widest font-bold text-soft-slate hover:text-red-600 px-4 py-2 rounded border border-transparent hover:bg-red-50 transition-colors">Clear</button>
+        <button type="button" class="add-item-btn inline-flex items-center px-6 py-2 bg-ink-navy text-white text-[13px] font-bold rounded-[var(--radius-button)] hover:bg-deep-slate transition-all shadow-sm hover:shadow-premium">
+          <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+          Add Food
+        </button>
+      </div>
+    </div>
+    
+    <!-- List -->
+    <ul class="section-items-list divide-y divide-border-soft bg-white">
+      <!-- Rows injected here -->
+    </ul>
+    
+    <!-- Footer Totals -->
+    <div class="section-totals-bar px-6 md:px-8 py-5 bg-slate-50 border-t border-border-soft flex flex-wrap gap-6 sm:gap-10 hidden">
+      <div>
+        <span class="text-soft-slate font-bold uppercase tracking-widest text-[10px] block mb-1">Calories</span>
+        <span class="section-cal font-black text-ink-navy text-2xl">0</span>
+      </div>
+      <div>
+        <span class="text-soft-slate font-bold uppercase tracking-widest text-[10px] block mb-1">Protein</span>
+        <span class="section-pro font-bold text-ink-navy text-xl">0<span class="text-soft-slate text-[13px] ml-0.5">g</span></span>
+      </div>
+      <div>
+        <span class="text-soft-slate font-bold uppercase tracking-widest text-[10px] block mb-1">Carbs</span>
+        <span class="section-carb font-bold text-ink-navy text-xl">0<span class="text-soft-slate text-[13px] ml-0.5">g</span></span>
+      </div>
+      <div>
+        <span class="text-soft-slate font-bold uppercase tracking-widest text-[10px] block mb-1">Fat</span>
+        <span class="section-fat font-bold text-ink-navy text-xl">0<span class="text-soft-slate text-[13px] ml-0.5">g</span></span>
+      </div>
+    </div>
+  </div>
+</template>
+
+{/* Item Row Template */}
+<template id="meal-item-template">
+  <li class="group px-6 md:px-8 py-5 flex items-center justify-between hover:bg-slate-50 transition-colors">
+    <div class="flex-grow pr-4">
+      <div class="flex flex-wrap items-center gap-2 mb-1.5">
+        <h4 class="item-name font-bold text-ink-navy text-[15px] leading-snug">Name</h4>
+        <span class="item-badge"></span>
+      </div>
+      <p class="item-qty text-[13px] text-soft-slate font-medium">1 cup (100g)</p>
+    </div>
+    <div class="flex items-center gap-6">
+      <div class="text-right hidden sm:block">
+        <span class="item-cal font-black text-ink-navy text-xl">0</span>
+        <span class="text-[10px] uppercase font-bold tracking-widest text-soft-slate ml-0.5">kcal</span>
+      </div>
+      <button type="button" class="remove-item-btn text-soft-slate hover:text-red-600 w-8 h-8 flex items-center justify-center rounded-full hover:bg-red-50 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 tap-target opacity-50 group-hover:opacity-100" aria-label="Remove item">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+      </button>
+    </div>
+  </li>
+</template>
+
+<style>
+  .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+  .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+  .custom-scrollbar::-webkit-scrollbar-thumb { background-color: var(--color-border-soft); border-radius: 10px; }
+</style>
+
+<script>
+  import { MEAL_SECTIONS } from '../../lib/meal/mealSections';
+  import { calculateDayTotals, calculateMealSectionTotals, getMealSourceSummary, getMealWarnings, hasAnyMealItems, calculateMealContributionPercent } from '../../lib/meal/mealCalculation';
+  import { formatMealCalories, formatMealMacro, formatMealSodium, formatMealQuantity, formatMealSectionLabel } from '../../lib/meal/mealFormatting';
+  import { calculateFoodItem } from '../../lib/nutrition/calculateNutrition';
+  import type { MealDayState, MealSectionState, MealFoodItem, MealSectionId } from '../../lib/meal/types';
+  import { getFromCache, setInCache, generateCacheKey } from '../../lib/performance/clientCache';
+
+  // State
+  const state: MealDayState = {
+    sections: {
+      breakfast: { id: 'breakfast', items: [], totals: { nutrients: {} as any, calories: 0, itemCount: 0, totalGrams: 0, sourceSummary: { usda: 0, local: 0, unknown: 0, warnings: [] }, warnings: [], partialData: [], invalidItems: [] } },
+      lunch: { id: 'lunch', items: [], totals: { nutrients: {} as any, calories: 0, itemCount: 0, totalGrams: 0, sourceSummary: { usda: 0, local: 0, unknown: 0, warnings: [] }, warnings: [], partialData: [], invalidItems: [] } },
+      dinner: { id: 'dinner', items: [], totals: { nutrients: {} as any, calories: 0, itemCount: 0, totalGrams: 0, sourceSummary: { usda: 0, local: 0, unknown: 0, warnings: [] }, warnings: [], partialData: [], invalidItems: [] } },
+      snacks: { id: 'snacks', items: [], totals: { nutrients: {} as any, calories: 0, itemCount: 0, totalGrams: 0, sourceSummary: { usda: 0, local: 0, unknown: 0, warnings: [] }, warnings: [], partialData: [], invalidItems: [] } },
+      drinks: { id: 'drinks', items: [], totals: { nutrients: {} as any, calories: 0, itemCount: 0, totalGrams: 0, sourceSummary: { usda: 0, local: 0, unknown: 0, warnings: [] }, warnings: [], partialData: [], invalidItems: [] } },
+    },
+    dayTotals: { nutrients: {} as any, calories: 0, itemCount: 0, totalGrams: 0, sourceSummary: { usda: 0, local: 0, unknown: 0, warnings: [] }, warnings: [], partialData: [], invalidItems: [] }
+  };
+
+  let activeSectionId: MealSectionId | null = null;
+  let activeFoodDetails: any = null;
+  let searchTimeout: ReturnType<typeof setTimeout>;
+  let searchAbortController: AbortController | null = null;
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initUI();
+    bindEvents();
+    renderState();
+  });
+
+  function initUI() {
+    const container = document.getElementById('meal-sections-container');
+    const template = document.getElementById('meal-section-template') as HTMLTemplateElement;
+    if (!container || !template) return;
+
+    MEAL_SECTIONS.forEach(def => {
+      const clone = template.content.cloneNode(true) as DocumentFragment;
+      const sectionEl = clone.querySelector('.meal-section-card') as HTMLElement;
+      sectionEl.setAttribute('data-section-id', def.id);
+      
+      const title = clone.querySelector('.section-title');
+      if (title) title.textContent = def.label;
+
+      const addBtn = clone.querySelector('.add-item-btn');
+      if (addBtn) {
+        addBtn.addEventListener('click', () => openSearchModal(def.id));
+      }
+      
+      const clearBtn = clone.querySelector('.clear-section-btn');
+      if (clearBtn) {
+        clearBtn.addEventListener('click', () => {
+           state.sections[def.id].items = [];
+           updateTotals();
+        });
+      }
+
+      container.appendChild(clone);
+    });
+
+    document.body.appendChild(document.getElementById('meal-search-modal-template')!.content.cloneNode(true));
+  }
+
+  function bindEvents() {
+    const modal = document.getElementById('meal-search-modal');
+    const closeBtns = document.querySelectorAll('.close-modal-btn');
+    const searchInput = document.getElementById('meal-search-input') as HTMLInputElement;
+    const backBtn = document.getElementById('back-to-search-btn');
+    const addBtn = document.getElementById('add-food-btn');
+    const clearAllBtn = document.getElementById('clear-all-btn');
+    
+    const exampleBtns = document.querySelectorAll('.meal-example-btn');
+    exampleBtns.forEach(btn => {
+       btn.addEventListener('click', async (e) => {
+          const id = (e.currentTarget as HTMLElement).getAttribute('data-example-id');
+          await loadExample(id!);
+       });
+    });
+
+    clearAllBtn?.addEventListener('click', () => {
+      if(confirm('Are you sure you want to clear all meals?')) {
+        Object.values(state.sections).forEach(s => s.items = []);
+        updateTotals();
+      }
+    });
+
+    closeBtns.forEach(btn => {
+      btn.addEventListener('click', closeModal);
+    });
+
+    backBtn?.addEventListener('click', () => {
+      document.getElementById('details-view')?.classList.add('hidden');
+      document.getElementById('search-view')?.classList.remove('hidden');
+      activeFoodDetails = null;
+    });
+
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        const query = (e.target as HTMLInputElement).value.trim();
+        clearTimeout(searchTimeout);
+        if (query.length < 2) {
+          document.getElementById('meal-search-results')!.innerHTML = '';
+          return;
+        }
+        
+        document.getElementById('meal-search-loading')?.classList.remove('hidden');
+        document.getElementById('meal-search-results')!.innerHTML = '';
+        
+        searchTimeout = setTimeout(async () => {
+          if (searchAbortController) searchAbortController.abort();
+          searchAbortController = new AbortController();
+          
+          try {
+            const cacheKey = generateCacheKey('/api/foods/search', { q: query });
+            let data = getFromCache(cacheKey);
+            if (!data) {
+              const res = await fetch(`/api/foods/search?q=${encodeURIComponent(query)}`, {
+                signal: searchAbortController.signal
+              });
+              data = await res.json();
+              setInCache(cacheKey, data, 15);
+            }
+            renderSearchResults(data.results || []);
+          } catch(e: any) {
+            if (e.name === 'AbortError') return;
+            document.getElementById('meal-search-results')!.innerHTML = '<li class="p-4 text-red-600 text-[15px] font-medium text-center">Search failed.</li>';
+          } finally {
+            document.getElementById('meal-search-loading')?.classList.add('hidden');
+          }
+        }, 300);
+      });
+    }
+
+    addBtn?.addEventListener('click', () => {
+      if (!activeFoodDetails || !activeSectionId) return;
+      
+      const qtyInput = document.getElementById('food-qty') as HTMLInputElement;
+      const unitSelect = document.getElementById('food-unit') as HTMLSelectElement;
+      const quantity = parseFloat(qtyInput.value);
+      const unit = unitSelect.value;
+      
+      if (isNaN(quantity) || quantity <= 0) {
+        alert('Please enter a valid quantity.');
+        return;
+      }
+      
+      const calcItem = calculateFoodItem({
+        food: activeFoodDetails,
+        quantity,
+        unit
+      });
+      
+      const mealItem: MealFoodItem = {
+        ...calcItem,
+        mealItemId: Math.random().toString(36).substr(2, 9)
+      };
+      
+      state.sections[activeSectionId].items.push(mealItem);
+      updateTotals();
+      closeModal();
+    });
+  }
+
+  function openSearchModal(sectionId: MealSectionId) {
+    activeSectionId = sectionId;
+    const modal = document.getElementById('meal-search-modal');
+    const title = document.getElementById('search-modal-title');
+    const input = document.getElementById('meal-search-input') as HTMLInputElement;
+    
+    if (title) title.textContent = `Add to ${formatMealSectionLabel(sectionId)}`;
+    if (input) {
+      input.value = '';
+      input.focus();
+    }
+    
+    document.getElementById('meal-search-results')!.innerHTML = '';
+    document.getElementById('search-view')?.classList.remove('hidden');
+    document.getElementById('details-view')?.classList.add('hidden');
+    
+    modal?.classList.remove('hidden');
+  }
+
+  function closeModal() {
+    activeSectionId = null;
+    activeFoodDetails = null;
+    document.getElementById('meal-search-modal')?.classList.add('hidden');
+  }
+
+  function renderSearchResults(results: any[]) {
+    const list = document.getElementById('meal-search-results');
+    if (!list) return;
+    
+    if (results.length === 0) {
+      list.innerHTML = '<li class="p-6 text-soft-slate text-[15px] font-medium text-center bg-white rounded-xl border border-border-soft">No foods found. Try <strong class="text-ink-navy">oats</strong> or <strong class="text-ink-navy">banana</strong>.</li>';
+      return;
+    }
+    
+    list.innerHTML = '';
+    results.slice(0, 15).forEach(item => {
+      const li = document.createElement('li');
+      li.className = 'mb-3';
+      
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'w-full text-left p-5 focus:outline-none bg-white hover:bg-slate-50 border border-border-soft rounded-xl shadow-sm hover:shadow transition-all group';
+      
+      const badgeColor = item.source === 'usda' ? 'bg-mint-wash text-usda-emerald border-emerald-soft' : 'bg-slate-50 text-soft-slate border-border-soft';
+      
+      btn.innerHTML = `
+        <div class="flex justify-between items-start gap-4">
+          <div class="flex-1">
+            <div class="font-bold text-ink-navy text-[15px]">${item.displayName || item.name}</div>
+            <div class="text-[13px] font-medium text-soft-slate mt-1">${item.category || item.dataType || ''}</div>
+          </div>
+          <span class="inline-flex shrink-0 items-center px-2 py-0.5 border rounded text-[10px] uppercase tracking-widest font-bold ${badgeColor}">
+            ${item.sourceLabel || item.source}
+          </span>
+        </div>
+      `;
+      
+      btn.addEventListener('click', () => loadFoodDetails(item.id, item.source));
+      li.appendChild(btn);
+      list.appendChild(li);
+    });
+  }
+
+  async function loadFoodDetails(id: string, source: string) {
+    document.getElementById('meal-search-loading')?.classList.remove('hidden');
+    document.getElementById('meal-search-results')!.innerHTML = '';
+    
+    try {
+      const cacheKey = generateCacheKey('/api/foods/details', { id, source });
+      let data = getFromCache(cacheKey);
+      if (!data) {
+        const res = await fetch(`/api/foods/details?id=${id}&source=${source}`);
+        data = await res.json();
+        setInCache(cacheKey, data, 30);
+      }
+      activeFoodDetails = data.food;
+      
+      // Update details view
+      document.getElementById('selected-food-name')!.textContent = activeFoodDetails.displayName || activeFoodDetails.name;
+      document.getElementById('selected-food-cat')!.textContent = activeFoodDetails.category || '';
+      
+      const badgeColor = activeFoodDetails.source === 'usda' ? 'bg-mint-wash text-usda-emerald border-emerald-soft' : 'bg-slate-50 text-soft-slate border-border-soft';
+      document.getElementById('selected-food-badges')!.innerHTML = `
+        <span class="inline-flex items-center px-2 py-0.5 rounded border text-[10px] uppercase font-bold tracking-widest ${badgeColor}">
+          ${activeFoodDetails.sourceLabel || activeFoodDetails.source}
+        </span>
+      `;
+      
+      const unitSelect = document.getElementById('food-unit') as HTMLSelectElement;
+      unitSelect.innerHTML = '';
+      
+      // Add servings
+      if (activeFoodDetails.servingSizes && activeFoodDetails.servingSizes.length > 0) {
+        activeFoodDetails.servingSizes.forEach((s: any) => {
+           unitSelect.innerHTML += `<option value="${s.label}">${s.label} (${s.grams}g)</option>`;
+        });
+      }
+      unitSelect.innerHTML += `
+        <option value="g">Grams (g)</option>
+        <option value="oz">Ounces (oz)</option>
+      `;
+      
+      const qtyInput = document.getElementById('food-qty') as HTMLInputElement;
+      qtyInput.value = '1';
+      
+      document.getElementById('search-view')?.classList.add('hidden');
+      document.getElementById('details-view')?.classList.remove('hidden');
+      
+    } catch(e) {
+      alert("Failed to load details");
+    } finally {
+      document.getElementById('meal-search-loading')?.classList.add('hidden');
+    }
+  }
+
+  function updateTotals() {
+    Object.values(state.sections).forEach(section => {
+       section.totals = calculateMealSectionTotals(section.items);
+    });
+    state.dayTotals = calculateDayTotals(state.sections);
+    renderState();
+  }
+
+  function renderState() {
+    const hasItems = hasAnyMealItems(state.sections);
+    
+    // Visibility toggles
+    document.getElementById('meal-empty-state')?.classList.toggle('hidden', hasItems);
+    document.getElementById('day-totals-panel')?.classList.toggle('hidden', !hasItems);
+    document.getElementById('meal-macro-breakdown')?.classList.toggle('hidden', !hasItems);
+    
+    // Update sections
+    MEAL_SECTIONS.forEach(def => {
+       const section = state.sections[def.id];
+       const sectionEl = document.querySelector(`[data-section-id="${def.id}"]`);
+       if (!sectionEl) return;
+       
+       const countEl = sectionEl.querySelector('.section-count');
+       if (countEl) countEl.textContent = `${section.items.length} items`;
+       
+       const totalsBar = sectionEl.querySelector('.section-totals-bar');
+       if (totalsBar) {
+          if (section.items.length > 0) {
+             totalsBar.classList.remove('hidden');
+             sectionEl.querySelector('.section-cal')!.textContent = formatMealCalories(section.totals.calories);
+             sectionEl.querySelector('.section-pro')!.innerHTML = `${formatMealMacro(section.totals.nutrients.protein)}<span class="text-soft-slate text-[13px] ml-0.5">g</span>`;
+             sectionEl.querySelector('.section-carb')!.innerHTML = `${formatMealMacro(section.totals.nutrients.carbohydrates)}<span class="text-soft-slate text-[13px] ml-0.5">g</span>`;
+             sectionEl.querySelector('.section-fat')!.innerHTML = `${formatMealMacro(section.totals.nutrients.fat)}<span class="text-soft-slate text-[13px] ml-0.5">g</span>`;
+          } else {
+             totalsBar.classList.add('hidden');
+          }
+       }
+       
+       const list = sectionEl.querySelector('.section-items-list');
+       if (list) {
+          list.innerHTML = '';
+          const tpl = document.getElementById('meal-item-template') as HTMLTemplateElement;
+          
+          section.items.forEach(item => {
+             const clone = tpl.content.cloneNode(true) as DocumentFragment;
+             clone.querySelector('.item-name')!.textContent = item.displayName;
+             clone.querySelector('.item-qty')!.textContent = `${formatMealQuantity(item.quantity, item.unit)} (${Math.round(item.grams)}g)`;
+             clone.querySelector('.item-cal')!.textContent = formatMealCalories(item.nutrients.calories);
+             
+             const badgeColor = item.source === 'usda' ? 'bg-mint-wash text-usda-emerald border-emerald-soft' : 'bg-slate-50 text-soft-slate border-border-soft';
+             clone.querySelector('.item-badge')!.innerHTML = `<span class="inline-flex items-center px-1.5 py-0.5 rounded border text-[9px] font-bold uppercase tracking-widest ${badgeColor}">${item.sourceLabel || item.source}</span>`;
+             
+             const removeBtn = clone.querySelector('.remove-item-btn');
+             if (removeBtn) {
+                removeBtn.addEventListener('click', () => {
+                   state.sections[def.id].items = state.sections[def.id].items.filter(i => i.mealItemId !== item.mealItemId);
+                   updateTotals();
+                });
+             }
+             
+             list.appendChild(clone);
+          });
+       }
+    });
+    
+    // Day Totals
+    if (hasItems) {
+       document.getElementById('day-item-count')!.textContent = `${state.dayTotals.itemCount} items across ${Object.values(state.sections).filter(s => s.items.length > 0).length} meals`;
+       document.getElementById('day-cal')!.textContent = formatMealCalories(state.dayTotals.calories);
+       document.getElementById('day-pro')!.innerHTML = `${formatMealMacro(state.dayTotals.nutrients.protein)}<span class="text-[13px] font-bold text-white/60 ml-0.5">g</span>`;
+       document.getElementById('day-carb')!.innerHTML = `${formatMealMacro(state.dayTotals.nutrients.carbohydrates)}<span class="text-[13px] font-bold text-white/60 ml-0.5">g</span>`;
+       document.getElementById('day-fat')!.innerHTML = `${formatMealMacro(state.dayTotals.nutrients.fat)}<span class="text-[13px] font-bold text-white/60 ml-0.5">g</span>`;
+       document.getElementById('day-fib')!.innerHTML = `${formatMealMacro(state.dayTotals.nutrients.fiber)}<span class="text-[13px] font-bold text-white/60 ml-0.5">g</span>`;
+       document.getElementById('day-sug')!.innerHTML = `${formatMealMacro(state.dayTotals.nutrients.sugar)}<span class="text-[13px] font-bold text-white/60 ml-0.5">g</span>`;
+       document.getElementById('day-sod')!.innerHTML = `${formatMealSodium(state.dayTotals.nutrients.sodium)}<span class="text-[13px] font-bold text-white/60 ml-0.5">mg</span>`;
+       
+       renderBreakdown();
+       renderWarningsAndSource();
+    }
+  }
+
+  function renderBreakdown() {
+     const bars = document.getElementById('meal-bars');
+     const legend = document.getElementById('meal-legend');
+     if (!bars || !legend) return;
+     
+     bars.innerHTML = '';
+     legend.innerHTML = '';
+     
+     const colors = {
+        breakfast: 'bg-usda-emerald',
+        lunch: 'bg-nutrient-amber',
+        dinner: 'bg-ink-navy',
+        snacks: 'bg-berry-accent',
+        drinks: 'bg-soft-slate'
+     };
+     
+     MEAL_SECTIONS.forEach(def => {
+        const sec = state.sections[def.id];
+        if (sec.items.length === 0) return;
+        
+        const pct = calculateMealContributionPercent(sec.totals.calories, state.dayTotals.calories);
+        
+        bars.innerHTML += `<div class="h-full ${colors[def.id as keyof typeof colors]} transition-all duration-700 ease-out" style="width: ${pct}%"></div>`;
+        
+        legend.innerHTML += `
+           <div class="flex flex-col items-center p-3">
+             <div class="flex items-center mb-1.5">
+               <span class="w-3 h-3 rounded-full ${colors[def.id as keyof typeof colors]} mr-2 shadow-sm"></span>
+               <span class="text-[10px] font-bold text-soft-slate uppercase tracking-widest">${def.label}</span>
+             </div>
+             <span class="text-xl font-black text-ink-navy leading-none mb-1">${formatMealCalories(sec.totals.calories)}</span>
+             <span class="text-[11px] font-bold text-soft-slate bg-slate-100 px-2 rounded-full">${pct}%</span>
+           </div>
+        `;
+     });
+  }
+
+  function renderWarningsAndSource() {
+     const notice = document.getElementById('meal-notice');
+     const warningsList = document.getElementById('meal-warnings-list');
+     const sourceSum = document.getElementById('meal-source-summary');
+     const sourceText = document.getElementById('meal-source-text');
+     
+     const warnings = getMealWarnings(state.sections);
+     if (warnings.length > 0 && notice && warningsList) {
+        notice.classList.remove('hidden');
+        warningsList.innerHTML = '';
+        warnings.forEach(w => {
+           warningsList.innerHTML += `<li class="text-[13px] font-medium text-amber-800 leading-relaxed">• ${w.text}</li>`;
+        });
+     } else {
+        notice?.classList.add('hidden');
+     }
+     
+     const ss = getMealSourceSummary(state.sections);
+     if (sourceSum && sourceText) {
+        sourceSum.classList.remove('hidden');
+        const parts = [];
+        if (ss.usda > 0) parts.push(`${ss.usda} USDA`);
+        if (ss.local > 0) parts.push(`${ss.local} Local Fallback`);
+        if (ss.unknown > 0) parts.push(`${ss.unknown} Unknown`);
+        sourceText.textContent = `Data sources: ${parts.join(', ')}`;
+     }
+  }
+
+  async function loadExample(id: string) {
+     const { MEAL_EXAMPLES } = await import('../../lib/meal/mealExamples');
+     const ex = MEAL_EXAMPLES.find(e => e.id === id);
+     if (!ex) return;
+     
+     if(!confirm(`Replace current ${ex.sectionId} with the ${ex.label} example?`)) return;
+     
+     state.sections[ex.sectionId].items = [];
+     
+     const promises = ex.items.map(async (item) => {
+        try {
+           const sRes = await fetch(`/api/foods/search?q=${encodeURIComponent(item.query)}`);
+           const sData = await sRes.json();
+           const match = sData.results?.[0];
+           
+           if (match) {
+              const dRes = await fetch(`/api/foods/details?id=${match.id}&source=${match.source}`);
+              const dData = await dRes.json();
+              
+              const calcItem = calculateFoodItem({
+                 food: dData.food,
+                 quantity: item.quantity,
+                 unit: item.unit
+              });
+              
+              state.sections[ex.sectionId].items.push({
+                 ...calcItem,
+                 mealItemId: Math.random().toString(36).substr(2, 9)
+              });
+           }
+        } catch(e) {
+           console.error("Failed to load example item", item.query);
+        }
+     });
+     
+     await Promise.all(promises);
+     updateTotals();
+  }
+</script>

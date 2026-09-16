@@ -1,0 +1,22 @@
+---
+import Card from './Card.astro';
+
+interface Props {
+  title: string;
+  value: string | number;
+  unit?: string;
+  description?: string;
+  class?: string;
+}
+
+const { title, value, unit, description, class: className = '' } = Astro.props;
+---
+
+<Card variant="elevated" class={`p-6 ${className}`}>
+  <dt class="text-sm font-medium text-muted truncate">{title}</dt>
+  <dd class="mt-2 flex items-baseline gap-2">
+    <span class="text-3xl font-semibold tracking-tight text-foreground tabular-nums">{value}</span>
+    {unit && <span class="text-sm text-muted">{unit}</span>}
+  </dd>
+  {description && <dd class="mt-1 text-xs text-muted">{description}</dd>}
+</Card>

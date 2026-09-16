@@ -1,0 +1,76 @@
+---
+import type { FoodItem } from '../../lib/nutrition/types';
+
+interface Props {
+  food: FoodItem;
+}
+
+const { food } = Astro.props;
+const nutrients = food.nutrientsPer100g || {};
+
+const pro = nutrients.protein || 0;
+const carb = nutrients.carbohydrates || 0;
+const fat = nutrients.fat || 0;
+
+// Simple calorie math for percentages
+const proCals = pro * 4;
+const carbCals = carb * 4;
+const fatCals = fat * 9;
+const totalMacroCals = proCals + carbCals + fatCals;
+
+let proPct = 0, carbPct = 0, fatPct = 0;
+
+if (totalMacroCals > 0) {
+  proPct = Math.round((proCals / totalMacroCals) * 100);
+  carbPct = Math.round((carbCals / totalMacroCals) * 100);
+  fatPct = 100 - proPct - carbPct; // Ensure it adds to 100
+}
+---
+<div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 sm:p-8 h-full">
+  <h3 class="text-lg font-bold text-gray-900 mb-6">Calorie Breakdown</h3>
+  
+  {totalMacroCals > 0 ? (
+    <div class="space-y-6">
+      {/* Visual Bar */}
+      <div class="w-full h-4 flex rounded-full overflow-hidden bg-gray-100">
+        <div class="bg-emerald-500 h-full" style={`width: ${proPct}%`} title={`Protein: ${proPct}%`}></div>
+        <div class="bg-blue-500 h-full" style={`width: ${carbPct}%`} title={`Carbs: ${carbPct}%`}></div>
+        <div class="bg-yellow-500 h-full" style={`width: ${fatPct}%`} title={`Fat: ${fatPct}%`}></div>
+      </div>
+      
+      {/* Legend */}
+      <div class="grid grid-cols-3 gap-2 text-center text-sm">
+        <div>
+          <div class="flex items-center justify-center text-emerald-700 font-bold mb-1">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 mr-2"></span>
+            Protein
+          </div>
+          <div class="text-gray-900 font-black text-lg">{proPct}%</div>
+          <div class="text-gray-500 text-xs">{Number(pro).toFixed(1)}g</div>
+        </div>
+        
+        <div>
+          <div class="flex items-center justify-center text-blue-800 font-bold mb-1">
+            <span class="w-2.5 h-2.5 rounded-full bg-blue-500 mr-2"></span>
+            Carbs
+          </div>
+          <div class="text-gray-900 font-black text-lg">{carbPct}%</div>
+          <div class="text-gray-500 text-xs">{Number(carb).toFixed(1)}g</div>
+        </div>
+        
+        <div>
+          <div class="flex items-center justify-center text-yellow-700 font-bold mb-1">
+            <span class="w-2.5 h-2.5 rounded-full bg-yellow-500 mr-2"></span>
+            Fat
+          </div>
+          <div class="text-gray-900 font-black text-lg">{fatPct}%</div>
+          <div class="text-gray-500 text-xs">{Number(fat).toFixed(1)}g</div>
+        </div>
+      </div>
+    </div>
+  ) : (
+    <div class="text-gray-500 text-sm py-4">
+      Not enough macro data to calculate breakdown.
+    </div>
+  )}
+</div>

@@ -1,0 +1,142 @@
+---
+import SourceBadge from '../ui/SourceBadge.astro';
+import MacroRing from '../ui/MacroRing.astro';
+---
+
+<div class="luxury-card home-nutrition-preview relative overflow-hidden bg-pure-card/90">
+  <div class="absolute -right-12 -top-12 w-48 h-48 bg-mint-wash rounded-full opacity-50 blur-2xl"></div>
+  <div class="absolute -left-12 -bottom-12 w-48 h-48 bg-emerald-soft rounded-full opacity-30 blur-2xl"></div>
+  
+  <div class="relative z-10 preview-stack">
+    
+    <!-- Search Bar Mock -->
+    <div class="preview-search-bar bg-white border border-border-soft rounded-lg px-4 py-3 shadow-sm">
+      <svg class="w-5 h-5 text-usda-emerald shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+      <div class="text-sm text-muted-text font-medium border-r border-border-soft pr-2 mr-1 shrink-0 hidden sm:block">Search</div>
+      <div class="text-sm text-ink-navy preview-search-query flex-1">1 cup oats and banana</div>
+      <div class="ml-auto flex gap-1 shrink-0 hidden sm:flex">
+        <span class="bg-slate-100 text-[10px] text-soft-slate px-1.5 py-0.5 rounded font-mono">⌘</span>
+        <span class="bg-slate-100 text-[10px] text-soft-slate px-1.5 py-0.5 rounded font-mono">K</span>
+      </div>
+    </div>
+
+    <!-- Resolved Food Item -->
+    <div class="preview-result-card bg-white border border-border-soft rounded-lg p-4 shadow-sm">
+      <div class="preview-result-info">
+        <h4 class="font-bold text-ink-navy flex items-center gap-2">
+          Oatmeal Bowl
+          <SourceBadge source="USDA" size="sm" />
+        </h4>
+        <p class="text-xs text-soft-slate mt-1">1 cup cooked oats, 1 medium banana</p>
+      </div>
+      <div class="preview-result-stats">
+        <div class="text-xl font-bold text-ink-navy">265</div>
+        <div class="text-[10px] text-muted-text uppercase tracking-wider font-semibold">Calories</div>
+      </div>
+    </div>
+
+    <!-- Macro Rings -->
+    <div class="macro-grid">
+      <div class="bg-white border border-border-soft rounded-lg shadow-sm min-w-0">
+        <MacroRing value={6} max={50} color="var(--color-usda-emerald)" label="Protein" subtext="6g" />
+      </div>
+      <div class="bg-white border border-border-soft rounded-lg shadow-sm min-w-0">
+        <MacroRing value={55} max={100} color="var(--color-nutrient-amber)" label="Carbs" subtext="55g" />
+      </div>
+      <div class="bg-white border border-border-soft rounded-lg shadow-sm min-w-0">
+        <MacroRing value={4} max={30} color="var(--color-berry-accent)" label="Fat" subtext="4g" />
+      </div>
+    </div>
+
+    <!-- Label Frame & Source Rail -->
+    <div class="preview-engine-card bg-warm-ivory border border-border-soft rounded-lg p-4 shadow-inner">
+      <div class="flex sm:flex-row flex-col sm:items-center justify-between border-b border-border-soft pb-2 mb-2 gap-2">
+        <span class="text-xs font-bold text-ink-navy tracking-wider uppercase">Nutrition Engine</span>
+        <span class="text-[10px] font-semibold text-usda-emerald bg-mint-wash px-2 py-0.5 rounded-full w-fit">Deterministic Totals</span>
+      </div>
+      
+      <div class="flex items-center gap-2 mt-3">
+        <div class="flex -space-x-2 shrink-0">
+          <div class="w-6 h-6 rounded-full bg-mint-wash border border-white flex items-center justify-center text-[10px]" title="Oats">🌾</div>
+          <div class="w-6 h-6 rounded-full bg-yellow-50 border border-white flex items-center justify-center text-[10px]" title="Banana">🍌</div>
+        </div>
+        <div class="text-xs text-soft-slate ml-1 min-w-0">AI parsed → USDA matched</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.home-nutrition-preview {
+  width: min(100%, 760px);
+  margin-inline: auto;
+  padding: clamp(1.25rem, 3vw, 2.25rem);
+}
+
+.preview-stack {
+  display: grid;
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.preview-search-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.preview-search-query {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.preview-result-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-width: 0;
+}
+
+.preview-result-info {
+  min-width: 0;
+}
+
+.preview-result-stats {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+@media (max-width: 414px) {
+  .preview-result-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .preview-result-stats {
+    text-align: left;
+    margin-top: 0.25rem;
+  }
+}
+
+.macro-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.macro-grid > * {
+  min-width: 0;
+}
+
+@media (max-width: 640px) {
+  .macro-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .macro-grid > :last-child {
+    grid-column: 1 / -1;
+  }
+}
+</style>

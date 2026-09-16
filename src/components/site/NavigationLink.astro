@@ -1,0 +1,26 @@
+---
+interface Props {
+  href: string;
+  class?: string;
+  activeClass?: string;
+  inactiveClass?: string;
+  exact?: boolean;
+}
+
+const { 
+  href, 
+  class: className = '', 
+  activeClass = 'text-foreground font-semibold', 
+  inactiveClass = 'text-muted hover:text-foreground',
+  exact = false 
+} = Astro.props;
+
+const pathname = Astro.url.pathname;
+const isActive = exact ? pathname === href : pathname.startsWith(href) && (pathname.length === href.length || pathname[href.length] === '/');
+
+const finalClass = `${className} ${isActive ? activeClass : inactiveClass} transition-colors focus-ring rounded-sm`;
+---
+
+<a href={href} class={finalClass} aria-current={isActive ? "page" : undefined}>
+  <slot />
+</a>

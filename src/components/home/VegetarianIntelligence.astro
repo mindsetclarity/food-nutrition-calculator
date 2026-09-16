@@ -1,0 +1,70 @@
+---
+import FoodChip from '../ui/FoodChip.astro';
+---
+
+<section class="py-24 bg-white border-y border-border-soft overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-16 reveal-hidden" data-reveal>
+      <h2 class="text-3xl md:text-4xl font-extrabold text-ink-navy tracking-tight mb-4">
+        Built for real everyday foods.
+      </h2>
+      <p class="text-lg text-soft-slate">
+        Our database resolves common plant-based foods, grains, and produce with high accuracy.
+      </p>
+    </div>
+
+    <!-- Decorative Vegetarian Food Cards Showcase -->
+    <div class="relative flex justify-center pb-12">
+      <!-- Background glow -->
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-emerald-soft rounded-[100%] blur-[80px] opacity-40"></div>
+
+      <!-- Center Card -->
+      <div class="relative z-20 luxury-card p-5 w-64 transform transition-transform hover:scale-105 reveal-hidden" style="transition-delay: 100ms" data-reveal>
+        <div class="w-full aspect-[4/3] bg-mint-wash rounded-lg mb-4 flex items-center justify-center text-6xl">
+          🥣
+        </div>
+        <h4 class="font-bold text-ink-navy text-lg">Oatmeal Bowl</h4>
+        <div class="text-sm text-soft-slate mb-3">1 cup oats, 1/2 cup berries</div>
+        <div class="flex items-center gap-2">
+          <span class="bg-emerald-50 text-usda-emerald border border-emerald-100 text-[10px] uppercase font-bold px-2 py-0.5 rounded">USDA Data</span>
+          <span class="text-xs font-semibold text-ink-navy ml-auto">~210 kcal</span>
+        </div>
+      </div>
+
+      <!-- Left Card (Slightly behind) -->
+      <div class="absolute z-10 top-8 -left-8 md:left-[15%] luxury-card p-4 w-56 transform -rotate-6 transition-transform hover:rotate-0 hover:scale-105 opacity-90 reveal-hidden" style="transition-delay: 200ms" data-reveal>
+        <div class="w-full aspect-[4/3] bg-yellow-50 rounded-lg mb-3 flex items-center justify-center text-5xl">
+          🥑
+        </div>
+        <h4 class="font-bold text-ink-navy">Avocado Toast</h4>
+        <div class="text-xs text-soft-slate mb-2">1 slice wheat, 1/2 avocado</div>
+        <div class="text-xs font-semibold text-ink-navy">~235 kcal</div>
+      </div>
+
+      <!-- Right Card (Slightly behind) -->
+      <div class="absolute z-10 top-12 -right-8 md:right-[15%] luxury-card p-4 w-56 transform rotate-6 transition-transform hover:rotate-0 hover:scale-105 opacity-90 reveal-hidden" style="transition-delay: 300ms" data-reveal>
+        <div class="w-full aspect-[4/3] bg-orange-50 rounded-lg mb-3 flex items-center justify-center text-5xl">
+          🥗
+        </div>
+        <h4 class="font-bold text-ink-navy">Quinoa Salad</h4>
+        <div class="text-xs text-soft-slate mb-2">1 cup quinoa, chickpeas</div>
+        <div class="text-xs font-semibold text-ink-navy">~320 kcal</div>
+      </div>
+    </div>
+
+    <!-- More chips -->
+    <div class="flex flex-wrap justify-center gap-3 mt-12 max-w-3xl mx-auto reveal-hidden" style="transition-delay: 400ms" data-reveal>
+      <FoodChip icon="🍌" label="banana" class="bg-white" />
+      <FoodChip icon="🌾" label="brown rice" class="bg-white" />
+      <FoodChip icon="🧆" label="lentils" class="bg-white" />
+      <FoodChip icon="🥬" label="spinach" class="bg-white" />
+      <FoodChip icon="🥦" label="broccoli" class="bg-white" />
+      <FoodChip icon="🍠" label="sweet potato" class="bg-white" />
+      <FoodChip icon="🍅" label="tomatoes" class="bg-white" />
+      <FoodChip icon="🥒" label="cucumber" class="bg-white" />
+      <FoodChip icon="🥜" label="almonds" class="bg-white" />
+      <FoodChip icon="🍓" label="berries" class="bg-white" />
+      <FoodChip icon="🤍" label="tofu" class="bg-white" />
+    </div>
+  </div>
+</section>

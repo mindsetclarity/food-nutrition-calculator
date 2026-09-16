@@ -1,0 +1,48 @@
+---
+import Button from '../ui/Button.astro';
+---
+
+<section class="py-24 bg-warm-ivory border-t border-border-soft">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+      
+      <!-- Learn Hub -->
+      <div class="ivory-card p-8 sm:p-10 reveal-hidden" data-reveal>
+        <div class="w-12 h-12 bg-mint-wash text-usda-emerald rounded-full flex items-center justify-center mb-6 border border-emerald-soft">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+        </div>
+        <h3 class="text-2xl font-bold text-ink-navy mb-4">Learn Nutrition</h3>
+        <p class="text-soft-slate mb-8 leading-relaxed">
+          Read our educational guides on calories, macros, reading nutrition labels, and understanding serving sizes. Empower yourself with knowledge before calculating.
+        </p>
+        <ul class="space-y-4 mb-8">
+          <li><a href="/learn/calories-vs-macros" class="text-[15px] font-medium text-ink-navy hover:text-usda-emerald flex items-center group">Calories vs Macros <span class="ml-2 transform transition-transform group-hover:translate-x-1">→</span></a></li>
+          <li><a href="/learn/how-to-read-a-nutrition-facts-label" class="text-[15px] font-medium text-ink-navy hover:text-usda-emerald flex items-center group">Reading Nutrition Labels <span class="ml-2 transform transition-transform group-hover:translate-x-1">→</span></a></li>
+          <li><a href="/learn/serving-size-vs-portion-size" class="text-[15px] font-medium text-ink-navy hover:text-usda-emerald flex items-center group">Serving vs Portion Size <span class="ml-2 transform transition-transform group-hover:translate-x-1">→</span></a></li>
+        </ul>
+        <Button href="/learn" variant="secondary" class="w-full sm:w-auto">Visit Learn Hub</Button>
+      </div>
+
+      <!-- Trust & Methodology -->
+      <div class="ivory-card p-8 sm:p-10 reveal-hidden" style="transition-delay: 200ms" data-reveal>
+        <div class="w-12 h-12 bg-slate-100 text-soft-slate rounded-full flex items-center justify-center mb-6 border border-border-soft">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+        </div>
+        <h3 class="text-2xl font-bold text-ink-navy mb-4">Our Methodology</h3>
+        <p class="text-soft-slate mb-8 leading-relaxed">
+          We believe in transparency. See exactly how our calculator processes text, queries the USDA FoodData Central, and runs deterministic math to produce final estimates.
+        </p>
+        <div class="bg-slate-50 border border-border-soft p-4 rounded-lg mb-8">
+          <p class="text-sm text-ink-navy font-semibold mb-2">Key Principles:</p>
+          <ul class="text-sm text-soft-slate space-y-2 list-disc pl-4">
+            <li>Never override USDA values with AI generation.</li>
+            <li>Always label the source of the nutrition data.</li>
+            <li>Maintain a predictable, math-based engine.</li>
+          </ul>
+        </div>
+        <Button href="/methodology" variant="secondary" class="w-full sm:w-auto">Read Methodology</Button>
+      </div>
+
+    </div>
+  </div>
+</section>

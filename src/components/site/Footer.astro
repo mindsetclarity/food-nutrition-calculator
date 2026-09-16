@@ -1,0 +1,76 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-warm-ivory border-t border-border-soft pt-16 pb-12 mt-auto">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-8 mb-12">
+      <div class="col-span-1 md:col-span-4 lg:col-span-4">
+        <a href="/" class="flex items-center gap-2 text-xl font-semibold tracking-tight text-ink-navy mb-4 focus-ring rounded-md inline-flex">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-mint-wash text-usda-emerald border border-emerald-soft">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          </span>
+          <span class="text-usda-emerald">Food</span> Nutrition Calculator
+        </a>
+        <p class="text-[15px] text-soft-slate leading-relaxed max-w-sm mb-6">
+          A smarter nutrition calculator for foods, meals, and recipes. Source-labeled estimates you can trust.
+        </p>
+        <div class="bg-pure-card border border-border-soft rounded-lg p-4 inline-block">
+          <p class="text-xs font-medium text-ink-navy mb-1 flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5 text-usda-emerald" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            Source Transparency
+          </p>
+          <p class="text-xs text-soft-slate leading-tight max-w-[240px]">
+            USDA-first where available &middot; Local fallback clearly labeled &middot; AI parsing does not own final nutrition totals.
+          </p>
+        </div>
+      </div>
+      
+      <div class="col-span-1 md:col-span-2 lg:col-span-2">
+        <h3 class="text-xs font-bold text-ink-navy tracking-wider uppercase mb-5">Tools</h3>
+        <ul class="space-y-3.5">
+          <li><a href="/calculator" class="text-[15px] text-soft-slate hover:text-usda-emerald transition-colors focus-ring rounded-sm">Calculator</a></li>
+          <li><a href="/recipe-nutrition-calculator" class="text-[15px] text-soft-slate hover:text-usda-emerald transition-colors focus-ring rounded-sm">Recipe Calculator</a></li>
+          <li><a href="/meal-calorie-calculator" class="text-[15px] text-soft-slate hover:text-usda-emerald transition-colors focus-ring rounded-sm">Meal Calorie Calculator</a></li>
+          <li><a href="/compare-foods" class="text-[15px] text-soft-slate hover:text-usda-emerald transition-colors focus-ring rounded-sm">Compare Foods</a></li>
+          <li><a href="/foods" class="text-[15px] text-soft-slate hover:text-usda-emerald transition-colors focus-ring rounded-sm">Foods Directory</a></li>
+        </ul>
+      </div>
+      
+      <div class="col-span-1 md:col-span-2 lg:col-span-2">
+        <h3 class="text-xs font-bold text-ink-navy tracking-wider uppercase mb-5">Learn</h3>
+        <ul class="space-y-3.5">
+          <li><a href="/learn" class="text-[15px] text-soft-slate hover:text-usda-emerald transition-colors focus-ring rounded-sm">Learn Hub</a></li>
+        </ul>
+      </div>
+
+      <div class="col-span-1 md:col-span-2 lg:col-span-2">
+        <h3 class="text-xs font-bold text-ink-navy tracking-wider uppercase mb-5">Trust</h3>
+        <ul class="space-y-3.5">
+          <li><a href="/about" class="text-[15px] text-soft-slate hover:text-usda-emerald transition-colors focus-ring rounded-sm">About</a></li>
+          <li><a href="/methodology" class="text-[15px] text-soft-slate hover:text-usda-emerald transition-colors focus-ring rounded-sm">Methodology</a></li>
+          <li><a href="/data-sources" class="text-[15px] text-soft-slate hover:text-usda-emerald transition-colors focus-ring rounded-sm">Data Sources</a></li>
+          <li><a href="/contact" class="text-[15px] text-soft-slate hover:text-usda-emerald transition-colors focus-ring rounded-sm">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="col-span-1 md:col-span-2 lg:col-span-2">
+        <h3 class="text-xs font-bold text-ink-navy tracking-wider uppercase mb-5">Legal</h3>
+        <ul class="space-y-3.5">
+          <li><a href="/privacy" class="text-[15px] text-soft-slate hover:text-usda-emerald transition-colors focus-ring rounded-sm">Privacy</a></li>
+          <li><a href="/terms" class="text-[15px] text-soft-slate hover:text-usda-emerald transition-colors focus-ring rounded-sm">Terms</a></li>
+          <li><a href="/disclaimer" class="text-[15px] text-soft-slate hover:text-usda-emerald transition-colors focus-ring rounded-sm">Disclaimer</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="border-t border-border-soft pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
+      <p class="text-sm text-soft-slate text-center md:text-left">
+        &copy; {currentYear} Food Nutrition Calculator. All rights reserved.
+      </p>
+      <p class="text-[13px] text-muted-text text-center md:text-right max-w-2xl leading-relaxed">
+        <strong>Not medical advice:</strong> Nutrition values are estimates for personal planning. They are not a substitute for professional medical advice, diagnosis, or treatment. Always consult a healthcare professional.
+      </p>
+    </div>
+  </div>
+</footer>

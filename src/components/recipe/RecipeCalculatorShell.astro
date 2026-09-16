@@ -1,0 +1,571 @@
+---
+import { Icon } from 'astro-icon/components';
+import NutritionFactsLabel from '../nutrition-label/NutritionFactsLabel.astro';
+---
+<section class="py-12 bg-warm-ivory relative z-10 min-h-screen">
+  <div class="max-w-[1200px] mx-auto px-4 md:px-6">
+    
+    <!-- Step Indicator -->
+    <div class="flex items-center justify-center gap-4 md:gap-8 mb-8 text-[11px] font-bold uppercase tracking-widest text-soft-slate">
+      <span class="flex items-center gap-2"><span class="w-5 h-5 rounded-full bg-slate-200 flex items-center justify-center text-ink-navy">1</span> Paste recipe</span>
+      <span class="w-8 h-px bg-slate-200 hidden sm:block"></span>
+      <span class="flex items-center gap-2"><span class="w-5 h-5 rounded-full bg-slate-200 flex items-center justify-center text-ink-navy">2</span> Review matches</span>
+      <span class="w-8 h-px bg-slate-200 hidden sm:block"></span>
+      <span class="flex items-center gap-2"><span class="w-5 h-5 rounded-full bg-slate-200 flex items-center justify-center text-ink-navy">3</span> See totals</span>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      
+      <!-- Input Section (Left) -->
+      <div class="lg:col-span-7 flex flex-col gap-6">
+        
+        <div class="bg-white rounded-[var(--radius-card)] shadow-soft border border-border-soft overflow-hidden">
+          <div class="p-6 md:p-8 bg-white relative">
+            
+            <div class="mb-4 text-[13px] text-soft-slate">
+              <p>AI helps read your text. Final totals come from food data.</p>
+            </div>
+
+            <form id="recipe-form" class="space-y-5">
+              <div>
+                <label for="recipe-name" class="block text-[11px] font-bold text-ink-navy uppercase tracking-widest mb-2">Recipe Name (Optional)</label>
+                <input type="text" id="recipe-name" placeholder="e.g. Protein Oat Bowl" class="w-full h-14 px-4 rounded-[var(--radius-button)] bg-white border border-border-soft text-ink-navy placeholder-soft-slate focus-premium transition-shadow shadow-sm text-base">
+              </div>
+              
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <label for="recipe-ingredients" class="block text-[11px] font-bold text-ink-navy uppercase tracking-widest">Ingredients</label>
+                  <span class="text-[10px] uppercase font-bold tracking-widest text-usda-emerald bg-mint-wash px-2 py-0.5 rounded border border-emerald-soft">1 per line</span>
+                </div>
+                <textarea id="recipe-ingredients" rows="6" placeholder="1 cup rolled oats&#10;1 banana&#10;2 tbsp peanut butter&#10;1 cup whole milk&#10;1 scoop protein powder" class="w-full p-4 rounded-[var(--radius-button)] bg-white border border-border-soft text-ink-navy placeholder-soft-slate focus-premium transition-shadow shadow-sm resize-y text-base leading-relaxed"></textarea>
+              </div>
+
+              <div>
+                <label for="recipe-servings" class="block text-[11px] font-bold text-ink-navy uppercase tracking-widest mb-2">Servings / Yield</label>
+                <input type="number" id="recipe-servings" value="2" min="1" max="100" class="w-full sm:w-1/3 h-14 px-4 rounded-[var(--radius-button)] bg-white border border-border-soft text-ink-navy focus-premium transition-shadow shadow-sm text-base font-bold">
+              </div>
+
+              <div class="flex flex-wrap items-center gap-3 pt-6 border-t border-border-soft">
+                <button type="submit" id="parse-recipe-btn" class="h-14 px-8 rounded-[var(--radius-button)] bg-ink-navy text-white text-[15px] font-semibold hover:bg-deep-slate transition-colors disabled:opacity-50 shadow-ink hover:shadow-premium interactive-button">
+                  Analyze Recipe
+                </button>
+                <button type="button" id="example-recipe-btn" class="text-[11px] font-bold tracking-widest uppercase text-usda-emerald hover:text-fresh-leaf hover:underline px-4 py-2 interactive-button">
+                  Use example
+                </button>
+                <button type="button" id="clear-recipe-btn" class="text-[11px] font-bold tracking-widest uppercase text-soft-slate hover:text-ink-navy px-4 py-2 hidden ml-auto interactive-button">
+                  Clear
+                </button>
+              </div>
+              
+              <div id="recipe-error" class="hidden mt-4 p-4 bg-red-50 text-red-700 text-[13px] font-medium rounded-[var(--radius-button)] border border-red-100 flex items-start gap-2">
+                <svg class="w-4 h-4 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                <span class="message-text"></span>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div id="review-section" class="bg-white rounded-[var(--radius-card)] shadow-soft border border-border-soft overflow-hidden hidden flex-col">
+          <div class="p-6 md:p-8 border-b border-border-soft bg-slate-50 flex justify-between items-center">
+            <div>
+              <h3 class="text-lg font-bold text-ink-navy">Review matches</h3>
+              <p class="text-xs text-soft-slate mt-1">Check the food matches and amounts before calculating totals.</p>
+            </div>
+            <span id="provider-notice" class="text-[10px] uppercase font-bold tracking-widest bg-amber-100 text-amber-800 border border-amber-200 px-2 py-1 rounded hidden"></span>
+          </div>
+          
+          <div class="p-6 md:p-8 max-h-[600px] overflow-y-auto custom-scrollbar bg-white" id="ingredients-list">
+            <!-- Cards go here -->
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Results Section (Right) -->
+      <div class="lg:col-span-5 flex flex-col gap-6 relative">
+        <div class="sticky top-28 space-y-6">
+
+          <div id="totals-empty-state" class="bg-white rounded-[var(--radius-card)] border border-border-soft shadow-soft p-8 text-center text-soft-slate">
+            <svg class="w-12 h-12 mx-auto mb-4 text-slate-200" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+            <p class="font-bold text-ink-navy mb-1">Paste ingredients to begin.</p>
+            <p class="text-sm">Use one ingredient per line. You can review matches before totals are calculated.</p>
+          </div>
+
+          <div id="totals-dashboard" class="hidden space-y-6">
+            <div class="bg-ink-navy text-white rounded-[var(--radius-card)] p-8 shadow-premium overflow-hidden relative">
+              <div class="absolute -right-12 -top-12 w-48 h-48 bg-usda-emerald rounded-full opacity-20 blur-3xl"></div>
+              <h3 class="text-white/70 text-[11px] font-bold uppercase tracking-widest mb-3 relative z-10 flex items-center gap-2">
+                Per Serving
+                <span class="bg-white/10 text-white px-2 py-0.5 rounded text-[9px]"><span id="serving-divider-label">2</span> servings</span>
+              </h3>
+              <div class="flex items-baseline gap-2 relative z-10 mb-6">
+                <div class="text-5xl font-black tracking-tighter" id="ps-cals">0</div>
+                <div class="text-white/60 font-semibold">kcal</div>
+              </div>
+              
+              <div class="grid grid-cols-3 gap-4 border-t border-white/20 pt-6 relative z-10">
+                <div>
+                  <div class="text-white/60 text-[10px] font-bold uppercase tracking-widest mb-1.5">Protein</div>
+                  <div class="font-black text-xl"><span id="ps-pro">0</span><span class="text-sm font-medium text-white/60 ml-0.5">g</span></div>
+                </div>
+                <div>
+                  <div class="text-white/60 text-[10px] font-bold uppercase tracking-widest mb-1.5">Carbs</div>
+                  <div class="font-black text-xl"><span id="ps-carbs">0</span><span class="text-sm font-medium text-white/60 ml-0.5">g</span></div>
+                </div>
+                <div>
+                  <div class="text-white/60 text-[10px] font-bold uppercase tracking-widest mb-1.5">Fat</div>
+                  <div class="font-black text-xl"><span id="ps-fat">0</span><span class="text-sm font-medium text-white/60 ml-0.5">g</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-4 transform -rotate-1 hover:rotate-0 transition-transform duration-300">
+              <NutritionFactsLabel 
+                 title="Nutrition Facts"
+                 servingLabel="1 serving"
+                 nutrients={{
+                   calories: null,
+                   protein: null,
+                   carbohydrates: null,
+                   fat: null,
+                   fiber: null,
+                   sugar: null,
+                   sodium: null
+                 }}
+              />
+              <p class="text-[10px] text-center text-soft-slate mt-2">For personal planning only. Not a commercial packaging label.</p>
+            </div>
+
+            <details class="bg-white rounded-[var(--radius-card)] border border-border-soft shadow-soft group">
+              <summary class="p-4 font-bold text-sm text-ink-navy cursor-pointer list-none flex items-center justify-between outline-none focus-visible:ring-2 focus-visible:ring-usda-emerald">
+                Show ingredient breakdown
+                <svg class="w-5 h-5 text-soft-slate group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              </summary>
+              <div class="p-6 border-t border-border-soft">
+                <h4 class="text-[11px] font-bold uppercase tracking-widest mb-3 text-ink-navy">Total Recipe Nutrition</h4>
+                <div class="space-y-3 text-sm mb-6">
+                  <div class="flex justify-between items-center">
+                    <span class="text-soft-slate font-medium">Calories</span>
+                    <span class="font-black text-ink-navy" id="tot-cals">0</span>
+                  </div>
+                  <div class="flex justify-between items-center">
+                    <span class="text-soft-slate font-medium">Protein</span>
+                    <span class="font-bold text-ink-navy"><span id="tot-pro">0</span>g</span>
+                  </div>
+                  <div class="flex justify-between items-center">
+                    <span class="text-soft-slate font-medium">Carbs</span>
+                    <span class="font-bold text-ink-navy"><span id="tot-carbs">0</span>g</span>
+                  </div>
+                  <div class="flex justify-between items-center">
+                    <span class="text-soft-slate font-medium">Fat</span>
+                    <span class="font-bold text-ink-navy"><span id="tot-fat">0</span>g</span>
+                  </div>
+                  <div class="flex justify-between items-center pt-3 border-t border-border-soft mt-1">
+                    <span class="text-soft-slate font-medium">Fiber</span>
+                    <span class="font-bold text-ink-navy"><span id="tot-fib">0</span>g</span>
+                  </div>
+                  <div class="flex justify-between items-center">
+                    <span class="text-soft-slate font-medium">Sugar</span>
+                    <span class="font-bold text-ink-navy"><span id="tot-sug">0</span>g</span>
+                  </div>
+                  <div class="flex justify-between items-center">
+                    <span class="text-soft-slate font-medium">Sodium</span>
+                    <span class="font-bold text-ink-navy"><span id="tot-sod">0</span>mg</span>
+                  </div>
+                </div>
+                
+                <div class="bg-slate-50 rounded p-4 text-[11px] text-soft-slate leading-relaxed font-medium">
+                  <p>USDA data is used when available. Local estimates are clearly labeled. AI may help parse text but does not calculate final totals.</p>
+                </div>
+              </div>
+            </details>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+  .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+  .custom-scrollbar::-webkit-scrollbar-thumb { background-color: var(--color-border-soft); border-radius: 10px; }
+</style>
+
+<script>
+  import { calculateFoodItem } from '../../lib/nutrition/calculateNutrition';
+  import { calculateRecipeTotals, validateServings } from '../../lib/recipe';
+  import { getFromCache, setInCache, generateCacheKey } from '../../lib/performance/clientCache';
+  
+  const recipeForm = document.getElementById('recipe-form');
+  const ingredientsInput = document.getElementById('recipe-ingredients') as HTMLTextAreaElement;
+  const servingsInput = document.getElementById('recipe-servings') as HTMLInputElement;
+  const nameInput = document.getElementById('recipe-name') as HTMLInputElement;
+  const parseBtn = document.getElementById('parse-recipe-btn') as HTMLButtonElement;
+  const exampleBtn = document.getElementById('example-recipe-btn');
+  const clearBtn = document.getElementById('clear-recipe-btn');
+  const errorEl = document.getElementById('recipe-error');
+  const errorText = errorEl.querySelector('.message-text');
+  
+  const reviewSection = document.getElementById('review-section');
+  const providerNotice = document.getElementById('provider-notice');
+  const ingredientsList = document.getElementById('ingredients-list');
+  
+  const servingDividerLabel = document.getElementById('serving-divider-label');
+  const psCals = document.getElementById('ps-cals');
+  const psPro = document.getElementById('ps-pro');
+  const psCarbs = document.getElementById('ps-carbs');
+  const psFat = document.getElementById('ps-fat');
+  
+  const totCals = document.getElementById('tot-cals');
+  const totPro = document.getElementById('tot-pro');
+  const totCarbs = document.getElementById('tot-carbs');
+  const totFat = document.getElementById('tot-fat');
+  const totFib = document.getElementById('tot-fib');
+  const totSug = document.getElementById('tot-sug');
+  const totSod = document.getElementById('tot-sod');
+
+  const totalsEmptyState = document.getElementById('totals-empty-state');
+  const totalsDashboard = document.getElementById('totals-dashboard');
+
+  let parsedIngredients = [];
+  
+  const formatN = (val) => val !== null && val !== undefined ? Number(val).toFixed(1) : 'N/A';
+  const formatInt = (val) => val !== null && val !== undefined ? Math.round(val) : 'N/A';
+
+  exampleBtn.addEventListener('click', () => {
+    nameInput.value = "Protein Oat Bowl";
+    ingredientsInput.value = "1 cup rolled oats\n1 banana\n2 tbsp peanut butter\n1 cup whole milk\n1 scoop protein powder";
+    servingsInput.value = "2";
+    clearBtn.classList.remove('hidden');
+  });
+
+  ingredientsInput.addEventListener('input', () => {
+    clearBtn.classList.toggle('hidden', ingredientsInput.value.trim().length === 0);
+  });
+
+  clearBtn.addEventListener('click', () => {
+    ingredientsInput.value = '';
+    nameInput.value = '';
+    servingsInput.value = '2';
+    clearBtn.classList.add('hidden');
+    reviewSection.classList.add('hidden');
+    errorEl.classList.add('hidden');
+    parsedIngredients = [];
+    updateCalculations();
+  });
+
+  servingsInput.addEventListener('input', () => {
+    updateCalculations();
+  });
+
+  recipeForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const text = ingredientsInput.value.trim();
+    if (text.length < 2) {
+      showError("Paste at least one ingredient.");
+      return;
+    }
+    
+    parseBtn.disabled = true;
+    parseBtn.textContent = 'Reading ingredients...';
+    errorEl.classList.add('hidden');
+    reviewSection.classList.add('hidden');
+    parsedIngredients = [];
+    ingredientsList.innerHTML = '';
+    updateCalculations();
+    
+    try {
+      const res = await fetch('/api/parse-meal', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text, mode: 'recipe' })
+      });
+      
+      const data = await res.json();
+      
+      if (!data.ok) {
+        throw new Error(data.message || 'Parsing failed.');
+      }
+      
+      parsedIngredients = data.parsed.items.map((item) => ({ ...item, resolvedFood: null, resolving: true, resolutionError: null, calculated: null }));
+      
+      if (data.provider === 'basic' || data.provider === 'mock') {
+        providerNotice.textContent = 'MOCK PARSER';
+        providerNotice.classList.remove('hidden');
+      } else {
+        providerNotice.classList.add('hidden');
+      }
+      
+      reviewSection.classList.remove('hidden');
+      renderIngredients();
+      resolveIngredients();
+      
+    } catch (err: any) {
+      showError(err.message || 'Failed to parse recipe.');
+    } finally {
+      parseBtn.disabled = false;
+      parseBtn.textContent = 'Analyze Recipe';
+    }
+  });
+
+  function showError(msg) {
+    errorText.textContent = msg;
+    errorEl.classList.remove('hidden');
+  }
+
+  function renderIngredients() {
+    ingredientsList.innerHTML = parsedIngredients.map((item, idx) => {
+      let statusHtml = '';
+      if (item.resolving) {
+        statusHtml = `<span class="text-[11px] font-bold text-soft-slate uppercase tracking-widest flex items-center gap-1.5"><svg class="animate-spin h-3.5 w-3.5 text-usda-emerald" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path></svg> Finding match...</span>`;
+      } else if (item.resolutionError) {
+        statusHtml = `<span class="text-[11px] font-bold uppercase tracking-widest text-red-600">${item.resolutionError}</span>`;
+      } else if (item.resolvedFood) {
+        const isUsda = item.resolvedFood.source === 'usda';
+        const badgeClasses = isUsda ? "bg-mint-wash text-usda-emerald border-emerald-soft" : "bg-slate-50 text-soft-slate border-border-soft";
+        statusHtml = `<div class="flex items-center gap-2 mt-1">
+          <span class="text-[13px] font-bold text-ink-navy truncate max-w-[200px]" title="${item.resolvedFood.displayName}">${item.resolvedFood.displayName}</span>
+          <span class="text-[10px] uppercase font-bold tracking-widest px-1.5 py-0.5 rounded border ${badgeClasses}">${item.resolvedFood.sourceLabel || (isUsda ? 'USDA' : 'Local')}</span>
+        </div>`;
+      }
+      
+      const warningsHtml = (item.warnings.length > 0 || item.needsReview) 
+        ? `<div class="mt-4 text-[11px] font-medium text-amber-800 bg-amber-50 px-3 py-2 rounded-[var(--radius-button)] border border-amber-200 flex items-start gap-2">
+            <svg class="w-4 h-4 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+            <div>${item.warnings.join(' ')} ${item.needsReview ? 'Please review quantity/unit.' : ''}</div>
+           </div>` 
+        : '';
+        
+      return `
+      <div class="bg-white border border-border-soft rounded-[var(--radius-button)] p-5 mb-5 shadow-sm relative group" data-idx="${idx}">
+        <button type="button" class="remove-btn absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-full text-soft-slate hover:text-red-600 hover:bg-red-50 transition-colors tap-target opacity-50 group-hover:opacity-100" aria-label="Remove ingredient">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" /></svg>
+        </button>
+        
+        <div class="mb-5 pr-10">
+          <span class="text-[10px] uppercase font-bold text-usda-emerald tracking-widest block mb-1">Parsed:</span>
+          <span class="text-[15px] font-medium text-ink-navy">${item.rawText}</span>
+        </div>
+        
+        <div class="grid grid-cols-12 gap-3 items-end">
+          <div class="col-span-12 sm:col-span-6">
+            <label class="block text-[10px] font-bold text-ink-navy uppercase tracking-widest mb-1.5">Ingredient Search</label>
+            <input type="text" aria-label="Ingredient Search" class="edit-query w-full h-10 px-3 text-base font-medium rounded bg-white border border-border-soft text-ink-navy focus:outline-none focus:border-usda-emerald focus:ring-1 focus:ring-usda-emerald transition-colors" value="${item.usdaSearchQuery || item.foodName}">
+          </div>
+          <div class="col-span-6 sm:col-span-3">
+            <label class="block text-[10px] font-bold text-ink-navy uppercase tracking-widest mb-1.5">Qty</label>
+            <input type="number" aria-label="Quantity" min="0" step="any" class="edit-qty w-full h-10 px-3 text-base font-medium rounded bg-white border border-border-soft text-ink-navy focus:outline-none focus:border-usda-emerald focus:ring-1 focus:ring-usda-emerald transition-colors" value="${item.quantity || ''}">
+          </div>
+          <div class="col-span-6 sm:col-span-3">
+            <label class="block text-[10px] font-bold text-ink-navy uppercase tracking-widest mb-1.5">Unit</label>
+            <input type="text" aria-label="Unit" class="edit-unit w-full h-10 px-3 text-base font-medium rounded bg-white border border-border-soft text-ink-navy focus:outline-none focus:border-usda-emerald focus:ring-1 focus:ring-usda-emerald transition-colors" value="${item.unit || ''}">
+          </div>
+        </div>
+        
+        <div class="flex flex-wrap items-center justify-between mt-5 pt-4 border-t border-border-soft gap-3">
+          <div class="flex-1">
+            ${statusHtml}
+          </div>
+          <button type="button" class="resolve-btn text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 bg-white border border-border-soft rounded text-ink-navy hover:bg-slate-50 transition-colors shrink-0 disabled:opacity-50 shadow-sm">
+            Update Match
+          </button>
+        </div>
+        
+        ${warningsHtml}
+      </div>
+      `;
+    }).join('');
+    
+    document.querySelectorAll('#ingredients-list .remove-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const el = (e.target as Element).closest('[data-idx]');
+        if(!el) return;
+        const idx = parseInt(el.getAttribute('data-idx') || '0');
+        parsedIngredients.splice(idx, 1);
+        renderIngredients();
+        updateCalculations();
+      });
+    });
+    
+    document.querySelectorAll('#ingredients-list .resolve-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const card = (e.target as Element).closest('[data-idx]');
+        if(!card) return;
+        const idx = parseInt(card.getAttribute('data-idx') || '0');
+        const query = (card.querySelector('.edit-query') as HTMLInputElement).value.trim();
+        const qty = parseFloat((card.querySelector('.edit-qty') as HTMLInputElement).value);
+        const unit = (card.querySelector('.edit-unit') as HTMLInputElement).value.trim();
+        
+        parsedIngredients[idx].usdaSearchQuery = query;
+        parsedIngredients[idx].quantity = qty;
+        parsedIngredients[idx].unit = unit;
+        
+        resolveSingleItem(idx);
+      });
+    });
+    
+    document.querySelectorAll('#ingredients-list input').forEach(input => {
+      input.addEventListener('change', (e) => {
+        const card = (e.target as Element).closest('[data-idx]');
+        if(!card) return;
+        const idx = parseInt(card.getAttribute('data-idx') || '0');
+        if ((e.target as Element).classList.contains('edit-qty')) {
+          parsedIngredients[idx].quantity = parseFloat((e.target as HTMLInputElement).value) || null;
+        } else if ((e.target as Element).classList.contains('edit-unit')) {
+          parsedIngredients[idx].unit = (e.target as HTMLInputElement).value.trim();
+        }
+        
+        if (parsedIngredients[idx].resolvedFood) {
+          recalculateSingleItem(idx);
+          updateCalculations();
+        }
+      });
+    });
+  }
+
+  async function resolveSingleItem(idx: number) {
+    const item = parsedIngredients[idx];
+    item.resolving = true;
+    item.resolutionError = null;
+    item.resolvedFood = null;
+    item.calculated = null;
+    renderIngredients();
+    
+    try {
+      const q = encodeURIComponent(item.usdaSearchQuery || item.foodName);
+      const cacheKey = generateCacheKey('/api/foods/search', { q: item.usdaSearchQuery || item.foodName });
+      let searchData = getFromCache(cacheKey);
+      if (!searchData) {
+        const searchRes = await fetch(`/api/foods/search?q=${q}`);
+        searchData = await searchRes.json();
+        setInCache(cacheKey, searchData, 15);
+      }
+      
+      if (searchData.results && searchData.results.length > 0) {
+        const topResult = searchData.results[0];
+        let url = `/api/foods/details?`;
+        if (topResult.source === 'usda' && topResult.fdcId && topResult.fdcId !== '0') {
+          url += `fdcId=${topResult.fdcId}`;
+        } else {
+          url += `id=${encodeURIComponent(topResult.id)}&source=local`;
+        }
+        
+        const detailsCacheKey = generateCacheKey('/api/foods/details', { 
+          id: (topResult.source === 'usda' && topResult.fdcId && topResult.fdcId !== '0') ? undefined : topResult.id,
+          fdcId: (topResult.source === 'usda' && topResult.fdcId && topResult.fdcId !== '0') ? topResult.fdcId : undefined,
+          source: (topResult.source === 'usda' && topResult.fdcId && topResult.fdcId !== '0') ? undefined : 'local'
+        });
+        
+        let detailsData = getFromCache(detailsCacheKey);
+        if (!detailsData) {
+          const detailsRes = await fetch(url);
+          detailsData = await detailsRes.json();
+          setInCache(detailsCacheKey, detailsData, 30);
+        }
+        
+        if (detailsData.ok && detailsData.food) {
+          item.resolvedFood = detailsData.food;
+          item.needsReview = false; 
+          recalculateSingleItem(idx);
+        } else {
+          item.resolutionError = "Could not find details";
+        }
+      } else {
+        item.resolutionError = "No match found";
+      }
+    } catch (err) {
+      item.resolutionError = "Network error";
+    } finally {
+      item.resolving = false;
+      renderIngredients();
+      updateCalculations();
+    }
+  }
+
+  async function resolveIngredients() {
+    const queue = parsedIngredients.map((_, idx) => idx);
+    const inFlight = new Set();
+    
+    while(queue.length > 0 || inFlight.size > 0) {
+      while(inFlight.size < 3 && queue.length > 0) {
+        const idx = queue.shift();
+        if(idx !== undefined) {
+          const p = resolveSingleItem(idx).finally(() => inFlight.delete(p));
+          inFlight.add(p);
+        }
+      }
+      if (inFlight.size > 0) {
+        await Promise.race(inFlight);
+      }
+    }
+  }
+
+  function recalculateSingleItem(idx: number) {
+    const item = parsedIngredients[idx];
+    if (item.resolvedFood && item.quantity > 0 && item.unit) {
+      const calculated = calculateFoodItem({
+        food: item.resolvedFood,
+        quantity: item.quantity,
+        unit: item.unit
+      });
+      if (calculated.validation.isValid) {
+        item.calculated = calculated;
+        item.resolutionError = null;
+      } else {
+        item.calculated = null;
+        item.resolutionError = calculated.validation.error;
+      }
+    } else {
+      item.calculated = null;
+    }
+  }
+
+  function updateCalculations() {
+    const servingsVal = parseFloat(servingsInput.value);
+    const servingsValid = validateServings(servingsVal);
+    const servings = servingsValid.isValid ? servingsVal : 1;
+    
+    servingDividerLabel.textContent = servings.toString();
+    
+    if (parsedIngredients.length === 0) {
+      totalsEmptyState.classList.remove('hidden');
+      totalsDashboard.classList.add('hidden');
+    } else {
+      totalsEmptyState.classList.add('hidden');
+      totalsDashboard.classList.remove('hidden');
+    }
+
+    const validCalculatedItems = parsedIngredients
+      .filter(i => i.calculated !== null)
+      .map(i => i.calculated);
+      
+    const totals = calculateRecipeTotals(validCalculatedItems, servings);
+    
+    psCals.textContent = formatInt(totals.perServing.calories);
+    psPro.textContent = formatN(totals.perServing.protein);
+    psCarbs.textContent = formatN(totals.perServing.carbohydrates);
+    psFat.textContent = formatN(totals.perServing.fat);
+    
+    totCals.textContent = formatInt(totals.calories);
+    totPro.textContent = formatN(totals.nutrients.protein);
+    totCarbs.textContent = formatN(totals.nutrients.carbohydrates);
+    totFat.textContent = formatN(totals.nutrients.fat);
+    totFib.textContent = formatN(totals.nutrients.fiber);
+    totSug.textContent = formatN(totals.nutrients.sugar);
+    totSod.textContent = formatInt(totals.nutrients.sodium);
+    
+    // Dispatch event to update the label
+    window.dispatchEvent(new CustomEvent('update-nutrition-label', {
+      detail: {
+        nutrients: totals.perServing,
+        servings: servings,
+        servingLabel: "1 serving",
+        title: "Nutrition Facts",
+        sourceSummary: totals.sourceSummary
+      }
+    }));
+  }
+
+</script>

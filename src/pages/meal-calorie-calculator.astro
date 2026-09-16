@@ -1,0 +1,26 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import PageHeader from '../components/site/PageHeader.astro';
+import MealCalorieShell from '../components/meal/MealCalorieShell.astro';
+import { buildSoftwareApplicationSchema } from '../lib/seo/schema';
+import { siteConfig } from '../lib/seo/siteConfig';
+
+const title = "Meal Calorie Calculator | Breakfast, Lunch, Dinner & Daily Totals";
+const description = "Build breakfast, lunch, dinner, snacks, and drinks with USDA-first food search and calculate meal calories, macros, and full-day totals.";
+
+const jsonLd = buildSoftwareApplicationSchema({
+  name: "Meal Calorie Calculator",
+  description: description,
+  url: `${siteConfig.siteUrl}/meal-calorie-calculator`
+});
+---
+
+<SiteLayout title={title} description={description} jsonLd={jsonLd}>
+  <PageHeader 
+    title="Meal Calorie Planner" 
+    description="Build full days of eating with USDA-first precision. Plan your macros meal by meal." 
+    breadcrumbs={[{ label: 'Meal Planner' }]} 
+    chipType="meal"
+  />
+  <MealCalorieShell />
+</SiteLayout>

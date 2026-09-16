@@ -1,74 +1,121 @@
 # Food Database Schema
 
-## 1. Purpose of Curated Food Database
-The curated USA food database provides the foundational, validated nutrition truth for the calculator. It is a scalable fallback and fast support layer. The LLM parses user input, but never generates final nutrition truth.
+## `FoodItem` Schema
 
-## 2. Canonical Food Item Schema
-Each food must adhere to the `CuratedFoodItem` schema:
-- `id`: Unique identifier (e.g., `fruit-banana`)
-- `slug`: URL-friendly identifier
-- `displayName`: Short UI name
-- `canonicalName`: Full descriptive name
-- `searchName`: Optimized name for matching
-- `category`: Strict category ID
-- `source`, `sourceLabel`, `isEstimated`: Source attribution
-- `nutrientsPer100g`: Macronutrients and micronutrients
-- `servingSizes`: Array of valid serving sizes
-- `aliases`, `tags`, `warnings`, `qualityFlags`
+The `FoodItem` schema has been updated to handle a larger and more complex database of 1000+ foods.
 
-## 3. Nutrient Schema
-`CuratedNutrientsPer100g` must include at minimum: `calories`, `protein`, `carbs`, `fat`. These cannot be negative, NaN, or Infinity.
-Optional nutrients (like fiber, sugar, sodium) can be `number | null | undefined`. Missing values should not be defaulted to 0 unless known.
-
-## 4. Serving Size Schema
-`CuratedServingSize`:
-- `id`, `label`, `grams`, `unit`, `quantity`, `isDefault`
-- Grams and quantity must be positive.
-- Food-specific units (like cup/tbsp) must be mapped to their specific gram weight for that food.
-
-## 5. Category Rules
-Strict category enums (`breakfast`, `fruits`, `vegetables`, etc.). New categories must be added to `FOOD_CATEGORIES` in `categorySchema.ts`.
-
-## 6. Alias Rules
-Aliases improve search matching (e.g., "garbanzo beans" for chickpeas). They must be arrays of lowercase strings.
-
-## 7. Tag Rules
-Tags ("raw", "cooked", "vegan") help with filtering.
-
-## 8. Source Rules
-Must declare source accurately:
-- `curated_us`: Local curated data
-- `usda_derived`: Values derived from USDA but stored locally
-- `isEstimated`: Boolean flag indicating if the values are estimates
-
-## 9. Quality Flags
-Quality indicators: `complete_core_nutrients`, `partial_nutrients`, `estimated_serving`, `local_estimate`, `needs_review`.
-
-## 10. Recipe Readiness Fields
-`recipeUseCases`: 'baking', 'smoothie', 'main', etc.
-`preparationState`: 'raw', 'cooked', 'dry', etc.
-
-## 11. Compare Readiness Fields
-`compareGroup`: Logical grouping for comparison (e.g., 'fruit', 'cooked_grain').
-
-## 12. Meal Readiness Fields
-`mealUseCases`: 'breakfast', 'lunch', 'snack', etc.
-
-## 13. Examples
 ```typescript
-{
-  id: "fruit-banana",
-  slug: "banana",
-  displayName: "Banana",
-  // ...
-  source: "curated_us",
-  isEstimated: true,
-  // ...
+export interface FoodItem {
+  id: string; // Unique local identifier (e.g., local_0001)
+  slug: string; // Unique URL-friendly slug
+  name: string; // Original generic name, kept for compatibility
+  searchName: string; // Precomputed lowercased search friendly name
+  displayName: string; // Human-readable label (e.g., "Apple, Raw")
+  aliases: string[]; // List of alternative names
+  category: string; // Main category
+  subcategory?: string; 
+  description?: string;
+  source: FoodSource; // "local", "usda", or "llm_estimate"
+  sourceLabel: string;
+  isEstimated: boolean; // True for locally generated data
+  defaultUnit?: string;
+  defaultQuantity?: number;
+  servingSizes: ServingSize[];
+  nutrientsPer100g: NutrientProfile;
+  tags?: string[]; // e.g., ["raw", "fruit", "high-fiber"]
+  commonNames?: string[];
+  brandType?: string;
+  preparationState?: string; // e.g., "Raw", "Cooked", "Baked"
+  cookedState?: string;
+  defaultServing?: string;
+  usdaQueryHints?: string[];
+  compareGroup?: string; // Useful for grouping foods in the compare tool
+  recipeIngredientType?: string;
+  mealUseCases?: string[];
+  density?: number;
+  notes?: string;
+  warnings?: string[];
+  updatedAt?: string;
+  commonUses?: string[];
+  usdaSearchTerms?: string[];
 }
 ```
 
-## 14. Do-Not-Do Rules
-- DO NOT fake USDA claims if the data is not actually USDA.
-- DO NOT use LLM-generated truth for final values.
-- DO NOT assume 1 cup is universally the same gram weight for all foods.
-- DO NOT leave ID or Slug missing or duplicated.
+## `NutrientProfile` Schema
+
+```typescript
+export interface NutrientProfile {
+  calories: number | null;
+  protein: number | null;
+  carbohydrates: number | null;
+  fat: number | null;
+  fiber?: number | null;
+  sugar?: number | null;
+  sodium?: number | null;
+  saturatedFat?: number | null;
+  cholesterol?: number | null;
+  potassium?: number | null;
+  calcium?: number | null;
+  iron?: number | null;
+  vitaminA?: number | null;
+  vitaminC?: number | null;
+}
+```
+
+## `ServingSize` Schema
+
+```typescript
+export interface ServingSize {
+  id?: string;
+  unit: string;
+  label: string;
+  grams: number;
+  quantity?: number;
+  isDefault?: boolean;
+}
+```
+
+## Category Rules
+
+Categories must belong to the following standardized set to ensure the UI behaves predictably:
+- Breakfast
+- Fruits
+- Vegetables
+- Grains & Cereals
+- Dairy & Alternatives
+- Protein Foods
+- Beans & Plant Protein
+- Nuts & Seeds
+- Snacks
+- Desserts
+- Beverages
+- Condiments & Oils
+- Prepared Meals
+- Fast Food Style
+- Sauces & Dressings
+- Baking Ingredients
+- Soups & Stews
+
+## Alias Rules
+
+- Aliases should include alternative names, singular/plural variants, or preparation variations.
+- No two items should have identical aliases if they resolve to drastically different foods unless context clarifies it.
+- Keep aliases strictly lowercased in the database definition for fast matching.
+
+## Tag Rules
+
+- Limit tags to meaningful, searchable concepts (e.g., `high-protein`, `vegan`, `dairy-free`).
+- Avoid subjective health claims like `doctor-approved` or `fat-burning`.
+
+## Source Rules & Quality Flags
+
+- `source: "local"` implies deterministic, pre-calculated data.
+- `isEstimated: true` means it's an aggregation or generic estimate, not a branded, lab-tested exact value.
+- Quality flags like `estimated-serving` or `partial-nutrients` can be added to the `tags` array to warn users.
+
+## Validation Rules
+
+- `id` and `slug` must be unique across the entire 1000+ item database.
+- `slug` must be URL-safe (lowercase, hyphenated).
+- All items must have `calories`, `protein`, `carbohydrates`, and `fat` defined (can be 0, must not be NaN/Infinity).
+- Gram conversions in `servingSizes` must be positive.

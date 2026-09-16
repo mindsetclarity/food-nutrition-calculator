@@ -1,0 +1,39 @@
+---
+import type { LearnArticleSection as SectionType } from '../../lib/learn/types';
+import ArticleCallout from './ArticleCallout.astro';
+import ToolCTA from './ToolCTA.astro';
+
+interface Props {
+  section: SectionType;
+}
+
+const { section } = Astro.props;
+---
+<section id={section.id} class="mb-12 scroll-mt-24">
+  <h2 class="text-2xl sm:text-3xl font-black text-gray-900 mb-6">{section.heading}</h2>
+  
+  <div class="space-y-5 text-gray-700 text-lg leading-relaxed">
+    {section.body.map(paragraph => (
+      <p>{paragraph}</p>
+    ))}
+  </div>
+  
+  {section.bullets && section.bullets.length > 0 && (
+    <ul class="mt-6 mb-6 space-y-3 bg-gray-50 p-6 rounded-2xl border border-gray-100">
+      {section.bullets.map(bullet => (
+        <li class="flex items-start">
+          <svg class="w-5 h-5 text-emerald-500 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+          <span class="text-gray-700 font-medium">{bullet}</span>
+        </li>
+      ))}
+    </ul>
+  )}
+  
+  {section.callout && (
+    <ArticleCallout callout={section.callout} />
+  )}
+  
+  {section.toolCta && (
+    <ToolCTA cta={section.toolCta} compact={true} />
+  )}
+</section>

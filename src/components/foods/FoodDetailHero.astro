@@ -1,0 +1,38 @@
+---
+import type { FoodItem } from '../../lib/nutrition/types';
+import SourceBadge from '../ui/SourceBadge.astro';
+
+interface Props {
+  food: FoodItem;
+}
+
+const { food } = Astro.props;
+---
+<div class="bg-white border-b border-gray-200 py-12 sm:py-16" data-reveal>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl">
+      <div class="flex items-center space-x-3 mb-4">
+        {food.category && (
+          <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-800">
+            {food.category}
+          </span>
+        )}
+        <SourceBadge source={food.source} />
+      </div>
+      
+      <h1 class="text-4xl sm:text-5xl font-black text-gray-900 tracking-tight mb-6">
+        {food.displayName}
+      </h1>
+      
+      <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 mt-8">
+        <a href={`/calculator?food=${food.slug}`} class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-bold rounded-xl text-white bg-emerald-600 hover:bg-emerald-700 shadow-sm transition-all interactive-button">
+          Search in Calculator
+          <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </a>
+        <a href="/compare-foods" class="inline-flex items-center justify-center px-6 py-3 border border-gray-300 text-base font-bold rounded-xl text-gray-700 bg-white hover:bg-gray-50 shadow-sm transition-all interactive-button">
+          Compare Foods
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

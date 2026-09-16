@@ -1,9 +1,16 @@
-// @ts-check
 import { defineConfig } from 'astro/config';
-
-import vercel from '@astrojs/vercel';
+import tailwindcss from '@tailwindcss/vite';
+import cloudflare from '@astrojs/cloudflare';
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  adapter: vercel()
+  site: 'https://foodnutritioncalculator.com',
+  output: 'server',
+  adapter: cloudflare(),
+  integrations: [sitemap()],
+  vite: {
+    plugins: [tailwindcss()],
+  },
 });
+

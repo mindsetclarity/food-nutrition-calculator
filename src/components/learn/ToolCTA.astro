@@ -1,0 +1,27 @@
+---
+import type { LearnArticleToolCta } from '../../lib/learn/types';
+
+interface Props {
+  cta: LearnArticleToolCta;
+  compact?: boolean;
+}
+
+const { cta, compact = false } = Astro.props;
+---
+<a href={cta.href} class={`group block bg-gray-900 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 ${compact ? 'my-6' : 'my-8'}`}>
+  <div class="relative px-6 py-6 sm:px-8 sm:py-8 flex flex-col sm:flex-row items-center justify-between">
+    <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#10b981 1px, transparent 1px); background-size: 16px 16px;"></div>
+    
+    <div class="relative z-10 text-center sm:text-left mb-4 sm:mb-0">
+      <h4 class="text-lg font-black text-white mb-1">Try it yourself</h4>
+      <p class="text-gray-400 text-sm">{cta.label}</p>
+    </div>
+    
+    <div class="relative z-10">
+      <span class="inline-flex items-center px-5 py-2.5 bg-emerald-500 text-white font-bold rounded-xl group-hover:bg-emerald-400 transition-colors shadow-sm">
+        Open Tool
+        <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+      </span>
+    </div>
+  </div>
+</a>

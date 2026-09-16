@@ -1,0 +1,431 @@
+---
+import CompareSearchPanel from './CompareSearchPanel.astro';
+import CompareExampleButtons from './CompareExampleButtons.astro';
+import SelectedCompareFoodCard from './SelectedCompareFoodCard.astro';
+import CompareBasisToggle from './CompareBasisToggle.astro';
+import CompareNutritionTable from './CompareNutritionTable.astro';
+import CompareDifferenceSummary from './CompareDifferenceSummary.astro';
+import CompareSourceSummary from './CompareSourceSummary.astro';
+import CompareEmptyState from './CompareEmptyState.astro';
+import CompareNotice from './CompareNotice.astro';
+---
+
+<main id="main-content" class="min-h-screen bg-warm-ivory pb-24 relative z-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+      <!-- Search Column -->
+      <div class="lg:col-span-5 flex flex-col gap-8">
+        <CompareSearchPanel />
+        <CompareExampleButtons />
+      </div>
+      
+      <!-- Content Column -->
+      <div class="lg:col-span-7 flex flex-col gap-6">
+        <SelectedCompareFoodCard />
+        
+        <CompareBasisToggle />
+        <CompareNotice />
+        
+        <CompareEmptyState />
+        
+        <CompareNutritionTable />
+        <CompareDifferenceSummary />
+        <CompareSourceSummary />
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+  import type { CompareFood, CompareBasis } from '../../lib/compare/types';
+  import { buildCompareResult } from '../../lib/compare/compareFoods';
+  import { getFromCache, setInCache, generateCacheKey } from '../../lib/performance/clientCache';
+  
+  let selectedFoods: CompareFood[] = [];
+  let currentBasis: CompareBasis = '100g';
+  let searchTimeout: ReturnType<typeof setTimeout>;
+  let searchAbortController: AbortController | null = null;
+
+  const MAX_FOODS = 4;
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('compare-search') as HTMLInputElement;
+    const searchResults = document.getElementById('compare-search-results');
+    const searchList = document.getElementById('compare-search-list');
+    const loadingState = document.getElementById('compare-search-loading');
+    const limitWarning = document.getElementById('compare-limit-warning');
+    
+    const selectedFoodsContainer = document.getElementById('selected-foods-container');
+    const emptyState = document.getElementById('compare-empty-state');
+    
+    const basisControl = document.getElementById('compare-basis-control');
+    const basisBtns = document.querySelectorAll('.basis-btn');
+    
+    const tableContainer = document.getElementById('compare-table-container');
+    const tableHead = document.getElementById('compare-table-head');
+    const tableBody = document.getElementById('compare-table-body');
+    
+    const insightsContainer = document.getElementById('compare-difference-summary');
+    const insightsGrid = document.getElementById('compare-insights-grid');
+    
+    const sourceSummary = document.getElementById('compare-source-summary');
+    const sourceText = document.getElementById('source-summary-text');
+    
+    const noticeContainer = document.getElementById('compare-notice');
+    const warningsList = document.getElementById('compare-warnings-list');
+    
+    const exampleBtns = document.querySelectorAll('.compare-example-btn');
+
+    // Generate unique ID
+    const genId = () => Math.random().toString(36).substr(2, 9);
+
+    // --- Search Logic ---
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        const query = (e.target as HTMLInputElement).value.trim();
+        
+        if (selectedFoods.length >= MAX_FOODS) {
+           limitWarning?.classList.remove('hidden');
+           return;
+        } else {
+           limitWarning?.classList.add('hidden');
+        }
+
+        clearTimeout(searchTimeout);
+
+        if (query.length < 2) {
+          searchResults?.classList.add('hidden');
+          return;
+        }
+
+        searchResults?.classList.remove('hidden');
+        loadingState?.classList.remove('hidden');
+        if (searchList) searchList.innerHTML = '';
+
+        searchTimeout = setTimeout(async () => {
+          if (searchAbortController) searchAbortController.abort();
+          searchAbortController = new AbortController();
+          
+          try {
+            const cacheKey = generateCacheKey('/api/foods/search', { q: query });
+            let data = getFromCache(cacheKey);
+            if (!data) {
+              const res = await fetch(`/api/foods/search?q=${encodeURIComponent(query)}`, {
+                signal: searchAbortController.signal
+              });
+              if (!res.ok) throw new Error('Search failed');
+              data = await res.json();
+              setInCache(cacheKey, data, 15);
+            }
+            
+            loadingState?.classList.add('hidden');
+            renderSearchResults(data.results || []);
+          } catch (err: any) {
+            if (err.name === 'AbortError') return;
+            loadingState?.classList.add('hidden');
+            if (searchList) searchList.innerHTML = '<li class="p-6 text-red-600 font-medium text-[15px] text-center">Food search is unavailable right now. Try again.</li>';
+          }
+        }, 300);
+      });
+    }
+    
+    document.addEventListener('click', (e) => {
+      if (!searchInput?.contains(e.target as Node) && !searchResults?.contains(e.target as Node)) {
+        searchResults?.classList.add('hidden');
+      }
+    });
+
+    function renderSearchResults(results: any[]) {
+      if (!searchList) return;
+      
+      if (results.length === 0) {
+        searchList.innerHTML = '<li class="p-6 text-soft-slate text-center font-medium text-[15px]">No foods found.</li>';
+        return;
+      }
+      
+      searchList.innerHTML = '';
+      const topResults = results.slice(0, 15);
+      
+      topResults.forEach(item => {
+        const li = document.createElement('li');
+        li.className = 'mb-2 last:mb-0';
+        
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'w-full text-left p-5 focus:outline-none bg-white hover:bg-slate-50 border border-border-soft rounded-[var(--radius-button)] shadow-sm hover:shadow transition-all group';
+        
+        const badgeColor = item.source === 'usda' ? 'bg-mint-wash text-usda-emerald border-emerald-soft' : 'bg-slate-50 text-soft-slate border-border-soft';
+        
+        btn.innerHTML = `
+          <div class="flex justify-between items-start gap-4">
+            <div class="flex-1">
+              <div class="font-bold text-ink-navy text-[15px] group-hover:text-usda-emerald transition-colors">${item.displayName || item.name}</div>
+              <div class="text-[13px] font-medium text-soft-slate mt-1">${item.category || item.dataType || ''}</div>
+            </div>
+            <span class="inline-flex shrink-0 items-center px-2 py-0.5 border rounded text-[10px] uppercase font-bold tracking-widest ${badgeColor}">
+              ${item.sourceLabel || item.source}
+            </span>
+          </div>
+        `;
+        
+        btn.addEventListener('click', () => addFoodToCompare(item));
+        li.appendChild(btn);
+        searchList.appendChild(li);
+      });
+    }
+
+    async function addFoodToCompare(item: any) {
+      if (selectedFoods.length >= MAX_FOODS) return;
+      
+      searchResults?.classList.add('hidden');
+      if (searchInput) searchInput.value = '';
+      
+      try {
+        const cacheKey = generateCacheKey('/api/foods/details', { id: item.id, source: item.source });
+        let data = getFromCache(cacheKey);
+        if (!data) {
+          const res = await fetch(`/api/foods/details?id=${item.id}&source=${item.source}`);
+          if (!res.ok) throw new Error('Details failed');
+          data = await res.json();
+          setInCache(cacheKey, data, 30);
+        }
+        
+        const compareFood: CompareFood = {
+           ...data.food,
+           compareId: genId()
+        };
+        
+        selectedFoods.push(compareFood);
+        updateUI();
+        const el = document.getElementById('a11y-status');
+        if (el) el.textContent = `${compareFood.displayName} added to comparison.`;
+        
+      } catch (err) {
+        alert('Food details could not be loaded.');
+        const el = document.getElementById('a11y-status');
+        if (el) el.textContent = 'Error loading food details.';
+      }
+    }
+    
+    // --- Example Buttons ---
+    exampleBtns.forEach(btn => {
+      btn.addEventListener('click', async (e) => {
+        const target = e.currentTarget as HTMLElement;
+        const q1 = target.getAttribute('data-q1');
+        const q2 = target.getAttribute('data-q2');
+        
+        // Clear current comparison
+        selectedFoods = [];
+        updateUI();
+        
+        if (q1 && q2) {
+          // Fire searches. In a real app, we'd wait for both. 
+          // Since it's quick examples, we'll try to find the exact local/usda match.
+          // For safety, we'll just populate search and trigger it, or if it's deterministic, we can hit search API.
+          try {
+             const [r1, r2] = await Promise.all([
+               fetch(`/api/foods/search?q=${encodeURIComponent(q1)}`).then(res => res.json()),
+               fetch(`/api/foods/search?q=${encodeURIComponent(q2)}`).then(res => res.json())
+             ]);
+             
+             const f1 = r1.results?.[0];
+             const f2 = r2.results?.[0];
+             
+             if (f1) await addFoodToCompare(f1);
+             if (f2) await addFoodToCompare(f2);
+             
+          } catch (e) {
+             console.error("Example loading failed", e);
+          }
+        }
+      });
+    });
+
+    // --- UI Update Logic ---
+    function updateUI() {
+      renderSelectedCards();
+      
+      if (selectedFoods.length >= 2) {
+        emptyState?.classList.add('hidden');
+        basisControl?.classList.remove('hidden');
+        basisControl?.classList.add('flex');
+        tableContainer?.classList.remove('hidden');
+        insightsContainer?.classList.remove('hidden');
+        sourceSummary?.classList.remove('hidden');
+        
+        const result = buildCompareResult(selectedFoods, currentBasis);
+        renderTable(result);
+        renderInsights(result);
+        renderWarningsAndSource(result);
+      } else {
+        emptyState?.classList.remove('hidden');
+        basisControl?.classList.add('hidden');
+        basisControl?.classList.remove('flex');
+        tableContainer?.classList.add('hidden');
+        insightsContainer?.classList.add('hidden');
+        sourceSummary?.classList.add('hidden');
+        noticeContainer?.classList.add('hidden');
+      }
+    }
+
+    function renderSelectedCards() {
+      if (!selectedFoodsContainer) return;
+      
+      if (selectedFoods.length === 0) {
+         selectedFoodsContainer.classList.add('hidden');
+         return;
+      }
+      
+      selectedFoodsContainer.classList.remove('hidden');
+      selectedFoodsContainer.innerHTML = '';
+      
+      const template = document.getElementById('selected-food-template') as HTMLTemplateElement;
+      
+      selectedFoods.forEach(food => {
+        const clone = template.content.cloneNode(true) as DocumentFragment;
+        
+        const nameEl = clone.querySelector('.food-name');
+        if (nameEl) nameEl.textContent = food.displayName || food.name;
+        
+        const calsEl = clone.querySelector('.food-cals');
+        if (calsEl && food.nutrientsPer100g?.calories !== undefined) {
+           calsEl.textContent = Math.round(food.nutrientsPer100g.calories || 0).toString();
+        }
+        
+        const proEl = clone.querySelector('.food-pro');
+        if (proEl && food.nutrientsPer100g?.protein !== undefined) {
+           proEl.textContent = Number(food.nutrientsPer100g.protein || 0).toFixed(1);
+        }
+        
+        const badgeContainer = clone.querySelector('.source-badge-container');
+        if (badgeContainer) {
+          const badgeClass = food.source === 'usda' ? 'bg-mint-wash text-usda-emerald border-emerald-soft' : 'bg-slate-50 text-soft-slate border-border-soft';
+          badgeContainer.innerHTML = `<span class="inline-flex items-center px-2 py-0.5 border rounded text-[10px] font-bold uppercase tracking-widest ${badgeClass}">${food.sourceLabel || food.source}</span>`;
+        }
+        
+        const removeBtn = clone.querySelector('.remove-food-btn');
+        if (removeBtn) {
+          removeBtn.addEventListener('click', () => {
+             selectedFoods = selectedFoods.filter(f => f.compareId !== food.compareId);
+             updateUI();
+             const el = document.getElementById('a11y-status');
+             if (el) el.textContent = `${food.displayName} removed from comparison.`;
+          });
+        }
+        
+        selectedFoodsContainer.appendChild(clone);
+      });
+    }
+
+    function renderTable(result: any) {
+      if (!tableHead || !tableBody) return;
+      
+      // Header
+      tableHead.innerHTML = '<th scope="col" class="px-6 py-5 text-[11px] uppercase tracking-widest font-bold text-ink-navy w-1/4 bg-slate-50 border-b border-border-soft">Nutrient</th>';
+      result.foods.forEach((f: CompareFood) => {
+        tableHead.innerHTML += `
+          <th scope="col" class="px-6 py-5 bg-slate-50 border-b border-border-soft min-w-[150px]">
+            <div class="text-[15px] font-bold text-ink-navy">${f.displayName}</div>
+            ${currentBasis === 'serving' && f.servingSizes?.[0] ? `<div class="text-[13px] font-medium text-soft-slate mt-1">${f.servingSizes[0].label} (${f.servingSizes[0].grams}g)</div>` : ''}
+          </th>
+        `;
+      });
+      
+      // Body
+      tableBody.innerHTML = '';
+      result.rows.forEach((row: any) => {
+        const tr = document.createElement('tr');
+        tr.className = 'border-b border-border-soft last:border-0 hover:bg-slate-50 transition-colors';
+        
+        // Label Cell
+        tr.innerHTML = `
+          <th scope="row" class="px-6 py-5 text-[13px] font-bold text-ink-navy whitespace-nowrap bg-white">
+            ${row.label} <span class="text-[11px] text-soft-slate ml-1 font-medium">(${row.unit})</span>
+          </th>
+        `;
+        
+        // Data Cells
+        row.cells.forEach((cell: any) => {
+           let badgeHtml = '';
+           if (cell.label === 'Highest') {
+              badgeHtml = `<span class="ml-3 inline-flex items-center px-2 py-0.5 rounded border border-amber-200 text-[9px] font-bold bg-amber-50 text-amber-800 uppercase tracking-widest">Highest</span>`;
+           } else if (cell.label === 'Lowest') {
+              badgeHtml = `<span class="ml-3 inline-flex items-center px-2 py-0.5 rounded border border-blue-200 text-[9px] font-bold bg-blue-50 text-blue-800 uppercase tracking-widest">Lowest</span>`;
+           }
+           
+           tr.innerHTML += `
+             <td class="px-6 py-5 bg-white">
+               <div class="flex items-center">
+                 <span class="text-[15px] font-bold text-ink-navy">${cell.formatted}</span>
+                 ${badgeHtml}
+               </div>
+             </td>
+           `;
+        });
+        
+        tableBody.appendChild(tr);
+      });
+    }
+
+    function renderInsights(result: any) {
+       if (!insightsGrid) return;
+       insightsGrid.innerHTML = '';
+       
+       result.insights.forEach((insight: any) => {
+          const div = document.createElement('div');
+          div.className = 'bg-white border border-border-soft p-5 rounded-[var(--radius-button)] shadow-sm flex items-start';
+          div.innerHTML = `
+             <svg class="w-5 h-5 text-usda-emerald mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+             <p class="text-ink-navy text-[13px] font-medium leading-relaxed">${insight.text}</p>
+          `;
+          insightsGrid.appendChild(div);
+       });
+    }
+
+    function renderWarningsAndSource(result: any) {
+       if (noticeContainer && warningsList) {
+          if (result.warnings.length > 0) {
+             noticeContainer.classList.remove('hidden');
+             warningsList.innerHTML = '';
+             result.warnings.forEach((w: any) => {
+                warningsList.innerHTML += `<li class="text-[13px] font-medium text-amber-800 leading-relaxed">• ${w.text}</li>`;
+             });
+          } else {
+             noticeContainer.classList.add('hidden');
+          }
+       }
+       
+       if (sourceText) {
+          const { usda, local, unknown } = result.sourceSummary;
+          let text = `Comparing ${result.foods.length} foods: `;
+          const parts = [];
+          if (usda > 0) parts.push(`${usda} USDA`);
+          if (local > 0) parts.push(`${local} Local Fallback`);
+          if (unknown > 0) parts.push(`${unknown} Unknown`);
+          text += parts.join(', ');
+          sourceText.textContent = text;
+       }
+    }
+
+    // --- Basis Toggle Logic ---
+    basisBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+         const target = e.currentTarget as HTMLButtonElement;
+         currentBasis = target.getAttribute('data-basis') as CompareBasis;
+         
+         basisBtns.forEach(b => {
+           b.classList.remove('bg-ink-navy', 'text-white', 'shadow-ink');
+           b.classList.add('text-soft-slate', 'hover:text-ink-navy', 'hover:bg-slate-100');
+         });
+         
+         target.classList.remove('text-soft-slate', 'hover:text-ink-navy', 'hover:bg-slate-100');
+         target.classList.add('bg-ink-navy', 'text-white', 'shadow-ink');
+         
+         if (selectedFoods.length >= 2) {
+            updateUI();
+         }
+      });
+    });
+
+  });
+</script>

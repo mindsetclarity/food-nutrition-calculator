@@ -1,0 +1,23 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "foodnutritioncalculator-com",
+  "compatibility_date": "2024-04-15",
+  "routes": [
+    {
+      "pattern": "foodnutritioncalculator.com",
+      "zone_name": "foodnutritioncalculator.com",
+      "custom_domain": true
+    },
+    {
+      "pattern": "www.foodnutritioncalculator.com",
+      "zone_name": "foodnutritioncalculator.com",
+      "custom_domain": true
+    }
+  ],
+  "kv_namespaces": [
+    {
+      "binding": "SESSION",
+      "id": "fa488924f911495bbbbf8b6f3154ad5d"
+    }
+  ]
+}

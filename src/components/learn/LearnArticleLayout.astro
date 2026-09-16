@@ -1,0 +1,128 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ArticleTableOfContents from './ArticleTableOfContents.astro';
+import ArticleSection from './ArticleSection.astro';
+import ArticleFAQ from './ArticleFAQ.astro';
+import RelatedArticles from './RelatedArticles.astro';
+import ToolCTA from './ToolCTA.astro';
+import LearnDisclaimer from './LearnDisclaimer.astro';
+import Breadcrumbs from '../../components/seo/Breadcrumbs.astro';
+
+import { getLearnArticleSeo, buildTableOfContents, getRelatedArticles } from '../../lib/learn';
+import type { LearnArticle } from '../../lib/learn/types';
+import { buildArticleSchema, buildFAQPageSchema } from '../../lib/seo/schema';
+import { siteConfig } from '../../lib/seo/siteConfig';
+
+interface Props {
+  article: LearnArticle;
+}
+
+const { article } = Astro.props;
+const seo = getLearnArticleSeo(article);
+const toc = buildTableOfContents(article);
+const related = getRelatedArticles(article, 3);
+
+const breadcrumbItems = [
+  { label: 'Home', href: '/' },
+  { label: 'Learn', href: '/learn' },
+  { label: article.title, href: `/learn/${article.slug}` }
+];
+
+const schemas = [];
+schemas.push(buildArticleSchema({
+  headline: seo.title,
+  description: seo.description,
+  datePublished: article.updatedAt,
+  dateModified: article.updatedAt
+}));
+
+if (article.faqs && article.faqs.length > 0) {
+  schemas.push(buildFAQPageSchema(article.faqs));
+}
+
+---
+
+<Layout title={seo.title} description={seo.description} jsonLd={schemas}>
+  <main id="main-content" class="min-h-screen bg-gray-50/50 pb-24">
+    
+    {/* Article Hero */}
+    <div class="bg-white border-b border-gray-200 py-12 sm:py-16">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <Breadcrumbs items={breadcrumbItems} />
+        
+        <div class="flex items-center space-x-3 mb-6">
+          <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-bold bg-emerald-50 text-emerald-700">
+            {article.category}
+          </span>
+          <span class="text-sm font-medium text-gray-400 flex items-center">
+            <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            {article.readingTimeMinutes} min read
+          </span>
+          {article.updatedAt && (
+             <span class="text-sm font-medium text-gray-400 hidden sm:inline">
+               • Updated {new Date(article.updatedAt).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
+             </span>
+          )}
+        </div>
+        
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 tracking-tight mb-6 leading-tight">
+          {article.title}
+        </h1>
+        
+        <p class="text-xl text-gray-600 leading-relaxed mb-8">
+          {article.heroSummary}
+        </p>
+        
+        <div class="bg-emerald-50 border border-emerald-100 rounded-2xl p-5 sm:p-6 flex items-start">
+          <svg class="w-6 h-6 text-emerald-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+          <div>
+            <h4 class="text-sm font-bold text-emerald-900 mb-1 uppercase tracking-wider">Key Takeaway</h4>
+            <p class="text-emerald-800 font-medium leading-relaxed">{article.keyTakeaway}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* Article Body */}
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="flex flex-col lg:flex-row lg:space-x-12">
+        
+        {/* Sidebar TOC (Desktop) */}
+        {toc.length > 0 && (
+          <aside class="hidden lg:block w-64 flex-shrink-0">
+            <ArticleTableOfContents items={toc} />
+          </aside>
+        )}
+        
+        {/* Main Content */}
+        <article class="max-w-3xl flex-grow">
+          
+          {/* TOC (Mobile) */}
+          {toc.length > 0 && (
+            <div class="block lg:hidden mb-12">
+               <ArticleTableOfContents items={toc} />
+            </div>
+          )}
+
+          <div class="prose prose-emerald prose-lg max-w-none text-gray-800">
+            {article.sections.map(section => (
+               <ArticleSection section={section} />
+            ))}
+          </div>
+
+          {article.relatedTool && (
+            <ToolCTA cta={article.relatedTool} />
+          )}
+
+          {article.faqs && article.faqs.length > 0 && (
+            <ArticleFAQ faqs={article.faqs} />
+          )}
+          
+          <LearnDisclaimer />
+        </article>
+      </div>
+      
+      <RelatedArticles articles={related} />
+    </div>
+  </main>
+</Layout>

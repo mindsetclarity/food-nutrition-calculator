@@ -1,0 +1,17 @@
+---
+interface Props {
+  items: { id: string; label: string }[];
+}
+
+const { items } = Astro.props;
+---
+<aside class="legal-toc bg-white border border-border-soft rounded-[var(--radius-card)] p-6 shadow-sm w-full">
+  <h3 class="text-xs font-bold text-usda-emerald uppercase tracking-wider mb-4">Table of Contents</h3>
+  <nav aria-label="Table of contents" class="flex flex-col gap-3">
+    {items.map(item => (
+      <a href={`#${item.id}`} class="text-[15px] font-medium text-soft-slate hover:text-ink-navy transition-colors">
+        {item.label}
+      </a>
+    ))}
+  </nav>
+</aside>

@@ -1,62 +1,55 @@
-# Food Search Quality and Ranking Guide
+# Food Search Ranking Engine
 
-## 1. Purpose
-The Food Nutrition Calculator local search engine ensures users find the foods they are looking for through a combination of string normalization, token expansion, synonyms, and rule-based scoring.
+The local food search engine has been upgraded to support 1000+ foods with high performance, avoiding heavy library dependencies and massive DOM freezes.
 
-## 2. Query Normalization
-Normalization strips `\s+` noise, standardizes spaces, removes punctuation `[^\w\s-]`, strips accents `normalize("NFD")`, fixes hyphenated prefixes, and converts edge-case colloquialisms into structured data.
+## Normalization
 
-## 3. Stop Words
-Common noise words (`fresh`, `plain`, `food`, `the`, etc.) are removed from the query tokens to prevent false-positive matches across hundreds of unassociated items.
+All foods and search queries are normalized before matching:
+1. Converted to lowercase.
+2. Punctuation is removed.
+3. Multiple whitespaces are collapsed.
+4. Stop words (`and`, `with`, `a`, `the`) are removed.
+5. Simple singularization is applied (`strawberries` -> `strawberry`).
 
-## 4. Synonyms
-Food nomenclature is chaotic. Synonyms explicitly map user intents like `garbanzo` back to the internal index value of `chickpeas`.
+## Synonyms
 
-## 5. Aliases
-Local food data may provide an `aliases: []` array. Aliases behave exactly like display names during token processing. 
+A built-in synonym dictionary maps common US terms:
+- `garbanzo` -> `chickpea`
+- `soda` / `pop` -> `soft drink`
+- `cilantro` -> `coriander`
+- `mac n cheese` -> `macaroni and cheese`
 
-## 6. Food Index
-When the application starts, it processes all raw foods into `SearchIndexedFood` objects, compiling all strings and aliases into a unified `tokenSet` and pre-caching previews like default calories/protein.
+## Scoring System
 
-## 7. Scoring Priority
-- Exact Name Match (+1000)
-- Exact Alias Match (+950)
-- Synonym Match (+900)
-- Starts With Name (+750)
-- Starts With Alias (+700)
-- All Tokens Match (+600)
-- Fuzzy Spelling Match (+150)
-- Partial Tokens (+30 per token)
+Items are scored based on query relevance using `src/lib/foods/foodScoring.ts`:
 
-## 8. Match Types
-The system returns a distinct `matchType` (`exact_name`, `synonym`, `fuzzy`, etc.) to inform callers or analytics exactly *how* a food was retrieved.
+| Match Type | Points |
+| :--- | :--- |
+| Exact Display Name Match | +100 |
+| Exact Alias Match | +90 |
+| Starts With Display Name | +50 |
+| Starts With Alias | +40 |
+| All Tokens Present | +20 |
+| Preparation State Match | +15 |
+| Exact Token Match | +10 per token |
+| Partial Token Match | +3 per token |
 
-## 9. Confidence Levels
-The Phase 1 EngineConfidence mechanism automatically labels matches:
-- **High**: >= 900 score
-- **Medium**: >= 600 score
-- **Low**: < 600 score (with `needsReview` set to true)
+**Tie Breaking:**
+If two foods have the same score, a tiny penalty is applied based on string length, which causes shorter, more fundamental food names to rank higher than complex variations.
 
-## 10. Search Modes
-Modes include `calculator`, `recipe`, `directory`, `compare`, and `meal`. Modes adjust clamping on returned limits (e.g., `directory` pagination uses max 50, whereas `recipe` uses max 15).
+## Ranking Order & Category Boost
 
-## 11. Category Filtering
-Providing a `category` to the search input strictly boosts elements matching the string.
+By default, results are sorted strictly descending by score. If a `category` filter is active, only items in that category are scored and returned.
 
-## 12. Preparation Matching
-Tokens matching explicit preparation instructions (`cooked`, `raw`, `baked`) receive an additional +150 boost, ensuring `cooked rice` accurately surfaces the cooked preparation over the dry version.
+## Fallback Behavior
 
-## 13. Fuzzy Matching Rules
-A simple substring presence threshold catches typographical deviations (e.g. `bannana`) if the query is at least 4 characters long.
+1. The API attempts to resolve the search using the USDA database first (if configured).
+2. If the USDA API fails, times out, or returns no results, the local index of 1000+ foods provides immediate fallback results.
+3. Fallback results use the `isEstimated: true` flag and display a clear warning/badge in the UI to ensure transparent data sourcing.
 
-## 14. Performance Strategy
-Precomputing the searchable text array into token sets ensures that a given query only needs simple `Set.has()` checks instead of constant RegEx parsing. 
+## Performance Notes
 
-## 15. Limitations
-This is not an LLM. Misspellings like `apele` for `apple` won't be caught. 
-
-## 16. Phase 4 USDA Merge Notes
-USDA endpoints do not respect local normalizations. The search system will eventually query USDA asynchronously and merge results via `searchFoodsEngine`. 
-
-## 17. Phase 9 UI Integration Notes
-The search interface is fully deterministic. UI should expose `displayName`, `sourceLabel`, `caloriesPreview`, `proteinPreview`, and `defaultServingLabel` but mask internal numeric scores.
+- **Precomputed Index:** The index is built once in memory using `buildFoodIndex()`.
+- **Token Sets:** Token arrays are converted to `Set` for fast lookup during user keystrokes.
+- **Client-Side Debounce:** A 250-400ms debounce should be applied on the client side to avoid freezing the browser.
+- **Payload Size:** The API returns compact DTOs with a `nutrientsPreview` to avoid returning the entire `1000+` item database in search results.

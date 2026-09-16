@@ -1,0 +1,129 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import FoodDetailHero from '../../components/foods/FoodDetailHero.astro';
+import FoodNutritionSummary from '../../components/foods/FoodNutritionSummary.astro';
+import FoodServingSizes from '../../components/foods/FoodServingSizes.astro';
+import FoodMacroBreakdown from '../../components/foods/FoodMacroBreakdown.astro';
+import FoodSourceNotice from '../../components/foods/FoodSourceNotice.astro';
+import RelatedFoods from '../../components/foods/RelatedFoods.astro';
+import FoodCTASection from '../../components/foods/FoodCTASection.astro';
+import NutritionFactsLabel from '../../components/nutrition-label/NutritionFactsLabel.astro';
+import Breadcrumbs from '../../components/seo/Breadcrumbs.astro';
+
+import { getAllFoodPages, getFoodDetailSeo, getRelatedFoods } from '../../lib/foods';
+import { buildWebPageSchema } from '../../lib/seo/schema';
+import { siteConfig } from '../../lib/seo/siteConfig';
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const foods = getAllFoodPages();
+  return foods.map(food => ({
+    params: { slug: food.slug },
+    props: { food },
+  }));
+}
+
+const { food } = Astro.props;
+
+if (!food) {
+  return new Response(null, { status: 404, statusText: 'Not found' });
+}
+
+const seo = getFoodDetailSeo(food);
+const relatedFoods = getRelatedFoods(food, 4);
+
+// Format nutrients for NutritionFactsLabel
+const formatLabelNutrients = (foodNutrients: any) => {
+  if (!foodNutrients) return null;
+  return {
+    calories: foodNutrients.calories,
+    totalFat: foodNutrients.fat,
+    saturatedFat: null, // We don't have this in the local DB yet
+    transFat: null,
+    cholesterol: null,
+    sodium: foodNutrients.sodium,
+    totalCarbohydrate: foodNutrients.carbohydrates,
+    dietaryFiber: foodNutrients.fiber,
+    totalSugars: foodNutrients.sugar,
+    addedSugars: null,
+    protein: foodNutrients.protein,
+    vitaminD: null,
+    calcium: null,
+    iron: null,
+    potassium: null,
+  };
+};
+
+const labelNutrients = formatLabelNutrients(food.nutrientsPer100g);
+const commonServingSize = food.servingSizes && food.servingSizes.length > 0 
+  ? food.servingSizes[0] 
+  : { label: '100g', grams: 100 };
+
+const breadcrumbItems = [
+  { label: 'Home', href: '/' },
+  { label: 'Foods', href: '/foods' },
+  { label: food.displayName, href: `/foods/${food.slug}` }
+];
+
+const jsonLd = buildWebPageSchema({
+  name: seo.title,
+  description: seo.description,
+  url: `${siteConfig.siteUrl}/foods/${food.slug}`
+});
+---
+<Layout title={seo.title} description={seo.description} jsonLd={jsonLd}>
+  <main id="main-content" class="min-h-screen bg-gray-50 pb-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+      <Breadcrumbs items={breadcrumbItems} />
+    </div>
+    <FoodDetailHero food={food} />
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+        
+        {/* Main Column */}
+        <div class="lg:col-span-8 space-y-8">
+          <FoodNutritionSummary food={food} />
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <FoodServingSizes food={food} />
+            <FoodMacroBreakdown food={food} />
+          </div>
+          
+          <FoodSourceNotice />
+        </div>
+        
+        {/* Sidebar */}
+        <div class="lg:col-span-4">
+          <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 sm:p-8 sticky top-6">
+            <h3 class="text-xl font-black text-gray-900 mb-6 border-b border-gray-100 pb-4">Nutrition Facts Label</h3>
+            <p class="text-xs text-gray-500 mb-6 bg-gray-50 p-3 rounded-lg border border-gray-100">
+              <strong>Preview only.</strong> For personal nutrition estimation. Not a commercial packaging label. Values shown per 100g base.
+            </p>
+            
+            <div class="flex justify-center">
+              {labelNutrients && (
+                <NutritionFactsLabel 
+                  title="Nutrition Facts"
+                  servingLabel={commonServingSize.label}
+                  nutrients={labelNutrients}
+                  sourceSummary={{
+                    source: food.source || 'local',
+                    isEstimated: true
+                  }}
+                  class="mx-auto shadow-md"
+                />
+              )}
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      
+      <RelatedFoods foods={relatedFoods} />
+      
+      <FoodCTASection food={food} />
+    </div>
+  </main>
+</Layout>

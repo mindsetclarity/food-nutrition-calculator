@@ -1,0 +1,23 @@
+---
+import type { FoodItem } from '../../lib/nutrition/types';
+import FoodCard from './FoodCard.astro';
+
+interface Props {
+  foods: FoodItem[];
+}
+
+const { foods } = Astro.props;
+
+if (!foods || foods.length === 0) {
+  return null;
+}
+---
+<div class="my-12 pt-12 border-t border-gray-200">
+  <h2 class="text-2xl font-black text-gray-900 mb-6">Related Foods</h2>
+  
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    {foods.map(food => (
+      <FoodCard food={food} />
+    ))}
+  </div>
+</div>

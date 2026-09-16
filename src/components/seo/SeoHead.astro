@@ -1,0 +1,55 @@
+---
+import { buildSeoMetadata, buildOpenGraphMetadata, buildTwitterMetadata, buildCanonicalUrl } from '../../lib/seo/metadata';
+import type { PageSeoInput, JsonLdSchema } from '../../lib/seo/types';
+import JsonLd from './JsonLd.astro';
+import { siteConfig } from '../../lib/seo/siteConfig';
+
+interface Props extends PageSeoInput {
+  jsonLd?: JsonLdSchema | JsonLdSchema[];
+}
+
+const { title, description, canonicalPath, noindex, ogType, ogImage, keywords, jsonLd } = Astro.props;
+
+const seo = buildSeoMetadata({ title, description, canonicalPath, noindex, keywords });
+const og = buildOpenGraphMetadata({ title, description, ogType, ogImage });
+const twitter = buildTwitterMetadata({ title, description, ogImage });
+const canonical = canonicalPath ? buildCanonicalUrl(canonicalPath) : undefined;
+---
+
+<!-- SEO Core -->
+<title>{seo.title}</title>
+<meta name="description" content={seo.description} />
+{seo.keywords && <meta name="keywords" content={seo.keywords} />}
+{canonical && <link rel="canonical" href={canonical} />}
+{seo.noindex && <meta name="robots" content="noindex, nofollow" />}
+{!seo.noindex && <meta name="robots" content={siteConfig.robots} />}
+
+<!-- Open Graph -->
+<meta property="og:title" content={og.title} />
+<meta property="og:description" content={og.description} />
+{og.type && <meta property="og:type" content={og.type} />}
+{og.image && <meta property="og:image" content={og.image} />}
+{canonical && <meta property="og:url" content={canonical} />}
+<meta property="og:site_name" content={siteConfig.siteName} />
+<meta property="og:locale" content={siteConfig.locale} />
+
+<!-- Twitter -->
+{twitter.card && <meta name="twitter:card" content={twitter.card} />}
+<meta name="twitter:title" content={twitter.title} />
+<meta name="twitter:description" content={twitter.description} />
+{twitter.image && <meta name="twitter:image" content={twitter.image} />}
+
+<!-- Theme -->
+<meta name="theme-color" content={siteConfig.themeColor} />
+
+{jsonLd && <JsonLd schema={jsonLd} />}
+
+<!-- Google tag (gtag.js) -->
+<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-8VRPXRKTEG"></script>
+<script is:inline>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8VRPXRKTEG');
+</script>

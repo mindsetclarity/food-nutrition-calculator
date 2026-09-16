@@ -1,11 +1,40 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import HomeHero from '../components/home/HomeHero.astro';
+import HomeToolsGrid from '../components/home/HomeToolsGrid.astro';
+import VegetarianIntelligence from '../components/home/VegetarianIntelligence.astro';
+import SourceTruthHierarchy from '../components/home/SourceTruthHierarchy.astro';
+import RecipeWorkflow from '../components/home/RecipeWorkflow.astro';
+import MealDashboardPreview from '../components/home/MealDashboardPreview.astro';
+import CompareFoodsPreview from '../components/home/CompareFoodsPreview.astro';
+import NutritionLabelPreview from '../components/home/NutritionLabelPreview.astro';
+import LearnTrustSection from '../components/home/LearnTrustSection.astro';
+import HomeCTA from '../components/home/HomeCTA.astro';
+import HomeSeoContent from '../components/home/HomeSeoContent.astro';
+
+import { buildWebSiteSchema, buildOrganizationSchema } from '../lib/seo/schema';
+
+const seo = {
+  title: "Food Nutrition Calculator | Recipe & Food Calories, Macros",
+  description: "Use our food nutrition calculator for food and recipes. Calculate calories, macros, and nutrition facts accurately. The best recipe nutrition calculator for adults.",
+  keywords: "Nutrition Calculator, recipe nutrition calculator, food nutrition calculator, free nutrition calculator, receipe nutrition calculator free, nutrition calculator for recipes, nutrition calculator for recipes free, nutrition calculator for food, nutrition calculator for adults",
+  ogImage: "/og-image.jpg"
+};
+
+const jsonLd = [buildWebSiteSchema(), buildOrganizationSchema()];
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<SiteLayout title={seo.title} description={seo.description} keywords={seo.keywords} ogImage={seo.ogImage} jsonLd={jsonLd}>
+  <HomeHero />
+  <HomeToolsGrid />
+  <VegetarianIntelligence />
+  <SourceTruthHierarchy />
+  <RecipeWorkflow />
+  <MealDashboardPreview />
+  <CompareFoodsPreview />
+  <NutritionLabelPreview />
+  <LearnTrustSection />
+  <HomeCTA />
+  <HomeSeoContent />
+</SiteLayout>

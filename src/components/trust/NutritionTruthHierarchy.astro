@@ -1,0 +1,30 @@
+---
+---
+<div class="bg-white border border-gray-200 rounded-2xl overflow-hidden my-10">
+  <div class="bg-gray-50 px-6 py-4 border-b border-gray-200">
+    <h3 class="text-lg font-bold text-gray-900 m-0">Our Nutrition Truth Hierarchy</h3>
+  </div>
+  <div class="p-0">
+    <div class="flex items-start p-6 border-b border-gray-100">
+      <div class="flex-shrink-0 w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-700 font-bold mr-4">1</div>
+      <div>
+        <h4 class="text-base font-bold text-gray-900 mb-1">USDA FoodData Central (Primary Truth)</h4>
+        <p class="text-sm text-gray-600 m-0">When configured and available, we prioritize verified data from the USDA's SR Legacy and Foundation Foods databases for single-ingredient accuracy.</p>
+      </div>
+    </div>
+    <div class="flex items-start p-6 border-b border-gray-100">
+      <div class="flex-shrink-0 w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-800 font-bold mr-4">2</div>
+      <div>
+        <h4 class="text-base font-bold text-gray-900 mb-1">Local US-Focused Dataset (Fallback)</h4>
+        <p class="text-sm text-gray-600 m-0">When USDA data is unavailable, we use our local seed dataset. These items are clearly marked with a grey "Local" or "Estimate" badge.</p>
+      </div>
+    </div>
+    <div class="flex items-start p-6">
+      <div class="flex-shrink-0 w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center text-purple-700 font-bold mr-4">3</div>
+      <div>
+        <h4 class="text-base font-bold text-gray-900 mb-1">AI / LLM Parsing (Helper Only)</h4>
+        <p class="text-sm text-gray-600 m-0">AI is utilized <strong>only</strong> to parse messy text like recipes and natural language queries into structured search requests. The AI <em>does not</em> calculate or invent the final nutritional math.</p>
+      </div>
+    </div>
+  </div>
+</div>

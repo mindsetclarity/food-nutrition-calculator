@@ -1,0 +1,19 @@
+---
+import SectionHeading from '../ui/SectionHeading.astro';
+import Breadcrumbs from '../site/Breadcrumbs.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  breadcrumbs?: { label: string; href?: string }[];
+}
+const { title, description, breadcrumbs } = Astro.props;
+---
+<div class="bg-surface border-b border-border">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-16 text-center sm:text-left animate-fade-up">
+    {breadcrumbs && breadcrumbs.length > 0 && (
+      <Breadcrumbs items={breadcrumbs} class="mb-4 hidden sm:block" />
+    )}
+    <SectionHeading title={title} description={description} />
+  </div>
+</div>
