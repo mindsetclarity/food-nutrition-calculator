@@ -71,6 +71,20 @@ const flat = extractNutrientsPer100g([
 ]);
 assert.equal(flat.protein, 5, 'flat nutrientName shape should map');
 
+// --- the /foods/search shape: flat fields, `value` instead of `amount` -------
+// Entry shape from searching fdcId 2012128, where the detail endpoint returned
+// no descriptors but search returns them all.
+const search = extractNutrientsPer100g([
+  { nutrientId: 1008, nutrientName: 'Energy', unitName: 'KCAL', value: 312 },
+  { nutrientId: 1003, nutrientName: 'Protein', unitName: 'G', value: 12.5 }
+]);
+assert.equal(search.calories, 312, 'search `value` should map, uppercase KCAL accepted');
+assert.equal(search.protein, 12.5);
+assert.equal(hasUsableNutrients(search), true);
+
+// Entries missing fields used to crash normalizeUsdaSearchResult's own loop.
+assert.doesNotThrow(() => extractNutrientsPer100g([{ value: 5 }, { nutrientName: 'Protein' }]));
+
 // --- degenerate inputs ------------------------------------------------------
 assert.doesNotThrow(() => extractNutrientsPer100g(undefined));
 assert.doesNotThrow(() => extractNutrientsPer100g([]));
@@ -78,4 +92,4 @@ assert.doesNotThrow(() => extractNutrientsPer100g([null, undefined]));
 assert.doesNotThrow(() => extractNutrientsPer100g([{ nutrient: {}, amount: 5 }]));
 assert.equal(hasUsableNutrients(extractNutrientsPer100g([])), false);
 
-console.log('usda normalize checks passed (14)');
+console.log('usda normalize checks passed (18)');

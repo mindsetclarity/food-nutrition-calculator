@@ -17,19 +17,10 @@ export function getDisplayNameFromUsda(description: string, brandName?: string):
 }
 
 export function normalizeUsdaSearchResult(food: UsdaSearchFood): NormalizedSearchResult {
-  const nutrientsPreview: Partial<NutrientProfile> = {};
-  
-  if (food.foodNutrients) {
-    for (const nut of food.foodNutrients) {
-      const key = mapUsdaNutrientName(nut.nutrientName);
-      if (key === 'calories' && nut.unitName.toLowerCase() !== 'kcal') {
-        continue;
-      }
-      if (key) {
-        nutrientsPreview[key] = nut.value;
-      }
-    }
-  }
+  // Search uses the same hardened extractor as the detail route. The loop this
+  // replaced called nut.unitName.toLowerCase() and mapUsdaNutrientName(nut.nutrientName)
+  // unguarded, so one entry missing either field would have taken down search.
+  const nutrientsPreview: Partial<NutrientProfile> = extractNutrientsPer100g(food.foodNutrients);
 
   return {
     id: `usda-${food.fdcId}`,
@@ -63,7 +54,8 @@ type UsdaNutrientEntry = {
   nutrient?: { name?: string; unitName?: string };
   nutrientName?: string;
   unitName?: string;
-  amount?: number;
+  amount?: number; // /food/{id} and /foods
+  value?: number;  // /foods/search
 };
 
 export function extractNutrientsPer100g(foodNutrients?: UsdaNutrientEntry[]): NutrientProfile {
@@ -76,7 +68,10 @@ export function extractNutrientsPer100g(foodNutrients?: UsdaNutrientEntry[]): Nu
   if (!Array.isArray(foodNutrients)) return profile;
 
   for (const item of foodNutrients) {
-    if (!item || item.amount === undefined || item.amount === null) continue;
+    if (!item) continue;
+
+    const amount = item.amount ?? item.value;
+    if (amount === undefined || amount === null) continue;
 
     const name = item.nutrient?.name ?? item.nutrientName;
     if (!name) continue; // Branded entries with no descriptor cannot be mapped.
@@ -88,7 +83,7 @@ export function extractNutrientsPer100g(foodNutrients?: UsdaNutrientEntry[]): Nu
     const unit = item.nutrient?.unitName ?? item.unitName;
     if (key === 'calories' && unit?.toLowerCase() !== 'kcal') continue;
 
-    profile[key] = item.amount;
+    profile[key] = amount;
   }
 
   return profile;

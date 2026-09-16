@@ -1,7 +1,7 @@
 import type { APIRoute } from 'astro';
 import { getFoodByIdOrSlug } from '../../../lib/foods/foodIndex';
-import { getUsdaFoodDetails } from '../../../lib/usda/client';
-import { normalizeUsdaFoodDetails, hasUsableNutrients } from '../../../lib/usda/normalize';
+import { getUsdaFoodDetails, searchUsdaFoods } from '../../../lib/usda/client';
+import { normalizeUsdaFoodDetails, hasUsableNutrients, extractNutrientsPer100g } from '../../../lib/usda/normalize';
 
 export const GET: APIRoute = async ({ request }) => {
   try {
@@ -46,10 +46,19 @@ export const GET: APIRoute = async ({ request }) => {
         }
         if (usdaRes.ok && usdaRes.data) {
           const usdaFood = normalizeUsdaFoodDetails(usdaRes.data);
-          // Branded records routinely carry no nutrient descriptors at all.
-          // Returning that food would add a silent 0 kcal item to the user's
-          // totals, so treat it as unavailable and let the local fallback below
-          // have a go instead.
+
+          // USDA's detail endpoint returns Branded foodNutrients without names
+          // (every format, and /foods too), but /foods/search carries the same
+          // record fully described. Searching by fdcId returns exactly that food,
+          // so borrow its nutrients rather than turning the user away.
+          if (!hasUsableNutrients(usdaFood.nutrientsPer100g)) {
+            const searchRes = await searchUsdaFoods(String(fdcId), 5).catch(() => null);
+            const match = searchRes?.ok ? searchRes.data?.foods?.find((f) => f.fdcId === fdcId) : undefined;
+            if (match) usdaFood.nutrientsPer100g = extractNutrientsPer100g(match.foodNutrients);
+          }
+
+          // Still nothing usable: returning it would add a silent 0 kcal item to
+          // the user's totals, so fall through to the local fallback instead.
           if (hasUsableNutrients(usdaFood.nutrientsPer100g)) {
             return new Response(JSON.stringify({
               ok: true,
