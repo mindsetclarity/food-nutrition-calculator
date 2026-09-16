@@ -56,7 +56,10 @@ export const POST: APIRoute = async ({ request }) => {
     let modelName = llmRes.model;
     let warnings = [...llmRes.warnings];
 
-    if (llmRes.ok && llmRes.json) {
+    // The mock is the default when LLM_PROVIDER is unset, and its output is a
+    // placeholder rather than a parse of the user's text - use the deterministic
+    // parser instead of showing "mock food".
+    if (llmRes.ok && llmRes.json && llmRes.provider !== 'mock') {
       parsedData = normalizeParsedMeal(llmRes.json);
     } else {
       providerName = "basic";

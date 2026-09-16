@@ -1,5 +1,6 @@
 import type { LLMProvider, LLMRequest, LLMResponse } from './types';
-import { getLLMProviderName } from './config';
+import { getLLMProviderName, getLLMModel } from './config';
+import { LLM_ERRORS } from './errors';
 import { mockProvider } from './providers/mock';
 import { geminiProvider } from './providers/gemini';
 import { openaiProvider } from './providers/openai';
@@ -24,10 +25,14 @@ export function getLLMProvider(): LLMProvider {
 export async function generateWithLLM(request: LLMRequest): Promise<LLMResponse> {
   const provider = getLLMProvider();
   
+  // A missing key is a failure, not a cue to substitute the mock: the mock answers
+  // ok:true with a fabricated "mock food" item, which callers cannot tell apart
+  // from a real parse and would show to users.
   if (!provider.isConfigured()) {
-    const res = await mockProvider.generate(request);
-    res.warnings.push(`Provider ${provider.name} is not configured. Falling back to mock.`);
-    return res;
+    return {
+      ok: false, provider: provider.name, model: getLLMModel(provider.name), text: '', warnings: [],
+      error: { code: LLM_ERRORS.NOT_CONFIGURED, message: `Provider ${provider.name} is not configured.`, retryable: false }
+    };
   }
   
   return provider.generate(request);
