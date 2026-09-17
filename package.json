@@ -13,7 +13,7 @@
     "deploy": "node scripts/deploy.mjs",
     "test:nemotron": "node --experimental-strip-types scripts/test-nemotron.mjs",
     "test:usda": "node --experimental-strip-types scripts/test-usda-normalize.mjs",
-    "test:meal-parser": "node --experimental-strip-types scripts/test-basic-meal-parser.mjs",
+    "test:meal-parser": "node --experimental-strip-types scripts/test-basic-meal-parser.mjs && node --experimental-strip-types scripts/test-normalize-parsed-meal.mjs",
     "test:ranking": "node --experimental-strip-types scripts/test-usda-ranking.mjs",
     "test:llm-client": "node --experimental-strip-types scripts/test-llm-client.mjs"
   },

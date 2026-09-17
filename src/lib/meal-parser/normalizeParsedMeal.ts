@@ -1,5 +1,19 @@
 import type { ParsedMealItem, ParsedMealResponse } from './types';
 
+const sameWord = (a: string, b: string) =>
+  a === b || a + 's' === b || b + 's' === a || a + 'es' === b || b + 'es' === a;
+
+/**
+ * LLMs often echo the food as its own unit for countable items ("2 egg eggs",
+ * "0.5 banana banana"). Treat that as a count, matching the basic parser's 'piece'.
+ */
+export function normalizeUnit(unit: unknown, foodName: string): string | null {
+  if (!unit) return null;
+  const u = String(unit).trim().toLowerCase();
+  const headNoun = foodName.toLowerCase().split(/\s+/).pop() ?? '';
+  return headNoun && sameWord(u, headNoun) ? 'piece' : u;
+}
+
 export function normalizeParsedMeal(data: any): ParsedMealResponse {
   const response: ParsedMealResponse = {
     items: [],
@@ -40,7 +54,7 @@ export function normalizeParsedMeal(data: any): ParsedMealResponse {
         rawText: item.rawText ? String(item.rawText) : foodName,
         foodName: foodName,
         quantity: qty,
-        unit: item.unit ? String(item.unit).toLowerCase() : null,
+        unit: normalizeUnit(item.unit, foodName),
         preparation: item.preparation ? String(item.preparation) : null,
         usdaSearchQuery: item.usdaSearchQuery ? String(item.usdaSearchQuery) : foodName,
         confidence: typeof item.confidence === 'number' ? Math.max(0, Math.min(1, item.confidence)) : 0.8,
