@@ -186,53 +186,9 @@ for (let b of baseFoods) {
   }
 }
 
-// To reach 1000+, let's add some more generic items with combinations (e.g. 50 extra bases x 10 brand/styles)
-const extraBases = [];
-for (let i = 1; i <= 60; i++) {
-  extraBases.push({ name: `Generic Food ${i}`, baseCat: 'Snacks', cal: 200 + i*2, p: 5, c: 20, f: 10, fib: 2, sug: 5, sod: 100, baseServing: { unit: 'oz', label: '1 oz', grams: 28 }});
-  extraBases.push({ name: `Fast Food Item ${i}`, baseCat: 'Fast Food Style', cal: 300 + i*5, p: 15, c: 30, f: 15, fib: 2, sug: 5, sod: 500, baseServing: { unit: 'serving', label: '1 serving', grams: 150 }});
-  extraBases.push({ name: `Prepared Meal ${i}`, baseCat: 'Prepared Meals', cal: 400 + i*6, p: 20, c: 45, f: 15, fib: 5, sug: 10, sod: 600, baseServing: { unit: 'meal', label: '1 meal', grams: 350 }});
-  extraBases.push({ name: `Beverage ${i}`, baseCat: 'Beverages', cal: 100 + i, p: 1, c: 25, f: 0, fib: 0, sug: 20, sod: 20, baseServing: { unit: 'cup', label: '1 cup', grams: 240 }});
-  extraBases.push({ name: `Condiment ${i}`, baseCat: 'Condiments & Oils', cal: 50, p: 0, c: 5, f: 3, fib: 0, sug: 4, sod: 150, baseServing: { unit: 'tbsp', label: '1 tbsp', grams: 15 }});
-}
-
-for (let b of extraBases) {
-  let styles = ['Regular', 'Low Fat', 'Low Sodium', 'Premium'];
-  for (let style of styles) {
-    let name = `${style} ${b.name}`;
-    allFoods.push({
-      id: generateId(),
-      slug: slugify(name),
-      name: name,
-      searchName: name.toLowerCase(),
-      displayName: name,
-      aliases: [name.toLowerCase(), b.name.toLowerCase()],
-      category: b.baseCat,
-      source: "local",
-      sourceLabel: "Local database",
-      isEstimated: true,
-      defaultUnit: b.baseServing.unit,
-      defaultQuantity: 1,
-      servingSizes: [
-        { id: `serve_${globalIdCounter}`, unit: b.baseServing.unit, label: b.baseServing.label, grams: b.baseServing.grams, isDefault: true },
-        { id: `serve_${globalIdCounter+1}`, unit: "g", label: "100 g", grams: 100 }
-      ],
-      nutrientsPer100g: {
-        calories: style === 'Low Fat' ? Math.round(b.cal*0.7) : b.cal,
-        protein: b.p,
-        carbohydrates: b.c,
-        fat: style === 'Low Fat' ? Math.max(0, b.f - 5) : b.f,
-        fiber: b.fib,
-        sugar: b.sug,
-        sodium: style === 'Low Sodium' ? Math.round(b.sod*0.5) : b.sod
-      },
-      tags: [b.baseCat.toLowerCase().replace(/\s/g, '-'), style.toLowerCase().replace(/\s/g, '-')],
-      preparationState: style,
-      compareGroup: b.baseCat
-    });
-    foodCount++;
-  }
-}
+// No padding entries. This script used to append 1,200 placeholder foods
+// ("Premium Condiment 58", calories = 200 + i*2) to reach 1000+ items; each
+// became a public, indexable nutrition page with invented values.
 
 // Ensure unique slugs
 const slugSet = new Set();
