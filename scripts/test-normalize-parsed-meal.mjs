@@ -30,8 +30,14 @@ assert.deepEqual(
   [[1, 'bowl', 'oatmeal'], [2, 'slices', 'whole wheat toast'], [1, 'cup', 'rice']]
 );
 
-// Missing unit stays null and flags review.
-const [missing] = normalizeParsedMeal({ items: [{ quantity: 1, foodName: 'apple' }] }).items;
+// A quantity with no unit is a count - a null unit blocks the item from being added.
+assert.deepEqual(
+  units([{ quantity: 0.5, foodName: 'banana' }, { quantity: 2, unit: '', foodName: 'egg' }]),
+  [[0.5, 'piece', 'banana'], [2, 'piece', 'egg']]
+);
+
+// With neither quantity nor unit there is nothing to infer: stays null, flagged for review.
+const [missing] = normalizeParsedMeal({ items: [{ foodName: 'apple' }] }).items;
 assert.equal(missing.unit, null);
 assert.equal(missing.needsReview, true);
 

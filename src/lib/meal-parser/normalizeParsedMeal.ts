@@ -5,11 +5,12 @@ const sameWord = (a: string, b: string) =>
 
 /**
  * LLMs often echo the food as its own unit for countable items ("2 egg eggs",
- * "0.5 banana banana"). Treat that as a count, matching the basic parser's 'piece'.
+ * "0.5 banana banana") or omit the unit entirely. Treat both as a count, matching
+ * the basic parser's 'piece' - a null unit blocks the item from being added.
  */
-export function normalizeUnit(unit: unknown, foodName: string): string | null {
-  if (!unit) return null;
-  const u = String(unit).trim().toLowerCase();
+export function normalizeUnit(unit: unknown, foodName: string, quantity: number | null = null): string | null {
+  const u = unit ? String(unit).trim().toLowerCase() : '';
+  if (!u) return quantity !== null ? 'piece' : null;
   const headNoun = foodName.toLowerCase().split(/\s+/).pop() ?? '';
   return headNoun && sameWord(u, headNoun) ? 'piece' : u;
 }
@@ -54,7 +55,7 @@ export function normalizeParsedMeal(data: any): ParsedMealResponse {
         rawText: item.rawText ? String(item.rawText) : foodName,
         foodName: foodName,
         quantity: qty,
-        unit: normalizeUnit(item.unit, foodName),
+        unit: normalizeUnit(item.unit, foodName, qty),
         preparation: item.preparation ? String(item.preparation) : null,
         usdaSearchQuery: item.usdaSearchQuery ? String(item.usdaSearchQuery) : foodName,
         confidence: typeof item.confidence === 'number' ? Math.max(0, Math.min(1, item.confidence)) : 0.8,
