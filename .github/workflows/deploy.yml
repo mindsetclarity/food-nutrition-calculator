@@ -20,6 +20,27 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
+      # A secret that exists but holds only whitespace passes GitHub's "is set"
+      # check and gets baked into the bundle as an empty key, so the live site
+      # silently falls back to local data. Fail here instead. Prints lengths only.
+      - name: Check required secrets
+        run: |
+          status=0
+          for name in CLOUDFLARE_API_TOKEN USDA_API_KEY OPENROUTER_API_KEY; do
+            value="${!name}"
+            trimmed="$(printf '%s' "$value" | tr -d '[:space:]')"
+            echo "$name: ${#value} characters, ${#trimmed} excluding whitespace"
+            if [ -z "$trimmed" ]; then
+              echo "::error::$name is empty or whitespace only - re-enter it in the repository secrets"
+              status=1
+            fi
+          done
+          exit $status
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          USDA_API_KEY: ${{ secrets.USDA_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+
       - name: Build and Deploy
         run: npm run deploy
         env:
