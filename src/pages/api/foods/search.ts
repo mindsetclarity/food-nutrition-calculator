@@ -5,6 +5,10 @@ import { normalizeUsdaSearchResults } from '../../../lib/usda/normalize';
 import { rankUsdaSearchFoods } from '../../../lib/usda/ranking';
 
 const USDA_CANDIDATE_POOL = 50;
+
+// A USDA outage or bad key must not be pinned at the edge for an hour after
+// it is fixed, so fallback responses are cached only briefly.
+const FALLBACK_CACHE = 'public, max-age=60, s-maxage=60';
 import type { NormalizedSearchResult } from '../../../lib/usda/types';
 import { inputLimits, isValidSearchQuery } from '../../../lib/safety/inputLimits';
 
@@ -83,8 +87,9 @@ export const GET: APIRoute = async ({ request }) => {
       source: "local",
       results: localResults,
       fallbackUsed: true,
-      message: "USDA data is unavailable, showing local fallback results."
-    }), { status: 200, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'public, max-age=300, s-maxage=3600' } });
+      message: "USDA data is unavailable, showing local fallback results.",
+      usdaError: usdaRes.error ?? null
+    }), { status: 200, headers: { 'Content-Type': 'application/json', 'Cache-Control': FALLBACK_CACHE } });
   }
 
     return new Response(JSON.stringify({
@@ -93,8 +98,9 @@ export const GET: APIRoute = async ({ request }) => {
       source: "local",
       results: [],
       fallbackUsed: true,
-      message: "No results found."
-    }), { status: 200, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'public, max-age=300, s-maxage=3600' } });
+      message: "No results found.",
+      usdaError: usdaRes.error ?? null
+    }), { status: 200, headers: { 'Content-Type': 'application/json', 'Cache-Control': FALLBACK_CACHE } });
 
   } catch (error) {
     console.error("Safe Search API Error:", error instanceof Error ? error.message : "Unknown error");

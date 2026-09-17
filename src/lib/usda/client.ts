@@ -3,8 +3,9 @@ import type { UsdaSearchResponse, UsdaFoodDetails, UsdaApiResponse } from './typ
 const USDA_BASE_URL = 'https://api.nal.usda.gov/fdc/v1';
 
 export function getUsdaApiKey(): string | undefined {
-  // Use Vite's import.meta.env for Astro
-  return import.meta.env.USDA_API_KEY;
+  // Trimmed: a key pasted with a trailing space or newline is rejected by USDA
+  // as API_KEY_INVALID, which silently drops every search to local data.
+  return import.meta.env.USDA_API_KEY?.trim() || undefined;
 }
 
 export function hasUsdaApiKey(): boolean {
@@ -29,11 +30,16 @@ async function safeUsdaFetch<T>(url: string): Promise<UsdaApiResponse<T>> {
     const response = await fetch(url, { signal: controller.signal });
 
     if (!response.ok) {
-      return { ok: false, error: `USDA API returned ${response.status}` };
+      // USDA's error code (e.g. API_KEY_INVALID, OVER_RATE_LIMIT) says why. Never
+      // include the URL here: it carries the api_key.
+      const body = await response.json().catch(() => null);
+      const code = body?.error?.code ? ` ${body.error.code}` : '';
+      return { ok: false, error: `USDA API returned ${response.status}${code}` };
     }
     const data = await response.json();
     return { ok: true, data };
   } catch (error) {
+    if ((error as Error)?.name === 'AbortError') return { ok: false, error: 'USDA API timed out' };
     return { ok: false, error: 'Network or parsing error' };
   } finally {
     clearTimeout(id);
