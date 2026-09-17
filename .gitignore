@@ -2,6 +2,10 @@
 dist/
 .vercel/
 
+# wrangler's local state: the miniflare dev cache, plus a deploy/config.json
+# that every build rewrites with host-specific path separators
+.wrangler/
+
 # generated types
 .astro/
 
