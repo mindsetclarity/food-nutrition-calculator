@@ -4,17 +4,17 @@ export const dairyalternativesFoods: FoodItem[] = [
   {
     "id": "local_0184",
     "slug": "milk",
-    "name": "Milk",
-    "searchName": "milk",
-    "displayName": "Milk",
+    "name": "Whole Milk",
+    "searchName": "whole milk",
+    "displayName": "Whole Milk",
     "aliases": [
-      "milk",
+      "whole milk",
       "milk"
     ],
     "category": "Dairy & Alternatives",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -34,11 +34,11 @@ export const dairyalternativesFoods: FoodItem[] = [
     ],
     "nutrientsPer100g": {
       "calories": 61,
-      "protein": 3.2,
+      "protein": 3.15,
       "carbohydrates": 4.8,
-      "fat": 3.3,
+      "fat": 3.25,
       "fiber": 0,
-      "sugar": 5.1,
+      "sugar": 5.05,
       "sodium": 43
     },
     "tags": [
@@ -46,22 +46,26 @@ export const dairyalternativesFoods: FoodItem[] = [
       "whole"
     ],
     "preparationState": "Whole",
-    "compareGroup": "Dairy & Alternatives"
+    "compareGroup": "Dairy & Alternatives",
+    "usda": {
+      "fdcId": 171265,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0185",
     "slug": "2-reduced-fat-milk",
-    "name": "2% Reduced Fat Milk",
-    "searchName": "2% reduced fat milk",
-    "displayName": "2% Reduced Fat Milk",
+    "name": "2% Reduced-Fat Milk",
+    "searchName": "2% reduced-fat milk",
+    "displayName": "2% Reduced-Fat Milk",
     "aliases": [
-      "2% reduced fat milk",
-      "milk"
+      "2% reduced-fat milk",
+      "2% reduced fat milk"
     ],
     "category": "Dairy & Alternatives",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -80,35 +84,39 @@ export const dairyalternativesFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 49,
-      "protein": 3.2,
+      "calories": 50,
+      "protein": 3.3,
       "carbohydrates": 4.8,
-      "fat": 2,
+      "fat": 1.98,
       "fiber": 0,
-      "sugar": 5.1,
-      "sodium": 43
+      "sugar": 5.06,
+      "sodium": 47
     },
     "tags": [
       "dairy-&-alternatives",
       "2%reducedfat"
     ],
     "preparationState": "2% Reduced Fat",
-    "compareGroup": "Dairy & Alternatives"
+    "compareGroup": "Dairy & Alternatives",
+    "usda": {
+      "fdcId": 171267,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0186",
     "slug": "nonfat-skim-milk",
-    "name": "Nonfat (Skim) Milk",
-    "searchName": "nonfat (skim) milk",
-    "displayName": "Nonfat (Skim) Milk",
+    "name": "Skim Milk",
+    "searchName": "skim milk",
+    "displayName": "Skim Milk",
     "aliases": [
-      "nonfat (skim) milk",
-      "milk"
+      "skim milk",
+      "nonfat (skim) milk"
     ],
     "category": "Dairy & Alternatives",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -128,34 +136,38 @@ export const dairyalternativesFoods: FoodItem[] = [
     ],
     "nutrientsPer100g": {
       "calories": 34,
-      "protein": 3.2,
-      "carbohydrates": 4.8,
-      "fat": 0.2,
+      "protein": 3.37,
+      "carbohydrates": 4.96,
+      "fat": 0.08,
       "fiber": 0,
-      "sugar": 5.1,
-      "sodium": 43
+      "sugar": 5.09,
+      "sodium": 42
     },
     "tags": [
       "dairy-&-alternatives",
       "nonfatskim"
     ],
     "preparationState": "Nonfat (Skim)",
-    "compareGroup": "Dairy & Alternatives"
+    "compareGroup": "Dairy & Alternatives",
+    "usda": {
+      "fdcId": 171269,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0187",
     "slug": "yogurt",
-    "name": "Yogurt",
-    "searchName": "yogurt",
-    "displayName": "Yogurt",
+    "name": "Plain Whole-Milk Yogurt",
+    "searchName": "plain whole-milk yogurt",
+    "displayName": "Plain Whole-Milk Yogurt",
     "aliases": [
-      "yogurt",
+      "plain whole-milk yogurt",
       "yogurt"
     ],
     "category": "Dairy & Alternatives",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -175,11 +187,11 @@ export const dairyalternativesFoods: FoodItem[] = [
     ],
     "nutrientsPer100g": {
       "calories": 61,
-      "protein": 3.5,
-      "carbohydrates": 4.7,
-      "fat": 3.3,
+      "protein": 3.47,
+      "carbohydrates": 4.66,
+      "fat": 3.25,
       "fiber": 0,
-      "sugar": 4.7,
+      "sugar": 4.66,
       "sodium": 46
     },
     "tags": [
@@ -187,22 +199,26 @@ export const dairyalternativesFoods: FoodItem[] = [
       "whole"
     ],
     "preparationState": "Whole",
-    "compareGroup": "Dairy & Alternatives"
+    "compareGroup": "Dairy & Alternatives",
+    "usda": {
+      "fdcId": 171284,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0188",
     "slug": "2-reduced-fat-yogurt",
-    "name": "2% Reduced Fat Yogurt",
-    "searchName": "2% reduced fat yogurt",
-    "displayName": "2% Reduced Fat Yogurt",
+    "name": "Plain Low-Fat Yogurt",
+    "searchName": "plain low-fat yogurt",
+    "displayName": "Plain Low-Fat Yogurt",
     "aliases": [
-      "2% reduced fat yogurt",
-      "yogurt"
+      "plain low-fat yogurt",
+      "2% reduced fat yogurt"
     ],
     "category": "Dairy & Alternatives",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -221,35 +237,39 @@ export const dairyalternativesFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 49,
-      "protein": 3.5,
-      "carbohydrates": 4.7,
-      "fat": 2,
+      "calories": 63,
+      "protein": 5.25,
+      "carbohydrates": 7.04,
+      "fat": 1.55,
       "fiber": 0,
-      "sugar": 4.7,
-      "sodium": 46
+      "sugar": 7.04,
+      "sodium": 70
     },
     "tags": [
       "dairy-&-alternatives",
       "2%reducedfat"
     ],
     "preparationState": "2% Reduced Fat",
-    "compareGroup": "Dairy & Alternatives"
+    "compareGroup": "Dairy & Alternatives",
+    "usda": {
+      "fdcId": 170886,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0189",
     "slug": "nonfat-skim-yogurt",
-    "name": "Nonfat (Skim) Yogurt",
-    "searchName": "nonfat (skim) yogurt",
-    "displayName": "Nonfat (Skim) Yogurt",
+    "name": "Plain Nonfat Yogurt",
+    "searchName": "plain nonfat yogurt",
+    "displayName": "Plain Nonfat Yogurt",
     "aliases": [
-      "nonfat (skim) yogurt",
-      "yogurt"
+      "plain nonfat yogurt",
+      "nonfat (skim) yogurt"
     ],
     "category": "Dairy & Alternatives",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -268,35 +288,39 @@ export const dairyalternativesFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 34,
-      "protein": 3.5,
-      "carbohydrates": 4.7,
-      "fat": 0.2,
+      "calories": 56,
+      "protein": 5.73,
+      "carbohydrates": 7.68,
+      "fat": 0.18,
       "fiber": 0,
-      "sugar": 4.7,
-      "sodium": 46
+      "sugar": 7.68,
+      "sodium": 77
     },
     "tags": [
       "dairy-&-alternatives",
       "nonfatskim"
     ],
     "preparationState": "Nonfat (Skim)",
-    "compareGroup": "Dairy & Alternatives"
+    "compareGroup": "Dairy & Alternatives",
+    "usda": {
+      "fdcId": 170887,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0190",
     "slug": "cheese",
-    "name": "Cheese",
-    "searchName": "cheese",
-    "displayName": "Cheese",
+    "name": "Cheddar Cheese",
+    "searchName": "cheddar cheese",
+    "displayName": "Cheddar Cheese",
     "aliases": [
-      "cheese",
+      "cheddar cheese",
       "cheese"
     ],
     "category": "Dairy & Alternatives",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "oz",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -315,113 +339,23 @@ export const dairyalternativesFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 402,
-      "protein": 25,
-      "carbohydrates": 1.3,
-      "fat": 33.1,
-      "fiber": 0,
-      "sugar": 0.5,
-      "sodium": 621
+      "calories": 408,
+      "protein": 23.3,
+      "carbohydrates": 2.44,
+      "fat": 34,
+      "fiber": null,
+      "sugar": null,
+      "sodium": 654
     },
     "tags": [
       "dairy-&-alternatives",
       "whole"
     ],
     "preparationState": "Whole",
-    "compareGroup": "Dairy & Alternatives"
-  },
-  {
-    "id": "local_0191",
-    "slug": "2-reduced-fat-cheese",
-    "name": "2% Reduced Fat Cheese",
-    "searchName": "2% reduced fat cheese",
-    "displayName": "2% Reduced Fat Cheese",
-    "aliases": [
-      "2% reduced fat cheese",
-      "cheese"
-    ],
-    "category": "Dairy & Alternatives",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "oz",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_192",
-        "unit": "oz",
-        "label": "1 oz",
-        "grams": 28,
-        "isDefault": true
-      },
-      {
-        "id": "serve_193",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 322,
-      "protein": 25,
-      "carbohydrates": 1.3,
-      "fat": 19.9,
-      "fiber": 0,
-      "sugar": 0.5,
-      "sodium": 621
-    },
-    "tags": [
-      "dairy-&-alternatives",
-      "2%reducedfat"
-    ],
-    "preparationState": "2% Reduced Fat",
-    "compareGroup": "Dairy & Alternatives"
-  },
-  {
-    "id": "local_0192",
-    "slug": "nonfat-skim-cheese",
-    "name": "Nonfat (Skim) Cheese",
-    "searchName": "nonfat (skim) cheese",
-    "displayName": "Nonfat (Skim) Cheese",
-    "aliases": [
-      "nonfat (skim) cheese",
-      "cheese"
-    ],
-    "category": "Dairy & Alternatives",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "oz",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_193",
-        "unit": "oz",
-        "label": "1 oz",
-        "grams": 28,
-        "isDefault": true
-      },
-      {
-        "id": "serve_194",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 221,
-      "protein": 25,
-      "carbohydrates": 1.3,
-      "fat": 1.7,
-      "fiber": 0,
-      "sugar": 0.5,
-      "sodium": 621
-    },
-    "tags": [
-      "dairy-&-alternatives",
-      "nonfatskim"
-    ],
-    "preparationState": "Nonfat (Skim)",
-    "compareGroup": "Dairy & Alternatives"
+    "compareGroup": "Dairy & Alternatives",
+    "usda": {
+      "fdcId": 328637,
+      "dataType": "Foundation"
+    }
   }
 ];

@@ -8,13 +8,12 @@ export const fruitsFoods: FoodItem[] = [
     "searchName": "apple",
     "displayName": "Apple",
     "aliases": [
-      "apple",
       "apple"
     ],
     "category": "Fruits",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "piece",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -34,9 +33,9 @@ export const fruitsFoods: FoodItem[] = [
     ],
     "nutrientsPer100g": {
       "calories": 52,
-      "protein": 0.3,
+      "protein": 0.26,
       "carbohydrates": 13.8,
-      "fat": 0.2,
+      "fat": 0.17,
       "fiber": 2.4,
       "sugar": 10.4,
       "sodium": 1
@@ -46,7 +45,11 @@ export const fruitsFoods: FoodItem[] = [
       "raw"
     ],
     "preparationState": "Raw",
-    "compareGroup": "Fruits"
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 171688,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0002",
@@ -55,13 +58,12 @@ export const fruitsFoods: FoodItem[] = [
     "searchName": "dried apple",
     "displayName": "Dried Apple",
     "aliases": [
-      "dried apple",
-      "apple"
+      "dried apple"
     ],
     "category": "Fruits",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "piece",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -80,35 +82,39 @@ export const fruitsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 213,
-      "protein": 1.2,
-      "carbohydrates": 55.2,
-      "fat": 0.8,
-      "fiber": 9.6,
-      "sugar": 41.6,
-      "sodium": 4
+      "calories": 243,
+      "protein": 0.93,
+      "carbohydrates": 65.9,
+      "fat": 0.32,
+      "fiber": 8.7,
+      "sugar": 57.2,
+      "sodium": 87
     },
     "tags": [
       "fruits",
       "dried"
     ],
     "preparationState": "Dried",
-    "compareGroup": "Fruits"
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 171691,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0003",
     "slug": "juice-apple",
-    "name": "Juice Apple",
-    "searchName": "juice apple",
-    "displayName": "Juice Apple",
+    "name": "Apple Juice",
+    "searchName": "apple juice",
+    "displayName": "Apple Juice",
     "aliases": [
-      "juice apple",
-      "apple"
+      "apple juice",
+      "juice apple"
     ],
     "category": "Fruits",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "piece",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -127,161 +133,24 @@ export const fruitsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 57,
-      "protein": 0,
-      "carbohydrates": 15.2,
-      "fat": 0,
-      "fiber": 2.6,
-      "sugar": 11.4,
-      "sodium": 1
+      "calories": 46,
+      "protein": 0.1,
+      "carbohydrates": 11.3,
+      "fat": 0.13,
+      "fiber": 0.2,
+      "sugar": 9.62,
+      "sodium": 4
     },
     "tags": [
       "fruits",
       "juice"
     ],
     "preparationState": "Juice",
-    "compareGroup": "Fruits"
-  },
-  {
-    "id": "local_0004",
-    "slug": "canned-in-water-apple",
-    "name": "Canned (in Water) Apple",
-    "searchName": "canned (in water) apple",
-    "displayName": "Canned (in Water) Apple",
-    "aliases": [
-      "canned (in water) apple",
-      "apple"
-    ],
-    "category": "Fruits",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "piece",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_5",
-        "unit": "piece",
-        "label": "1 medium",
-        "grams": 182,
-        "isDefault": true
-      },
-      {
-        "id": "serve_6",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 52,
-      "protein": 0.3,
-      "carbohydrates": 13.8,
-      "fat": 0.2,
-      "fiber": 2.4,
-      "sugar": 10.4,
-      "sodium": 251
-    },
-    "tags": [
-      "fruits",
-      "cannedinwater"
-    ],
-    "preparationState": "Canned (in Water)",
-    "compareGroup": "Fruits"
-  },
-  {
-    "id": "local_0005",
-    "slug": "canned-in-syrup-apple",
-    "name": "Canned (in Syrup) Apple",
-    "searchName": "canned (in syrup) apple",
-    "displayName": "Canned (in Syrup) Apple",
-    "aliases": [
-      "canned (in syrup) apple",
-      "apple"
-    ],
-    "category": "Fruits",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "piece",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_6",
-        "unit": "piece",
-        "label": "1 medium",
-        "grams": 182,
-        "isDefault": true
-      },
-      {
-        "id": "serve_7",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 138,
-      "protein": 0.3,
-      "carbohydrates": 28.8,
-      "fat": 0.2,
-      "fiber": 2.4,
-      "sugar": 25.4,
-      "sodium": 1
-    },
-    "tags": [
-      "fruits",
-      "cannedinsyrup"
-    ],
-    "preparationState": "Canned (in Syrup)",
-    "compareGroup": "Fruits"
-  },
-  {
-    "id": "local_0006",
-    "slug": "frozen-apple",
-    "name": "Frozen Apple",
-    "searchName": "frozen apple",
-    "displayName": "Frozen Apple",
-    "aliases": [
-      "frozen apple",
-      "apple"
-    ],
-    "category": "Fruits",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "piece",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_7",
-        "unit": "piece",
-        "label": "1 medium",
-        "grams": 182,
-        "isDefault": true
-      },
-      {
-        "id": "serve_8",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 52,
-      "protein": 0.3,
-      "carbohydrates": 13.8,
-      "fat": 0.2,
-      "fiber": 2.4,
-      "sugar": 10.4,
-      "sodium": 1
-    },
-    "tags": [
-      "fruits",
-      "frozen"
-    ],
-    "preparationState": "Frozen",
-    "compareGroup": "Fruits"
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 173933,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0007",
@@ -290,13 +159,12 @@ export const fruitsFoods: FoodItem[] = [
     "searchName": "banana",
     "displayName": "Banana",
     "aliases": [
-      "banana",
       "banana"
     ],
     "category": "Fruits",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "piece",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -316,9 +184,9 @@ export const fruitsFoods: FoodItem[] = [
     ],
     "nutrientsPer100g": {
       "calories": 89,
-      "protein": 1.1,
+      "protein": 1.09,
       "carbohydrates": 22.8,
-      "fat": 0.3,
+      "fat": 0.33,
       "fiber": 2.6,
       "sugar": 12.2,
       "sodium": 1
@@ -328,7 +196,11 @@ export const fruitsFoods: FoodItem[] = [
       "raw"
     ],
     "preparationState": "Raw",
-    "compareGroup": "Fruits"
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 173944,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0008",
@@ -337,13 +209,12 @@ export const fruitsFoods: FoodItem[] = [
     "searchName": "dried banana",
     "displayName": "Dried Banana",
     "aliases": [
-      "dried banana",
-      "banana"
+      "dried banana"
     ],
     "category": "Fruits",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "piece",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -362,208 +233,24 @@ export const fruitsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 364,
-      "protein": 4.4,
-      "carbohydrates": 91.2,
-      "fat": 1.2,
-      "fiber": 10.4,
-      "sugar": 48.8,
-      "sodium": 4
+      "calories": 346,
+      "protein": 3.89,
+      "carbohydrates": 88.3,
+      "fat": 1.81,
+      "fiber": 9.9,
+      "sugar": 47.3,
+      "sodium": 3
     },
     "tags": [
       "fruits",
       "dried"
     ],
     "preparationState": "Dried",
-    "compareGroup": "Fruits"
-  },
-  {
-    "id": "local_0009",
-    "slug": "juice-banana",
-    "name": "Juice Banana",
-    "searchName": "juice banana",
-    "displayName": "Juice Banana",
-    "aliases": [
-      "juice banana",
-      "banana"
-    ],
-    "category": "Fruits",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "piece",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_10",
-        "unit": "piece",
-        "label": "1 medium",
-        "grams": 118,
-        "isDefault": true
-      },
-      {
-        "id": "serve_11",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 98,
-      "protein": 0.1,
-      "carbohydrates": 25.1,
-      "fat": 0,
-      "fiber": 2.9,
-      "sugar": 13.4,
-      "sodium": 1
-    },
-    "tags": [
-      "fruits",
-      "juice"
-    ],
-    "preparationState": "Juice",
-    "compareGroup": "Fruits"
-  },
-  {
-    "id": "local_0010",
-    "slug": "canned-in-water-banana",
-    "name": "Canned (in Water) Banana",
-    "searchName": "canned (in water) banana",
-    "displayName": "Canned (in Water) Banana",
-    "aliases": [
-      "canned (in water) banana",
-      "banana"
-    ],
-    "category": "Fruits",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "piece",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_11",
-        "unit": "piece",
-        "label": "1 medium",
-        "grams": 118,
-        "isDefault": true
-      },
-      {
-        "id": "serve_12",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 89,
-      "protein": 1.1,
-      "carbohydrates": 22.8,
-      "fat": 0.3,
-      "fiber": 2.6,
-      "sugar": 12.2,
-      "sodium": 251
-    },
-    "tags": [
-      "fruits",
-      "cannedinwater"
-    ],
-    "preparationState": "Canned (in Water)",
-    "compareGroup": "Fruits"
-  },
-  {
-    "id": "local_0011",
-    "slug": "canned-in-syrup-banana",
-    "name": "Canned (in Syrup) Banana",
-    "searchName": "canned (in syrup) banana",
-    "displayName": "Canned (in Syrup) Banana",
-    "aliases": [
-      "canned (in syrup) banana",
-      "banana"
-    ],
-    "category": "Fruits",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "piece",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_12",
-        "unit": "piece",
-        "label": "1 medium",
-        "grams": 118,
-        "isDefault": true
-      },
-      {
-        "id": "serve_13",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 194,
-      "protein": 1.1,
-      "carbohydrates": 37.8,
-      "fat": 0.3,
-      "fiber": 2.6,
-      "sugar": 27.2,
-      "sodium": 1
-    },
-    "tags": [
-      "fruits",
-      "cannedinsyrup"
-    ],
-    "preparationState": "Canned (in Syrup)",
-    "compareGroup": "Fruits"
-  },
-  {
-    "id": "local_0012",
-    "slug": "frozen-banana",
-    "name": "Frozen Banana",
-    "searchName": "frozen banana",
-    "displayName": "Frozen Banana",
-    "aliases": [
-      "frozen banana",
-      "banana"
-    ],
-    "category": "Fruits",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "piece",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_13",
-        "unit": "piece",
-        "label": "1 medium",
-        "grams": 118,
-        "isDefault": true
-      },
-      {
-        "id": "serve_14",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 89,
-      "protein": 1.1,
-      "carbohydrates": 22.8,
-      "fat": 0.3,
-      "fiber": 2.6,
-      "sugar": 12.2,
-      "sodium": 1
-    },
-    "tags": [
-      "fruits",
-      "frozen"
-    ],
-    "preparationState": "Frozen",
-    "compareGroup": "Fruits"
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 173945,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0013",
@@ -572,13 +259,12 @@ export const fruitsFoods: FoodItem[] = [
     "searchName": "orange",
     "displayName": "Orange",
     "aliases": [
-      "orange",
       "orange"
     ],
     "category": "Fruits",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "piece",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -598,11 +284,11 @@ export const fruitsFoods: FoodItem[] = [
     ],
     "nutrientsPer100g": {
       "calories": 47,
-      "protein": 0.9,
+      "protein": 0.94,
       "carbohydrates": 11.8,
-      "fat": 0.1,
+      "fat": 0.12,
       "fiber": 2.4,
-      "sugar": 9.4,
+      "sugar": 9.35,
       "sodium": 0
     },
     "tags": [
@@ -610,69 +296,26 @@ export const fruitsFoods: FoodItem[] = [
       "raw"
     ],
     "preparationState": "Raw",
-    "compareGroup": "Fruits"
-  },
-  {
-    "id": "local_0014",
-    "slug": "dried-orange",
-    "name": "Dried Orange",
-    "searchName": "dried orange",
-    "displayName": "Dried Orange",
-    "aliases": [
-      "dried orange",
-      "orange"
-    ],
-    "category": "Fruits",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "piece",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_15",
-        "unit": "piece",
-        "label": "1 medium",
-        "grams": 131,
-        "isDefault": true
-      },
-      {
-        "id": "serve_16",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 191,
-      "protein": 3.6,
-      "carbohydrates": 47.2,
-      "fat": 0.4,
-      "fiber": 9.6,
-      "sugar": 37.6,
-      "sodium": 0
-    },
-    "tags": [
-      "fruits",
-      "dried"
-    ],
-    "preparationState": "Dried",
-    "compareGroup": "Fruits"
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 169097,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0015",
     "slug": "juice-orange",
-    "name": "Juice Orange",
-    "searchName": "juice orange",
-    "displayName": "Juice Orange",
+    "name": "Orange Juice",
+    "searchName": "orange juice",
+    "displayName": "Orange Juice",
     "aliases": [
-      "juice orange",
-      "orange"
+      "orange juice",
+      "juice orange"
     ],
     "category": "Fruits",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "piece",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -691,176 +334,39 @@ export const fruitsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 52,
-      "protein": 0.1,
-      "carbohydrates": 13,
-      "fat": 0,
-      "fiber": 2.6,
-      "sugar": 10.3,
-      "sodium": 0
+      "calories": 47,
+      "protein": 0.77,
+      "carbohydrates": 10.17,
+      "fat": 0.34,
+      "fiber": 0.3,
+      "sugar": 8.18,
+      "sodium": 2
     },
     "tags": [
       "fruits",
       "juice"
     ],
     "preparationState": "Juice",
-    "compareGroup": "Fruits"
-  },
-  {
-    "id": "local_0016",
-    "slug": "canned-in-water-orange",
-    "name": "Canned (in Water) Orange",
-    "searchName": "canned (in water) orange",
-    "displayName": "Canned (in Water) Orange",
-    "aliases": [
-      "canned (in water) orange",
-      "orange"
-    ],
-    "category": "Fruits",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "piece",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_17",
-        "unit": "piece",
-        "label": "1 medium",
-        "grams": 131,
-        "isDefault": true
-      },
-      {
-        "id": "serve_18",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 47,
-      "protein": 0.9,
-      "carbohydrates": 11.8,
-      "fat": 0.1,
-      "fiber": 2.4,
-      "sugar": 9.4,
-      "sodium": 250
-    },
-    "tags": [
-      "fruits",
-      "cannedinwater"
-    ],
-    "preparationState": "Canned (in Water)",
-    "compareGroup": "Fruits"
-  },
-  {
-    "id": "local_0017",
-    "slug": "canned-in-syrup-orange",
-    "name": "Canned (in Syrup) Orange",
-    "searchName": "canned (in syrup) orange",
-    "displayName": "Canned (in Syrup) Orange",
-    "aliases": [
-      "canned (in syrup) orange",
-      "orange"
-    ],
-    "category": "Fruits",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "piece",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_18",
-        "unit": "piece",
-        "label": "1 medium",
-        "grams": 131,
-        "isDefault": true
-      },
-      {
-        "id": "serve_19",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 131,
-      "protein": 0.9,
-      "carbohydrates": 26.8,
-      "fat": 0.1,
-      "fiber": 2.4,
-      "sugar": 24.4,
-      "sodium": 0
-    },
-    "tags": [
-      "fruits",
-      "cannedinsyrup"
-    ],
-    "preparationState": "Canned (in Syrup)",
-    "compareGroup": "Fruits"
-  },
-  {
-    "id": "local_0018",
-    "slug": "frozen-orange",
-    "name": "Frozen Orange",
-    "searchName": "frozen orange",
-    "displayName": "Frozen Orange",
-    "aliases": [
-      "frozen orange",
-      "orange"
-    ],
-    "category": "Fruits",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "piece",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_19",
-        "unit": "piece",
-        "label": "1 medium",
-        "grams": 131,
-        "isDefault": true
-      },
-      {
-        "id": "serve_20",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 47,
-      "protein": 0.9,
-      "carbohydrates": 11.8,
-      "fat": 0.1,
-      "fiber": 2.4,
-      "sugar": 9.4,
-      "sodium": 0
-    },
-    "tags": [
-      "fruits",
-      "frozen"
-    ],
-    "preparationState": "Frozen",
-    "compareGroup": "Fruits"
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 2709186,
+      "dataType": "Survey (FNDDS)"
+    }
   },
   {
     "id": "local_0019",
     "slug": "strawberry",
-    "name": "Strawberry",
-    "searchName": "strawberry",
-    "displayName": "Strawberry",
+    "name": "Strawberries",
+    "searchName": "strawberries",
+    "displayName": "Strawberries",
     "aliases": [
-      "strawberry",
+      "strawberries",
       "strawberry"
     ],
     "category": "Fruits",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -880,11 +386,11 @@ export const fruitsFoods: FoodItem[] = [
     ],
     "nutrientsPer100g": {
       "calories": 32,
-      "protein": 0.7,
-      "carbohydrates": 7.7,
+      "protein": 0.67,
+      "carbohydrates": 7.68,
       "fat": 0.3,
       "fiber": 2,
-      "sugar": 4.9,
+      "sugar": 4.89,
       "sodium": 1
     },
     "tags": [
@@ -892,81 +398,89 @@ export const fruitsFoods: FoodItem[] = [
       "raw"
     ],
     "preparationState": "Raw",
-    "compareGroup": "Fruits"
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 167762,
+      "dataType": "SR Legacy"
+    }
   },
   {
-    "id": "local_0020",
-    "slug": "dried-strawberry",
-    "name": "Dried Strawberry",
-    "searchName": "dried strawberry",
-    "displayName": "Dried Strawberry",
+    "id": "local_0023",
+    "slug": "canned-in-syrup-strawberry",
+    "name": "Strawberries, Canned in Heavy Syrup",
+    "searchName": "strawberries, canned in heavy syrup",
+    "displayName": "Strawberries, Canned in Heavy Syrup",
     "aliases": [
-      "dried strawberry",
-      "strawberry"
+      "strawberries, canned in heavy syrup",
+      "canned (in syrup) strawberry"
     ],
     "category": "Fruits",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
       {
-        "id": "serve_21",
+        "id": "serve_24",
         "unit": "cup",
         "label": "1 cup halves",
         "grams": 152,
         "isDefault": true
       },
       {
-        "id": "serve_22",
+        "id": "serve_25",
         "unit": "g",
         "label": "100 g",
         "grams": 100
       }
     ],
     "nutrientsPer100g": {
-      "calories": 136,
-      "protein": 2.8,
-      "carbohydrates": 30.8,
-      "fat": 1.2,
-      "fiber": 8,
-      "sugar": 19.6,
+      "calories": 92,
+      "protein": 0.56,
+      "carbohydrates": 23.5,
+      "fat": 0.26,
+      "fiber": 1.7,
+      "sugar": 21.8,
       "sodium": 4
     },
     "tags": [
       "fruits",
-      "dried"
+      "cannedinsyrup"
     ],
-    "preparationState": "Dried",
-    "compareGroup": "Fruits"
+    "preparationState": "Canned (in Syrup)",
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 168172,
+      "dataType": "SR Legacy"
+    }
   },
   {
-    "id": "local_0021",
-    "slug": "juice-strawberry",
-    "name": "Juice Strawberry",
-    "searchName": "juice strawberry",
-    "displayName": "Juice Strawberry",
+    "id": "local_0024",
+    "slug": "frozen-strawberry",
+    "name": "Frozen Strawberries",
+    "searchName": "frozen strawberries",
+    "displayName": "Frozen Strawberries",
     "aliases": [
-      "juice strawberry",
-      "strawberry"
+      "frozen strawberries",
+      "frozen strawberry"
     ],
     "category": "Fruits",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
       {
-        "id": "serve_22",
+        "id": "serve_25",
         "unit": "cup",
         "label": "1 cup halves",
         "grams": 152,
         "isDefault": true
       },
       {
-        "id": "serve_23",
+        "id": "serve_26",
         "unit": "g",
         "label": "100 g",
         "grams": 100
@@ -974,175 +488,38 @@ export const fruitsFoods: FoodItem[] = [
     ],
     "nutrientsPer100g": {
       "calories": 35,
-      "protein": 0.1,
-      "carbohydrates": 8.5,
-      "fat": 0,
-      "fiber": 2.2,
-      "sugar": 5.4,
-      "sodium": 1
-    },
-    "tags": [
-      "fruits",
-      "juice"
-    ],
-    "preparationState": "Juice",
-    "compareGroup": "Fruits"
-  },
-  {
-    "id": "local_0022",
-    "slug": "canned-in-water-strawberry",
-    "name": "Canned (in Water) Strawberry",
-    "searchName": "canned (in water) strawberry",
-    "displayName": "Canned (in Water) Strawberry",
-    "aliases": [
-      "canned (in water) strawberry",
-      "strawberry"
-    ],
-    "category": "Fruits",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "cup",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_23",
-        "unit": "cup",
-        "label": "1 cup halves",
-        "grams": 152,
-        "isDefault": true
-      },
-      {
-        "id": "serve_24",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 32,
-      "protein": 0.7,
-      "carbohydrates": 7.7,
-      "fat": 0.3,
-      "fiber": 2,
-      "sugar": 4.9,
-      "sodium": 251
-    },
-    "tags": [
-      "fruits",
-      "cannedinwater"
-    ],
-    "preparationState": "Canned (in Water)",
-    "compareGroup": "Fruits"
-  },
-  {
-    "id": "local_0023",
-    "slug": "canned-in-syrup-strawberry",
-    "name": "Canned (in Syrup) Strawberry",
-    "searchName": "canned (in syrup) strawberry",
-    "displayName": "Canned (in Syrup) Strawberry",
-    "aliases": [
-      "canned (in syrup) strawberry",
-      "strawberry"
-    ],
-    "category": "Fruits",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "cup",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_24",
-        "unit": "cup",
-        "label": "1 cup halves",
-        "grams": 152,
-        "isDefault": true
-      },
-      {
-        "id": "serve_25",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 108,
-      "protein": 0.7,
-      "carbohydrates": 22.7,
-      "fat": 0.3,
-      "fiber": 2,
-      "sugar": 19.9,
-      "sodium": 1
-    },
-    "tags": [
-      "fruits",
-      "cannedinsyrup"
-    ],
-    "preparationState": "Canned (in Syrup)",
-    "compareGroup": "Fruits"
-  },
-  {
-    "id": "local_0024",
-    "slug": "frozen-strawberry",
-    "name": "Frozen Strawberry",
-    "searchName": "frozen strawberry",
-    "displayName": "Frozen Strawberry",
-    "aliases": [
-      "frozen strawberry",
-      "strawberry"
-    ],
-    "category": "Fruits",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "cup",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_25",
-        "unit": "cup",
-        "label": "1 cup halves",
-        "grams": 152,
-        "isDefault": true
-      },
-      {
-        "id": "serve_26",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 32,
-      "protein": 0.7,
-      "carbohydrates": 7.7,
-      "fat": 0.3,
-      "fiber": 2,
-      "sugar": 4.9,
-      "sodium": 1
+      "protein": 0.43,
+      "carbohydrates": 9.13,
+      "fat": 0.11,
+      "fiber": 2.1,
+      "sugar": 4.56,
+      "sodium": 2
     },
     "tags": [
       "fruits",
       "frozen"
     ],
     "preparationState": "Frozen",
-    "compareGroup": "Fruits"
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 2709285,
+      "dataType": "Survey (FNDDS)"
+    }
   },
   {
     "id": "local_0025",
     "slug": "blueberry",
-    "name": "Blueberry",
-    "searchName": "blueberry",
-    "displayName": "Blueberry",
+    "name": "Blueberries",
+    "searchName": "blueberries",
+    "displayName": "Blueberries",
     "aliases": [
-      "blueberry",
+      "blueberries",
       "blueberry"
     ],
     "category": "Fruits",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -1162,11 +539,11 @@ export const fruitsFoods: FoodItem[] = [
     ],
     "nutrientsPer100g": {
       "calories": 57,
-      "protein": 0.7,
+      "protein": 0.74,
       "carbohydrates": 14.5,
-      "fat": 0.3,
+      "fat": 0.33,
       "fiber": 2.4,
-      "sugar": 10,
+      "sugar": 9.96,
       "sodium": 1
     },
     "tags": [
@@ -1174,22 +551,26 @@ export const fruitsFoods: FoodItem[] = [
       "raw"
     ],
     "preparationState": "Raw",
-    "compareGroup": "Fruits"
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 171711,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0026",
     "slug": "dried-blueberry",
-    "name": "Dried Blueberry",
-    "searchName": "dried blueberry",
-    "displayName": "Dried Blueberry",
+    "name": "Dried Blueberries (Sweetened)",
+    "searchName": "dried blueberries (sweetened)",
+    "displayName": "Dried Blueberries (Sweetened)",
     "aliases": [
-      "dried blueberry",
-      "blueberry"
+      "dried blueberries (sweetened)",
+      "dried blueberry"
     ],
     "category": "Fruits",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -1208,129 +589,39 @@ export const fruitsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 236,
-      "protein": 2.8,
-      "carbohydrates": 58,
-      "fat": 1.2,
-      "fiber": 9.6,
-      "sugar": 40,
-      "sodium": 4
+      "calories": 317,
+      "protein": 2.5,
+      "carbohydrates": 80,
+      "fat": 2.5,
+      "fiber": 7.5,
+      "sugar": 67.5,
+      "sodium": 3
     },
     "tags": [
       "fruits",
       "dried"
     ],
     "preparationState": "Dried",
-    "compareGroup": "Fruits"
-  },
-  {
-    "id": "local_0027",
-    "slug": "juice-blueberry",
-    "name": "Juice Blueberry",
-    "searchName": "juice blueberry",
-    "displayName": "Juice Blueberry",
-    "aliases": [
-      "juice blueberry",
-      "blueberry"
-    ],
-    "category": "Fruits",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "cup",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_28",
-        "unit": "cup",
-        "label": "1 cup",
-        "grams": 148,
-        "isDefault": true
-      },
-      {
-        "id": "serve_29",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 63,
-      "protein": 0.1,
-      "carbohydrates": 16,
-      "fat": 0,
-      "fiber": 2.6,
-      "sugar": 11,
-      "sodium": 1
-    },
-    "tags": [
-      "fruits",
-      "juice"
-    ],
-    "preparationState": "Juice",
-    "compareGroup": "Fruits"
-  },
-  {
-    "id": "local_0028",
-    "slug": "canned-in-water-blueberry",
-    "name": "Canned (in Water) Blueberry",
-    "searchName": "canned (in water) blueberry",
-    "displayName": "Canned (in Water) Blueberry",
-    "aliases": [
-      "canned (in water) blueberry",
-      "blueberry"
-    ],
-    "category": "Fruits",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "cup",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_29",
-        "unit": "cup",
-        "label": "1 cup",
-        "grams": 148,
-        "isDefault": true
-      },
-      {
-        "id": "serve_30",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 57,
-      "protein": 0.7,
-      "carbohydrates": 14.5,
-      "fat": 0.3,
-      "fiber": 2.4,
-      "sugar": 10,
-      "sodium": 251
-    },
-    "tags": [
-      "fruits",
-      "cannedinwater"
-    ],
-    "preparationState": "Canned (in Water)",
-    "compareGroup": "Fruits"
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 168158,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0029",
     "slug": "canned-in-syrup-blueberry",
-    "name": "Canned (in Syrup) Blueberry",
-    "searchName": "canned (in syrup) blueberry",
-    "displayName": "Canned (in Syrup) Blueberry",
+    "name": "Blueberries, Canned in Heavy Syrup",
+    "searchName": "blueberries, canned in heavy syrup",
+    "displayName": "Blueberries, Canned in Heavy Syrup",
     "aliases": [
-      "canned (in syrup) blueberry",
-      "blueberry"
+      "blueberries, canned in heavy syrup",
+      "canned (in syrup) blueberry"
     ],
     "category": "Fruits",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -1349,35 +640,39 @@ export const fruitsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 146,
-      "protein": 0.7,
-      "carbohydrates": 29.5,
-      "fat": 0.3,
-      "fiber": 2.4,
-      "sugar": 25,
-      "sodium": 1
+      "calories": 88,
+      "protein": 0.65,
+      "carbohydrates": 22.1,
+      "fat": 0.33,
+      "fiber": 1.6,
+      "sugar": 20.5,
+      "sodium": 3
     },
     "tags": [
       "fruits",
       "cannedinsyrup"
     ],
     "preparationState": "Canned (in Syrup)",
-    "compareGroup": "Fruits"
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 173948,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0030",
     "slug": "frozen-blueberry",
-    "name": "Frozen Blueberry",
-    "searchName": "frozen blueberry",
-    "displayName": "Frozen Blueberry",
+    "name": "Frozen Blueberries",
+    "searchName": "frozen blueberries",
+    "displayName": "Frozen Blueberries",
     "aliases": [
-      "frozen blueberry",
-      "blueberry"
+      "frozen blueberries",
+      "frozen blueberry"
     ],
     "category": "Fruits",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -1396,12 +691,12 @@ export const fruitsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 57,
-      "protein": 0.7,
-      "carbohydrates": 14.5,
-      "fat": 0.3,
-      "fiber": 2.4,
-      "sugar": 10,
+      "calories": 51,
+      "protein": 0.42,
+      "carbohydrates": 12.17,
+      "fat": 0.64,
+      "fiber": 2.7,
+      "sugar": 8.45,
       "sodium": 1
     },
     "tags": [
@@ -1409,7 +704,11 @@ export const fruitsFoods: FoodItem[] = [
       "frozen"
     ],
     "preparationState": "Frozen",
-    "compareGroup": "Fruits"
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 2709277,
+      "dataType": "Survey (FNDDS)"
+    }
   },
   {
     "id": "local_0031",
@@ -1418,13 +717,12 @@ export const fruitsFoods: FoodItem[] = [
     "searchName": "peach",
     "displayName": "Peach",
     "aliases": [
-      "peach",
       "peach"
     ],
     "category": "Fruits",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "piece",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -1444,11 +742,11 @@ export const fruitsFoods: FoodItem[] = [
     ],
     "nutrientsPer100g": {
       "calories": 39,
-      "protein": 0.9,
-      "carbohydrates": 9.5,
-      "fat": 0.3,
+      "protein": 0.91,
+      "carbohydrates": 9.54,
+      "fat": 0.25,
       "fiber": 1.5,
-      "sugar": 8.4,
+      "sugar": 8.39,
       "sodium": 0
     },
     "tags": [
@@ -1456,22 +754,26 @@ export const fruitsFoods: FoodItem[] = [
       "raw"
     ],
     "preparationState": "Raw",
-    "compareGroup": "Fruits"
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 169928,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0032",
     "slug": "dried-peach",
-    "name": "Dried Peach",
-    "searchName": "dried peach",
-    "displayName": "Dried Peach",
+    "name": "Dried Peaches",
+    "searchName": "dried peaches",
+    "displayName": "Dried Peaches",
     "aliases": [
-      "dried peach",
-      "peach"
+      "dried peaches",
+      "dried peach"
     ],
     "category": "Fruits",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "piece",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -1490,82 +792,39 @@ export const fruitsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 164,
-      "protein": 3.6,
-      "carbohydrates": 38,
-      "fat": 1.2,
-      "fiber": 6,
-      "sugar": 33.6,
-      "sodium": 0
+      "calories": 239,
+      "protein": 3.61,
+      "carbohydrates": 61.3,
+      "fat": 0.76,
+      "fiber": 8.2,
+      "sugar": 41.7,
+      "sodium": 7
     },
     "tags": [
       "fruits",
       "dried"
     ],
     "preparationState": "Dried",
-    "compareGroup": "Fruits"
-  },
-  {
-    "id": "local_0033",
-    "slug": "juice-peach",
-    "name": "Juice Peach",
-    "searchName": "juice peach",
-    "displayName": "Juice Peach",
-    "aliases": [
-      "juice peach",
-      "peach"
-    ],
-    "category": "Fruits",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "piece",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_34",
-        "unit": "piece",
-        "label": "1 medium",
-        "grams": 150,
-        "isDefault": true
-      },
-      {
-        "id": "serve_35",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 43,
-      "protein": 0.1,
-      "carbohydrates": 10.5,
-      "fat": 0,
-      "fiber": 1.7,
-      "sugar": 9.2,
-      "sodium": 0
-    },
-    "tags": [
-      "fruits",
-      "juice"
-    ],
-    "preparationState": "Juice",
-    "compareGroup": "Fruits"
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 169934,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0034",
     "slug": "canned-in-water-peach",
-    "name": "Canned (in Water) Peach",
-    "searchName": "canned (in water) peach",
-    "displayName": "Canned (in Water) Peach",
+    "name": "Peaches, Canned in Water",
+    "searchName": "peaches, canned in water",
+    "displayName": "Peaches, Canned in Water",
     "aliases": [
-      "canned (in water) peach",
-      "peach"
+      "peaches, canned in water",
+      "canned (in water) peach"
     ],
     "category": "Fruits",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "piece",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -1584,35 +843,39 @@ export const fruitsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 39,
-      "protein": 0.9,
-      "carbohydrates": 9.5,
-      "fat": 0.3,
-      "fiber": 1.5,
-      "sugar": 8.4,
-      "sodium": 250
+      "calories": 24,
+      "protein": 0.44,
+      "carbohydrates": 6.11,
+      "fat": 0.06,
+      "fiber": 1.3,
+      "sugar": 4.81,
+      "sodium": 3
     },
     "tags": [
       "fruits",
       "cannedinwater"
     ],
     "preparationState": "Canned (in Water)",
-    "compareGroup": "Fruits"
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 169929,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0035",
     "slug": "canned-in-syrup-peach",
-    "name": "Canned (in Syrup) Peach",
-    "searchName": "canned (in syrup) peach",
-    "displayName": "Canned (in Syrup) Peach",
+    "name": "Peaches, Canned in Heavy Syrup",
+    "searchName": "peaches, canned in heavy syrup",
+    "displayName": "Peaches, Canned in Heavy Syrup",
     "aliases": [
-      "canned (in syrup) peach",
-      "peach"
+      "peaches, canned in heavy syrup",
+      "canned (in syrup) peach"
     ],
     "category": "Fruits",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "piece",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -1631,35 +894,39 @@ export const fruitsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 119,
-      "protein": 0.9,
-      "carbohydrates": 24.5,
-      "fat": 0.3,
-      "fiber": 1.5,
-      "sugar": 23.4,
-      "sodium": 0
+      "calories": 74,
+      "protein": 0.45,
+      "carbohydrates": 19.9,
+      "fat": 0.1,
+      "fiber": 1.3,
+      "sugar": 18.6,
+      "sodium": 6
     },
     "tags": [
       "fruits",
       "cannedinsyrup"
     ],
     "preparationState": "Canned (in Syrup)",
-    "compareGroup": "Fruits"
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 169112,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0036",
     "slug": "frozen-peach",
-    "name": "Frozen Peach",
-    "searchName": "frozen peach",
-    "displayName": "Frozen Peach",
+    "name": "Frozen Peaches (Sweetened)",
+    "searchName": "frozen peaches (sweetened)",
+    "displayName": "Frozen Peaches (Sweetened)",
     "aliases": [
-      "frozen peach",
-      "peach"
+      "frozen peaches (sweetened)",
+      "frozen peach"
     ],
     "category": "Fruits",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "piece",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -1678,20 +945,24 @@ export const fruitsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 39,
-      "protein": 0.9,
-      "carbohydrates": 9.5,
-      "fat": 0.3,
-      "fiber": 1.5,
-      "sugar": 8.4,
-      "sodium": 0
+      "calories": 94,
+      "protein": 0.63,
+      "carbohydrates": 24,
+      "fat": 0.13,
+      "fiber": 1.8,
+      "sugar": 22.2,
+      "sodium": 6
     },
     "tags": [
       "fruits",
       "frozen"
     ],
     "preparationState": "Frozen",
-    "compareGroup": "Fruits"
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 169116,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0037",
@@ -1700,13 +971,12 @@ export const fruitsFoods: FoodItem[] = [
     "searchName": "mango",
     "displayName": "Mango",
     "aliases": [
-      "mango",
       "mango"
     ],
     "category": "Fruits",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -1726,9 +996,9 @@ export const fruitsFoods: FoodItem[] = [
     ],
     "nutrientsPer100g": {
       "calories": 60,
-      "protein": 0.8,
+      "protein": 0.82,
       "carbohydrates": 15,
-      "fat": 0.4,
+      "fat": 0.38,
       "fiber": 1.6,
       "sugar": 13.7,
       "sodium": 1
@@ -1738,22 +1008,26 @@ export const fruitsFoods: FoodItem[] = [
       "raw"
     ],
     "preparationState": "Raw",
-    "compareGroup": "Fruits"
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 169910,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0038",
     "slug": "dried-mango",
-    "name": "Dried Mango",
-    "searchName": "dried mango",
-    "displayName": "Dried Mango",
+    "name": "Dried Mango (Sweetened)",
+    "searchName": "dried mango (sweetened)",
+    "displayName": "Dried Mango (Sweetened)",
     "aliases": [
-      "dried mango",
-      "mango"
+      "dried mango (sweetened)",
+      "dried mango"
     ],
     "category": "Fruits",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -1772,161 +1046,24 @@ export const fruitsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 251,
-      "protein": 3.2,
-      "carbohydrates": 60,
-      "fat": 1.6,
-      "fiber": 6.4,
-      "sugar": 54.8,
-      "sodium": 4
+      "calories": 319,
+      "protein": 2.45,
+      "carbohydrates": 78.6,
+      "fat": 1.18,
+      "fiber": 2.4,
+      "sugar": 66.3,
+      "sodium": 162
     },
     "tags": [
       "fruits",
       "dried"
     ],
     "preparationState": "Dried",
-    "compareGroup": "Fruits"
-  },
-  {
-    "id": "local_0039",
-    "slug": "juice-mango",
-    "name": "Juice Mango",
-    "searchName": "juice mango",
-    "displayName": "Juice Mango",
-    "aliases": [
-      "juice mango",
-      "mango"
-    ],
-    "category": "Fruits",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "cup",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_40",
-        "unit": "cup",
-        "label": "1 cup pieces",
-        "grams": 165,
-        "isDefault": true
-      },
-      {
-        "id": "serve_41",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 66,
-      "protein": 0.1,
-      "carbohydrates": 16.5,
-      "fat": 0,
-      "fiber": 1.8,
-      "sugar": 15.1,
-      "sodium": 1
-    },
-    "tags": [
-      "fruits",
-      "juice"
-    ],
-    "preparationState": "Juice",
-    "compareGroup": "Fruits"
-  },
-  {
-    "id": "local_0040",
-    "slug": "canned-in-water-mango",
-    "name": "Canned (in Water) Mango",
-    "searchName": "canned (in water) mango",
-    "displayName": "Canned (in Water) Mango",
-    "aliases": [
-      "canned (in water) mango",
-      "mango"
-    ],
-    "category": "Fruits",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "cup",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_41",
-        "unit": "cup",
-        "label": "1 cup pieces",
-        "grams": 165,
-        "isDefault": true
-      },
-      {
-        "id": "serve_42",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 60,
-      "protein": 0.8,
-      "carbohydrates": 15,
-      "fat": 0.4,
-      "fiber": 1.6,
-      "sugar": 13.7,
-      "sodium": 251
-    },
-    "tags": [
-      "fruits",
-      "cannedinwater"
-    ],
-    "preparationState": "Canned (in Water)",
-    "compareGroup": "Fruits"
-  },
-  {
-    "id": "local_0041",
-    "slug": "canned-in-syrup-mango",
-    "name": "Canned (in Syrup) Mango",
-    "searchName": "canned (in syrup) mango",
-    "displayName": "Canned (in Syrup) Mango",
-    "aliases": [
-      "canned (in syrup) mango",
-      "mango"
-    ],
-    "category": "Fruits",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "cup",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_42",
-        "unit": "cup",
-        "label": "1 cup pieces",
-        "grams": 165,
-        "isDefault": true
-      },
-      {
-        "id": "serve_43",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 150,
-      "protein": 0.8,
-      "carbohydrates": 30,
-      "fat": 0.4,
-      "fiber": 1.6,
-      "sugar": 28.7,
-      "sodium": 1
-    },
-    "tags": [
-      "fruits",
-      "cannedinsyrup"
-    ],
-    "preparationState": "Canned (in Syrup)",
-    "compareGroup": "Fruits"
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 169091,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0042",
@@ -1935,13 +1072,12 @@ export const fruitsFoods: FoodItem[] = [
     "searchName": "frozen mango",
     "displayName": "Frozen Mango",
     "aliases": [
-      "frozen mango",
-      "mango"
+      "frozen mango"
     ],
     "category": "Fruits",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -1961,11 +1097,11 @@ export const fruitsFoods: FoodItem[] = [
     ],
     "nutrientsPer100g": {
       "calories": 60,
-      "protein": 0.8,
-      "carbohydrates": 15,
-      "fat": 0.4,
+      "protein": 0.82,
+      "carbohydrates": 14.98,
+      "fat": 0.38,
       "fiber": 1.6,
-      "sugar": 13.7,
+      "sugar": 13.66,
       "sodium": 1
     },
     "tags": [
@@ -1973,7 +1109,11 @@ export const fruitsFoods: FoodItem[] = [
       "frozen"
     ],
     "preparationState": "Frozen",
-    "compareGroup": "Fruits"
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 2709244,
+      "dataType": "Survey (FNDDS)"
+    }
   },
   {
     "id": "local_0043",
@@ -1982,13 +1122,12 @@ export const fruitsFoods: FoodItem[] = [
     "searchName": "pineapple",
     "displayName": "Pineapple",
     "aliases": [
-      "pineapple",
       "pineapple"
     ],
     "category": "Fruits",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -2008,11 +1147,11 @@ export const fruitsFoods: FoodItem[] = [
     ],
     "nutrientsPer100g": {
       "calories": 50,
-      "protein": 0.5,
+      "protein": 0.54,
       "carbohydrates": 13.1,
-      "fat": 0.1,
+      "fat": 0.12,
       "fiber": 1.4,
-      "sugar": 9.9,
+      "sugar": 9.85,
       "sodium": 1
     },
     "tags": [
@@ -2020,7 +1159,11 @@ export const fruitsFoods: FoodItem[] = [
       "raw"
     ],
     "preparationState": "Raw",
-    "compareGroup": "Fruits"
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 169124,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0044",
@@ -2029,13 +1172,12 @@ export const fruitsFoods: FoodItem[] = [
     "searchName": "dried pineapple",
     "displayName": "Dried Pineapple",
     "aliases": [
-      "dried pineapple",
-      "pineapple"
+      "dried pineapple"
     ],
     "category": "Fruits",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -2054,35 +1196,39 @@ export const fruitsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 203,
-      "protein": 2,
-      "carbohydrates": 52.4,
-      "fat": 0.4,
-      "fiber": 5.6,
-      "sugar": 39.6,
-      "sodium": 4
+      "calories": 347,
+      "protein": 1.22,
+      "carbohydrates": 84.11,
+      "fat": 0.71,
+      "fiber": 2.4,
+      "sugar": 77.12,
+      "sodium": 0
     },
     "tags": [
       "fruits",
       "dried"
     ],
     "preparationState": "Dried",
-    "compareGroup": "Fruits"
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 2709210,
+      "dataType": "Survey (FNDDS)"
+    }
   },
   {
     "id": "local_0045",
     "slug": "juice-pineapple",
-    "name": "Juice Pineapple",
-    "searchName": "juice pineapple",
-    "displayName": "Juice Pineapple",
+    "name": "Pineapple Juice",
+    "searchName": "pineapple juice",
+    "displayName": "Pineapple Juice",
     "aliases": [
-      "juice pineapple",
-      "pineapple"
+      "pineapple juice",
+      "juice pineapple"
     ],
     "category": "Fruits",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -2101,35 +1247,39 @@ export const fruitsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 55,
-      "protein": 0.1,
-      "carbohydrates": 14.4,
-      "fat": 0,
-      "fiber": 1.5,
-      "sugar": 10.9,
-      "sodium": 1
+      "calories": 53,
+      "protein": 0.36,
+      "carbohydrates": 12.9,
+      "fat": 0.12,
+      "fiber": 0.2,
+      "sugar": 9.98,
+      "sodium": 2
     },
     "tags": [
       "fruits",
       "juice"
     ],
     "preparationState": "Juice",
-    "compareGroup": "Fruits"
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 169947,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0046",
     "slug": "canned-in-water-pineapple",
-    "name": "Canned (in Water) Pineapple",
-    "searchName": "canned (in water) pineapple",
-    "displayName": "Canned (in Water) Pineapple",
+    "name": "Pineapple, Canned in Water",
+    "searchName": "pineapple, canned in water",
+    "displayName": "Pineapple, Canned in Water",
     "aliases": [
-      "canned (in water) pineapple",
-      "pineapple"
+      "pineapple, canned in water",
+      "canned (in water) pineapple"
     ],
     "category": "Fruits",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -2148,35 +1298,39 @@ export const fruitsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 50,
-      "protein": 0.5,
-      "carbohydrates": 13.1,
-      "fat": 0.1,
-      "fiber": 1.4,
-      "sugar": 9.9,
-      "sodium": 251
+      "calories": 32,
+      "protein": 0.43,
+      "carbohydrates": 8.3,
+      "fat": 0.09,
+      "fiber": 0.8,
+      "sugar": 7.5,
+      "sodium": 1
     },
     "tags": [
       "fruits",
       "cannedinwater"
     ],
     "preparationState": "Canned (in Water)",
-    "compareGroup": "Fruits"
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 169125,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0047",
     "slug": "canned-in-syrup-pineapple",
-    "name": "Canned (in Syrup) Pineapple",
-    "searchName": "canned (in syrup) pineapple",
-    "displayName": "Canned (in Syrup) Pineapple",
+    "name": "Pineapple, Canned in Heavy Syrup",
+    "searchName": "pineapple, canned in heavy syrup",
+    "displayName": "Pineapple, Canned in Heavy Syrup",
     "aliases": [
-      "canned (in syrup) pineapple",
-      "pineapple"
+      "pineapple, canned in heavy syrup",
+      "canned (in syrup) pineapple"
     ],
     "category": "Fruits",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -2195,12 +1349,12 @@ export const fruitsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 135,
-      "protein": 0.5,
-      "carbohydrates": 28.1,
-      "fat": 0.1,
-      "fiber": 1.4,
-      "sugar": 24.9,
+      "calories": 78,
+      "protein": 0.35,
+      "carbohydrates": 20.2,
+      "fat": 0.11,
+      "fiber": 0.8,
+      "sugar": 16.9,
       "sodium": 1
     },
     "tags": [
@@ -2208,22 +1362,26 @@ export const fruitsFoods: FoodItem[] = [
       "cannedinsyrup"
     ],
     "preparationState": "Canned (in Syrup)",
-    "compareGroup": "Fruits"
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 169944,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0048",
     "slug": "frozen-pineapple",
-    "name": "Frozen Pineapple",
-    "searchName": "frozen pineapple",
-    "displayName": "Frozen Pineapple",
+    "name": "Frozen Pineapple (Sweetened)",
+    "searchName": "frozen pineapple (sweetened)",
+    "displayName": "Frozen Pineapple (Sweetened)",
     "aliases": [
-      "frozen pineapple",
-      "pineapple"
+      "frozen pineapple (sweetened)",
+      "frozen pineapple"
     ],
     "category": "Fruits",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -2242,35 +1400,39 @@ export const fruitsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 50,
-      "protein": 0.5,
-      "carbohydrates": 13.1,
+      "calories": 86,
+      "protein": 0.4,
+      "carbohydrates": 22.2,
       "fat": 0.1,
-      "fiber": 1.4,
-      "sugar": 9.9,
-      "sodium": 1
+      "fiber": 1.1,
+      "sugar": 21.1,
+      "sodium": 2
     },
     "tags": [
       "fruits",
       "frozen"
     ],
     "preparationState": "Frozen",
-    "compareGroup": "Fruits"
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 169946,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0049",
     "slug": "grape",
-    "name": "Grape",
-    "searchName": "grape",
-    "displayName": "Grape",
+    "name": "Grapes",
+    "searchName": "grapes",
+    "displayName": "Grapes",
     "aliases": [
-      "grape",
+      "grapes",
       "grape"
     ],
     "category": "Fruits",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -2290,9 +1452,9 @@ export const fruitsFoods: FoodItem[] = [
     ],
     "nutrientsPer100g": {
       "calories": 69,
-      "protein": 0.7,
+      "protein": 0.72,
       "carbohydrates": 18.1,
-      "fat": 0.2,
+      "fat": 0.16,
       "fiber": 0.9,
       "sugar": 15.5,
       "sodium": 2
@@ -2302,22 +1464,26 @@ export const fruitsFoods: FoodItem[] = [
       "raw"
     ],
     "preparationState": "Raw",
-    "compareGroup": "Fruits"
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 174683,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0050",
     "slug": "dried-grape",
-    "name": "Dried Grape",
-    "searchName": "dried grape",
-    "displayName": "Dried Grape",
+    "name": "Raisins",
+    "searchName": "raisins",
+    "displayName": "Raisins",
     "aliases": [
-      "dried grape",
-      "grape"
+      "raisins",
+      "dried grape"
     ],
     "category": "Fruits",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -2336,35 +1502,39 @@ export const fruitsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 281,
-      "protein": 2.8,
-      "carbohydrates": 72.4,
-      "fat": 0.8,
-      "fiber": 3.6,
-      "sugar": 62,
-      "sodium": 8
+      "calories": 299,
+      "protein": 3.3,
+      "carbohydrates": 79.3,
+      "fat": 0.25,
+      "fiber": 4.5,
+      "sugar": 65.2,
+      "sodium": 26
     },
     "tags": [
       "fruits",
       "dried"
     ],
     "preparationState": "Dried",
-    "compareGroup": "Fruits"
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 168165,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0051",
     "slug": "juice-grape",
-    "name": "Juice Grape",
-    "searchName": "juice grape",
-    "displayName": "Juice Grape",
+    "name": "Grape Juice",
+    "searchName": "grape juice",
+    "displayName": "Grape Juice",
     "aliases": [
-      "juice grape",
-      "grape"
+      "grape juice",
+      "juice grape"
     ],
     "category": "Fruits",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -2383,35 +1553,39 @@ export const fruitsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 76,
-      "protein": 0.1,
-      "carbohydrates": 19.9,
-      "fat": 0,
-      "fiber": 1,
-      "sugar": 17.1,
-      "sodium": 2
+      "calories": 60,
+      "protein": 0.37,
+      "carbohydrates": 14.8,
+      "fat": 0.13,
+      "fiber": 0.2,
+      "sugar": 14.2,
+      "sodium": 5
     },
     "tags": [
       "fruits",
       "juice"
     ],
     "preparationState": "Juice",
-    "compareGroup": "Fruits"
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 173042,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0052",
     "slug": "canned-in-water-grape",
-    "name": "Canned (in Water) Grape",
-    "searchName": "canned (in water) grape",
-    "displayName": "Canned (in Water) Grape",
+    "name": "Grapes, Canned in Water",
+    "searchName": "grapes, canned in water",
+    "displayName": "Grapes, Canned in Water",
     "aliases": [
-      "canned (in water) grape",
-      "grape"
+      "grapes, canned in water",
+      "canned (in water) grape"
     ],
     "category": "Fruits",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -2430,35 +1604,39 @@ export const fruitsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 69,
-      "protein": 0.7,
-      "carbohydrates": 18.1,
-      "fat": 0.2,
-      "fiber": 0.9,
-      "sugar": 15.5,
-      "sodium": 252
+      "calories": 40,
+      "protein": 0.5,
+      "carbohydrates": 10.3,
+      "fat": 0.11,
+      "fiber": 0.6,
+      "sugar": 9.7,
+      "sodium": 6
     },
     "tags": [
       "fruits",
       "cannedinwater"
     ],
     "preparationState": "Canned (in Water)",
-    "compareGroup": "Fruits"
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 174684,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0053",
     "slug": "canned-in-syrup-grape",
-    "name": "Canned (in Syrup) Grape",
-    "searchName": "canned (in syrup) grape",
-    "displayName": "Canned (in Syrup) Grape",
+    "name": "Grapes, Canned in Heavy Syrup",
+    "searchName": "grapes, canned in heavy syrup",
+    "displayName": "Grapes, Canned in Heavy Syrup",
     "aliases": [
-      "canned (in syrup) grape",
-      "grape"
+      "grapes, canned in heavy syrup",
+      "canned (in syrup) grape"
     ],
     "category": "Fruits",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -2477,67 +1655,24 @@ export const fruitsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 164,
-      "protein": 0.7,
-      "carbohydrates": 33.1,
-      "fat": 0.2,
-      "fiber": 0.9,
-      "sugar": 30.5,
-      "sodium": 2
+      "calories": 76,
+      "protein": 0.48,
+      "carbohydrates": 19.6,
+      "fat": 0.1,
+      "fiber": 0.6,
+      "sugar": 19,
+      "sodium": 5
     },
     "tags": [
       "fruits",
       "cannedinsyrup"
     ],
     "preparationState": "Canned (in Syrup)",
-    "compareGroup": "Fruits"
-  },
-  {
-    "id": "local_0054",
-    "slug": "frozen-grape",
-    "name": "Frozen Grape",
-    "searchName": "frozen grape",
-    "displayName": "Frozen Grape",
-    "aliases": [
-      "frozen grape",
-      "grape"
-    ],
-    "category": "Fruits",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "cup",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_55",
-        "unit": "cup",
-        "label": "1 cup",
-        "grams": 151,
-        "isDefault": true
-      },
-      {
-        "id": "serve_56",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 69,
-      "protein": 0.7,
-      "carbohydrates": 18.1,
-      "fat": 0.2,
-      "fiber": 0.9,
-      "sugar": 15.5,
-      "sodium": 2
-    },
-    "tags": [
-      "fruits",
-      "frozen"
-    ],
-    "preparationState": "Frozen",
-    "compareGroup": "Fruits"
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 174685,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0055",
@@ -2546,13 +1681,12 @@ export const fruitsFoods: FoodItem[] = [
     "searchName": "watermelon",
     "displayName": "Watermelon",
     "aliases": [
-      "watermelon",
       "watermelon"
     ],
     "category": "Fruits",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -2572,9 +1706,9 @@ export const fruitsFoods: FoodItem[] = [
     ],
     "nutrientsPer100g": {
       "calories": 30,
-      "protein": 0.6,
-      "carbohydrates": 7.6,
-      "fat": 0.2,
+      "protein": 0.61,
+      "carbohydrates": 7.55,
+      "fat": 0.15,
       "fiber": 0.4,
       "sugar": 6.2,
       "sodium": 1
@@ -2584,69 +1718,26 @@ export const fruitsFoods: FoodItem[] = [
       "raw"
     ],
     "preparationState": "Raw",
-    "compareGroup": "Fruits"
-  },
-  {
-    "id": "local_0056",
-    "slug": "dried-watermelon",
-    "name": "Dried Watermelon",
-    "searchName": "dried watermelon",
-    "displayName": "Dried Watermelon",
-    "aliases": [
-      "dried watermelon",
-      "watermelon"
-    ],
-    "category": "Fruits",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "cup",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_57",
-        "unit": "cup",
-        "label": "1 cup diced",
-        "grams": 152,
-        "isDefault": true
-      },
-      {
-        "id": "serve_58",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 125,
-      "protein": 2.4,
-      "carbohydrates": 30.4,
-      "fat": 0.8,
-      "fiber": 1.6,
-      "sugar": 24.8,
-      "sodium": 4
-    },
-    "tags": [
-      "fruits",
-      "dried"
-    ],
-    "preparationState": "Dried",
-    "compareGroup": "Fruits"
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 167765,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0057",
     "slug": "juice-watermelon",
-    "name": "Juice Watermelon",
-    "searchName": "juice watermelon",
-    "displayName": "Juice Watermelon",
+    "name": "Watermelon Juice",
+    "searchName": "watermelon juice",
+    "displayName": "Watermelon Juice",
     "aliases": [
-      "juice watermelon",
-      "watermelon"
+      "watermelon juice",
+      "juice watermelon"
     ],
     "category": "Fruits",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -2665,12 +1756,12 @@ export const fruitsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 33,
-      "protein": 0.1,
-      "carbohydrates": 8.4,
-      "fat": 0,
+      "calories": 30,
+      "protein": 0.61,
+      "carbohydrates": 7.55,
+      "fat": 0.15,
       "fiber": 0.4,
-      "sugar": 6.8,
+      "sugar": 6.2,
       "sodium": 1
     },
     "tags": [
@@ -2678,147 +1769,10 @@ export const fruitsFoods: FoodItem[] = [
       "juice"
     ],
     "preparationState": "Juice",
-    "compareGroup": "Fruits"
-  },
-  {
-    "id": "local_0058",
-    "slug": "canned-in-water-watermelon",
-    "name": "Canned (in Water) Watermelon",
-    "searchName": "canned (in water) watermelon",
-    "displayName": "Canned (in Water) Watermelon",
-    "aliases": [
-      "canned (in water) watermelon",
-      "watermelon"
-    ],
-    "category": "Fruits",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "cup",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_59",
-        "unit": "cup",
-        "label": "1 cup diced",
-        "grams": 152,
-        "isDefault": true
-      },
-      {
-        "id": "serve_60",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 30,
-      "protein": 0.6,
-      "carbohydrates": 7.6,
-      "fat": 0.2,
-      "fiber": 0.4,
-      "sugar": 6.2,
-      "sodium": 251
-    },
-    "tags": [
-      "fruits",
-      "cannedinwater"
-    ],
-    "preparationState": "Canned (in Water)",
-    "compareGroup": "Fruits"
-  },
-  {
-    "id": "local_0059",
-    "slug": "canned-in-syrup-watermelon",
-    "name": "Canned (in Syrup) Watermelon",
-    "searchName": "canned (in syrup) watermelon",
-    "displayName": "Canned (in Syrup) Watermelon",
-    "aliases": [
-      "canned (in syrup) watermelon",
-      "watermelon"
-    ],
-    "category": "Fruits",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "cup",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_60",
-        "unit": "cup",
-        "label": "1 cup diced",
-        "grams": 152,
-        "isDefault": true
-      },
-      {
-        "id": "serve_61",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 105,
-      "protein": 0.6,
-      "carbohydrates": 22.6,
-      "fat": 0.2,
-      "fiber": 0.4,
-      "sugar": 21.2,
-      "sodium": 1
-    },
-    "tags": [
-      "fruits",
-      "cannedinsyrup"
-    ],
-    "preparationState": "Canned (in Syrup)",
-    "compareGroup": "Fruits"
-  },
-  {
-    "id": "local_0060",
-    "slug": "frozen-watermelon",
-    "name": "Frozen Watermelon",
-    "searchName": "frozen watermelon",
-    "displayName": "Frozen Watermelon",
-    "aliases": [
-      "frozen watermelon",
-      "watermelon"
-    ],
-    "category": "Fruits",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "cup",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_61",
-        "unit": "cup",
-        "label": "1 cup diced",
-        "grams": 152,
-        "isDefault": true
-      },
-      {
-        "id": "serve_62",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 30,
-      "protein": 0.6,
-      "carbohydrates": 7.6,
-      "fat": 0.2,
-      "fiber": 0.4,
-      "sugar": 6.2,
-      "sodium": 1
-    },
-    "tags": [
-      "fruits",
-      "frozen"
-    ],
-    "preparationState": "Frozen",
-    "compareGroup": "Fruits"
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 2709333,
+      "dataType": "Survey (FNDDS)"
+    }
   }
 ];

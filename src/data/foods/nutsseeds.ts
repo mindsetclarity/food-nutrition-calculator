@@ -4,17 +4,17 @@ export const nutsseedsFoods: FoodItem[] = [
   {
     "id": "local_0193",
     "slug": "almond",
-    "name": "Almond",
-    "searchName": "almond",
-    "displayName": "Almond",
+    "name": "Almonds",
+    "searchName": "almonds",
+    "displayName": "Almonds",
     "aliases": [
-      "almond",
+      "almonds",
       "almond"
     ],
     "category": "Nuts & Seeds",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "oz",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -38,7 +38,7 @@ export const nutsseedsFoods: FoodItem[] = [
       "carbohydrates": 21.6,
       "fat": 49.9,
       "fiber": 12.5,
-      "sugar": 4.4,
+      "sugar": 4.35,
       "sodium": 1
     },
     "tags": [
@@ -46,22 +46,26 @@ export const nutsseedsFoods: FoodItem[] = [
       "raw"
     ],
     "preparationState": "Raw",
-    "compareGroup": "Nuts & Seeds"
+    "compareGroup": "Nuts & Seeds",
+    "usda": {
+      "fdcId": 170567,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0194",
     "slug": "roasted-unsalted-almond",
-    "name": "Roasted (Unsalted) Almond",
-    "searchName": "roasted (unsalted) almond",
-    "displayName": "Roasted (Unsalted) Almond",
+    "name": "Dry-Roasted Almonds (Unsalted)",
+    "searchName": "dry-roasted almonds (unsalted)",
+    "displayName": "Dry-Roasted Almonds (Unsalted)",
     "aliases": [
-      "roasted (unsalted) almond",
-      "almond"
+      "dry-roasted almonds (unsalted)",
+      "roasted (unsalted) almond"
     ],
     "category": "Nuts & Seeds",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "oz",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -80,35 +84,39 @@ export const nutsseedsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 887,
-      "protein": 27.6,
-      "carbohydrates": 28.1,
-      "fat": 64.9,
-      "fiber": 16.3,
-      "sugar": 5.7,
-      "sodium": 1
+      "calories": 598,
+      "protein": 21,
+      "carbohydrates": 21,
+      "fat": 52.5,
+      "fiber": 10.9,
+      "sugar": 4.86,
+      "sodium": 3
     },
     "tags": [
       "nuts-&-seeds",
       "roastedunsalted"
     ],
     "preparationState": "Roasted (Unsalted)",
-    "compareGroup": "Nuts & Seeds"
+    "compareGroup": "Nuts & Seeds",
+    "usda": {
+      "fdcId": 170158,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0195",
     "slug": "roasted-salted-almond",
-    "name": "Roasted (Salted) Almond",
-    "searchName": "roasted (salted) almond",
-    "displayName": "Roasted (Salted) Almond",
+    "name": "Dry-Roasted Almonds (Salted)",
+    "searchName": "dry-roasted almonds (salted)",
+    "displayName": "Dry-Roasted Almonds (Salted)",
     "aliases": [
-      "roasted (salted) almond",
-      "almond"
+      "dry-roasted almonds (salted)",
+      "roasted (salted) almond"
     ],
     "category": "Nuts & Seeds",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "oz",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -127,35 +135,39 @@ export const nutsseedsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 887,
-      "protein": 27.6,
-      "carbohydrates": 28.1,
-      "fat": 64.9,
-      "fiber": 16.3,
-      "sugar": 5.7,
-      "sodium": 1
+      "calories": 598,
+      "protein": 21,
+      "carbohydrates": 21,
+      "fat": 52.5,
+      "fiber": 10.9,
+      "sugar": 4.86,
+      "sodium": 234
     },
     "tags": [
       "nuts-&-seeds",
       "roastedsalted"
     ],
     "preparationState": "Roasted (Salted)",
-    "compareGroup": "Nuts & Seeds"
+    "compareGroup": "Nuts & Seeds",
+    "usda": {
+      "fdcId": 168596,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0196",
     "slug": "butter-almond",
-    "name": "Butter Almond",
-    "searchName": "butter almond",
-    "displayName": "Butter Almond",
+    "name": "Almond Butter",
+    "searchName": "almond butter",
+    "displayName": "Almond Butter",
     "aliases": [
-      "butter almond",
-      "almond"
+      "almond butter",
+      "butter almond"
     ],
     "category": "Nuts & Seeds",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "oz",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -174,35 +186,39 @@ export const nutsseedsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 682,
-      "protein": 21.2,
-      "carbohydrates": 21.6,
-      "fat": 54.9,
-      "fiber": 12.5,
-      "sugar": 4.4,
-      "sodium": 1
+      "calories": 614,
+      "protein": 21,
+      "carbohydrates": 18.8,
+      "fat": 55.5,
+      "fiber": 10.3,
+      "sugar": 4.43,
+      "sodium": 7
     },
     "tags": [
       "nuts-&-seeds",
       "butter"
     ],
     "preparationState": "Butter",
-    "compareGroup": "Nuts & Seeds"
+    "compareGroup": "Nuts & Seeds",
+    "usda": {
+      "fdcId": 168588,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0197",
     "slug": "walnut",
-    "name": "Walnut",
-    "searchName": "walnut",
-    "displayName": "Walnut",
+    "name": "Walnuts",
+    "searchName": "walnuts",
+    "displayName": "Walnuts",
     "aliases": [
-      "walnut",
+      "walnuts",
       "walnut"
     ],
     "category": "Nuts & Seeds",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "oz",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -226,7 +242,7 @@ export const nutsseedsFoods: FoodItem[] = [
       "carbohydrates": 13.7,
       "fat": 65.2,
       "fiber": 6.7,
-      "sugar": 2.6,
+      "sugar": 2.61,
       "sodium": 2
     },
     "tags": [
@@ -234,69 +250,26 @@ export const nutsseedsFoods: FoodItem[] = [
       "raw"
     ],
     "preparationState": "Raw",
-    "compareGroup": "Nuts & Seeds"
-  },
-  {
-    "id": "local_0198",
-    "slug": "roasted-unsalted-walnut",
-    "name": "Roasted (Unsalted) Walnut",
-    "searchName": "roasted (unsalted) walnut",
-    "displayName": "Roasted (Unsalted) Walnut",
-    "aliases": [
-      "roasted (unsalted) walnut",
-      "walnut"
-    ],
-    "category": "Nuts & Seeds",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "oz",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_199",
-        "unit": "oz",
-        "label": "1 oz",
-        "grams": 28,
-        "isDefault": true
-      },
-      {
-        "id": "serve_200",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 1026,
-      "protein": 19.8,
-      "carbohydrates": 17.8,
-      "fat": 84.8,
-      "fiber": 8.7,
-      "sugar": 3.4,
-      "sodium": 3
-    },
-    "tags": [
-      "nuts-&-seeds",
-      "roastedunsalted"
-    ],
-    "preparationState": "Roasted (Unsalted)",
-    "compareGroup": "Nuts & Seeds"
+    "compareGroup": "Nuts & Seeds",
+    "usda": {
+      "fdcId": 170187,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0199",
     "slug": "roasted-salted-walnut",
-    "name": "Roasted (Salted) Walnut",
-    "searchName": "roasted (salted) walnut",
-    "displayName": "Roasted (Salted) Walnut",
+    "name": "Dry-Roasted Walnuts (Salted)",
+    "searchName": "dry-roasted walnuts (salted)",
+    "displayName": "Dry-Roasted Walnuts (Salted)",
     "aliases": [
-      "roasted (salted) walnut",
-      "walnut"
+      "dry-roasted walnuts (salted)",
+      "roasted (salted) walnut"
     ],
     "category": "Nuts & Seeds",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "oz",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -315,82 +288,39 @@ export const nutsseedsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 1026,
-      "protein": 19.8,
-      "carbohydrates": 17.8,
-      "fat": 84.8,
-      "fiber": 8.7,
-      "sugar": 3.4,
-      "sodium": 3
+      "calories": 643,
+      "protein": 14.3,
+      "carbohydrates": 17.9,
+      "fat": 60.7,
+      "fiber": 7.1,
+      "sugar": 3.57,
+      "sodium": 643
     },
     "tags": [
       "nuts-&-seeds",
       "roastedsalted"
     ],
     "preparationState": "Roasted (Salted)",
-    "compareGroup": "Nuts & Seeds"
-  },
-  {
-    "id": "local_0200",
-    "slug": "butter-walnut",
-    "name": "Butter Walnut",
-    "searchName": "butter walnut",
-    "displayName": "Butter Walnut",
-    "aliases": [
-      "butter walnut",
-      "walnut"
-    ],
-    "category": "Nuts & Seeds",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "oz",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_201",
-        "unit": "oz",
-        "label": "1 oz",
-        "grams": 28,
-        "isDefault": true
-      },
-      {
-        "id": "serve_202",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 778,
-      "protein": 15.2,
-      "carbohydrates": 13.7,
-      "fat": 71.7,
-      "fiber": 6.7,
-      "sugar": 2.6,
-      "sodium": 2
-    },
-    "tags": [
-      "nuts-&-seeds",
-      "butter"
-    ],
-    "preparationState": "Butter",
-    "compareGroup": "Nuts & Seeds"
+    "compareGroup": "Nuts & Seeds",
+    "usda": {
+      "fdcId": 170594,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0201",
     "slug": "peanut",
-    "name": "Peanut",
-    "searchName": "peanut",
-    "displayName": "Peanut",
+    "name": "Peanuts",
+    "searchName": "peanuts",
+    "displayName": "Peanuts",
     "aliases": [
-      "peanut",
+      "peanuts",
       "peanut"
     ],
     "category": "Nuts & Seeds",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "oz",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -414,7 +344,7 @@ export const nutsseedsFoods: FoodItem[] = [
       "carbohydrates": 16.1,
       "fat": 49.2,
       "fiber": 8.5,
-      "sugar": 4.7,
+      "sugar": 4.72,
       "sodium": 18
     },
     "tags": [
@@ -422,22 +352,26 @@ export const nutsseedsFoods: FoodItem[] = [
       "raw"
     ],
     "preparationState": "Raw",
-    "compareGroup": "Nuts & Seeds"
+    "compareGroup": "Nuts & Seeds",
+    "usda": {
+      "fdcId": 172430,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0202",
     "slug": "roasted-unsalted-peanut",
-    "name": "Roasted (Unsalted) Peanut",
-    "searchName": "roasted (unsalted) peanut",
-    "displayName": "Roasted (Unsalted) Peanut",
+    "name": "Dry-Roasted Peanuts (Unsalted)",
+    "searchName": "dry-roasted peanuts (unsalted)",
+    "displayName": "Dry-Roasted Peanuts (Unsalted)",
     "aliases": [
-      "roasted (unsalted) peanut",
-      "peanut"
+      "dry-roasted peanuts (unsalted)",
+      "roasted (unsalted) peanut"
     ],
     "category": "Nuts & Seeds",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "oz",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -456,35 +390,39 @@ export const nutsseedsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 870,
-      "protein": 33.5,
-      "carbohydrates": 20.9,
-      "fat": 64,
-      "fiber": 11.1,
-      "sugar": 6.1,
-      "sodium": 23
+      "calories": 587,
+      "protein": 24.4,
+      "carbohydrates": 21.3,
+      "fat": 49.7,
+      "fiber": 8.4,
+      "sugar": 4.9,
+      "sodium": 6
     },
     "tags": [
       "nuts-&-seeds",
       "roastedunsalted"
     ],
     "preparationState": "Roasted (Unsalted)",
-    "compareGroup": "Nuts & Seeds"
+    "compareGroup": "Nuts & Seeds",
+    "usda": {
+      "fdcId": 173806,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0203",
     "slug": "roasted-salted-peanut",
-    "name": "Roasted (Salted) Peanut",
-    "searchName": "roasted (salted) peanut",
-    "displayName": "Roasted (Salted) Peanut",
+    "name": "Dry-Roasted Peanuts (Salted)",
+    "searchName": "dry-roasted peanuts (salted)",
+    "displayName": "Dry-Roasted Peanuts (Salted)",
     "aliases": [
-      "roasted (salted) peanut",
-      "peanut"
+      "dry-roasted peanuts (salted)",
+      "roasted (salted) peanut"
     ],
     "category": "Nuts & Seeds",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "oz",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -503,35 +441,39 @@ export const nutsseedsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 870,
-      "protein": 33.5,
-      "carbohydrates": 20.9,
-      "fat": 64,
-      "fiber": 11.1,
-      "sugar": 6.1,
-      "sodium": 23
+      "calories": 587,
+      "protein": 24.4,
+      "carbohydrates": 21.3,
+      "fat": 49.7,
+      "fiber": 8.4,
+      "sugar": 4.9,
+      "sodium": 410
     },
     "tags": [
       "nuts-&-seeds",
       "roastedsalted"
     ],
     "preparationState": "Roasted (Salted)",
-    "compareGroup": "Nuts & Seeds"
+    "compareGroup": "Nuts & Seeds",
+    "usda": {
+      "fdcId": 174262,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0204",
     "slug": "butter-peanut",
-    "name": "Butter Peanut",
-    "searchName": "butter peanut",
-    "displayName": "Butter Peanut",
+    "name": "Peanut Butter",
+    "searchName": "peanut butter",
+    "displayName": "Peanut Butter",
     "aliases": [
-      "butter peanut",
-      "peanut"
+      "peanut butter",
+      "butter peanut"
     ],
     "category": "Nuts & Seeds",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "oz",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -550,19 +492,23 @@ export const nutsseedsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 668,
-      "protein": 25.8,
-      "carbohydrates": 16.1,
-      "fat": 54.1,
-      "fiber": 8.5,
-      "sugar": 4.7,
-      "sodium": 18
+      "calories": 598,
+      "protein": 22.2,
+      "carbohydrates": 22.3,
+      "fat": 51.4,
+      "fiber": 5,
+      "sugar": 10.5,
+      "sodium": 17
     },
     "tags": [
       "nuts-&-seeds",
       "butter"
     ],
     "preparationState": "Butter",
-    "compareGroup": "Nuts & Seeds"
+    "compareGroup": "Nuts & Seeds",
+    "usda": {
+      "fdcId": 172470,
+      "dataType": "SR Legacy"
+    }
   }
 ];

@@ -8,13 +8,12 @@ export const vegetablesFoods: FoodItem[] = [
     "searchName": "broccoli",
     "displayName": "Broccoli",
     "aliases": [
-      "broccoli",
       "broccoli"
     ],
     "category": "Vegetables",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -34,9 +33,9 @@ export const vegetablesFoods: FoodItem[] = [
     ],
     "nutrientsPer100g": {
       "calories": 34,
-      "protein": 2.8,
-      "carbohydrates": 6.6,
-      "fat": 0.4,
+      "protein": 2.82,
+      "carbohydrates": 6.64,
+      "fat": 0.37,
       "fiber": 2.6,
       "sugar": 1.7,
       "sodium": 33
@@ -46,7 +45,11 @@ export const vegetablesFoods: FoodItem[] = [
       "raw"
     ],
     "preparationState": "Raw",
-    "compareGroup": "Vegetables"
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 170379,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0062",
@@ -55,13 +58,12 @@ export const vegetablesFoods: FoodItem[] = [
     "searchName": "cooked broccoli",
     "displayName": "Cooked Broccoli",
     "aliases": [
-      "cooked broccoli",
-      "broccoli"
+      "cooked broccoli"
     ],
     "category": "Vegetables",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -80,161 +82,24 @@ export const vegetablesFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 42,
-      "protein": 3.4,
-      "carbohydrates": 7.9,
-      "fat": 0.5,
-      "fiber": 3.1,
-      "sugar": 2,
-      "sodium": 40
+      "calories": 35,
+      "protein": 2.38,
+      "carbohydrates": 7.18,
+      "fat": 0.41,
+      "fiber": 3.3,
+      "sugar": 1.39,
+      "sodium": 41
     },
     "tags": [
       "vegetables",
       "cooked"
     ],
     "preparationState": "Cooked",
-    "compareGroup": "Vegetables"
-  },
-  {
-    "id": "local_0063",
-    "slug": "steamed-broccoli",
-    "name": "Steamed Broccoli",
-    "searchName": "steamed broccoli",
-    "displayName": "Steamed Broccoli",
-    "aliases": [
-      "steamed broccoli",
-      "broccoli"
-    ],
-    "category": "Vegetables",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "cup",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_64",
-        "unit": "cup",
-        "label": "1 cup chopped",
-        "grams": 91,
-        "isDefault": true
-      },
-      {
-        "id": "serve_65",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 42,
-      "protein": 3.4,
-      "carbohydrates": 7.9,
-      "fat": 0.5,
-      "fiber": 3.1,
-      "sugar": 2,
-      "sodium": 40
-    },
-    "tags": [
-      "vegetables",
-      "steamed"
-    ],
-    "preparationState": "Steamed",
-    "compareGroup": "Vegetables"
-  },
-  {
-    "id": "local_0064",
-    "slug": "roasted-broccoli",
-    "name": "Roasted Broccoli",
-    "searchName": "roasted broccoli",
-    "displayName": "Roasted Broccoli",
-    "aliases": [
-      "roasted broccoli",
-      "broccoli"
-    ],
-    "category": "Vegetables",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "cup",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_65",
-        "unit": "cup",
-        "label": "1 cup chopped",
-        "grams": 91,
-        "isDefault": true
-      },
-      {
-        "id": "serve_66",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 45,
-      "protein": 3.6,
-      "carbohydrates": 8.6,
-      "fat": 0.5,
-      "fiber": 3.4,
-      "sugar": 2.2,
-      "sodium": 43
-    },
-    "tags": [
-      "vegetables",
-      "roasted"
-    ],
-    "preparationState": "Roasted",
-    "compareGroup": "Vegetables"
-  },
-  {
-    "id": "local_0065",
-    "slug": "canned-broccoli",
-    "name": "Canned Broccoli",
-    "searchName": "canned broccoli",
-    "displayName": "Canned Broccoli",
-    "aliases": [
-      "canned broccoli",
-      "broccoli"
-    ],
-    "category": "Vegetables",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "cup",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_66",
-        "unit": "cup",
-        "label": "1 cup chopped",
-        "grams": 91,
-        "isDefault": true
-      },
-      {
-        "id": "serve_67",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 34,
-      "protein": 2.8,
-      "carbohydrates": 6.6,
-      "fat": 0.4,
-      "fiber": 2.6,
-      "sugar": 1.7,
-      "sodium": 283
-    },
-    "tags": [
-      "vegetables",
-      "canned"
-    ],
-    "preparationState": "Canned",
-    "compareGroup": "Vegetables"
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 169967,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0066",
@@ -243,13 +108,12 @@ export const vegetablesFoods: FoodItem[] = [
     "searchName": "frozen broccoli",
     "displayName": "Frozen Broccoli",
     "aliases": [
-      "frozen broccoli",
-      "broccoli"
+      "frozen broccoli"
     ],
     "category": "Vegetables",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -268,20 +132,24 @@ export const vegetablesFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 34,
-      "protein": 2.8,
-      "carbohydrates": 6.6,
-      "fat": 0.4,
-      "fiber": 2.6,
-      "sugar": 1.7,
-      "sodium": 33
+      "calories": 26,
+      "protein": 2.81,
+      "carbohydrates": 4.78,
+      "fat": 0.29,
+      "fiber": 3,
+      "sugar": 1.35,
+      "sodium": 24
     },
     "tags": [
       "vegetables",
       "frozen"
     ],
     "preparationState": "Frozen",
-    "compareGroup": "Vegetables"
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 169968,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0067",
@@ -290,13 +158,12 @@ export const vegetablesFoods: FoodItem[] = [
     "searchName": "spinach",
     "displayName": "Spinach",
     "aliases": [
-      "spinach",
       "spinach"
     ],
     "category": "Vegetables",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -316,11 +183,11 @@ export const vegetablesFoods: FoodItem[] = [
     ],
     "nutrientsPer100g": {
       "calories": 23,
-      "protein": 2.9,
-      "carbohydrates": 3.6,
-      "fat": 0.4,
+      "protein": 2.86,
+      "carbohydrates": 3.63,
+      "fat": 0.39,
       "fiber": 2.2,
-      "sugar": 0.4,
+      "sugar": 0.42,
       "sodium": 79
     },
     "tags": [
@@ -328,7 +195,11 @@ export const vegetablesFoods: FoodItem[] = [
       "raw"
     ],
     "preparationState": "Raw",
-    "compareGroup": "Vegetables"
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 168462,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0068",
@@ -337,13 +208,12 @@ export const vegetablesFoods: FoodItem[] = [
     "searchName": "cooked spinach",
     "displayName": "Cooked Spinach",
     "aliases": [
-      "cooked spinach",
-      "spinach"
+      "cooked spinach"
     ],
     "category": "Vegetables",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -362,114 +232,24 @@ export const vegetablesFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 28,
-      "protein": 3.5,
-      "carbohydrates": 4.3,
-      "fat": 0.5,
-      "fiber": 2.6,
-      "sugar": 0.5,
-      "sodium": 95
+      "calories": 23,
+      "protein": 2.97,
+      "carbohydrates": 3.75,
+      "fat": 0.26,
+      "fiber": 2.4,
+      "sugar": 0.43,
+      "sodium": 70
     },
     "tags": [
       "vegetables",
       "cooked"
     ],
     "preparationState": "Cooked",
-    "compareGroup": "Vegetables"
-  },
-  {
-    "id": "local_0069",
-    "slug": "steamed-spinach",
-    "name": "Steamed Spinach",
-    "searchName": "steamed spinach",
-    "displayName": "Steamed Spinach",
-    "aliases": [
-      "steamed spinach",
-      "spinach"
-    ],
-    "category": "Vegetables",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "cup",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_70",
-        "unit": "cup",
-        "label": "1 cup raw",
-        "grams": 30,
-        "isDefault": true
-      },
-      {
-        "id": "serve_71",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 28,
-      "protein": 3.5,
-      "carbohydrates": 4.3,
-      "fat": 0.5,
-      "fiber": 2.6,
-      "sugar": 0.5,
-      "sodium": 95
-    },
-    "tags": [
-      "vegetables",
-      "steamed"
-    ],
-    "preparationState": "Steamed",
-    "compareGroup": "Vegetables"
-  },
-  {
-    "id": "local_0070",
-    "slug": "roasted-spinach",
-    "name": "Roasted Spinach",
-    "searchName": "roasted spinach",
-    "displayName": "Roasted Spinach",
-    "aliases": [
-      "roasted spinach",
-      "spinach"
-    ],
-    "category": "Vegetables",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "cup",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_71",
-        "unit": "cup",
-        "label": "1 cup raw",
-        "grams": 30,
-        "isDefault": true
-      },
-      {
-        "id": "serve_72",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 31,
-      "protein": 3.8,
-      "carbohydrates": 4.7,
-      "fat": 0.5,
-      "fiber": 2.9,
-      "sugar": 0.5,
-      "sodium": 103
-    },
-    "tags": [
-      "vegetables",
-      "roasted"
-    ],
-    "preparationState": "Roasted",
-    "compareGroup": "Vegetables"
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 168463,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0071",
@@ -478,13 +258,12 @@ export const vegetablesFoods: FoodItem[] = [
     "searchName": "canned spinach",
     "displayName": "Canned Spinach",
     "aliases": [
-      "canned spinach",
-      "spinach"
+      "canned spinach"
     ],
     "category": "Vegetables",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -504,19 +283,23 @@ export const vegetablesFoods: FoodItem[] = [
     ],
     "nutrientsPer100g": {
       "calories": 23,
-      "protein": 2.9,
-      "carbohydrates": 3.6,
-      "fat": 0.4,
-      "fiber": 2.2,
+      "protein": 2.81,
+      "carbohydrates": 3.4,
+      "fat": 0.5,
+      "fiber": 2.4,
       "sugar": 0.4,
-      "sodium": 329
+      "sodium": 322
     },
     "tags": [
       "vegetables",
       "canned"
     ],
     "preparationState": "Canned",
-    "compareGroup": "Vegetables"
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 169286,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0072",
@@ -525,13 +308,12 @@ export const vegetablesFoods: FoodItem[] = [
     "searchName": "frozen spinach",
     "displayName": "Frozen Spinach",
     "aliases": [
-      "frozen spinach",
-      "spinach"
+      "frozen spinach"
     ],
     "category": "Vegetables",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -550,20 +332,24 @@ export const vegetablesFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 23,
-      "protein": 2.9,
-      "carbohydrates": 3.6,
-      "fat": 0.4,
-      "fiber": 2.2,
-      "sugar": 0.4,
-      "sodium": 79
+      "calories": 29,
+      "protein": 3.63,
+      "carbohydrates": 4.21,
+      "fat": 0.57,
+      "fiber": 2.9,
+      "sugar": 0.65,
+      "sodium": 74
     },
     "tags": [
       "vegetables",
       "frozen"
     ],
     "preparationState": "Frozen",
-    "compareGroup": "Vegetables"
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 169287,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0073",
@@ -572,13 +358,12 @@ export const vegetablesFoods: FoodItem[] = [
     "searchName": "carrot",
     "displayName": "Carrot",
     "aliases": [
-      "carrot",
       "carrot"
     ],
     "category": "Vegetables",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "piece",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -598,11 +383,11 @@ export const vegetablesFoods: FoodItem[] = [
     ],
     "nutrientsPer100g": {
       "calories": 41,
-      "protein": 0.9,
-      "carbohydrates": 9.6,
-      "fat": 0.2,
+      "protein": 0.93,
+      "carbohydrates": 9.58,
+      "fat": 0.24,
       "fiber": 2.8,
-      "sugar": 4.7,
+      "sugar": 4.74,
       "sodium": 69
     },
     "tags": [
@@ -610,22 +395,26 @@ export const vegetablesFoods: FoodItem[] = [
       "raw"
     ],
     "preparationState": "Raw",
-    "compareGroup": "Vegetables"
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 170393,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0074",
     "slug": "cooked-carrot",
-    "name": "Cooked Carrot",
-    "searchName": "cooked carrot",
-    "displayName": "Cooked Carrot",
+    "name": "Cooked Carrots",
+    "searchName": "cooked carrots",
+    "displayName": "Cooked Carrots",
     "aliases": [
-      "cooked carrot",
-      "carrot"
+      "cooked carrots",
+      "cooked carrot"
     ],
     "category": "Vegetables",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "piece",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -644,129 +433,39 @@ export const vegetablesFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 50,
-      "protein": 1.1,
-      "carbohydrates": 11.5,
-      "fat": 0.2,
-      "fiber": 3.4,
-      "sugar": 5.6,
-      "sodium": 83
+      "calories": 35,
+      "protein": 0.76,
+      "carbohydrates": 8.22,
+      "fat": 0.18,
+      "fiber": 3,
+      "sugar": 3.45,
+      "sodium": 58
     },
     "tags": [
       "vegetables",
       "cooked"
     ],
     "preparationState": "Cooked",
-    "compareGroup": "Vegetables"
-  },
-  {
-    "id": "local_0075",
-    "slug": "steamed-carrot",
-    "name": "Steamed Carrot",
-    "searchName": "steamed carrot",
-    "displayName": "Steamed Carrot",
-    "aliases": [
-      "steamed carrot",
-      "carrot"
-    ],
-    "category": "Vegetables",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "piece",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_76",
-        "unit": "piece",
-        "label": "1 medium",
-        "grams": 61,
-        "isDefault": true
-      },
-      {
-        "id": "serve_77",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 50,
-      "protein": 1.1,
-      "carbohydrates": 11.5,
-      "fat": 0.2,
-      "fiber": 3.4,
-      "sugar": 5.6,
-      "sodium": 83
-    },
-    "tags": [
-      "vegetables",
-      "steamed"
-    ],
-    "preparationState": "Steamed",
-    "compareGroup": "Vegetables"
-  },
-  {
-    "id": "local_0076",
-    "slug": "roasted-carrot",
-    "name": "Roasted Carrot",
-    "searchName": "roasted carrot",
-    "displayName": "Roasted Carrot",
-    "aliases": [
-      "roasted carrot",
-      "carrot"
-    ],
-    "category": "Vegetables",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "piece",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_77",
-        "unit": "piece",
-        "label": "1 medium",
-        "grams": 61,
-        "isDefault": true
-      },
-      {
-        "id": "serve_78",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 54,
-      "protein": 1.2,
-      "carbohydrates": 12.5,
-      "fat": 0.3,
-      "fiber": 3.6,
-      "sugar": 6.1,
-      "sodium": 90
-    },
-    "tags": [
-      "vegetables",
-      "roasted"
-    ],
-    "preparationState": "Roasted",
-    "compareGroup": "Vegetables"
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 170394,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0077",
     "slug": "canned-carrot",
-    "name": "Canned Carrot",
-    "searchName": "canned carrot",
-    "displayName": "Canned Carrot",
+    "name": "Canned Carrots",
+    "searchName": "canned carrots",
+    "displayName": "Canned Carrots",
     "aliases": [
-      "canned carrot",
-      "carrot"
+      "canned carrots",
+      "canned carrot"
     ],
     "category": "Vegetables",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "piece",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -785,35 +484,39 @@ export const vegetablesFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 41,
-      "protein": 0.9,
-      "carbohydrates": 9.6,
-      "fat": 0.2,
-      "fiber": 2.8,
-      "sugar": 4.7,
-      "sodium": 319
+      "calories": 25,
+      "protein": 0.64,
+      "carbohydrates": 5.54,
+      "fat": 0.19,
+      "fiber": 1.5,
+      "sugar": 2.48,
+      "sodium": 242
     },
     "tags": [
       "vegetables",
       "canned"
     ],
     "preparationState": "Canned",
-    "compareGroup": "Vegetables"
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 170396,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0078",
     "slug": "frozen-carrot",
-    "name": "Frozen Carrot",
-    "searchName": "frozen carrot",
-    "displayName": "Frozen Carrot",
+    "name": "Frozen Carrots",
+    "searchName": "frozen carrots",
+    "displayName": "Frozen Carrots",
     "aliases": [
-      "frozen carrot",
-      "carrot"
+      "frozen carrots",
+      "frozen carrot"
     ],
     "category": "Vegetables",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "piece",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -832,20 +535,24 @@ export const vegetablesFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 41,
-      "protein": 0.9,
-      "carbohydrates": 9.6,
-      "fat": 0.2,
-      "fiber": 2.8,
-      "sugar": 4.7,
-      "sodium": 69
+      "calories": 37,
+      "protein": 0.81,
+      "carbohydrates": 7.92,
+      "fat": 0.47,
+      "fiber": 3.2,
+      "sugar": null,
+      "sodium": 66
     },
     "tags": [
       "vegetables",
       "frozen"
     ],
     "preparationState": "Frozen",
-    "compareGroup": "Vegetables"
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 746764,
+      "dataType": "Foundation"
+    }
   },
   {
     "id": "local_0079",
@@ -854,13 +561,12 @@ export const vegetablesFoods: FoodItem[] = [
     "searchName": "tomato",
     "displayName": "Tomato",
     "aliases": [
-      "tomato",
       "tomato"
     ],
     "category": "Vegetables",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "piece",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -880,11 +586,11 @@ export const vegetablesFoods: FoodItem[] = [
     ],
     "nutrientsPer100g": {
       "calories": 18,
-      "protein": 0.9,
-      "carbohydrates": 3.9,
+      "protein": 0.88,
+      "carbohydrates": 3.89,
       "fat": 0.2,
       "fiber": 1.2,
-      "sugar": 2.6,
+      "sugar": 2.63,
       "sodium": 5
     },
     "tags": [
@@ -892,22 +598,26 @@ export const vegetablesFoods: FoodItem[] = [
       "raw"
     ],
     "preparationState": "Raw",
-    "compareGroup": "Vegetables"
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 170457,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0080",
     "slug": "cooked-tomato",
-    "name": "Cooked Tomato",
-    "searchName": "cooked tomato",
-    "displayName": "Cooked Tomato",
+    "name": "Cooked Tomatoes",
+    "searchName": "cooked tomatoes",
+    "displayName": "Cooked Tomatoes",
     "aliases": [
-      "cooked tomato",
-      "tomato"
+      "cooked tomatoes",
+      "cooked tomato"
     ],
     "category": "Vegetables",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "piece",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -926,129 +636,39 @@ export const vegetablesFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 22,
-      "protein": 1.1,
-      "carbohydrates": 4.7,
-      "fat": 0.2,
-      "fiber": 1.4,
-      "sugar": 3.1,
-      "sodium": 6
+      "calories": 18,
+      "protein": 0.95,
+      "carbohydrates": 4.01,
+      "fat": 0.11,
+      "fiber": 0.7,
+      "sugar": 2.49,
+      "sodium": 11
     },
     "tags": [
       "vegetables",
       "cooked"
     ],
     "preparationState": "Cooked",
-    "compareGroup": "Vegetables"
-  },
-  {
-    "id": "local_0081",
-    "slug": "steamed-tomato",
-    "name": "Steamed Tomato",
-    "searchName": "steamed tomato",
-    "displayName": "Steamed Tomato",
-    "aliases": [
-      "steamed tomato",
-      "tomato"
-    ],
-    "category": "Vegetables",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "piece",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_82",
-        "unit": "piece",
-        "label": "1 medium",
-        "grams": 123,
-        "isDefault": true
-      },
-      {
-        "id": "serve_83",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 22,
-      "protein": 1.1,
-      "carbohydrates": 4.7,
-      "fat": 0.2,
-      "fiber": 1.4,
-      "sugar": 3.1,
-      "sodium": 6
-    },
-    "tags": [
-      "vegetables",
-      "steamed"
-    ],
-    "preparationState": "Steamed",
-    "compareGroup": "Vegetables"
-  },
-  {
-    "id": "local_0082",
-    "slug": "roasted-tomato",
-    "name": "Roasted Tomato",
-    "searchName": "roasted tomato",
-    "displayName": "Roasted Tomato",
-    "aliases": [
-      "roasted tomato",
-      "tomato"
-    ],
-    "category": "Vegetables",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "piece",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_83",
-        "unit": "piece",
-        "label": "1 medium",
-        "grams": 123,
-        "isDefault": true
-      },
-      {
-        "id": "serve_84",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 24,
-      "protein": 1.2,
-      "carbohydrates": 5.1,
-      "fat": 0.3,
-      "fiber": 1.6,
-      "sugar": 3.4,
-      "sodium": 7
-    },
-    "tags": [
-      "vegetables",
-      "roasted"
-    ],
-    "preparationState": "Roasted",
-    "compareGroup": "Vegetables"
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 170050,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0083",
     "slug": "canned-tomato",
-    "name": "Canned Tomato",
-    "searchName": "canned tomato",
-    "displayName": "Canned Tomato",
+    "name": "Canned Tomatoes",
+    "searchName": "canned tomatoes",
+    "displayName": "Canned Tomatoes",
     "aliases": [
-      "canned tomato",
-      "tomato"
+      "canned tomatoes",
+      "canned tomato"
     ],
     "category": "Vegetables",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "piece",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -1067,67 +687,24 @@ export const vegetablesFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 18,
-      "protein": 0.9,
-      "carbohydrates": 3.9,
-      "fat": 0.2,
-      "fiber": 1.2,
-      "sugar": 2.6,
-      "sodium": 255
+      "calories": 16,
+      "protein": 0.79,
+      "carbohydrates": 3.47,
+      "fat": 0.25,
+      "fiber": 1.9,
+      "sugar": 2.55,
+      "sodium": 115
     },
     "tags": [
       "vegetables",
       "canned"
     ],
     "preparationState": "Canned",
-    "compareGroup": "Vegetables"
-  },
-  {
-    "id": "local_0084",
-    "slug": "frozen-tomato",
-    "name": "Frozen Tomato",
-    "searchName": "frozen tomato",
-    "displayName": "Frozen Tomato",
-    "aliases": [
-      "frozen tomato",
-      "tomato"
-    ],
-    "category": "Vegetables",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "piece",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_85",
-        "unit": "piece",
-        "label": "1 medium",
-        "grams": 123,
-        "isDefault": true
-      },
-      {
-        "id": "serve_86",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 18,
-      "protein": 0.9,
-      "carbohydrates": 3.9,
-      "fat": 0.2,
-      "fiber": 1.2,
-      "sugar": 2.6,
-      "sodium": 5
-    },
-    "tags": [
-      "vegetables",
-      "frozen"
-    ],
-    "preparationState": "Frozen",
-    "compareGroup": "Vegetables"
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 170051,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0085",
@@ -1136,13 +713,12 @@ export const vegetablesFoods: FoodItem[] = [
     "searchName": "potato",
     "displayName": "Potato",
     "aliases": [
-      "potato",
       "potato"
     ],
     "category": "Vegetables",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "piece",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -1162,11 +738,11 @@ export const vegetablesFoods: FoodItem[] = [
     ],
     "nutrientsPer100g": {
       "calories": 77,
-      "protein": 2,
+      "protein": 2.05,
       "carbohydrates": 17.5,
-      "fat": 0.1,
-      "fiber": 2.2,
-      "sugar": 0.8,
+      "fat": 0.09,
+      "fiber": 2.1,
+      "sugar": 0.82,
       "sodium": 6
     },
     "tags": [
@@ -1174,22 +750,26 @@ export const vegetablesFoods: FoodItem[] = [
       "raw"
     ],
     "preparationState": "Raw",
-    "compareGroup": "Vegetables"
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 170026,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0086",
     "slug": "cooked-potato",
-    "name": "Cooked Potato",
-    "searchName": "cooked potato",
-    "displayName": "Cooked Potato",
+    "name": "Boiled Potato",
+    "searchName": "boiled potato",
+    "displayName": "Boiled Potato",
     "aliases": [
-      "cooked potato",
-      "potato"
+      "boiled potato",
+      "cooked potato"
     ],
     "category": "Vegetables",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "piece",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -1208,67 +788,24 @@ export const vegetablesFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 93,
-      "protein": 2.4,
-      "carbohydrates": 21,
+      "calories": 87,
+      "protein": 1.87,
+      "carbohydrates": 20.1,
       "fat": 0.1,
-      "fiber": 2.6,
-      "sugar": 1,
-      "sodium": 7
+      "fiber": 1.8,
+      "sugar": 0.91,
+      "sodium": 4
     },
     "tags": [
       "vegetables",
       "cooked"
     ],
     "preparationState": "Cooked",
-    "compareGroup": "Vegetables"
-  },
-  {
-    "id": "local_0087",
-    "slug": "steamed-potato",
-    "name": "Steamed Potato",
-    "searchName": "steamed potato",
-    "displayName": "Steamed Potato",
-    "aliases": [
-      "steamed potato",
-      "potato"
-    ],
-    "category": "Vegetables",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "piece",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_88",
-        "unit": "piece",
-        "label": "1 medium",
-        "grams": 173,
-        "isDefault": true
-      },
-      {
-        "id": "serve_89",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 93,
-      "protein": 2.4,
-      "carbohydrates": 21,
-      "fat": 0.1,
-      "fiber": 2.6,
-      "sugar": 1,
-      "sodium": 7
-    },
-    "tags": [
-      "vegetables",
-      "steamed"
-    ],
-    "preparationState": "Steamed",
-    "compareGroup": "Vegetables"
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 170438,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0088",
@@ -1277,13 +814,12 @@ export const vegetablesFoods: FoodItem[] = [
     "searchName": "roasted potato",
     "displayName": "Roasted Potato",
     "aliases": [
-      "roasted potato",
-      "potato"
+      "roasted potato"
     ],
     "category": "Vegetables",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "piece",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -1302,35 +838,39 @@ export const vegetablesFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 100,
-      "protein": 2.6,
-      "carbohydrates": 22.8,
-      "fat": 0.1,
-      "fiber": 2.9,
-      "sugar": 1,
-      "sodium": 8
+      "calories": 126,
+      "protein": 1.87,
+      "carbohydrates": 20.45,
+      "fat": 4.25,
+      "fiber": 1.4,
+      "sugar": 1.62,
+      "sodium": 166
     },
     "tags": [
       "vegetables",
       "roasted"
     ],
     "preparationState": "Roasted",
-    "compareGroup": "Vegetables"
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 2709402,
+      "dataType": "Survey (FNDDS)"
+    }
   },
   {
     "id": "local_0089",
     "slug": "canned-potato",
-    "name": "Canned Potato",
-    "searchName": "canned potato",
-    "displayName": "Canned Potato",
+    "name": "Canned Potatoes",
+    "searchName": "canned potatoes",
+    "displayName": "Canned Potatoes",
     "aliases": [
-      "canned potato",
-      "potato"
+      "canned potatoes",
+      "canned potato"
     ],
     "category": "Vegetables",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "piece",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -1349,67 +889,24 @@ export const vegetablesFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 77,
-      "protein": 2,
-      "carbohydrates": 17.5,
-      "fat": 0.1,
-      "fiber": 2.2,
-      "sugar": 0.8,
-      "sodium": 256
+      "calories": 60,
+      "protein": 1.41,
+      "carbohydrates": 13.6,
+      "fat": 0.21,
+      "fiber": 2.3,
+      "sugar": null,
+      "sodium": 219
     },
     "tags": [
       "vegetables",
       "canned"
     ],
     "preparationState": "Canned",
-    "compareGroup": "Vegetables"
-  },
-  {
-    "id": "local_0090",
-    "slug": "frozen-potato",
-    "name": "Frozen Potato",
-    "searchName": "frozen potato",
-    "displayName": "Frozen Potato",
-    "aliases": [
-      "frozen potato",
-      "potato"
-    ],
-    "category": "Vegetables",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "piece",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_91",
-        "unit": "piece",
-        "label": "1 medium",
-        "grams": 173,
-        "isDefault": true
-      },
-      {
-        "id": "serve_92",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 77,
-      "protein": 2,
-      "carbohydrates": 17.5,
-      "fat": 0.1,
-      "fiber": 2.2,
-      "sugar": 0.8,
-      "sodium": 6
-    },
-    "tags": [
-      "vegetables",
-      "frozen"
-    ],
-    "preparationState": "Frozen",
-    "compareGroup": "Vegetables"
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 170444,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0091",
@@ -1418,13 +915,12 @@ export const vegetablesFoods: FoodItem[] = [
     "searchName": "sweet potato",
     "displayName": "Sweet Potato",
     "aliases": [
-      "sweet potato",
       "sweet potato"
     ],
     "category": "Vegetables",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "piece",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -1444,11 +940,11 @@ export const vegetablesFoods: FoodItem[] = [
     ],
     "nutrientsPer100g": {
       "calories": 86,
-      "protein": 1.6,
+      "protein": 1.57,
       "carbohydrates": 20.1,
-      "fat": 0.1,
+      "fat": 0.05,
       "fiber": 3,
-      "sugar": 4.2,
+      "sugar": 4.18,
       "sodium": 55
     },
     "tags": [
@@ -1456,22 +952,26 @@ export const vegetablesFoods: FoodItem[] = [
       "raw"
     ],
     "preparationState": "Raw",
-    "compareGroup": "Vegetables"
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 168482,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0092",
     "slug": "cooked-sweet-potato",
-    "name": "Cooked Sweet Potato",
-    "searchName": "cooked sweet potato",
-    "displayName": "Cooked Sweet Potato",
+    "name": "Boiled Sweet Potato",
+    "searchName": "boiled sweet potato",
+    "displayName": "Boiled Sweet Potato",
     "aliases": [
-      "cooked sweet potato",
-      "sweet potato"
+      "boiled sweet potato",
+      "cooked sweet potato"
     ],
     "category": "Vegetables",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "piece",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -1490,82 +990,39 @@ export const vegetablesFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 103,
-      "protein": 1.9,
-      "carbohydrates": 24.1,
-      "fat": 0.1,
-      "fiber": 3.6,
-      "sugar": 5,
-      "sodium": 66
+      "calories": 76,
+      "protein": 1.37,
+      "carbohydrates": 17.7,
+      "fat": 0.14,
+      "fiber": 2.5,
+      "sugar": 5.74,
+      "sodium": 27
     },
     "tags": [
       "vegetables",
       "cooked"
     ],
     "preparationState": "Cooked",
-    "compareGroup": "Vegetables"
-  },
-  {
-    "id": "local_0093",
-    "slug": "steamed-sweet-potato",
-    "name": "Steamed Sweet Potato",
-    "searchName": "steamed sweet potato",
-    "displayName": "Steamed Sweet Potato",
-    "aliases": [
-      "steamed sweet potato",
-      "sweet potato"
-    ],
-    "category": "Vegetables",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "piece",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_94",
-        "unit": "piece",
-        "label": "1 medium",
-        "grams": 114,
-        "isDefault": true
-      },
-      {
-        "id": "serve_95",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 103,
-      "protein": 1.9,
-      "carbohydrates": 24.1,
-      "fat": 0.1,
-      "fiber": 3.6,
-      "sugar": 5,
-      "sodium": 66
-    },
-    "tags": [
-      "vegetables",
-      "steamed"
-    ],
-    "preparationState": "Steamed",
-    "compareGroup": "Vegetables"
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 168484,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0094",
     "slug": "roasted-sweet-potato",
-    "name": "Roasted Sweet Potato",
-    "searchName": "roasted sweet potato",
-    "displayName": "Roasted Sweet Potato",
+    "name": "Baked Sweet Potato",
+    "searchName": "baked sweet potato",
+    "displayName": "Baked Sweet Potato",
     "aliases": [
-      "roasted sweet potato",
-      "sweet potato"
+      "baked sweet potato",
+      "roasted sweet potato"
     ],
     "category": "Vegetables",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "piece",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -1584,20 +1041,24 @@ export const vegetablesFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 112,
-      "protein": 2.1,
-      "carbohydrates": 26.1,
-      "fat": 0.1,
-      "fiber": 3.9,
-      "sugar": 5.5,
-      "sodium": 72
+      "calories": 90,
+      "protein": 2.01,
+      "carbohydrates": 20.7,
+      "fat": 0.15,
+      "fiber": 3.3,
+      "sugar": 6.48,
+      "sodium": 36
     },
     "tags": [
       "vegetables",
       "roasted"
     ],
     "preparationState": "Roasted",
-    "compareGroup": "Vegetables"
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 168483,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0095",
@@ -1606,13 +1067,12 @@ export const vegetablesFoods: FoodItem[] = [
     "searchName": "canned sweet potato",
     "displayName": "Canned Sweet Potato",
     "aliases": [
-      "canned sweet potato",
-      "sweet potato"
+      "canned sweet potato"
     ],
     "category": "Vegetables",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "piece",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -1631,67 +1091,24 @@ export const vegetablesFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 86,
-      "protein": 1.6,
-      "carbohydrates": 20.1,
-      "fat": 0.1,
-      "fiber": 3,
-      "sugar": 4.2,
-      "sodium": 305
+      "calories": 91,
+      "protein": 1.65,
+      "carbohydrates": 21.1,
+      "fat": 0.2,
+      "fiber": 1.8,
+      "sugar": 5,
+      "sodium": 53
     },
     "tags": [
       "vegetables",
       "canned"
     ],
     "preparationState": "Canned",
-    "compareGroup": "Vegetables"
-  },
-  {
-    "id": "local_0096",
-    "slug": "frozen-sweet-potato",
-    "name": "Frozen Sweet Potato",
-    "searchName": "frozen sweet potato",
-    "displayName": "Frozen Sweet Potato",
-    "aliases": [
-      "frozen sweet potato",
-      "sweet potato"
-    ],
-    "category": "Vegetables",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "piece",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_97",
-        "unit": "piece",
-        "label": "1 medium",
-        "grams": 114,
-        "isDefault": true
-      },
-      {
-        "id": "serve_98",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 86,
-      "protein": 1.6,
-      "carbohydrates": 20.1,
-      "fat": 0.1,
-      "fiber": 3,
-      "sugar": 4.2,
-      "sodium": 55
-    },
-    "tags": [
-      "vegetables",
-      "frozen"
-    ],
-    "preparationState": "Frozen",
-    "compareGroup": "Vegetables"
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 168485,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0097",
@@ -1700,13 +1117,12 @@ export const vegetablesFoods: FoodItem[] = [
     "searchName": "onion",
     "displayName": "Onion",
     "aliases": [
-      "onion",
       "onion"
     ],
     "category": "Vegetables",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "piece",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -1727,10 +1143,10 @@ export const vegetablesFoods: FoodItem[] = [
     "nutrientsPer100g": {
       "calories": 40,
       "protein": 1.1,
-      "carbohydrates": 9.3,
+      "carbohydrates": 9.34,
       "fat": 0.1,
       "fiber": 1.7,
-      "sugar": 4.2,
+      "sugar": 4.24,
       "sodium": 4
     },
     "tags": [
@@ -1738,22 +1154,26 @@ export const vegetablesFoods: FoodItem[] = [
       "raw"
     ],
     "preparationState": "Raw",
-    "compareGroup": "Vegetables"
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 170000,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0098",
     "slug": "cooked-onion",
-    "name": "Cooked Onion",
-    "searchName": "cooked onion",
-    "displayName": "Cooked Onion",
+    "name": "Cooked Onions",
+    "searchName": "cooked onions",
+    "displayName": "Cooked Onions",
     "aliases": [
-      "cooked onion",
-      "onion"
+      "cooked onions",
+      "cooked onion"
     ],
     "category": "Vegetables",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "piece",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -1772,129 +1192,39 @@ export const vegetablesFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 48,
-      "protein": 1.3,
-      "carbohydrates": 11.2,
-      "fat": 0.1,
-      "fiber": 2,
-      "sugar": 5,
-      "sodium": 5
+      "calories": 44,
+      "protein": 1.36,
+      "carbohydrates": 10.2,
+      "fat": 0.19,
+      "fiber": 1.4,
+      "sugar": 4.73,
+      "sodium": 3
     },
     "tags": [
       "vegetables",
       "cooked"
     ],
     "preparationState": "Cooked",
-    "compareGroup": "Vegetables"
-  },
-  {
-    "id": "local_0099",
-    "slug": "steamed-onion",
-    "name": "Steamed Onion",
-    "searchName": "steamed onion",
-    "displayName": "Steamed Onion",
-    "aliases": [
-      "steamed onion",
-      "onion"
-    ],
-    "category": "Vegetables",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "piece",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_100",
-        "unit": "piece",
-        "label": "1 medium",
-        "grams": 110,
-        "isDefault": true
-      },
-      {
-        "id": "serve_101",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 48,
-      "protein": 1.3,
-      "carbohydrates": 11.2,
-      "fat": 0.1,
-      "fiber": 2,
-      "sugar": 5,
-      "sodium": 5
-    },
-    "tags": [
-      "vegetables",
-      "steamed"
-    ],
-    "preparationState": "Steamed",
-    "compareGroup": "Vegetables"
-  },
-  {
-    "id": "local_0100",
-    "slug": "roasted-onion",
-    "name": "Roasted Onion",
-    "searchName": "roasted onion",
-    "displayName": "Roasted Onion",
-    "aliases": [
-      "roasted onion",
-      "onion"
-    ],
-    "category": "Vegetables",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "piece",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_101",
-        "unit": "piece",
-        "label": "1 medium",
-        "grams": 110,
-        "isDefault": true
-      },
-      {
-        "id": "serve_102",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 52,
-      "protein": 1.4,
-      "carbohydrates": 12.1,
-      "fat": 0.1,
-      "fiber": 2.2,
-      "sugar": 5.5,
-      "sodium": 5
-    },
-    "tags": [
-      "vegetables",
-      "roasted"
-    ],
-    "preparationState": "Roasted",
-    "compareGroup": "Vegetables"
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 170001,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0101",
     "slug": "canned-onion",
-    "name": "Canned Onion",
-    "searchName": "canned onion",
-    "displayName": "Canned Onion",
+    "name": "Canned Onions",
+    "searchName": "canned onions",
+    "displayName": "Canned Onions",
     "aliases": [
-      "canned onion",
-      "onion"
+      "canned onions",
+      "canned onion"
     ],
     "category": "Vegetables",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "piece",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -1913,35 +1243,39 @@ export const vegetablesFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 40,
-      "protein": 1.1,
-      "carbohydrates": 9.3,
-      "fat": 0.1,
-      "fiber": 1.7,
-      "sugar": 4.2,
-      "sodium": 254
+      "calories": 19,
+      "protein": 0.85,
+      "carbohydrates": 4.02,
+      "fat": 0.09,
+      "fiber": 1.2,
+      "sugar": 2.2,
+      "sodium": 371
     },
     "tags": [
       "vegetables",
       "canned"
     ],
     "preparationState": "Canned",
-    "compareGroup": "Vegetables"
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 170003,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0102",
     "slug": "frozen-onion",
-    "name": "Frozen Onion",
-    "searchName": "frozen onion",
-    "displayName": "Frozen Onion",
+    "name": "Frozen Onions",
+    "searchName": "frozen onions",
+    "displayName": "Frozen Onions",
     "aliases": [
-      "frozen onion",
-      "onion"
+      "frozen onions",
+      "frozen onion"
     ],
     "category": "Vegetables",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "piece",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -1960,35 +1294,39 @@ export const vegetablesFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 40,
-      "protein": 1.1,
-      "carbohydrates": 9.3,
+      "calories": 29,
+      "protein": 0.79,
+      "carbohydrates": 6.82,
       "fat": 0.1,
-      "fiber": 1.7,
-      "sugar": 4.2,
-      "sodium": 4
+      "fiber": 1.8,
+      "sugar": null,
+      "sodium": 12
     },
     "tags": [
       "vegetables",
       "frozen"
     ],
     "preparationState": "Frozen",
-    "compareGroup": "Vegetables"
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 170410,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0103",
     "slug": "bell-pepper",
-    "name": "Bell Pepper",
-    "searchName": "bell pepper",
-    "displayName": "Bell Pepper",
+    "name": "Green Bell Pepper",
+    "searchName": "green bell pepper",
+    "displayName": "Green Bell Pepper",
     "aliases": [
-      "bell pepper",
+      "green bell pepper",
       "bell pepper"
     ],
     "category": "Vegetables",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "piece",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -2008,9 +1346,9 @@ export const vegetablesFoods: FoodItem[] = [
     ],
     "nutrientsPer100g": {
       "calories": 20,
-      "protein": 0.9,
-      "carbohydrates": 4.6,
-      "fat": 0.2,
+      "protein": 0.86,
+      "carbohydrates": 4.64,
+      "fat": 0.17,
       "fiber": 1.7,
       "sugar": 2.4,
       "sodium": 3
@@ -2020,22 +1358,26 @@ export const vegetablesFoods: FoodItem[] = [
       "raw"
     ],
     "preparationState": "Raw",
-    "compareGroup": "Vegetables"
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 170427,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0104",
     "slug": "cooked-bell-pepper",
-    "name": "Cooked Bell Pepper",
-    "searchName": "cooked bell pepper",
-    "displayName": "Cooked Bell Pepper",
+    "name": "Cooked Green Bell Pepper",
+    "searchName": "cooked green bell pepper",
+    "displayName": "Cooked Green Bell Pepper",
     "aliases": [
-      "cooked bell pepper",
-      "bell pepper"
+      "cooked green bell pepper",
+      "cooked bell pepper"
     ],
     "category": "Vegetables",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "piece",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -2054,176 +1396,39 @@ export const vegetablesFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 24,
-      "protein": 1.1,
-      "carbohydrates": 5.5,
+      "calories": 28,
+      "protein": 0.92,
+      "carbohydrates": 6.7,
       "fat": 0.2,
-      "fiber": 2,
-      "sugar": 2.9,
-      "sodium": 4
+      "fiber": 1.2,
+      "sugar": 3.19,
+      "sodium": 2
     },
     "tags": [
       "vegetables",
       "cooked"
     ],
     "preparationState": "Cooked",
-    "compareGroup": "Vegetables"
-  },
-  {
-    "id": "local_0105",
-    "slug": "steamed-bell-pepper",
-    "name": "Steamed Bell Pepper",
-    "searchName": "steamed bell pepper",
-    "displayName": "Steamed Bell Pepper",
-    "aliases": [
-      "steamed bell pepper",
-      "bell pepper"
-    ],
-    "category": "Vegetables",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "piece",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_106",
-        "unit": "piece",
-        "label": "1 medium",
-        "grams": 119,
-        "isDefault": true
-      },
-      {
-        "id": "serve_107",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 24,
-      "protein": 1.1,
-      "carbohydrates": 5.5,
-      "fat": 0.2,
-      "fiber": 2,
-      "sugar": 2.9,
-      "sodium": 4
-    },
-    "tags": [
-      "vegetables",
-      "steamed"
-    ],
-    "preparationState": "Steamed",
-    "compareGroup": "Vegetables"
-  },
-  {
-    "id": "local_0106",
-    "slug": "roasted-bell-pepper",
-    "name": "Roasted Bell Pepper",
-    "searchName": "roasted bell pepper",
-    "displayName": "Roasted Bell Pepper",
-    "aliases": [
-      "roasted bell pepper",
-      "bell pepper"
-    ],
-    "category": "Vegetables",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "piece",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_107",
-        "unit": "piece",
-        "label": "1 medium",
-        "grams": 119,
-        "isDefault": true
-      },
-      {
-        "id": "serve_108",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 27,
-      "protein": 1.2,
-      "carbohydrates": 6,
-      "fat": 0.3,
-      "fiber": 2.2,
-      "sugar": 3.1,
-      "sodium": 4
-    },
-    "tags": [
-      "vegetables",
-      "roasted"
-    ],
-    "preparationState": "Roasted",
-    "compareGroup": "Vegetables"
-  },
-  {
-    "id": "local_0107",
-    "slug": "canned-bell-pepper",
-    "name": "Canned Bell Pepper",
-    "searchName": "canned bell pepper",
-    "displayName": "Canned Bell Pepper",
-    "aliases": [
-      "canned bell pepper",
-      "bell pepper"
-    ],
-    "category": "Vegetables",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "piece",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_108",
-        "unit": "piece",
-        "label": "1 medium",
-        "grams": 119,
-        "isDefault": true
-      },
-      {
-        "id": "serve_109",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 20,
-      "protein": 0.9,
-      "carbohydrates": 4.6,
-      "fat": 0.2,
-      "fiber": 1.7,
-      "sugar": 2.4,
-      "sodium": 253
-    },
-    "tags": [
-      "vegetables",
-      "canned"
-    ],
-    "preparationState": "Canned",
-    "compareGroup": "Vegetables"
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 170428,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0108",
     "slug": "frozen-bell-pepper",
-    "name": "Frozen Bell Pepper",
-    "searchName": "frozen bell pepper",
-    "displayName": "Frozen Bell Pepper",
+    "name": "Frozen Green Bell Pepper",
+    "searchName": "frozen green bell pepper",
+    "displayName": "Frozen Green Bell Pepper",
     "aliases": [
-      "frozen bell pepper",
-      "bell pepper"
+      "frozen green bell pepper",
+      "frozen bell pepper"
     ],
     "category": "Vegetables",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "piece",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -2243,19 +1448,23 @@ export const vegetablesFoods: FoodItem[] = [
     ],
     "nutrientsPer100g": {
       "calories": 20,
-      "protein": 0.9,
-      "carbohydrates": 4.6,
-      "fat": 0.2,
-      "fiber": 1.7,
-      "sugar": 2.4,
-      "sodium": 3
+      "protein": 1.08,
+      "carbohydrates": 4.45,
+      "fat": 0.21,
+      "fiber": 1.6,
+      "sugar": null,
+      "sodium": 5
     },
     "tags": [
       "vegetables",
       "frozen"
     ],
     "preparationState": "Frozen",
-    "compareGroup": "Vegetables"
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 170022,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0109",
@@ -2264,13 +1473,12 @@ export const vegetablesFoods: FoodItem[] = [
     "searchName": "cucumber",
     "displayName": "Cucumber",
     "aliases": [
-      "cucumber",
       "cucumber"
     ],
     "category": "Vegetables",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "piece",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -2290,11 +1498,11 @@ export const vegetablesFoods: FoodItem[] = [
     ],
     "nutrientsPer100g": {
       "calories": 15,
-      "protein": 0.6,
-      "carbohydrates": 3.6,
-      "fat": 0.1,
+      "protein": 0.65,
+      "carbohydrates": 3.63,
+      "fat": 0.11,
       "fiber": 0.5,
-      "sugar": 1.7,
+      "sugar": 1.67,
       "sodium": 2
     },
     "tags": [
@@ -2302,242 +1510,11 @@ export const vegetablesFoods: FoodItem[] = [
       "raw"
     ],
     "preparationState": "Raw",
-    "compareGroup": "Vegetables"
-  },
-  {
-    "id": "local_0110",
-    "slug": "cooked-cucumber",
-    "name": "Cooked Cucumber",
-    "searchName": "cooked cucumber",
-    "displayName": "Cooked Cucumber",
-    "aliases": [
-      "cooked cucumber",
-      "cucumber"
-    ],
-    "category": "Vegetables",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "piece",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_111",
-        "unit": "piece",
-        "label": "1 medium",
-        "grams": 201,
-        "isDefault": true
-      },
-      {
-        "id": "serve_112",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 18,
-      "protein": 0.7,
-      "carbohydrates": 4.3,
-      "fat": 0.1,
-      "fiber": 0.6,
-      "sugar": 2,
-      "sodium": 2
-    },
-    "tags": [
-      "vegetables",
-      "cooked"
-    ],
-    "preparationState": "Cooked",
-    "compareGroup": "Vegetables"
-  },
-  {
-    "id": "local_0111",
-    "slug": "steamed-cucumber",
-    "name": "Steamed Cucumber",
-    "searchName": "steamed cucumber",
-    "displayName": "Steamed Cucumber",
-    "aliases": [
-      "steamed cucumber",
-      "cucumber"
-    ],
-    "category": "Vegetables",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "piece",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_112",
-        "unit": "piece",
-        "label": "1 medium",
-        "grams": 201,
-        "isDefault": true
-      },
-      {
-        "id": "serve_113",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 18,
-      "protein": 0.7,
-      "carbohydrates": 4.3,
-      "fat": 0.1,
-      "fiber": 0.6,
-      "sugar": 2,
-      "sodium": 2
-    },
-    "tags": [
-      "vegetables",
-      "steamed"
-    ],
-    "preparationState": "Steamed",
-    "compareGroup": "Vegetables"
-  },
-  {
-    "id": "local_0112",
-    "slug": "roasted-cucumber",
-    "name": "Roasted Cucumber",
-    "searchName": "roasted cucumber",
-    "displayName": "Roasted Cucumber",
-    "aliases": [
-      "roasted cucumber",
-      "cucumber"
-    ],
-    "category": "Vegetables",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "piece",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_113",
-        "unit": "piece",
-        "label": "1 medium",
-        "grams": 201,
-        "isDefault": true
-      },
-      {
-        "id": "serve_114",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 20,
-      "protein": 0.8,
-      "carbohydrates": 4.7,
-      "fat": 0.1,
-      "fiber": 0.7,
-      "sugar": 2.2,
-      "sodium": 3
-    },
-    "tags": [
-      "vegetables",
-      "roasted"
-    ],
-    "preparationState": "Roasted",
-    "compareGroup": "Vegetables"
-  },
-  {
-    "id": "local_0113",
-    "slug": "canned-cucumber",
-    "name": "Canned Cucumber",
-    "searchName": "canned cucumber",
-    "displayName": "Canned Cucumber",
-    "aliases": [
-      "canned cucumber",
-      "cucumber"
-    ],
-    "category": "Vegetables",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "piece",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_114",
-        "unit": "piece",
-        "label": "1 medium",
-        "grams": 201,
-        "isDefault": true
-      },
-      {
-        "id": "serve_115",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 15,
-      "protein": 0.6,
-      "carbohydrates": 3.6,
-      "fat": 0.1,
-      "fiber": 0.5,
-      "sugar": 1.7,
-      "sodium": 252
-    },
-    "tags": [
-      "vegetables",
-      "canned"
-    ],
-    "preparationState": "Canned",
-    "compareGroup": "Vegetables"
-  },
-  {
-    "id": "local_0114",
-    "slug": "frozen-cucumber",
-    "name": "Frozen Cucumber",
-    "searchName": "frozen cucumber",
-    "displayName": "Frozen Cucumber",
-    "aliases": [
-      "frozen cucumber",
-      "cucumber"
-    ],
-    "category": "Vegetables",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "piece",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_115",
-        "unit": "piece",
-        "label": "1 medium",
-        "grams": 201,
-        "isDefault": true
-      },
-      {
-        "id": "serve_116",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 15,
-      "protein": 0.6,
-      "carbohydrates": 3.6,
-      "fat": 0.1,
-      "fiber": 0.5,
-      "sugar": 1.7,
-      "sodium": 2
-    },
-    "tags": [
-      "vegetables",
-      "frozen"
-    ],
-    "preparationState": "Frozen",
-    "compareGroup": "Vegetables"
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 168409,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0115",
@@ -2546,13 +1523,12 @@ export const vegetablesFoods: FoodItem[] = [
     "searchName": "zucchini",
     "displayName": "Zucchini",
     "aliases": [
-      "zucchini",
       "zucchini"
     ],
     "category": "Vegetables",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "piece",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -2572,9 +1548,9 @@ export const vegetablesFoods: FoodItem[] = [
     ],
     "nutrientsPer100g": {
       "calories": 17,
-      "protein": 1.2,
-      "carbohydrates": 3.1,
-      "fat": 0.3,
+      "protein": 1.21,
+      "carbohydrates": 3.11,
+      "fat": 0.32,
       "fiber": 1,
       "sugar": 2.5,
       "sodium": 8
@@ -2584,7 +1560,11 @@ export const vegetablesFoods: FoodItem[] = [
       "raw"
     ],
     "preparationState": "Raw",
-    "compareGroup": "Vegetables"
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 169291,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0116",
@@ -2593,13 +1573,12 @@ export const vegetablesFoods: FoodItem[] = [
     "searchName": "cooked zucchini",
     "displayName": "Cooked Zucchini",
     "aliases": [
-      "cooked zucchini",
-      "zucchini"
+      "cooked zucchini"
     ],
     "category": "Vegetables",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "piece",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -2618,161 +1597,24 @@ export const vegetablesFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 21,
-      "protein": 1.4,
-      "carbohydrates": 3.7,
-      "fat": 0.4,
-      "fiber": 1.2,
-      "sugar": 3,
-      "sodium": 10
+      "calories": 15,
+      "protein": 1.14,
+      "carbohydrates": 2.69,
+      "fat": 0.36,
+      "fiber": 1,
+      "sugar": 1.71,
+      "sodium": 3
     },
     "tags": [
       "vegetables",
       "cooked"
     ],
     "preparationState": "Cooked",
-    "compareGroup": "Vegetables"
-  },
-  {
-    "id": "local_0117",
-    "slug": "steamed-zucchini",
-    "name": "Steamed Zucchini",
-    "searchName": "steamed zucchini",
-    "displayName": "Steamed Zucchini",
-    "aliases": [
-      "steamed zucchini",
-      "zucchini"
-    ],
-    "category": "Vegetables",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "piece",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_118",
-        "unit": "piece",
-        "label": "1 medium",
-        "grams": 196,
-        "isDefault": true
-      },
-      {
-        "id": "serve_119",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 21,
-      "protein": 1.4,
-      "carbohydrates": 3.7,
-      "fat": 0.4,
-      "fiber": 1.2,
-      "sugar": 3,
-      "sodium": 10
-    },
-    "tags": [
-      "vegetables",
-      "steamed"
-    ],
-    "preparationState": "Steamed",
-    "compareGroup": "Vegetables"
-  },
-  {
-    "id": "local_0118",
-    "slug": "roasted-zucchini",
-    "name": "Roasted Zucchini",
-    "searchName": "roasted zucchini",
-    "displayName": "Roasted Zucchini",
-    "aliases": [
-      "roasted zucchini",
-      "zucchini"
-    ],
-    "category": "Vegetables",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "piece",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_119",
-        "unit": "piece",
-        "label": "1 medium",
-        "grams": 196,
-        "isDefault": true
-      },
-      {
-        "id": "serve_120",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 23,
-      "protein": 1.6,
-      "carbohydrates": 4,
-      "fat": 0.4,
-      "fiber": 1.3,
-      "sugar": 3.3,
-      "sodium": 10
-    },
-    "tags": [
-      "vegetables",
-      "roasted"
-    ],
-    "preparationState": "Roasted",
-    "compareGroup": "Vegetables"
-  },
-  {
-    "id": "local_0119",
-    "slug": "canned-zucchini",
-    "name": "Canned Zucchini",
-    "searchName": "canned zucchini",
-    "displayName": "Canned Zucchini",
-    "aliases": [
-      "canned zucchini",
-      "zucchini"
-    ],
-    "category": "Vegetables",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "piece",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_120",
-        "unit": "piece",
-        "label": "1 medium",
-        "grams": 196,
-        "isDefault": true
-      },
-      {
-        "id": "serve_121",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 17,
-      "protein": 1.2,
-      "carbohydrates": 3.1,
-      "fat": 0.3,
-      "fiber": 1,
-      "sugar": 2.5,
-      "sodium": 258
-    },
-    "tags": [
-      "vegetables",
-      "canned"
-    ],
-    "preparationState": "Canned",
-    "compareGroup": "Vegetables"
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 169292,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0120",
@@ -2781,13 +1623,12 @@ export const vegetablesFoods: FoodItem[] = [
     "searchName": "frozen zucchini",
     "displayName": "Frozen Zucchini",
     "aliases": [
-      "frozen zucchini",
-      "zucchini"
+      "frozen zucchini"
     ],
     "category": "Vegetables",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "piece",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -2807,18 +1648,22 @@ export const vegetablesFoods: FoodItem[] = [
     ],
     "nutrientsPer100g": {
       "calories": 17,
-      "protein": 1.2,
-      "carbohydrates": 3.1,
-      "fat": 0.3,
-      "fiber": 1,
-      "sugar": 2.5,
-      "sodium": 8
+      "protein": 1.16,
+      "carbohydrates": 3.58,
+      "fat": 0.13,
+      "fiber": 1.3,
+      "sugar": 1.71,
+      "sodium": 2
     },
     "tags": [
       "vegetables",
       "frozen"
     ],
     "preparationState": "Frozen",
-    "compareGroup": "Vegetables"
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 168469,
+      "dataType": "SR Legacy"
+    }
   }
 ];

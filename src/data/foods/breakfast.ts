@@ -4,17 +4,17 @@ export const breakfastFoods: FoodItem[] = [
   {
     "id": "local_0164",
     "slug": "egg",
-    "name": "Egg",
-    "searchName": "egg",
-    "displayName": "Egg",
+    "name": "Egg (Raw)",
+    "searchName": "egg (raw)",
+    "displayName": "Egg (Raw)",
     "aliases": [
-      "egg",
+      "egg (raw)",
       "egg"
     ],
     "category": "Breakfast",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "piece",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -35,10 +35,10 @@ export const breakfastFoods: FoodItem[] = [
     "nutrientsPer100g": {
       "calories": 143,
       "protein": 12.6,
-      "carbohydrates": 0.7,
-      "fat": 9.5,
+      "carbohydrates": 0.72,
+      "fat": 9.51,
       "fiber": 0,
-      "sugar": 0.4,
+      "sugar": 0.37,
       "sodium": 142
     },
     "tags": [
@@ -46,54 +46,11 @@ export const breakfastFoods: FoodItem[] = [
       "raw"
     ],
     "preparationState": "Raw",
-    "compareGroup": "Breakfast"
-  },
-  {
-    "id": "local_0165",
-    "slug": "cooked-egg",
-    "name": "Cooked Egg",
-    "searchName": "cooked egg",
-    "displayName": "Cooked Egg",
-    "aliases": [
-      "cooked egg",
-      "egg"
-    ],
-    "category": "Breakfast",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "piece",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_166",
-        "unit": "piece",
-        "label": "1 large",
-        "grams": 50,
-        "isDefault": true
-      },
-      {
-        "id": "serve_167",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 189,
-      "protein": 15.1,
-      "carbohydrates": 0.8,
-      "fat": 11.4,
-      "fiber": 0,
-      "sugar": 0.5,
-      "sodium": 170
-    },
-    "tags": [
-      "breakfast",
-      "cooked"
-    ],
-    "preparationState": "Cooked",
-    "compareGroup": "Breakfast"
+    "compareGroup": "Breakfast",
+    "usda": {
+      "fdcId": 171287,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0166",
@@ -102,13 +59,12 @@ export const breakfastFoods: FoodItem[] = [
     "searchName": "scrambled egg",
     "displayName": "Scrambled Egg",
     "aliases": [
-      "scrambled egg",
-      "egg"
+      "scrambled egg"
     ],
     "category": "Breakfast",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "piece",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -127,20 +83,24 @@ export const breakfastFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 143,
-      "protein": 12.6,
-      "carbohydrates": 0.7,
-      "fat": 9.5,
+      "calories": 149,
+      "protein": 9.99,
+      "carbohydrates": 1.61,
+      "fat": 11,
       "fiber": 0,
-      "sugar": 0.4,
-      "sodium": 142
+      "sugar": 1.39,
+      "sodium": 145
     },
     "tags": [
       "breakfast",
       "scrambled"
     ],
     "preparationState": "Scrambled",
-    "compareGroup": "Breakfast"
+    "compareGroup": "Breakfast",
+    "usda": {
+      "fdcId": 172187,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0167",
@@ -149,13 +109,12 @@ export const breakfastFoods: FoodItem[] = [
     "searchName": "fried egg",
     "displayName": "Fried Egg",
     "aliases": [
-      "fried egg",
-      "egg"
+      "fried egg"
     ],
     "category": "Breakfast",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "piece",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -174,35 +133,39 @@ export const breakfastFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 343,
-      "protein": 13.9,
-      "carbohydrates": 0.8,
-      "fat": 23.8,
+      "calories": 196,
+      "protein": 13.6,
+      "carbohydrates": 0.83,
+      "fat": 14.8,
       "fiber": 0,
       "sugar": 0.4,
-      "sodium": 156
+      "sodium": 207
     },
     "tags": [
       "breakfast",
       "fried"
     ],
     "preparationState": "Fried",
-    "compareGroup": "Breakfast"
+    "compareGroup": "Breakfast",
+    "usda": {
+      "fdcId": 173423,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0168",
     "slug": "hard-boiled-egg",
-    "name": "Hard Boiled Egg",
-    "searchName": "hard boiled egg",
-    "displayName": "Hard Boiled Egg",
+    "name": "Hard-Boiled Egg",
+    "searchName": "hard-boiled egg",
+    "displayName": "Hard-Boiled Egg",
     "aliases": [
-      "hard boiled egg",
-      "egg"
+      "hard-boiled egg",
+      "hard boiled egg"
     ],
     "category": "Breakfast",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "piece",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -221,20 +184,24 @@ export const breakfastFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 189,
-      "protein": 15.1,
-      "carbohydrates": 0.8,
-      "fat": 11.4,
+      "calories": 155,
+      "protein": 12.6,
+      "carbohydrates": 1.12,
+      "fat": 10.6,
       "fiber": 0,
-      "sugar": 0.5,
-      "sodium": 170
+      "sugar": 1.12,
+      "sodium": 124
     },
     "tags": [
       "breakfast",
       "hardboiled"
     ],
     "preparationState": "Hard Boiled",
-    "compareGroup": "Breakfast"
+    "compareGroup": "Breakfast",
+    "usda": {
+      "fdcId": 173424,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0169",
@@ -243,13 +210,12 @@ export const breakfastFoods: FoodItem[] = [
     "searchName": "poached egg",
     "displayName": "Poached Egg",
     "aliases": [
-      "poached egg",
-      "egg"
+      "poached egg"
     ],
     "category": "Breakfast",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "piece",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -269,34 +235,38 @@ export const breakfastFoods: FoodItem[] = [
     ],
     "nutrientsPer100g": {
       "calories": 143,
-      "protein": 12.6,
-      "carbohydrates": 0.7,
-      "fat": 9.5,
+      "protein": 12.5,
+      "carbohydrates": 0.71,
+      "fat": 9.47,
       "fiber": 0,
-      "sugar": 0.4,
-      "sodium": 142
+      "sugar": 0.37,
+      "sodium": 297
     },
     "tags": [
       "breakfast",
       "poached"
     ],
     "preparationState": "Poached",
-    "compareGroup": "Breakfast"
+    "compareGroup": "Breakfast",
+    "usda": {
+      "fdcId": 172186,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0176",
     "slug": "oats",
-    "name": "Oats",
-    "searchName": "oats",
-    "displayName": "Oats",
+    "name": "Rolled Oats (Dry)",
+    "searchName": "rolled oats (dry)",
+    "displayName": "Rolled Oats (Dry)",
     "aliases": [
-      "oats",
+      "rolled oats (dry)",
       "oats"
     ],
     "category": "Breakfast",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -315,35 +285,39 @@ export const breakfastFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 389,
-      "protein": 16.9,
-      "carbohydrates": 66.3,
-      "fat": 6.9,
-      "fiber": 10.6,
-      "sugar": 0.8,
-      "sodium": 2
+      "calories": 379,
+      "protein": 13.2,
+      "carbohydrates": 67.7,
+      "fat": 6.52,
+      "fiber": 10.1,
+      "sugar": 0.99,
+      "sodium": 6
     },
     "tags": [
       "breakfast",
       "raw"
     ],
     "preparationState": "Raw",
-    "compareGroup": "Breakfast"
+    "compareGroup": "Breakfast",
+    "usda": {
+      "fdcId": 173904,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0177",
     "slug": "cooked-oats",
-    "name": "Cooked Oats",
-    "searchName": "cooked oats",
-    "displayName": "Cooked Oats",
+    "name": "Oatmeal (Cooked with Water)",
+    "searchName": "oatmeal (cooked with water)",
+    "displayName": "Oatmeal (Cooked with Water)",
     "aliases": [
-      "cooked oats",
-      "oats"
+      "oatmeal (cooked with water)",
+      "cooked oats"
     ],
     "category": "Breakfast",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -362,207 +336,23 @@ export const breakfastFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 479,
-      "protein": 20.3,
-      "carbohydrates": 79.6,
-      "fat": 8.3,
-      "fiber": 12.7,
-      "sugar": 1,
-      "sodium": 2
+      "calories": 71,
+      "protein": 2.54,
+      "carbohydrates": 12,
+      "fat": 1.52,
+      "fiber": 1.7,
+      "sugar": 0.27,
+      "sodium": 4
     },
     "tags": [
       "breakfast",
       "cooked"
     ],
     "preparationState": "Cooked",
-    "compareGroup": "Breakfast"
-  },
-  {
-    "id": "local_0178",
-    "slug": "scrambled-oats",
-    "name": "Scrambled Oats",
-    "searchName": "scrambled oats",
-    "displayName": "Scrambled Oats",
-    "aliases": [
-      "scrambled oats",
-      "oats"
-    ],
-    "category": "Breakfast",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "cup",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_179",
-        "unit": "cup",
-        "label": "1 cup dry",
-        "grams": 81,
-        "isDefault": true
-      },
-      {
-        "id": "serve_180",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 389,
-      "protein": 16.9,
-      "carbohydrates": 66.3,
-      "fat": 6.9,
-      "fiber": 10.6,
-      "sugar": 0.8,
-      "sodium": 2
-    },
-    "tags": [
-      "breakfast",
-      "scrambled"
-    ],
-    "preparationState": "Scrambled",
-    "compareGroup": "Breakfast"
-  },
-  {
-    "id": "local_0179",
-    "slug": "fried-oats",
-    "name": "Fried Oats",
-    "searchName": "fried oats",
-    "displayName": "Fried Oats",
-    "aliases": [
-      "fried oats",
-      "oats"
-    ],
-    "category": "Breakfast",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "cup",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_180",
-        "unit": "cup",
-        "label": "1 cup dry",
-        "grams": 81,
-        "isDefault": true
-      },
-      {
-        "id": "serve_181",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 677,
-      "protein": 18.6,
-      "carbohydrates": 72.9,
-      "fat": 17.3,
-      "fiber": 11.7,
-      "sugar": 0.9,
-      "sodium": 2
-    },
-    "tags": [
-      "breakfast",
-      "fried"
-    ],
-    "preparationState": "Fried",
-    "compareGroup": "Breakfast"
-  },
-  {
-    "id": "local_0180",
-    "slug": "hard-boiled-oats",
-    "name": "Hard Boiled Oats",
-    "searchName": "hard boiled oats",
-    "displayName": "Hard Boiled Oats",
-    "aliases": [
-      "hard boiled oats",
-      "oats"
-    ],
-    "category": "Breakfast",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "cup",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_181",
-        "unit": "cup",
-        "label": "1 cup dry",
-        "grams": 81,
-        "isDefault": true
-      },
-      {
-        "id": "serve_182",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 479,
-      "protein": 20.3,
-      "carbohydrates": 79.6,
-      "fat": 8.3,
-      "fiber": 12.7,
-      "sugar": 1,
-      "sodium": 2
-    },
-    "tags": [
-      "breakfast",
-      "hardboiled"
-    ],
-    "preparationState": "Hard Boiled",
-    "compareGroup": "Breakfast"
-  },
-  {
-    "id": "local_0181",
-    "slug": "poached-oats",
-    "name": "Poached Oats",
-    "searchName": "poached oats",
-    "displayName": "Poached Oats",
-    "aliases": [
-      "poached oats",
-      "oats"
-    ],
-    "category": "Breakfast",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "cup",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_182",
-        "unit": "cup",
-        "label": "1 cup dry",
-        "grams": 81,
-        "isDefault": true
-      },
-      {
-        "id": "serve_183",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 389,
-      "protein": 16.9,
-      "carbohydrates": 66.3,
-      "fat": 6.9,
-      "fiber": 10.6,
-      "sugar": 0.8,
-      "sodium": 2
-    },
-    "tags": [
-      "breakfast",
-      "poached"
-    ],
-    "preparationState": "Poached",
-    "compareGroup": "Breakfast"
+    "compareGroup": "Breakfast",
+    "usda": {
+      "fdcId": 173905,
+      "dataType": "SR Legacy"
+    }
   }
 ];

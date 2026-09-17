@@ -4,17 +4,17 @@ export const grainscerealsFoods: FoodItem[] = [
   {
     "id": "local_0170",
     "slug": "dry-white-rice",
-    "name": "Dry White Rice",
-    "searchName": "dry white rice",
-    "displayName": "Dry White Rice",
+    "name": "White Rice (Dry)",
+    "searchName": "white rice (dry)",
+    "displayName": "White Rice (Dry)",
     "aliases": [
-      "dry white rice",
-      "white rice"
+      "white rice (dry)",
+      "dry white rice"
     ],
     "category": "Grains & Cereals",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -33,35 +33,39 @@ export const grainscerealsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 360,
-      "protein": 6.6,
-      "carbohydrates": 79.3,
-      "fat": 0.6,
-      "fiber": 1.4,
-      "sugar": 0.1,
-      "sodium": 1
+      "calories": 365,
+      "protein": 7.13,
+      "carbohydrates": 80,
+      "fat": 0.66,
+      "fiber": 1.3,
+      "sugar": 0.12,
+      "sodium": 5
     },
     "tags": [
       "grains-&-cereals",
       "dry"
     ],
     "preparationState": "Dry",
-    "compareGroup": "Grains & Cereals"
+    "compareGroup": "Grains & Cereals",
+    "usda": {
+      "fdcId": 168877,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0171",
     "slug": "cooked-white-rice",
-    "name": "Cooked White Rice",
-    "searchName": "cooked white rice",
-    "displayName": "Cooked White Rice",
+    "name": "White Rice (Cooked)",
+    "searchName": "white rice (cooked)",
+    "displayName": "White Rice (Cooked)",
     "aliases": [
-      "cooked white rice",
-      "white rice"
+      "white rice (cooked)",
+      "cooked white rice"
     ],
     "category": "Grains & Cereals",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -80,35 +84,39 @@ export const grainscerealsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 126,
-      "protein": 2.3,
-      "carbohydrates": 27.8,
-      "fat": 0.2,
-      "fiber": 0.5,
-      "sugar": 0,
-      "sodium": 0
+      "calories": 130,
+      "protein": 2.69,
+      "carbohydrates": 28.2,
+      "fat": 0.28,
+      "fiber": 0.4,
+      "sugar": 0.05,
+      "sodium": 1
     },
     "tags": [
       "grains-&-cereals",
       "cooked"
     ],
     "preparationState": "Cooked",
-    "compareGroup": "Grains & Cereals"
+    "compareGroup": "Grains & Cereals",
+    "usda": {
+      "fdcId": 168878,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0172",
     "slug": "dry-brown-rice",
-    "name": "Dry Brown Rice",
-    "searchName": "dry brown rice",
-    "displayName": "Dry Brown Rice",
+    "name": "Brown Rice (Dry)",
+    "searchName": "brown rice (dry)",
+    "displayName": "Brown Rice (Dry)",
     "aliases": [
-      "dry brown rice",
-      "brown rice"
+      "brown rice (dry)",
+      "dry brown rice"
     ],
     "category": "Grains & Cereals",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -127,12 +135,12 @@ export const grainscerealsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 370,
-      "protein": 7.9,
-      "carbohydrates": 77.2,
-      "fat": 2.9,
-      "fiber": 3.5,
-      "sugar": 0.7,
+      "calories": 367,
+      "protein": 7.54,
+      "carbohydrates": 76.2,
+      "fat": 3.2,
+      "fiber": 3.6,
+      "sugar": 0.66,
       "sodium": 5
     },
     "tags": [
@@ -140,22 +148,26 @@ export const grainscerealsFoods: FoodItem[] = [
       "dry"
     ],
     "preparationState": "Dry",
-    "compareGroup": "Grains & Cereals"
+    "compareGroup": "Grains & Cereals",
+    "usda": {
+      "fdcId": 169703,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0173",
     "slug": "cooked-brown-rice",
-    "name": "Cooked Brown Rice",
-    "searchName": "cooked brown rice",
-    "displayName": "Cooked Brown Rice",
+    "name": "Brown Rice (Cooked)",
+    "searchName": "brown rice (cooked)",
+    "displayName": "Brown Rice (Cooked)",
     "aliases": [
-      "cooked brown rice",
-      "brown rice"
+      "brown rice (cooked)",
+      "cooked brown rice"
     ],
     "category": "Grains & Cereals",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -174,35 +186,39 @@ export const grainscerealsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 130,
-      "protein": 2.8,
-      "carbohydrates": 27,
-      "fat": 1,
-      "fiber": 1.2,
-      "sugar": 0.2,
-      "sodium": 2
+      "calories": 123,
+      "protein": 2.74,
+      "carbohydrates": 25.6,
+      "fat": 0.97,
+      "fiber": 1.6,
+      "sugar": 0.24,
+      "sodium": 4
     },
     "tags": [
       "grains-&-cereals",
       "cooked"
     ],
     "preparationState": "Cooked",
-    "compareGroup": "Grains & Cereals"
+    "compareGroup": "Grains & Cereals",
+    "usda": {
+      "fdcId": 169704,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0174",
     "slug": "dry-quinoa",
-    "name": "Dry Quinoa",
-    "searchName": "dry quinoa",
-    "displayName": "Dry Quinoa",
+    "name": "Quinoa (Dry)",
+    "searchName": "quinoa (dry)",
+    "displayName": "Quinoa (Dry)",
     "aliases": [
-      "dry quinoa",
-      "quinoa"
+      "quinoa (dry)",
+      "dry quinoa"
     ],
     "category": "Grains & Cereals",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -224,9 +240,9 @@ export const grainscerealsFoods: FoodItem[] = [
       "calories": 368,
       "protein": 14.1,
       "carbohydrates": 64.2,
-      "fat": 6.1,
+      "fat": 6.07,
       "fiber": 7,
-      "sugar": 0,
+      "sugar": null,
       "sodium": 5
     },
     "tags": [
@@ -234,22 +250,26 @@ export const grainscerealsFoods: FoodItem[] = [
       "dry"
     ],
     "preparationState": "Dry",
-    "compareGroup": "Grains & Cereals"
+    "compareGroup": "Grains & Cereals",
+    "usda": {
+      "fdcId": 168874,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0175",
     "slug": "cooked-quinoa",
-    "name": "Cooked Quinoa",
-    "searchName": "cooked quinoa",
-    "displayName": "Cooked Quinoa",
+    "name": "Quinoa (Cooked)",
+    "searchName": "quinoa (cooked)",
+    "displayName": "Quinoa (Cooked)",
     "aliases": [
-      "cooked quinoa",
-      "quinoa"
+      "quinoa (cooked)",
+      "cooked quinoa"
     ],
     "category": "Grains & Cereals",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -268,35 +288,39 @@ export const grainscerealsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 129,
-      "protein": 4.9,
-      "carbohydrates": 22.5,
-      "fat": 2.1,
-      "fiber": 2.4,
-      "sugar": 0,
-      "sodium": 2
+      "calories": 120,
+      "protein": 4.4,
+      "carbohydrates": 21.3,
+      "fat": 1.92,
+      "fiber": 2.8,
+      "sugar": 0.87,
+      "sodium": 7
     },
     "tags": [
       "grains-&-cereals",
       "cooked"
     ],
     "preparationState": "Cooked",
-    "compareGroup": "Grains & Cereals"
+    "compareGroup": "Grains & Cereals",
+    "usda": {
+      "fdcId": 168917,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0182",
     "slug": "dry-pasta",
-    "name": "Dry Pasta",
-    "searchName": "dry pasta",
-    "displayName": "Dry Pasta",
+    "name": "Pasta (Dry)",
+    "searchName": "pasta (dry)",
+    "displayName": "Pasta (Dry)",
     "aliases": [
-      "dry pasta",
-      "pasta"
+      "pasta (dry)",
+      "dry pasta"
     ],
     "category": "Grains & Cereals",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -318,9 +342,9 @@ export const grainscerealsFoods: FoodItem[] = [
       "calories": 371,
       "protein": 13,
       "carbohydrates": 74.7,
-      "fat": 1.5,
+      "fat": 1.51,
       "fiber": 3.2,
-      "sugar": 2.7,
+      "sugar": 2.67,
       "sodium": 6
     },
     "tags": [
@@ -328,22 +352,26 @@ export const grainscerealsFoods: FoodItem[] = [
       "dry"
     ],
     "preparationState": "Dry",
-    "compareGroup": "Grains & Cereals"
+    "compareGroup": "Grains & Cereals",
+    "usda": {
+      "fdcId": 169736,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0183",
     "slug": "cooked-pasta",
-    "name": "Cooked Pasta",
-    "searchName": "cooked pasta",
-    "displayName": "Cooked Pasta",
+    "name": "Pasta (Cooked)",
+    "searchName": "pasta (cooked)",
+    "displayName": "Pasta (Cooked)",
     "aliases": [
-      "cooked pasta",
-      "pasta"
+      "pasta (cooked)",
+      "cooked pasta"
     ],
     "category": "Grains & Cereals",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -362,19 +390,23 @@ export const grainscerealsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 130,
-      "protein": 4.5,
-      "carbohydrates": 26.1,
-      "fat": 0.5,
-      "fiber": 1.1,
-      "sugar": 0.9,
-      "sodium": 2
+      "calories": 158,
+      "protein": 5.8,
+      "carbohydrates": 30.9,
+      "fat": 0.93,
+      "fiber": 1.8,
+      "sugar": 0.56,
+      "sodium": 1
     },
     "tags": [
       "grains-&-cereals",
       "cooked"
     ],
     "preparationState": "Cooked",
-    "compareGroup": "Grains & Cereals"
+    "compareGroup": "Grains & Cereals",
+    "usda": {
+      "fdcId": 169737,
+      "dataType": "SR Legacy"
+    }
   }
 ];

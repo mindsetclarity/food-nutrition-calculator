@@ -4,17 +4,17 @@ export const proteinfoodsFoods: FoodItem[] = [
   {
     "id": "local_0121",
     "slug": "chicken-breast",
-    "name": "Chicken Breast",
-    "searchName": "chicken breast",
-    "displayName": "Chicken Breast",
+    "name": "Chicken Breast (Raw)",
+    "searchName": "chicken breast (raw)",
+    "displayName": "Chicken Breast (Raw)",
     "aliases": [
-      "chicken breast",
+      "chicken breast (raw)",
       "chicken breast"
     ],
     "category": "Protein Foods",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "oz",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -36,7 +36,7 @@ export const proteinfoodsFoods: FoodItem[] = [
       "calories": 120,
       "protein": 22.5,
       "carbohydrates": 0,
-      "fat": 2.6,
+      "fat": 2.62,
       "fiber": 0,
       "sugar": 0,
       "sodium": 45
@@ -46,7 +46,11 @@ export const proteinfoodsFoods: FoodItem[] = [
       "raw"
     ],
     "preparationState": "Raw",
-    "compareGroup": "Protein Foods"
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 171077,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0122",
@@ -55,13 +59,12 @@ export const proteinfoodsFoods: FoodItem[] = [
     "searchName": "grilled chicken breast",
     "displayName": "Grilled Chicken Breast",
     "aliases": [
-      "grilled chicken breast",
-      "chicken breast"
+      "grilled chicken breast"
     ],
     "category": "Protein Foods",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "oz",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -80,35 +83,39 @@ export const proteinfoodsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 120,
-      "protein": 22.5,
+      "calories": 176,
+      "protein": 29.62,
       "carbohydrates": 0,
-      "fat": 2.6,
+      "fat": 5.45,
       "fiber": 0,
       "sugar": 0,
-      "sodium": 45
+      "sodium": 353
     },
     "tags": [
       "protein-foods",
       "grilled"
     ],
     "preparationState": "Grilled",
-    "compareGroup": "Protein Foods"
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 2705968,
+      "dataType": "Survey (FNDDS)"
+    }
   },
   {
     "id": "local_0123",
     "slug": "baked-chicken-breast",
-    "name": "Baked Chicken Breast",
-    "searchName": "baked chicken breast",
-    "displayName": "Baked Chicken Breast",
+    "name": "Roasted Chicken Breast",
+    "searchName": "roasted chicken breast",
+    "displayName": "Roasted Chicken Breast",
     "aliases": [
-      "baked chicken breast",
-      "chicken breast"
+      "roasted chicken breast",
+      "baked chicken breast"
     ],
     "category": "Protein Foods",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "oz",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -127,20 +134,24 @@ export const proteinfoodsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 149,
-      "protein": 27,
+      "calories": 165,
+      "protein": 31,
       "carbohydrates": 0,
-      "fat": 3.1,
+      "fat": 3.57,
       "fiber": 0,
       "sugar": 0,
-      "sodium": 54
+      "sodium": 74
     },
     "tags": [
       "protein-foods",
       "baked"
     ],
     "preparationState": "Baked",
-    "compareGroup": "Protein Foods"
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 171477,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0124",
@@ -149,13 +160,12 @@ export const proteinfoodsFoods: FoodItem[] = [
     "searchName": "fried chicken breast",
     "displayName": "Fried Chicken Breast",
     "aliases": [
-      "fried chicken breast",
-      "chicken breast"
+      "fried chicken breast"
     ],
     "category": "Protein Foods",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "oz",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -174,35 +184,39 @@ export const proteinfoodsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 215,
-      "protein": 24.8,
-      "carbohydrates": 0,
-      "fat": 6.5,
+      "calories": 187,
+      "protein": 33.4,
+      "carbohydrates": 0.51,
+      "fat": 4.71,
       "fiber": 0,
       "sugar": 0,
-      "sodium": 50
+      "sodium": 79
     },
     "tags": [
       "protein-foods",
       "fried"
     ],
     "preparationState": "Fried",
-    "compareGroup": "Protein Foods"
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 171078,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0125",
     "slug": "boiled-chicken-breast",
-    "name": "Boiled Chicken Breast",
-    "searchName": "boiled chicken breast",
-    "displayName": "Boiled Chicken Breast",
+    "name": "Stewed Chicken Breast",
+    "searchName": "stewed chicken breast",
+    "displayName": "Stewed Chicken Breast",
     "aliases": [
-      "boiled chicken breast",
-      "chicken breast"
+      "stewed chicken breast",
+      "boiled chicken breast"
     ],
     "category": "Protein Foods",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "oz",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -221,35 +235,39 @@ export const proteinfoodsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 149,
-      "protein": 27,
+      "calories": 151,
+      "protein": 29,
       "carbohydrates": 0,
-      "fat": 3.1,
+      "fat": 3.03,
       "fiber": 0,
       "sugar": 0,
-      "sodium": 54
+      "sodium": 63
     },
     "tags": [
       "protein-foods",
       "boiled"
     ],
     "preparationState": "Boiled",
-    "compareGroup": "Protein Foods"
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 171478,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0126",
     "slug": "chicken-thigh",
-    "name": "Chicken Thigh",
-    "searchName": "chicken thigh",
-    "displayName": "Chicken Thigh",
+    "name": "Chicken Thigh (Raw)",
+    "searchName": "chicken thigh (raw)",
+    "displayName": "Chicken Thigh (Raw)",
     "aliases": [
-      "chicken thigh",
+      "chicken thigh (raw)",
       "chicken thigh"
     ],
     "category": "Protein Foods",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "oz",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -268,20 +286,24 @@ export const proteinfoodsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 135,
-      "protein": 19.5,
+      "calories": 121,
+      "protein": 19.7,
       "carbohydrates": 0,
-      "fat": 5.7,
+      "fat": 4.12,
       "fiber": 0,
       "sugar": 0,
-      "sodium": 84
+      "sodium": 95
     },
     "tags": [
       "protein-foods",
       "raw"
     ],
     "preparationState": "Raw",
-    "compareGroup": "Protein Foods"
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 173627,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0127",
@@ -290,13 +312,12 @@ export const proteinfoodsFoods: FoodItem[] = [
     "searchName": "grilled chicken thigh",
     "displayName": "Grilled Chicken Thigh",
     "aliases": [
-      "grilled chicken thigh",
-      "chicken thigh"
+      "grilled chicken thigh"
     ],
     "category": "Protein Foods",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "oz",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -315,35 +336,39 @@ export const proteinfoodsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 135,
-      "protein": 19.5,
+      "calories": 192,
+      "protein": 24.07,
       "carbohydrates": 0,
-      "fat": 5.7,
+      "fat": 9.91,
       "fiber": 0,
       "sugar": 0,
-      "sodium": 84
+      "sodium": 410
     },
     "tags": [
       "protein-foods",
       "grilled"
     ],
     "preparationState": "Grilled",
-    "compareGroup": "Protein Foods"
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 2706040,
+      "dataType": "Survey (FNDDS)"
+    }
   },
   {
     "id": "local_0128",
     "slug": "baked-chicken-thigh",
-    "name": "Baked Chicken Thigh",
-    "searchName": "baked chicken thigh",
-    "displayName": "Baked Chicken Thigh",
+    "name": "Roasted Chicken Thigh",
+    "searchName": "roasted chicken thigh",
+    "displayName": "Roasted Chicken Thigh",
     "aliases": [
-      "baked chicken thigh",
-      "chicken thigh"
+      "roasted chicken thigh",
+      "baked chicken thigh"
     ],
     "category": "Protein Foods",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "oz",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -362,20 +387,24 @@ export const proteinfoodsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 172,
-      "protein": 23.4,
+      "calories": 179,
+      "protein": 24.8,
       "carbohydrates": 0,
-      "fat": 6.8,
+      "fat": 8.15,
       "fiber": 0,
       "sugar": 0,
-      "sodium": 101
+      "sodium": 106
     },
     "tags": [
       "protein-foods",
       "baked"
     ],
     "preparationState": "Baked",
-    "compareGroup": "Protein Foods"
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 172388,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0129",
@@ -384,13 +413,12 @@ export const proteinfoodsFoods: FoodItem[] = [
     "searchName": "fried chicken thigh",
     "displayName": "Fried Chicken Thigh",
     "aliases": [
-      "fried chicken thigh",
-      "chicken thigh"
+      "fried chicken thigh"
     ],
     "category": "Protein Foods",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "oz",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -409,35 +437,39 @@ export const proteinfoodsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 279,
-      "protein": 21.5,
-      "carbohydrates": 0,
-      "fat": 14.3,
+      "calories": 218,
+      "protein": 28.2,
+      "carbohydrates": 1.18,
+      "fat": 10.3,
       "fiber": 0,
-      "sugar": 0,
-      "sodium": 92
+      "sugar": null,
+      "sodium": 95
     },
     "tags": [
       "protein-foods",
       "fried"
     ],
     "preparationState": "Fried",
-    "compareGroup": "Protein Foods"
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 172387,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0130",
     "slug": "boiled-chicken-thigh",
-    "name": "Boiled Chicken Thigh",
-    "searchName": "boiled chicken thigh",
-    "displayName": "Boiled Chicken Thigh",
+    "name": "Stewed Chicken Thigh",
+    "searchName": "stewed chicken thigh",
+    "displayName": "Stewed Chicken Thigh",
     "aliases": [
-      "boiled chicken thigh",
-      "chicken thigh"
+      "stewed chicken thigh",
+      "boiled chicken thigh"
     ],
     "category": "Protein Foods",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "oz",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -456,35 +488,39 @@ export const proteinfoodsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 172,
-      "protein": 23.4,
+      "calories": 195,
+      "protein": 25,
       "carbohydrates": 0,
-      "fat": 6.8,
+      "fat": 9.79,
       "fiber": 0,
       "sugar": 0,
-      "sodium": 101
+      "sodium": 75
     },
     "tags": [
       "protein-foods",
       "boiled"
     ],
     "preparationState": "Boiled",
-    "compareGroup": "Protein Foods"
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 172389,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0131",
     "slug": "beef-steak",
-    "name": "Beef Steak",
-    "searchName": "beef steak",
-    "displayName": "Beef Steak",
+    "name": "Beef Steak (Top Sirloin, Raw)",
+    "searchName": "beef steak (top sirloin, raw)",
+    "displayName": "Beef Steak (Top Sirloin, Raw)",
     "aliases": [
-      "beef steak",
+      "beef steak (top sirloin, raw)",
       "beef steak"
     ],
     "category": "Protein Foods",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "oz",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -503,35 +539,39 @@ export const proteinfoodsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 271,
-      "protein": 26.1,
+      "calories": 214,
+      "protein": 19.9,
       "carbohydrates": 0,
-      "fat": 19,
+      "fat": 14.3,
       "fiber": 0,
       "sugar": 0,
-      "sodium": 54
+      "sodium": 51
     },
     "tags": [
       "protein-foods",
       "raw"
     ],
     "preparationState": "Raw",
-    "compareGroup": "Protein Foods"
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 168728,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0132",
     "slug": "grilled-beef-steak",
-    "name": "Grilled Beef Steak",
-    "searchName": "grilled beef steak",
-    "displayName": "Grilled Beef Steak",
+    "name": "Broiled Beef Steak (Top Sirloin)",
+    "searchName": "broiled beef steak (top sirloin)",
+    "displayName": "Broiled Beef Steak (Top Sirloin)",
     "aliases": [
-      "grilled beef steak",
-      "beef steak"
+      "broiled beef steak (top sirloin)",
+      "grilled beef steak"
     ],
     "category": "Protein Foods",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "oz",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -550,10 +590,10 @@ export const proteinfoodsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 271,
-      "protein": 26.1,
+      "calories": 257,
+      "protein": 26.8,
       "carbohydrates": 0,
-      "fat": 19,
+      "fat": 15.8,
       "fiber": 0,
       "sugar": 0,
       "sodium": 54
@@ -563,163 +603,26 @@ export const proteinfoodsFoods: FoodItem[] = [
       "grilled"
     ],
     "preparationState": "Grilled",
-    "compareGroup": "Protein Foods"
-  },
-  {
-    "id": "local_0133",
-    "slug": "baked-beef-steak",
-    "name": "Baked Beef Steak",
-    "searchName": "baked beef steak",
-    "displayName": "Baked Beef Steak",
-    "aliases": [
-      "baked beef steak",
-      "beef steak"
-    ],
-    "category": "Protein Foods",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "oz",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_134",
-        "unit": "oz",
-        "label": "4 oz",
-        "grams": 113,
-        "isDefault": true
-      },
-      {
-        "id": "serve_135",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 359,
-      "protein": 31.3,
-      "carbohydrates": 0,
-      "fat": 22.8,
-      "fiber": 0,
-      "sugar": 0,
-      "sodium": 65
-    },
-    "tags": [
-      "protein-foods",
-      "baked"
-    ],
-    "preparationState": "Baked",
-    "compareGroup": "Protein Foods"
-  },
-  {
-    "id": "local_0134",
-    "slug": "fried-beef-steak",
-    "name": "Fried Beef Steak",
-    "searchName": "fried beef steak",
-    "displayName": "Fried Beef Steak",
-    "aliases": [
-      "fried beef steak",
-      "beef steak"
-    ],
-    "category": "Protein Foods",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "oz",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_135",
-        "unit": "oz",
-        "label": "4 oz",
-        "grams": 113,
-        "isDefault": true
-      },
-      {
-        "id": "serve_136",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 663,
-      "protein": 28.7,
-      "carbohydrates": 0,
-      "fat": 47.5,
-      "fiber": 0,
-      "sugar": 0,
-      "sodium": 59
-    },
-    "tags": [
-      "protein-foods",
-      "fried"
-    ],
-    "preparationState": "Fried",
-    "compareGroup": "Protein Foods"
-  },
-  {
-    "id": "local_0135",
-    "slug": "boiled-beef-steak",
-    "name": "Boiled Beef Steak",
-    "searchName": "boiled beef steak",
-    "displayName": "Boiled Beef Steak",
-    "aliases": [
-      "boiled beef steak",
-      "beef steak"
-    ],
-    "category": "Protein Foods",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "oz",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_136",
-        "unit": "oz",
-        "label": "4 oz",
-        "grams": 113,
-        "isDefault": true
-      },
-      {
-        "id": "serve_137",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 359,
-      "protein": 31.3,
-      "carbohydrates": 0,
-      "fat": 22.8,
-      "fiber": 0,
-      "sugar": 0,
-      "sodium": 65
-    },
-    "tags": [
-      "protein-foods",
-      "boiled"
-    ],
-    "preparationState": "Boiled",
-    "compareGroup": "Protein Foods"
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 168729,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0136",
     "slug": "ground-beef",
-    "name": "Ground Beef",
-    "searchName": "ground beef",
-    "displayName": "Ground Beef",
+    "name": "Ground Beef (80% Lean, Raw)",
+    "searchName": "ground beef (80% lean, raw)",
+    "displayName": "Ground Beef (80% Lean, Raw)",
     "aliases": [
-      "ground beef",
+      "ground beef (80% lean, raw)",
       "ground beef"
     ],
     "category": "Protein Foods",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "oz",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -738,35 +641,39 @@ export const proteinfoodsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 250,
-      "protein": 25.9,
+      "calories": 254,
+      "protein": 17.2,
       "carbohydrates": 0,
-      "fat": 15.4,
+      "fat": 20,
       "fiber": 0,
       "sugar": 0,
-      "sodium": 72
+      "sodium": 66
     },
     "tags": [
       "protein-foods",
       "raw"
     ],
     "preparationState": "Raw",
-    "compareGroup": "Protein Foods"
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 174036,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0137",
     "slug": "grilled-ground-beef",
-    "name": "Grilled Ground Beef",
-    "searchName": "grilled ground beef",
-    "displayName": "Grilled Ground Beef",
+    "name": "Broiled Ground Beef Patty (80% Lean)",
+    "searchName": "broiled ground beef patty (80% lean)",
+    "displayName": "Broiled Ground Beef Patty (80% Lean)",
     "aliases": [
-      "grilled ground beef",
-      "ground beef"
+      "broiled ground beef patty (80% lean)",
+      "grilled ground beef"
     ],
     "category": "Protein Foods",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "oz",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -785,35 +692,39 @@ export const proteinfoodsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 250,
-      "protein": 25.9,
+      "calories": 270,
+      "protein": 25.8,
       "carbohydrates": 0,
-      "fat": 15.4,
+      "fat": 17.8,
       "fiber": 0,
       "sugar": 0,
-      "sodium": 72
+      "sodium": 75
     },
     "tags": [
       "protein-foods",
       "grilled"
     ],
     "preparationState": "Grilled",
-    "compareGroup": "Protein Foods"
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 171797,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0138",
     "slug": "baked-ground-beef",
-    "name": "Baked Ground Beef",
-    "searchName": "baked ground beef",
-    "displayName": "Baked Ground Beef",
+    "name": "Baked Ground Beef (80% Lean)",
+    "searchName": "baked ground beef (80% lean)",
+    "displayName": "Baked Ground Beef (80% Lean)",
     "aliases": [
-      "baked ground beef",
-      "ground beef"
+      "baked ground beef (80% lean)",
+      "baked ground beef"
     ],
     "category": "Protein Foods",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "oz",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -832,35 +743,39 @@ export const proteinfoodsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 328,
-      "protein": 31.1,
+      "calories": 254,
+      "protein": 25.2,
       "carbohydrates": 0,
-      "fat": 18.5,
+      "fat": 16.2,
       "fiber": 0,
       "sugar": 0,
-      "sodium": 86
+      "sodium": 67
     },
     "tags": [
       "protein-foods",
       "baked"
     ],
     "preparationState": "Baked",
-    "compareGroup": "Protein Foods"
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 171800,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0139",
     "slug": "fried-ground-beef",
-    "name": "Fried Ground Beef",
-    "searchName": "fried ground beef",
-    "displayName": "Fried Ground Beef",
+    "name": "Pan-Browned Ground Beef (80% Lean)",
+    "searchName": "pan-browned ground beef (80% lean)",
+    "displayName": "Pan-Browned Ground Beef (80% Lean)",
     "aliases": [
-      "fried ground beef",
-      "ground beef"
+      "pan-browned ground beef (80% lean)",
+      "fried ground beef"
     ],
     "category": "Protein Foods",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "oz",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -879,82 +794,39 @@ export const proteinfoodsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 583,
-      "protein": 28.5,
+      "calories": 272,
+      "protein": 27,
       "carbohydrates": 0,
-      "fat": 38.5,
+      "fat": 17.4,
       "fiber": 0,
       "sugar": 0,
-      "sodium": 79
+      "sodium": 91
     },
     "tags": [
       "protein-foods",
       "fried"
     ],
     "preparationState": "Fried",
-    "compareGroup": "Protein Foods"
-  },
-  {
-    "id": "local_0140",
-    "slug": "boiled-ground-beef",
-    "name": "Boiled Ground Beef",
-    "searchName": "boiled ground beef",
-    "displayName": "Boiled Ground Beef",
-    "aliases": [
-      "boiled ground beef",
-      "ground beef"
-    ],
-    "category": "Protein Foods",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "oz",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_141",
-        "unit": "oz",
-        "label": "4 oz",
-        "grams": 113,
-        "isDefault": true
-      },
-      {
-        "id": "serve_142",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 328,
-      "protein": 31.1,
-      "carbohydrates": 0,
-      "fat": 18.5,
-      "fiber": 0,
-      "sugar": 0,
-      "sodium": 86
-    },
-    "tags": [
-      "protein-foods",
-      "boiled"
-    ],
-    "preparationState": "Boiled",
-    "compareGroup": "Protein Foods"
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 171799,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0141",
     "slug": "pork-chop",
-    "name": "Pork Chop",
-    "searchName": "pork chop",
-    "displayName": "Pork Chop",
+    "name": "Pork Chop (Raw)",
+    "searchName": "pork chop (raw)",
+    "displayName": "Pork Chop (Raw)",
     "aliases": [
-      "pork chop",
+      "pork chop (raw)",
       "pork chop"
     ],
     "category": "Protein Foods",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "oz",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -973,223 +845,141 @@ export const proteinfoodsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 231,
-      "protein": 24,
+      "calories": 170,
+      "protein": 20.7,
       "carbohydrates": 0,
-      "fat": 14,
-      "fiber": 0,
-      "sugar": 0,
-      "sodium": 50
-    },
-    "tags": [
-      "protein-foods",
-      "raw"
-    ],
-    "preparationState": "Raw",
-    "compareGroup": "Protein Foods"
-  },
-  {
-    "id": "local_0142",
-    "slug": "grilled-pork-chop",
-    "name": "Grilled Pork Chop",
-    "searchName": "grilled pork chop",
-    "displayName": "Grilled Pork Chop",
-    "aliases": [
-      "grilled pork chop",
-      "pork chop"
-    ],
-    "category": "Protein Foods",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "oz",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_143",
-        "unit": "oz",
-        "label": "4 oz",
-        "grams": 113,
-        "isDefault": true
-      },
-      {
-        "id": "serve_144",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 231,
-      "protein": 24,
-      "carbohydrates": 0,
-      "fat": 14,
-      "fiber": 0,
-      "sugar": 0,
-      "sodium": 50
-    },
-    "tags": [
-      "protein-foods",
-      "grilled"
-    ],
-    "preparationState": "Grilled",
-    "compareGroup": "Protein Foods"
-  },
-  {
-    "id": "local_0143",
-    "slug": "baked-pork-chop",
-    "name": "Baked Pork Chop",
-    "searchName": "baked pork chop",
-    "displayName": "Baked Pork Chop",
-    "aliases": [
-      "baked pork chop",
-      "pork chop"
-    ],
-    "category": "Protein Foods",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "oz",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_144",
-        "unit": "oz",
-        "label": "4 oz",
-        "grams": 113,
-        "isDefault": true
-      },
-      {
-        "id": "serve_145",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 302,
-      "protein": 28.8,
-      "carbohydrates": 0,
-      "fat": 16.8,
-      "fiber": 0,
-      "sugar": 0,
-      "sodium": 60
-    },
-    "tags": [
-      "protein-foods",
-      "baked"
-    ],
-    "preparationState": "Baked",
-    "compareGroup": "Protein Foods"
-  },
-  {
-    "id": "local_0144",
-    "slug": "fried-pork-chop",
-    "name": "Fried Pork Chop",
-    "searchName": "fried pork chop",
-    "displayName": "Fried Pork Chop",
-    "aliases": [
-      "fried pork chop",
-      "pork chop"
-    ],
-    "category": "Protein Foods",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "oz",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_145",
-        "unit": "oz",
-        "label": "4 oz",
-        "grams": 113,
-        "isDefault": true
-      },
-      {
-        "id": "serve_146",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 536,
-      "protein": 26.4,
-      "carbohydrates": 0,
-      "fat": 35,
+      "fat": 9.03,
       "fiber": 0,
       "sugar": 0,
       "sodium": 55
     },
     "tags": [
       "protein-foods",
-      "fried"
+      "raw"
     ],
-    "preparationState": "Fried",
-    "compareGroup": "Protein Foods"
+    "preparationState": "Raw",
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 168238,
+      "dataType": "SR Legacy"
+    }
   },
   {
-    "id": "local_0145",
-    "slug": "boiled-pork-chop",
-    "name": "Boiled Pork Chop",
-    "searchName": "boiled pork chop",
-    "displayName": "Boiled Pork Chop",
+    "id": "local_0142",
+    "slug": "grilled-pork-chop",
+    "name": "Broiled Pork Chop",
+    "searchName": "broiled pork chop",
+    "displayName": "Broiled Pork Chop",
     "aliases": [
-      "boiled pork chop",
-      "pork chop"
+      "broiled pork chop",
+      "grilled pork chop"
     ],
     "category": "Protein Foods",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "oz",
     "defaultQuantity": 1,
     "servingSizes": [
       {
-        "id": "serve_146",
+        "id": "serve_143",
         "unit": "oz",
         "label": "4 oz",
         "grams": 113,
         "isDefault": true
       },
       {
-        "id": "serve_147",
+        "id": "serve_144",
         "unit": "g",
         "label": "100 g",
         "grams": 100
       }
     ],
     "nutrientsPer100g": {
-      "calories": 302,
-      "protein": 28.8,
+      "calories": 209,
+      "protein": 25.6,
       "carbohydrates": 0,
-      "fat": 16.8,
+      "fat": 11.1,
       "fiber": 0,
       "sugar": 0,
-      "sodium": 60
+      "sodium": 55
     },
     "tags": [
       "protein-foods",
-      "boiled"
+      "grilled"
     ],
-    "preparationState": "Boiled",
-    "compareGroup": "Protein Foods"
+    "preparationState": "Grilled",
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 167827,
+      "dataType": "SR Legacy"
+    }
+  },
+  {
+    "id": "local_0144",
+    "slug": "fried-pork-chop",
+    "name": "Pan-Fried Pork Chop",
+    "searchName": "pan-fried pork chop",
+    "displayName": "Pan-Fried Pork Chop",
+    "aliases": [
+      "pan-fried pork chop",
+      "fried pork chop"
+    ],
+    "category": "Protein Foods",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "oz",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_145",
+        "unit": "oz",
+        "label": "4 oz",
+        "grams": 113,
+        "isDefault": true
+      },
+      {
+        "id": "serve_146",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 238,
+      "protein": 27.6,
+      "carbohydrates": 0,
+      "fat": 13.3,
+      "fiber": 0,
+      "sugar": 0,
+      "sodium": 94
+    },
+    "tags": [
+      "protein-foods",
+      "fried"
+    ],
+    "preparationState": "Fried",
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 168292,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0146",
     "slug": "salmon",
-    "name": "Salmon",
-    "searchName": "salmon",
-    "displayName": "Salmon",
+    "name": "Salmon (Atlantic, Farmed, Raw)",
+    "searchName": "salmon (atlantic, farmed, raw)",
+    "displayName": "Salmon (Atlantic, Farmed, Raw)",
     "aliases": [
-      "salmon",
+      "salmon (atlantic, farmed, raw)",
       "salmon"
     ],
     "category": "Protein Foods",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "oz",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -1208,20 +998,24 @@ export const proteinfoodsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 206,
-      "protein": 22.1,
+      "calories": 208,
+      "protein": 20.4,
       "carbohydrates": 0,
-      "fat": 12.3,
+      "fat": 13.4,
       "fiber": 0,
       "sugar": 0,
-      "sodium": 63
+      "sodium": 59
     },
     "tags": [
       "protein-foods",
       "raw"
     ],
     "preparationState": "Raw",
-    "compareGroup": "Protein Foods"
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 175167,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0147",
@@ -1230,13 +1024,12 @@ export const proteinfoodsFoods: FoodItem[] = [
     "searchName": "grilled salmon",
     "displayName": "Grilled Salmon",
     "aliases": [
-      "grilled salmon",
-      "salmon"
+      "grilled salmon"
     ],
     "category": "Protein Foods",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "oz",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -1255,20 +1048,24 @@ export const proteinfoodsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 206,
-      "protein": 22.1,
+      "calories": 259,
+      "protein": 25.92,
       "carbohydrates": 0,
-      "fat": 12.3,
+      "fat": 16.48,
       "fiber": 0,
       "sugar": 0,
-      "sodium": 63
+      "sodium": 288
     },
     "tags": [
       "protein-foods",
       "grilled"
     ],
     "preparationState": "Grilled",
-    "compareGroup": "Protein Foods"
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 2706287,
+      "dataType": "Survey (FNDDS)"
+    }
   },
   {
     "id": "local_0148",
@@ -1277,13 +1074,12 @@ export const proteinfoodsFoods: FoodItem[] = [
     "searchName": "baked salmon",
     "displayName": "Baked Salmon",
     "aliases": [
-      "baked salmon",
-      "salmon"
+      "baked salmon"
     ],
     "category": "Protein Foods",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "oz",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -1302,20 +1098,24 @@ export const proteinfoodsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 269,
-      "protein": 26.5,
-      "carbohydrates": 0,
-      "fat": 14.8,
+      "calories": 274,
+      "protein": 25.4,
+      "carbohydrates": 0.01,
+      "fat": 18.4,
       "fiber": 0,
-      "sugar": 0,
-      "sodium": 76
+      "sugar": 0.01,
+      "sodium": 294
     },
     "tags": [
       "protein-foods",
       "baked"
     ],
     "preparationState": "Baked",
-    "compareGroup": "Protein Foods"
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 2706286,
+      "dataType": "Survey (FNDDS)"
+    }
   },
   {
     "id": "local_0149",
@@ -1324,13 +1124,12 @@ export const proteinfoodsFoods: FoodItem[] = [
     "searchName": "fried salmon",
     "displayName": "Fried Salmon",
     "aliases": [
-      "fried salmon",
-      "salmon"
+      "fried salmon"
     ],
     "category": "Protein Foods",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "oz",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -1349,35 +1148,39 @@ export const proteinfoodsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 475,
-      "protein": 24.3,
-      "carbohydrates": 0,
-      "fat": 30.8,
-      "fiber": 0,
-      "sugar": 0,
-      "sodium": 69
+      "calories": 307,
+      "protein": 17.45,
+      "carbohydrates": 11.72,
+      "fat": 20.68,
+      "fiber": 0.5,
+      "sugar": 0.2,
+      "sodium": 391
     },
     "tags": [
       "protein-foods",
       "fried"
     ],
     "preparationState": "Fried",
-    "compareGroup": "Protein Foods"
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 2706289,
+      "dataType": "Survey (FNDDS)"
+    }
   },
   {
     "id": "local_0150",
     "slug": "boiled-salmon",
-    "name": "Boiled Salmon",
-    "searchName": "boiled salmon",
-    "displayName": "Boiled Salmon",
+    "name": "Steamed Salmon",
+    "searchName": "steamed salmon",
+    "displayName": "Steamed Salmon",
     "aliases": [
-      "boiled salmon",
-      "salmon"
+      "steamed salmon",
+      "boiled salmon"
     ],
     "category": "Protein Foods",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "oz",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -1396,35 +1199,39 @@ export const proteinfoodsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 269,
-      "protein": 26.5,
+      "calories": 237,
+      "protein": 25.82,
       "carbohydrates": 0,
-      "fat": 14.8,
+      "fat": 14.1,
       "fiber": 0,
       "sugar": 0,
-      "sodium": 76
+      "sodium": 177
     },
     "tags": [
       "protein-foods",
       "boiled"
     ],
     "preparationState": "Boiled",
-    "compareGroup": "Protein Foods"
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 2706290,
+      "dataType": "Survey (FNDDS)"
+    }
   },
   {
     "id": "local_0151",
     "slug": "tuna",
-    "name": "Tuna",
-    "searchName": "tuna",
-    "displayName": "Tuna",
+    "name": "Tuna (Yellowfin, Raw)",
+    "searchName": "tuna (yellowfin, raw)",
+    "displayName": "Tuna (Yellowfin, Raw)",
     "aliases": [
-      "tuna",
+      "tuna (yellowfin, raw)",
       "tuna"
     ],
     "category": "Protein Foods",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "can",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -1446,7 +1253,7 @@ export const proteinfoodsFoods: FoodItem[] = [
       "calories": 109,
       "protein": 24.4,
       "carbohydrates": 0,
-      "fat": 0.5,
+      "fat": 0.49,
       "fiber": 0,
       "sugar": 0,
       "sodium": 45
@@ -1456,210 +1263,26 @@ export const proteinfoodsFoods: FoodItem[] = [
       "raw"
     ],
     "preparationState": "Raw",
-    "compareGroup": "Protein Foods"
-  },
-  {
-    "id": "local_0152",
-    "slug": "grilled-tuna",
-    "name": "Grilled Tuna",
-    "searchName": "grilled tuna",
-    "displayName": "Grilled Tuna",
-    "aliases": [
-      "grilled tuna",
-      "tuna"
-    ],
-    "category": "Protein Foods",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "can",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_153",
-        "unit": "can",
-        "label": "1 can",
-        "grams": 142,
-        "isDefault": true
-      },
-      {
-        "id": "serve_154",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 109,
-      "protein": 24.4,
-      "carbohydrates": 0,
-      "fat": 0.5,
-      "fiber": 0,
-      "sugar": 0,
-      "sodium": 45
-    },
-    "tags": [
-      "protein-foods",
-      "grilled"
-    ],
-    "preparationState": "Grilled",
-    "compareGroup": "Protein Foods"
-  },
-  {
-    "id": "local_0153",
-    "slug": "baked-tuna",
-    "name": "Baked Tuna",
-    "searchName": "baked tuna",
-    "displayName": "Baked Tuna",
-    "aliases": [
-      "baked tuna",
-      "tuna"
-    ],
-    "category": "Protein Foods",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "can",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_154",
-        "unit": "can",
-        "label": "1 can",
-        "grams": 142,
-        "isDefault": true
-      },
-      {
-        "id": "serve_155",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 132,
-      "protein": 29.3,
-      "carbohydrates": 0,
-      "fat": 0.6,
-      "fiber": 0,
-      "sugar": 0,
-      "sodium": 54
-    },
-    "tags": [
-      "protein-foods",
-      "baked"
-    ],
-    "preparationState": "Baked",
-    "compareGroup": "Protein Foods"
-  },
-  {
-    "id": "local_0154",
-    "slug": "fried-tuna",
-    "name": "Fried Tuna",
-    "searchName": "fried tuna",
-    "displayName": "Fried Tuna",
-    "aliases": [
-      "fried tuna",
-      "tuna"
-    ],
-    "category": "Protein Foods",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "can",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_155",
-        "unit": "can",
-        "label": "1 can",
-        "grams": 142,
-        "isDefault": true
-      },
-      {
-        "id": "serve_156",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 170,
-      "protein": 26.8,
-      "carbohydrates": 0,
-      "fat": 1.3,
-      "fiber": 0,
-      "sugar": 0,
-      "sodium": 50
-    },
-    "tags": [
-      "protein-foods",
-      "fried"
-    ],
-    "preparationState": "Fried",
-    "compareGroup": "Protein Foods"
-  },
-  {
-    "id": "local_0155",
-    "slug": "boiled-tuna",
-    "name": "Boiled Tuna",
-    "searchName": "boiled tuna",
-    "displayName": "Boiled Tuna",
-    "aliases": [
-      "boiled tuna",
-      "tuna"
-    ],
-    "category": "Protein Foods",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "can",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_156",
-        "unit": "can",
-        "label": "1 can",
-        "grams": 142,
-        "isDefault": true
-      },
-      {
-        "id": "serve_157",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 132,
-      "protein": 29.3,
-      "carbohydrates": 0,
-      "fat": 0.6,
-      "fiber": 0,
-      "sugar": 0,
-      "sodium": 54
-    },
-    "tags": [
-      "protein-foods",
-      "boiled"
-    ],
-    "preparationState": "Boiled",
-    "compareGroup": "Protein Foods"
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 175159,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0156",
     "slug": "shrimp",
-    "name": "Shrimp",
-    "searchName": "shrimp",
-    "displayName": "Shrimp",
+    "name": "Shrimp (Raw)",
+    "searchName": "shrimp (raw)",
+    "displayName": "Shrimp (Raw)",
     "aliases": [
-      "shrimp",
+      "shrimp (raw)",
       "shrimp"
     ],
     "category": "Protein Foods",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "oz",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -1678,20 +1301,24 @@ export const proteinfoodsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 99,
-      "protein": 24,
-      "carbohydrates": 0.2,
-      "fat": 0.3,
-      "fiber": 0,
-      "sugar": 0,
-      "sodium": 111
+      "calories": 85,
+      "protein": 20.1,
+      "carbohydrates": 0,
+      "fat": 0.51,
+      "fiber": null,
+      "sugar": null,
+      "sodium": 119
     },
     "tags": [
       "protein-foods",
       "raw"
     ],
     "preparationState": "Raw",
-    "compareGroup": "Protein Foods"
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 175179,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0157",
@@ -1700,13 +1327,12 @@ export const proteinfoodsFoods: FoodItem[] = [
     "searchName": "grilled shrimp",
     "displayName": "Grilled Shrimp",
     "aliases": [
-      "grilled shrimp",
-      "shrimp"
+      "grilled shrimp"
     ],
     "category": "Protein Foods",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "oz",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -1725,20 +1351,24 @@ export const proteinfoodsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 99,
-      "protein": 24,
-      "carbohydrates": 0.2,
-      "fat": 0.3,
+      "calories": 110,
+      "protein": 17.26,
+      "carbohydrates": 1.16,
+      "fat": 3.55,
       "fiber": 0,
       "sugar": 0,
-      "sodium": 111
+      "sodium": 359
     },
     "tags": [
       "protein-foods",
       "grilled"
     ],
     "preparationState": "Grilled",
-    "compareGroup": "Protein Foods"
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 2706362,
+      "dataType": "Survey (FNDDS)"
+    }
   },
   {
     "id": "local_0158",
@@ -1747,13 +1377,12 @@ export const proteinfoodsFoods: FoodItem[] = [
     "searchName": "baked shrimp",
     "displayName": "Baked Shrimp",
     "aliases": [
-      "baked shrimp",
-      "shrimp"
+      "baked shrimp"
     ],
     "category": "Protein Foods",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "oz",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -1772,20 +1401,24 @@ export const proteinfoodsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 119,
-      "protein": 28.8,
-      "carbohydrates": 0.2,
-      "fat": 0.4,
+      "calories": 129,
+      "protein": 16.92,
+      "carbohydrates": 1.14,
+      "fat": 5.79,
       "fiber": 0,
-      "sugar": 0,
-      "sodium": 133
+      "sugar": 0.01,
+      "sodium": 363
     },
     "tags": [
       "protein-foods",
       "baked"
     ],
     "preparationState": "Baked",
-    "compareGroup": "Protein Foods"
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 2706361,
+      "dataType": "Survey (FNDDS)"
+    }
   },
   {
     "id": "local_0159",
@@ -1794,13 +1427,12 @@ export const proteinfoodsFoods: FoodItem[] = [
     "searchName": "fried shrimp",
     "displayName": "Fried Shrimp",
     "aliases": [
-      "fried shrimp",
-      "shrimp"
+      "fried shrimp"
     ],
     "category": "Protein Foods",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "oz",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -1819,20 +1451,24 @@ export const proteinfoodsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 153,
-      "protein": 26.4,
-      "carbohydrates": 0.2,
-      "fat": 0.8,
-      "fiber": 0,
-      "sugar": 0,
-      "sodium": 122
+      "calories": 218,
+      "protein": 12.26,
+      "carbohydrates": 12.41,
+      "fat": 12.94,
+      "fiber": 0.5,
+      "sugar": 0.2,
+      "sodium": 434
     },
     "tags": [
       "protein-foods",
       "fried"
     ],
     "preparationState": "Fried",
-    "compareGroup": "Protein Foods"
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 2706364,
+      "dataType": "Survey (FNDDS)"
+    }
   },
   {
     "id": "local_0160",
@@ -1841,13 +1477,12 @@ export const proteinfoodsFoods: FoodItem[] = [
     "searchName": "boiled shrimp",
     "displayName": "Boiled Shrimp",
     "aliases": [
-      "boiled shrimp",
-      "shrimp"
+      "boiled shrimp"
     ],
     "category": "Protein Foods",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "oz",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -1866,19 +1501,23 @@ export const proteinfoodsFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 119,
-      "protein": 28.8,
-      "carbohydrates": 0.2,
-      "fat": 0.4,
+      "calories": 90,
+      "protein": 17.19,
+      "carbohydrates": 1.15,
+      "fat": 1.28,
       "fiber": 0,
       "sugar": 0,
-      "sodium": 133
+      "sodium": 248
     },
     "tags": [
       "protein-foods",
       "boiled"
     ],
     "preparationState": "Boiled",
-    "compareGroup": "Protein Foods"
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 2706363,
+      "dataType": "Survey (FNDDS)"
+    }
   }
 ];

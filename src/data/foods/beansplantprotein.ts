@@ -4,17 +4,17 @@ export const beansplantproteinFoods: FoodItem[] = [
   {
     "id": "local_0161",
     "slug": "dry-tofu",
-    "name": "Dry Tofu",
-    "searchName": "dry tofu",
-    "displayName": "Dry Tofu",
+    "name": "Firm Tofu",
+    "searchName": "firm tofu",
+    "displayName": "Firm Tofu",
     "aliases": [
-      "dry tofu",
-      "tofu"
+      "firm tofu",
+      "dry tofu"
     ],
     "category": "Beans & Plant Protein",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -33,35 +33,39 @@ export const beansplantproteinFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 76,
-      "protein": 8.1,
-      "carbohydrates": 1.9,
-      "fat": 4.8,
-      "fiber": 0.3,
-      "sugar": 0.6,
-      "sodium": 7
+      "calories": 144,
+      "protein": 17.3,
+      "carbohydrates": 2.78,
+      "fat": 8.72,
+      "fiber": 2.3,
+      "sugar": null,
+      "sodium": 14
     },
     "tags": [
       "beans-&-plant-protein",
       "dry"
     ],
     "preparationState": "Dry",
-    "compareGroup": "Beans & Plant Protein"
+    "compareGroup": "Beans & Plant Protein",
+    "usda": {
+      "fdcId": 172475,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0162",
     "slug": "cooked-tofu",
-    "name": "Cooked Tofu",
-    "searchName": "cooked tofu",
-    "displayName": "Cooked Tofu",
+    "name": "Fried Tofu",
+    "searchName": "fried tofu",
+    "displayName": "Fried Tofu",
     "aliases": [
-      "cooked tofu",
-      "tofu"
+      "fried tofu",
+      "cooked tofu"
     ],
     "category": "Beans & Plant Protein",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -80,82 +84,39 @@ export const beansplantproteinFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 27,
-      "protein": 2.8,
-      "carbohydrates": 0.7,
-      "fat": 1.7,
-      "fiber": 0.1,
-      "sugar": 0.2,
-      "sodium": 2
+      "calories": 270,
+      "protein": 18.8,
+      "carbohydrates": 8.86,
+      "fat": 20.2,
+      "fiber": 3.9,
+      "sugar": 2.72,
+      "sodium": 16
     },
     "tags": [
       "beans-&-plant-protein",
       "cookedfromdry"
     ],
     "preparationState": "Cooked (from Dry)",
-    "compareGroup": "Beans & Plant Protein"
-  },
-  {
-    "id": "local_0163",
-    "slug": "canned-tofu",
-    "name": "Canned Tofu",
-    "searchName": "canned tofu",
-    "displayName": "Canned Tofu",
-    "aliases": [
-      "canned tofu",
-      "tofu"
-    ],
-    "category": "Beans & Plant Protein",
-    "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
-    "defaultUnit": "cup",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_164",
-        "unit": "cup",
-        "label": "1/2 cup",
-        "grams": 124,
-        "isDefault": true
-      },
-      {
-        "id": "serve_165",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 76,
-      "protein": 8.1,
-      "carbohydrates": 1.9,
-      "fat": 4.8,
-      "fiber": 0.3,
-      "sugar": 0.6,
-      "sodium": 257
-    },
-    "tags": [
-      "beans-&-plant-protein",
-      "canned"
-    ],
-    "preparationState": "Canned",
-    "compareGroup": "Beans & Plant Protein"
+    "compareGroup": "Beans & Plant Protein",
+    "usda": {
+      "fdcId": 172451,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0205",
     "slug": "dry-chickpea",
-    "name": "Dry Chickpea",
-    "searchName": "dry chickpea",
-    "displayName": "Dry Chickpea",
+    "name": "Dry Chickpeas",
+    "searchName": "dry chickpeas",
+    "displayName": "Dry Chickpeas",
     "aliases": [
-      "dry chickpea",
-      "chickpea"
+      "dry chickpeas",
+      "dry chickpea"
     ],
     "category": "Beans & Plant Protein",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -174,11 +135,11 @@ export const beansplantproteinFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 364,
-      "protein": 19.3,
-      "carbohydrates": 60.7,
-      "fat": 6,
-      "fiber": 17.4,
+      "calories": 378,
+      "protein": 20.5,
+      "carbohydrates": 63,
+      "fat": 6.04,
+      "fiber": 12.2,
       "sugar": 10.7,
       "sodium": 24
     },
@@ -187,22 +148,26 @@ export const beansplantproteinFoods: FoodItem[] = [
       "dry"
     ],
     "preparationState": "Dry",
-    "compareGroup": "Beans & Plant Protein"
+    "compareGroup": "Beans & Plant Protein",
+    "usda": {
+      "fdcId": 173756,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0206",
     "slug": "cooked-chickpea",
-    "name": "Cooked Chickpea",
-    "searchName": "cooked chickpea",
-    "displayName": "Cooked Chickpea",
+    "name": "Cooked Chickpeas",
+    "searchName": "cooked chickpeas",
+    "displayName": "Cooked Chickpeas",
     "aliases": [
-      "cooked chickpea",
-      "chickpea"
+      "cooked chickpeas",
+      "cooked chickpea"
     ],
     "category": "Beans & Plant Protein",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -221,35 +186,39 @@ export const beansplantproteinFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 127,
-      "protein": 6.8,
-      "carbohydrates": 21.2,
-      "fat": 2.1,
-      "fiber": 6.1,
-      "sugar": 3.7,
-      "sodium": 8
+      "calories": 164,
+      "protein": 8.86,
+      "carbohydrates": 27.4,
+      "fat": 2.59,
+      "fiber": 7.6,
+      "sugar": 4.8,
+      "sodium": 7
     },
     "tags": [
       "beans-&-plant-protein",
       "cookedfromdry"
     ],
     "preparationState": "Cooked (from Dry)",
-    "compareGroup": "Beans & Plant Protein"
+    "compareGroup": "Beans & Plant Protein",
+    "usda": {
+      "fdcId": 173757,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0207",
     "slug": "canned-chickpea",
-    "name": "Canned Chickpea",
-    "searchName": "canned chickpea",
-    "displayName": "Canned Chickpea",
+    "name": "Canned Chickpeas (Drained)",
+    "searchName": "canned chickpeas (drained)",
+    "displayName": "Canned Chickpeas (Drained)",
     "aliases": [
-      "canned chickpea",
-      "chickpea"
+      "canned chickpeas (drained)",
+      "canned chickpea"
     ],
     "category": "Beans & Plant Protein",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -268,35 +237,39 @@ export const beansplantproteinFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 364,
-      "protein": 19.3,
-      "carbohydrates": 60.7,
-      "fat": 6,
-      "fiber": 17.4,
-      "sugar": 10.7,
-      "sodium": 274
+      "calories": 138,
+      "protein": 7.04,
+      "carbohydrates": 22.9,
+      "fat": 2.47,
+      "fiber": 6.3,
+      "sugar": 4,
+      "sodium": 212
     },
     "tags": [
       "beans-&-plant-protein",
       "canned"
     ],
     "preparationState": "Canned",
-    "compareGroup": "Beans & Plant Protein"
+    "compareGroup": "Beans & Plant Protein",
+    "usda": {
+      "fdcId": 173801,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0208",
     "slug": "dry-lentil",
-    "name": "Dry Lentil",
-    "searchName": "dry lentil",
-    "displayName": "Dry Lentil",
+    "name": "Dry Lentils",
+    "searchName": "dry lentils",
+    "displayName": "Dry Lentils",
     "aliases": [
-      "dry lentil",
-      "lentil"
+      "dry lentils",
+      "dry lentil"
     ],
     "category": "Beans & Plant Protein",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -315,12 +288,12 @@ export const beansplantproteinFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 353,
-      "protein": 25.8,
-      "carbohydrates": 60.1,
-      "fat": 1.1,
-      "fiber": 30.5,
-      "sugar": 2,
+      "calories": 352,
+      "protein": 24.6,
+      "carbohydrates": 63.4,
+      "fat": 1.06,
+      "fiber": 10.7,
+      "sugar": 2.03,
       "sodium": 6
     },
     "tags": [
@@ -328,22 +301,26 @@ export const beansplantproteinFoods: FoodItem[] = [
       "dry"
     ],
     "preparationState": "Dry",
-    "compareGroup": "Beans & Plant Protein"
+    "compareGroup": "Beans & Plant Protein",
+    "usda": {
+      "fdcId": 172420,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0209",
     "slug": "cooked-lentil",
-    "name": "Cooked Lentil",
-    "searchName": "cooked lentil",
-    "displayName": "Cooked Lentil",
+    "name": "Cooked Lentils",
+    "searchName": "cooked lentils",
+    "displayName": "Cooked Lentils",
     "aliases": [
-      "cooked lentil",
-      "lentil"
+      "cooked lentils",
+      "cooked lentil"
     ],
     "category": "Beans & Plant Protein",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -362,12 +339,12 @@ export const beansplantproteinFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 124,
-      "protein": 9,
-      "carbohydrates": 21,
-      "fat": 0.4,
-      "fiber": 10.7,
-      "sugar": 0.7,
+      "calories": 116,
+      "protein": 9.02,
+      "carbohydrates": 20.1,
+      "fat": 0.38,
+      "fiber": 7.9,
+      "sugar": 1.8,
       "sodium": 2
     },
     "tags": [
@@ -375,22 +352,26 @@ export const beansplantproteinFoods: FoodItem[] = [
       "cookedfromdry"
     ],
     "preparationState": "Cooked (from Dry)",
-    "compareGroup": "Beans & Plant Protein"
+    "compareGroup": "Beans & Plant Protein",
+    "usda": {
+      "fdcId": 172421,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0210",
     "slug": "canned-lentil",
-    "name": "Canned Lentil",
-    "searchName": "canned lentil",
-    "displayName": "Canned Lentil",
+    "name": "Canned Lentils",
+    "searchName": "canned lentils",
+    "displayName": "Canned Lentils",
     "aliases": [
-      "canned lentil",
-      "lentil"
+      "canned lentils",
+      "canned lentil"
     ],
     "category": "Beans & Plant Protein",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -409,35 +390,39 @@ export const beansplantproteinFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 353,
-      "protein": 25.8,
-      "carbohydrates": 60.1,
-      "fat": 1.1,
-      "fiber": 30.5,
-      "sugar": 2,
-      "sodium": 256
+      "calories": 166,
+      "protein": 8.36,
+      "carbohydrates": 18.66,
+      "fat": 6.84,
+      "fiber": 7.3,
+      "sugar": 1.67,
+      "sodium": 325
     },
     "tags": [
       "beans-&-plant-protein",
       "canned"
     ],
     "preparationState": "Canned",
-    "compareGroup": "Beans & Plant Protein"
+    "compareGroup": "Beans & Plant Protein",
+    "usda": {
+      "fdcId": 2707426,
+      "dataType": "Survey (FNDDS)"
+    }
   },
   {
     "id": "local_0211",
     "slug": "dry-black-bean",
-    "name": "Dry Black Bean",
-    "searchName": "dry black bean",
-    "displayName": "Dry Black Bean",
+    "name": "Dry Black Beans",
+    "searchName": "dry black beans",
+    "displayName": "Dry Black Beans",
     "aliases": [
-      "dry black bean",
-      "black bean"
+      "dry black beans",
+      "dry black bean"
     ],
     "category": "Beans & Plant Protein",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -459,9 +444,9 @@ export const beansplantproteinFoods: FoodItem[] = [
       "calories": 341,
       "protein": 21.6,
       "carbohydrates": 62.4,
-      "fat": 1.4,
+      "fat": 1.42,
       "fiber": 15.5,
-      "sugar": 2.1,
+      "sugar": 2.12,
       "sodium": 5
     },
     "tags": [
@@ -469,22 +454,26 @@ export const beansplantproteinFoods: FoodItem[] = [
       "dry"
     ],
     "preparationState": "Dry",
-    "compareGroup": "Beans & Plant Protein"
+    "compareGroup": "Beans & Plant Protein",
+    "usda": {
+      "fdcId": 173734,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0212",
     "slug": "cooked-black-bean",
-    "name": "Cooked Black Bean",
-    "searchName": "cooked black bean",
-    "displayName": "Cooked Black Bean",
+    "name": "Cooked Black Beans",
+    "searchName": "cooked black beans",
+    "displayName": "Cooked Black Beans",
     "aliases": [
-      "cooked black bean",
-      "black bean"
+      "cooked black beans",
+      "cooked black bean"
     ],
     "category": "Beans & Plant Protein",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -503,35 +492,39 @@ export const beansplantproteinFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 119,
-      "protein": 7.6,
-      "carbohydrates": 21.8,
-      "fat": 0.5,
-      "fiber": 5.4,
-      "sugar": 0.7,
-      "sodium": 2
+      "calories": 132,
+      "protein": 8.86,
+      "carbohydrates": 23.7,
+      "fat": 0.54,
+      "fiber": 8.7,
+      "sugar": 0.32,
+      "sodium": 1
     },
     "tags": [
       "beans-&-plant-protein",
       "cookedfromdry"
     ],
     "preparationState": "Cooked (from Dry)",
-    "compareGroup": "Beans & Plant Protein"
+    "compareGroup": "Beans & Plant Protein",
+    "usda": {
+      "fdcId": 173735,
+      "dataType": "SR Legacy"
+    }
   },
   {
     "id": "local_0213",
     "slug": "canned-black-bean",
-    "name": "Canned Black Bean",
-    "searchName": "canned black bean",
-    "displayName": "Canned Black Bean",
+    "name": "Canned Black Beans",
+    "searchName": "canned black beans",
+    "displayName": "Canned Black Beans",
     "aliases": [
-      "canned black bean",
-      "black bean"
+      "canned black beans",
+      "canned black bean"
     ],
     "category": "Beans & Plant Protein",
     "source": "local",
-    "sourceLabel": "Local database",
-    "isEstimated": true,
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
     "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
@@ -550,19 +543,23 @@ export const beansplantproteinFoods: FoodItem[] = [
       }
     ],
     "nutrientsPer100g": {
-      "calories": 341,
-      "protein": 21.6,
-      "carbohydrates": 62.4,
-      "fat": 1.4,
-      "fiber": 15.5,
-      "sugar": 2.1,
-      "sodium": 255
+      "calories": 91,
+      "protein": 6.03,
+      "carbohydrates": 16.6,
+      "fat": 0.29,
+      "fiber": 6.9,
+      "sugar": 0.23,
+      "sodium": 384
     },
     "tags": [
       "beans-&-plant-protein",
       "canned"
     ],
     "preparationState": "Canned",
-    "compareGroup": "Beans & Plant Protein"
+    "compareGroup": "Beans & Plant Protein",
+    "usda": {
+      "fdcId": 175188,
+      "dataType": "SR Legacy"
+    }
   }
 ];
