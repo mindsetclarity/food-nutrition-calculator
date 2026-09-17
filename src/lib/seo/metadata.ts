@@ -27,7 +27,7 @@ export function buildOpenGraphMetadata(input: PageSeoInput): OpenGraphMetadata {
     title: buildTitle(input.title),
     description: buildMetaDescription(input.description),
     type: input.ogType || "website",
-    image: input.ogImage || siteConfig.defaultOgImage,
+    image: new URL(input.ogImage || siteConfig.defaultOgImage, siteConfig.siteUrl).href,
   };
 }
 
@@ -36,7 +36,7 @@ export function buildTwitterMetadata(input: PageSeoInput): TwitterMetadata {
     card: siteConfig.twitterCard,
     title: buildTitle(input.title),
     description: buildMetaDescription(input.description),
-    image: input.ogImage || siteConfig.defaultOgImage,
+    image: new URL(input.ogImage || siteConfig.defaultOgImage, siteConfig.siteUrl).href,
   };
 }
 
