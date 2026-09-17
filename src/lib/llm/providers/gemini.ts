@@ -32,17 +32,17 @@ export const geminiProvider: LLMProvider = {
       body.generationConfig = { responseMimeType: "application/json" };
     }
 
-    try {
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), request.timeoutMs || getLLMTimeoutMs());
+    // Timer spans the body read as well as the headers (see openaiCompatible.ts).
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), request.timeoutMs || getLLMTimeoutMs());
 
+    try {
       const res = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
         signal: controller.signal
       });
-      clearTimeout(timeoutId);
 
       if (!res.ok) {
         return {
@@ -65,6 +65,8 @@ export const geminiProvider: LLMProvider = {
         return { ok: false, provider: 'gemini', model, text: '', warnings: [], error: { code: LLM_ERRORS.TIMEOUT, message: "Request timed out", retryable: true } };
       }
       return { ok: false, provider: 'gemini', model, text: '', warnings: [], error: { code: LLM_ERRORS.FAILED, message: "Network or fetch error", retryable: true } };
+    } finally {
+      clearTimeout(timeoutId);
     }
   }
 };

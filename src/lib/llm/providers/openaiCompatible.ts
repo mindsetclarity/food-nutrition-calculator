@@ -11,11 +11,13 @@ export interface OpenAICompatibleOptions {
   systemPrefix?: string;
   /** Not every OpenAI-compatible host accepts response_format. */
   supportsJsonResponseFormat?: boolean;
+  /** Host-specific request fields, e.g. OpenRouter's `reasoning`. */
+  extraBody?: Record<string, unknown>;
 }
 
 /**
  * Shared adapter for providers exposing an OpenAI-compatible /chat/completions
- * endpoint (OpenAI, DeepSeek, NVIDIA NIM).
+ * endpoint (OpenAI, DeepSeek, NVIDIA NIM, OpenRouter).
  */
 export function createOpenAICompatibleProvider(options: OpenAICompatibleOptions): LLMProvider {
   const {
@@ -24,7 +26,8 @@ export function createOpenAICompatibleProvider(options: OpenAICompatibleOptions)
     missingKeyMessage,
     defaultTemperature = 0.7,
     systemPrefix,
-    supportsJsonResponseFormat = true
+    supportsJsonResponseFormat = true,
+    extraBody
   } = options;
 
   const fail = (model: string, code: string, message: string, retryable: boolean): LLMResponse => ({
@@ -50,6 +53,7 @@ export function createOpenAICompatibleProvider(options: OpenAICompatibleOptions)
         : request.messages;
 
       const body: any = {
+        ...extraBody,
         model,
         messages,
         // ?? not || so an explicit temperature of 0 is honoured.
@@ -61,10 +65,13 @@ export function createOpenAICompatibleProvider(options: OpenAICompatibleOptions)
         body.response_format = { type: 'json_object' };
       }
 
-      try {
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), request.timeoutMs || getLLMTimeoutMs());
+      // The timeout must span the body read, not just the headers. OpenRouter
+      // sends 200 headers at once and holds the body open while the model is
+      // queued; clearing the timer after fetch() let one parse hang for 306s.
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), request.timeoutMs || getLLMTimeoutMs());
 
+      try {
         const res = await fetch(url, {
           method: 'POST',
           headers: {
@@ -74,7 +81,6 @@ export function createOpenAICompatibleProvider(options: OpenAICompatibleOptions)
           body: JSON.stringify(body),
           signal: controller.signal
         });
-        clearTimeout(timeoutId);
 
         if (!res.ok) {
           // 4xx are caller errors (bad key, bad model) and will not fix themselves.
@@ -99,6 +105,8 @@ export function createOpenAICompatibleProvider(options: OpenAICompatibleOptions)
           return fail(model, LLM_ERRORS.TIMEOUT, 'Request timed out', true);
         }
         return fail(model, LLM_ERRORS.FAILED, 'Network or fetch error', true);
+      } finally {
+        clearTimeout(timeoutId);
       }
     }
   };

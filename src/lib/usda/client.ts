@@ -21,13 +21,13 @@ function buildUsdaUrl(path: string, params: Record<string, string | number> = {}
 }
 
 async function safeUsdaFetch<T>(url: string): Promise<UsdaApiResponse<T>> {
+  // The timeout covers reading the body too; clearing it once headers arrived
+  // left a slow body free to hang the request indefinitely.
+  const controller = new AbortController();
+  const id = setTimeout(() => controller.abort(), 8000);
   try {
-    const controller = new AbortController();
-    const id = setTimeout(() => controller.abort(), 8000);
-    
     const response = await fetch(url, { signal: controller.signal });
-    clearTimeout(id);
-    
+
     if (!response.ok) {
       return { ok: false, error: `USDA API returned ${response.status}` };
     }
@@ -35,6 +35,8 @@ async function safeUsdaFetch<T>(url: string): Promise<UsdaApiResponse<T>> {
     return { ok: true, data };
   } catch (error) {
     return { ok: false, error: 'Network or parsing error' };
+  } finally {
+    clearTimeout(id);
   }
 }
 

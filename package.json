@@ -14,7 +14,8 @@
     "test:nemotron": "node --experimental-strip-types scripts/test-nemotron.mjs",
     "test:usda": "node --experimental-strip-types scripts/test-usda-normalize.mjs",
     "test:meal-parser": "node --experimental-strip-types scripts/test-basic-meal-parser.mjs",
-    "test:ranking": "node --experimental-strip-types scripts/test-usda-ranking.mjs"
+    "test:ranking": "node --experimental-strip-types scripts/test-usda-ranking.mjs",
+    "test:llm-client": "node --experimental-strip-types scripts/test-llm-client.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
