@@ -24,3 +24,11 @@ jobs:
         run: npm run deploy
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          # Astro bakes these into the server bundle at build time and CI has no
+          # .env file. Without them the deployed site silently degrades: food
+          # search drops to the small local dataset and meal parsing to the basic
+          # parser. Secrets stay server-side; they never reach browser code.
+          USDA_API_KEY: ${{ secrets.USDA_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          LLM_PROVIDER: ${{ vars.LLM_PROVIDER || 'openrouter' }}
+          OPENROUTER_MODEL: ${{ vars.OPENROUTER_MODEL || 'nvidia/nemotron-3-super-120b-a12b:free' }}
