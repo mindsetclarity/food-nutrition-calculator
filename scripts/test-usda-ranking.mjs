@@ -80,6 +80,18 @@ assert.equal(top('potato', [
   f('SR Legacy', 'Potatoes, raw, skin')
 ]), 'Potatoes, raw, skin');
 
+// A substitute is not the food ("chicken" ranked "Chicken, meatless" first in production)...
+assert.equal(top('chicken', [
+  f('Survey (FNDDS)', 'Chicken, meatless'),
+  f('Survey (FNDDS)', 'Chicken, NFS')
+]), 'Chicken, NFS');
+
+// ...unless the user asked for it.
+assert.equal(top('meatless chicken', [
+  f('Survey (FNDDS)', 'Chicken, NFS'),
+  f('Survey (FNDDS)', 'Chicken, meatless')
+]), 'Chicken, meatless');
+
 // Ties keep USDA's order, and degenerate input does not throw.
 const tied = [f('SR Legacy', 'Apples, raw'), f('SR Legacy', 'Apples, raw')];
 assert.equal(rankUsdaSearchFoods(tied, 'apple')[0], tied[0]);
@@ -93,4 +105,4 @@ assert.equal(singularizeSimple('boxes'), 'box');
 assert.equal(singularizeSimple('berries'), 'berry');
 assert.equal(singularizeSimple('grass'), 'grass');
 
-console.log('usda ranking checks passed (17)');
+console.log('usda ranking checks passed (19)');

@@ -23,13 +23,17 @@ const DATA_TYPE_WEIGHT: Record<string, number> = {
 
 // Qualifiers USDA attaches that say nothing about which food it is.
 const NOISE = new Set([
-  'raw', 'whole', 'plain', 'nf', 'fresh', 'regular', 'without', 'skin',
+  'raw', 'whole', 'plain', 'nf', 'fresh', 'regular', 'without',
   'commercially', 'prepared', 'enriched', 'unenriched', 'grade', 'large', 'medium',
   'all', 'type', 'variety', 'ready', 'to', 'eat'
 ]);
 
 // Processing that changes nutrition; only wanted when the query asks for it.
 const PREPARATION = /\b(fried|canned|breaded|dehydrated|dried|powder|flavored|sweetened|frozen|smoked|pickled)\b/i;
+
+// Records that are a stand-in for the food rather than the food itself:
+// "Chicken, meatless" ranked first for "chicken" in production.
+const SUBSTITUTE = /\b(meatless|imitation|substitute|analog|vegetarian|vegan|plant[- ]based|meat[- ]free|dairy[- ]free)\b/i;
 
 export function scoreUsdaSearchFood(food: UsdaSearchFood, query: string): number {
   const queryTokens = tokenizeFoodQuery(query);
@@ -55,6 +59,9 @@ export function scoreUsdaSearchFood(food: UsdaSearchFood, query: string): number
   const description = food.description || '';
   const prep = description.match(PREPARATION);
   if (prep && !query.toLowerCase().includes(prep[1].toLowerCase().slice(0, 4))) score -= 6;
+
+  const substitute = description.match(SUBSTITUTE);
+  if (substitute && !query.toLowerCase().includes(substitute[1].toLowerCase().slice(0, 5))) score -= 25;
 
   if (/\bNFS\b/.test(description)) score += 8; // FNDDS "not further specified"
   if (/\braw\b/i.test(description)) score += 3;
