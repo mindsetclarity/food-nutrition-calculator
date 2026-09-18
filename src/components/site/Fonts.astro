@@ -1,0 +1,18 @@
+---
+/**
+ * Web font for the whole site.
+ *
+ * global.css sets --font-sans to "Inter", system-ui, sans-serif, but only
+ * Layout.astro ever loaded Inter. Pages on SiteLayout -- the home page, the
+ * calculator, compare, the foods directory and the legal pages -- asked for a
+ * font they never fetched, so they fell back to system-ui while the food and
+ * learn pages rendered in Inter. Both layouts render this now, so the site is
+ * set in one typeface and there is a single place to change it.
+ */
+---
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+  rel="stylesheet"
+/>

@@ -4,6 +4,7 @@ import MotionObserver from '../components/site/MotionObserver.astro';
 import Header from '../components/site/Header.astro';
 import Footer from '../components/site/Footer.astro';
 import SeoHead from '../components/seo/SeoHead.astro';
+import Fonts from '../components/site/Fonts.astro';
 import type { JsonLdSchema } from '../lib/seo/types';
 
 interface Props {
@@ -51,11 +52,8 @@ const {
       keywords={keywords}
       jsonLd={jsonLd} 
     />
-		
-		<!-- Inter Font Fallback (Similar to Geist) -->
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+		<Fonts />
 	</head>
 	<body class="bg-[var(--color-canvas-soft)] text-[var(--color-ink)] min-h-screen flex flex-col no-body-overflow-guard">
 		<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-white focus:text-brand-600 focus-ring rounded-md m-4 shadow-premium">
