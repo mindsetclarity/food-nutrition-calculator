@@ -450,7 +450,7 @@ import SourceBadge from '../ui/SourceBadge.astro';
     let options = '<option value="g">g</option><option value="oz">oz</option><option value="lb">lb</option>';
     if (food.servingSizes) {
       food.servingSizes.forEach(serving => {
-        options += `<option value="${serving.unit}">${serving.unit}</option>`;
+        options += `<option value="${esc(serving.unit)}">${esc(serving.unit)}</option>`;
       });
     }
     unitSelect.innerHTML = options;
