@@ -28,7 +28,8 @@ import MealSummary from './MealSummary.astro';
 
 {/* Search Modal Template */}
 <template id="meal-search-modal-template">
-  <div class="fixed inset-0 z-50 flex items-center justify-center bg-ink-navy/80 backdrop-blur-sm p-4 hidden" id="meal-search-modal">
+  <div class="fixed inset-0 z-50 flex items-center justify-center bg-ink-navy/80 backdrop-blur-sm p-4 hidden" id="meal-search-modal"
+    role="dialog" aria-modal="true" aria-labelledby="search-modal-title">
     <div class="bg-pure-card rounded-[var(--radius-card)] shadow-premium w-full max-w-2xl max-h-[90vh] flex flex-col overflow-hidden border border-border-soft">
       <div class="px-6 md:px-8 py-6 border-b border-border-soft flex justify-between items-center bg-white/50">
         <h3 class="text-xl font-bold text-ink-navy" id="search-modal-title">Add to Meal</h3>
@@ -195,6 +196,7 @@ import MealSummary from './MealSummary.astro';
 
   let activeSectionId: MealSectionId | null = null;
   let activeFoodDetails: any = null;
+  let lastFocusedBeforeModal: HTMLElement | null = null;
   let searchTimeout: ReturnType<typeof setTimeout>;
   let searchAbortController: AbortController | null = null;
 
@@ -343,23 +345,60 @@ import MealSummary from './MealSummary.astro';
     const input = document.getElementById('meal-search-input') as HTMLInputElement;
     
     if (title) title.textContent = `Add to ${formatMealSectionLabel(sectionId)}`;
-    if (input) {
-      input.value = '';
-      input.focus();
-    }
-    
+    if (input) input.value = '';
+
     document.getElementById('meal-search-results')!.innerHTML = '';
     document.getElementById('search-view')?.classList.remove('hidden');
     document.getElementById('details-view')?.classList.add('hidden');
-    
+
+    // Remember where focus came from so it can go back when the dialog closes.
+    lastFocusedBeforeModal = document.activeElement as HTMLElement | null;
     modal?.classList.remove('hidden');
+    // Focus only lands once the dialog is displayed; focusing a hidden element
+    // is a no-op, which used to leave focus behind on the button that opened it.
+    input?.focus();
   }
 
   function closeModal() {
     activeSectionId = null;
     activeFoodDetails = null;
     document.getElementById('meal-search-modal')?.classList.add('hidden');
+    lastFocusedBeforeModal?.focus();
+    lastFocusedBeforeModal = null;
   }
+
+  const FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+  // Escape closes, and Tab stays inside: without this, tabbing walks out of the
+  // dialog and into the page behind it while the overlay still covers it.
+  document.addEventListener('keydown', (e) => {
+    const modal = document.getElementById('meal-search-modal');
+    if (!modal || modal.classList.contains('hidden')) return;
+
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      closeModal();
+      return;
+    }
+    if (e.key !== 'Tab') return;
+
+    const items = [...modal.querySelectorAll<HTMLElement>(FOCUSABLE)]
+      .filter(el => el.offsetParent !== null);
+    if (!items.length) return;
+
+    const first = items[0];
+    const last = items[items.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    } else if (!modal.contains(document.activeElement)) {
+      e.preventDefault();
+      first.focus();
+    }
+  });
 
   function renderSearchResults(results: any[]) {
     const list = document.getElementById('meal-search-results');
