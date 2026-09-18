@@ -7,8 +7,11 @@ interface Props {
 }
 
 const { food } = Astro.props;
-const slug = food.name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-const url = `/foods/${slug}`;
+// Link with the food's own slug. Deriving one from the name instead drifts
+// from the slug getStaticPaths builds pages for ("Almonds" -> almonds, but
+// the page is /foods/almond), which is how most of this directory came to
+// point at 404s.
+const url = `/foods/${food.slug}`;
 
 const protein = food.nutrientsPer100g?.protein || 0;
 const carbs = food.nutrientsPer100g?.carbohydrates || 0;

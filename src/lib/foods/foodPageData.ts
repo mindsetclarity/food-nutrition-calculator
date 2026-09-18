@@ -10,8 +10,9 @@ export function getFoodPageBySlug(slug: string): FoodItem | undefined {
 }
 
 export function getRelatedFoods(food: FoodItem, limit: number = 4): FoodItem[] {
+  // Only foods with a slug get a page, so only those can be linked to.
   return localFoods
-    .filter(f => f.slug !== food.slug && f.category === food.category)
+    .filter(f => f.slug && f.slug !== food.slug && f.category === food.category)
     .slice(0, limit);
 }
 
