@@ -40,6 +40,7 @@ import CompareNotice from './CompareNotice.astro';
   import type { CompareFood, CompareBasis } from '../../lib/compare/types';
   import { buildCompareResult } from '../../lib/compare/compareFoods';
   import { getFromCache, setInCache, generateCacheKey } from '../../lib/performance/clientCache';
+  import { escapeHtml } from '../../lib/safety/escapeHtml';
   
   let selectedFoods: CompareFood[] = [];
   let currentBasis: CompareBasis = '100g';
@@ -159,11 +160,11 @@ import CompareNotice from './CompareNotice.astro';
         btn.innerHTML = `
           <div class="flex justify-between items-start gap-4">
             <div class="flex-1">
-              <div class="font-bold text-ink-navy text-[15px] group-hover:text-usda-emerald transition-colors">${item.displayName || item.name}</div>
-              <div class="text-[13px] font-medium text-soft-slate mt-1">${item.category || item.dataType || ''}</div>
+              <div class="font-bold text-ink-navy text-[15px] group-hover:text-usda-emerald transition-colors">${escapeHtml(item.displayName || item.name)}</div>
+              <div class="text-[13px] font-medium text-soft-slate mt-1">${escapeHtml(item.category || item.dataType || '')}</div>
             </div>
             <span class="inline-flex shrink-0 items-center px-2 py-0.5 border rounded text-[10px] uppercase font-bold tracking-widest ${badgeColor}">
-              ${item.sourceLabel || item.source}
+              ${escapeHtml(item.sourceLabel || item.source)}
             </span>
           </div>
         `;
@@ -300,7 +301,7 @@ import CompareNotice from './CompareNotice.astro';
         const badgeContainer = clone.querySelector('.source-badge-container');
         if (badgeContainer) {
           const badgeClass = food.source === 'usda' ? 'bg-mint-wash text-usda-emerald border-emerald-soft' : 'bg-slate-50 text-soft-slate border-border-soft';
-          badgeContainer.innerHTML = `<span class="inline-flex items-center px-2 py-0.5 border rounded text-[10px] font-bold uppercase tracking-widest ${badgeClass}">${food.sourceLabel || food.source}</span>`;
+          badgeContainer.innerHTML = `<span class="inline-flex items-center px-2 py-0.5 border rounded text-[10px] font-bold uppercase tracking-widest ${badgeClass}">${escapeHtml(food.sourceLabel || food.source)}</span>`;
         }
         
         const removeBtn = clone.querySelector('.remove-food-btn');
@@ -325,8 +326,8 @@ import CompareNotice from './CompareNotice.astro';
       result.foods.forEach((f: CompareFood) => {
         tableHead.innerHTML += `
           <th scope="col" class="px-6 py-5 bg-slate-50 border-b border-border-soft min-w-[150px]">
-            <div class="text-[15px] font-bold text-ink-navy">${f.displayName}</div>
-            ${currentBasis === 'serving' && f.servingSizes?.[0] ? `<div class="text-[13px] font-medium text-soft-slate mt-1">${f.servingSizes[0].label} (${f.servingSizes[0].grams}g)</div>` : ''}
+            <div class="text-[15px] font-bold text-ink-navy">${escapeHtml(f.displayName)}</div>
+            ${currentBasis === 'serving' && f.servingSizes?.[0] ? `<div class="text-[13px] font-medium text-soft-slate mt-1">${escapeHtml(f.servingSizes[0].label)} (${escapeHtml(f.servingSizes[0].grams)}g)</div>` : ''}
           </th>
         `;
       });
@@ -376,7 +377,7 @@ import CompareNotice from './CompareNotice.astro';
           div.className = 'bg-white border border-border-soft p-5 rounded-[var(--radius-button)] shadow-sm flex items-start';
           div.innerHTML = `
              <svg class="w-5 h-5 text-usda-emerald mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-             <p class="text-ink-navy text-[13px] font-medium leading-relaxed">${insight.text}</p>
+             <p class="text-ink-navy text-[13px] font-medium leading-relaxed">${escapeHtml(insight.text)}</p>
           `;
           insightsGrid.appendChild(div);
        });
@@ -388,7 +389,7 @@ import CompareNotice from './CompareNotice.astro';
              noticeContainer.classList.remove('hidden');
              warningsList.innerHTML = '';
              result.warnings.forEach((w: any) => {
-                warningsList.innerHTML += `<li class="text-[13px] font-medium text-amber-800 leading-relaxed">• ${w.text}</li>`;
+                warningsList.innerHTML += `<li class="text-[13px] font-medium text-amber-800 leading-relaxed">• ${escapeHtml(w.text)}</li>`;
              });
           } else {
              noticeContainer.classList.add('hidden');

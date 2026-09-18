@@ -174,6 +174,7 @@ import MealSummary from './MealSummary.astro';
 
 <script>
   import { MEAL_SECTIONS } from '../../lib/meal/mealSections';
+  import { escapeHtml } from '../../lib/safety/escapeHtml';
   import { calculateDayTotals, calculateMealSectionTotals, getMealSourceSummary, getMealWarnings, hasAnyMealItems, calculateMealContributionPercent } from '../../lib/meal/mealCalculation';
   import { formatMealCalories, formatMealMacro, formatMealSodium, formatMealQuantity, formatMealSectionLabel } from '../../lib/meal/mealFormatting';
   import { calculateFoodItem } from '../../lib/nutrition/calculateNutrition';
@@ -383,11 +384,11 @@ import MealSummary from './MealSummary.astro';
       btn.innerHTML = `
         <div class="flex justify-between items-start gap-4">
           <div class="flex-1">
-            <div class="font-bold text-ink-navy text-[15px]">${item.displayName || item.name}</div>
-            <div class="text-[13px] font-medium text-soft-slate mt-1">${item.category || item.dataType || ''}</div>
+            <div class="font-bold text-ink-navy text-[15px]">${escapeHtml(item.displayName || item.name)}</div>
+            <div class="text-[13px] font-medium text-soft-slate mt-1">${escapeHtml(item.category || item.dataType || '')}</div>
           </div>
           <span class="inline-flex shrink-0 items-center px-2 py-0.5 border rounded text-[10px] uppercase tracking-widest font-bold ${badgeColor}">
-            ${item.sourceLabel || item.source}
+            ${escapeHtml(item.sourceLabel || item.source)}
           </span>
         </div>
       `;

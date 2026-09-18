@@ -196,6 +196,7 @@ import SourceBadge from '../ui/SourceBadge.astro';
 <script>
   import { calculateFoodItem, calculateMealTotals } from '../../lib/nutrition/calculateNutrition';
   import { hasKnownNutrient } from '../../lib/nutrition/nutrientUtils';
+  import { escapeHtml as esc } from '../../lib/safety/escapeHtml';
 
   // State
   let addedItems = [];
@@ -230,14 +231,6 @@ import SourceBadge from '../ui/SourceBadge.astro';
     errorMsg.textContent = msg;
     errorMsg.classList.remove('hidden');
     setTimeout(() => errorMsg.classList.add('hidden'), 5000);
-  }
-
-  // Food names come from USDA, so they can carry &, quotes and angle brackets.
-  // They are written with innerHTML below, so escape before interpolating.
-  function esc(value) {
-    return String(value ?? '').replace(/[&<>"']/g, c => (
-      { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
-    ));
   }
 
   function announce(msg) {
