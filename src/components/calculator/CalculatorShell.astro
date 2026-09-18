@@ -26,10 +26,13 @@ import SourceBadge from '../ui/SourceBadge.astro';
               <div class="relative">
                 <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-soft-slate" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                 <input type="text" id="food-search" placeholder="Search banana, oats, chicken breast, rice..." autocomplete="off"
+                  role="combobox" aria-expanded="false" aria-controls="autocomplete-dropdown"
+                  aria-autocomplete="list" aria-haspopup="listbox"
                   class="w-full h-14 pl-12 pr-4 rounded-[var(--radius-button)] bg-white border border-border-soft text-ink-navy placeholder-soft-slate focus-premium transition-shadow shadow-sm disabled:opacity-50 text-base"
                 />
               </div>
-              <div id="autocomplete-dropdown" class="absolute z-50 w-full mt-2 bg-white border border-border-soft rounded-xl shadow-premium max-h-80 overflow-y-auto hidden">
+              <div id="autocomplete-dropdown" role="listbox" aria-label="Food search results"
+                class="absolute z-50 w-full sm:w-[22rem] mt-2 bg-white border border-border-soft rounded-xl shadow-premium max-h-80 overflow-y-auto hidden">
                 <!-- Results go here -->
               </div>
             </div>
@@ -229,11 +232,91 @@ import SourceBadge from '../ui/SourceBadge.astro';
     setTimeout(() => errorMsg.classList.add('hidden'), 5000);
   }
 
+  // Food names come from USDA, so they can carry &, quotes and angle brackets.
+  // They are written with innerHTML below, so escape before interpolating.
+  function esc(value) {
+    return String(value ?? '').replace(/[&<>"']/g, c => (
+      { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
+    ));
+  }
+
+  function announce(msg) {
+    const el = document.getElementById('a11y-status');
+    if (el) el.textContent = msg;
+  }
+
+  // --- Combobox state -------------------------------------------------
+  // The dropdown is a listbox whose options never take focus: focus stays in
+  // the input and aria-activedescendant points at the active option, which is
+  // what lets a keyboard reach results at all.
+  let activeIndex = -1;
+
+  const getOptions = () => Array.from(dropdown.querySelectorAll('[role="option"]'));
+
+  function setExpanded(open) {
+    dropdown.classList.toggle('hidden', !open);
+    searchInput.setAttribute('aria-expanded', String(open));
+    if (!open) setActiveOption(-1);
+  }
+
+  function setActiveOption(index) {
+    const options = getOptions();
+    if (!options.length) index = -1;
+    activeIndex = index;
+    options.forEach((opt, i) => {
+      const on = i === index;
+      opt.setAttribute('aria-selected', String(on));
+      opt.classList.toggle('bg-slate-50', on);
+    });
+    if (index >= 0) {
+      searchInput.setAttribute('aria-activedescendant', options[index].id);
+      options[index].scrollIntoView({ block: 'nearest' });
+    } else {
+      searchInput.removeAttribute('aria-activedescendant');
+    }
+  }
+
+  function moveActive(delta) {
+    const options = getOptions();
+    if (!options.length) return;
+    const next = activeIndex < 0
+      ? (delta > 0 ? 0 : options.length - 1)
+      : (activeIndex + delta + options.length) % options.length;
+    setActiveOption(next);
+  }
+
+  searchInput.addEventListener('keydown', (e) => {
+    const open = !dropdown.classList.contains('hidden');
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+      if (!open) return;
+      e.preventDefault();
+      moveActive(e.key === 'ArrowDown' ? 1 : -1);
+    } else if (e.key === 'Enter') {
+      if (open && activeIndex >= 0) {
+        // Enter is picking a suggestion here, not submitting the form.
+        e.preventDefault();
+        chooseResult(getOptions()[activeIndex]);
+      }
+    } else if (e.key === 'Escape') {
+      if (open) {
+        e.preventDefault();
+        setExpanded(false);
+      }
+    } else if (e.key === 'Tab') {
+      if (open) setExpanded(false);
+    }
+  });
+
+  dropdown.addEventListener('mousemove', (e) => {
+    const opt = e.target.closest('[role="option"]');
+    if (opt) setActiveOption(getOptions().indexOf(opt));
+  });
+
   // Handle Search Input
   searchInput.addEventListener('input', (e) => {
     const q = e.target.value.trim();
     if (q.length < 2) {
-      dropdown.classList.add('hidden');
+      setExpanded(false);
       if (currentAbortController) currentAbortController.abort();
       fallbackNotice.classList.add('hidden');
       return;
@@ -242,7 +325,7 @@ import SourceBadge from '../ui/SourceBadge.astro';
     clearTimeout(searchDebounceTimeout);
     
     dropdown.innerHTML = `<div class="p-6 text-[15px] font-medium text-soft-slate text-center flex items-center justify-center gap-2"><svg class="animate-spin h-5 w-5 text-usda-emerald" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Searching...</div>`;
-    dropdown.classList.remove('hidden');
+    setExpanded(true);
     fallbackNotice.classList.add('hidden');
 
     searchDebounceTimeout = setTimeout(async () => {
@@ -263,24 +346,30 @@ import SourceBadge from '../ui/SourceBadge.astro';
         }
 
         if (data.results && data.results.length > 0) {
-          dropdown.innerHTML = data.results.map(f => {
+          dropdown.innerHTML = data.results.map((f, i) => {
             const isUsda = f.source === 'usda';
-            const badgeClasses = isUsda 
-              ? "bg-mint-wash text-usda-emerald border-emerald-soft" 
+            const badgeClasses = isUsda
+              ? "bg-mint-wash text-usda-emerald border-emerald-soft"
               : "bg-slate-50 text-soft-slate border-border-soft";
+            const meta = `${f.brandName ? f.brandName + ' • ' : ''}${f.dataType || 'Food'}`;
             return `
-            <button type="button" class="w-full text-left p-4 hover:bg-slate-50 cursor-pointer border-b border-border-soft last:border-0 flex justify-between items-center transition-colors" 
-              data-id="${f.id}" data-fdcid="${f.fdcId}" data-source="${f.source}">
-              <div>
-                <div class="font-bold text-ink-navy text-[15px]">${f.displayName}</div>
-                <div class="text-[11px] font-medium text-soft-slate mt-1 tracking-wide">${f.brandName ? f.brandName + ' • ' : ''}${f.dataType || 'Food'}</div>
+            <div role="option" id="food-option-${i}" aria-selected="false" class="p-4 cursor-pointer border-b border-border-soft last:border-0 flex justify-between items-center gap-3 transition-colors"
+              data-id="${esc(f.id)}" data-fdcid="${esc(f.fdcId)}" data-source="${esc(f.source)}">
+              <div class="min-w-0">
+                <div class="font-bold text-ink-navy text-[15px]">${esc(f.displayName)}</div>
+                <div class="text-[11px] font-medium text-soft-slate mt-1 tracking-wide">${esc(meta)}</div>
               </div>
-              <div class="text-[10px] uppercase font-bold tracking-widest px-2 py-1 rounded border ${badgeClasses}">${f.sourceLabel || (isUsda ? 'USDA' : 'Local')}</div>
-            </button>
+              <div class="text-[10px] uppercase font-bold tracking-widest px-2 py-1 rounded border shrink-0 whitespace-nowrap ${badgeClasses}">${esc(f.sourceLabel || (isUsda ? 'USDA' : 'Local'))}</div>
+            </div>
           `}).join('');
+          setActiveOption(-1);
+          announce(`${data.results.length} result${data.results.length === 1 ? '' : 's'} available. Use the up and down arrow keys to review, Enter to select.`);
         } else {
           dropdown.innerHTML = `<div class="p-6 text-[15px] font-medium text-soft-slate text-center">No foods found. Try a simpler name like 'banana' or 'rice'.</div>`;
+          setActiveOption(-1);
+          announce('No foods found.');
         }
+        setExpanded(true);
       } catch (err) {
         if (err.name !== 'AbortError') {
           dropdown.innerHTML = `<div class="p-6 text-[15px] font-medium text-red-600 text-center">Search failed. Please try again.</div>`;
@@ -290,15 +379,19 @@ import SourceBadge from '../ui/SourceBadge.astro';
   });
 
   // Handle Selection
-  dropdown.addEventListener('click', async (e) => {
-    const item = e.target.closest('button[data-id]');
+  dropdown.addEventListener('click', (e) => {
+    const item = e.target.closest('[data-id]');
+    if (item) chooseResult(item);
+  });
+
+  async function chooseResult(item) {
     if (!item) return;
-    
+
     const id = item.getAttribute('data-id');
     const fdcId = item.getAttribute('data-fdcid');
     const source = item.getAttribute('data-source');
-    
-    dropdown.classList.add('hidden');
+
+    setExpanded(false);
     searchInput.disabled = true;
     searchInput.value = 'Loading details...';
     fallbackNotice.classList.add('hidden');
@@ -326,12 +419,12 @@ import SourceBadge from '../ui/SourceBadge.astro';
       searchInput.value = '';
       searchInput.focus();
     }
-  });
+  }
 
   // Hide dropdown on click outside
   document.addEventListener('click', (e) => {
     if (!searchInput.contains(e.target) && !dropdown.contains(e.target)) {
-      dropdown.classList.add('hidden');
+      setExpanded(false);
     }
   });
 
