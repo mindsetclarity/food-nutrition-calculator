@@ -51,6 +51,9 @@ export function normalizeUnit(unit: string): string {
     case 'packet':
     case 'packets':
       return 'packet';
+    case 'clove':
+    case 'cloves':
+      return 'clove';
     default:
       return u;
   }
@@ -77,8 +80,17 @@ export function findServingSize(food: FoodItem, unit: string): ServingSize | und
     return { unit: 'lb', label: '1 lb', grams: POUNDS_TO_GRAMS };
   }
 
-  return food.servingSizes.find(s => normalizeUnit(s.unit) === normUnit);
+  const direct = food.servingSizes.find(s => normalizeUnit(s.unit) === normUnit);
+  if (direct || !(normUnit in TSP_PER)) return direct;
+
+  // A food measured in cups can still be measured in spoons, and vice versa.
+  const volume = food.servingSizes.find(s => normalizeUnit(s.unit) in TSP_PER);
+  if (!volume) return undefined;
+  const gramsPerTsp = volume.grams / TSP_PER[normalizeUnit(volume.unit)];
+  return { unit: normUnit, label: `1 ${normUnit}`, grams: gramsPerTsp * TSP_PER[normUnit] };
 }
+
+const TSP_PER: Record<string, number> = { cup: 48, tbsp: 3, tsp: 1 };
 
 export function resolveQuantityToGrams(
   food: FoodItem, 
@@ -96,7 +108,8 @@ export function resolveQuantityToGrams(
   const serving = findServingSize(food, unit);
 
   if (!serving) {
-    return { grams: null, error: "This unit is not available for the selected food." };
+    const units = new Set(['g', 'oz', 'lb', ...food.servingSizes.map(s => normalizeUnit(s.unit))]);
+    return { grams: null, error: `This unit is not available for the selected food. Use: ${[...units].join(', ')}.` };
   }
 
   return { grams: serving.grams * quantity, matchedServing: serving };

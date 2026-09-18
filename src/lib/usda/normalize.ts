@@ -1,6 +1,7 @@
-import type { UsdaSearchFood, UsdaFoodDetails, NormalizedSearchResult } from './types';
+import type { UsdaSearchFood, UsdaFoodDetails, UsdaFoodPortion, NormalizedSearchResult } from './types';
 import type { FoodItem, NutrientProfile, ServingSize } from '../nutrition/types';
 import { mapUsdaNutrientName } from './nutrients';
+import { normalizeUnit } from '../nutrition/unitConversions';
 
 export function createUsdaSlug(fdcId: number, description: string): string {
   const safeDesc = description.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
@@ -109,7 +110,50 @@ export function createServingSizesFromUsda(food: UsdaFoodDetails): ServingSize[]
     });
   }
 
-  return sizes;
+  return [...sizes, ...servingSizesFromPortions(food.foodPortions, food.description)];
+}
+
+// Words USDA uses for one whole item rather than a measure. The food's own name
+// ("5 tomatoes", "1 egg") means the same and is matched separately.
+const PIECE_WORDS = new Set(['medium', 'large', 'small', 'extra', 'whole', 'fruit', 'each']);
+const stem = (word: string) => word.toLowerCase().replace(/e?s$/, '');
+// FNDDS placeholders ("Quantity not specified", "Guideline amount per ...").
+const SKIP_WORDS = new Set(['', 'quantity', 'guideline', 'undetermined']);
+
+/**
+ * USDA keeps household measures in foodPortions, in three shapes: Survey (FNDDS)
+ * says "1 cup, cooked" in portionDescription with a numeric code in modifier;
+ * SR Legacy says "cup, chopped" in modifier; Foundation names the unit in
+ * measureUnit ("cup", "slice", "egg", "RACC"). Ignoring them left every USDA
+ * food with grams only, so any recipe line in cups or spoons failed.
+ * ponytail: first portion per unit wins (except a medium piece), so "cup, sliced"
+ * vs "cup, chopped" is not user-selectable; add labelled options if that matters.
+ */
+function servingSizesFromPortions(portions?: UsdaFoodPortion[], description = ''): ServingSize[] {
+  const itemWord = stem(description.split(/[\s,]+/)[0]);
+  const byUnit = new Map<string, ServingSize>();
+  for (const p of portions ?? []) {
+    if (!p?.gramWeight) continue;
+    const measure = p.measureUnit?.name;
+    const raw = measure && measure !== 'undetermined'
+      ? [measure, p.portionDescription || p.modifier].filter(Boolean).join(', ')
+      : p.portionDescription || p.modifier || '';
+    const amount = p.amount || parseFloat(raw) || 1;
+    const text = raw.replace(/^[\d./\s]+/, '');
+    const word = text.toLowerCase().split(/[\s,(]+/)[0];
+    if (SKIP_WORDS.has(word)) continue;
+
+    const isServing = word === 'racc' || word === 'nlea';
+    const isPiece = PIECE_WORDS.has(word) || stem(word) === itemWord;
+    const unit = isPiece ? 'piece' : isServing ? 'serving' : normalizeUnit(word);
+    if (byUnit.has(unit) && !(unit === 'piece' && word === 'medium')) continue;
+    byUnit.set(unit, {
+      unit,
+      label: isServing ? '1 serving' : `1 ${text}`,
+      grams: Math.round((p.gramWeight / amount) * 10) / 10
+    });
+  }
+  return [...byUnit.values()];
 }
 
 export function normalizeUsdaFoodDetails(food: UsdaFoodDetails): FoodItem {

@@ -429,7 +429,7 @@ import MealSummary from './MealSummary.astro';
       // Add servings
       if (activeFoodDetails.servingSizes && activeFoodDetails.servingSizes.length > 0) {
         activeFoodDetails.servingSizes.forEach((s: any) => {
-           unitSelect.innerHTML += `<option value="${s.label}">${s.label} (${s.grams}g)</option>`;
+           unitSelect.innerHTML += `<option value="${s.unit}">${s.label} (${s.grams}g)</option>`;
         });
       }
       unitSelect.innerHTML += `

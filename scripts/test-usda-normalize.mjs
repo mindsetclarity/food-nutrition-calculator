@@ -92,4 +92,51 @@ assert.doesNotThrow(() => extractNutrientsPer100g([null, undefined]));
 assert.doesNotThrow(() => extractNutrientsPer100g([{ nutrient: {}, amount: 5 }]));
 assert.equal(hasUsableNutrients(extractNutrientsPer100g([])), false);
 
-console.log('usda normalize checks passed (18)');
+// --- serving sizes from foodPortions ------------------------------------------
+// Ignoring foodPortions left every USDA food with grams only, so a recipe line
+// like "1 cup salsa" failed with "This unit is not available". Portions below
+// are verbatim from the live API, one per USDA shape.
+const { normalizeUsdaFoodDetails } = await import('../src/lib/usda/normalize.ts');
+const { resolveQuantityToGrams } = await import('../src/lib/nutrition/unitConversions.ts');
+const U = { name: 'undetermined' };
+const food = (foodPortions, description = 'Test') => normalizeUsdaFoodDetails({ fdcId: 1, description, foodPortions });
+const grams = (f, qty, unit) => resolveQuantityToGrams(f, qty, unit).grams;
+
+// Survey (FNDDS): the measure is in portionDescription, modifier is a code.
+const salsa = food([
+  { measureUnit: U, modifier: '21000', portionDescription: '1 tablespoon', gramWeight: 16 },
+  { measureUnit: U, modifier: '10205', portionDescription: '1 cup', gramWeight: 256 },
+  { measureUnit: U, modifier: '90000', portionDescription: 'Quantity not specified', gramWeight: 32 },
+  { measureUnit: U, modifier: '64616', portionDescription: 'Guideline amount per sandwich', gramWeight: 16 }
+]);
+assert.equal(grams(salsa, 1, 'cup'), 256);
+assert.equal(grams(salsa, 2, 'tbsp'), 32);
+assert.deepEqual(salsa.servingSizes.map(s => s.unit), ['tbsp', 'cup'], 'placeholders are not units');
+
+// SR Legacy: the measure is in modifier, amount may be more than 1.
+const onion = food([
+  { amount: 1, measureUnit: U, modifier: 'cup, chopped', gramWeight: 160 },
+  { amount: 1, measureUnit: U, modifier: 'large', gramWeight: 150 },
+  { amount: 1, measureUnit: U, modifier: 'medium (2-1/2" dia)', gramWeight: 110 },
+  { amount: 10, measureUnit: U, modifier: 'rings', gramWeight: 60 }
+]);
+assert.equal(grams(onion, 1, 'piece'), 110, 'a medium one is the piece');
+assert.equal(grams(onion, 1, 'cups'), 160);
+assert.equal(grams(onion, 1, 'rings'), 6, 'gramWeight is per amount');
+
+// Foundation: the measure is in measureUnit.
+const cheddar = food([
+  { amount: 1, measureUnit: { name: 'cup' }, portionDescription: 'shredded', gramWeight: 105 },
+  { amount: 1, measureUnit: { name: 'RACC' }, gramWeight: 30 }
+]);
+assert.equal(grams(cheddar, 1, 'serving'), 30);
+assert.equal(grams(cheddar, 1, 'tbsp'), 105 / 16, 'tbsp derived from cup');
+// The food's own name as the measure is one piece.
+assert.equal(grams(food([{ amount: 1, measureUnit: { name: 'egg' }, gramWeight: 50.3 }], 'Eggs, Grade A'), 2, 'piece'), 100.6);
+assert.equal(grams(food([{ amount: 5, measureUnit: { name: 'tomatoes' }, gramWeight: 49.7 }], 'Tomatoes, grape, raw'), 1, 'piece'), 9.9);
+
+// A unit the food lacks says which ones work, instead of a dead end.
+assert.match(resolveQuantityToGrams(cheddar, 1, 'clove').error, /g, oz, lb, cup, serving/);
+assert.doesNotThrow(() => food(undefined));
+
+console.log('usda normalize checks passed (30)');

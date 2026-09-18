@@ -35,6 +35,15 @@ export interface UsdaFoodDetails {
   servingSizeUnit?: string;
   householdServingFullText?: string;
   foodNutrients?: UsdaDetailsNutrient[];
+  foodPortions?: UsdaFoodPortion[];
+}
+
+export interface UsdaFoodPortion {
+  amount?: number;
+  gramWeight?: number;
+  modifier?: string;
+  portionDescription?: string;
+  measureUnit?: { name?: string };
 }
 
 export interface UsdaDetailsNutrient {
