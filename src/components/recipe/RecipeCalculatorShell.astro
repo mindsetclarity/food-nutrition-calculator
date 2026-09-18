@@ -292,7 +292,7 @@ import NutritionFactsLabel from '../nutrition-label/NutritionFactsLabel.astro';
       parsedIngredients = data.parsed.items.map((item) => ({ ...item, resolvedFood: null, resolving: true, resolutionError: null, calculated: null }));
       
       if (data.provider === 'basic' || data.provider === 'mock') {
-        providerNotice.textContent = 'MOCK PARSER';
+        providerNotice.textContent = 'BASIC PARSER';
         providerNotice.classList.remove('hidden');
       } else {
         providerNotice.classList.add('hidden');
