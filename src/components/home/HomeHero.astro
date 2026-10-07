@@ -64,7 +64,7 @@ import { siteConfig } from '../../lib/seo/siteConfig';
       
       <!-- Product Preview (Right) -->
       <div class="w-full lg:w-1/2 motion-scale-in motion-delay-300 relative lg:pl-10">
-        <div class="hidden lg:flex justify-end mb-5">
+        <div class="hidden lg:flex justify-end mb-10">
             <a href={siteConfig.playStoreUrl} target="_blank" rel="noopener" aria-label="Get it on Google Play" class="inline-flex items-center gap-3 px-5 py-2.5 rounded-xl bg-ink-navy text-white border border-white/20 shadow-ink hover:shadow-premium hover:-translate-y-px transition focus-ring">
             <svg class="w-7 h-7 shrink-0" viewBox="0 0 24 24" aria-hidden="true"><path fill="#00d2ff" d="M3.6 1.6c-.3.3-.5.8-.5 1.4v18c0 .6.2 1.1.5 1.4l.1.1L13.8 12v-.2z"/><path fill="#ffce00" d="M17.2 15.4 13.8 12v-.2l3.4-3.4.1.1 4 2.3c1.1.6 1.1 1.7 0 2.4l-4 2.3z"/><path fill="#f43d4f" d="m17.3 15.3-3.5-3.5L3.6 22c.4.4 1 .4 1.7.1z"/><path fill="#00f076" d="M17.3 8.3 5.3 1.9C4.6 1.5 4 1.6 3.6 2l10.2 10z"/></svg>
             <span class="flex flex-col text-left leading-tight">
@@ -73,6 +73,7 @@ import { siteConfig } from '../../lib/seo/siteConfig';
             </span>
           </a>
         </div>
+        <div class="relative">
         <HomeNutritionPreview />
         
         <!-- Floating decorative elements -->
@@ -81,6 +82,7 @@ import { siteConfig } from '../../lib/seo/siteConfig';
         </div>
         <div class="absolute -bottom-8 -left-4 motion-float hidden lg:block" style="animation-delay: -5s;">
           <FoodChip icon="🍲" label="lentils" class="shadow-ink bg-white/90 backdrop-blur-md" />
+        </div>
         </div>
       </div>
       
