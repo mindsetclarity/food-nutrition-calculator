@@ -1,5 +1,6 @@
 ---
 import FoodChip from '../ui/FoodChip.astro';
+import { siteConfig } from '../../lib/seo/siteConfig';
 ---
 
 <section class="final-cta py-32 bg-ink-navy border-t border-deep-slate">
@@ -42,6 +43,9 @@ import FoodChip from '../ui/FoodChip.astro';
       </a>
       <a href="/foods" class="final-cta__button btn-tertiary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-ink-navy">
         Browse Foods
+      </a>
+      <a href={siteConfig.playStoreUrl} target="_blank" rel="noopener" class="final-cta__button btn-tertiary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-ink-navy">
+        Get the Android App
       </a>
     </div>
   </div>
