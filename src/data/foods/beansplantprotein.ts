@@ -561,5 +561,547 @@ export const beansplantproteinFoods: FoodItem[] = [
       "fdcId": 175188,
       "dataType": "SR Legacy"
     }
+  },
+  {
+    "id": "usda_2707382",
+    "slug": "kidney-beans-canned",
+    "name": "Kidney Beans (Canned)",
+    "searchName": "kidney beans (canned)",
+    "displayName": "Kidney Beans (Canned)",
+    "aliases": [
+      "kidney beans (canned)",
+      "kidney beans, from canned, fat added"
+    ],
+    "category": "Beans & Plant Protein",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 185,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 186,
+      "protein": 8.37,
+      "carbohydrates": 23.8,
+      "fat": 6.82,
+      "fiber": 7.7,
+      "sugar": 2.97,
+      "sodium": 299,
+      "saturatedFat": 1.03,
+      "cholesterol": 0,
+      "potassium": 417
+    },
+    "tags": [
+      "beans-plant-protein"
+    ],
+    "compareGroup": "Beans & Plant Protein",
+    "usda": {
+      "fdcId": 2707382,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_173796",
+    "slug": "pinto-beans-cooked",
+    "name": "Pinto Beans (Cooked)",
+    "searchName": "pinto beans (cooked)",
+    "displayName": "Pinto Beans (Cooked)",
+    "aliases": [
+      "pinto beans (cooked)",
+      "beans, pinto, mature seeds, cooked, boiled, with salt"
+    ],
+    "category": "Beans & Plant Protein",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 171,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 143,
+      "protein": 9.01,
+      "carbohydrates": 26.22,
+      "fat": 0.65,
+      "fiber": 9,
+      "sugar": 0.34,
+      "sodium": 238,
+      "saturatedFat": 0.11,
+      "cholesterol": 0,
+      "potassium": 436
+    },
+    "tags": [
+      "beans-plant-protein"
+    ],
+    "compareGroup": "Beans & Plant Protein",
+    "usda": {
+      "fdcId": 173796,
+      "dataType": "SR Legacy"
+    }
+  },
+  {
+    "id": "usda_173794",
+    "slug": "navy-beans-cooked",
+    "name": "Navy Beans (Cooked)",
+    "searchName": "navy beans (cooked)",
+    "displayName": "Navy Beans (Cooked)",
+    "aliases": [
+      "navy beans (cooked)",
+      "beans, navy, mature seeds, cooked, boiled, with salt"
+    ],
+    "category": "Beans & Plant Protein",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 182,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 140,
+      "protein": 8.23,
+      "carbohydrates": 26.05,
+      "fat": 0.62,
+      "fiber": 10.5,
+      "sugar": 0.37,
+      "sodium": 237,
+      "saturatedFat": 0.03,
+      "cholesterol": 0,
+      "potassium": 389
+    },
+    "tags": [
+      "beans-plant-protein"
+    ],
+    "compareGroup": "Beans & Plant Protein",
+    "usda": {
+      "fdcId": 173794,
+      "dataType": "SR Legacy"
+    }
+  },
+  {
+    "id": "usda_2707436",
+    "slug": "edamame",
+    "name": "Edamame",
+    "searchName": "edamame",
+    "displayName": "Edamame",
+    "aliases": [
+      "edamame",
+      "edamame, cooked"
+    ],
+    "category": "Beans & Plant Protein",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 160,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "pod",
+        "label": "1 pod, yields",
+        "grams": 2
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 140,
+      "protein": 11.5,
+      "carbohydrates": 8.63,
+      "fat": 7.58,
+      "fiber": 5,
+      "sugar": 2.12,
+      "sodium": 127,
+      "saturatedFat": 1.27,
+      "cholesterol": 2,
+      "potassium": 422
+    },
+    "tags": [
+      "beans-plant-protein"
+    ],
+    "compareGroup": "Beans & Plant Protein",
+    "usda": {
+      "fdcId": 2707436,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_174272",
+    "slug": "tempeh",
+    "name": "Tempeh",
+    "searchName": "tempeh",
+    "displayName": "Tempeh",
+    "aliases": [
+      "tempeh"
+    ],
+    "category": "Beans & Plant Protein",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 166,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 192,
+      "protein": 20.29,
+      "carbohydrates": 7.64,
+      "fat": 10.8,
+      "fiber": null,
+      "sugar": null,
+      "sodium": 9,
+      "saturatedFat": 2.54,
+      "cholesterol": 0,
+      "potassium": 412
+    },
+    "tags": [
+      "beans-plant-protein"
+    ],
+    "compareGroup": "Beans & Plant Protein",
+    "usda": {
+      "fdcId": 174272,
+      "dataType": "SR Legacy"
+    }
+  },
+  {
+    "id": "usda_2707402",
+    "slug": "hummus",
+    "name": "Hummus",
+    "searchName": "hummus",
+    "displayName": "Hummus",
+    "aliases": [
+      "hummus",
+      "hummus, plain"
+    ],
+    "category": "Beans & Plant Protein",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "individual",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "individual",
+        "label": "1 individual container",
+        "grams": 70,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "tbsp",
+        "label": "1 tablespoon",
+        "grams": 15
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 243,
+      "protein": 7.35,
+      "carbohydrates": 14.9,
+      "fat": 17.1,
+      "fiber": 5.4,
+      "sugar": 0.34,
+      "sodium": 438,
+      "saturatedFat": 2.22,
+      "cholesterol": 0,
+      "potassium": 289
+    },
+    "tags": [
+      "beans-plant-protein"
+    ],
+    "compareGroup": "Beans & Plant Protein",
+    "usda": {
+      "fdcId": 2707402,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707396",
+    "slug": "refried-beans",
+    "name": "Refried Beans",
+    "searchName": "refried beans",
+    "displayName": "Refried Beans",
+    "aliases": [
+      "refried beans"
+    ],
+    "category": "Beans & Plant Protein",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 260,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 90,
+      "protein": 4.98,
+      "carbohydrates": 13.6,
+      "fat": 2.01,
+      "fiber": 3.7,
+      "sugar": 0.54,
+      "sodium": 370,
+      "saturatedFat": 0.63,
+      "cholesterol": 0,
+      "potassium": 319
+    },
+    "tags": [
+      "beans-plant-protein"
+    ],
+    "compareGroup": "Beans & Plant Protein",
+    "usda": {
+      "fdcId": 2707396,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707413",
+    "slug": "black-eyed-peas-cooked",
+    "name": "Black-Eyed Peas (Cooked)",
+    "searchName": "black-eyed peas (cooked)",
+    "displayName": "Black-Eyed Peas (Cooked)",
+    "aliases": [
+      "black-eyed peas (cooked)",
+      "blackeyed peas, from dried"
+    ],
+    "category": "Beans & Plant Protein",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 185,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "oz",
+        "label": "1 oz dry, yield after cooking",
+        "grams": 72
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 166,
+      "protein": 7.18,
+      "carbohydrates": 19.3,
+      "fat": 7,
+      "fiber": 6,
+      "sugar": 3.07,
+      "sodium": 220,
+      "saturatedFat": 1,
+      "cholesterol": 0,
+      "potassium": 258
+    },
+    "tags": [
+      "beans-plant-protein"
+    ],
+    "compareGroup": "Beans & Plant Protein",
+    "usda": {
+      "fdcId": 2707413,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_175257",
+    "slug": "split-peas-cooked",
+    "name": "Split Peas (Cooked)",
+    "searchName": "split peas (cooked)",
+    "displayName": "Split Peas (Cooked)",
+    "aliases": [
+      "split peas (cooked)",
+      "peas, split, mature seeds, cooked, boiled, with salt"
+    ],
+    "category": "Beans & Plant Protein",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 196,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 116,
+      "protein": 8.34,
+      "carbohydrates": 20.51,
+      "fat": 0.39,
+      "fiber": 8.3,
+      "sugar": 2.9,
+      "sodium": 238,
+      "saturatedFat": 0.05,
+      "cholesterol": 0,
+      "potassium": 362
+    },
+    "tags": [
+      "beans-plant-protein"
+    ],
+    "compareGroup": "Beans & Plant Protein",
+    "usda": {
+      "fdcId": 175257,
+      "dataType": "SR Legacy"
+    }
+  },
+  {
+    "id": "usda_2707473",
+    "slug": "veggie-burger",
+    "name": "Veggie Burger",
+    "searchName": "veggie burger",
+    "displayName": "Veggie Burger",
+    "aliases": [
+      "veggie burger",
+      "veggie burger patty, no bun"
+    ],
+    "category": "Beans & Plant Protein",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "patty",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "patty",
+        "label": "1 patty",
+        "grams": 100,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 125
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 177,
+      "protein": 15.7,
+      "carbohydrates": 14.3,
+      "fat": 6.3,
+      "fiber": 4.9,
+      "sugar": 1.07,
+      "sodium": 569,
+      "saturatedFat": 1.44,
+      "cholesterol": 5,
+      "potassium": 333
+    },
+    "tags": [
+      "beans-plant-protein"
+    ],
+    "compareGroup": "Beans & Plant Protein",
+    "usda": {
+      "fdcId": 2707473,
+      "dataType": "Survey (FNDDS)"
+    }
   }
 ];

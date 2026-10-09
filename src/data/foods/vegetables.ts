@@ -1665,5 +1665,1537 @@ export const vegetablesFoods: FoodItem[] = [
       "fdcId": 168469,
       "dataType": "SR Legacy"
     }
+  },
+  {
+    "id": "usda_169247",
+    "slug": "romaine-lettuce",
+    "name": "Romaine Lettuce",
+    "searchName": "romaine lettuce",
+    "displayName": "Romaine Lettuce",
+    "aliases": [
+      "romaine lettuce",
+      "lettuce, cos or romaine, raw"
+    ],
+    "category": "Vegetables",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup shredded",
+        "grams": 47,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "leaf",
+        "label": "1 leaf inner",
+        "grams": 6
+      },
+      {
+        "id": "serve_3",
+        "unit": "head",
+        "label": "1 head",
+        "grams": 626
+      },
+      {
+        "id": "serve_4",
+        "unit": "serving",
+        "label": "1 serving",
+        "grams": 85
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 17,
+      "protein": 1.23,
+      "carbohydrates": 3.29,
+      "fat": 0.3,
+      "fiber": 2.1,
+      "sugar": 1.19,
+      "sodium": 8,
+      "saturatedFat": 0.04,
+      "cholesterol": 0,
+      "potassium": 247
+    },
+    "tags": [
+      "vegetables"
+    ],
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 169247,
+      "dataType": "SR Legacy"
+    }
+  },
+  {
+    "id": "usda_169248",
+    "slug": "iceberg-lettuce",
+    "name": "Iceberg Lettuce",
+    "searchName": "iceberg lettuce",
+    "displayName": "Iceberg Lettuce",
+    "aliases": [
+      "iceberg lettuce",
+      "lettuce, iceberg (includes crisphead types), raw"
+    ],
+    "category": "Vegetables",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup, chopped",
+        "grams": 57,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "head",
+        "label": "1 head, large",
+        "grams": 755
+      },
+      {
+        "id": "serve_3",
+        "unit": "leaf",
+        "label": "1 leaf, large",
+        "grams": 15
+      },
+      {
+        "id": "serve_4",
+        "unit": "serving",
+        "label": "1 serving",
+        "grams": 89
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 14,
+      "protein": 0.9,
+      "carbohydrates": 2.97,
+      "fat": 0.14,
+      "fiber": 1.2,
+      "sugar": 1.97,
+      "sodium": 10,
+      "saturatedFat": 0.02,
+      "cholesterol": 0,
+      "potassium": 141
+    },
+    "tags": [
+      "vegetables"
+    ],
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 169248,
+      "dataType": "SR Legacy"
+    }
+  },
+  {
+    "id": "usda_2709599",
+    "slug": "kale",
+    "name": "Kale",
+    "searchName": "kale",
+    "displayName": "Kale",
+    "aliases": [
+      "kale",
+      "kale, raw"
+    ],
+    "category": "Vegetables",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 25,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "baby",
+        "label": "1 baby leaf",
+        "grams": 1
+      },
+      {
+        "id": "serve_3",
+        "unit": "leaf",
+        "label": "1 leaf",
+        "grams": 10
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 43,
+      "protein": 2.92,
+      "carbohydrates": 4.42,
+      "fat": 1.49,
+      "fiber": 4.1,
+      "sugar": 0.8,
+      "sodium": 53,
+      "saturatedFat": 0.18,
+      "cholesterol": 0,
+      "potassium": 348
+    },
+    "tags": [
+      "vegetables"
+    ],
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 2709599,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2709773",
+    "slug": "cabbage",
+    "name": "Cabbage",
+    "searchName": "cabbage",
+    "displayName": "Cabbage",
+    "aliases": [
+      "cabbage",
+      "cabbage, green, raw"
+    ],
+    "category": "Vegetables",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 90,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "head",
+        "label": "1 head",
+        "grams": 900
+      },
+      {
+        "id": "serve_3",
+        "unit": "leaf",
+        "label": "1 leaf",
+        "grams": 25
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 31,
+      "protein": 0.96,
+      "carbohydrates": 6.38,
+      "fat": 0.23,
+      "fiber": 2.5,
+      "sugar": 3.2,
+      "sodium": 16,
+      "saturatedFat": 0.03,
+      "cholesterol": 0,
+      "potassium": 207
+    },
+    "tags": [
+      "vegetables"
+    ],
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 2709773,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2709777",
+    "slug": "cauliflower",
+    "name": "Cauliflower",
+    "searchName": "cauliflower",
+    "displayName": "Cauliflower",
+    "aliases": [
+      "cauliflower",
+      "cauliflower, raw"
+    ],
+    "category": "Vegetables",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 110,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "floweret",
+        "label": "1 floweret",
+        "grams": 13
+      },
+      {
+        "id": "serve_3",
+        "unit": "piece",
+        "label": "1 piece",
+        "grams": 13
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 25,
+      "protein": 1.92,
+      "carbohydrates": 4.97,
+      "fat": 0.28,
+      "fiber": 2,
+      "sugar": 1.91,
+      "sodium": 30,
+      "saturatedFat": 0.13,
+      "cholesterol": 0,
+      "potassium": 299
+    },
+    "tags": [
+      "vegetables"
+    ],
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 2709777,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2709883",
+    "slug": "brussels-sprouts",
+    "name": "Brussels Sprouts",
+    "searchName": "brussels sprouts",
+    "displayName": "Brussels Sprouts",
+    "aliases": [
+      "brussels sprouts",
+      "brussels sprouts, ns as to form, cooked"
+    ],
+    "category": "Vegetables",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 160,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "sprout",
+        "label": "1 sprout",
+        "grams": 20
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 67,
+      "protein": 3.42,
+      "carbohydrates": 9.03,
+      "fat": 2.96,
+      "fiber": 3.8,
+      "sugar": 2.22,
+      "sodium": 151,
+      "saturatedFat": 0.76,
+      "cholesterol": 2,
+      "potassium": 393
+    },
+    "tags": [
+      "vegetables"
+    ],
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 2709883,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2709837",
+    "slug": "asparagus",
+    "name": "Asparagus",
+    "searchName": "asparagus",
+    "displayName": "Asparagus",
+    "aliases": [
+      "asparagus",
+      "asparagus, ns as to form, cooked"
+    ],
+    "category": "Vegetables",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 185,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "piece",
+        "label": "1 piece",
+        "grams": 4
+      },
+      {
+        "id": "serve_3",
+        "unit": "spear",
+        "label": "1 spear",
+        "grams": 16
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 45,
+      "protein": 2.3,
+      "carbohydrates": 4.04,
+      "fat": 2.86,
+      "fiber": 2.2,
+      "sugar": 1.96,
+      "sodium": 132,
+      "saturatedFat": 0.76,
+      "cholesterol": 2,
+      "potassium": 211
+    },
+    "tags": [
+      "vegetables"
+    ],
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 2709837,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2709852",
+    "slug": "green-beans",
+    "name": "Green Beans",
+    "searchName": "green beans",
+    "displayName": "Green Beans",
+    "aliases": [
+      "green beans",
+      "green beans, fresh, cooked, no added fat"
+    ],
+    "category": "Vegetables",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 140,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "bean",
+        "label": "1 bean",
+        "grams": 6
+      },
+      {
+        "id": "serve_3",
+        "unit": "cut",
+        "label": "1 cut piece",
+        "grams": 2
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 42,
+      "protein": 2.05,
+      "carbohydrates": 7.7,
+      "fat": 0.29,
+      "fiber": 3.1,
+      "sugar": 2.42,
+      "sodium": 121,
+      "saturatedFat": 0.05,
+      "cholesterol": 0,
+      "potassium": 301
+    },
+    "tags": [
+      "vegetables"
+    ],
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 2709852,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2709962",
+    "slug": "green-peas",
+    "name": "Green Peas",
+    "searchName": "green peas",
+    "displayName": "Green Peas",
+    "aliases": [
+      "green peas",
+      "green peas, ns as to form, cooked"
+    ],
+    "category": "Vegetables",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 165,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 98,
+      "protein": 4.99,
+      "carbohydrates": 13.8,
+      "fat": 2.81,
+      "fiber": 4.4,
+      "sugar": 4.26,
+      "sodium": 191,
+      "saturatedFat": 0.71,
+      "cholesterol": 2,
+      "potassium": 107
+    },
+    "tags": [
+      "vegetables"
+    ],
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 2709962,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_168525",
+    "slug": "sweet-corn",
+    "name": "Sweet Corn",
+    "searchName": "sweet corn",
+    "displayName": "Sweet Corn",
+    "aliases": [
+      "sweet corn",
+      "corn, sweet, yellow, cooked, boiled, drained, with salt"
+    ],
+    "category": "Vegetables",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 149,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "ear",
+        "label": "1 ear small",
+        "grams": 89
+      },
+      {
+        "id": "serve_3",
+        "unit": "baby",
+        "label": "1 baby ear",
+        "grams": 8
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 96,
+      "protein": 3.41,
+      "carbohydrates": 20.98,
+      "fat": 1.5,
+      "fiber": 2.4,
+      "sugar": 4.54,
+      "sodium": 253,
+      "saturatedFat": 0.2,
+      "cholesterol": 0,
+      "potassium": 218
+    },
+    "tags": [
+      "vegetables"
+    ],
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 168525,
+      "dataType": "SR Legacy"
+    }
+  },
+  {
+    "id": "usda_2709793",
+    "slug": "mushrooms",
+    "name": "Mushrooms",
+    "searchName": "mushrooms",
+    "displayName": "Mushrooms",
+    "aliases": [
+      "mushrooms",
+      "mushrooms, raw"
+    ],
+    "category": "Vegetables",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 whole",
+        "grams": 18,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "piece/slice",
+        "label": "1 piece/slice",
+        "grams": 6
+      },
+      {
+        "id": "serve_3",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 70
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 31,
+      "protein": 2.9,
+      "carbohydrates": 4.13,
+      "fat": 0.35,
+      "fiber": 1.7,
+      "sugar": 1.98,
+      "sodium": 6,
+      "saturatedFat": 0.05,
+      "cholesterol": 0,
+      "potassium": 371
+    },
+    "tags": [
+      "vegetables"
+    ],
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 2709793,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2709778",
+    "slug": "celery",
+    "name": "Celery",
+    "searchName": "celery",
+    "displayName": "Celery",
+    "aliases": [
+      "celery",
+      "celery, raw"
+    ],
+    "category": "Vegetables",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "stalk",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "stalk",
+        "label": "1 stalk",
+        "grams": 40,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "stick",
+        "label": "1 stick",
+        "grams": 4
+      },
+      {
+        "id": "serve_3",
+        "unit": "piece",
+        "label": "1 piece",
+        "grams": 4
+      },
+      {
+        "id": "serve_4",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 120
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 17,
+      "protein": 0.49,
+      "carbohydrates": 3.32,
+      "fat": 0.16,
+      "fiber": 1.6,
+      "sugar": 1.34,
+      "sodium": 97,
+      "saturatedFat": 0.04,
+      "cholesterol": 0,
+      "potassium": 265
+    },
+    "tags": [
+      "vegetables"
+    ],
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 2709778,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2709930",
+    "slug": "eggplant",
+    "name": "Eggplant",
+    "searchName": "eggplant",
+    "displayName": "Eggplant",
+    "aliases": [
+      "eggplant",
+      "eggplant, cooked, fat added"
+    ],
+    "category": "Vegetables",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 100,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "slice",
+        "label": "1 slice",
+        "grams": 55
+      },
+      {
+        "id": "serve_3",
+        "unit": "piece",
+        "label": "1 whole",
+        "grams": 565
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 51,
+      "protein": 1.03,
+      "carbohydrates": 6.13,
+      "fat": 2.92,
+      "fiber": 3.1,
+      "sugar": 3.68,
+      "sodium": 132,
+      "saturatedFat": 0.75,
+      "cholesterol": 2,
+      "potassium": 239
+    },
+    "tags": [
+      "vegetables"
+    ],
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 2709930,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2709874",
+    "slug": "beets",
+    "name": "Beets",
+    "searchName": "beets",
+    "displayName": "Beets",
+    "aliases": [
+      "beets",
+      "beets, ns as to form, cooked"
+    ],
+    "category": "Vegetables",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 whole",
+        "grams": 52,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 175
+      },
+      {
+        "id": "serve_3",
+        "unit": "slice",
+        "label": "1 slice",
+        "grams": 10
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 53,
+      "protein": 0.89,
+      "carbohydrates": 7,
+      "fat": 2.69,
+      "fiber": 1.7,
+      "sugar": 5.36,
+      "sodium": 197,
+      "saturatedFat": 0.69,
+      "cholesterol": 2,
+      "potassium": 144
+    },
+    "tags": [
+      "vegetables"
+    ],
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 2709874,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2709786",
+    "slug": "garlic",
+    "name": "Garlic",
+    "searchName": "garlic",
+    "displayName": "Garlic",
+    "aliases": [
+      "garlic",
+      "garlic, raw"
+    ],
+    "category": "Vegetables",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "clove",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "clove",
+        "label": "1 clove",
+        "grams": 3,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 135
+      },
+      {
+        "id": "serve_3",
+        "unit": "tsp",
+        "label": "1 teaspoon",
+        "grams": 5
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 143,
+      "protein": 6.62,
+      "carbohydrates": 28.2,
+      "fat": 0.38,
+      "fiber": 2.7,
+      "sugar": 1,
+      "sodium": 17,
+      "saturatedFat": 0.09,
+      "cholesterol": 0,
+      "potassium": 401
+    },
+    "tags": [
+      "vegetables"
+    ],
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 2709786,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_170130",
+    "slug": "butternut-squash",
+    "name": "Butternut Squash",
+    "searchName": "butternut squash",
+    "displayName": "Butternut Squash",
+    "aliases": [
+      "butternut squash",
+      "squash, winter, butternut, cooked, baked, with salt"
+    ],
+    "category": "Vegetables",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup, cubes",
+        "grams": 205,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 40,
+      "protein": 0.9,
+      "carbohydrates": 10.49,
+      "fat": 0.09,
+      "fiber": 3.2,
+      "sugar": 1.97,
+      "sodium": 240,
+      "saturatedFat": 0.02,
+      "cholesterol": 0,
+      "potassium": 284
+    },
+    "tags": [
+      "vegetables"
+    ],
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 170130,
+      "dataType": "SR Legacy"
+    }
+  },
+  {
+    "id": "usda_2709815",
+    "slug": "coleslaw",
+    "name": "Coleslaw",
+    "searchName": "coleslaw",
+    "displayName": "Coleslaw",
+    "aliases": [
+      "coleslaw"
+    ],
+    "category": "Vegetables",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 220,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "single",
+        "label": "1 single serving container",
+        "grams": 150
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 117,
+      "protein": 0.94,
+      "carbohydrates": 10.4,
+      "fat": 7.98,
+      "fiber": 1.9,
+      "sugar": 7.44,
+      "sodium": 280,
+      "saturatedFat": 1.23,
+      "cholesterol": 9,
+      "potassium": 172
+    },
+    "tags": [
+      "vegetables"
+    ],
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 2709815,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2709496",
+    "slug": "mashed-potatoes",
+    "name": "Mashed Potatoes",
+    "searchName": "mashed potatoes",
+    "displayName": "Mashed Potatoes",
+    "aliases": [
+      "mashed potatoes",
+      "potato, mashed, from fresh, made with milk"
+    ],
+    "category": "Vegetables",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 250,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 114,
+      "protein": 2.15,
+      "carbohydrates": 17.6,
+      "fat": 4.07,
+      "fiber": 1.2,
+      "sugar": 2.13,
+      "sodium": 210,
+      "saturatedFat": 2.15,
+      "cholesterol": 10,
+      "potassium": 330
+    },
+    "tags": [
+      "vegetables"
+    ],
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 2709496,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2709524",
+    "slug": "baked-potato",
+    "name": "Baked Potato",
+    "searchName": "baked potato",
+    "displayName": "Baked Potato",
+    "aliases": [
+      "baked potato",
+      "potato, baked, peel eaten"
+    ],
+    "category": "Vegetables",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 130,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "piece",
+        "label": "1 medium",
+        "grams": 285
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 93,
+      "protein": 2.49,
+      "carbohydrates": 21,
+      "fat": 0.13,
+      "fiber": 2.2,
+      "sugar": 1.18,
+      "sodium": 186,
+      "saturatedFat": 0.03,
+      "cholesterol": 0,
+      "potassium": 533
+    },
+    "tags": [
+      "vegetables"
+    ],
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 2709524,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2709483",
+    "slug": "hash-browns",
+    "name": "Hash Browns",
+    "searchName": "hash browns",
+    "displayName": "Hash Browns",
+    "aliases": [
+      "hash browns",
+      "potato, hash brown, from fresh"
+    ],
+    "category": "Vegetables",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 160,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 190,
+      "protein": 1.94,
+      "carbohydrates": 18.6,
+      "fat": 12.3,
+      "fiber": 1.6,
+      "sugar": 1.25,
+      "sodium": 343,
+      "saturatedFat": 1.65,
+      "cholesterol": 0,
+      "potassium": 403
+    },
+    "tags": [
+      "vegetables"
+    ],
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 2709483,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707390",
+    "slug": "baked-beans",
+    "name": "Baked Beans",
+    "searchName": "baked beans",
+    "displayName": "Baked Beans",
+    "aliases": [
+      "baked beans"
+    ],
+    "category": "Vegetables",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 260,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 105,
+      "protein": 4.52,
+      "carbohydrates": 21.6,
+      "fat": 0.89,
+      "fiber": 4.4,
+      "sugar": 8.23,
+      "sodium": 391,
+      "saturatedFat": 0.23,
+      "cholesterol": 7,
+      "potassium": 231
+    },
+    "tags": [
+      "vegetables"
+    ],
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 2707390,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2709823",
+    "slug": "garden-salad",
+    "name": "Garden Salad",
+    "searchName": "garden salad",
+    "displayName": "Garden Salad",
+    "aliases": [
+      "garden salad",
+      "lettuce, salad with assorted vegetables excluding tomatoes and carrots, no dressing"
+    ],
+    "category": "Vegetables",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 74,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 23,
+      "protein": 1.19,
+      "carbohydrates": 4.09,
+      "fat": 0.19,
+      "fiber": 1.3,
+      "sugar": 1.55,
+      "sodium": 34,
+      "saturatedFat": 0.04,
+      "cholesterol": 0,
+      "potassium": 273
+    },
+    "tags": [
+      "vegetables"
+    ],
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 2709823,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2709801",
+    "slug": "red-bell-pepper",
+    "name": "Red Bell Pepper",
+    "searchName": "red bell pepper",
+    "displayName": "Red Bell Pepper",
+    "aliases": [
+      "red bell pepper",
+      "peppers, sweet, red, raw"
+    ],
+    "category": "Vegetables",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 150,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "regular",
+        "label": "1 regular",
+        "grams": 120
+      },
+      {
+        "id": "serve_3",
+        "unit": "ring",
+        "label": "1 ring",
+        "grams": 10
+      },
+      {
+        "id": "serve_4",
+        "unit": "piece",
+        "label": "1 piece",
+        "grams": 10
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 31,
+      "protein": 0.9,
+      "carbohydrates": 6.65,
+      "fat": 0.13,
+      "fiber": 1.2,
+      "sugar": 4.2,
+      "sodium": 0,
+      "saturatedFat": 0.06,
+      "cholesterol": 0,
+      "potassium": 213
+    },
+    "tags": [
+      "vegetables"
+    ],
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 2709801,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_170005",
+    "slug": "spring-onions",
+    "name": "Spring Onions",
+    "searchName": "spring onions",
+    "displayName": "Spring Onions",
+    "aliases": [
+      "spring onions",
+      "onions, spring or scallions (includes tops and bulb), raw"
+    ],
+    "category": "Vegetables",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 medium",
+        "grams": 15,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "tbsp",
+        "label": "1 tbsp chopped",
+        "grams": 6
+      },
+      {
+        "id": "serve_3",
+        "unit": "cup",
+        "label": "1 cup, chopped",
+        "grams": 100
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 32,
+      "protein": 1.83,
+      "carbohydrates": 7.34,
+      "fat": 0.19,
+      "fiber": 2.6,
+      "sugar": 2.33,
+      "sodium": 16,
+      "saturatedFat": 0.03,
+      "cholesterol": 0,
+      "potassium": 276
+    },
+    "tags": [
+      "vegetables"
+    ],
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 170005,
+      "dataType": "SR Legacy"
+    }
+  },
+  {
+    "id": "usda_169276",
+    "slug": "radish",
+    "name": "Radish",
+    "searchName": "radish",
+    "displayName": "Radish",
+    "aliases": [
+      "radish",
+      "radishes, raw"
+    ],
+    "category": "Vegetables",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 medium",
+        "grams": 4.5,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cup",
+        "label": "1 cup slices",
+        "grams": 116
+      },
+      {
+        "id": "serve_3",
+        "unit": "slice",
+        "label": "1 slice",
+        "grams": 1
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 16,
+      "protein": 0.68,
+      "carbohydrates": 3.4,
+      "fat": 0.1,
+      "fiber": 1.6,
+      "sugar": 1.86,
+      "sodium": 39,
+      "saturatedFat": 0.03,
+      "cholesterol": 0,
+      "potassium": 233
+    },
+    "tags": [
+      "vegetables"
+    ],
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 169276,
+      "dataType": "SR Legacy"
+    }
   }
 ];

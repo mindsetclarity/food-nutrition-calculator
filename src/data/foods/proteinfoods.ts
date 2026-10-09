@@ -1519,5 +1519,1555 @@ export const proteinfoodsFoods: FoodItem[] = [
       "fdcId": 2706363,
       "dataType": "Survey (FNDDS)"
     }
+  },
+  {
+    "id": "usda_2705890",
+    "slug": "bacon",
+    "name": "Bacon",
+    "searchName": "bacon",
+    "displayName": "Bacon",
+    "aliases": [
+      "bacon",
+      "bacon or side pork, fresh, cooked"
+    ],
+    "category": "Protein Foods",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 medium slice",
+        "grams": 8,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "oz",
+        "label": "1 oz, raw",
+        "grams": 8
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 468,
+      "protein": 33.9,
+      "carbohydrates": 1.7,
+      "fat": 35.1,
+      "fiber": 0,
+      "sugar": 0,
+      "sodium": 1680,
+      "saturatedFat": 12,
+      "cholesterol": 99,
+      "potassium": 499
+    },
+    "tags": [
+      "protein-foods"
+    ],
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 2705890,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2706215",
+    "slug": "deli-turkey",
+    "name": "Deli Turkey",
+    "searchName": "deli turkey",
+    "displayName": "Deli Turkey",
+    "aliases": [
+      "deli turkey",
+      "turkey, prepackaged or deli, luncheon meat"
+    ],
+    "category": "Protein Foods",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "slice",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "slice",
+        "label": "1 slice",
+        "grams": 28,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cup",
+        "label": "1 cup, pieces",
+        "grams": 140
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 106,
+      "protein": 14.8,
+      "carbohydrates": 2.2,
+      "fat": 3.77,
+      "fiber": 0,
+      "sugar": 0.91,
+      "sodium": 810,
+      "saturatedFat": 0.91,
+      "cholesterol": 49,
+      "potassium": 371
+    },
+    "tags": [
+      "protein-foods"
+    ],
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 2706215,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_173864",
+    "slug": "ham",
+    "name": "Ham",
+    "searchName": "ham",
+    "displayName": "Ham",
+    "aliases": [
+      "ham",
+      "ham, sliced, regular (approximately 11% fat)"
+    ],
+    "category": "Protein Foods",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "slice",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "slice",
+        "label": "1 slice",
+        "grams": 28,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "1 grams 1 serving",
+        "grams": 1
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 164,
+      "protein": 16.6,
+      "carbohydrates": 3.63,
+      "fat": 8.8,
+      "fiber": 1.3,
+      "sugar": 1,
+      "sodium": 814,
+      "saturatedFat": 0.5,
+      "cholesterol": 57,
+      "potassium": 287
+    },
+    "tags": [
+      "protein-foods"
+    ],
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 173864,
+      "dataType": "SR Legacy"
+    }
+  },
+  {
+    "id": "usda_2706191",
+    "slug": "pork-sausage",
+    "name": "Pork Sausage",
+    "searchName": "pork sausage",
+    "displayName": "Pork Sausage",
+    "aliases": [
+      "pork sausage"
+    ],
+    "category": "Protein Foods",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "half",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "half",
+        "label": "1 half smoke sausage",
+        "grams": 112,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "patty",
+        "label": "1 patty",
+        "grams": 35
+      },
+      {
+        "id": "serve_3",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 138
+      },
+      {
+        "id": "serve_4",
+        "unit": "oz",
+        "label": "1 oz, cooked",
+        "grams": 28.4
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 325,
+      "protein": 18.5,
+      "carbohydrates": 1.42,
+      "fat": 27.2,
+      "fiber": 0,
+      "sugar": 1.09,
+      "sodium": 814,
+      "saturatedFat": 8.83,
+      "cholesterol": 86,
+      "potassium": 342
+    },
+    "tags": [
+      "protein-foods"
+    ],
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 2706191,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_174614",
+    "slug": "hot-dog-frankfurter",
+    "name": "Hot Dog (Frankfurter)",
+    "searchName": "hot dog (frankfurter)",
+    "displayName": "Hot Dog (Frankfurter)",
+    "aliases": [
+      "hot dog (frankfurter)",
+      "frankfurter, beef, heated"
+    ],
+    "category": "Protein Foods",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 frankfurter",
+        "grams": 48,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "package",
+        "label": "1 package",
+        "grams": 451
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 322,
+      "protein": 11.69,
+      "carbohydrates": 2.66,
+      "fat": 29.36,
+      "fiber": 0,
+      "sugar": 1.27,
+      "sodium": 852,
+      "saturatedFat": 11.59,
+      "cholesterol": 58,
+      "potassium": 252
+    },
+    "tags": [
+      "protein-foods"
+    ],
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 174614,
+      "dataType": "SR Legacy"
+    }
+  },
+  {
+    "id": "usda_2705906",
+    "slug": "lamb-chop",
+    "name": "Lamb Chop",
+    "searchName": "lamb chop",
+    "displayName": "Lamb Chop",
+    "aliases": [
+      "lamb chop",
+      "lamb, chop"
+    ],
+    "category": "Protein Foods",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "oz",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "oz",
+        "label": "3 oz",
+        "grams": 85,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "oz",
+        "label": "1 oz yields",
+        "grams": 20
+      },
+      {
+        "id": "serve_3",
+        "unit": "chop",
+        "label": "1 chop, any size",
+        "grams": 90
+      },
+      {
+        "id": "serve_4",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 135
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 264,
+      "protein": 27.4,
+      "carbohydrates": 0,
+      "fat": 16.3,
+      "fiber": 0,
+      "sugar": 0,
+      "sodium": 387,
+      "saturatedFat": 6.6,
+      "cholesterol": 97,
+      "potassium": 349
+    },
+    "tags": [
+      "protein-foods"
+    ],
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 2705906,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2706241",
+    "slug": "baked-cod",
+    "name": "Baked Cod",
+    "searchName": "baked cod",
+    "displayName": "Baked Cod",
+    "aliases": [
+      "baked cod",
+      "fish, cod, baked or broiled"
+    ],
+    "category": "Protein Foods",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 135,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "piece",
+        "label": "1 whole fish, any size",
+        "grams": 420
+      },
+      {
+        "id": "serve_3",
+        "unit": "cubic",
+        "label": "1 cubic inch",
+        "grams": 17
+      },
+      {
+        "id": "serve_4",
+        "unit": "steak",
+        "label": "1 steak",
+        "grams": 210
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 126,
+      "protein": 19,
+      "carbohydrates": 0.01,
+      "fat": 5.04,
+      "fiber": 0,
+      "sugar": 0.01,
+      "sodium": 351,
+      "saturatedFat": 1.29,
+      "cholesterol": 62,
+      "potassium": 292
+    },
+    "tags": [
+      "protein-foods"
+    ],
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 2706241,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_175177",
+    "slug": "tilapia",
+    "name": "Tilapia",
+    "searchName": "tilapia",
+    "displayName": "Tilapia",
+    "aliases": [
+      "tilapia",
+      "fish, tilapia, cooked, dry heat"
+    ],
+    "category": "Protein Foods",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "fillet",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "fillet",
+        "label": "1 fillet",
+        "grams": 87,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 128,
+      "protein": 26.15,
+      "carbohydrates": 0,
+      "fat": 2.65,
+      "fiber": 0,
+      "sugar": 0,
+      "sodium": 56,
+      "saturatedFat": 0.94,
+      "cholesterol": 57,
+      "potassium": 380
+    },
+    "tags": [
+      "protein-foods"
+    ],
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 175177,
+      "dataType": "SR Legacy"
+    }
+  },
+  {
+    "id": "usda_175158",
+    "slug": "canned-tuna-in-water",
+    "name": "Canned Tuna in Water",
+    "searchName": "canned tuna in water",
+    "displayName": "Canned Tuna in Water",
+    "aliases": [
+      "canned tuna in water",
+      "fish, tuna, white, canned in water, drained solids"
+    ],
+    "category": "Protein Foods",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "can",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "can",
+        "label": "1 can",
+        "grams": 172,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "oz",
+        "label": "1 oz",
+        "grams": 28.3
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 128,
+      "protein": 23.62,
+      "carbohydrates": 0,
+      "fat": 2.97,
+      "fiber": 0,
+      "sugar": 0,
+      "sodium": 377,
+      "saturatedFat": 0.79,
+      "cholesterol": 42,
+      "potassium": 237
+    },
+    "tags": [
+      "protein-foods"
+    ],
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 175158,
+      "dataType": "SR Legacy"
+    }
+  },
+  {
+    "id": "usda_2706293",
+    "slug": "sardines",
+    "name": "Sardines",
+    "searchName": "sardines",
+    "displayName": "Sardines",
+    "aliases": [
+      "sardines",
+      "fish, sardines, canned"
+    ],
+    "category": "Protein Foods",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "standard",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "standard",
+        "label": "1 standard can",
+        "grams": 75,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cubic",
+        "label": "1 cubic inch",
+        "grams": 17
+      },
+      {
+        "id": "serve_3",
+        "unit": "sardine",
+        "label": "1 sardine",
+        "grams": 12
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 208,
+      "protein": 24.6,
+      "carbohydrates": 0,
+      "fat": 11.4,
+      "fiber": 0,
+      "sugar": 0,
+      "sodium": 307,
+      "saturatedFat": 1.53,
+      "cholesterol": 142,
+      "potassium": 397
+    },
+    "tags": [
+      "protein-foods"
+    ],
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 2706293,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2706264",
+    "slug": "mackerel",
+    "name": "Mackerel",
+    "searchName": "mackerel",
+    "displayName": "Mackerel",
+    "aliases": [
+      "mackerel",
+      "fish, mackerel, baked or broiled"
+    ],
+    "category": "Protein Foods",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 large fillet",
+        "grams": 210,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cubic",
+        "label": "1 cubic inch",
+        "grams": 17
+      },
+      {
+        "id": "serve_3",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 135
+      },
+      {
+        "id": "serve_4",
+        "unit": "steak",
+        "label": "1 steak",
+        "grams": 210
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 237,
+      "protein": 24.9,
+      "carbohydrates": 0.01,
+      "fat": 14.3,
+      "fiber": 0,
+      "sugar": 0.01,
+      "sodium": 322,
+      "saturatedFat": 3.98,
+      "cholesterol": 62,
+      "potassium": 505
+    },
+    "tags": [
+      "protein-foods"
+    ],
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 2706264,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_174205",
+    "slug": "crab",
+    "name": "Crab",
+    "searchName": "crab",
+    "displayName": "Crab",
+    "aliases": [
+      "crab",
+      "crustaceans, crab, blue, cooked, moist heat"
+    ],
+    "category": "Protein Foods",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 135,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "oz",
+        "label": "1 oz",
+        "grams": 28.4
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 83,
+      "protein": 17.88,
+      "carbohydrates": 0,
+      "fat": 0.74,
+      "fiber": 0,
+      "sugar": 0,
+      "sodium": 395,
+      "saturatedFat": 0.2,
+      "cholesterol": 97,
+      "potassium": 259
+    },
+    "tags": [
+      "protein-foods"
+    ],
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 174205,
+      "dataType": "SR Legacy"
+    }
+  },
+  {
+    "id": "usda_174209",
+    "slug": "lobster",
+    "name": "Lobster",
+    "searchName": "lobster",
+    "displayName": "Lobster",
+    "aliases": [
+      "lobster",
+      "crustaceans, lobster, northern, cooked, moist heat"
+    ],
+    "category": "Protein Foods",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 145,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "oz",
+        "label": "1 oz",
+        "grams": 28.3
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 89,
+      "protein": 19,
+      "carbohydrates": 0,
+      "fat": 0.86,
+      "fiber": 0,
+      "sugar": 0,
+      "sodium": 486,
+      "saturatedFat": 0.21,
+      "cholesterol": 146,
+      "potassium": 230
+    },
+    "tags": [
+      "protein-foods"
+    ],
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 174209,
+      "dataType": "SR Legacy"
+    }
+  },
+  {
+    "id": "usda_167742",
+    "slug": "scallops",
+    "name": "Scallops",
+    "searchName": "scallops",
+    "displayName": "Scallops",
+    "aliases": [
+      "scallops",
+      "mollusks, scallop, (bay and sea), cooked, steamed"
+    ],
+    "category": "Protein Foods",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "oz",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "oz",
+        "label": "1 oz",
+        "grams": 28.3,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 111,
+      "protein": 20.54,
+      "carbohydrates": 5.41,
+      "fat": 0.84,
+      "fiber": 0,
+      "sugar": 0,
+      "sodium": 667,
+      "saturatedFat": 0.22,
+      "cholesterol": 41,
+      "potassium": 314
+    },
+    "tags": [
+      "protein-foods"
+    ],
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 167742,
+      "dataType": "SR Legacy"
+    }
+  },
+  {
+    "id": "usda_2706069",
+    "slug": "chicken-wings",
+    "name": "Chicken Wings",
+    "searchName": "chicken wings",
+    "displayName": "Chicken Wings",
+    "aliases": [
+      "chicken wings",
+      "chicken wing, baked, coated"
+    ],
+    "category": "Protein Foods",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "drummette",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "drummette",
+        "label": "1 drummette",
+        "grams": 22,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "wing",
+        "label": "1 wing, any size",
+        "grams": 55
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 260,
+      "protein": 21.4,
+      "carbohydrates": 3.98,
+      "fat": 16.9,
+      "fiber": 0.2,
+      "sugar": 0.07,
+      "sodium": 417,
+      "saturatedFat": 4.64,
+      "cholesterol": 125,
+      "potassium": 193
+    },
+    "tags": [
+      "protein-foods"
+    ],
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 2706069,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2706110",
+    "slug": "roast-turkey",
+    "name": "Roast Turkey",
+    "searchName": "roast turkey",
+    "displayName": "Roast Turkey",
+    "aliases": [
+      "roast turkey",
+      "turkey, light meat, roasted, skin eaten"
+    ],
+    "category": "Protein Foods",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 medium slice",
+        "grams": 60,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "oz",
+        "label": "1 oz, boneless, cooked",
+        "grams": 28.4
+      },
+      {
+        "id": "serve_3",
+        "unit": "cup",
+        "label": "1 cup, diced, cooked",
+        "grams": 135
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 169,
+      "protein": 28.3,
+      "carbohydrates": 0.03,
+      "fat": 5.55,
+      "fiber": 0,
+      "sugar": 0,
+      "sodium": 468,
+      "saturatedFat": 1.59,
+      "cholesterol": 84,
+      "potassium": 247
+    },
+    "tags": [
+      "protein-foods"
+    ],
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 2706110,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_171638",
+    "slug": "meatballs",
+    "name": "Meatballs",
+    "searchName": "meatballs",
+    "displayName": "Meatballs",
+    "aliases": [
+      "meatballs",
+      "meatballs, frozen, italian style"
+    ],
+    "category": "Protein Foods",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 pieces",
+        "grams": 18.7,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "oz",
+        "label": "1 oz",
+        "grams": 28.3
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 286,
+      "protein": 14.4,
+      "carbohydrates": 8.06,
+      "fat": 22.21,
+      "fiber": 2.3,
+      "sugar": 3.47,
+      "sodium": 666,
+      "saturatedFat": 7.63,
+      "cholesterol": 66,
+      "potassium": 296
+    },
+    "tags": [
+      "protein-foods"
+    ],
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 171638,
+      "dataType": "SR Legacy"
+    }
+  },
+  {
+    "id": "usda_2705860",
+    "slug": "beef-jerky",
+    "name": "Beef Jerky",
+    "searchName": "beef jerky",
+    "displayName": "Beef Jerky",
+    "aliases": [
+      "beef jerky"
+    ],
+    "category": "Protein Foods",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup, pieces",
+        "grams": 90,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "giant",
+        "label": "1 Giant Jerk",
+        "grams": 18
+      },
+      {
+        "id": "serve_3",
+        "unit": "super",
+        "label": "1 Super Jerk",
+        "grams": 9.8
+      },
+      {
+        "id": "serve_4",
+        "unit": "cubic",
+        "label": "1 cubic inch",
+        "grams": 12
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 410,
+      "protein": 33.2,
+      "carbohydrates": 11,
+      "fat": 25.6,
+      "fiber": 1.8,
+      "sugar": 9,
+      "sodium": 1780,
+      "saturatedFat": 10.8,
+      "cholesterol": 48,
+      "potassium": 597
+    },
+    "tags": [
+      "protein-foods"
+    ],
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 2705860,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2706185",
+    "slug": "pepperoni",
+    "name": "Pepperoni",
+    "searchName": "pepperoni",
+    "displayName": "Pepperoni",
+    "aliases": [
+      "pepperoni",
+      "pepperoni, nfs"
+    ],
+    "category": "Protein Foods",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "slice",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "slice",
+        "label": "1 slice",
+        "grams": 2,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "sausage",
+        "label": "1 sausage",
+        "grams": 251
+      },
+      {
+        "id": "serve_3",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 140
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 504,
+      "protein": 19.2,
+      "carbohydrates": 1.18,
+      "fat": 46.3,
+      "fiber": 0,
+      "sugar": 0,
+      "sodium": 1580,
+      "saturatedFat": 17.7,
+      "cholesterol": 97,
+      "potassium": 274
+    },
+    "tags": [
+      "protein-foods"
+    ],
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 2706185,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2706195",
+    "slug": "salami",
+    "name": "Salami",
+    "searchName": "salami",
+    "displayName": "Salami",
+    "aliases": [
+      "salami",
+      "salami, nfs"
+    ],
+    "category": "Protein Foods",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "slice",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "slice",
+        "label": "1 slice",
+        "grams": 28,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 140
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 378,
+      "protein": 21.1,
+      "carbohydrates": 0.72,
+      "fat": 31.6,
+      "fiber": 0,
+      "sugar": 0.26,
+      "sodium": 1760,
+      "saturatedFat": 11.4,
+      "cholesterol": 108,
+      "potassium": 363
+    },
+    "tags": [
+      "protein-foods"
+    ],
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 2706195,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_174195",
+    "slug": "fish-sticks",
+    "name": "Fish Sticks",
+    "searchName": "fish sticks",
+    "displayName": "Fish Sticks",
+    "aliases": [
+      "fish sticks",
+      "fish, fish sticks, frozen, prepared"
+    ],
+    "category": "Protein Foods",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "stick",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "stick",
+        "label": "1 stick",
+        "grams": 28,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "piece",
+        "label": "1 piece",
+        "grams": 57
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 277,
+      "protein": 11.01,
+      "carbohydrates": 21.66,
+      "fat": 16.23,
+      "fiber": 1.5,
+      "sugar": 1.65,
+      "sodium": 402,
+      "saturatedFat": 3.73,
+      "cholesterol": 28,
+      "potassium": 185
+    },
+    "tags": [
+      "protein-foods"
+    ],
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 174195,
+      "dataType": "SR Legacy"
+    }
+  },
+  {
+    "id": "usda_2705850",
+    "slug": "corned-beef",
+    "name": "Corned Beef",
+    "searchName": "corned beef",
+    "displayName": "Corned Beef",
+    "aliases": [
+      "corned beef",
+      "beef, corned"
+    ],
+    "category": "Protein Foods",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "oz",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "oz",
+        "label": "1 oz yields",
+        "grams": 20,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cubic",
+        "label": "1 cubic inch",
+        "grams": 17
+      },
+      {
+        "id": "serve_3",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 135
+      },
+      {
+        "id": "serve_4",
+        "unit": "piece/slice",
+        "label": "1 piece/slice, any size",
+        "grams": 30
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 251,
+      "protein": 18.2,
+      "carbohydrates": 0.47,
+      "fat": 19,
+      "fiber": 0,
+      "sugar": 0,
+      "sodium": 973,
+      "saturatedFat": 6.34,
+      "cholesterol": 98,
+      "potassium": 145
+    },
+    "tags": [
+      "protein-foods"
+    ],
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 2705850,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2705963",
+    "slug": "rotisserie-chicken",
+    "name": "Rotisserie Chicken",
+    "searchName": "rotisserie chicken",
+    "displayName": "Rotisserie Chicken",
+    "aliases": [
+      "rotisserie chicken",
+      "chicken breast, rotisserie, skin eaten"
+    ],
+    "category": "Protein Foods",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 medium slice",
+        "grams": 60,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "breast",
+        "label": "1 breast",
+        "grams": 130
+      },
+      {
+        "id": "serve_3",
+        "unit": "cup",
+        "label": "1 cup, cooked, diced",
+        "grams": 135
+      },
+      {
+        "id": "serve_4",
+        "unit": "oz",
+        "label": "1 oz, cooked",
+        "grams": 28.4
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 175,
+      "protein": 26.4,
+      "carbohydrates": 0.09,
+      "fat": 7.67,
+      "fiber": 0,
+      "sugar": 0.09,
+      "sodium": 329,
+      "saturatedFat": 1.96,
+      "cholesterol": 90,
+      "potassium": 276
+    },
+    "tags": [
+      "protein-foods"
+    ],
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 2705963,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2706292",
+    "slug": "smoked-salmon",
+    "name": "Smoked Salmon",
+    "searchName": "smoked salmon",
+    "displayName": "Smoked Salmon",
+    "aliases": [
+      "smoked salmon",
+      "fish, salmon, smoked"
+    ],
+    "category": "Protein Foods",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "oz",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "oz",
+        "label": "1 oz",
+        "grams": 28.35,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 135
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 117,
+      "protein": 18.3,
+      "carbohydrates": 0,
+      "fat": 4.32,
+      "fiber": 0,
+      "sugar": 0,
+      "sodium": 672,
+      "saturatedFat": 0.93,
+      "cholesterol": 23,
+      "potassium": 175
+    },
+    "tags": [
+      "protein-foods"
+    ],
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 2706292,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2706025",
+    "slug": "chicken-drumstick",
+    "name": "Chicken Drumstick",
+    "searchName": "chicken drumstick",
+    "displayName": "Chicken Drumstick",
+    "aliases": [
+      "chicken drumstick",
+      "chicken drumstick, baked, coated, skin / coating eaten"
+    ],
+    "category": "Protein Foods",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 medium drumstick",
+        "grams": 85,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "drumstick",
+        "label": "1 drumstick",
+        "grams": 85
+      },
+      {
+        "id": "serve_3",
+        "unit": "cup",
+        "label": "1 cup, cooked, diced",
+        "grams": 135
+      },
+      {
+        "id": "serve_4",
+        "unit": "oz",
+        "label": "1 oz, cooked",
+        "grams": 28.4
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 205,
+      "protein": 21,
+      "carbohydrates": 3.98,
+      "fat": 11,
+      "fiber": 0.2,
+      "sugar": 0.07,
+      "sodium": 439,
+      "saturatedFat": 2.69,
+      "cholesterol": 116,
+      "potassium": 224
+    },
+    "tags": [
+      "protein-foods"
+    ],
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 2706025,
+      "dataType": "Survey (FNDDS)"
+    }
   }
 ];

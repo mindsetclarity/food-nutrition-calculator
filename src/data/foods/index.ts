@@ -8,6 +8,14 @@ import { breakfastFoods } from './breakfast';
 import { grainscerealsFoods } from './grainscereals';
 import { dairyalternativesFoods } from './dairyalternatives';
 import { nutsseedsFoods } from './nutsseeds';
+import { bakeryFoods } from './bakery';
+import { fastfoodFoods } from './fastfood';
+import { preparedmealsFoods } from './preparedmeals';
+import { snacksFoods } from './snacks';
+import { dessertsFoods } from './desserts';
+import { beveragesFoods } from './beverages';
+import { condimentsFoods } from './condiments';
+import { indianFoods } from './indian';
 
 export const localFoods: FoodItem[] = [
   ...fruitsFoods,
@@ -18,4 +26,12 @@ export const localFoods: FoodItem[] = [
   ...grainscerealsFoods,
   ...dairyalternativesFoods,
   ...nutsseedsFoods,
+  ...bakeryFoods,
+  ...fastfoodFoods,
+  ...preparedmealsFoods,
+  ...snacksFoods,
+  ...dessertsFoods,
+  ...beveragesFoods,
+  ...condimentsFoods,
+  ...indianFoods,
 ];

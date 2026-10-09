@@ -1774,5 +1774,1225 @@ export const fruitsFoods: FoodItem[] = [
       "fdcId": 2709333,
       "dataType": "Survey (FNDDS)"
     }
+  },
+  {
+    "id": "usda_2709223",
+    "slug": "avocado",
+    "name": "Avocado",
+    "searchName": "avocado",
+    "displayName": "Avocado",
+    "aliases": [
+      "avocado",
+      "avocado, raw"
+    ],
+    "category": "Fruits",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 fruit",
+        "grams": 150,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cup",
+        "label": "1 cup, mashed or pureed",
+        "grams": 230
+      },
+      {
+        "id": "serve_3",
+        "unit": "slice",
+        "label": "1 slice",
+        "grams": 15
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 160,
+      "protein": 2,
+      "carbohydrates": 8.53,
+      "fat": 14.7,
+      "fiber": 6.7,
+      "sugar": 0.66,
+      "sodium": 7,
+      "saturatedFat": 2.13,
+      "cholesterol": 0,
+      "potassium": 485
+    },
+    "tags": [
+      "fruits"
+    ],
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 2709223,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2709239",
+    "slug": "kiwi",
+    "name": "Kiwi",
+    "searchName": "kiwi",
+    "displayName": "Kiwi",
+    "aliases": [
+      "kiwi",
+      "kiwi fruit, raw"
+    ],
+    "category": "Fruits",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 fruit",
+        "grams": 75,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 180
+      },
+      {
+        "id": "serve_3",
+        "unit": "slice",
+        "label": "1 slice",
+        "grams": 7
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 64,
+      "protein": 1.06,
+      "carbohydrates": 14,
+      "fat": 0.44,
+      "fiber": 3,
+      "sugar": 8.99,
+      "sodium": 5,
+      "saturatedFat": 0.03,
+      "cholesterol": 0,
+      "potassium": 198
+    },
+    "tags": [
+      "fruits"
+    ],
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 2709239,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2709254",
+    "slug": "pear",
+    "name": "Pear",
+    "searchName": "pear",
+    "displayName": "Pear",
+    "aliases": [
+      "pear",
+      "pear, raw"
+    ],
+    "category": "Fruits",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 fruit",
+        "grams": 180,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "slice/chunk",
+        "label": "1 slice/chunk",
+        "grams": 25
+      },
+      {
+        "id": "serve_3",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 125
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 59,
+      "protein": 0.37,
+      "carbohydrates": 15.2,
+      "fat": 0.15,
+      "fiber": 3.1,
+      "sugar": 9.73,
+      "sodium": 3,
+      "saturatedFat": 0.02,
+      "cholesterol": 0,
+      "potassium": 104
+    },
+    "tags": [
+      "fruits"
+    ],
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 2709254,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_171719",
+    "slug": "cherries",
+    "name": "Cherries",
+    "searchName": "cherries",
+    "displayName": "Cherries",
+    "aliases": [
+      "cherries",
+      "cherries, sweet, raw"
+    ],
+    "category": "Fruits",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup, without pits",
+        "grams": 154,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "serving",
+        "label": "1 serving",
+        "grams": 140
+      },
+      {
+        "id": "serve_3",
+        "unit": "cherry",
+        "label": "1 cherry",
+        "grams": 8.2
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 63,
+      "protein": 1.06,
+      "carbohydrates": 16.01,
+      "fat": 0.2,
+      "fiber": 2.1,
+      "sugar": 12.82,
+      "sodium": 0,
+      "saturatedFat": 0.04,
+      "cholesterol": 0,
+      "potassium": 222
+    },
+    "tags": [
+      "fruits"
+    ],
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 171719,
+      "dataType": "SR Legacy"
+    }
+  },
+  {
+    "id": "usda_2709281",
+    "slug": "raspberries",
+    "name": "Raspberries",
+    "searchName": "raspberries",
+    "displayName": "Raspberries",
+    "aliases": [
+      "raspberries",
+      "raspberries, raw"
+    ],
+    "category": "Fruits",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 150,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "berry",
+        "label": "1 berry",
+        "grams": 2
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 57,
+      "protein": 1.01,
+      "carbohydrates": 12.9,
+      "fat": 0.19,
+      "fiber": 6.5,
+      "sugar": 2.68,
+      "sodium": 0,
+      "saturatedFat": 0.02,
+      "cholesterol": 0,
+      "potassium": 156
+    },
+    "tags": [
+      "fruits"
+    ],
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 2709281,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2709273",
+    "slug": "blackberries",
+    "name": "Blackberries",
+    "searchName": "blackberries",
+    "displayName": "Blackberries",
+    "aliases": [
+      "blackberries",
+      "blackberries, raw"
+    ],
+    "category": "Fruits",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 150,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "blackberry",
+        "label": "1 blackberry",
+        "grams": 5
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 43,
+      "protein": 1.39,
+      "carbohydrates": 9.61,
+      "fat": 0.49,
+      "fiber": 5.3,
+      "sugar": 4.88,
+      "sodium": 1,
+      "saturatedFat": 0.01,
+      "cholesterol": 0,
+      "potassium": 162
+    },
+    "tags": [
+      "fruits"
+    ],
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 2709273,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2709226",
+    "slug": "cantaloupe",
+    "name": "Cantaloupe",
+    "searchName": "cantaloupe",
+    "displayName": "Cantaloupe",
+    "aliases": [
+      "cantaloupe",
+      "cantaloupe, raw"
+    ],
+    "category": "Fruits",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 medium wedge/slice",
+        "grams": 70,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cube",
+        "label": "1 cube",
+        "grams": 15
+      },
+      {
+        "id": "serve_3",
+        "unit": "ball",
+        "label": "1 ball",
+        "grams": 15
+      },
+      {
+        "id": "serve_4",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 155
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 38,
+      "protein": 0.82,
+      "carbohydrates": 8.16,
+      "fat": 0.18,
+      "fiber": 0.8,
+      "sugar": 7.88,
+      "sodium": 30,
+      "saturatedFat": 0.05,
+      "cholesterol": 0,
+      "potassium": 157
+    },
+    "tags": [
+      "fruits"
+    ],
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 2709226,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2709241",
+    "slug": "honeydew-melon",
+    "name": "Honeydew Melon",
+    "searchName": "honeydew melon",
+    "displayName": "Honeydew Melon",
+    "aliases": [
+      "honeydew melon",
+      "honeydew melon, raw"
+    ],
+    "category": "Fruits",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 155,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "piece",
+        "label": "1 medium melon",
+        "grams": 1000
+      },
+      {
+        "id": "serve_3",
+        "unit": "ball",
+        "label": "1 ball",
+        "grams": 15
+      },
+      {
+        "id": "serve_4",
+        "unit": "cube",
+        "label": "1 cube",
+        "grams": 15
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 36,
+      "protein": 0.54,
+      "carbohydrates": 9.09,
+      "fat": 0.14,
+      "fiber": 0.8,
+      "sugar": 8.12,
+      "sodium": 18,
+      "saturatedFat": 0.04,
+      "cholesterol": 0,
+      "potassium": 228
+    },
+    "tags": [
+      "fruits"
+    ],
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 2709241,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2709265",
+    "slug": "plum",
+    "name": "Plum",
+    "searchName": "plum",
+    "displayName": "Plum",
+    "aliases": [
+      "plum",
+      "plum, raw"
+    ],
+    "category": "Fruits",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 fruit",
+        "grams": 75,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 155
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 46,
+      "protein": 0.7,
+      "carbohydrates": 11.4,
+      "fat": 0.28,
+      "fiber": 1.4,
+      "sugar": 9.92,
+      "sodium": 0,
+      "saturatedFat": 0.02,
+      "cholesterol": 0,
+      "potassium": 157
+    },
+    "tags": [
+      "fruits"
+    ],
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 2709265,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2709165",
+    "slug": "grapefruit",
+    "name": "Grapefruit",
+    "searchName": "grapefruit",
+    "displayName": "Grapefruit",
+    "aliases": [
+      "grapefruit",
+      "grapefruit, raw"
+    ],
+    "category": "Fruits",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "half",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "half",
+        "label": "1 half",
+        "grams": 154,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 180
+      },
+      {
+        "id": "serve_3",
+        "unit": "section/slice",
+        "label": "1 section/slice",
+        "grams": 25
+      },
+      {
+        "id": "serve_4",
+        "unit": "piece",
+        "label": "1 fruit",
+        "grams": 308
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 42,
+      "protein": 0.77,
+      "carbohydrates": 10.7,
+      "fat": 0.14,
+      "fiber": 1.6,
+      "sugar": 6.89,
+      "sodium": 0,
+      "saturatedFat": 0.02,
+      "cholesterol": 0,
+      "potassium": 135
+    },
+    "tags": [
+      "fruits"
+    ],
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 2709165,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2709168",
+    "slug": "lemon",
+    "name": "Lemon",
+    "searchName": "lemon",
+    "displayName": "Lemon",
+    "aliases": [
+      "lemon",
+      "lemon, raw"
+    ],
+    "category": "Fruits",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "slice",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "slice",
+        "label": "1 slice or wedge",
+        "grams": 8,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 200
+      },
+      {
+        "id": "serve_3",
+        "unit": "piece",
+        "label": "1 fruit",
+        "grams": 65
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 29,
+      "protein": 1.1,
+      "carbohydrates": 9.32,
+      "fat": 0.3,
+      "fiber": 2.8,
+      "sugar": 2.5,
+      "sodium": 2,
+      "saturatedFat": 0.04,
+      "cholesterol": 0,
+      "potassium": 138
+    },
+    "tags": [
+      "fruits"
+    ],
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 2709168,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2709175",
+    "slug": "tangerine",
+    "name": "Tangerine",
+    "searchName": "tangerine",
+    "displayName": "Tangerine",
+    "aliases": [
+      "tangerine",
+      "tangerine, raw"
+    ],
+    "category": "Fruits",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 fruit",
+        "grams": 109,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "section/slice",
+        "label": "1 section/slice",
+        "grams": 11
+      },
+      {
+        "id": "serve_3",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 195
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 53,
+      "protein": 0.81,
+      "carbohydrates": 13.3,
+      "fat": 0.31,
+      "fiber": 1.8,
+      "sugar": 10.6,
+      "sodium": 2,
+      "saturatedFat": 0.04,
+      "cholesterol": 0,
+      "potassium": 166
+    },
+    "tags": [
+      "fruits"
+    ],
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 2709175,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2709221",
+    "slug": "apricot",
+    "name": "Apricot",
+    "searchName": "apricot",
+    "displayName": "Apricot",
+    "aliases": [
+      "apricot",
+      "apricot, raw"
+    ],
+    "category": "Fruits",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 apricot",
+        "grams": 35,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 155
+      },
+      {
+        "id": "serve_3",
+        "unit": "slice/chunk",
+        "label": "1 slice/chunk",
+        "grams": 10
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 48,
+      "protein": 1.4,
+      "carbohydrates": 11.1,
+      "fat": 0.39,
+      "fiber": 2,
+      "sugar": 9.24,
+      "sodium": 1,
+      "saturatedFat": 0.03,
+      "cholesterol": 0,
+      "potassium": 259
+    },
+    "tags": [
+      "fruits"
+    ],
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 2709221,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2709267",
+    "slug": "pomegranate",
+    "name": "Pomegranate",
+    "searchName": "pomegranate",
+    "displayName": "Pomegranate",
+    "aliases": [
+      "pomegranate",
+      "pomegranate, raw"
+    ],
+    "category": "Fruits",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 fruit",
+        "grams": 250,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 175
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 83,
+      "protein": 1.67,
+      "carbohydrates": 18.7,
+      "fat": 1.17,
+      "fiber": 4,
+      "sugar": 13.7,
+      "sodium": 3,
+      "saturatedFat": 0.12,
+      "cholesterol": 0,
+      "potassium": 236
+    },
+    "tags": [
+      "fruits"
+    ],
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 2709267,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2709246",
+    "slug": "papaya",
+    "name": "Papaya",
+    "searchName": "papaya",
+    "displayName": "Papaya",
+    "aliases": [
+      "papaya",
+      "papaya, raw"
+    ],
+    "category": "Fruits",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup, mashed",
+        "grams": 230,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "piece",
+        "label": "1 fruit",
+        "grams": 330
+      },
+      {
+        "id": "serve_3",
+        "unit": "slice/chunk",
+        "label": "1 slice/chunk",
+        "grams": 40
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 43,
+      "protein": 0.47,
+      "carbohydrates": 10.8,
+      "fat": 0.26,
+      "fiber": 1.7,
+      "sugar": 7.82,
+      "sodium": 8,
+      "saturatedFat": 0.08,
+      "cholesterol": 0,
+      "potassium": 182
+    },
+    "tags": [
+      "fruits"
+    ],
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 2709246,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_168191",
+    "slug": "medjool-dates",
+    "name": "Medjool Dates",
+    "searchName": "medjool dates",
+    "displayName": "Medjool Dates",
+    "aliases": [
+      "medjool dates",
+      "dates, medjool"
+    ],
+    "category": "Fruits",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "date",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "date",
+        "label": "1 date, pitted",
+        "grams": 24,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 277,
+      "protein": 1.81,
+      "carbohydrates": 74.97,
+      "fat": 0.15,
+      "fiber": 6.7,
+      "sugar": 66.47,
+      "sodium": 1,
+      "saturatedFat": null,
+      "cholesterol": null,
+      "potassium": 696
+    },
+    "tags": [
+      "fruits"
+    ],
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 168191,
+      "dataType": "SR Legacy"
+    }
+  },
+  {
+    "id": "usda_174666",
+    "slug": "dried-figs",
+    "name": "Dried Figs",
+    "searchName": "dried figs",
+    "displayName": "Dried Figs",
+    "aliases": [
+      "dried figs",
+      "figs, dried, stewed"
+    ],
+    "category": "Fruits",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 259,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 107,
+      "protein": 1.42,
+      "carbohydrates": 27.57,
+      "fat": 0.4,
+      "fiber": 4.2,
+      "sugar": 23.35,
+      "sodium": 4,
+      "saturatedFat": 0.06,
+      "cholesterol": 0,
+      "potassium": 294
+    },
+    "tags": [
+      "fruits"
+    ],
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 174666,
+      "dataType": "SR Legacy"
+    }
+  },
+  {
+    "id": "usda_168162",
+    "slug": "prunes",
+    "name": "Prunes",
+    "searchName": "prunes",
+    "displayName": "Prunes",
+    "aliases": [
+      "prunes",
+      "plums, dried (prunes), uncooked"
+    ],
+    "category": "Fruits",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup, pitted",
+        "grams": 174,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "prune",
+        "label": "1 prune, pitted",
+        "grams": 9.5
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 240,
+      "protein": 2.18,
+      "carbohydrates": 63.88,
+      "fat": 0.38,
+      "fiber": 7.1,
+      "sugar": 38.13,
+      "sodium": 2,
+      "saturatedFat": 0.09,
+      "cholesterol": 0,
+      "potassium": 732
+    },
+    "tags": [
+      "fruits"
+    ],
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 168162,
+      "dataType": "SR Legacy"
+    }
+  },
+  {
+    "id": "usda_171723",
+    "slug": "dried-cranberries",
+    "name": "Dried Cranberries",
+    "searchName": "dried cranberries",
+    "displayName": "Dried Cranberries",
+    "aliases": [
+      "dried cranberries",
+      "cranberries, dried, sweetened (includes foods for usda's food distribution program)"
+    ],
+    "category": "Fruits",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 160,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 308,
+      "protein": 0.17,
+      "carbohydrates": 82.8,
+      "fat": 1.09,
+      "fiber": 5.3,
+      "sugar": 72.56,
+      "sodium": 5,
+      "saturatedFat": 0.09,
+      "cholesterol": 0,
+      "potassium": 49
+    },
+    "tags": [
+      "fruits"
+    ],
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 171723,
+      "dataType": "SR Legacy"
+    }
+  },
+  {
+    "id": "usda_2709287",
+    "slug": "fruit-salad",
+    "name": "Fruit Salad",
+    "searchName": "fruit salad",
+    "displayName": "Fruit Salad",
+    "aliases": [
+      "fruit salad",
+      "fruit salad, fresh or raw, excluding citrus fruits, no dressing"
+    ],
+    "category": "Fruits",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 150,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 59,
+      "protein": 0.64,
+      "carbohydrates": 13.9,
+      "fat": 0.21,
+      "fiber": 1.5,
+      "sugar": 10.4,
+      "sodium": 4,
+      "saturatedFat": 0.05,
+      "cholesterol": 0,
+      "potassium": 190
+    },
+    "tags": [
+      "fruits"
+    ],
+    "compareGroup": "Fruits",
+    "usda": {
+      "fdcId": 2709287,
+      "dataType": "Survey (FNDDS)"
+    }
   }
 ];
