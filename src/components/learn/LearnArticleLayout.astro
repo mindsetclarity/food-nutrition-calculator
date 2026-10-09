@@ -69,8 +69,15 @@ if (article.faqs && article.faqs.length > 0) {
           {article.title}
         </h1>
         
-        <p class="text-xl text-gray-600 leading-relaxed mb-8">
+        <p class="text-xl text-gray-600 leading-relaxed mb-6">
           {article.heroSummary}
+        </p>
+
+        <p class="text-sm text-gray-500 mb-8">
+          By the <a href="/about" class="font-semibold text-gray-700 hover:text-emerald-700 underline-offset-2 hover:underline">Food Nutrition Calculator editorial team</a>
+          · Updated <time datetime={article.updatedAt}>{new Date(article.updatedAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</time>
+          · Nutrition data from <a href="/data-sources" class="font-semibold text-gray-700 hover:text-emerald-700 underline-offset-2 hover:underline">USDA FoodData Central</a>
+          (<a href="/methodology" class="hover:text-emerald-700 hover:underline underline-offset-2">methodology</a>)
         </p>
         
         <div class="bg-emerald-50 border border-emerald-100 rounded-2xl p-5 sm:p-6 flex items-start">
