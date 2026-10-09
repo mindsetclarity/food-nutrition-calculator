@@ -1,0 +1,179 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumbs from '../../components/seo/Breadcrumbs.astro';
+import FaqList from '../../components/seo/FaqList.astro';
+import FoodSourceNotice from '../../components/foods/FoodSourceNotice.astro';
+
+import { getAllComparePairs, getComparePairsForFood, type ComparePair } from '../../lib/compare/comparePairs';
+import { getDefaultServing, nutrientFor, servingText } from '../../lib/foods/foodSeo';
+import { buildFAQPageSchema, buildWebPageSchema } from '../../lib/seo/schema';
+import { siteConfig } from '../../lib/seo/siteConfig';
+import type { NutrientProfile } from '../../lib/nutrition/types';
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  return getAllComparePairs().map(pair => ({ params: { pair: pair.slug }, props: { pair } }));
+}
+
+const { pair } = Astro.props as { pair: ComparePair };
+const { a, b } = pair;
+
+const ROWS: { key: keyof NutrientProfile; label: string; unit: string }[] = [
+  { key: 'calories', label: 'Calories', unit: 'kcal' },
+  { key: 'protein', label: 'Protein', unit: 'g' },
+  { key: 'carbohydrates', label: 'Carbohydrates', unit: 'g' },
+  { key: 'fat', label: 'Fat', unit: 'g' },
+  { key: 'fiber', label: 'Fiber', unit: 'g' },
+  { key: 'sugar', label: 'Sugar', unit: 'g' },
+  { key: 'sodium', label: 'Sodium', unit: 'mg' },
+];
+const rows = ROWS
+  .map(r => ({ ...r, a: nutrientFor(a, r.key, 100), b: nutrientFor(b, r.key, 100) }))
+  .filter(r => r.a != null || r.b != null);
+
+const sA = getDefaultServing(a);
+const sB = getDefaultServing(b);
+const servingRows = ROWS.slice(0, 4).map(r => ({ ...r, a: nutrientFor(a, r.key, sA.grams), b: nutrientFor(b, r.key, sB.grams) }));
+
+// "Banana has more protein than apple (1.1 g vs 0.3 g per 100 g)." — null when equal or missing.
+function verdict(key: keyof NutrientProfile, word: string, unit: string) {
+  const va = nutrientFor(a, key, 100), vb = nutrientFor(b, key, 100);
+  if (va == null || vb == null) return null;
+  if (va === vb) return `${a.displayName} and ${b.displayName.toLowerCase()} have the same ${word} per 100 g (${va} ${unit}).`;
+  const [hi, lo, vhi, vlo] = va > vb ? [a, b, va, vb] : [b, a, vb, va];
+  return `${hi.displayName} has more ${word} than ${lo.displayName.toLowerCase()} (${vhi} ${unit} vs ${vlo} ${unit} per 100 g).`;
+}
+
+const kA = nutrientFor(a, 'calories', 100)!;
+const kB = nutrientFor(b, 'calories', 100)!;
+const [lower, higher, kLow, kHigh] = kA <= kB ? [a, b, kA, kB] : [b, a, kB, kA];
+const pct = kHigh > 0 ? Math.round(((kHigh - kLow) / kHigh) * 100) : 0;
+const calorieLine = kA === kB
+  ? `${a.displayName} and ${b.displayName.toLowerCase()} have the same calories per 100 g (${kA} kcal).`
+  : `${lower.displayName} has ${pct}% fewer calories than ${higher.displayName.toLowerCase()}: ${kLow} kcal vs ${kHigh} kcal per 100 g.`;
+
+const summary = [calorieLine, verdict('protein', 'protein', 'g'), verdict('fiber', 'fiber', 'g'), verdict('sugar', 'sugar', 'g')]
+  .filter((s): s is string => Boolean(s));
+
+const faqs = [
+  { question: `Which has fewer calories, ${a.displayName.toLowerCase()} or ${b.displayName.toLowerCase()}?`, answer: calorieLine },
+  ...(['protein', 'fiber', 'sugar'] as const).flatMap(k => {
+    const v = verdict(k, k, 'g');
+    return v ? [{ question: `Which has more ${k}, ${a.displayName.toLowerCase()} or ${b.displayName.toLowerCase()}?`, answer: v }] : [];
+  }),
+  {
+    question: `How many calories are in a typical serving of each?`,
+    answer: `${a.displayName} (${servingText(sA)}) has about ${nutrientFor(a, 'calories', sA.grams)} calories. ${b.displayName} (${servingText(sB)}) has about ${nutrientFor(b, 'calories', sB.grams)} calories.`
+  },
+];
+
+// The "|" stops metadata.ts appending the site name, keeping the title near 60 chars.
+const title = `${a.displayName} vs ${b.displayName} | Calories & Nutrition Compared`;
+const description = `${a.displayName} has ${kA} kcal and ${b.displayName.toLowerCase()} has ${kB} kcal per 100 g. Compare protein, carbs, fat, fiber and sugar side by side.`;
+const url = `${siteConfig.siteUrl}/compare/${pair.slug}`;
+
+const jsonLd = [buildWebPageSchema({ name: title, description, url }), buildFAQPageSchema(faqs)];
+
+const breadcrumbItems = [
+  { label: 'Home', href: '/' },
+  { label: 'Compare Foods', href: '/compare-foods' },
+  { label: `${a.displayName} vs ${b.displayName}`, href: `/compare/${pair.slug}` },
+];
+
+const moreComparisons = [...getComparePairsForFood(a.slug), ...getComparePairsForFood(b.slug)]
+  .filter((p, i, arr) => p.slug !== pair.slug && arr.findIndex(q => q.slug === p.slug) === i)
+  .slice(0, 8);
+
+const fmt = (v: number | null, unit: string) => (v == null ? '—' : `${v} ${unit}`);
+const winner = (va: number | null, vb: number | null, side: 'a' | 'b') =>
+  va != null && vb != null && va !== vb && (side === 'a' ? va > vb : vb > va);
+---
+<Layout title={title} description={description} jsonLd={jsonLd}>
+  <main id="main-content" class="min-h-screen bg-gray-50 pb-24">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+      <Breadcrumbs items={breadcrumbItems} />
+
+      <h1 class="text-3xl sm:text-4xl font-black text-gray-900 tracking-tight mb-4">
+        {a.displayName} vs {b.displayName}: Calories &amp; Nutrition
+      </h1>
+      <ul class="space-y-2 text-lg text-gray-700 mb-10">
+        {summary.map(line => <li>{line}</li>)}
+      </ul>
+
+      <div class="space-y-8">
+        <section class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 sm:p-8 overflow-x-auto">
+          <h2 class="text-2xl font-black text-gray-900 mb-4">Nutrition per 100 g</h2>
+          <table class="min-w-full text-left">
+            <thead>
+              <tr class="border-b border-gray-200 text-sm text-gray-500">
+                <th scope="col" class="py-3 pr-4 font-semibold">Nutrient</th>
+                <th scope="col" class="py-3 px-4 font-semibold"><a href={`/foods/${a.slug}`} class="text-emerald-700 hover:underline">{a.displayName}</a></th>
+                <th scope="col" class="py-3 pl-4 font-semibold"><a href={`/foods/${b.slug}`} class="text-emerald-700 hover:underline">{b.displayName}</a></th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100">
+              {rows.map(r => (
+                <tr>
+                  <th scope="row" class="py-3 pr-4 font-semibold text-gray-900">{r.label}</th>
+                  <td class:list={['py-3 px-4 tabular-nums', winner(r.a, r.b, 'a') && 'font-bold text-gray-900']}>{fmt(r.a, r.unit)}</td>
+                  <td class:list={['py-3 pl-4 tabular-nums', winner(r.a, r.b, 'b') && 'font-bold text-gray-900']}>{fmt(r.b, r.unit)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <p class="text-sm text-gray-500 mt-4">Higher value in bold.</p>
+        </section>
+
+        <section class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 sm:p-8 overflow-x-auto">
+          <h2 class="text-2xl font-black text-gray-900 mb-4">Nutrition per typical serving</h2>
+          <table class="min-w-full text-left">
+            <thead>
+              <tr class="border-b border-gray-200 text-sm text-gray-500">
+                <th scope="col" class="py-3 pr-4 font-semibold">Nutrient</th>
+                <th scope="col" class="py-3 px-4 font-semibold">{a.displayName} ({servingText(sA)})</th>
+                <th scope="col" class="py-3 pl-4 font-semibold">{b.displayName} ({servingText(sB)})</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100">
+              {servingRows.map(r => (
+                <tr>
+                  <th scope="row" class="py-3 pr-4 font-semibold text-gray-900">{r.label}</th>
+                  <td class="py-3 px-4 tabular-nums">{fmt(r.a, r.unit)}</td>
+                  <td class="py-3 pl-4 tabular-nums">{fmt(r.b, r.unit)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </section>
+
+        <FaqList faqs={faqs} />
+
+        {moreComparisons.length > 0 && (
+          <section class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 sm:p-8">
+            <h2 class="text-2xl font-black text-gray-900 mb-4">More comparisons</h2>
+            <ul class="flex flex-wrap gap-3">
+              {moreComparisons.map(p => (
+                <li>
+                  <a href={`/compare/${p.slug}`} class="inline-block px-4 py-2 rounded-xl border border-gray-200 bg-gray-50 text-sm font-semibold text-gray-800 hover:border-emerald-500 hover:text-emerald-700 transition-colors">
+                    {p.a.displayName} vs {p.b.displayName}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
+        <section class="bg-emerald-900 rounded-2xl p-6 sm:p-8 text-center">
+          <h2 class="text-2xl font-black text-white mb-3">Compare any two foods</h2>
+          <p class="text-emerald-100 mb-6">Pick your own foods and serving sizes in the interactive comparison tool.</p>
+          <a href="/compare-foods" class="inline-flex items-center justify-center px-6 py-3 rounded-xl font-bold text-emerald-900 bg-white hover:bg-emerald-50 transition-colors">
+            Open Compare Foods
+          </a>
+        </section>
+
+        <FoodSourceNotice />
+      </div>
+    </div>
+  </main>
+</Layout>

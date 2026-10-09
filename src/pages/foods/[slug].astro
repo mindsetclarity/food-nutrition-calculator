@@ -9,9 +9,11 @@ import RelatedFoods from '../../components/foods/RelatedFoods.astro';
 import FoodCTASection from '../../components/foods/FoodCTASection.astro';
 import NutritionFactsLabel from '../../components/nutrition-label/NutritionFactsLabel.astro';
 import Breadcrumbs from '../../components/seo/Breadcrumbs.astro';
+import FaqList from '../../components/seo/FaqList.astro';
 
-import { getAllFoodPages, getFoodDetailSeo, getRelatedFoods } from '../../lib/foods';
-import { buildWebPageSchema } from '../../lib/seo/schema';
+import { getAllFoodPages, getFoodDetailSeo, getFoodFaqs, getRelatedFoods } from '../../lib/foods';
+import { getComparePairsForFood } from '../../lib/compare/comparePairs';
+import { buildFAQPageSchema, buildWebPageSchema } from '../../lib/seo/schema';
 import { siteConfig } from '../../lib/seo/siteConfig';
 
 export const prerender = true;
@@ -32,6 +34,8 @@ if (!food) {
 
 const seo = getFoodDetailSeo(food);
 const relatedFoods = getRelatedFoods(food, 4);
+const faqs = getFoodFaqs(food);
+const comparePairs = getComparePairsForFood(food.slug);
 
 // Format nutrients for NutritionFactsLabel
 const formatLabelNutrients = (foodNutrients: any) => {
@@ -66,11 +70,14 @@ const breadcrumbItems = [
   { label: food.displayName, href: `/foods/${food.slug}` }
 ];
 
-const jsonLd = buildWebPageSchema({
-  name: seo.title,
-  description: seo.description,
-  url: `${siteConfig.siteUrl}/foods/${food.slug}`
-});
+const jsonLd = [
+  buildWebPageSchema({
+    name: seo.title,
+    description: seo.description,
+    url: `${siteConfig.siteUrl}/foods/${food.slug}`
+  }),
+  ...(faqs.length ? [buildFAQPageSchema(faqs)] : []),
+];
 ---
 <Layout title={seo.title} description={seo.description} jsonLd={jsonLd}>
   <main id="main-content" class="min-h-screen bg-gray-50 pb-24">
@@ -91,6 +98,26 @@ const jsonLd = buildWebPageSchema({
             <FoodMacroBreakdown food={food} />
           </div>
           
+          {comparePairs.length > 0 && (
+            <section class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 sm:p-8">
+              <h2 class="text-2xl font-black text-gray-900 mb-4">Compare {food.displayName.toLowerCase()} with similar foods</h2>
+              <ul class="flex flex-wrap gap-3">
+                {comparePairs.map(pair => {
+                  const other = pair.a.slug === food.slug ? pair.b : pair.a;
+                  return (
+                    <li>
+                      <a href={`/compare/${pair.slug}`} class="inline-block px-4 py-2 rounded-xl border border-gray-200 bg-gray-50 text-sm font-semibold text-gray-800 hover:border-emerald-500 hover:text-emerald-700 transition-colors">
+                        {food.displayName} vs {other.displayName}
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+            </section>
+          )}
+
+          <FaqList faqs={faqs} heading={`${food.displayName} nutrition FAQ`} />
+
           <FoodSourceNotice />
         </div>
         

@@ -1,0 +1,22 @@
+---
+// Visible FAQ list. Pair with buildFAQPageSchema(faqs) in the page's jsonLd —
+// Google only honours FAQ schema whose Q&A is also visible on the page.
+interface Props {
+  faqs: { question: string; answer: string }[];
+  heading?: string;
+}
+
+const { faqs, heading = 'Frequently asked questions' } = Astro.props;
+if (!faqs.length) return null;
+---
+<section class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 sm:p-8">
+  <h2 class="text-2xl font-black text-gray-900 mb-6">{heading}</h2>
+  <div class="divide-y divide-gray-100">
+    {faqs.map(faq => (
+      <div class="py-4 first:pt-0 last:pb-0">
+        <h3 class="font-bold text-gray-900 mb-1">{faq.question}</h3>
+        <p class="text-gray-600 leading-relaxed">{faq.answer}</p>
+      </div>
+    ))}
+  </div>
+</section>
