@@ -16,7 +16,7 @@ export const GET: APIRoute = async ({ site }) => {
   const baseUrl = site ? site.origin : siteConfig.siteUrl;
 
   const staticRoutes = [
-    { path: '', priority: '1.0', changefreq: 'weekly' },
+    { path: '/', priority: '1.0', changefreq: 'weekly' },
     { path: '/calculator', priority: '0.9', changefreq: 'weekly' },
     { path: '/recipe-nutrition-calculator', priority: '0.9', changefreq: 'weekly' },
     { path: '/compare-foods', priority: '0.9', changefreq: 'weekly' },

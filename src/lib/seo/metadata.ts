@@ -13,13 +13,18 @@ export function buildMetaDescription(description?: string): string {
   return description || siteConfig.defaultDescription;
 }
 
+// Public form of a request path. Prerendered pages are built as foods/x.html
+// (build.format 'file'), so at build time Astro.url.pathname is "/foods/x.html",
+// while the page is served at /foods/x.
+export function cleanPathname(pathname: string): string {
+  let path = pathname.replace(/(\/index)?\.html$/, '') || '/';
+  if (path.length > 1 && path.endsWith('/')) path = path.slice(0, -1);
+  return path;
+}
+
 export function buildCanonicalUrl(pathname: string): string {
   const url = new URL(pathname, siteConfig.siteUrl);
-  let path = url.pathname;
-  if (path.length > 1 && path.endsWith('/')) {
-    path = path.slice(0, -1);
-  }
-  return `${url.origin}${path}`;
+  return `${url.origin}${cleanPathname(url.pathname)}`;
 }
 
 export function buildOpenGraphMetadata(input: PageSeoInput): OpenGraphMetadata {

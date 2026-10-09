@@ -7,6 +7,12 @@ export default defineConfig({
   site: 'https://foodnutritioncalculator.com',
   output: 'server',
   adapter: cloudflare(),
+  // URLs have no trailing slash everywhere (sitemap, canonicals, internal links).
+  // The default directory format wrote foods/x/index.html, which Cloudflare's asset
+  // server 307-redirected from /foods/x to /foods/x/, so every sitemap URL redirected
+  // away from its own canonical. 'file' writes foods/x.html, served at /foods/x.
+  trailingSlash: 'never',
+  build: { format: 'file' },
   // Removed foods keep their old URLs alive. Paneer was dropped because USDA's only
   // record for it (22.5 g carbs/100 g) is far from real paneer.
   redirects: {

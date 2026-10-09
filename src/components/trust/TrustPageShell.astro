@@ -4,6 +4,7 @@ import TrustHero from './TrustHero.astro';
 import TrustCTASection from './TrustCTASection.astro';
 import { buildWebPageSchema } from '../../lib/seo/schema';
 import { siteConfig } from '../../lib/seo/siteConfig';
+import { cleanPathname } from '../../lib/seo/metadata';
 
 interface Props {
   title: string;
@@ -19,7 +20,7 @@ const { title, description, eyebrow, badges = [], updatedAt, showCta = true } = 
 const jsonLd = buildWebPageSchema({
   name: title,
   description: description,
-  url: `${siteConfig.siteUrl}${Astro.url.pathname}`
+  url: `${siteConfig.siteUrl}${cleanPathname(Astro.url.pathname)}`
 });
 
 ---

@@ -17,6 +17,7 @@
     "test:ranking": "node --experimental-strip-types scripts/test-usda-ranking.mjs",
     "test:llm-client": "node --experimental-strip-types scripts/test-llm-client.mjs",
     "test:escape-html": "node --experimental-strip-types scripts/test-escape-html.mjs",
+    "test:seo-paths": "node --experimental-strip-types scripts/test-seo-paths.mjs",
     "check:links": "node scripts/check-links.mjs"
   },
   "dependencies": {
