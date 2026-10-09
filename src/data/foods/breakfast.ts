@@ -1386,5 +1386,1334 @@ export const breakfastFoods: FoodItem[] = [
       "fdcId": 2708369,
       "dataType": "Survey (FNDDS)"
     }
+  },
+  {
+    "id": "usda_2708433",
+    "slug": "cream-of-wheat",
+    "name": "Cream of Wheat",
+    "searchName": "cream of wheat",
+    "displayName": "Cream of Wheat",
+    "aliases": [
+      "cream of wheat",
+      "cream of wheat, nfs"
+    ],
+    "category": "Breakfast",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup, cooked",
+        "grams": 240,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "oz",
+        "label": "1 oz, dry, yields",
+        "grams": 205
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 65,
+      "protein": 1.44,
+      "carbohydrates": 10.4,
+      "fat": 1.8,
+      "fiber": 0.5,
+      "sugar": 0.04,
+      "sodium": 83,
+      "saturatedFat": 0.72,
+      "cholesterol": 3,
+      "potassium": 16
+    },
+    "tags": [
+      "breakfast"
+    ],
+    "compareGroup": "Breakfast",
+    "usda": {
+      "fdcId": 2708433,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2708455",
+    "slug": "crispy-rice-cereal",
+    "name": "Crispy Rice Cereal",
+    "searchName": "crispy rice cereal",
+    "displayName": "Crispy Rice Cereal",
+    "aliases": [
+      "crispy rice cereal",
+      "cereal, rice crispy, plain"
+    ],
+    "category": "Breakfast",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 25,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "prepackaged",
+        "label": "1 prepackaged single serving",
+        "grams": 30
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 358,
+      "protein": 6.96,
+      "carbohydrates": 79.8,
+      "fat": 1.21,
+      "fiber": 0.4,
+      "sugar": 9.85,
+      "sodium": 505,
+      "saturatedFat": 0.34,
+      "cholesterol": 0,
+      "potassium": 67
+    },
+    "tags": [
+      "breakfast"
+    ],
+    "compareGroup": "Breakfast",
+    "usda": {
+      "fdcId": 2708455,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2708479",
+    "slug": "shredded-wheat",
+    "name": "Shredded Wheat",
+    "searchName": "shredded wheat",
+    "displayName": "Shredded Wheat",
+    "aliases": [
+      "shredded wheat",
+      "cereal, shredded wheat, plain"
+    ],
+    "category": "Breakfast",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "spoon",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "spoon",
+        "label": "1 spoon size biscuit",
+        "grams": 3,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "prepackaged",
+        "label": "1 prepackaged single serving",
+        "grams": 30
+      },
+      {
+        "id": "serve_3",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 45
+      },
+      {
+        "id": "serve_4",
+        "unit": "rectangular",
+        "label": "1 rectangular biscuit",
+        "grams": 25
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 358,
+      "protein": 11.9,
+      "carbohydrates": 73.8,
+      "fat": 1.68,
+      "fiber": 13,
+      "sugar": 0.27,
+      "sodium": 2,
+      "saturatedFat": 0.15,
+      "cholesterol": 0,
+      "potassium": 148
+    },
+    "tags": [
+      "breakfast"
+    ],
+    "compareGroup": "Breakfast",
+    "usda": {
+      "fdcId": 2708479,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2708464",
+    "slug": "honey-nut-oat-cereal",
+    "name": "Honey Nut Oat Cereal",
+    "searchName": "honey nut oat cereal",
+    "displayName": "Honey Nut Oat Cereal",
+    "aliases": [
+      "honey nut oat cereal",
+      "cereal, o's, honey nut"
+    ],
+    "category": "Breakfast",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 40,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "prepackaged",
+        "label": "1 prepackaged single serving",
+        "grams": 30
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 385,
+      "protein": 8.62,
+      "carbohydrates": 76,
+      "fat": 5.37,
+      "fiber": 7.6,
+      "sugar": 32.4,
+      "sodium": 580,
+      "saturatedFat": 0.79,
+      "cholesterol": 0,
+      "potassium": 238
+    },
+    "tags": [
+      "breakfast"
+    ],
+    "compareGroup": "Breakfast",
+    "usda": {
+      "fdcId": 2708464,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2708483",
+    "slug": "fruit-flavored-cereal",
+    "name": "Fruit-Flavored Cereal",
+    "searchName": "fruit-flavored cereal",
+    "displayName": "Fruit-Flavored Cereal",
+    "aliases": [
+      "fruit-flavored cereal",
+      "cereal, other, fruit flavored"
+    ],
+    "category": "Breakfast",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 40,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "prepackaged",
+        "label": "1 prepackaged single serving",
+        "grams": 30
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 383,
+      "protein": 4.71,
+      "carbohydrates": 82.6,
+      "fat": 3.56,
+      "fiber": 2.9,
+      "sugar": 32.7,
+      "sodium": 523,
+      "saturatedFat": 0.61,
+      "cholesterol": 0,
+      "potassium": 71
+    },
+    "tags": [
+      "breakfast"
+    ],
+    "compareGroup": "Breakfast",
+    "usda": {
+      "fdcId": 2708483,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2708449",
+    "slug": "chocolate-cereal",
+    "name": "Chocolate Cereal",
+    "searchName": "chocolate cereal",
+    "displayName": "Chocolate Cereal",
+    "aliases": [
+      "chocolate cereal",
+      "cereal, chocolate puffs"
+    ],
+    "category": "Breakfast",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "prepackaged",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "prepackaged",
+        "label": "1 prepackaged single serving",
+        "grams": 30,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 35
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 388,
+      "protein": 5.39,
+      "carbohydrates": 81,
+      "fat": 4.98,
+      "fiber": 5,
+      "sugar": 34.4,
+      "sodium": 425,
+      "saturatedFat": 0.65,
+      "cholesterol": 0,
+      "potassium": 152
+    },
+    "tags": [
+      "breakfast"
+    ],
+    "compareGroup": "Breakfast",
+    "usda": {
+      "fdcId": 2708449,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_175035",
+    "slug": "toaster-pastry-fruit",
+    "name": "Toaster Pastry (Fruit)",
+    "searchName": "toaster pastry (fruit)",
+    "displayName": "Toaster Pastry (Fruit)",
+    "aliases": [
+      "toaster pastry (fruit)",
+      "toaster pastries, fruit (includes apple, blueberry, cherry, strawberry)"
+    ],
+    "category": "Breakfast",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "pastry",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "pastry",
+        "label": "1 pastry",
+        "grams": 54,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "oz",
+        "label": "1 oz",
+        "grams": 28.4
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 388,
+      "protein": 4.2,
+      "carbohydrates": 70.32,
+      "fat": 9.95,
+      "fiber": 1,
+      "sugar": 26.13,
+      "sodium": 334,
+      "saturatedFat": 3.62,
+      "cholesterol": 0,
+      "potassium": 102
+    },
+    "tags": [
+      "breakfast"
+    ],
+    "compareGroup": "Breakfast",
+    "usda": {
+      "fdcId": 175035,
+      "dataType": "SR Legacy"
+    }
+  },
+  {
+    "id": "usda_2707180",
+    "slug": "eggs-benedict",
+    "name": "Eggs Benedict",
+    "searchName": "eggs benedict",
+    "displayName": "Eggs Benedict",
+    "aliases": [
+      "eggs benedict",
+      "egg, benedict"
+    ],
+    "category": "Breakfast",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 egg",
+        "grams": 155,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 288,
+      "protein": 13.8,
+      "carbohydrates": 8.48,
+      "fat": 22.1,
+      "fiber": 0.6,
+      "sugar": 1.17,
+      "sodium": 468,
+      "saturatedFat": 10.3,
+      "cholesterol": 271,
+      "potassium": 325
+    },
+    "tags": [
+      "breakfast"
+    ],
+    "compareGroup": "Breakfast",
+    "usda": {
+      "fdcId": 2707180,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707191",
+    "slug": "huevos-rancheros",
+    "name": "Huevos Rancheros",
+    "searchName": "huevos rancheros",
+    "displayName": "Huevos Rancheros",
+    "aliases": [
+      "huevos rancheros"
+    ],
+    "category": "Breakfast",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 135,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "egg",
+        "label": "1 egg",
+        "grams": 118
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 121,
+      "protein": 6.68,
+      "carbohydrates": 8.85,
+      "fat": 6.65,
+      "fiber": 1.7,
+      "sugar": 2.26,
+      "sodium": 418,
+      "saturatedFat": 1.69,
+      "cholesterol": 175,
+      "potassium": 217
+    },
+    "tags": [
+      "breakfast"
+    ],
+    "compareGroup": "Breakfast",
+    "usda": {
+      "fdcId": 2707191,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2708733",
+    "slug": "quiche",
+    "name": "Quiche",
+    "searchName": "quiche",
+    "displayName": "Quiche",
+    "aliases": [
+      "quiche",
+      "cheese quiche, meatless"
+    ],
+    "category": "Breakfast",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 piece",
+        "grams": 192,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "quiche",
+        "label": "1 quiche",
+        "grams": 1212
+      },
+      {
+        "id": "serve_3",
+        "unit": "cubic",
+        "label": "1 cubic inch",
+        "grams": 11
+      },
+      {
+        "id": "serve_4",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 160
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 365,
+      "protein": 11.9,
+      "carbohydrates": 13.7,
+      "fat": 29.2,
+      "fiber": 0.8,
+      "sugar": 2.21,
+      "sodium": 361,
+      "saturatedFat": 14.9,
+      "cholesterol": 159,
+      "potassium": 117
+    },
+    "tags": [
+      "breakfast"
+    ],
+    "compareGroup": "Breakfast",
+    "usda": {
+      "fdcId": 2708733,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707316",
+    "slug": "sausage-egg-english-muffin",
+    "name": "Sausage Egg English Muffin",
+    "searchName": "sausage egg english muffin",
+    "displayName": "Sausage Egg English Muffin",
+    "aliases": [
+      "sausage egg english muffin",
+      "egg sandwich on english muffin, with sausage"
+    ],
+    "category": "Breakfast",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "regular",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "regular",
+        "label": "1 regular",
+        "grams": 180,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "piece",
+        "label": "1 large",
+        "grams": 270
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 264,
+      "protein": 12.9,
+      "carbohydrates": 16,
+      "fat": 16.5,
+      "fiber": 1.2,
+      "sugar": 1.8,
+      "sodium": 501,
+      "saturatedFat": 6.23,
+      "cholesterol": 150,
+      "potassium": 165
+    },
+    "tags": [
+      "breakfast"
+    ],
+    "compareGroup": "Breakfast",
+    "usda": {
+      "fdcId": 2707316,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707330",
+    "slug": "bacon-egg-and-cheese-bagel",
+    "name": "Bacon Egg and Cheese Bagel",
+    "searchName": "bacon egg and cheese bagel",
+    "displayName": "Bacon Egg and Cheese Bagel",
+    "aliases": [
+      "bacon egg and cheese bagel",
+      "egg sandwich on bagel, with bacon"
+    ],
+    "category": "Breakfast",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "regular",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "regular",
+        "label": "1 regular",
+        "grams": 200,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "miniature/slider",
+        "label": "1 miniature/slider",
+        "grams": 100
+      },
+      {
+        "id": "serve_3",
+        "unit": "piece",
+        "label": "1 large",
+        "grams": 300
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 268,
+      "protein": 13.7,
+      "carbohydrates": 29.4,
+      "fat": 10.5,
+      "fiber": 0.9,
+      "sugar": 4.93,
+      "sodium": 536,
+      "saturatedFat": 4.06,
+      "cholesterol": 123,
+      "potassium": 147
+    },
+    "tags": [
+      "breakfast"
+    ],
+    "compareGroup": "Breakfast",
+    "usda": {
+      "fdcId": 2707330,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707326",
+    "slug": "bacon-egg-biscuit",
+    "name": "Bacon Egg Biscuit",
+    "searchName": "bacon egg biscuit",
+    "displayName": "Bacon Egg Biscuit",
+    "aliases": [
+      "bacon egg biscuit",
+      "egg sandwich on biscuit, with bacon"
+    ],
+    "category": "Breakfast",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "regular",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "regular",
+        "label": "1 regular",
+        "grams": 140,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "piece",
+        "label": "1 large",
+        "grams": 210
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 309,
+      "protein": 11.9,
+      "carbohydrates": 21.8,
+      "fat": 19.2,
+      "fiber": 1.2,
+      "sugar": 2,
+      "sodium": 774,
+      "saturatedFat": 8.96,
+      "cholesterol": 163,
+      "potassium": 170
+    },
+    "tags": [
+      "breakfast"
+    ],
+    "compareGroup": "Breakfast",
+    "usda": {
+      "fdcId": 2707326,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2708061",
+    "slug": "cheese-danish",
+    "name": "Cheese Danish",
+    "searchName": "cheese danish",
+    "displayName": "Cheese Danish",
+    "aliases": [
+      "cheese danish",
+      "danish pastry, with cheese"
+    ],
+    "category": "Breakfast",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 medium",
+        "grams": 113,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "miniature",
+        "label": "1 miniature",
+        "grams": 28
+      },
+      {
+        "id": "serve_3",
+        "unit": "cubic",
+        "label": "1 cubic inch",
+        "grams": 9.1
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 374,
+      "protein": 8,
+      "carbohydrates": 37.2,
+      "fat": 21.9,
+      "fiber": 1,
+      "sugar": 6.95,
+      "sodium": 417,
+      "saturatedFat": 6.79,
+      "cholesterol": 23,
+      "potassium": 98
+    },
+    "tags": [
+      "breakfast"
+    ],
+    "compareGroup": "Breakfast",
+    "usda": {
+      "fdcId": 2708061,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707840",
+    "slug": "oat-bran-muffin",
+    "name": "Oat Bran Muffin",
+    "searchName": "oat bran muffin",
+    "displayName": "Oat Bran Muffin",
+    "aliases": [
+      "oat bran muffin",
+      "muffin, oat bran"
+    ],
+    "category": "Breakfast",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 medium",
+        "grams": 130,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "miniature",
+        "label": "1 miniature",
+        "grams": 25
+      },
+      {
+        "id": "serve_3",
+        "unit": "bite",
+        "label": "1 bite size",
+        "grams": 10
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 270,
+      "protein": 7,
+      "carbohydrates": 48.3,
+      "fat": 7.4,
+      "fiber": 4.6,
+      "sugar": 8.22,
+      "sodium": 393,
+      "saturatedFat": 1.09,
+      "cholesterol": 0,
+      "potassium": 507
+    },
+    "tags": [
+      "breakfast"
+    ],
+    "compareGroup": "Breakfast",
+    "usda": {
+      "fdcId": 2707840,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707813",
+    "slug": "corn-muffin",
+    "name": "Corn Muffin",
+    "searchName": "corn muffin",
+    "displayName": "Corn Muffin",
+    "aliases": [
+      "corn muffin",
+      "cornbread muffin, stick, round"
+    ],
+    "category": "Breakfast",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "round",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "round",
+        "label": "1 round",
+        "grams": 45,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "piece",
+        "label": "1 medium",
+        "grams": 113
+      },
+      {
+        "id": "serve_3",
+        "unit": "stick",
+        "label": "1 stick",
+        "grams": 39
+      },
+      {
+        "id": "serve_4",
+        "unit": "cubic",
+        "label": "1 cubic inch",
+        "grams": 7.1
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 305,
+      "protein": 5.9,
+      "carbohydrates": 51,
+      "fat": 8.4,
+      "fiber": 3.4,
+      "sugar": 17.8,
+      "sodium": 385,
+      "saturatedFat": 1.35,
+      "cholesterol": 26,
+      "potassium": 69
+    },
+    "tags": [
+      "breakfast"
+    ],
+    "compareGroup": "Breakfast",
+    "usda": {
+      "fdcId": 2707813,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2708341",
+    "slug": "crepe",
+    "name": "Crepe",
+    "searchName": "crepe",
+    "displayName": "Crepe",
+    "aliases": [
+      "crepe",
+      "crepe, nfs"
+    ],
+    "category": "Breakfast",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 crepe, any size",
+        "grams": 80,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "surface",
+        "label": "1 surface inch",
+        "grams": 1.6
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 224,
+      "protein": 8.85,
+      "carbohydrates": 22,
+      "fat": 11.3,
+      "fiber": 0.6,
+      "sugar": 4.48,
+      "sodium": 278,
+      "saturatedFat": 3.44,
+      "cholesterol": 153,
+      "potassium": 169
+    },
+    "tags": [
+      "breakfast"
+    ],
+    "compareGroup": "Breakfast",
+    "usda": {
+      "fdcId": 2708341,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2705450",
+    "slug": "yogurt-parfait",
+    "name": "Yogurt Parfait",
+    "searchName": "yogurt parfait",
+    "displayName": "Yogurt Parfait",
+    "aliases": [
+      "yogurt parfait",
+      "yogurt parfait, with fruit"
+    ],
+    "category": "Breakfast",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "mcdonald's",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "mcdonald's",
+        "label": "1 McDonald's parfait",
+        "grams": 150,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 104,
+      "protein": 5.25,
+      "carbohydrates": 16.1,
+      "fat": 2.18,
+      "fiber": 1.3,
+      "sugar": 10.4,
+      "sodium": 44,
+      "saturatedFat": 0.61,
+      "cholesterol": 4,
+      "potassium": 170
+    },
+    "tags": [
+      "breakfast"
+    ],
+    "compareGroup": "Breakfast",
+    "usda": {
+      "fdcId": 2705450,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2708394",
+    "slug": "instant-oatmeal-flavored",
+    "name": "Instant Oatmeal (Flavored)",
+    "searchName": "instant oatmeal (flavored)",
+    "displayName": "Instant Oatmeal (Flavored)",
+    "aliases": [
+      "instant oatmeal (flavored)",
+      "oatmeal, instant, maple flavored, fat added"
+    ],
+    "category": "Breakfast",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "packet",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "packet",
+        "label": "1 packet, dry, yields",
+        "grams": 163,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "oz",
+        "label": "1 oz, dry, yields",
+        "grams": 170
+      },
+      {
+        "id": "serve_3",
+        "unit": "cup",
+        "label": "1 cup, cooked",
+        "grams": 240
+      },
+      {
+        "id": "serve_4",
+        "unit": "single",
+        "label": "1 single serving container",
+        "grams": 210
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 119,
+      "protein": 2.38,
+      "carbohydrates": 19.6,
+      "fat": 3.45,
+      "fiber": 1.8,
+      "sugar": 7.76,
+      "sodium": 150,
+      "saturatedFat": 1.17,
+      "cholesterol": 4,
+      "potassium": 93
+    },
+    "tags": [
+      "breakfast"
+    ],
+    "compareGroup": "Breakfast",
+    "usda": {
+      "fdcId": 2708394,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2346397",
+    "slug": "steel-cut-oats",
+    "name": "Steel-Cut Oats",
+    "searchName": "steel-cut oats",
+    "displayName": "Steel-Cut Oats",
+    "aliases": [
+      "steel-cut oats",
+      "oats, whole grain, steel cut"
+    ],
+    "category": "Breakfast",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "serving",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "serving",
+        "label": "1 serving",
+        "grams": 40,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 379.21,
+      "protein": 12.51,
+      "carbohydrates": 69.75,
+      "fat": 5.8,
+      "fiber": null,
+      "sugar": null,
+      "sodium": 0.31,
+      "saturatedFat": null,
+      "cholesterol": null,
+      "potassium": 375.9
+    },
+    "tags": [
+      "breakfast"
+    ],
+    "compareGroup": "Breakfast",
+    "usda": {
+      "fdcId": 2346397,
+      "dataType": "Foundation"
+    }
+  },
+  {
+    "id": "usda_2708114",
+    "slug": "breakfast-bar",
+    "name": "Breakfast Bar",
+    "searchName": "breakfast bar",
+    "displayName": "Breakfast Bar",
+    "aliases": [
+      "breakfast bar",
+      "breakfast bar, nfs"
+    ],
+    "category": "Breakfast",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "bar",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "bar",
+        "label": "1 bar",
+        "grams": 43,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 376,
+      "protein": 4.4,
+      "carbohydrates": 72.8,
+      "fat": 7.5,
+      "fiber": 2.1,
+      "sugar": 35.1,
+      "sodium": 337,
+      "saturatedFat": 1.5,
+      "cholesterol": 0,
+      "potassium": 197
+    },
+    "tags": [
+      "breakfast"
+    ],
+    "compareGroup": "Breakfast",
+    "usda": {
+      "fdcId": 2708114,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2708306",
+    "slug": "strawberry-pancakes",
+    "name": "Strawberry Pancakes",
+    "searchName": "strawberry pancakes",
+    "displayName": "Strawberry Pancakes",
+    "aliases": [
+      "strawberry pancakes",
+      "pancakes, fruit"
+    ],
+    "category": "Breakfast",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 medium pancake",
+        "grams": 50,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "surface",
+        "label": "1 surface inch",
+        "grams": 1.9
+      },
+      {
+        "id": "serve_3",
+        "unit": "miniature/bite",
+        "label": "1 miniature/bite size pancake",
+        "grams": 10
+      },
+      {
+        "id": "serve_4",
+        "unit": "silver",
+        "label": "1 silver dollar pancake",
+        "grams": 20
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 232,
+      "protein": 5.86,
+      "carbohydrates": 30.6,
+      "fat": 9.54,
+      "fiber": 2.4,
+      "sugar": 7.7,
+      "sodium": 395,
+      "saturatedFat": 2.35,
+      "cholesterol": 52,
+      "potassium": 148
+    },
+    "tags": [
+      "breakfast"
+    ],
+    "compareGroup": "Breakfast",
+    "usda": {
+      "fdcId": 2708306,
+      "dataType": "Survey (FNDDS)"
+    }
   }
 ];

@@ -2807,5 +2807,2744 @@ export const dessertsFoods: FoodItem[] = [
       "fdcId": 170883,
       "dataType": "SR Legacy"
     }
+  },
+  {
+    "id": "usda_168810",
+    "slug": "strawberry-ice-cream",
+    "name": "Strawberry Ice Cream",
+    "searchName": "strawberry ice cream",
+    "displayName": "Strawberry Ice Cream",
+    "aliases": [
+      "strawberry ice cream",
+      "ice creams, strawberry"
+    ],
+    "category": "Desserts",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 132,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "individual",
+        "label": "1 individual",
+        "grams": 58
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 192,
+      "protein": 3.2,
+      "carbohydrates": 27.6,
+      "fat": 8.4,
+      "fiber": 0.9,
+      "sugar": null,
+      "sodium": 60,
+      "saturatedFat": 5.19,
+      "cholesterol": 29,
+      "potassium": 188
+    },
+    "tags": [
+      "desserts"
+    ],
+    "compareGroup": "Desserts",
+    "usda": {
+      "fdcId": 168810,
+      "dataType": "SR Legacy"
+    }
+  },
+  {
+    "id": "usda_2705644",
+    "slug": "ice-cream-sandwich",
+    "name": "Ice Cream Sandwich",
+    "searchName": "ice cream sandwich",
+    "displayName": "Ice Cream Sandwich",
+    "aliases": [
+      "ice cream sandwich",
+      "ice cream cookie sandwich"
+    ],
+    "category": "Desserts",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "sandwich",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "sandwich",
+        "label": "1 sandwich",
+        "grams": 75,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 317,
+      "protein": 4.61,
+      "carbohydrates": 43.4,
+      "fat": 14.1,
+      "fiber": 1.7,
+      "sugar": 26.4,
+      "sodium": 232,
+      "saturatedFat": 6.42,
+      "cholesterol": 24,
+      "potassium": 170
+    },
+    "tags": [
+      "desserts"
+    ],
+    "compareGroup": "Desserts",
+    "usda": {
+      "fdcId": 2705644,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2705647",
+    "slug": "ice-cream-cone",
+    "name": "Ice Cream Cone",
+    "searchName": "ice cream cone",
+    "displayName": "Ice Cream Cone",
+    "aliases": [
+      "ice cream cone",
+      "ice cream cone, nfs"
+    ],
+    "category": "Desserts",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cone",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cone",
+        "label": "1 cone",
+        "grams": 125,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 229,
+      "protein": 3.75,
+      "carbohydrates": 28.5,
+      "fat": 11.1,
+      "fiber": 0.9,
+      "sugar": 22.2,
+      "sodium": 97,
+      "saturatedFat": 6.64,
+      "cholesterol": 40,
+      "potassium": 199
+    },
+    "tags": [
+      "desserts"
+    ],
+    "compareGroup": "Desserts",
+    "usda": {
+      "fdcId": 2705647,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2705660",
+    "slug": "banana-split",
+    "name": "Banana Split",
+    "searchName": "banana split",
+    "displayName": "Banana Split",
+    "aliases": [
+      "banana split"
+    ],
+    "category": "Desserts",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 banana split",
+        "grams": 490,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 199,
+      "protein": 2.42,
+      "carbohydrates": 32.6,
+      "fat": 6.88,
+      "fiber": 1,
+      "sugar": 24.2,
+      "sodium": 97,
+      "saturatedFat": 4.07,
+      "cholesterol": 24,
+      "potassium": 212
+    },
+    "tags": [
+      "desserts"
+    ],
+    "compareGroup": "Desserts",
+    "usda": {
+      "fdcId": 2705660,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707973",
+    "slug": "sugar-wafer-cookie",
+    "name": "Sugar Wafer Cookie",
+    "searchName": "sugar wafer cookie",
+    "displayName": "Sugar Wafer Cookie",
+    "aliases": [
+      "sugar wafer cookie",
+      "cookie, sugar wafer"
+    ],
+    "category": "Desserts",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 medium",
+        "grams": 8,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 502,
+      "protein": 3.84,
+      "carbohydrates": 70.6,
+      "fat": 23.2,
+      "fiber": 1.6,
+      "sugar": 43,
+      "sodium": 103,
+      "saturatedFat": 11.9,
+      "cholesterol": 0,
+      "potassium": 117
+    },
+    "tags": [
+      "desserts"
+    ],
+    "compareGroup": "Desserts",
+    "usda": {
+      "fdcId": 2707973,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707952",
+    "slug": "peanut-butter-cookie",
+    "name": "Peanut Butter Cookie",
+    "searchName": "peanut butter cookie",
+    "displayName": "Peanut Butter Cookie",
+    "aliases": [
+      "peanut butter cookie",
+      "cookie, peanut butter"
+    ],
+    "category": "Desserts",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 medium",
+        "grams": 30,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "miniature/bite",
+        "label": "1 miniature/bite size",
+        "grams": 5
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 473,
+      "protein": 8.92,
+      "carbohydrates": 58.2,
+      "fat": 23.8,
+      "fiber": 2.1,
+      "sugar": 28.6,
+      "sodium": 463,
+      "saturatedFat": 6.75,
+      "cholesterol": 27,
+      "potassium": 202
+    },
+    "tags": [
+      "desserts"
+    ],
+    "compareGroup": "Desserts",
+    "usda": {
+      "fdcId": 2707952,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_171847",
+    "slug": "coconut-macaroon",
+    "name": "Coconut Macaroon",
+    "searchName": "coconut macaroon",
+    "displayName": "Coconut Macaroon",
+    "aliases": [
+      "coconut macaroon",
+      "cookies, coconut macaroon"
+    ],
+    "category": "Desserts",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cookie",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cookie",
+        "label": "1 cookie 1 serving",
+        "grams": 18,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 460,
+      "protein": 3.02,
+      "carbohydrates": 61.22,
+      "fat": 22.55,
+      "fiber": 5.1,
+      "sugar": 45.16,
+      "sodium": 241,
+      "saturatedFat": 20.1,
+      "cholesterol": 0,
+      "potassium": 123
+    },
+    "tags": [
+      "desserts"
+    ],
+    "compareGroup": "Desserts",
+    "usda": {
+      "fdcId": 171847,
+      "dataType": "SR Legacy"
+    }
+  },
+  {
+    "id": "usda_2707929",
+    "slug": "fig-bar",
+    "name": "Fig Bar",
+    "searchName": "fig bar",
+    "displayName": "Fig Bar",
+    "aliases": [
+      "fig bar",
+      "cookie, fig bar"
+    ],
+    "category": "Desserts",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "individual",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "individual",
+        "label": "1 individual package",
+        "grams": 57,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "fig",
+        "label": "1 Fig bar",
+        "grams": 43
+      },
+      {
+        "id": "serve_3",
+        "unit": "newton",
+        "label": "1 Newton bar",
+        "grams": 16
+      },
+      {
+        "id": "serve_4",
+        "unit": "mini",
+        "label": "1 mini fig newton",
+        "grams": 6.3
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 348,
+      "protein": 3.7,
+      "carbohydrates": 70.9,
+      "fat": 7.3,
+      "fiber": 4.6,
+      "sugar": 46.4,
+      "sodium": 350,
+      "saturatedFat": 1.12,
+      "cholesterol": 0,
+      "potassium": 207
+    },
+    "tags": [
+      "desserts"
+    ],
+    "compareGroup": "Desserts",
+    "usda": {
+      "fdcId": 2707929,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707920",
+    "slug": "chocolate-sandwich-cookie",
+    "name": "Chocolate Sandwich Cookie",
+    "searchName": "chocolate sandwich cookie",
+    "displayName": "Chocolate Sandwich Cookie",
+    "aliases": [
+      "chocolate sandwich cookie",
+      "cookie, chocolate sandwich"
+    ],
+    "category": "Desserts",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "sandwich",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "sandwich",
+        "label": "1 sandwich",
+        "grams": 14,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "oreo",
+        "label": "1 Oreo thin",
+        "grams": 7
+      },
+      {
+        "id": "serve_3",
+        "unit": "piece",
+        "label": "1 large sandwich",
+        "grams": 36
+      },
+      {
+        "id": "serve_4",
+        "unit": "miniature/bite",
+        "label": "1 miniature/bite size",
+        "grams": 3
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 464,
+      "protein": 5.21,
+      "carbohydrates": 71,
+      "fat": 19.1,
+      "fiber": 2.9,
+      "sugar": 40.7,
+      "sodium": 388,
+      "saturatedFat": 5.65,
+      "cholesterol": 0,
+      "potassium": 234
+    },
+    "tags": [
+      "desserts"
+    ],
+    "compareGroup": "Desserts",
+    "usda": {
+      "fdcId": 2707920,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707981",
+    "slug": "vanilla-wafers",
+    "name": "Vanilla Wafers",
+    "searchName": "vanilla wafers",
+    "displayName": "Vanilla Wafers",
+    "aliases": [
+      "vanilla wafers",
+      "cookie, vanilla wafer"
+    ],
+    "category": "Desserts",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 medium",
+        "grams": 4,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 455,
+      "protein": 4.9,
+      "carbohydrates": 72.6,
+      "fat": 16.4,
+      "fiber": 1.6,
+      "sugar": 35.1,
+      "sodium": 325,
+      "saturatedFat": 4.24,
+      "cholesterol": 9,
+      "potassium": 99
+    },
+    "tags": [
+      "desserts"
+    ],
+    "compareGroup": "Desserts",
+    "usda": {
+      "fdcId": 2707981,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707932",
+    "slug": "gingersnaps",
+    "name": "Gingersnaps",
+    "searchName": "gingersnaps",
+    "displayName": "Gingersnaps",
+    "aliases": [
+      "gingersnaps",
+      "cookie, gingersnaps"
+    ],
+    "category": "Desserts",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 medium",
+        "grams": 30,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "miniature/bite",
+        "label": "1 miniature/bite size",
+        "grams": 5
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 416,
+      "protein": 5.6,
+      "carbohydrates": 76.9,
+      "fat": 9.8,
+      "fiber": 2.2,
+      "sugar": 19.9,
+      "sodium": 555,
+      "saturatedFat": 2.45,
+      "cholesterol": 0,
+      "potassium": 346
+    },
+    "tags": [
+      "desserts"
+    ],
+    "compareGroup": "Desserts",
+    "usda": {
+      "fdcId": 2707932,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707902",
+    "slug": "biscotti",
+    "name": "Biscotti",
+    "searchName": "biscotti",
+    "displayName": "Biscotti",
+    "aliases": [
+      "biscotti",
+      "cookie, biscotti"
+    ],
+    "category": "Desserts",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 cookie",
+        "grams": 32,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 373,
+      "protein": 7.63,
+      "carbohydrates": 67,
+      "fat": 8.38,
+      "fiber": 1.4,
+      "sugar": 28.4,
+      "sodium": 262,
+      "saturatedFat": 1.29,
+      "cholesterol": 46,
+      "potassium": 97
+    },
+    "tags": [
+      "desserts"
+    ],
+    "compareGroup": "Desserts",
+    "usda": {
+      "fdcId": 2707902,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707999",
+    "slug": "cherry-pie",
+    "name": "Cherry Pie",
+    "searchName": "cherry pie",
+    "displayName": "Cherry Pie",
+    "aliases": [
+      "cherry pie",
+      "pie, cherry"
+    ],
+    "category": "Desserts",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "mini/small",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "mini/small",
+        "label": "1 mini/small slice",
+        "grams": 75,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "regular",
+        "label": "1 regular slice",
+        "grams": 150
+      },
+      {
+        "id": "serve_3",
+        "unit": "individual",
+        "label": "1 individual pie",
+        "grams": 150
+      },
+      {
+        "id": "serve_4",
+        "unit": "piece",
+        "label": "1 large slice",
+        "grams": 250
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 311,
+      "protein": 2.95,
+      "carbohydrates": 40.9,
+      "fat": 15.3,
+      "fiber": 1.9,
+      "sugar": 19.5,
+      "sodium": 217,
+      "saturatedFat": 5.35,
+      "cholesterol": 7,
+      "potassium": 101
+    },
+    "tags": [
+      "desserts"
+    ],
+    "compareGroup": "Desserts",
+    "usda": {
+      "fdcId": 2707999,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707998",
+    "slug": "blueberry-pie",
+    "name": "Blueberry Pie",
+    "searchName": "blueberry pie",
+    "displayName": "Blueberry Pie",
+    "aliases": [
+      "blueberry pie",
+      "pie, blueberry"
+    ],
+    "category": "Desserts",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "mini/small",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "mini/small",
+        "label": "1 mini/small slice",
+        "grams": 75,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "regular",
+        "label": "1 regular pie",
+        "grams": 1200
+      },
+      {
+        "id": "serve_3",
+        "unit": "individual",
+        "label": "1 individual pie",
+        "grams": 150
+      },
+      {
+        "id": "serve_4",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 250
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 300,
+      "protein": 2.82,
+      "carbohydrates": 38,
+      "fat": 15.5,
+      "fiber": 2.5,
+      "sugar": 15.5,
+      "sodium": 217,
+      "saturatedFat": 5.36,
+      "cholesterol": 7,
+      "potassium": 71
+    },
+    "tags": [
+      "desserts"
+    ],
+    "compareGroup": "Desserts",
+    "usda": {
+      "fdcId": 2707998,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2708014",
+    "slug": "lemon-meringue-pie",
+    "name": "Lemon Meringue Pie",
+    "searchName": "lemon meringue pie",
+    "displayName": "Lemon Meringue Pie",
+    "aliases": [
+      "lemon meringue pie",
+      "pie, lemon meringue"
+    ],
+    "category": "Desserts",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "slice",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "slice",
+        "label": "1 slice, any size",
+        "grams": 150,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 250
+      },
+      {
+        "id": "serve_3",
+        "unit": "surface",
+        "label": "1 surface inch",
+        "grams": 18.9
+      },
+      {
+        "id": "serve_4",
+        "unit": "individual",
+        "label": "1 individual pie",
+        "grams": 150
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 294,
+      "protein": 4.53,
+      "carbohydrates": 43.7,
+      "fat": 11.3,
+      "fiber": 1.1,
+      "sugar": 26.4,
+      "sodium": 179,
+      "saturatedFat": 3.65,
+      "cholesterol": 79,
+      "potassium": 67
+    },
+    "tags": [
+      "desserts"
+    ],
+    "compareGroup": "Desserts",
+    "usda": {
+      "fdcId": 2708014,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2708012",
+    "slug": "sweet-potato-pie",
+    "name": "Sweet Potato Pie",
+    "searchName": "sweet potato pie",
+    "displayName": "Sweet Potato Pie",
+    "aliases": [
+      "sweet potato pie",
+      "pie, sweet potato"
+    ],
+    "category": "Desserts",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 large slice",
+        "grams": 250,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "regular",
+        "label": "1 regular slice",
+        "grams": 150
+      },
+      {
+        "id": "serve_3",
+        "unit": "surface",
+        "label": "1 surface inch",
+        "grams": 18.9
+      },
+      {
+        "id": "serve_4",
+        "unit": "individual",
+        "label": "1 individual pie",
+        "grams": 150
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 269,
+      "protein": 4.96,
+      "carbohydrates": 41.1,
+      "fat": 9.75,
+      "fiber": 1.3,
+      "sugar": 25.2,
+      "sodium": 269,
+      "saturatedFat": 4.07,
+      "cholesterol": 47,
+      "potassium": 242
+    },
+    "tags": [
+      "desserts"
+    ],
+    "compareGroup": "Desserts",
+    "usda": {
+      "fdcId": 2708012,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2708005",
+    "slug": "chocolate-cream-pie",
+    "name": "Chocolate Cream Pie",
+    "searchName": "chocolate cream pie",
+    "displayName": "Chocolate Cream Pie",
+    "aliases": [
+      "chocolate cream pie",
+      "pie, chocolate cream"
+    ],
+    "category": "Desserts",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "individual",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "individual",
+        "label": "1 individual pie",
+        "grams": 150,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "surface",
+        "label": "1 surface inch",
+        "grams": 18.9
+      },
+      {
+        "id": "serve_3",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 250
+      },
+      {
+        "id": "serve_4",
+        "unit": "slice",
+        "label": "1 slice, any size",
+        "grams": 150
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 291,
+      "protein": 2.75,
+      "carbohydrates": 32.5,
+      "fat": 16.7,
+      "fiber": 0.7,
+      "sugar": 19.3,
+      "sodium": 167,
+      "saturatedFat": 7.52,
+      "cholesterol": 26,
+      "potassium": 130
+    },
+    "tags": [
+      "desserts"
+    ],
+    "compareGroup": "Desserts",
+    "usda": {
+      "fdcId": 2708005,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707859",
+    "slug": "carrot-cake",
+    "name": "Carrot Cake",
+    "searchName": "carrot cake",
+    "displayName": "Carrot Cake",
+    "aliases": [
+      "carrot cake",
+      "cake or cupcake, carrot"
+    ],
+    "category": "Desserts",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece/slice",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece/slice",
+        "label": "1 piece/slice, any size",
+        "grams": 200,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cupcake",
+        "label": "1 cupcake, any size",
+        "grams": 90
+      },
+      {
+        "id": "serve_3",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 120
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 374,
+      "protein": 2.49,
+      "carbohydrates": 51.8,
+      "fat": 17.5,
+      "fiber": 1.1,
+      "sugar": 38.5,
+      "sodium": 288,
+      "saturatedFat": 3.19,
+      "cholesterol": 47,
+      "potassium": 74
+    },
+    "tags": [
+      "desserts"
+    ],
+    "compareGroup": "Desserts",
+    "usda": {
+      "fdcId": 2707859,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707884",
+    "slug": "red-velvet-cake",
+    "name": "Red Velvet Cake",
+    "searchName": "red velvet cake",
+    "displayName": "Red Velvet Cake",
+    "aliases": [
+      "red velvet cake",
+      "cake or cupcake, red velvet"
+    ],
+    "category": "Desserts",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece/slice",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece/slice",
+        "label": "1 piece/slice, any size",
+        "grams": 200,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 120
+      },
+      {
+        "id": "serve_3",
+        "unit": "cupcake",
+        "label": "1 cupcake, any size",
+        "grams": 90
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 355,
+      "protein": 2.79,
+      "carbohydrates": 54.4,
+      "fat": 14.6,
+      "fiber": 1.2,
+      "sugar": 40.2,
+      "sodium": 296,
+      "saturatedFat": 2.98,
+      "cholesterol": 43,
+      "potassium": 80
+    },
+    "tags": [
+      "desserts"
+    ],
+    "compareGroup": "Desserts",
+    "usda": {
+      "fdcId": 2707884,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707854",
+    "slug": "angel-food-cake",
+    "name": "Angel Food Cake",
+    "searchName": "angel food cake",
+    "displayName": "Angel Food Cake",
+    "aliases": [
+      "angel food cake",
+      "cake, angel food"
+    ],
+    "category": "Desserts",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece/slice",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece/slice",
+        "label": "1 piece/slice, any size",
+        "grams": 60,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 50
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 257,
+      "protein": 6.1,
+      "carbohydrates": 58.7,
+      "fat": 0.3,
+      "fiber": 0.2,
+      "sugar": 30.5,
+      "sodium": 511,
+      "saturatedFat": 0.04,
+      "cholesterol": 0,
+      "potassium": 135
+    },
+    "tags": [
+      "desserts"
+    ],
+    "compareGroup": "Desserts",
+    "usda": {
+      "fdcId": 2707854,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707882",
+    "slug": "pound-cake",
+    "name": "Pound Cake",
+    "searchName": "pound cake",
+    "displayName": "Pound Cake",
+    "aliases": [
+      "pound cake",
+      "cake, pound"
+    ],
+    "category": "Desserts",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece/slice",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece/slice",
+        "label": "1 piece/slice, any size",
+        "grams": 115,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 100
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 353,
+      "protein": 5,
+      "carbohydrates": 53.6,
+      "fat": 14,
+      "fiber": 0.6,
+      "sugar": 33.4,
+      "sodium": 377,
+      "saturatedFat": 4.81,
+      "cholesterol": 66,
+      "potassium": 149
+    },
+    "tags": [
+      "desserts"
+    ],
+    "compareGroup": "Desserts",
+    "usda": {
+      "fdcId": 2707882,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707677",
+    "slug": "coffee-cake",
+    "name": "Coffee Cake",
+    "searchName": "coffee cake",
+    "displayName": "Coffee Cake",
+    "aliases": [
+      "coffee cake",
+      "coffee cake, yeast type"
+    ],
+    "category": "Desserts",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 piece",
+        "grams": 57,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cubic",
+        "label": "1 cubic inch",
+        "grams": 4.4
+      },
+      {
+        "id": "serve_3",
+        "unit": "cake",
+        "label": "1 cake",
+        "grams": 567
+      },
+      {
+        "id": "serve_4",
+        "unit": "slice",
+        "label": "1 slice",
+        "grams": 47
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 372,
+      "protein": 6.2,
+      "carbohydrates": 50.9,
+      "fat": 16.4,
+      "fiber": 2.4,
+      "sugar": 31.7,
+      "sodium": 304,
+      "saturatedFat": 3.08,
+      "cholesterol": 66,
+      "potassium": 111
+    },
+    "tags": [
+      "desserts"
+    ],
+    "compareGroup": "Desserts",
+    "usda": {
+      "fdcId": 2707677,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707896",
+    "slug": "strawberry-shortcake",
+    "name": "Strawberry Shortcake",
+    "searchName": "strawberry shortcake",
+    "displayName": "Strawberry Shortcake",
+    "aliases": [
+      "strawberry shortcake",
+      "cake, strawberry shortcake"
+    ],
+    "category": "Desserts",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece/slice",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece/slice",
+        "label": "1 piece/slice, any size",
+        "grams": 175,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 150
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 214,
+      "protein": 3.31,
+      "carbohydrates": 40.1,
+      "fat": 4.73,
+      "fiber": 0.9,
+      "sugar": 25.9,
+      "sodium": 313,
+      "saturatedFat": 2.48,
+      "cholesterol": 62,
+      "potassium": 116
+    },
+    "tags": [
+      "desserts"
+    ],
+    "compareGroup": "Desserts",
+    "usda": {
+      "fdcId": 2707896,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2708019",
+    "slug": "apple-cobbler",
+    "name": "Apple Cobbler",
+    "searchName": "apple cobbler",
+    "displayName": "Apple Cobbler",
+    "aliases": [
+      "apple cobbler",
+      "cobbler, apple"
+    ],
+    "category": "Desserts",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 250,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cubic",
+        "label": "1 cubic inch",
+        "grams": 15
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 217,
+      "protein": 2.05,
+      "carbohydrates": 33.6,
+      "fat": 8.66,
+      "fiber": 1.6,
+      "sugar": 16.9,
+      "sodium": 180,
+      "saturatedFat": 2.78,
+      "cholesterol": 0,
+      "potassium": 79
+    },
+    "tags": [
+      "desserts"
+    ],
+    "compareGroup": "Desserts",
+    "usda": {
+      "fdcId": 2708019,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2708023",
+    "slug": "apple-crisp",
+    "name": "Apple Crisp",
+    "searchName": "apple crisp",
+    "displayName": "Apple Crisp",
+    "aliases": [
+      "apple crisp",
+      "crisp, apple"
+    ],
+    "category": "Desserts",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 250,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cubic",
+        "label": "1 cubic inch",
+        "grams": 15
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 215,
+      "protein": 2.81,
+      "carbohydrates": 30.2,
+      "fat": 9.59,
+      "fiber": 2.7,
+      "sugar": 15.8,
+      "sodium": 119,
+      "saturatedFat": 4.77,
+      "cholesterol": 23,
+      "potassium": 119
+    },
+    "tags": [
+      "desserts"
+    ],
+    "compareGroup": "Desserts",
+    "usda": {
+      "fdcId": 2708023,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2708052",
+    "slug": "cannoli",
+    "name": "Cannoli",
+    "searchName": "cannoli",
+    "displayName": "Cannoli",
+    "aliases": [
+      "cannoli",
+      "pastry, italian, with cheese"
+    ],
+    "category": "Desserts",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 pastry",
+        "grams": 85,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 267,
+      "protein": 7.52,
+      "carbohydrates": 35.1,
+      "fat": 10.9,
+      "fiber": 0.8,
+      "sugar": 13.1,
+      "sodium": 67,
+      "saturatedFat": 5.14,
+      "cholesterol": 38,
+      "potassium": 190
+    },
+    "tags": [
+      "desserts"
+    ],
+    "compareGroup": "Desserts",
+    "usda": {
+      "fdcId": 2708052,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2708044",
+    "slug": "baklava",
+    "name": "Baklava",
+    "searchName": "baklava",
+    "displayName": "Baklava",
+    "aliases": [
+      "baklava"
+    ],
+    "category": "Desserts",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 piece",
+        "grams": 80,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cubic",
+        "label": "1 cubic inch",
+        "grams": 13
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 440,
+      "protein": 6.58,
+      "carbohydrates": 37.6,
+      "fat": 29.3,
+      "fiber": 2.5,
+      "sugar": 12.8,
+      "sodium": 311,
+      "saturatedFat": 10.9,
+      "cholesterol": 48,
+      "potassium": 170
+    },
+    "tags": [
+      "desserts"
+    ],
+    "compareGroup": "Desserts",
+    "usda": {
+      "fdcId": 2708044,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2708033",
+    "slug": "cream-puff",
+    "name": "Cream Puff",
+    "searchName": "cream puff",
+    "displayName": "Cream Puff",
+    "aliases": [
+      "cream puff",
+      "cream puff, no filling or icing"
+    ],
+    "category": "Desserts",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 cream puff",
+        "grams": 27,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 360,
+      "protein": 9,
+      "carbohydrates": 22.8,
+      "fat": 25.9,
+      "fiber": 0.8,
+      "sugar": 0.25,
+      "sodium": 483,
+      "saturatedFat": 5.6,
+      "cholesterol": 171,
+      "potassium": 97
+    },
+    "tags": [
+      "desserts"
+    ],
+    "compareGroup": "Desserts",
+    "usda": {
+      "fdcId": 2708033,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2708046",
+    "slug": "fruit-turnover",
+    "name": "Fruit Turnover",
+    "searchName": "fruit turnover",
+    "displayName": "Fruit Turnover",
+    "aliases": [
+      "fruit turnover",
+      "turnover, fruit"
+    ],
+    "category": "Desserts",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "item",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "item",
+        "label": "1 item, any size",
+        "grams": 75,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 316,
+      "protein": 3,
+      "carbohydrates": 42.6,
+      "fat": 16.1,
+      "fiber": 2.6,
+      "sugar": 21.4,
+      "sodium": 333,
+      "saturatedFat": 2.46,
+      "cholesterol": 0,
+      "potassium": 65
+    },
+    "tags": [
+      "desserts"
+    ],
+    "compareGroup": "Desserts",
+    "usda": {
+      "fdcId": 2708046,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2708039",
+    "slug": "apple-strudel",
+    "name": "Apple Strudel",
+    "searchName": "apple strudel",
+    "displayName": "Apple Strudel",
+    "aliases": [
+      "apple strudel",
+      "strudel, apple"
+    ],
+    "category": "Desserts",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 piece",
+        "grams": 125,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cubic",
+        "label": "1 cubic inch",
+        "grams": 8.5
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 281,
+      "protein": 1.96,
+      "carbohydrates": 37.2,
+      "fat": 14.1,
+      "fiber": 0.8,
+      "sugar": 21.1,
+      "sodium": 132,
+      "saturatedFat": 7.6,
+      "cholesterol": 39,
+      "potassium": 67
+    },
+    "tags": [
+      "desserts"
+    ],
+    "compareGroup": "Desserts",
+    "usda": {
+      "fdcId": 2708039,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2708074",
+    "slug": "jelly-doughnut",
+    "name": "Jelly Doughnut",
+    "searchName": "jelly doughnut",
+    "displayName": "Jelly Doughnut",
+    "aliases": [
+      "jelly doughnut",
+      "doughnut, jelly"
+    ],
+    "category": "Desserts",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 doughnut",
+        "grams": 80,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "stick/twist",
+        "label": "1 stick/twist",
+        "grams": 80
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 390,
+      "protein": 4.94,
+      "carbohydrates": 52.3,
+      "fat": 18.2,
+      "fiber": 1.9,
+      "sugar": 28.4,
+      "sodium": 259,
+      "saturatedFat": 7.56,
+      "cholesterol": 24,
+      "potassium": 92
+    },
+    "tags": [
+      "desserts"
+    ],
+    "compareGroup": "Desserts",
+    "usda": {
+      "fdcId": 2708074,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2708063",
+    "slug": "cake-doughnut",
+    "name": "Cake Doughnut",
+    "searchName": "cake doughnut",
+    "displayName": "Cake Doughnut",
+    "aliases": [
+      "cake doughnut",
+      "doughnut, cake type, plain"
+    ],
+    "category": "Desserts",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 doughnut",
+        "grams": 60,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "miniature",
+        "label": "1 miniature",
+        "grams": 15
+      },
+      {
+        "id": "serve_3",
+        "unit": "stick/twist",
+        "label": "1 stick/twist",
+        "grams": 60
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 434,
+      "protein": 5.31,
+      "carbohydrates": 47.1,
+      "fat": 24.9,
+      "fiber": 1.7,
+      "sugar": 18.2,
+      "sodium": 477,
+      "saturatedFat": 11.1,
+      "cholesterol": 10,
+      "potassium": 134
+    },
+    "tags": [
+      "desserts"
+    ],
+    "compareGroup": "Desserts",
+    "usda": {
+      "fdcId": 2708063,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2708069",
+    "slug": "doughnut-holes",
+    "name": "Doughnut Holes",
+    "searchName": "doughnut holes",
+    "displayName": "Doughnut Holes",
+    "aliases": [
+      "doughnut holes"
+    ],
+    "category": "Desserts",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 doughnut hole",
+        "grams": 15,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 426,
+      "protein": 5.52,
+      "carbohydrates": 49.5,
+      "fat": 22.9,
+      "fiber": 1.8,
+      "sugar": 23.5,
+      "sodium": 378,
+      "saturatedFat": 9.85,
+      "cholesterol": 20,
+      "potassium": 113
+    },
+    "tags": [
+      "desserts"
+    ],
+    "compareGroup": "Desserts",
+    "usda": {
+      "fdcId": 2708069,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2710347",
+    "slug": "peanut-butter-cups",
+    "name": "Peanut Butter Cups",
+    "searchName": "peanut butter cups",
+    "displayName": "Peanut Butter Cups",
+    "aliases": [
+      "peanut butter cups",
+      "chocolate candy, peanut butter filled"
+    ],
+    "category": "Desserts",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "pouch/regular",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "pouch/regular",
+        "label": "1 pouch/regular size",
+        "grams": 45,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "sharing/movie",
+        "label": "1 sharing/movie theater size",
+        "grams": 180
+      },
+      {
+        "id": "serve_3",
+        "unit": "miniature/bite",
+        "label": "1 miniature/bite size",
+        "grams": 10
+      },
+      {
+        "id": "serve_4",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 160
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 487,
+      "protein": 7.82,
+      "carbohydrates": 64.1,
+      "fat": 24.7,
+      "fiber": 2.8,
+      "sugar": 46.5,
+      "sodium": 294,
+      "saturatedFat": 10.1,
+      "cholesterol": 3,
+      "potassium": 282
+    },
+    "tags": [
+      "desserts"
+    ],
+    "compareGroup": "Desserts",
+    "usda": {
+      "fdcId": 2710347,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2710360",
+    "slug": "hard-candy",
+    "name": "Hard Candy",
+    "searchName": "hard candy",
+    "displayName": "Hard Candy",
+    "aliases": [
+      "hard candy",
+      "candy, hard"
+    ],
+    "category": "Desserts",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 piece",
+        "grams": 5,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "pouch/regular",
+        "label": "1 pouch/regular size",
+        "grams": 60
+      },
+      {
+        "id": "serve_3",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 160
+      },
+      {
+        "id": "serve_4",
+        "unit": "fun/snack",
+        "label": "1 fun/snack size",
+        "grams": 15
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 394,
+      "protein": 0,
+      "carbohydrates": 98,
+      "fat": 0.2,
+      "fiber": 0,
+      "sugar": 62.9,
+      "sodium": 38,
+      "saturatedFat": 0,
+      "cholesterol": 0,
+      "potassium": 5
+    },
+    "tags": [
+      "desserts"
+    ],
+    "compareGroup": "Desserts",
+    "usda": {
+      "fdcId": 2710360,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2710363",
+    "slug": "cotton-candy",
+    "name": "Cotton Candy",
+    "searchName": "cotton candy",
+    "displayName": "Cotton Candy",
+    "aliases": [
+      "cotton candy",
+      "candy, cotton"
+    ],
+    "category": "Desserts",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "package",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "package",
+        "label": "1 package, any size",
+        "grams": 30,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 10
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 401,
+      "protein": 0,
+      "carbohydrates": 99.6,
+      "fat": 0.32,
+      "fiber": 0,
+      "sugar": 99.8,
+      "sodium": 1,
+      "saturatedFat": 0,
+      "cholesterol": 0,
+      "potassium": 2
+    },
+    "tags": [
+      "desserts"
+    ],
+    "compareGroup": "Desserts",
+    "usda": {
+      "fdcId": 2710363,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2710357",
+    "slug": "peanut-brittle",
+    "name": "Peanut Brittle",
+    "searchName": "peanut brittle",
+    "displayName": "Peanut Brittle",
+    "aliases": [
+      "peanut brittle",
+      "candy, peanut brittle"
+    ],
+    "category": "Desserts",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 piece",
+        "grams": 10,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 160
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 486,
+      "protein": 7.57,
+      "carbohydrates": 71.2,
+      "fat": 19,
+      "fiber": 2.5,
+      "sugar": 51.3,
+      "sodium": 445,
+      "saturatedFat": 4.14,
+      "cholesterol": 12,
+      "potassium": 168
+    },
+    "tags": [
+      "desserts"
+    ],
+    "compareGroup": "Desserts",
+    "usda": {
+      "fdcId": 2710357,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_169608",
+    "slug": "vanilla-pudding",
+    "name": "Vanilla Pudding",
+    "searchName": "vanilla pudding",
+    "displayName": "Vanilla Pudding",
+    "aliases": [
+      "vanilla pudding",
+      "puddings, vanilla, ready-to-eat"
+    ],
+    "category": "Desserts",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "container",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "container",
+        "label": "1 container refrigerated 4 oz",
+        "grams": 110,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "oz",
+        "label": "1 oz",
+        "grams": 28.4
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 130,
+      "protein": 1.45,
+      "carbohydrates": 22.6,
+      "fat": 3.78,
+      "fiber": 0,
+      "sugar": 16.97,
+      "sodium": 172,
+      "saturatedFat": 1.02,
+      "cholesterol": 1,
+      "potassium": 65
+    },
+    "tags": [
+      "desserts"
+    ],
+    "compareGroup": "Desserts",
+    "usda": {
+      "fdcId": 169608,
+      "dataType": "SR Legacy"
+    }
+  },
+  {
+    "id": "usda_2705696",
+    "slug": "tapioca-pudding",
+    "name": "Tapioca Pudding",
+    "searchName": "tapioca pudding",
+    "displayName": "Tapioca Pudding",
+    "aliases": [
+      "tapioca pudding",
+      "pudding, tapioca, ready-to-eat"
+    ],
+    "category": "Desserts",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 260,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "snack",
+        "label": "1 snack size container",
+        "grams": 110
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 130,
+      "protein": 1.95,
+      "carbohydrates": 21.7,
+      "fat": 3.88,
+      "fiber": 0,
+      "sugar": 14.9,
+      "sodium": 145,
+      "saturatedFat": 0.96,
+      "cholesterol": 1,
+      "potassium": 92
+    },
+    "tags": [
+      "desserts"
+    ],
+    "compareGroup": "Desserts",
+    "usda": {
+      "fdcId": 2705696,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2705683",
+    "slug": "flan",
+    "name": "Flan",
+    "searchName": "flan",
+    "displayName": "Flan",
+    "aliases": [
+      "flan"
+    ],
+    "category": "Desserts",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 260,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cubic",
+        "label": "1 cubic inch",
+        "grams": 19
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 178,
+      "protein": 5.23,
+      "carbohydrates": 28.2,
+      "fat": 4.94,
+      "fiber": 0,
+      "sugar": 28.1,
+      "sodium": 163,
+      "saturatedFat": 2.24,
+      "cholesterol": 112,
+      "potassium": 129
+    },
+    "tags": [
+      "desserts"
+    ],
+    "compareGroup": "Desserts",
+    "usda": {
+      "fdcId": 2705683,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2705611",
+    "slug": "whipped-topping",
+    "name": "Whipped Topping",
+    "searchName": "whipped topping",
+    "displayName": "Whipped Topping",
+    "aliases": [
+      "whipped topping"
+    ],
+    "category": "Desserts",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "tbsp",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "tbsp",
+        "label": "2 tablespoons",
+        "grams": 9.4,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 75
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 318,
+      "protein": 1.25,
+      "carbohydrates": 23,
+      "fat": 25.3,
+      "fiber": 0,
+      "sugar": 23,
+      "sodium": 25,
+      "saturatedFat": 21.8,
+      "cholesterol": 0,
+      "potassium": 18
+    },
+    "tags": [
+      "desserts"
+    ],
+    "compareGroup": "Desserts",
+    "usda": {
+      "fdcId": 2705611,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2710276",
+    "slug": "chocolate-syrup",
+    "name": "Chocolate Syrup",
+    "searchName": "chocolate syrup",
+    "displayName": "Chocolate Syrup",
+    "aliases": [
+      "chocolate syrup"
+    ],
+    "category": "Desserts",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "tbsp",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "tbsp",
+        "label": "1 tablespoon",
+        "grams": 20,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 320
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 269,
+      "protein": 0,
+      "carbohydrates": 67.2,
+      "fat": 0,
+      "fiber": 0,
+      "sugar": 60,
+      "sodium": 150,
+      "saturatedFat": 0,
+      "cholesterol": 0,
+      "potassium": 122
+    },
+    "tags": [
+      "desserts"
+    ],
+    "compareGroup": "Desserts",
+    "usda": {
+      "fdcId": 2710276,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2710273",
+    "slug": "pancake-syrup",
+    "name": "Pancake Syrup",
+    "searchName": "pancake syrup",
+    "displayName": "Pancake Syrup",
+    "aliases": [
+      "pancake syrup"
+    ],
+    "category": "Desserts",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "tbsp",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "tbsp",
+        "label": "1 tablespoon",
+        "grams": 20,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "single",
+        "label": "1 single serving container",
+        "grams": 60
+      },
+      {
+        "id": "serve_3",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 320
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 265,
+      "protein": 0,
+      "carbohydrates": 69.6,
+      "fat": 0.1,
+      "fiber": 0,
+      "sugar": 42,
+      "sodium": 61,
+      "saturatedFat": 0.02,
+      "cholesterol": 0,
+      "potassium": 6
+    },
+    "tags": [
+      "desserts"
+    ],
+    "compareGroup": "Desserts",
+    "usda": {
+      "fdcId": 2710273,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707832",
+    "slug": "chocolate-chip-muffin",
+    "name": "Chocolate Chip Muffin",
+    "searchName": "chocolate chip muffin",
+    "displayName": "Chocolate Chip Muffin",
+    "aliases": [
+      "chocolate chip muffin",
+      "muffin, chocolate chip"
+    ],
+    "category": "Desserts",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 medium",
+        "grams": 130,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "calorie",
+        "label": "1 calorie package",
+        "grams": 25
+      },
+      {
+        "id": "serve_3",
+        "unit": "miniature",
+        "label": "1 miniature",
+        "grams": 25
+      },
+      {
+        "id": "serve_4",
+        "unit": "bite",
+        "label": "1 bite size",
+        "grams": 10
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 402,
+      "protein": 5.77,
+      "carbohydrates": 55.4,
+      "fat": 19,
+      "fiber": 1.8,
+      "sugar": 32.9,
+      "sodium": 306,
+      "saturatedFat": 5.4,
+      "cholesterol": 45,
+      "potassium": 175
+    },
+    "tags": [
+      "desserts"
+    ],
+    "compareGroup": "Desserts",
+    "usda": {
+      "fdcId": 2707832,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707935",
+    "slug": "lemon-bar",
+    "name": "Lemon Bar",
+    "searchName": "lemon bar",
+    "displayName": "Lemon Bar",
+    "aliases": [
+      "lemon bar",
+      "cookie, lemon bar"
+    ],
+    "category": "Desserts",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 medium bar",
+        "grams": 38,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 437,
+      "protein": 5.13,
+      "carbohydrates": 62.6,
+      "fat": 18.9,
+      "fiber": 0.8,
+      "sugar": 42.1,
+      "sodium": 224,
+      "saturatedFat": 3.75,
+      "cholesterol": 75,
+      "potassium": 71
+    },
+    "tags": [
+      "desserts"
+    ],
+    "compareGroup": "Desserts",
+    "usda": {
+      "fdcId": 2707935,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2709295",
+    "slug": "chocolate-covered-fruit",
+    "name": "Chocolate-Covered Fruit",
+    "searchName": "chocolate-covered fruit",
+    "displayName": "Chocolate-Covered Fruit",
+    "aliases": [
+      "chocolate-covered fruit",
+      "fruit, chocolate covered"
+    ],
+    "category": "Desserts",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 fruit",
+        "grams": 40,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 133,
+      "protein": 1.41,
+      "carbohydrates": 20.1,
+      "fat": 6.69,
+      "fiber": 2.7,
+      "sugar": 15.6,
+      "sodium": 2,
+      "saturatedFat": 3.86,
+      "cholesterol": 0,
+      "potassium": 205
+    },
+    "tags": [
+      "desserts"
+    ],
+    "compareGroup": "Desserts",
+    "usda": {
+      "fdcId": 2709295,
+      "dataType": "Survey (FNDDS)"
+    }
   }
 ];

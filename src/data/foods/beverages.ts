@@ -2772,5 +2772,1952 @@ export const beveragesFoods: FoodItem[] = [
       "fdcId": 173180,
       "dataType": "SR Legacy"
     }
+  },
+  {
+    "id": "usda_2710549",
+    "slug": "cream-soda",
+    "name": "Cream Soda",
+    "searchName": "cream soda",
+    "displayName": "Cream Soda",
+    "aliases": [
+      "cream soda",
+      "soft drink, cream soda"
+    ],
+    "category": "Beverages",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "can",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "can",
+        "label": "1 can",
+        "grams": 372,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "piece",
+        "label": "1 medium drink",
+        "grams": 512
+      },
+      {
+        "id": "serve_3",
+        "unit": "fl",
+        "label": "1 fl oz",
+        "grams": 31
+      },
+      {
+        "id": "serve_4",
+        "unit": "child/senior",
+        "label": "1 child/senior drink",
+        "grams": 279
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 51,
+      "protein": 0,
+      "carbohydrates": 13.3,
+      "fat": 0,
+      "fiber": 0,
+      "sugar": 13.3,
+      "sodium": 12,
+      "saturatedFat": 0,
+      "cholesterol": 0,
+      "potassium": 1
+    },
+    "tags": [
+      "beverages"
+    ],
+    "compareGroup": "Beverages",
+    "usda": {
+      "fdcId": 2710549,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_174842",
+    "slug": "club-soda",
+    "name": "Club Soda",
+    "searchName": "club soda",
+    "displayName": "Club Soda",
+    "aliases": [
+      "club soda",
+      "beverages, carbonated, club soda"
+    ],
+    "category": "Beverages",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "can",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "can",
+        "label": "1 can or bottle",
+        "grams": 355,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "fl",
+        "label": "1 fl oz",
+        "grams": 29.6
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 0,
+      "protein": 0,
+      "carbohydrates": 0,
+      "fat": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "sodium": 21,
+      "saturatedFat": 0,
+      "cholesterol": 0,
+      "potassium": 2
+    },
+    "tags": [
+      "beverages"
+    ],
+    "compareGroup": "Beverages",
+    "usda": {
+      "fdcId": 174842,
+      "dataType": "SR Legacy"
+    }
+  },
+  {
+    "id": "usda_2710502",
+    "slug": "herbal-tea",
+    "name": "Herbal Tea",
+    "searchName": "herbal tea",
+    "displayName": "Herbal Tea",
+    "aliases": [
+      "herbal tea",
+      "tea, hot, herbal"
+    ],
+    "category": "Beverages",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 240,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "piece",
+        "label": "1 medium",
+        "grams": 480
+      },
+      {
+        "id": "serve_3",
+        "unit": "fl",
+        "label": "1 fl oz",
+        "grams": 30
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 1,
+      "protein": 0,
+      "carbohydrates": 0.2,
+      "fat": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "sodium": 1,
+      "saturatedFat": 0,
+      "cholesterol": 0,
+      "potassium": 9
+    },
+    "tags": [
+      "beverages"
+    ],
+    "compareGroup": "Beverages",
+    "usda": {
+      "fdcId": 2710502,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2705502",
+    "slug": "eggnog",
+    "name": "Eggnog",
+    "searchName": "eggnog",
+    "displayName": "Eggnog",
+    "aliases": [
+      "eggnog"
+    ],
+    "category": "Beverages",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 256,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "fl",
+        "label": "1 fl oz",
+        "grams": 32
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 88,
+      "protein": 4.55,
+      "carbohydrates": 8.05,
+      "fat": 4.19,
+      "fiber": 0,
+      "sugar": 8.05,
+      "sodium": 54,
+      "saturatedFat": 2.59,
+      "cholesterol": 59,
+      "potassium": 165
+    },
+    "tags": [
+      "beverages"
+    ],
+    "compareGroup": "Beverages",
+    "usda": {
+      "fdcId": 2705502,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2710603",
+    "slug": "horchata",
+    "name": "Horchata",
+    "searchName": "horchata",
+    "displayName": "Horchata",
+    "aliases": [
+      "horchata",
+      "horchata, made with milk"
+    ],
+    "category": "Beverages",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 248,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "fl",
+        "label": "1 fl oz",
+        "grams": 31
+      },
+      {
+        "id": "serve_3",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 248
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 91,
+      "protein": 1.42,
+      "carbohydrates": 19.6,
+      "fat": 0.63,
+      "fiber": 0.4,
+      "sugar": 9.56,
+      "sodium": 9,
+      "saturatedFat": 0.32,
+      "cholesterol": 2,
+      "potassium": 41
+    },
+    "tags": [
+      "beverages"
+    ],
+    "compareGroup": "Beverages",
+    "usda": {
+      "fdcId": 2710603,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2709810",
+    "slug": "vegetable-juice",
+    "name": "Vegetable Juice",
+    "searchName": "vegetable juice",
+    "displayName": "Vegetable Juice",
+    "aliases": [
+      "vegetable juice",
+      "mixed vegetable juice"
+    ],
+    "category": "Beverages",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 248,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "fl",
+        "label": "1 fl oz",
+        "grams": 30.8
+      },
+      {
+        "id": "serve_3",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 246
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 28,
+      "protein": 0.72,
+      "carbohydrates": 6.3,
+      "fat": 0.16,
+      "fiber": 1.2,
+      "sugar": 2.62,
+      "sodium": 82,
+      "saturatedFat": 0.03,
+      "cholesterol": 0,
+      "potassium": 278
+    },
+    "tags": [
+      "beverages"
+    ],
+    "compareGroup": "Beverages",
+    "usda": {
+      "fdcId": 2709810,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2709683",
+    "slug": "carrot-juice",
+    "name": "Carrot Juice",
+    "searchName": "carrot juice",
+    "displayName": "Carrot Juice",
+    "aliases": [
+      "carrot juice",
+      "carrot juice, 100%"
+    ],
+    "category": "Beverages",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 248,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "fl",
+        "label": "1 fl oz",
+        "grams": 30
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 40,
+      "protein": 0.95,
+      "carbohydrates": 9.28,
+      "fat": 0.15,
+      "fiber": 0.8,
+      "sugar": 3.91,
+      "sodium": 66,
+      "saturatedFat": 0.03,
+      "cholesterol": 0,
+      "potassium": 292
+    },
+    "tags": [
+      "beverages"
+    ],
+    "compareGroup": "Beverages",
+    "usda": {
+      "fdcId": 2709683,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2710690",
+    "slug": "ros-wine",
+    "name": "Rosé Wine",
+    "searchName": "rosé wine",
+    "displayName": "Rosé Wine",
+    "aliases": [
+      "rosé wine",
+      "wine, rose"
+    ],
+    "category": "Beverages",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "glass",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "glass",
+        "label": "1 glass",
+        "grams": 180,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "fl",
+        "label": "1 fl oz",
+        "grams": 30
+      },
+      {
+        "id": "serve_3",
+        "unit": "bottle",
+        "label": "1 bottle",
+        "grams": 375
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 83,
+      "protein": 0.36,
+      "carbohydrates": 3.8,
+      "fat": 0,
+      "fiber": 0,
+      "sugar": 3.8,
+      "sodium": 5,
+      "saturatedFat": 0,
+      "cholesterol": 0,
+      "potassium": 59
+    },
+    "tags": [
+      "beverages"
+    ],
+    "compareGroup": "Beverages",
+    "usda": {
+      "fdcId": 2710690,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2710695",
+    "slug": "sangria",
+    "name": "Sangria",
+    "searchName": "sangria",
+    "displayName": "Sangria",
+    "aliases": [
+      "sangria",
+      "sangria, red"
+    ],
+    "category": "Beverages",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "glass",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "glass",
+        "label": "1 glass",
+        "grams": 228,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "fl",
+        "label": "1 fl oz",
+        "grams": 30
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 85,
+      "protein": 0.04,
+      "carbohydrates": 7.23,
+      "fat": 0.02,
+      "fiber": 0,
+      "sugar": 6.14,
+      "sodium": 10,
+      "saturatedFat": 0,
+      "cholesterol": 0,
+      "potassium": 68
+    },
+    "tags": [
+      "beverages"
+    ],
+    "compareGroup": "Beverages",
+    "usda": {
+      "fdcId": 2710695,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2710642",
+    "slug": "mimosa",
+    "name": "Mimosa",
+    "searchName": "mimosa",
+    "displayName": "Mimosa",
+    "aliases": [
+      "mimosa"
+    ],
+    "category": "Beverages",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "drink",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "drink",
+        "label": "1 drink",
+        "grams": 180,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "fl",
+        "label": "1 fl oz",
+        "grams": 30
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 64,
+      "protein": 0.43,
+      "carbohydrates": 6.49,
+      "fat": 0.18,
+      "fiber": 0.2,
+      "sugar": 4.67,
+      "sodium": 4,
+      "saturatedFat": 0.01,
+      "cholesterol": 0,
+      "potassium": 128
+    },
+    "tags": [
+      "beverages"
+    ],
+    "compareGroup": "Beverages",
+    "usda": {
+      "fdcId": 2710642,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2710628",
+    "slug": "bloody-mary",
+    "name": "Bloody Mary",
+    "searchName": "bloody mary",
+    "displayName": "Bloody Mary",
+    "aliases": [
+      "bloody mary"
+    ],
+    "category": "Beverages",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "drink",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "drink",
+        "label": "1 drink",
+        "grams": 225,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "fl",
+        "label": "1 fl oz",
+        "grams": 30
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 73,
+      "protein": 0.67,
+      "carbohydrates": 3.8,
+      "fat": 0.23,
+      "fiber": 0.4,
+      "sugar": 2.26,
+      "sodium": 200,
+      "saturatedFat": 0.02,
+      "cholesterol": 0,
+      "potassium": 166
+    },
+    "tags": [
+      "beverages"
+    ],
+    "compareGroup": "Beverages",
+    "usda": {
+      "fdcId": 2710628,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2710639",
+    "slug": "martini",
+    "name": "Martini",
+    "searchName": "martini",
+    "displayName": "Martini",
+    "aliases": [
+      "martini"
+    ],
+    "category": "Beverages",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "drink",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "drink",
+        "label": "1 drink",
+        "grams": 120,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "fl",
+        "label": "1 fl oz",
+        "grams": 30
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 201,
+      "protein": 0.07,
+      "carbohydrates": 0.15,
+      "fat": 0,
+      "fiber": 0,
+      "sugar": 0.15,
+      "sodium": 2,
+      "saturatedFat": 0,
+      "cholesterol": 0,
+      "potassium": 13
+    },
+    "tags": [
+      "beverages"
+    ],
+    "compareGroup": "Beverages",
+    "usda": {
+      "fdcId": 2710639,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2710654",
+    "slug": "whiskey-sour",
+    "name": "Whiskey Sour",
+    "searchName": "whiskey sour",
+    "displayName": "Whiskey Sour",
+    "aliases": [
+      "whiskey sour"
+    ],
+    "category": "Beverages",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "drink",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "drink",
+        "label": "1 drink",
+        "grams": 225,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "fl",
+        "label": "1 fl oz",
+        "grams": 30
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 123,
+      "protein": 0.08,
+      "carbohydrates": 16.1,
+      "fat": 0.08,
+      "fiber": 0,
+      "sugar": 16.1,
+      "sodium": 77,
+      "saturatedFat": 0.01,
+      "cholesterol": 0,
+      "potassium": 22
+    },
+    "tags": [
+      "beverages"
+    ],
+    "compareGroup": "Beverages",
+    "usda": {
+      "fdcId": 2710654,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2710679",
+    "slug": "long-island-iced-tea",
+    "name": "Long Island Iced Tea",
+    "searchName": "long island iced tea",
+    "displayName": "Long Island Iced Tea",
+    "aliases": [
+      "long island iced tea"
+    ],
+    "category": "Beverages",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "drink",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "drink",
+        "label": "1 drink",
+        "grams": 225,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "fl",
+        "label": "1 fl oz",
+        "grams": 30
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 107,
+      "protein": 0.01,
+      "carbohydrates": 8.66,
+      "fat": 0.15,
+      "fiber": 0,
+      "sugar": 8.43,
+      "sodium": 16,
+      "saturatedFat": 0,
+      "cholesterol": 0,
+      "potassium": 7
+    },
+    "tags": [
+      "beverages"
+    ],
+    "compareGroup": "Beverages",
+    "usda": {
+      "fdcId": 2710679,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2710630",
+    "slug": "daiquiri",
+    "name": "Daiquiri",
+    "searchName": "daiquiri",
+    "displayName": "Daiquiri",
+    "aliases": [
+      "daiquiri"
+    ],
+    "category": "Beverages",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "drink",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "drink",
+        "label": "1 drink",
+        "grams": 225,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "fl",
+        "label": "1 fl oz",
+        "grams": 30
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 119,
+      "protein": 0.09,
+      "carbohydrates": 15.6,
+      "fat": 0.1,
+      "fiber": 0.1,
+      "sugar": 14.9,
+      "sodium": 64,
+      "saturatedFat": 0.01,
+      "cholesterol": 0,
+      "potassium": 28
+    },
+    "tags": [
+      "beverages"
+    ],
+    "compareGroup": "Beverages",
+    "usda": {
+      "fdcId": 2710630,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2710673",
+    "slug": "white-russian",
+    "name": "White Russian",
+    "searchName": "white russian",
+    "displayName": "White Russian",
+    "aliases": [
+      "white russian"
+    ],
+    "category": "Beverages",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "drink",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "drink",
+        "label": "1 drink",
+        "grams": 225,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "fl",
+        "label": "1 fl oz",
+        "grams": 30
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 181,
+      "protein": 2.15,
+      "carbohydrates": 11.2,
+      "fat": 7.9,
+      "fiber": 0,
+      "sugar": 9.56,
+      "sodium": 43,
+      "saturatedFat": 4.82,
+      "cholesterol": 24,
+      "potassium": 96
+    },
+    "tags": [
+      "beverages"
+    ],
+    "compareGroup": "Beverages",
+    "usda": {
+      "fdcId": 2710673,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2710650",
+    "slug": "screwdriver",
+    "name": "Screwdriver",
+    "searchName": "screwdriver",
+    "displayName": "Screwdriver",
+    "aliases": [
+      "screwdriver"
+    ],
+    "category": "Beverages",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "drink",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "drink",
+        "label": "1 drink",
+        "grams": 225,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "fl",
+        "label": "1 fl oz",
+        "grams": 30
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 92,
+      "protein": 0.58,
+      "carbohydrates": 7.66,
+      "fat": 0.26,
+      "fiber": 0.2,
+      "sugar": 6.16,
+      "sodium": 2,
+      "saturatedFat": 0.01,
+      "cholesterol": 0,
+      "potassium": 137
+    },
+    "tags": [
+      "beverages"
+    ],
+    "compareGroup": "Beverages",
+    "usda": {
+      "fdcId": 2710650,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2710699",
+    "slug": "brandy",
+    "name": "Brandy",
+    "searchName": "brandy",
+    "displayName": "Brandy",
+    "aliases": [
+      "brandy"
+    ],
+    "category": "Beverages",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "drink",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "drink",
+        "label": "1 drink",
+        "grams": 63,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "jigger",
+        "label": "1 jigger",
+        "grams": 42
+      },
+      {
+        "id": "serve_3",
+        "unit": "shot",
+        "label": "1 shot",
+        "grams": 42
+      },
+      {
+        "id": "serve_4",
+        "unit": "fl",
+        "label": "1 fl oz",
+        "grams": 28
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 231,
+      "protein": 0,
+      "carbohydrates": 0,
+      "fat": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "sodium": 1,
+      "saturatedFat": 0,
+      "cholesterol": 0,
+      "potassium": 2
+    },
+    "tags": [
+      "beverages"
+    ],
+    "compareGroup": "Beverages",
+    "usda": {
+      "fdcId": 2710699,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2710625",
+    "slug": "coffee-liqueur",
+    "name": "Coffee Liqueur",
+    "searchName": "coffee liqueur",
+    "displayName": "Coffee Liqueur",
+    "aliases": [
+      "coffee liqueur",
+      "liqueur, coffee flavored"
+    ],
+    "category": "Beverages",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "drink",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "drink",
+        "label": "1 drink",
+        "grams": 68,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "fl",
+        "label": "1 fl oz",
+        "grams": 30
+      },
+      {
+        "id": "serve_3",
+        "unit": "shot",
+        "label": "1 shot",
+        "grams": 45
+      },
+      {
+        "id": "serve_4",
+        "unit": "jigger",
+        "label": "1 jigger",
+        "grams": 45
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 336,
+      "protein": 0.1,
+      "carbohydrates": 46.8,
+      "fat": 0.3,
+      "fiber": 0,
+      "sugar": 38.3,
+      "sodium": 8,
+      "saturatedFat": 0.11,
+      "cholesterol": 0,
+      "potassium": 30
+    },
+    "tags": [
+      "beverages"
+    ],
+    "compareGroup": "Beverages",
+    "usda": {
+      "fdcId": 2710625,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_167723",
+    "slug": "sake",
+    "name": "Sake",
+    "searchName": "sake",
+    "displayName": "Sake",
+    "aliases": [
+      "sake",
+      "alcoholic beverage, rice (sake)"
+    ],
+    "category": "Beverages",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "fl oz",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "fl oz",
+        "label": "6 fl oz",
+        "grams": 174.6,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "fl",
+        "label": "1 fl oz",
+        "grams": 29.1
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 134,
+      "protein": 0.5,
+      "carbohydrates": 5,
+      "fat": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "sodium": 2,
+      "saturatedFat": 0,
+      "cholesterol": 0,
+      "potassium": 25
+    },
+    "tags": [
+      "beverages"
+    ],
+    "compareGroup": "Beverages",
+    "usda": {
+      "fdcId": 167723,
+      "dataType": "SR Legacy"
+    }
+  },
+  {
+    "id": "usda_2710622",
+    "slug": "hard-seltzer",
+    "name": "Hard Seltzer",
+    "searchName": "hard seltzer",
+    "displayName": "Hard Seltzer",
+    "aliases": [
+      "hard seltzer"
+    ],
+    "category": "Beverages",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "can",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "can",
+        "label": "1 can or bottle",
+        "grams": 360,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "fl",
+        "label": "1 fl oz",
+        "grams": 30
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 24,
+      "protein": 0.07,
+      "carbohydrates": 0.55,
+      "fat": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "sodium": 17,
+      "saturatedFat": 0,
+      "cholesterol": 0,
+      "potassium": 6
+    },
+    "tags": [
+      "beverages"
+    ],
+    "compareGroup": "Beverages",
+    "usda": {
+      "fdcId": 2710622,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2710618",
+    "slug": "strong-beer-higher-alcohol",
+    "name": "Strong Beer (Higher Alcohol)",
+    "searchName": "strong beer (higher alcohol)",
+    "displayName": "Strong Beer (Higher Alcohol)",
+    "aliases": [
+      "strong beer (higher alcohol)",
+      "beer, higher alcohol"
+    ],
+    "category": "Beverages",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "can",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "can",
+        "label": "1 can or bottle",
+        "grams": 480,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "fl",
+        "label": "1 fl oz",
+        "grams": 30
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 58,
+      "protein": 0.9,
+      "carbohydrates": 0.27,
+      "fat": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "sodium": 4,
+      "saturatedFat": 0,
+      "cholesterol": 0,
+      "potassium": 62
+    },
+    "tags": [
+      "beverages"
+    ],
+    "compareGroup": "Beverages",
+    "usda": {
+      "fdcId": 2710618,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2710610",
+    "slug": "nonalcoholic-beer",
+    "name": "Nonalcoholic Beer",
+    "searchName": "nonalcoholic beer",
+    "displayName": "Nonalcoholic Beer",
+    "aliases": [
+      "nonalcoholic beer",
+      "beer, nonalcoholic"
+    ],
+    "category": "Beverages",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "can",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "can",
+        "label": "1 can or bottle",
+        "grams": 360,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "fl",
+        "label": "1 fl oz",
+        "grams": 30
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 37,
+      "protein": 0.21,
+      "carbohydrates": 8.05,
+      "fat": 0.12,
+      "fiber": 0,
+      "sugar": 8.05,
+      "sodium": 13,
+      "saturatedFat": 0.02,
+      "cholesterol": 0,
+      "potassium": 8
+    },
+    "tags": [
+      "beverages"
+    ],
+    "compareGroup": "Beverages",
+    "usda": {
+      "fdcId": 2710610,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2710517",
+    "slug": "iced-tea-unsweetened",
+    "name": "Iced Tea (Unsweetened)",
+    "searchName": "iced tea (unsweetened)",
+    "displayName": "Iced Tea (Unsweetened)",
+    "aliases": [
+      "iced tea (unsweetened)",
+      "tea, iced, brewed, black, unsweetened"
+    ],
+    "category": "Beverages",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 medium drink",
+        "grams": 495,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "fl",
+        "label": "1 fl oz",
+        "grams": 23
+      },
+      {
+        "id": "serve_3",
+        "unit": "child/senior",
+        "label": "1 child/senior drink",
+        "grams": 270
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 1,
+      "protein": 0,
+      "carbohydrates": 0.3,
+      "fat": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "sodium": 3,
+      "saturatedFat": 0,
+      "cholesterol": 0,
+      "potassium": 37
+    },
+    "tags": [
+      "beverages"
+    ],
+    "compareGroup": "Beverages",
+    "usda": {
+      "fdcId": 2710517,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2710512",
+    "slug": "iced-tea-lemonade",
+    "name": "Iced Tea Lemonade",
+    "searchName": "iced tea lemonade",
+    "displayName": "Iced Tea Lemonade",
+    "aliases": [
+      "iced tea lemonade",
+      "iced tea / lemonade juice drink"
+    ],
+    "category": "Beverages",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 248,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "fl",
+        "label": "1 fl oz",
+        "grams": 23
+      },
+      {
+        "id": "serve_3",
+        "unit": "bottle",
+        "label": "1 bottle",
+        "grams": 600
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 34,
+      "protein": 0.2,
+      "carbohydrates": 9.15,
+      "fat": 0.05,
+      "fiber": 0.3,
+      "sugar": 7.2,
+      "sodium": 12,
+      "saturatedFat": 0.01,
+      "cholesterol": 0,
+      "potassium": 67
+    },
+    "tags": [
+      "beverages"
+    ],
+    "compareGroup": "Beverages",
+    "usda": {
+      "fdcId": 2710512,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2710540",
+    "slug": "flavored-water",
+    "name": "Flavored Water",
+    "searchName": "flavored water",
+    "displayName": "Flavored Water",
+    "aliases": [
+      "flavored water",
+      "water, carbonated, flavored"
+    ],
+    "category": "Beverages",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "can",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "can",
+        "label": "1 can",
+        "grams": 360,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "bottle",
+        "label": "1 bottle",
+        "grams": 507
+      },
+      {
+        "id": "serve_3",
+        "unit": "fl",
+        "label": "1 fl oz",
+        "grams": 30
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 0,
+      "protein": 0.1,
+      "carbohydrates": 0,
+      "fat": 0,
+      "fiber": 0,
+      "sugar": 0,
+      "sodium": 6,
+      "saturatedFat": 0,
+      "cholesterol": 0,
+      "potassium": 2
+    },
+    "tags": [
+      "beverages"
+    ],
+    "compareGroup": "Beverages",
+    "usda": {
+      "fdcId": 2710540,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2710711",
+    "slug": "enhanced-water",
+    "name": "Enhanced Water",
+    "searchName": "enhanced water",
+    "displayName": "Enhanced Water",
+    "aliases": [
+      "enhanced water",
+      "water, enhanced, regular"
+    ],
+    "category": "Beverages",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 240,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "fl",
+        "label": "1 fl oz",
+        "grams": 30
+      },
+      {
+        "id": "serve_3",
+        "unit": "bottle",
+        "label": "1 bottle",
+        "grams": 600
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 22,
+      "protein": 0,
+      "carbohydrates": 5.49,
+      "fat": 0,
+      "fiber": 0,
+      "sugar": 5.49,
+      "sodium": 0,
+      "saturatedFat": 0,
+      "cholesterol": 0,
+      "potassium": 0
+    },
+    "tags": [
+      "beverages"
+    ],
+    "compareGroup": "Beverages",
+    "usda": {
+      "fdcId": 2710711,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2705406",
+    "slug": "chocolate-soy-milk",
+    "name": "Chocolate Soy Milk",
+    "searchName": "chocolate soy milk",
+    "displayName": "Chocolate Soy Milk",
+    "aliases": [
+      "chocolate soy milk",
+      "soy milk, chocolate"
+    ],
+    "category": "Beverages",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 244,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "fl",
+        "label": "1 fl oz",
+        "grams": 30.5
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 64,
+      "protein": 3.35,
+      "carbohydrates": 8.32,
+      "fat": 2.03,
+      "fiber": 0.1,
+      "sugar": 7.49,
+      "sodium": 32,
+      "saturatedFat": 0.32,
+      "cholesterol": 0,
+      "potassium": 151
+    },
+    "tags": [
+      "beverages"
+    ],
+    "compareGroup": "Beverages",
+    "usda": {
+      "fdcId": 2705406,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2705495",
+    "slug": "strawberry-milk",
+    "name": "Strawberry Milk",
+    "searchName": "strawberry milk",
+    "displayName": "Strawberry Milk",
+    "aliases": [
+      "strawberry milk",
+      "strawberry milk, nfs"
+    ],
+    "category": "Beverages",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 248,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "individual",
+        "label": "1 individual school container",
+        "grams": 248
+      },
+      {
+        "id": "serve_3",
+        "unit": "fl",
+        "label": "1 fl oz",
+        "grams": 31
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 65,
+      "protein": 3.2,
+      "carbohydrates": 8.54,
+      "fat": 2.06,
+      "fiber": 0,
+      "sugar": 8.45,
+      "sodium": 39,
+      "saturatedFat": 1.2,
+      "cholesterol": 8,
+      "potassium": 150
+    },
+    "tags": [
+      "beverages"
+    ],
+    "compareGroup": "Beverages",
+    "usda": {
+      "fdcId": 2705495,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2710398",
+    "slug": "frappe-frozen-coffee-drink",
+    "name": "Frappe (Frozen Coffee Drink)",
+    "searchName": "frappe (frozen coffee drink)",
+    "displayName": "Frappe (Frozen Coffee Drink)",
+    "aliases": [
+      "frappe (frozen coffee drink)",
+      "frozen coffee drink"
+    ],
+    "category": "Beverages",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 medium",
+        "grams": 496,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "fl",
+        "label": "1 fl oz",
+        "grams": 31
+      },
+      {
+        "id": "serve_3",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 248
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 68,
+      "protein": 1.56,
+      "carbohydrates": 13.4,
+      "fat": 0.93,
+      "fiber": 0,
+      "sugar": 13.2,
+      "sodium": 21,
+      "saturatedFat": 0.52,
+      "cholesterol": 4,
+      "potassium": 91
+    },
+    "tags": [
+      "beverages"
+    ],
+    "compareGroup": "Beverages",
+    "usda": {
+      "fdcId": 2710398,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2710434",
+    "slug": "flavored-iced-latte",
+    "name": "Flavored Iced Latte",
+    "searchName": "flavored iced latte",
+    "displayName": "Flavored Iced Latte",
+    "aliases": [
+      "flavored iced latte",
+      "coffee, iced latte, flavored"
+    ],
+    "category": "Beverages",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 medium",
+        "grams": 496,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "fl",
+        "label": "1 fl oz",
+        "grams": 31
+      },
+      {
+        "id": "serve_3",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 248
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 40,
+      "protein": 1.69,
+      "carbohydrates": 6.09,
+      "fat": 0.98,
+      "fiber": 0,
+      "sugar": 5.81,
+      "sodium": 23,
+      "saturatedFat": 0.57,
+      "cholesterol": 4,
+      "potassium": 99
+    },
+    "tags": [
+      "beverages"
+    ],
+    "compareGroup": "Beverages",
+    "usda": {
+      "fdcId": 2710434,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2709187",
+    "slug": "orange-juice-fresh-squeezed",
+    "name": "Orange Juice (Fresh-Squeezed)",
+    "searchName": "orange juice (fresh-squeezed)",
+    "displayName": "Orange Juice (Fresh-Squeezed)",
+    "aliases": [
+      "orange juice (fresh-squeezed)",
+      "orange juice, 100%,  freshly squeezed"
+    ],
+    "category": "Beverages",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "juice",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "juice",
+        "label": "1 Juice of 1 orange",
+        "grams": 86,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "fl",
+        "label": "1 fl oz",
+        "grams": 23
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 47,
+      "protein": 0.81,
+      "carbohydrates": 10,
+      "fat": 0.36,
+      "fiber": 0.3,
+      "sugar": 8.08,
+      "sodium": 0,
+      "saturatedFat": 0.01,
+      "cholesterol": 0,
+      "potassium": 183
+    },
+    "tags": [
+      "beverages"
+    ],
+    "compareGroup": "Beverages",
+    "usda": {
+      "fdcId": 2709187,
+      "dataType": "Survey (FNDDS)"
+    }
   }
 ];

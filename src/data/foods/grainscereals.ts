@@ -842,5 +842,658 @@ export const grainscerealsFoods: FoodItem[] = [
       "fdcId": 168916,
       "dataType": "SR Legacy"
     }
+  },
+  {
+    "id": "usda_2709085",
+    "slug": "spanish-rice",
+    "name": "Spanish Rice",
+    "searchName": "spanish rice",
+    "displayName": "Spanish Rice",
+    "aliases": [
+      "spanish rice",
+      "spanish rice, fat added"
+    ],
+    "category": "Grains & Cereals",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 243,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 115,
+      "protein": 2.87,
+      "carbohydrates": 19.6,
+      "fat": 2.6,
+      "fiber": 1.1,
+      "sugar": 1.55,
+      "sodium": 310,
+      "saturatedFat": 0.5,
+      "cholesterol": 3,
+      "potassium": 123
+    },
+    "tags": [
+      "grains-cereals"
+    ],
+    "compareGroup": "Grains & Cereals",
+    "usda": {
+      "fdcId": 2709085,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2709077",
+    "slug": "rice-pilaf",
+    "name": "Rice Pilaf",
+    "searchName": "rice pilaf",
+    "displayName": "Rice Pilaf",
+    "aliases": [
+      "rice pilaf"
+    ],
+    "category": "Grains & Cereals",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 206,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 137,
+      "protein": 3.29,
+      "carbohydrates": 24.1,
+      "fat": 3.03,
+      "fiber": 0.4,
+      "sugar": 0.48,
+      "sodium": 414,
+      "saturatedFat": 0.44,
+      "cholesterol": 0,
+      "potassium": 56
+    },
+    "tags": [
+      "grains-cereals"
+    ],
+    "compareGroup": "Grains & Cereals",
+    "usda": {
+      "fdcId": 2709077,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2708421",
+    "slug": "yellow-rice",
+    "name": "Yellow Rice",
+    "searchName": "yellow rice",
+    "displayName": "Yellow Rice",
+    "aliases": [
+      "yellow rice",
+      "yellow rice, cooked, fat added"
+    ],
+    "category": "Grains & Cereals",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup, cooked",
+        "grams": 163,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 103,
+      "protein": 1.76,
+      "carbohydrates": 18.7,
+      "fat": 2.43,
+      "fiber": 0.4,
+      "sugar": 0.44,
+      "sodium": 351,
+      "saturatedFat": 0.38,
+      "cholesterol": 0,
+      "potassium": 191
+    },
+    "tags": [
+      "grains-cereals"
+    ],
+    "compareGroup": "Grains & Cereals",
+    "usda": {
+      "fdcId": 2708421,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2708422",
+    "slug": "sticky-rice",
+    "name": "Sticky Rice",
+    "searchName": "sticky rice",
+    "displayName": "Sticky Rice",
+    "aliases": [
+      "sticky rice",
+      "rice, white, cooked, glutinous"
+    ],
+    "category": "Grains & Cereals",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup, cooked",
+        "grams": 174,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 96,
+      "protein": 2.01,
+      "carbohydrates": 21,
+      "fat": 0.19,
+      "fiber": 1,
+      "sugar": 0.05,
+      "sodium": 227,
+      "saturatedFat": 0.04,
+      "cholesterol": 0,
+      "potassium": 10
+    },
+    "tags": [
+      "grains-cereals"
+    ],
+    "compareGroup": "Grains & Cereals",
+    "usda": {
+      "fdcId": 2708422,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_168871",
+    "slug": "millet-cooked",
+    "name": "Millet (Cooked)",
+    "searchName": "millet (cooked)",
+    "displayName": "Millet (Cooked)",
+    "aliases": [
+      "millet (cooked)",
+      "millet, cooked"
+    ],
+    "category": "Grains & Cereals",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 174,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 119,
+      "protein": 3.51,
+      "carbohydrates": 23.67,
+      "fat": 1,
+      "fiber": 1.3,
+      "sugar": 0.13,
+      "sodium": 2,
+      "saturatedFat": 0.17,
+      "cholesterol": 0,
+      "potassium": 62
+    },
+    "tags": [
+      "grains-cereals"
+    ],
+    "compareGroup": "Grains & Cereals",
+    "usda": {
+      "fdcId": 168871,
+      "dataType": "SR Legacy"
+    }
+  },
+  {
+    "id": "usda_170686",
+    "slug": "buckwheat-groats-cooked",
+    "name": "Buckwheat Groats (Cooked)",
+    "searchName": "buckwheat groats (cooked)",
+    "displayName": "Buckwheat Groats (Cooked)",
+    "aliases": [
+      "buckwheat groats (cooked)",
+      "buckwheat groats, roasted, cooked"
+    ],
+    "category": "Grains & Cereals",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 168,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 92,
+      "protein": 3.38,
+      "carbohydrates": 19.94,
+      "fat": 0.62,
+      "fiber": 2.7,
+      "sugar": 0.9,
+      "sodium": 4,
+      "saturatedFat": 0.13,
+      "cholesterol": 0,
+      "potassium": 88
+    },
+    "tags": [
+      "grains-cereals"
+    ],
+    "compareGroup": "Grains & Cereals",
+    "usda": {
+      "fdcId": 170686,
+      "dataType": "SR Legacy"
+    }
+  },
+  {
+    "id": "usda_2708373",
+    "slug": "polenta-cornmeal-mush",
+    "name": "Polenta (Cornmeal Mush)",
+    "searchName": "polenta (cornmeal mush)",
+    "displayName": "Polenta (Cornmeal Mush)",
+    "aliases": [
+      "polenta (cornmeal mush)",
+      "cornmeal mush, ns as to fat"
+    ],
+    "category": "Grains & Cereals",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup, cooked",
+        "grams": 240,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "strip",
+        "label": "1 strip or slice",
+        "grams": 50
+      },
+      {
+        "id": "serve_3",
+        "unit": "oz",
+        "label": "1 oz, dry, yields",
+        "grams": 190
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 71,
+      "protein": 1.11,
+      "carbohydrates": 12.2,
+      "fat": 1.84,
+      "fiber": 0.6,
+      "sugar": 0.26,
+      "sodium": 82,
+      "saturatedFat": 0.71,
+      "cholesterol": 3,
+      "potassium": 21
+    },
+    "tags": [
+      "grains-cereals"
+    ],
+    "compareGroup": "Grains & Cereals",
+    "usda": {
+      "fdcId": 2708373,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2708444",
+    "slug": "oat-bran-cooked",
+    "name": "Oat Bran (Cooked)",
+    "searchName": "oat bran (cooked)",
+    "displayName": "Oat Bran (Cooked)",
+    "aliases": [
+      "oat bran (cooked)",
+      "oat bran cereal, cooked"
+    ],
+    "category": "Grains & Cereals",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "oz",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "oz",
+        "label": "1 oz, dry, yields",
+        "grams": 150,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cup",
+        "label": "1 cup, cooked",
+        "grams": 240
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 46,
+      "protein": 3.21,
+      "carbohydrates": 12.3,
+      "fat": 1.3,
+      "fiber": 2.9,
+      "sugar": 0.27,
+      "sodium": 69,
+      "saturatedFat": 0.25,
+      "cholesterol": 0,
+      "potassium": 100
+    },
+    "tags": [
+      "grains-cereals"
+    ],
+    "compareGroup": "Grains & Cereals",
+    "usda": {
+      "fdcId": 2708444,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2709152",
+    "slug": "ramen-noodle-soup-instant",
+    "name": "Ramen Noodle Soup (Instant)",
+    "searchName": "ramen noodle soup (instant)",
+    "displayName": "Ramen Noodle Soup (Instant)",
+    "aliases": [
+      "ramen noodle soup (instant)",
+      "soup, ramen noodles, water added"
+    ],
+    "category": "Grains & Cereals",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 245,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "oz",
+        "label": "1 oz, dry, yields",
+        "grams": 165
+      },
+      {
+        "id": "serve_3",
+        "unit": "individual",
+        "label": "1 individual container",
+        "grams": 440
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 66,
+      "protein": 1.53,
+      "carbohydrates": 9.04,
+      "fat": 2.64,
+      "fiber": 0.4,
+      "sugar": 0.3,
+      "sodium": 282,
+      "saturatedFat": 1.22,
+      "cholesterol": 0,
+      "potassium": 27
+    },
+    "tags": [
+      "grains-cereals"
+    ],
+    "compareGroup": "Grains & Cereals",
+    "usda": {
+      "fdcId": 2709152,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_168907",
+    "slug": "soba-noodles-cooked",
+    "name": "Soba Noodles (Cooked)",
+    "searchName": "soba noodles (cooked)",
+    "displayName": "Soba Noodles (Cooked)",
+    "aliases": [
+      "soba noodles (cooked)",
+      "noodles, japanese, soba, cooked"
+    ],
+    "category": "Grains & Cereals",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 114,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 99,
+      "protein": 5.06,
+      "carbohydrates": 21.44,
+      "fat": 0.1,
+      "fiber": null,
+      "sugar": null,
+      "sodium": 60,
+      "saturatedFat": 0.02,
+      "cholesterol": 0,
+      "potassium": 35
+    },
+    "tags": [
+      "grains-cereals"
+    ],
+    "compareGroup": "Grains & Cereals",
+    "usda": {
+      "fdcId": 168907,
+      "dataType": "SR Legacy"
+    }
+  },
+  {
+    "id": "usda_170683",
+    "slug": "amaranth-cooked",
+    "name": "Amaranth (Cooked)",
+    "searchName": "amaranth (cooked)",
+    "displayName": "Amaranth (Cooked)",
+    "aliases": [
+      "amaranth (cooked)",
+      "amaranth grain, cooked"
+    ],
+    "category": "Grains & Cereals",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 246,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 102,
+      "protein": 3.8,
+      "carbohydrates": 18.69,
+      "fat": 1.58,
+      "fiber": 2.1,
+      "sugar": null,
+      "sodium": 6,
+      "saturatedFat": null,
+      "cholesterol": null,
+      "potassium": 135
+    },
+    "tags": [
+      "grains-cereals"
+    ],
+    "compareGroup": "Grains & Cereals",
+    "usda": {
+      "fdcId": 170683,
+      "dataType": "SR Legacy"
+    }
+  },
+  {
+    "id": "usda_174258",
+    "slug": "glass-noodles-dry",
+    "name": "Glass Noodles (Dry)",
+    "searchName": "glass noodles (dry)",
+    "displayName": "Glass Noodles (Dry)",
+    "aliases": [
+      "glass noodles (dry)",
+      "noodles, chinese, cellophane or long rice (mung beans), dehydrated"
+    ],
+    "category": "Grains & Cereals",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 140,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 351,
+      "protein": 0.16,
+      "carbohydrates": 86.09,
+      "fat": 0.06,
+      "fiber": 0.5,
+      "sugar": 0,
+      "sodium": 10,
+      "saturatedFat": 0.02,
+      "cholesterol": 0,
+      "potassium": 10
+    },
+    "tags": [
+      "grains-cereals"
+    ],
+    "compareGroup": "Grains & Cereals",
+    "usda": {
+      "fdcId": 174258,
+      "dataType": "SR Legacy"
+    }
   }
 ];

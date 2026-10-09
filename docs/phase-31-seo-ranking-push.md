@@ -42,6 +42,9 @@ remaining levers are: search-intent titles, more indexable pages, and authority.
   Indian/UK dishes (butter chicken, tikka masala, rajma, crumpets) — those need a
   second source such as UK CoFID or India's IFCT before they can be added.
   **Now 549** (batch 2 added US/UK takeaway, Chinese/Mexican dishes, desserts, drinks).
+  **Now 1,018** (batch 3: meat cuts, fish and shellfish, cheeses, cereals, breads, soups,
+  sandwiches, snacks, dips, sweets, cocktails, sauces, spices, and a new Baking & Cooking
+  Ingredients category). The script also skips any USDA record already in the data.
 - Learn articles 8 → 50+, each linking to food + compare pages. **Now 19** (pizza, burgers,
   alcohol, protein, snacks, coffee, bread, Indian takeaway, rice, eggs, fruit).
 - Bylines + "last updated" dates on articles: **done** (editorial team + USDA source links).

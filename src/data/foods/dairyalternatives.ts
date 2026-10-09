@@ -1432,5 +1432,1629 @@ export const dairyalternativesFoods: FoodItem[] = [
       "fdcId": 2705598,
       "dataType": "Survey (FNDDS)"
     }
+  },
+  {
+    "id": "usda_2705716",
+    "slug": "goat-cheese",
+    "name": "Goat Cheese",
+    "searchName": "goat cheese",
+    "displayName": "Goat Cheese",
+    "aliases": [
+      "goat cheese",
+      "cheese, goat"
+    ],
+    "category": "Dairy & Alternatives",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "oz",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "oz",
+        "label": "1 oz",
+        "grams": 28.35,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cubic",
+        "label": "1 cubic inch",
+        "grams": 25
+      },
+      {
+        "id": "serve_3",
+        "unit": "cup",
+        "label": "1 cup, crumbled",
+        "grams": 140
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 364,
+      "protein": 21.6,
+      "carbohydrates": 0.12,
+      "fat": 29.8,
+      "fiber": 0,
+      "sugar": 0.12,
+      "sodium": 415,
+      "saturatedFat": 20.6,
+      "cholesterol": 79,
+      "potassium": 158
+    },
+    "tags": [
+      "dairy-alternatives"
+    ],
+    "compareGroup": "Dairy & Alternatives",
+    "usda": {
+      "fdcId": 2705716,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2705733",
+    "slug": "provolone-cheese",
+    "name": "Provolone Cheese",
+    "searchName": "provolone cheese",
+    "displayName": "Provolone Cheese",
+    "aliases": [
+      "provolone cheese",
+      "cheese, provolone"
+    ],
+    "category": "Dairy & Alternatives",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "slice",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "slice",
+        "label": "1 slice",
+        "grams": 21,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cubic",
+        "label": "1 cubic inch",
+        "grams": 17
+      },
+      {
+        "id": "serve_3",
+        "unit": "cup",
+        "label": "1 cup, diced",
+        "grams": 132
+      },
+      {
+        "id": "serve_4",
+        "unit": "cracker-size",
+        "label": "1 cracker-size slice",
+        "grams": 9
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 357,
+      "protein": 23.4,
+      "carbohydrates": 2.45,
+      "fat": 28.1,
+      "fiber": 0,
+      "sugar": 0.56,
+      "sodium": 601,
+      "saturatedFat": 16.2,
+      "cholesterol": 85,
+      "potassium": 95
+    },
+    "tags": [
+      "dairy-alternatives"
+    ],
+    "compareGroup": "Dairy & Alternatives",
+    "usda": {
+      "fdcId": 2705733,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2705717",
+    "slug": "gouda-cheese",
+    "name": "Gouda Cheese",
+    "searchName": "gouda cheese",
+    "displayName": "Gouda Cheese",
+    "aliases": [
+      "gouda cheese",
+      "cheese, gouda or edam"
+    ],
+    "category": "Dairy & Alternatives",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "slice",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "slice",
+        "label": "1 slice",
+        "grams": 21,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cubic",
+        "label": "1 cubic inch",
+        "grams": 17
+      },
+      {
+        "id": "serve_3",
+        "unit": "cup",
+        "label": "1 cup, diced",
+        "grams": 132
+      },
+      {
+        "id": "serve_4",
+        "unit": "package",
+        "label": "1 package",
+        "grams": 198
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 356,
+      "protein": 24.9,
+      "carbohydrates": 2.22,
+      "fat": 27.4,
+      "fiber": 0,
+      "sugar": 2.22,
+      "sodium": 819,
+      "saturatedFat": 17.6,
+      "cholesterol": 114,
+      "potassium": 121
+    },
+    "tags": [
+      "dairy-alternatives"
+    ],
+    "compareGroup": "Dairy & Alternatives",
+    "usda": {
+      "fdcId": 2705717,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2705720",
+    "slug": "monterey-jack-cheese",
+    "name": "Monterey Jack Cheese",
+    "searchName": "monterey jack cheese",
+    "displayName": "Monterey Jack Cheese",
+    "aliases": [
+      "monterey jack cheese",
+      "cheese, monterey"
+    ],
+    "category": "Dairy & Alternatives",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "slice",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "slice",
+        "label": "1 slice",
+        "grams": 21,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cup",
+        "label": "1 cup, diced",
+        "grams": 132
+      },
+      {
+        "id": "serve_3",
+        "unit": "cubic",
+        "label": "1 cubic inch",
+        "grams": 17.2
+      },
+      {
+        "id": "serve_4",
+        "unit": "cracker-size",
+        "label": "1 cracker-size slice",
+        "grams": 9
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 392,
+      "protein": 22.6,
+      "carbohydrates": 1.9,
+      "fat": 32.6,
+      "fiber": 0,
+      "sugar": 0.5,
+      "sodium": 662,
+      "saturatedFat": 19.2,
+      "cholesterol": 100,
+      "potassium": 83
+    },
+    "tags": [
+      "dairy-alternatives"
+    ],
+    "compareGroup": "Dairy & Alternatives",
+    "usda": {
+      "fdcId": 2705720,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2705713",
+    "slug": "colby-jack-cheese",
+    "name": "Colby Jack Cheese",
+    "searchName": "colby jack cheese",
+    "displayName": "Colby Jack Cheese",
+    "aliases": [
+      "colby jack cheese",
+      "cheese, colby jack"
+    ],
+    "category": "Dairy & Alternatives",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cracker-size",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cracker-size",
+        "label": "1 cracker-size slice",
+        "grams": 9,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cup",
+        "label": "1 cup, diced",
+        "grams": 132
+      },
+      {
+        "id": "serve_3",
+        "unit": "stick",
+        "label": "1 stick",
+        "grams": 28.4
+      },
+      {
+        "id": "serve_4",
+        "unit": "slice",
+        "label": "1 slice",
+        "grams": 21
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 393,
+      "protein": 23.2,
+      "carbohydrates": 2.24,
+      "fat": 32.4,
+      "fiber": 0,
+      "sugar": 0.51,
+      "sodium": 633,
+      "saturatedFat": 19.7,
+      "cholesterol": 98,
+      "potassium": 105
+    },
+    "tags": [
+      "dairy-alternatives"
+    ],
+    "compareGroup": "Dairy & Alternatives",
+    "usda": {
+      "fdcId": 2705713,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2705705",
+    "slug": "blue-cheese",
+    "name": "Blue Cheese",
+    "searchName": "blue cheese",
+    "displayName": "Blue Cheese",
+    "aliases": [
+      "blue cheese",
+      "cheese, blue or roquefort"
+    ],
+    "category": "Dairy & Alternatives",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "oz",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "oz",
+        "label": "1 oz",
+        "grams": 28.35,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cup",
+        "label": "1 cup, crumbled",
+        "grams": 135
+      },
+      {
+        "id": "serve_3",
+        "unit": "cubic",
+        "label": "1 cubic inch",
+        "grams": 17.3
+      },
+      {
+        "id": "serve_4",
+        "unit": "cracker-size",
+        "label": "1 cracker-size slice",
+        "grams": 9
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 353,
+      "protein": 21.4,
+      "carbohydrates": 2.34,
+      "fat": 28.7,
+      "fiber": 0,
+      "sugar": 0.5,
+      "sodium": 1150,
+      "saturatedFat": 18.7,
+      "cholesterol": 75,
+      "potassium": 256
+    },
+    "tags": [
+      "dairy-alternatives"
+    ],
+    "compareGroup": "Dairy & Alternatives",
+    "usda": {
+      "fdcId": 2705705,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2705750",
+    "slug": "ricotta-cheese",
+    "name": "Ricotta Cheese",
+    "searchName": "ricotta cheese",
+    "displayName": "Ricotta Cheese",
+    "aliases": [
+      "ricotta cheese",
+      "cheese, ricotta"
+    ],
+    "category": "Dairy & Alternatives",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 246,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 148,
+      "protein": 9.6,
+      "carbohydrates": 6,
+      "fat": 9.46,
+      "fiber": 0,
+      "sugar": 0.29,
+      "sodium": 102,
+      "saturatedFat": 5.95,
+      "cholesterol": 40,
+      "potassium": 178
+    },
+    "tags": [
+      "dairy-alternatives"
+    ],
+    "compareGroup": "Dairy & Alternatives",
+    "usda": {
+      "fdcId": 2705750,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2705707",
+    "slug": "camembert",
+    "name": "Camembert",
+    "searchName": "camembert",
+    "displayName": "Camembert",
+    "aliases": [
+      "camembert",
+      "cheese, camembert"
+    ],
+    "category": "Dairy & Alternatives",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "oz",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "oz",
+        "label": "1 oz",
+        "grams": 28.35,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 246
+      },
+      {
+        "id": "serve_3",
+        "unit": "cubic",
+        "label": "1 cubic inch",
+        "grams": 17
+      },
+      {
+        "id": "serve_4",
+        "unit": "wedge",
+        "label": "1 wedge",
+        "grams": 38
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 300,
+      "protein": 19.8,
+      "carbohydrates": 0.46,
+      "fat": 24.3,
+      "fiber": 0,
+      "sugar": 0.46,
+      "sodium": 842,
+      "saturatedFat": 15.3,
+      "cholesterol": 72,
+      "potassium": 187
+    },
+    "tags": [
+      "dairy-alternatives"
+    ],
+    "compareGroup": "Dairy & Alternatives",
+    "usda": {
+      "fdcId": 2705707,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2705718",
+    "slug": "gruyere-cheese",
+    "name": "Gruyere Cheese",
+    "searchName": "gruyere cheese",
+    "displayName": "Gruyere Cheese",
+    "aliases": [
+      "gruyere cheese",
+      "cheese, gruyere"
+    ],
+    "category": "Dairy & Alternatives",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "oz",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "oz",
+        "label": "1 oz",
+        "grams": 28.35,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cup",
+        "label": "1 cup, diced",
+        "grams": 132
+      },
+      {
+        "id": "serve_3",
+        "unit": "cracker-size",
+        "label": "1 cracker-size slice",
+        "grams": 9
+      },
+      {
+        "id": "serve_4",
+        "unit": "package",
+        "label": "1 package",
+        "grams": 170
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 413,
+      "protein": 29.8,
+      "carbohydrates": 0.36,
+      "fat": 32.3,
+      "fiber": 0,
+      "sugar": 0.36,
+      "sodium": 714,
+      "saturatedFat": 18.9,
+      "cholesterol": 110,
+      "potassium": 81
+    },
+    "tags": [
+      "dairy-alternatives"
+    ],
+    "compareGroup": "Dairy & Alternatives",
+    "usda": {
+      "fdcId": 2705718,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2705393",
+    "slug": "buttermilk",
+    "name": "Buttermilk",
+    "searchName": "buttermilk",
+    "displayName": "Buttermilk",
+    "aliases": [
+      "buttermilk"
+    ],
+    "category": "Dairy & Alternatives",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 244,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "fl",
+        "label": "1 fl oz",
+        "grams": 30.5
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 43,
+      "protein": 3.46,
+      "carbohydrates": 4.81,
+      "fat": 1.08,
+      "fiber": 0,
+      "sugar": 5.36,
+      "sodium": 92,
+      "saturatedFat": 0.55,
+      "cholesterol": 5,
+      "potassium": 158
+    },
+    "tags": [
+      "dairy-alternatives"
+    ],
+    "compareGroup": "Dairy & Alternatives",
+    "usda": {
+      "fdcId": 2705393,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2705399",
+    "slug": "evaporated-milk",
+    "name": "Evaporated Milk",
+    "searchName": "evaporated milk",
+    "displayName": "Evaporated Milk",
+    "aliases": [
+      "evaporated milk",
+      "milk, evaporated, whole"
+    ],
+    "category": "Dairy & Alternatives",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "fl",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "fl",
+        "label": "1 fl oz",
+        "grams": 31.5,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 252
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 134,
+      "protein": 6.81,
+      "carbohydrates": 10,
+      "fat": 7.56,
+      "fiber": 0,
+      "sugar": 10,
+      "sodium": 106,
+      "saturatedFat": 4.59,
+      "cholesterol": 29,
+      "potassium": 303
+    },
+    "tags": [
+      "dairy-alternatives"
+    ],
+    "compareGroup": "Dairy & Alternatives",
+    "usda": {
+      "fdcId": 2705399,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2705402",
+    "slug": "sweetened-condensed-milk",
+    "name": "Sweetened Condensed Milk",
+    "searchName": "sweetened condensed milk",
+    "displayName": "Sweetened Condensed Milk",
+    "aliases": [
+      "sweetened condensed milk",
+      "milk, condensed, sweetened"
+    ],
+    "category": "Dairy & Alternatives",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "fl",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "fl",
+        "label": "1 fl oz",
+        "grams": 38,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 304
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 321,
+      "protein": 7.91,
+      "carbohydrates": 54.4,
+      "fat": 8.7,
+      "fiber": 0,
+      "sugar": 54.4,
+      "sodium": 127,
+      "saturatedFat": 5.49,
+      "cholesterol": 34,
+      "potassium": 371
+    },
+    "tags": [
+      "dairy-alternatives"
+    ],
+    "compareGroup": "Dairy & Alternatives",
+    "usda": {
+      "fdcId": 2705402,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2705395",
+    "slug": "goat-milk",
+    "name": "Goat Milk",
+    "searchName": "goat milk",
+    "displayName": "Goat Milk",
+    "aliases": [
+      "goat milk"
+    ],
+    "category": "Dairy & Alternatives",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 244,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "fl",
+        "label": "1 fl oz",
+        "grams": 30.5
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 69,
+      "protein": 3.56,
+      "carbohydrates": 4.45,
+      "fat": 4.14,
+      "fiber": 0,
+      "sugar": 4.45,
+      "sodium": 50,
+      "saturatedFat": 2.67,
+      "cholesterol": 11,
+      "potassium": 204
+    },
+    "tags": [
+      "dairy-alternatives"
+    ],
+    "compareGroup": "Dairy & Alternatives",
+    "usda": {
+      "fdcId": 2705395,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2705387",
+    "slug": "1-low-fat-milk",
+    "name": "1% Low-Fat Milk",
+    "searchName": "1% low-fat milk",
+    "displayName": "1% Low-Fat Milk",
+    "aliases": [
+      "1% low-fat milk",
+      "milk, low fat (1%)"
+    ],
+    "category": "Dairy & Alternatives",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 244,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "fl",
+        "label": "1 fl oz",
+        "grams": 30.5
+      },
+      {
+        "id": "serve_3",
+        "unit": "individual",
+        "label": "1 individual school container",
+        "grams": 244
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 43,
+      "protein": 3.38,
+      "carbohydrates": 5.18,
+      "fat": 0.95,
+      "fiber": 0,
+      "sugar": 4.96,
+      "sodium": 39,
+      "saturatedFat": 0.57,
+      "cholesterol": 5,
+      "potassium": 159
+    },
+    "tags": [
+      "dairy-alternatives"
+    ],
+    "compareGroup": "Dairy & Alternatives",
+    "usda": {
+      "fdcId": 2705387,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2705392",
+    "slug": "lactose-free-milk",
+    "name": "Lactose-Free Milk",
+    "searchName": "lactose-free milk",
+    "displayName": "Lactose-Free Milk",
+    "aliases": [
+      "lactose-free milk",
+      "milk, lactose free, whole"
+    ],
+    "category": "Dairy & Alternatives",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 244,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "fl",
+        "label": "1 fl oz",
+        "grams": 30.5
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 61,
+      "protein": 3.27,
+      "carbohydrates": 4.63,
+      "fat": 3.2,
+      "fiber": 0,
+      "sugar": 4.81,
+      "sodium": 38,
+      "saturatedFat": 1.86,
+      "cholesterol": 12,
+      "potassium": 150
+    },
+    "tags": [
+      "dairy-alternatives"
+    ],
+    "compareGroup": "Dairy & Alternatives",
+    "usda": {
+      "fdcId": 2705392,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_170173",
+    "slug": "coconut-milk-canned",
+    "name": "Coconut Milk (Canned)",
+    "searchName": "coconut milk (canned)",
+    "displayName": "Coconut Milk (Canned)",
+    "aliases": [
+      "coconut milk (canned)",
+      "nuts, coconut milk, canned (liquid expressed from grated meat and water)"
+    ],
+    "category": "Dairy & Alternatives",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 226,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "tbsp",
+        "label": "1 tbsp",
+        "grams": 15
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 197,
+      "protein": 2.02,
+      "carbohydrates": 2.81,
+      "fat": 21.33,
+      "fiber": null,
+      "sugar": null,
+      "sodium": 13,
+      "saturatedFat": 18.92,
+      "cholesterol": 0,
+      "potassium": 220
+    },
+    "tags": [
+      "dairy-alternatives"
+    ],
+    "compareGroup": "Dairy & Alternatives",
+    "usda": {
+      "fdcId": 170173,
+      "dataType": "SR Legacy"
+    }
+  },
+  {
+    "id": "usda_2705411",
+    "slug": "rice-milk",
+    "name": "Rice Milk",
+    "searchName": "rice milk",
+    "displayName": "Rice Milk",
+    "aliases": [
+      "rice milk"
+    ],
+    "category": "Dairy & Alternatives",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 244,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "fl",
+        "label": "1 fl oz",
+        "grams": 30.5
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 47,
+      "protein": 0.28,
+      "carbohydrates": 9.17,
+      "fat": 0.97,
+      "fiber": 0.3,
+      "sugar": 5.28,
+      "sodium": 39,
+      "saturatedFat": 0,
+      "cholesterol": 0,
+      "potassium": 27
+    },
+    "tags": [
+      "dairy-alternatives"
+    ],
+    "compareGroup": "Dairy & Alternatives",
+    "usda": {
+      "fdcId": 2705411,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2705394",
+    "slug": "kefir",
+    "name": "Kefir",
+    "searchName": "kefir",
+    "displayName": "Kefir",
+    "aliases": [
+      "kefir"
+    ],
+    "category": "Dairy & Alternatives",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 244,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "fl",
+        "label": "1 fl oz",
+        "grams": 30.5
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 52,
+      "protein": 3.59,
+      "carbohydrates": 7.48,
+      "fat": 0.96,
+      "fiber": 0,
+      "sugar": 6.91,
+      "sodium": 38,
+      "saturatedFat": 0.6,
+      "cholesterol": 5,
+      "potassium": 159
+    },
+    "tags": [
+      "dairy-alternatives"
+    ],
+    "compareGroup": "Dairy & Alternatives",
+    "usda": {
+      "fdcId": 2705394,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2705427",
+    "slug": "fruit-yogurt-low-fat",
+    "name": "Fruit Yogurt (Low-Fat)",
+    "searchName": "fruit yogurt (low-fat)",
+    "displayName": "Fruit Yogurt (Low-Fat)",
+    "aliases": [
+      "fruit yogurt (low-fat)",
+      "yogurt, low fat milk, fruit"
+    ],
+    "category": "Dairy & Alternatives",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "oz",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "oz",
+        "label": "1 oz container",
+        "grams": 113,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 245
+      },
+      {
+        "id": "serve_3",
+        "unit": "container",
+        "label": "1 container",
+        "grams": 170
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 93,
+      "protein": 4.57,
+      "carbohydrates": 15.7,
+      "fat": 1.34,
+      "fiber": 0.2,
+      "sugar": 12.8,
+      "sodium": 65,
+      "saturatedFat": 0.86,
+      "cholesterol": 5,
+      "potassium": 212
+    },
+    "tags": [
+      "dairy-alternatives"
+    ],
+    "compareGroup": "Dairy & Alternatives",
+    "usda": {
+      "fdcId": 2705427,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2705430",
+    "slug": "greek-yogurt-with-fruit",
+    "name": "Greek Yogurt with Fruit",
+    "searchName": "greek yogurt with fruit",
+    "displayName": "Greek Yogurt with Fruit",
+    "aliases": [
+      "greek yogurt with fruit",
+      "yogurt, greek, whole milk, fruit"
+    ],
+    "category": "Dairy & Alternatives",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 245,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "container",
+        "label": "1 container",
+        "grams": 150
+      },
+      {
+        "id": "serve_3",
+        "unit": "oz",
+        "label": "1 oz container",
+        "grams": 150
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 114,
+      "protein": 7.85,
+      "carbohydrates": 11.8,
+      "fat": 3.91,
+      "fiber": 0.1,
+      "sugar": 8.23,
+      "sodium": 34,
+      "saturatedFat": 2.13,
+      "cholesterol": 15,
+      "potassium": 139
+    },
+    "tags": [
+      "dairy-alternatives"
+    ],
+    "compareGroup": "Dairy & Alternatives",
+    "usda": {
+      "fdcId": 2705430,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707444",
+    "slug": "soy-yogurt",
+    "name": "Soy Yogurt",
+    "searchName": "soy yogurt",
+    "displayName": "Soy Yogurt",
+    "aliases": [
+      "soy yogurt",
+      "yogurt, soy"
+    ],
+    "category": "Dairy & Alternatives",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "oz",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "oz",
+        "label": "1 oz container",
+        "grams": 170,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 245
+      },
+      {
+        "id": "serve_3",
+        "unit": "container",
+        "label": "1 container",
+        "grams": 150
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 90,
+      "protein": 4.83,
+      "carbohydrates": 12.3,
+      "fat": 2.63,
+      "fiber": 0.9,
+      "sugar": 8.04,
+      "sodium": 30,
+      "saturatedFat": 0.39,
+      "cholesterol": 0,
+      "potassium": 189
+    },
+    "tags": [
+      "dairy-alternatives"
+    ],
+    "compareGroup": "Dairy & Alternatives",
+    "usda": {
+      "fdcId": 2707444,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2705600",
+    "slug": "coffee-creamer",
+    "name": "Coffee Creamer",
+    "searchName": "coffee creamer",
+    "displayName": "Coffee Creamer",
+    "aliases": [
+      "coffee creamer",
+      "coffee creamer, liquid"
+    ],
+    "category": "Dairy & Alternatives",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "individual",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "individual",
+        "label": "1 individual container",
+        "grams": 15,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 240
+      },
+      {
+        "id": "serve_3",
+        "unit": "fl",
+        "label": "1 fl oz",
+        "grams": 30
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 136,
+      "protein": 1,
+      "carbohydrates": 11.4,
+      "fat": 9.97,
+      "fiber": 0,
+      "sugar": 11.4,
+      "sodium": 67,
+      "saturatedFat": 1.94,
+      "cholesterol": 0,
+      "potassium": 191
+    },
+    "tags": [
+      "dairy-alternatives"
+    ],
+    "compareGroup": "Dairy & Alternatives",
+    "usda": {
+      "fdcId": 2705600,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2705593",
+    "slug": "light-cream",
+    "name": "Light Cream",
+    "searchName": "light cream",
+    "displayName": "Light Cream",
+    "aliases": [
+      "light cream",
+      "cream, light"
+    ],
+    "category": "Dairy & Alternatives",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "individual",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "individual",
+        "label": "1 individual container",
+        "grams": 11,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "fl",
+        "label": "1 fl oz",
+        "grams": 30
+      },
+      {
+        "id": "serve_3",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 240
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 195,
+      "protein": 2.96,
+      "carbohydrates": 3.66,
+      "fat": 19.1,
+      "fiber": 0,
+      "sugar": 3.67,
+      "sodium": 72,
+      "saturatedFat": 10.2,
+      "cholesterol": 59,
+      "potassium": 136
+    },
+    "tags": [
+      "dairy-alternatives"
+    ],
+    "compareGroup": "Dairy & Alternatives",
+    "usda": {
+      "fdcId": 2705593,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2705408",
+    "slug": "chocolate-almond-milk",
+    "name": "Chocolate Almond Milk",
+    "searchName": "chocolate almond milk",
+    "displayName": "Chocolate Almond Milk",
+    "aliases": [
+      "chocolate almond milk",
+      "almond milk, chocolate"
+    ],
+    "category": "Dairy & Alternatives",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 244,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "fl",
+        "label": "1 fl oz",
+        "grams": 30.5
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 43,
+      "protein": 0.57,
+      "carbohydrates": 7.44,
+      "fat": 1.2,
+      "fiber": 0.1,
+      "sugar": 6.97,
+      "sodium": 56,
+      "saturatedFat": 0.12,
+      "cholesterol": 0,
+      "potassium": 33
+    },
+    "tags": [
+      "dairy-alternatives"
+    ],
+    "compareGroup": "Dairy & Alternatives",
+    "usda": {
+      "fdcId": 2705408,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2705407",
+    "slug": "sweetened-almond-milk",
+    "name": "Sweetened Almond Milk",
+    "searchName": "sweetened almond milk",
+    "displayName": "Sweetened Almond Milk",
+    "aliases": [
+      "sweetened almond milk",
+      "almond milk, sweetened"
+    ],
+    "category": "Dairy & Alternatives",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 244,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "fl",
+        "label": "1 fl oz",
+        "grams": 30.5
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 30,
+      "protein": 0.53,
+      "carbohydrates": 4.31,
+      "fat": 1.18,
+      "fiber": 0,
+      "sugar": 3.99,
+      "sodium": 58,
+      "saturatedFat": 0.1,
+      "cholesterol": 0,
+      "potassium": 30
+    },
+    "tags": [
+      "dairy-alternatives"
+    ],
+    "compareGroup": "Dairy & Alternatives",
+    "usda": {
+      "fdcId": 2705407,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2705775",
+    "slug": "cheese-spread",
+    "name": "Cheese Spread",
+    "searchName": "cheese spread",
+    "displayName": "Cheese Spread",
+    "aliases": [
+      "cheese spread",
+      "cheese spread, cream cheese"
+    ],
+    "category": "Dairy & Alternatives",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "oz",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "oz",
+        "label": "1 oz",
+        "grams": 28.4,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 240
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 295,
+      "protein": 7.1,
+      "carbohydrates": 3.5,
+      "fat": 28.6,
+      "fiber": 0,
+      "sugar": 3.5,
+      "sodium": 436,
+      "saturatedFat": 18,
+      "cholesterol": 90,
+      "potassium": 112
+    },
+    "tags": [
+      "dairy-alternatives"
+    ],
+    "compareGroup": "Dairy & Alternatives",
+    "usda": {
+      "fdcId": 2705775,
+      "dataType": "Survey (FNDDS)"
+    }
   }
 ];

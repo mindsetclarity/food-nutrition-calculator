@@ -911,5 +911,1508 @@ export const bakeryFoods: FoodItem[] = [
       "fdcId": 2707682,
       "dataType": "Survey (FNDDS)"
     }
+  },
+  {
+    "id": "usda_2707768",
+    "slug": "oat-bread",
+    "name": "Oat Bread",
+    "searchName": "oat bread",
+    "displayName": "Oat Bread",
+    "aliases": [
+      "oat bread",
+      "bread, oatmeal"
+    ],
+    "category": "Bread & Bakery",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 medium or regular slice",
+        "grams": 28,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "slice",
+        "label": "1 slice, crust not eaten",
+        "grams": 13
+      },
+      {
+        "id": "serve_3",
+        "unit": "cubic",
+        "label": "1 cubic inch",
+        "grams": 4.3
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 269,
+      "protein": 8.4,
+      "carbohydrates": 48.5,
+      "fat": 4.4,
+      "fiber": 4,
+      "sugar": 8.14,
+      "sodium": 447,
+      "saturatedFat": 0.7,
+      "cholesterol": 0,
+      "potassium": 142
+    },
+    "tags": [
+      "bread-bakery"
+    ],
+    "compareGroup": "Bread & Bakery",
+    "usda": {
+      "fdcId": 2707768,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707644",
+    "slug": "raisin-bread",
+    "name": "Raisin Bread",
+    "searchName": "raisin bread",
+    "displayName": "Raisin Bread",
+    "aliases": [
+      "raisin bread",
+      "bread, raisin"
+    ],
+    "category": "Bread & Bakery",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 medium or regular slice",
+        "grams": 28,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "slice",
+        "label": "1 slice, snack-size",
+        "grams": 10
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 270,
+      "protein": 8.82,
+      "carbohydrates": 52.2,
+      "fat": 3.26,
+      "fiber": 2.5,
+      "sugar": 11.3,
+      "sodium": 408,
+      "saturatedFat": 0.75,
+      "cholesterol": 0,
+      "potassium": 180
+    },
+    "tags": [
+      "bread-bakery"
+    ],
+    "compareGroup": "Bread & Bakery",
+    "usda": {
+      "fdcId": 2707644,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707760",
+    "slug": "pumpernickel-bread",
+    "name": "Pumpernickel Bread",
+    "searchName": "pumpernickel bread",
+    "displayName": "Pumpernickel Bread",
+    "aliases": [
+      "pumpernickel bread",
+      "bread, pumpernickel"
+    ],
+    "category": "Bread & Bakery",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 medium or regular slice",
+        "grams": 32,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "slice",
+        "label": "1 slice, crust not eaten",
+        "grams": 15
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 250,
+      "protein": 8.7,
+      "carbohydrates": 47.5,
+      "fat": 3.1,
+      "fiber": 6.5,
+      "sugar": 0.53,
+      "sodium": 596,
+      "saturatedFat": 0.44,
+      "cholesterol": 0,
+      "potassium": 208
+    },
+    "tags": [
+      "bread-bakery"
+    ],
+    "compareGroup": "Bread & Bakery",
+    "usda": {
+      "fdcId": 2707760,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707614",
+    "slug": "italian-bread",
+    "name": "Italian Bread",
+    "searchName": "italian bread",
+    "displayName": "Italian Bread",
+    "aliases": [
+      "italian bread",
+      "bread, italian, grecian, armenian"
+    ],
+    "category": "Bread & Bakery",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 medium or regular slice",
+        "grams": 31,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "slice",
+        "label": "1 slice, crust not eaten",
+        "grams": 14
+      },
+      {
+        "id": "serve_3",
+        "unit": "loaf",
+        "label": "1 loaf",
+        "grams": 454
+      },
+      {
+        "id": "serve_4",
+        "unit": "cubic",
+        "label": "1 cubic inch",
+        "grams": 2.6
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 259,
+      "protein": 9.49,
+      "carbohydrates": 48.1,
+      "fat": 2.73,
+      "fiber": 2.1,
+      "sugar": 4.69,
+      "sodium": 618,
+      "saturatedFat": 0.54,
+      "cholesterol": 0,
+      "potassium": 124
+    },
+    "tags": [
+      "bread-bakery"
+    ],
+    "compareGroup": "Bread & Bakery",
+    "usda": {
+      "fdcId": 2707614,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707610",
+    "slug": "french-bread-baguette",
+    "name": "French Bread (Baguette)",
+    "searchName": "french bread (baguette)",
+    "displayName": "French Bread (Baguette)",
+    "aliases": [
+      "french bread (baguette)",
+      "bread, french or vienna"
+    ],
+    "category": "Bread & Bakery",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 medium or regular slice",
+        "grams": 64,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "slice",
+        "label": "1 slice, snack-size",
+        "grams": 10
+      },
+      {
+        "id": "serve_3",
+        "unit": "mini",
+        "label": "1 mini baguette",
+        "grams": 152
+      },
+      {
+        "id": "serve_4",
+        "unit": "baguette",
+        "label": "1 baguette",
+        "grams": 324
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 272,
+      "protein": 10.8,
+      "carbohydrates": 51.9,
+      "fat": 2.42,
+      "fiber": 2.2,
+      "sugar": 4.62,
+      "sodium": 602,
+      "saturatedFat": 0.53,
+      "cholesterol": 0,
+      "potassium": 117
+    },
+    "tags": [
+      "bread-bakery"
+    ],
+    "compareGroup": "Bread & Bakery",
+    "usda": {
+      "fdcId": 2707610,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707642",
+    "slug": "potato-bread",
+    "name": "Potato Bread",
+    "searchName": "potato bread",
+    "displayName": "Potato Bread",
+    "aliases": [
+      "potato bread",
+      "bread, potato"
+    ],
+    "category": "Bread & Bakery",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 medium or regular slice",
+        "grams": 34,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "slice",
+        "label": "1 slice, crust not eaten",
+        "grams": 16
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 266,
+      "protein": 12.5,
+      "carbohydrates": 47.1,
+      "fat": 3.13,
+      "fiber": 6.3,
+      "sugar": 9.38,
+      "sodium": 375,
+      "saturatedFat": 0,
+      "cholesterol": 0,
+      "potassium": 718
+    },
+    "tags": [
+      "bread-bakery"
+    ],
+    "compareGroup": "Bread & Bakery",
+    "usda": {
+      "fdcId": 2707642,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707797",
+    "slug": "gluten-free-bread",
+    "name": "Gluten-Free Bread",
+    "searchName": "gluten-free bread",
+    "displayName": "Gluten-Free Bread",
+    "aliases": [
+      "gluten-free bread",
+      "bread, gluten free"
+    ],
+    "category": "Bread & Bakery",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 medium or regular slice",
+        "grams": 28,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cubic",
+        "label": "1 cubic inch",
+        "grams": 2.8
+      },
+      {
+        "id": "serve_3",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 40
+      },
+      {
+        "id": "serve_4",
+        "unit": "slice",
+        "label": "1 slice, snack-size",
+        "grams": 10
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 248,
+      "protein": 4.31,
+      "carbohydrates": 45.8,
+      "fat": 5.24,
+      "fiber": 4.3,
+      "sugar": 3.53,
+      "sodium": 447,
+      "saturatedFat": 0.98,
+      "cholesterol": 0,
+      "potassium": 75
+    },
+    "tags": [
+      "bread-bakery"
+    ],
+    "compareGroup": "Bread & Bakery",
+    "usda": {
+      "fdcId": 2707797,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707825",
+    "slug": "whole-wheat-tortilla",
+    "name": "Whole Wheat Tortilla",
+    "searchName": "whole wheat tortilla",
+    "displayName": "Whole Wheat Tortilla",
+    "aliases": [
+      "whole wheat tortilla",
+      "tortilla, whole wheat"
+    ],
+    "category": "Bread & Bakery",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 medium",
+        "grams": 45,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 310,
+      "protein": 9.76,
+      "carbohydrates": 45.9,
+      "fat": 9.76,
+      "fiber": 9.8,
+      "sugar": 2.44,
+      "sodium": 617,
+      "saturatedFat": 4.88,
+      "cholesterol": 0,
+      "potassium": 262
+    },
+    "tags": [
+      "bread-bakery"
+    ],
+    "compareGroup": "Bread & Bakery",
+    "usda": {
+      "fdcId": 2707825,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707612",
+    "slug": "focaccia",
+    "name": "Focaccia",
+    "searchName": "focaccia",
+    "displayName": "Focaccia",
+    "aliases": [
+      "focaccia",
+      "focaccia, italian, plain"
+    ],
+    "category": "Bread & Bakery",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "slice",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "slice",
+        "label": "1 slice",
+        "grams": 57,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "piece",
+        "label": "1 whole",
+        "grams": 114
+      },
+      {
+        "id": "serve_3",
+        "unit": "surface",
+        "label": "1 surface inch",
+        "grams": 4
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 249,
+      "protein": 8.77,
+      "carbohydrates": 35.8,
+      "fat": 7.89,
+      "fiber": 1.8,
+      "sugar": 1.75,
+      "sodium": 561,
+      "saturatedFat": 0.88,
+      "cholesterol": 0,
+      "potassium": 114
+    },
+    "tags": [
+      "bread-bakery"
+    ],
+    "compareGroup": "Bread & Bakery",
+    "usda": {
+      "fdcId": 2707612,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2708267",
+    "slug": "soft-pretzel",
+    "name": "Soft Pretzel",
+    "searchName": "soft pretzel",
+    "displayName": "Soft Pretzel",
+    "aliases": [
+      "soft pretzel",
+      "pretzels, soft, nfs"
+    ],
+    "category": "Bread & Bakery",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "medium/regular",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "medium/regular",
+        "label": "1 medium/regular",
+        "grams": 120,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "piece",
+        "label": "1 large",
+        "grams": 143
+      },
+      {
+        "id": "serve_3",
+        "unit": "cup",
+        "label": "1 cup, nuggets",
+        "grams": 147
+      },
+      {
+        "id": "serve_4",
+        "unit": "bite",
+        "label": "1 bite size/nugget",
+        "grams": 14
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 345,
+      "protein": 8.01,
+      "carbohydrates": 69.4,
+      "fat": 4,
+      "fiber": 1.7,
+      "sugar": 0.24,
+      "sodium": 775,
+      "saturatedFat": 1.28,
+      "cholesterol": 2,
+      "potassium": 86
+    },
+    "tags": [
+      "bread-bakery"
+    ],
+    "compareGroup": "Bread & Bakery",
+    "usda": {
+      "fdcId": 2708267,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707689",
+    "slug": "breadsticks",
+    "name": "Breadsticks",
+    "searchName": "breadsticks",
+    "displayName": "Breadsticks",
+    "aliases": [
+      "breadsticks",
+      "breadsticks, nfs"
+    ],
+    "category": "Bread & Bakery",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 medium stick",
+        "grams": 43,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 342,
+      "protein": 12.2,
+      "carbohydrates": 44.4,
+      "fat": 12.8,
+      "fiber": 2.4,
+      "sugar": 1.11,
+      "sodium": 615,
+      "saturatedFat": 2.96,
+      "cholesterol": 7,
+      "potassium": 132
+    },
+    "tags": [
+      "bread-bakery"
+    ],
+    "compareGroup": "Bread & Bakery",
+    "usda": {
+      "fdcId": 2707689,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707697",
+    "slug": "croutons",
+    "name": "Croutons",
+    "searchName": "croutons",
+    "displayName": "Croutons",
+    "aliases": [
+      "croutons"
+    ],
+    "category": "Bread & Bakery",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 40,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cubes",
+        "label": "1 cubes",
+        "grams": 0.3
+      },
+      {
+        "id": "serve_3",
+        "unit": "fast",
+        "label": "1 fast food package",
+        "grams": 12
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 465,
+      "protein": 10.8,
+      "carbohydrates": 63.5,
+      "fat": 18.3,
+      "fiber": 5,
+      "sugar": 4.41,
+      "sodium": 1330,
+      "saturatedFat": 5.25,
+      "cholesterol": 7,
+      "potassium": 181
+    },
+    "tags": [
+      "bread-bakery"
+    ],
+    "compareGroup": "Bread & Bakery",
+    "usda": {
+      "fdcId": 2707697,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_174928",
+    "slug": "bread-crumbs",
+    "name": "Bread Crumbs",
+    "searchName": "bread crumbs",
+    "displayName": "Bread Crumbs",
+    "aliases": [
+      "bread crumbs",
+      "bread, crumbs, dry, grated, plain"
+    ],
+    "category": "Bread & Bakery",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 108,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "oz",
+        "label": "1 oz",
+        "grams": 28.4
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 395,
+      "protein": 13.35,
+      "carbohydrates": 71.98,
+      "fat": 5.3,
+      "fiber": 4.5,
+      "sugar": 6.2,
+      "sodium": 732,
+      "saturatedFat": 1.2,
+      "cholesterol": 0,
+      "potassium": 196
+    },
+    "tags": [
+      "bread-bakery"
+    ],
+    "compareGroup": "Bread & Bakery",
+    "usda": {
+      "fdcId": 174928,
+      "dataType": "SR Legacy"
+    }
+  },
+  {
+    "id": "usda_175031",
+    "slug": "kaiser-roll",
+    "name": "Kaiser Roll",
+    "searchName": "kaiser roll",
+    "displayName": "Kaiser Roll",
+    "aliases": [
+      "kaiser roll",
+      "rolls, hard (includes kaiser)"
+    ],
+    "category": "Bread & Bakery",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 roll",
+        "grams": 57,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "oz",
+        "label": "1 oz",
+        "grams": 28.4
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 293,
+      "protein": 9.9,
+      "carbohydrates": 52.7,
+      "fat": 4.3,
+      "fiber": 2.3,
+      "sugar": 1.77,
+      "sodium": 544,
+      "saturatedFat": 0.61,
+      "cholesterol": 0,
+      "potassium": 108
+    },
+    "tags": [
+      "bread-bakery"
+    ],
+    "compareGroup": "Bread & Bakery",
+    "usda": {
+      "fdcId": 175031,
+      "dataType": "SR Legacy"
+    }
+  },
+  {
+    "id": "usda_2707663",
+    "slug": "hoagie-roll",
+    "name": "Hoagie Roll",
+    "searchName": "hoagie roll",
+    "displayName": "Hoagie Roll",
+    "aliases": [
+      "hoagie roll",
+      "roll, white, hoagie, submarine"
+    ],
+    "category": "Bread & Bakery",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 medium",
+        "grams": 106,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 279,
+      "protein": 9.77,
+      "carbohydrates": 50.1,
+      "fat": 3.91,
+      "fiber": 1.8,
+      "sugar": 7.28,
+      "sodium": 494,
+      "saturatedFat": 0.84,
+      "cholesterol": 0,
+      "potassium": 122
+    },
+    "tags": [
+      "bread-bakery"
+    ],
+    "compareGroup": "Bread & Bakery",
+    "usda": {
+      "fdcId": 2707663,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707826",
+    "slug": "hard-taco-shell",
+    "name": "Hard Taco Shell",
+    "searchName": "hard taco shell",
+    "displayName": "Hard Taco Shell",
+    "aliases": [
+      "hard taco shell",
+      "taco shell, corn"
+    ],
+    "category": "Bread & Bakery",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 medium",
+        "grams": 28,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "miniature",
+        "label": "1 miniature",
+        "grams": 7
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 476,
+      "protein": 6.41,
+      "carbohydrates": 63.5,
+      "fat": 21.8,
+      "fiber": 6.7,
+      "sugar": 1.5,
+      "sodium": 324,
+      "saturatedFat": 7.1,
+      "cholesterol": 0,
+      "potassium": 231
+    },
+    "tags": [
+      "bread-bakery"
+    ],
+    "compareGroup": "Bread & Bakery",
+    "usda": {
+      "fdcId": 2707826,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_167525",
+    "slug": "tostada-shell",
+    "name": "Tostada Shell",
+    "searchName": "tostada shell",
+    "displayName": "Tostada Shell",
+    "aliases": [
+      "tostada shell",
+      "tostada shells, corn"
+    ],
+    "category": "Bread & Bakery",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 piece",
+        "grams": 12.3,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 474,
+      "protein": 6.15,
+      "carbohydrates": 64.43,
+      "fat": 23.38,
+      "fiber": 5.8,
+      "sugar": null,
+      "sodium": 657,
+      "saturatedFat": 7.01,
+      "cholesterol": null,
+      "potassium": 237
+    },
+    "tags": [
+      "bread-bakery"
+    ],
+    "compareGroup": "Bread & Bakery",
+    "usda": {
+      "fdcId": 167525,
+      "dataType": "SR Legacy"
+    }
+  },
+  {
+    "id": "usda_2708158",
+    "slug": "matzo",
+    "name": "Matzo",
+    "searchName": "matzo",
+    "displayName": "Matzo",
+    "aliases": [
+      "matzo",
+      "crackers, matzo"
+    ],
+    "category": "Bread & Bakery",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "matzo",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "matzo",
+        "label": "1 matzo",
+        "grams": 28,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 395,
+      "protein": 10,
+      "carbohydrates": 83.7,
+      "fat": 1.4,
+      "fiber": 3,
+      "sugar": 0.29,
+      "sodium": 0,
+      "saturatedFat": 0.23,
+      "cholesterol": 0,
+      "potassium": 112
+    },
+    "tags": [
+      "bread-bakery"
+    ],
+    "compareGroup": "Bread & Bakery",
+    "usda": {
+      "fdcId": 2708158,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707732",
+    "slug": "wheat-bagel",
+    "name": "Wheat Bagel",
+    "searchName": "wheat bagel",
+    "displayName": "Wheat Bagel",
+    "aliases": [
+      "wheat bagel",
+      "bagel, wheat"
+    ],
+    "category": "Bread & Bakery",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "regular",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "regular",
+        "label": "1 regular",
+        "grams": 105,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "piece",
+        "label": "1 large",
+        "grams": 131
+      },
+      {
+        "id": "serve_3",
+        "unit": "miniature",
+        "label": "1 miniature",
+        "grams": 26
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 250,
+      "protein": 10.2,
+      "carbohydrates": 48.9,
+      "fat": 1.53,
+      "fiber": 4.1,
+      "sugar": 6.12,
+      "sodium": 439,
+      "saturatedFat": 0,
+      "cholesterol": 0,
+      "potassium": 165
+    },
+    "tags": [
+      "bread-bakery"
+    ],
+    "compareGroup": "Bread & Bakery",
+    "usda": {
+      "fdcId": 2707732,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707785",
+    "slug": "multigrain-bagel",
+    "name": "Multigrain Bagel",
+    "searchName": "multigrain bagel",
+    "displayName": "Multigrain Bagel",
+    "aliases": [
+      "multigrain bagel",
+      "bagel, multigrain"
+    ],
+    "category": "Bread & Bakery",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "regular",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "regular",
+        "label": "1 regular",
+        "grams": 105,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "piece",
+        "label": "1 Bagel Thin",
+        "grams": 46
+      },
+      {
+        "id": "serve_3",
+        "unit": "miniature",
+        "label": "1 miniature",
+        "grams": 26
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 250,
+      "protein": 10.2,
+      "carbohydrates": 48.9,
+      "fat": 1.53,
+      "fiber": 4.1,
+      "sugar": 6.12,
+      "sodium": 439,
+      "saturatedFat": 0,
+      "cholesterol": 0,
+      "potassium": 165
+    },
+    "tags": [
+      "bread-bakery"
+    ],
+    "compareGroup": "Bread & Bakery",
+    "usda": {
+      "fdcId": 2707785,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707741",
+    "slug": "whole-wheat-english-muffin",
+    "name": "Whole Wheat English Muffin",
+    "searchName": "whole wheat english muffin",
+    "displayName": "Whole Wheat English Muffin",
+    "aliases": [
+      "whole wheat english muffin",
+      "muffin, english, whole wheat"
+    ],
+    "category": "Bread & Bakery",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 muffin",
+        "grams": 58,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 223,
+      "protein": 8.7,
+      "carbohydrates": 44.8,
+      "fat": 2,
+      "fiber": 4.6,
+      "sugar": 1.56,
+      "sodium": 353,
+      "saturatedFat": 0.29,
+      "cholesterol": 0,
+      "potassium": 186
+    },
+    "tags": [
+      "bread-bakery"
+    ],
+    "compareGroup": "Bread & Bakery",
+    "usda": {
+      "fdcId": 2707741,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707730",
+    "slug": "whole-wheat-pita",
+    "name": "Whole Wheat Pita",
+    "searchName": "whole wheat pita",
+    "displayName": "Whole Wheat Pita",
+    "aliases": [
+      "whole wheat pita",
+      "bread, pita, whole wheat"
+    ],
+    "category": "Bread & Bakery",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 medium pita",
+        "grams": 57,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "surface",
+        "label": "1 surface inch",
+        "grams": 2
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 262,
+      "protein": 9.8,
+      "carbohydrates": 55.9,
+      "fat": 1.71,
+      "fiber": 6.1,
+      "sugar": 2.87,
+      "sodium": 421,
+      "saturatedFat": 0.21,
+      "cholesterol": 0,
+      "potassium": 170
+    },
+    "tags": [
+      "bread-bakery"
+    ],
+    "compareGroup": "Bread & Bakery",
+    "usda": {
+      "fdcId": 2707730,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707618",
+    "slug": "cheese-bread",
+    "name": "Cheese Bread",
+    "searchName": "cheese bread",
+    "displayName": "Cheese Bread",
+    "aliases": [
+      "cheese bread",
+      "bread, cheese"
+    ],
+    "category": "Bread & Bakery",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 medium or regular slice",
+        "grams": 28,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "slice",
+        "label": "1 slice, crust not eaten",
+        "grams": 13
+      },
+      {
+        "id": "serve_3",
+        "unit": "cubic",
+        "label": "1 cubic inch",
+        "grams": 2.6
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 408,
+      "protein": 10.4,
+      "carbohydrates": 44.8,
+      "fat": 20.8,
+      "fiber": 2.1,
+      "sugar": 2.08,
+      "sodium": 750,
+      "saturatedFat": 6.25,
+      "cholesterol": 10,
+      "potassium": 84
+    },
+    "tags": [
+      "bread-bakery"
+    ],
+    "compareGroup": "Bread & Bakery",
+    "usda": {
+      "fdcId": 2707618,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707624",
+    "slug": "challah",
+    "name": "Challah",
+    "searchName": "challah",
+    "displayName": "Challah",
+    "aliases": [
+      "challah",
+      "bread, egg, challah"
+    ],
+    "category": "Bread & Bakery",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "slice",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "slice",
+        "label": "1 slice, crust not eaten",
+        "grams": 14,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cubic",
+        "label": "1 cubic inch",
+        "grams": 3.7
+      },
+      {
+        "id": "serve_3",
+        "unit": "piece",
+        "label": "1 medium or regular slice",
+        "grams": 31
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 287,
+      "protein": 9.5,
+      "carbohydrates": 47.8,
+      "fat": 6,
+      "fiber": 2.3,
+      "sugar": 1.78,
+      "sodium": 380,
+      "saturatedFat": 1.59,
+      "cholesterol": 51,
+      "potassium": 115
+    },
+    "tags": [
+      "bread-bakery"
+    ],
+    "compareGroup": "Bread & Bakery",
+    "usda": {
+      "fdcId": 2707624,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707851",
+    "slug": "zucchini-bread",
+    "name": "Zucchini Bread",
+    "searchName": "zucchini bread",
+    "displayName": "Zucchini Bread",
+    "aliases": [
+      "zucchini bread",
+      "bread, zucchini"
+    ],
+    "category": "Bread & Bakery",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "slice",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "slice",
+        "label": "1 slice",
+        "grams": 40,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cubic",
+        "label": "1 cubic inch",
+        "grams": 6.6
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 306,
+      "protein": 5.05,
+      "carbohydrates": 42.6,
+      "fat": 13.1,
+      "fiber": 0.9,
+      "sugar": 22.7,
+      "sodium": 290,
+      "saturatedFat": 2.17,
+      "cholesterol": 43,
+      "potassium": 164
+    },
+    "tags": [
+      "bread-bakery"
+    ],
+    "compareGroup": "Bread & Bakery",
+    "usda": {
+      "fdcId": 2707851,
+      "dataType": "Survey (FNDDS)"
+    }
   }
 ];

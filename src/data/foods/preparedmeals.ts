@@ -3030,5 +3030,2025 @@ export const preparedmealsFoods: FoodItem[] = [
       "fdcId": 2706543,
       "dataType": "Survey (FNDDS)"
     }
+  },
+  {
+    "id": "usda_2706382",
+    "slug": "beef-stroganoff",
+    "name": "Beef Stroganoff",
+    "searchName": "beef stroganoff",
+    "displayName": "Beef Stroganoff",
+    "aliases": [
+      "beef stroganoff"
+    ],
+    "category": "Prepared Meals",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 256,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 150,
+      "protein": 10.1,
+      "carbohydrates": 6.21,
+      "fat": 9.33,
+      "fiber": 0.7,
+      "sugar": 1.36,
+      "sodium": 458,
+      "saturatedFat": 3.44,
+      "cholesterol": 35,
+      "potassium": 210
+    },
+    "tags": [
+      "prepared-meals"
+    ],
+    "compareGroup": "Prepared Meals",
+    "usda": {
+      "fdcId": 2706382,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_172099",
+    "slug": "spaghetti-and-meatballs-canned",
+    "name": "Spaghetti and Meatballs (Canned)",
+    "searchName": "spaghetti and meatballs (canned)",
+    "displayName": "Spaghetti and Meatballs (Canned)",
+    "aliases": [
+      "spaghetti and meatballs (canned)",
+      "spaghetti, with meatballs in tomato sauce, canned"
+    ],
+    "category": "Prepared Meals",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 246,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "can",
+        "label": "1 can",
+        "grams": 411
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 100,
+      "protein": 4.37,
+      "carbohydrates": 11.45,
+      "fat": 4.11,
+      "fiber": 2.7,
+      "sugar": 2.91,
+      "sodium": 280,
+      "saturatedFat": 1.46,
+      "cholesterol": 7,
+      "potassium": 217
+    },
+    "tags": [
+      "prepared-meals"
+    ],
+    "compareGroup": "Prepared Meals",
+    "usda": {
+      "fdcId": 172099,
+      "dataType": "SR Legacy"
+    }
+  },
+  {
+    "id": "usda_2708568",
+    "slug": "chicken-enchiladas",
+    "name": "Chicken Enchiladas",
+    "searchName": "chicken enchiladas",
+    "displayName": "Chicken Enchiladas",
+    "aliases": [
+      "chicken enchiladas",
+      "enchilada, chicken"
+    ],
+    "category": "Prepared Meals",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 enchilada, any size",
+        "grams": 150,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 170
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 178,
+      "protein": 10,
+      "carbohydrates": 14.6,
+      "fat": 9.02,
+      "fiber": 2.3,
+      "sugar": 0.79,
+      "sodium": 459,
+      "saturatedFat": 3.22,
+      "cholesterol": 33,
+      "potassium": 190
+    },
+    "tags": [
+      "prepared-meals"
+    ],
+    "compareGroup": "Prepared Meals",
+    "usda": {
+      "fdcId": 2708568,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2708566",
+    "slug": "beef-enchiladas",
+    "name": "Beef Enchiladas",
+    "searchName": "beef enchiladas",
+    "displayName": "Beef Enchiladas",
+    "aliases": [
+      "beef enchiladas",
+      "enchilada, beef"
+    ],
+    "category": "Prepared Meals",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 170,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "piece",
+        "label": "1 enchilada, any size",
+        "grams": 150
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 191,
+      "protein": 9.76,
+      "carbohydrates": 14.6,
+      "fat": 10.5,
+      "fiber": 2.3,
+      "sugar": 0.79,
+      "sodium": 458,
+      "saturatedFat": 3.93,
+      "cholesterol": 27,
+      "potassium": 192
+    },
+    "tags": [
+      "prepared-meals"
+    ],
+    "compareGroup": "Prepared Meals",
+    "usda": {
+      "fdcId": 2708566,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2706727",
+    "slug": "jambalaya",
+    "name": "Jambalaya",
+    "searchName": "jambalaya",
+    "displayName": "Jambalaya",
+    "aliases": [
+      "jambalaya",
+      "jambalaya with meat and rice"
+    ],
+    "category": "Prepared Meals",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 244,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 161,
+      "protein": 13.8,
+      "carbohydrates": 8.65,
+      "fat": 7.97,
+      "fiber": 0.7,
+      "sugar": 0.94,
+      "sodium": 379,
+      "saturatedFat": 2.21,
+      "cholesterol": 58,
+      "potassium": 240
+    },
+    "tags": [
+      "prepared-meals"
+    ],
+    "compareGroup": "Prepared Meals",
+    "usda": {
+      "fdcId": 2706727,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707142",
+    "slug": "shrimp-gumbo",
+    "name": "Shrimp Gumbo",
+    "searchName": "shrimp gumbo",
+    "displayName": "Shrimp Gumbo",
+    "aliases": [
+      "shrimp gumbo"
+    ],
+    "category": "Prepared Meals",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 244,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 61,
+      "protein": 6.52,
+      "carbohydrates": 4.63,
+      "fat": 1.89,
+      "fiber": 0.9,
+      "sugar": 1.78,
+      "sodium": 377,
+      "saturatedFat": 0.78,
+      "cholesterol": 62,
+      "potassium": 194
+    },
+    "tags": [
+      "prepared-meals"
+    ],
+    "compareGroup": "Prepared Meals",
+    "usda": {
+      "fdcId": 2707142,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2706441",
+    "slug": "chicken-cordon-bleu",
+    "name": "Chicken Cordon Bleu",
+    "searchName": "chicken cordon bleu",
+    "displayName": "Chicken Cordon Bleu",
+    "aliases": [
+      "chicken cordon bleu",
+      "chicken or turkey cordon bleu"
+    ],
+    "category": "Prepared Meals",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "roll",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "roll",
+        "label": "1 roll",
+        "grams": 229,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 140
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 210,
+      "protein": 22.6,
+      "carbohydrates": 9.29,
+      "fat": 9.17,
+      "fiber": 0.6,
+      "sugar": 0.63,
+      "sodium": 589,
+      "saturatedFat": 3.33,
+      "cholesterol": 85,
+      "potassium": 255
+    },
+    "tags": [
+      "prepared-meals"
+    ],
+    "compareGroup": "Prepared Meals",
+    "usda": {
+      "fdcId": 2706441,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2709073",
+    "slug": "stuffed-peppers",
+    "name": "Stuffed Peppers",
+    "searchName": "stuffed peppers",
+    "displayName": "Stuffed Peppers",
+    "aliases": [
+      "stuffed peppers",
+      "stuffed pepper, with rice and meat"
+    ],
+    "category": "Prepared Meals",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "pepper",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "pepper",
+        "label": "1 pepper with filling",
+        "grams": 149,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 198
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 178,
+      "protein": 7.83,
+      "carbohydrates": 9.93,
+      "fat": 11.7,
+      "fiber": 0.7,
+      "sugar": 2.22,
+      "sodium": 320,
+      "saturatedFat": 3.49,
+      "cholesterol": 49,
+      "potassium": 174
+    },
+    "tags": [
+      "prepared-meals"
+    ],
+    "compareGroup": "Prepared Meals",
+    "usda": {
+      "fdcId": 2709073,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2706620",
+    "slug": "cabbage-rolls",
+    "name": "Cabbage Rolls",
+    "searchName": "cabbage rolls",
+    "displayName": "Cabbage Rolls",
+    "aliases": [
+      "cabbage rolls",
+      "stuffed cabbage rolls with beef and rice"
+    ],
+    "category": "Prepared Meals",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cabbage",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cabbage",
+        "label": "1 cabbage roll",
+        "grams": 103,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 162
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 114,
+      "protein": 8.3,
+      "carbohydrates": 8.83,
+      "fat": 5.06,
+      "fiber": 1.3,
+      "sugar": 3.45,
+      "sodium": 338,
+      "saturatedFat": 1.88,
+      "cholesterol": 39,
+      "potassium": 253
+    },
+    "tags": [
+      "prepared-meals"
+    ],
+    "compareGroup": "Prepared Meals",
+    "usda": {
+      "fdcId": 2706620,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2708720",
+    "slug": "pierogi",
+    "name": "Pierogi",
+    "searchName": "pierogi",
+    "displayName": "Pierogi",
+    "aliases": [
+      "pierogi"
+    ],
+    "category": "Prepared Meals",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "item",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "item",
+        "label": "1 item, any size",
+        "grams": 40,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 80
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 195,
+      "protein": 5.26,
+      "carbohydrates": 29.6,
+      "fat": 6.14,
+      "fiber": 0.9,
+      "sugar": 1.75,
+      "sodium": 474,
+      "saturatedFat": 1.32,
+      "cholesterol": 4,
+      "potassium": 107
+    },
+    "tags": [
+      "prepared-meals"
+    ],
+    "compareGroup": "Prepared Meals",
+    "usda": {
+      "fdcId": 2708720,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2706630",
+    "slug": "beef-pot-pie",
+    "name": "Beef Pot Pie",
+    "searchName": "beef pot pie",
+    "displayName": "Beef Pot Pie",
+    "aliases": [
+      "beef pot pie",
+      "pot pie, beef"
+    ],
+    "category": "Prepared Meals",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 200,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "pie",
+        "label": "1 pie, any size",
+        "grams": 1260
+      },
+      {
+        "id": "serve_3",
+        "unit": "cubic",
+        "label": "1 cubic inch",
+        "grams": 10
+      },
+      {
+        "id": "serve_4",
+        "unit": "slice",
+        "label": "1 slice, any size",
+        "grams": 210
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 271,
+      "protein": 8.92,
+      "carbohydrates": 24,
+      "fat": 15.4,
+      "fiber": 2,
+      "sugar": 3.33,
+      "sodium": 374,
+      "saturatedFat": 5.45,
+      "cholesterol": 22,
+      "potassium": 173
+    },
+    "tags": [
+      "prepared-meals"
+    ],
+    "compareGroup": "Prepared Meals",
+    "usda": {
+      "fdcId": 2706630,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2706738",
+    "slug": "beef-and-broccoli",
+    "name": "Beef and Broccoli",
+    "searchName": "beef and broccoli",
+    "displayName": "Beef and Broccoli",
+    "aliases": [
+      "beef and broccoli"
+    ],
+    "category": "Prepared Meals",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 217,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 160,
+      "protein": 10.4,
+      "carbohydrates": 5.09,
+      "fat": 10.6,
+      "fiber": 1.3,
+      "sugar": 1.23,
+      "sodium": 440,
+      "saturatedFat": 1.88,
+      "cholesterol": 25,
+      "potassium": 300
+    },
+    "tags": [
+      "prepared-meals"
+    ],
+    "compareGroup": "Prepared Meals",
+    "usda": {
+      "fdcId": 2706738,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2706444",
+    "slug": "sesame-chicken",
+    "name": "Sesame Chicken",
+    "searchName": "sesame chicken",
+    "displayName": "Sesame Chicken",
+    "aliases": [
+      "sesame chicken"
+    ],
+    "category": "Prepared Meals",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 252,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "chicken",
+        "label": "1 chicken wing with sauce",
+        "grams": 47
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 293,
+      "protein": 14.3,
+      "carbohydrates": 26.9,
+      "fat": 14.2,
+      "fiber": 0.7,
+      "sugar": 16,
+      "sodium": 482,
+      "saturatedFat": 2.41,
+      "cholesterol": 59,
+      "potassium": 204
+    },
+    "tags": [
+      "prepared-meals"
+    ],
+    "compareGroup": "Prepared Meals",
+    "usda": {
+      "fdcId": 2706444,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2709160",
+    "slug": "wonton-soup",
+    "name": "Wonton Soup",
+    "searchName": "wonton soup",
+    "displayName": "Wonton Soup",
+    "aliases": [
+      "wonton soup",
+      "soup, wonton"
+    ],
+    "category": "Prepared Meals",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 245,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 33,
+      "protein": 2.39,
+      "carbohydrates": 2.95,
+      "fat": 1.31,
+      "fiber": 0.3,
+      "sugar": 0.74,
+      "sodium": 370,
+      "saturatedFat": 0.41,
+      "cholesterol": 4,
+      "potassium": 86
+    },
+    "tags": [
+      "prepared-meals"
+    ],
+    "compareGroup": "Prepared Meals",
+    "usda": {
+      "fdcId": 2709160,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707136",
+    "slug": "hot-and-sour-soup",
+    "name": "Hot and Sour Soup",
+    "searchName": "hot and sour soup",
+    "displayName": "Hot and Sour Soup",
+    "aliases": [
+      "hot and sour soup",
+      "soup, hot and sour"
+    ],
+    "category": "Prepared Meals",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 245,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 39,
+      "protein": 2.58,
+      "carbohydrates": 4.35,
+      "fat": 1.21,
+      "fiber": 0.5,
+      "sugar": 0.42,
+      "sodium": 376,
+      "saturatedFat": 0.23,
+      "cholesterol": 21,
+      "potassium": 55
+    },
+    "tags": [
+      "prepared-meals"
+    ],
+    "compareGroup": "Prepared Meals",
+    "usda": {
+      "fdcId": 2707136,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707282",
+    "slug": "egg-drop-soup",
+    "name": "Egg Drop Soup",
+    "searchName": "egg drop soup",
+    "displayName": "Egg Drop Soup",
+    "aliases": [
+      "egg drop soup",
+      "soup, egg drop"
+    ],
+    "category": "Prepared Meals",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 245,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 27,
+      "protein": 1.16,
+      "carbohydrates": 4.29,
+      "fat": 0.61,
+      "fiber": 0.4,
+      "sugar": 0.09,
+      "sodium": 370,
+      "saturatedFat": 0.17,
+      "cholesterol": 23,
+      "potassium": 22
+    },
+    "tags": [
+      "prepared-meals"
+    ],
+    "compareGroup": "Prepared Meals",
+    "usda": {
+      "fdcId": 2707282,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707455",
+    "slug": "miso-soup",
+    "name": "Miso Soup",
+    "searchName": "miso soup",
+    "displayName": "Miso Soup",
+    "aliases": [
+      "miso soup",
+      "soup, miso or tofu"
+    ],
+    "category": "Prepared Meals",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 245,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 24,
+      "protein": 2.21,
+      "carbohydrates": 2.3,
+      "fat": 0.85,
+      "fiber": 0.6,
+      "sugar": 0.77,
+      "sodium": 467,
+      "saturatedFat": 0.15,
+      "cholesterol": 1,
+      "potassium": 77
+    },
+    "tags": [
+      "prepared-meals"
+    ],
+    "compareGroup": "Prepared Meals",
+    "usda": {
+      "fdcId": 2707455,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2708965",
+    "slug": "tuna-sushi-roll",
+    "name": "Tuna Sushi Roll",
+    "searchName": "tuna sushi roll",
+    "displayName": "Tuna Sushi Roll",
+    "aliases": [
+      "tuna sushi roll",
+      "sushi roll tuna"
+    ],
+    "category": "Prepared Meals",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 piece",
+        "grams": 30,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 150
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 97,
+      "protein": 7.4,
+      "carbohydrates": 15.3,
+      "fat": 0.26,
+      "fiber": 0.7,
+      "sugar": 0.92,
+      "sodium": 342,
+      "saturatedFat": 0.07,
+      "cholesterol": 10,
+      "potassium": 119
+    },
+    "tags": [
+      "prepared-meals"
+    ],
+    "compareGroup": "Prepared Meals",
+    "usda": {
+      "fdcId": 2708965,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2708758",
+    "slug": "vegetable-lasagna",
+    "name": "Vegetable Lasagna",
+    "searchName": "vegetable lasagna",
+    "displayName": "Vegetable Lasagna",
+    "aliases": [
+      "vegetable lasagna",
+      "lasagna, meatless"
+    ],
+    "category": "Prepared Meals",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 piece",
+        "grams": 256,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "surface",
+        "label": "1 surface inch",
+        "grams": 22.8
+      },
+      {
+        "id": "serve_3",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 250
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 130,
+      "protein": 6.54,
+      "carbohydrates": 13.8,
+      "fat": 5.33,
+      "fiber": 1.7,
+      "sugar": 4.23,
+      "sodium": 284,
+      "saturatedFat": 2.11,
+      "cholesterol": 13,
+      "potassium": 182
+    },
+    "tags": [
+      "prepared-meals"
+    ],
+    "compareGroup": "Prepared Meals",
+    "usda": {
+      "fdcId": 2708758,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2710050",
+    "slug": "eggplant-parmesan",
+    "name": "Eggplant Parmesan",
+    "searchName": "eggplant parmesan",
+    "displayName": "Eggplant Parmesan",
+    "aliases": [
+      "eggplant parmesan",
+      "eggplant parmesan casserole, regular"
+    ],
+    "category": "Prepared Meals",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 198,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cubic",
+        "label": "1 cubic inch",
+        "grams": 10
+      },
+      {
+        "id": "serve_3",
+        "unit": "slice",
+        "label": "1 slice",
+        "grams": 44
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 155,
+      "protein": 7.02,
+      "carbohydrates": 8.96,
+      "fat": 10.5,
+      "fiber": 1.9,
+      "sugar": 3.01,
+      "sodium": 351,
+      "saturatedFat": 3.55,
+      "cholesterol": 24,
+      "potassium": 225
+    },
+    "tags": [
+      "prepared-meals"
+    ],
+    "compareGroup": "Prepared Meals",
+    "usda": {
+      "fdcId": 2710050,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707137",
+    "slug": "cream-of-chicken-soup",
+    "name": "Cream of Chicken Soup",
+    "searchName": "cream of chicken soup",
+    "displayName": "Cream of Chicken Soup",
+    "aliases": [
+      "cream of chicken soup",
+      "soup, cream of chicken"
+    ],
+    "category": "Prepared Meals",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 255,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "can",
+        "label": "1 can",
+        "grams": 525
+      },
+      {
+        "id": "serve_3",
+        "unit": "individual",
+        "label": "1 individual container",
+        "grams": 440
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 91,
+      "protein": 4,
+      "carbohydrates": 6.79,
+      "fat": 5.42,
+      "fiber": 0.9,
+      "sugar": 1.46,
+      "sodium": 251,
+      "saturatedFat": 2.7,
+      "cholesterol": 25,
+      "potassium": 167
+    },
+    "tags": [
+      "prepared-meals"
+    ],
+    "compareGroup": "Prepared Meals",
+    "usda": {
+      "fdcId": 2707137,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2710107",
+    "slug": "cream-of-mushroom-soup",
+    "name": "Cream of Mushroom Soup",
+    "searchName": "cream of mushroom soup",
+    "displayName": "Cream of Mushroom Soup",
+    "aliases": [
+      "cream of mushroom soup",
+      "soup, cream of mushroom"
+    ],
+    "category": "Prepared Meals",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 255,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "individual",
+        "label": "1 individual container",
+        "grams": 440
+      },
+      {
+        "id": "serve_3",
+        "unit": "can",
+        "label": "1 can",
+        "grams": 525
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 74,
+      "protein": 2.1,
+      "carbohydrates": 5.7,
+      "fat": 4.76,
+      "fiber": 1.2,
+      "sugar": 1.74,
+      "sodium": 242,
+      "saturatedFat": 2.5,
+      "cholesterol": 12,
+      "potassium": 222
+    },
+    "tags": [
+      "prepared-meals"
+    ],
+    "compareGroup": "Prepared Meals",
+    "usda": {
+      "fdcId": 2710107,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2709556",
+    "slug": "potato-soup",
+    "name": "Potato Soup",
+    "searchName": "potato soup",
+    "displayName": "Potato Soup",
+    "aliases": [
+      "potato soup",
+      "soup, potato"
+    ],
+    "category": "Prepared Meals",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 255,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "individual",
+        "label": "1 individual container",
+        "grams": 440
+      },
+      {
+        "id": "serve_3",
+        "unit": "can",
+        "label": "1 can",
+        "grams": 525
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 90,
+      "protein": 1.51,
+      "carbohydrates": 10.5,
+      "fat": 4.71,
+      "fiber": 1.2,
+      "sugar": 1.01,
+      "sodium": 240,
+      "saturatedFat": 2.48,
+      "cholesterol": 12,
+      "potassium": 227
+    },
+    "tags": [
+      "prepared-meals"
+    ],
+    "compareGroup": "Prepared Meals",
+    "usda": {
+      "fdcId": 2709556,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_174073",
+    "slug": "beef-barley-soup",
+    "name": "Beef Barley Soup",
+    "searchName": "beef barley soup",
+    "displayName": "Beef Barley Soup",
+    "aliases": [
+      "beef barley soup",
+      "soup, beef barley, ready to serve"
+    ],
+    "category": "Prepared Meals",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 208,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "can",
+        "label": "1 can",
+        "grams": 527
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 52,
+      "protein": 2.81,
+      "carbohydrates": 7.94,
+      "fat": 0.96,
+      "fiber": 0.9,
+      "sugar": 1.22,
+      "sodium": 297,
+      "saturatedFat": 0.33,
+      "cholesterol": 4,
+      "potassium": 121
+    },
+    "tags": [
+      "prepared-meals"
+    ],
+    "compareGroup": "Prepared Meals",
+    "usda": {
+      "fdcId": 174073,
+      "dataType": "SR Legacy"
+    }
+  },
+  {
+    "id": "usda_168068",
+    "slug": "black-bean-soup",
+    "name": "Black Bean Soup",
+    "searchName": "black bean soup",
+    "displayName": "Black Bean Soup",
+    "aliases": [
+      "black bean soup",
+      "restaurant, latino, black bean soup"
+    ],
+    "category": "Prepared Meals",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 246,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 103,
+      "protein": 5.1,
+      "carbohydrates": 14.79,
+      "fat": 2.57,
+      "fiber": 4.9,
+      "sugar": 0.89,
+      "sodium": 311,
+      "saturatedFat": 0.54,
+      "cholesterol": 1,
+      "potassium": 340
+    },
+    "tags": [
+      "prepared-meals"
+    ],
+    "compareGroup": "Prepared Meals",
+    "usda": {
+      "fdcId": 168068,
+      "dataType": "SR Legacy"
+    }
+  },
+  {
+    "id": "usda_2708605",
+    "slug": "beef-fajitas",
+    "name": "Beef Fajitas",
+    "searchName": "beef fajitas",
+    "displayName": "Beef Fajitas",
+    "aliases": [
+      "beef fajitas",
+      "fajita, beef or pork"
+    ],
+    "category": "Prepared Meals",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 fajita",
+        "grams": 95,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 120
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 231,
+      "protein": 12.1,
+      "carbohydrates": 18,
+      "fat": 12.2,
+      "fiber": 1.5,
+      "sugar": 2.44,
+      "sodium": 459,
+      "saturatedFat": 3.22,
+      "cholesterol": 29,
+      "potassium": 193
+    },
+    "tags": [
+      "prepared-meals"
+    ],
+    "compareGroup": "Prepared Meals",
+    "usda": {
+      "fdcId": 2708605,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2706571",
+    "slug": "tuna-noodle-casserole",
+    "name": "Tuna Noodle Casserole",
+    "searchName": "tuna noodle casserole",
+    "displayName": "Tuna Noodle Casserole",
+    "aliases": [
+      "tuna noodle casserole",
+      "tuna noodle casserole with mushroom sauce"
+    ],
+    "category": "Prepared Meals",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 224,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 139,
+      "protein": 9.02,
+      "carbohydrates": 13.9,
+      "fat": 5.18,
+      "fiber": 0.8,
+      "sugar": 1.14,
+      "sodium": 328,
+      "saturatedFat": 1.9,
+      "cholesterol": 28,
+      "potassium": 116
+    },
+    "tags": [
+      "prepared-meals"
+    ],
+    "compareGroup": "Prepared Meals",
+    "usda": {
+      "fdcId": 2706571,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2710040",
+    "slug": "green-bean-casserole",
+    "name": "Green Bean Casserole",
+    "searchName": "green bean casserole",
+    "displayName": "Green Bean Casserole",
+    "aliases": [
+      "green bean casserole"
+    ],
+    "category": "Prepared Meals",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 230,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 56,
+      "protein": 1.96,
+      "carbohydrates": 7.05,
+      "fat": 2.21,
+      "fiber": 1.9,
+      "sugar": 2.03,
+      "sodium": 316,
+      "saturatedFat": 0.51,
+      "cholesterol": 1,
+      "potassium": 203
+    },
+    "tags": [
+      "prepared-meals"
+    ],
+    "compareGroup": "Prepared Meals",
+    "usda": {
+      "fdcId": 2710040,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2709708",
+    "slug": "sweet-potato-casserole",
+    "name": "Sweet Potato Casserole",
+    "searchName": "sweet potato casserole",
+    "displayName": "Sweet Potato Casserole",
+    "aliases": [
+      "sweet potato casserole",
+      "sweet potato, casserole or mashed"
+    ],
+    "category": "Prepared Meals",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 250,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 99,
+      "protein": 1.89,
+      "carbohydrates": 17.2,
+      "fat": 2.56,
+      "fiber": 2.4,
+      "sugar": 8.05,
+      "sodium": 132,
+      "saturatedFat": 1.38,
+      "cholesterol": 7,
+      "potassium": 420
+    },
+    "tags": [
+      "prepared-meals"
+    ],
+    "compareGroup": "Prepared Meals",
+    "usda": {
+      "fdcId": 2709708,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2709831",
+    "slug": "spinach-salad",
+    "name": "Spinach Salad",
+    "searchName": "spinach salad",
+    "displayName": "Spinach Salad",
+    "aliases": [
+      "spinach salad",
+      "spinach salad, no dressing"
+    ],
+    "category": "Prepared Meals",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 74,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 84,
+      "protein": 7.02,
+      "carbohydrates": 2.09,
+      "fat": 5.07,
+      "fiber": 1.2,
+      "sugar": 0.54,
+      "sodium": 220,
+      "saturatedFat": 1.55,
+      "cholesterol": 86,
+      "potassium": 480
+    },
+    "tags": [
+      "prepared-meals"
+    ],
+    "compareGroup": "Prepared Meals",
+    "usda": {
+      "fdcId": 2709831,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2708941",
+    "slug": "macaroni-salad",
+    "name": "Macaroni Salad",
+    "searchName": "macaroni salad",
+    "displayName": "Macaroni Salad",
+    "aliases": [
+      "macaroni salad",
+      "macaroni or pasta salad with egg"
+    ],
+    "category": "Prepared Meals",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 204,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 215,
+      "protein": 5.18,
+      "carbohydrates": 22.5,
+      "fat": 11.4,
+      "fiber": 1.3,
+      "sugar": 1.79,
+      "sodium": 197,
+      "saturatedFat": 1.95,
+      "cholesterol": 39,
+      "potassium": 56
+    },
+    "tags": [
+      "prepared-meals"
+    ],
+    "compareGroup": "Prepared Meals",
+    "usda": {
+      "fdcId": 2708941,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2706387",
+    "slug": "steak-teriyaki",
+    "name": "Steak Teriyaki",
+    "searchName": "steak teriyaki",
+    "displayName": "Steak Teriyaki",
+    "aliases": [
+      "steak teriyaki"
+    ],
+    "category": "Prepared Meals",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 244,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 198,
+      "protein": 28.9,
+      "carbohydrates": 1.94,
+      "fat": 8.25,
+      "fiber": 0,
+      "sugar": 1.76,
+      "sodium": 517,
+      "saturatedFat": 3.13,
+      "cholesterol": 82,
+      "potassium": 259
+    },
+    "tags": [
+      "prepared-meals"
+    ],
+    "compareGroup": "Prepared Meals",
+    "usda": {
+      "fdcId": 2706387,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2708956",
+    "slug": "shrimp-fried-rice",
+    "name": "Shrimp Fried Rice",
+    "searchName": "shrimp fried rice",
+    "displayName": "Shrimp Fried Rice",
+    "aliases": [
+      "shrimp fried rice",
+      "rice, fried, with shrimp"
+    ],
+    "category": "Prepared Meals",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 198,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 166,
+      "protein": 6.68,
+      "carbohydrates": 27.8,
+      "fat": 2.97,
+      "fiber": 0.9,
+      "sugar": 0.53,
+      "sodium": 324,
+      "saturatedFat": 0.5,
+      "cholesterol": 47,
+      "potassium": 84
+    },
+    "tags": [
+      "prepared-meals"
+    ],
+    "compareGroup": "Prepared Meals",
+    "usda": {
+      "fdcId": 2708956,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2706458",
+    "slug": "shrimp-scampi",
+    "name": "Shrimp Scampi",
+    "searchName": "shrimp scampi",
+    "displayName": "Shrimp Scampi",
+    "aliases": [
+      "shrimp scampi"
+    ],
+    "category": "Prepared Meals",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 250,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "piece",
+        "label": "1 shrimp",
+        "grams": 15
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 192,
+      "protein": 15.4,
+      "carbohydrates": 2.27,
+      "fat": 13,
+      "fiber": 0.2,
+      "sugar": 0.1,
+      "sodium": 168,
+      "saturatedFat": 4.26,
+      "cholesterol": 154,
+      "potassium": 156
+    },
+    "tags": [
+      "prepared-meals"
+    ],
+    "compareGroup": "Prepared Meals",
+    "usda": {
+      "fdcId": 2706458,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2708954",
+    "slug": "pork-fried-rice",
+    "name": "Pork Fried Rice",
+    "searchName": "pork fried rice",
+    "displayName": "Pork Fried Rice",
+    "aliases": [
+      "pork fried rice",
+      "rice, fried, with pork"
+    ],
+    "category": "Prepared Meals",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 198,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 179,
+      "protein": 7.56,
+      "carbohydrates": 27.6,
+      "fat": 4.16,
+      "fiber": 0.9,
+      "sugar": 0.53,
+      "sodium": 316,
+      "saturatedFat": 0.95,
+      "cholesterol": 27,
+      "potassium": 122
+    },
+    "tags": [
+      "prepared-meals"
+    ],
+    "compareGroup": "Prepared Meals",
+    "usda": {
+      "fdcId": 2708954,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2708564",
+    "slug": "burrito-bowl-with-beans",
+    "name": "Burrito Bowl with Beans",
+    "searchName": "burrito bowl with beans",
+    "displayName": "Burrito Bowl with Beans",
+    "aliases": [
+      "burrito bowl with beans",
+      "burrito bowl, with beans"
+    ],
+    "category": "Prepared Meals",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "item",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "item",
+        "label": "1 item, any size",
+        "grams": 225,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 120
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 129,
+      "protein": 8.04,
+      "carbohydrates": 17.3,
+      "fat": 3.42,
+      "fiber": 5.7,
+      "sugar": 0.46,
+      "sodium": 296,
+      "saturatedFat": 1.66,
+      "cholesterol": 7,
+      "potassium": 317
+    },
+    "tags": [
+      "prepared-meals"
+    ],
+    "compareGroup": "Prepared Meals",
+    "usda": {
+      "fdcId": 2708564,
+      "dataType": "Survey (FNDDS)"
+    }
   }
 ];

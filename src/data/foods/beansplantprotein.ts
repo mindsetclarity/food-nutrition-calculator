@@ -1103,5 +1103,489 @@ export const beansplantproteinFoods: FoodItem[] = [
       "fdcId": 2707473,
       "dataType": "Survey (FNDDS)"
     }
+  },
+  {
+    "id": "usda_175192",
+    "slug": "great-northern-beans",
+    "name": "Great Northern Beans",
+    "searchName": "great northern beans",
+    "displayName": "Great Northern Beans",
+    "aliases": [
+      "great northern beans",
+      "beans, great northern, mature seeds, canned"
+    ],
+    "category": "Beans & Plant Protein",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 262,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 114,
+      "protein": 7.37,
+      "carbohydrates": 21.02,
+      "fat": 0.39,
+      "fiber": 4.9,
+      "sugar": 1.41,
+      "sodium": 370,
+      "saturatedFat": 0.12,
+      "cholesterol": 0,
+      "potassium": 351
+    },
+    "tags": [
+      "beans-plant-protein"
+    ],
+    "compareGroup": "Beans & Plant Protein",
+    "usda": {
+      "fdcId": 175192,
+      "dataType": "SR Legacy"
+    }
+  },
+  {
+    "id": "usda_175249",
+    "slug": "white-beans-cooked",
+    "name": "White Beans (Cooked)",
+    "searchName": "white beans (cooked)",
+    "displayName": "White Beans (Cooked)",
+    "aliases": [
+      "white beans (cooked)",
+      "beans, white, mature seeds, cooked, boiled, with salt"
+    ],
+    "category": "Beans & Plant Protein",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 179,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 139,
+      "protein": 9.73,
+      "carbohydrates": 25.09,
+      "fat": 0.35,
+      "fiber": 6.3,
+      "sugar": 0.34,
+      "sodium": 242,
+      "saturatedFat": 0.09,
+      "cholesterol": 0,
+      "potassium": 561
+    },
+    "tags": [
+      "beans-plant-protein"
+    ],
+    "compareGroup": "Beans & Plant Protein",
+    "usda": {
+      "fdcId": 175249,
+      "dataType": "SR Legacy"
+    }
+  },
+  {
+    "id": "usda_2707389",
+    "slug": "mung-beans-cooked",
+    "name": "Mung Beans (Cooked)",
+    "searchName": "mung beans (cooked)",
+    "displayName": "Mung Beans (Cooked)",
+    "aliases": [
+      "mung beans (cooked)",
+      "mung beans, cooked"
+    ],
+    "category": "Beans & Plant Protein",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 185,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "oz",
+        "label": "1 oz dry, yield after cooking",
+        "grams": 72
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 156,
+      "protein": 6.52,
+      "carbohydrates": 17.8,
+      "fat": 6.86,
+      "fiber": 7.1,
+      "sugar": 1.86,
+      "sodium": 218,
+      "saturatedFat": 0.98,
+      "cholesterol": 0,
+      "potassium": 247
+    },
+    "tags": [
+      "beans-plant-protein"
+    ],
+    "compareGroup": "Beans & Plant Protein",
+    "usda": {
+      "fdcId": 2707389,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_173789",
+    "slug": "adzuki-beans-cooked",
+    "name": "Adzuki Beans (Cooked)",
+    "searchName": "adzuki beans (cooked)",
+    "displayName": "Adzuki Beans (Cooked)",
+    "aliases": [
+      "adzuki beans (cooked)",
+      "beans, adzuki, mature seed, cooked, boiled, with salt"
+    ],
+    "category": "Beans & Plant Protein",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 230,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 128,
+      "protein": 7.52,
+      "carbohydrates": 24.77,
+      "fat": 0.1,
+      "fiber": 7.3,
+      "sugar": null,
+      "sodium": 244,
+      "saturatedFat": 0.04,
+      "cholesterol": 0,
+      "potassium": 532
+    },
+    "tags": [
+      "beans-plant-protein"
+    ],
+    "compareGroup": "Beans & Plant Protein",
+    "usda": {
+      "fdcId": 173789,
+      "dataType": "SR Legacy"
+    }
+  },
+  {
+    "id": "usda_2707388",
+    "slug": "soybeans-cooked",
+    "name": "Soybeans (Cooked)",
+    "searchName": "soybeans (cooked)",
+    "displayName": "Soybeans (Cooked)",
+    "aliases": [
+      "soybeans (cooked)",
+      "soybeans, cooked"
+    ],
+    "category": "Beans & Plant Protein",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 185,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "oz",
+        "label": "1 oz dry, yield after cooking",
+        "grams": 72
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 218,
+      "protein": 16.9,
+      "carbohydrates": 7.77,
+      "fat": 14.8,
+      "fiber": 5.6,
+      "sugar": 2.79,
+      "sodium": 217,
+      "saturatedFat": 2.08,
+      "cholesterol": 0,
+      "potassium": 479
+    },
+    "tags": [
+      "beans-plant-protein"
+    ],
+    "compareGroup": "Beans & Plant Protein",
+    "usda": {
+      "fdcId": 2707388,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707451",
+    "slug": "textured-vegetable-protein",
+    "name": "Textured Vegetable Protein",
+    "searchName": "textured vegetable protein",
+    "displayName": "Textured Vegetable Protein",
+    "aliases": [
+      "textured vegetable protein",
+      "textured vegetable protein, dry"
+    ],
+    "category": "Beans & Plant Protein",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup, coarse grain",
+        "grams": 68,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 366,
+      "protein": 51.1,
+      "carbohydrates": 32.9,
+      "fat": 3.33,
+      "fiber": 17.5,
+      "sugar": 16.4,
+      "sodium": 2,
+      "saturatedFat": 0.14,
+      "cholesterol": 0,
+      "potassium": 2480
+    },
+    "tags": [
+      "beans-plant-protein"
+    ],
+    "compareGroup": "Beans & Plant Protein",
+    "usda": {
+      "fdcId": 2707451,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707395",
+    "slug": "black-bean-salad",
+    "name": "Black Bean Salad",
+    "searchName": "black bean salad",
+    "displayName": "Black Bean Salad",
+    "aliases": [
+      "black bean salad"
+    ],
+    "category": "Beans & Plant Protein",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 231,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 94,
+      "protein": 3.08,
+      "carbohydrates": 12.6,
+      "fat": 3.85,
+      "fiber": 3.4,
+      "sugar": 3.53,
+      "sodium": 350,
+      "saturatedFat": 0.57,
+      "cholesterol": 0,
+      "potassium": 211
+    },
+    "tags": [
+      "beans-plant-protein"
+    ],
+    "compareGroup": "Beans & Plant Protein",
+    "usda": {
+      "fdcId": 2707395,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707406",
+    "slug": "pork-and-beans",
+    "name": "Pork and Beans",
+    "searchName": "pork and beans",
+    "displayName": "Pork and Beans",
+    "aliases": [
+      "pork and beans"
+    ],
+    "category": "Beans & Plant Protein",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 260,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 105,
+      "protein": 4.52,
+      "carbohydrates": 21.6,
+      "fat": 0.89,
+      "fiber": 4.4,
+      "sugar": 8.23,
+      "sodium": 391,
+      "saturatedFat": 0.23,
+      "cholesterol": 7,
+      "potassium": 231
+    },
+    "tags": [
+      "beans-plant-protein"
+    ],
+    "compareGroup": "Beans & Plant Protein",
+    "usda": {
+      "fdcId": 2707406,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_167719",
+    "slug": "meatless-chicken-breaded",
+    "name": "Meatless Chicken (Breaded)",
+    "searchName": "meatless chicken (breaded)",
+    "displayName": "Meatless Chicken (Breaded)",
+    "aliases": [
+      "meatless chicken (breaded)",
+      "chicken, meatless, breaded, fried"
+    ],
+    "category": "Beans & Plant Protein",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 piece",
+        "grams": 36,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cup",
+        "label": "1 cup, diced",
+        "grams": 130
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 234,
+      "protein": 21.28,
+      "carbohydrates": 8.51,
+      "fat": 12.77,
+      "fiber": 4.3,
+      "sugar": 0,
+      "sodium": 400,
+      "saturatedFat": 1.13,
+      "cholesterol": 0,
+      "potassium": 300
+    },
+    "tags": [
+      "beans-plant-protein"
+    ],
+    "compareGroup": "Beans & Plant Protein",
+    "usda": {
+      "fdcId": 167719,
+      "dataType": "SR Legacy"
+    }
   }
 ];

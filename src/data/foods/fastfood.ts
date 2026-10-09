@@ -3259,5 +3259,1338 @@ export const fastfoodFoods: FoodItem[] = [
       "fdcId": 2708349,
       "dataType": "Survey (FNDDS)"
     }
+  },
+  {
+    "id": "usda_2706409",
+    "slug": "chili-dog-no-bun",
+    "name": "Chili Dog (No Bun)",
+    "searchName": "chili dog (no bun)",
+    "displayName": "Chili Dog (No Bun)",
+    "aliases": [
+      "chili dog (no bun)",
+      "chili hot dog, no bun"
+    ],
+    "category": "Fast Food Style",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "hot",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "hot",
+        "label": "1 hot dog with sauce",
+        "grams": 125,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 202,
+      "protein": 10,
+      "carbohydrates": 7.09,
+      "fat": 15,
+      "fiber": 1.7,
+      "sugar": 1.35,
+      "sodium": 579,
+      "saturatedFat": 6.03,
+      "cholesterol": 36,
+      "potassium": 299
+    },
+    "tags": [
+      "fast-food-style"
+    ],
+    "compareGroup": "Fast Food Style",
+    "usda": {
+      "fdcId": 2706409,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_170696",
+    "slug": "cold-cut-sub",
+    "name": "Cold Cut Sub",
+    "searchName": "cold cut sub",
+    "displayName": "Cold Cut Sub",
+    "aliases": [
+      "cold cut sub",
+      "fast foods, submarine sandwich, cold cut on white bread with lettuce and tomato"
+    ],
+    "category": "Fast Food Style",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 6-inch sub",
+        "grams": 196,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "inch",
+        "label": "1 inch sub",
+        "grams": 32.6
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 213,
+      "protein": 10.52,
+      "carbohydrates": 20.43,
+      "fat": 10.04,
+      "fiber": 1.2,
+      "sugar": 3.18,
+      "sodium": 575,
+      "saturatedFat": 3.55,
+      "cholesterol": 27,
+      "potassium": 282
+    },
+    "tags": [
+      "fast-food-style"
+    ],
+    "compareGroup": "Fast Food Style",
+    "usda": {
+      "fdcId": 170696,
+      "dataType": "SR Legacy"
+    }
+  },
+  {
+    "id": "usda_2708664",
+    "slug": "supreme-pizza",
+    "name": "Supreme Pizza",
+    "searchName": "supreme pizza",
+    "displayName": "Supreme Pizza",
+    "aliases": [
+      "supreme pizza",
+      "pizza with meat and vegetables, from restaurant or fast food, medium crust"
+    ],
+    "category": "Fast Food Style",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "personal",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "personal",
+        "label": "1 personal size pizza",
+        "grams": 212,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "piece",
+        "label": "1 medium pizza",
+        "grams": 818
+      },
+      {
+        "id": "serve_3",
+        "unit": "surface",
+        "label": "1 surface inch",
+        "grams": 7.5
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 248,
+      "protein": 11.5,
+      "carbohydrates": 28.4,
+      "fat": 9.83,
+      "fiber": 2,
+      "sugar": 3.37,
+      "sodium": 484,
+      "saturatedFat": 4.34,
+      "cholesterol": 21,
+      "potassium": 188
+    },
+    "tags": [
+      "fast-food-style"
+    ],
+    "compareGroup": "Fast Food Style",
+    "usda": {
+      "fdcId": 2708664,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2708615",
+    "slug": "thin-crust-cheese-pizza",
+    "name": "Thin Crust Cheese Pizza",
+    "searchName": "thin crust cheese pizza",
+    "displayName": "Thin Crust Cheese Pizza",
+    "aliases": [
+      "thin crust cheese pizza",
+      "pizza, cheese, from restaurant or fast food, thin crust"
+    ],
+    "category": "Fast Food Style",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "personal",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "personal",
+        "label": "1 personal size pizza",
+        "grams": 127,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "piece",
+        "label": "1 medium pizza",
+        "grams": 500
+      },
+      {
+        "id": "serve_3",
+        "unit": "extra-large",
+        "label": "1 extra-large pizza",
+        "grams": 977
+      },
+      {
+        "id": "serve_4",
+        "unit": "surface",
+        "label": "1 surface inch",
+        "grams": 4.5
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 266,
+      "protein": 11.4,
+      "carbohydrates": 33.3,
+      "fat": 9.69,
+      "fiber": 2.3,
+      "sugar": 3.58,
+      "sodium": 540,
+      "saturatedFat": 4.46,
+      "cholesterol": 17,
+      "potassium": 172
+    },
+    "tags": [
+      "fast-food-style"
+    ],
+    "compareGroup": "Fast Food Style",
+    "usda": {
+      "fdcId": 2708615,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2708617",
+    "slug": "thick-crust-cheese-pizza",
+    "name": "Thick Crust Cheese Pizza",
+    "searchName": "thick crust cheese pizza",
+    "displayName": "Thick Crust Cheese Pizza",
+    "aliases": [
+      "thick crust cheese pizza",
+      "pizza, cheese, from restaurant or fast food, thick crust"
+    ],
+    "category": "Fast Food Style",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "personal",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "personal",
+        "label": "1 personal size pizza",
+        "grams": 224,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "piece",
+        "label": "1 medium pizza",
+        "grams": 744
+      },
+      {
+        "id": "serve_3",
+        "unit": "extra-large",
+        "label": "1 extra-large pizza",
+        "grams": 1387
+      },
+      {
+        "id": "serve_4",
+        "unit": "surface",
+        "label": "1 surface inch",
+        "grams": 6.9
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 271,
+      "protein": 10.8,
+      "carbohydrates": 33.2,
+      "fat": 10.5,
+      "fiber": 2.2,
+      "sugar": 3.34,
+      "sodium": 540,
+      "saturatedFat": 4.23,
+      "cholesterol": 17,
+      "potassium": 169
+    },
+    "tags": [
+      "fast-food-style"
+    ],
+    "compareGroup": "Fast Food Style",
+    "usda": {
+      "fdcId": 2708617,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2708627",
+    "slug": "veggie-pizza",
+    "name": "Veggie Pizza",
+    "searchName": "veggie pizza",
+    "displayName": "Veggie Pizza",
+    "aliases": [
+      "veggie pizza",
+      "pizza, cheese, with vegetables, from restaurant or fast food, medium crust"
+    ],
+    "category": "Fast Food Style",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "personal",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "personal",
+        "label": "1 personal size pizza",
+        "grams": 191,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "piece",
+        "label": "1 medium pizza",
+        "grams": 775
+      },
+      {
+        "id": "serve_3",
+        "unit": "surface",
+        "label": "1 surface inch",
+        "grams": 6.9
+      },
+      {
+        "id": "serve_4",
+        "unit": "extra-large",
+        "label": "1 extra-large pizza",
+        "grams": 1326
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 242,
+      "protein": 10.3,
+      "carbohydrates": 30.7,
+      "fat": 8.69,
+      "fiber": 2.2,
+      "sugar": 3.62,
+      "sodium": 484,
+      "saturatedFat": 4,
+      "cholesterol": 15,
+      "potassium": 171
+    },
+    "tags": [
+      "fast-food-style"
+    ],
+    "compareGroup": "Fast Food Style",
+    "usda": {
+      "fdcId": 2708627,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2708685",
+    "slug": "meat-and-cheese-calzone",
+    "name": "Meat and Cheese Calzone",
+    "searchName": "meat and cheese calzone",
+    "displayName": "Meat and Cheese Calzone",
+    "aliases": [
+      "meat and cheese calzone",
+      "calzone, with meat and cheese"
+    ],
+    "category": "Fast Food Style",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 calzone or stromboli",
+        "grams": 424,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cubic",
+        "label": "1 cubic inch",
+        "grams": 11.5
+      },
+      {
+        "id": "serve_3",
+        "unit": "calizza",
+        "label": "1 Calizza",
+        "grams": 217
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 343,
+      "protein": 14.8,
+      "carbohydrates": 31.3,
+      "fat": 17.7,
+      "fiber": 1.4,
+      "sugar": 0.59,
+      "sodium": 434,
+      "saturatedFat": 5.72,
+      "cholesterol": 46,
+      "potassium": 169
+    },
+    "tags": [
+      "fast-food-style"
+    ],
+    "compareGroup": "Fast Food Style",
+    "usda": {
+      "fdcId": 2708685,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2708587",
+    "slug": "chimichanga",
+    "name": "Chimichanga",
+    "searchName": "chimichanga",
+    "displayName": "Chimichanga",
+    "aliases": [
+      "chimichanga",
+      "chimichanga, meat"
+    ],
+    "category": "Fast Food Style",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "item",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "item",
+        "label": "1 item, any size",
+        "grams": 190,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 120
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 324,
+      "protein": 12.1,
+      "carbohydrates": 25.8,
+      "fat": 18.8,
+      "fiber": 1.8,
+      "sugar": 1.96,
+      "sodium": 413,
+      "saturatedFat": 5.13,
+      "cholesterol": 27,
+      "potassium": 150
+    },
+    "tags": [
+      "fast-food-style"
+    ],
+    "compareGroup": "Fast Food Style",
+    "usda": {
+      "fdcId": 2708587,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2709469",
+    "slug": "cheese-fries",
+    "name": "Cheese Fries",
+    "searchName": "cheese fries",
+    "displayName": "Cheese Fries",
+    "aliases": [
+      "cheese fries",
+      "potato, french fries, with cheese"
+    ],
+    "category": "Fast Food Style",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 92,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "fry",
+        "label": "1 fry, any cut",
+        "grams": 8
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 260,
+      "protein": 3.33,
+      "carbohydrates": 29.8,
+      "fat": 14.2,
+      "fiber": 2.6,
+      "sugar": 0.3,
+      "sodium": 365,
+      "saturatedFat": 2.6,
+      "cholesterol": 3,
+      "potassium": 387
+    },
+    "tags": [
+      "fast-food-style"
+    ],
+    "compareGroup": "Fast Food Style",
+    "usda": {
+      "fdcId": 2709469,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2709470",
+    "slug": "chili-cheese-fries",
+    "name": "Chili Cheese Fries",
+    "searchName": "chili cheese fries",
+    "displayName": "Chili Cheese Fries",
+    "aliases": [
+      "chili cheese fries",
+      "potato, french fries, with chili and cheese"
+    ],
+    "category": "Fast Food Style",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 124,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "fry",
+        "label": "1 fry, any cut",
+        "grams": 10
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 221,
+      "protein": 4.66,
+      "carbohydrates": 24.9,
+      "fat": 11.4,
+      "fiber": 2.7,
+      "sugar": 0.59,
+      "sodium": 363,
+      "saturatedFat": 2.25,
+      "cholesterol": 7,
+      "potassium": 358
+    },
+    "tags": [
+      "fast-food-style"
+    ],
+    "compareGroup": "Fast Food Style",
+    "usda": {
+      "fdcId": 2709470,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2705634",
+    "slug": "soft-serve-ice-cream",
+    "name": "Soft Serve Ice Cream",
+    "searchName": "soft serve ice cream",
+    "displayName": "Soft Serve Ice Cream",
+    "aliases": [
+      "soft serve ice cream",
+      "ice cream, soft serve, vanilla"
+    ],
+    "category": "Fast Food Style",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 175,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 180,
+      "protein": 4.78,
+      "carbohydrates": 29.5,
+      "fat": 4.83,
+      "fiber": 0.3,
+      "sugar": 22.1,
+      "sodium": 74,
+      "saturatedFat": 2.93,
+      "cholesterol": 27,
+      "potassium": 208
+    },
+    "tags": [
+      "fast-food-style"
+    ],
+    "compareGroup": "Fast Food Style",
+    "usda": {
+      "fdcId": 2705634,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2705661",
+    "slug": "hot-fudge-sundae",
+    "name": "Hot Fudge Sundae",
+    "searchName": "hot fudge sundae",
+    "displayName": "Hot Fudge Sundae",
+    "aliases": [
+      "hot fudge sundae",
+      "ice cream sundae, hot fudge topping"
+    ],
+    "category": "Fast Food Style",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 140,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "sundae",
+        "label": "1 sundae",
+        "grams": 180
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 243,
+      "protein": 3.7,
+      "carbohydrates": 31.9,
+      "fat": 11.2,
+      "fiber": 1.1,
+      "sugar": 23.9,
+      "sodium": 137,
+      "saturatedFat": 6.51,
+      "cholesterol": 36,
+      "potassium": 215
+    },
+    "tags": [
+      "fast-food-style"
+    ],
+    "compareGroup": "Fast Food Style",
+    "usda": {
+      "fdcId": 2705661,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2708556",
+    "slug": "beef-burrito-bowl",
+    "name": "Beef Burrito Bowl",
+    "searchName": "beef burrito bowl",
+    "displayName": "Beef Burrito Bowl",
+    "aliases": [
+      "beef burrito bowl",
+      "burrito bowl, beef or pork"
+    ],
+    "category": "Fast Food Style",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 120,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "item",
+        "label": "1 item, any size",
+        "grams": 225
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 213,
+      "protein": 20,
+      "carbohydrates": 0.27,
+      "fat": 14.2,
+      "fiber": 0,
+      "sugar": 0.09,
+      "sodium": 297,
+      "saturatedFat": 6.13,
+      "cholesterol": 69,
+      "potassium": 216
+    },
+    "tags": [
+      "fast-food-style"
+    ],
+    "compareGroup": "Fast Food Style",
+    "usda": {
+      "fdcId": 2708556,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2706378",
+    "slug": "sloppy-joe",
+    "name": "Sloppy Joe",
+    "searchName": "sloppy joe",
+    "displayName": "Sloppy Joe",
+    "aliases": [
+      "sloppy joe",
+      "sloppy joe, no bun"
+    ],
+    "category": "Fast Food Style",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 250,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 140,
+      "protein": 12.1,
+      "carbohydrates": 5.48,
+      "fat": 7.63,
+      "fiber": 0.7,
+      "sugar": 3.81,
+      "sodium": 296,
+      "saturatedFat": 2.91,
+      "cholesterol": 39,
+      "potassium": 284
+    },
+    "tags": [
+      "fast-food-style"
+    ],
+    "compareGroup": "Fast Food Style",
+    "usda": {
+      "fdcId": 2706378,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2706957",
+    "slug": "french-dip-sandwich",
+    "name": "French Dip Sandwich",
+    "searchName": "french dip sandwich",
+    "displayName": "French Dip Sandwich",
+    "aliases": [
+      "french dip sandwich"
+    ],
+    "category": "Fast Food Style",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "sandwich",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "sandwich",
+        "label": "1 sandwich, any size",
+        "grams": 185,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 184,
+      "protein": 13.2,
+      "carbohydrates": 24.5,
+      "fat": 3.47,
+      "fiber": 1.1,
+      "sugar": 2.76,
+      "sodium": 631,
+      "saturatedFat": 1.01,
+      "cholesterol": 23,
+      "potassium": 357
+    },
+    "tags": [
+      "fast-food-style"
+    ],
+    "compareGroup": "Fast Food Style",
+    "usda": {
+      "fdcId": 2706957,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2706973",
+    "slug": "cuban-sandwich",
+    "name": "Cuban Sandwich",
+    "searchName": "cuban sandwich",
+    "displayName": "Cuban Sandwich",
+    "aliases": [
+      "cuban sandwich"
+    ],
+    "category": "Fast Food Style",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "sandwich",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "sandwich",
+        "label": "1 sandwich, any size",
+        "grams": 190,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 228,
+      "protein": 15.9,
+      "carbohydrates": 16.3,
+      "fat": 10.7,
+      "fiber": 0.8,
+      "sugar": 2.46,
+      "sodium": 553,
+      "saturatedFat": 4.38,
+      "cholesterol": 44,
+      "potassium": 212
+    },
+    "tags": [
+      "fast-food-style"
+    ],
+    "compareGroup": "Fast Food Style",
+    "usda": {
+      "fdcId": 2706973,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2706477",
+    "slug": "corned-beef-hash",
+    "name": "Corned Beef Hash",
+    "searchName": "corned beef hash",
+    "displayName": "Corned Beef Hash",
+    "aliases": [
+      "corned beef hash"
+    ],
+    "category": "Fast Food Style",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 220,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "piece",
+        "label": "1 medium can",
+        "grams": 425
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 164,
+      "protein": 8.73,
+      "carbohydrates": 9.27,
+      "fat": 10.2,
+      "fiber": 1.1,
+      "sugar": 0.34,
+      "sodium": 412,
+      "saturatedFat": 4.32,
+      "cholesterol": 32,
+      "potassium": 172
+    },
+    "tags": [
+      "fast-food-style"
+    ],
+    "compareGroup": "Fast Food Style",
+    "usda": {
+      "fdcId": 2706477,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2706975",
+    "slug": "pulled-pork-sandwich",
+    "name": "Pulled Pork Sandwich",
+    "searchName": "pulled pork sandwich",
+    "displayName": "Pulled Pork Sandwich",
+    "aliases": [
+      "pulled pork sandwich",
+      "barbecue pork sandwich, on white bun"
+    ],
+    "category": "Fast Food Style",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "regular",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "regular",
+        "label": "1 regular sandwich",
+        "grams": 180,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "submarine",
+        "label": "1 submarine",
+        "grams": 270
+      },
+      {
+        "id": "serve_3",
+        "unit": "miniature/slider",
+        "label": "1 miniature/slider",
+        "grams": 90
+      },
+      {
+        "id": "serve_4",
+        "unit": "piece",
+        "label": "1 large sandwich",
+        "grams": 270
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 243,
+      "protein": 15,
+      "carbohydrates": 24.9,
+      "fat": 8.83,
+      "fiber": 0.8,
+      "sugar": 9.07,
+      "sodium": 567,
+      "saturatedFat": 2.94,
+      "cholesterol": 43,
+      "potassium": 240
+    },
+    "tags": [
+      "fast-food-style"
+    ],
+    "compareGroup": "Fast Food Style",
+    "usda": {
+      "fdcId": 2706975,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2706958",
+    "slug": "steak-sandwich",
+    "name": "Steak Sandwich",
+    "searchName": "steak sandwich",
+    "displayName": "Steak Sandwich",
+    "aliases": [
+      "steak sandwich",
+      "steak sandwich or sub on white"
+    ],
+    "category": "Fast Food Style",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "regular",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "regular",
+        "label": "1 regular or 6\" submarine",
+        "grams": 175,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "miniature/slider",
+        "label": "1 miniature/slider",
+        "grams": 60
+      },
+      {
+        "id": "serve_3",
+        "unit": "piece",
+        "label": "1 large",
+        "grams": 175
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 249,
+      "protein": 17.9,
+      "carbohydrates": 25.4,
+      "fat": 8.07,
+      "fiber": 1.2,
+      "sugar": 2.76,
+      "sodium": 411,
+      "saturatedFat": 2.98,
+      "cholesterol": 40,
+      "potassium": 215
+    },
+    "tags": [
+      "fast-food-style"
+    ],
+    "compareGroup": "Fast Food Style",
+    "usda": {
+      "fdcId": 2706958,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707031",
+    "slug": "fish-fillet-sandwich-grilled",
+    "name": "Fish Fillet Sandwich (Grilled)",
+    "searchName": "fish fillet sandwich (grilled)",
+    "displayName": "Fish Fillet Sandwich (Grilled)",
+    "aliases": [
+      "fish fillet sandwich (grilled)",
+      "fish sandwich, grilled"
+    ],
+    "category": "Fast Food Style",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "regular",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "regular",
+        "label": "1 regular sandwich",
+        "grams": 130,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "submarine",
+        "label": "1 submarine",
+        "grams": 260
+      },
+      {
+        "id": "serve_3",
+        "unit": "miniature/slider",
+        "label": "1 miniature/slider",
+        "grams": 65
+      },
+      {
+        "id": "serve_4",
+        "unit": "piece",
+        "label": "1 large sandwich",
+        "grams": 260
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 180,
+      "protein": 16.1,
+      "carbohydrates": 21.2,
+      "fat": 3.29,
+      "fiber": 0.8,
+      "sugar": 3.08,
+      "sodium": 379,
+      "saturatedFat": 0.77,
+      "cholesterol": 41,
+      "potassium": 261
+    },
+    "tags": [
+      "fast-food-style"
+    ],
+    "compareGroup": "Fast Food Style",
+    "usda": {
+      "fdcId": 2707031,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2706981",
+    "slug": "turkey-sandwich",
+    "name": "Turkey Sandwich",
+    "searchName": "turkey sandwich",
+    "displayName": "Turkey Sandwich",
+    "aliases": [
+      "turkey sandwich",
+      "turkey sandwich on white"
+    ],
+    "category": "Fast Food Style",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "regular",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "regular",
+        "label": "1 regular or 6\" submarine",
+        "grams": 175,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "piece",
+        "label": "1 large",
+        "grams": 175
+      },
+      {
+        "id": "serve_3",
+        "unit": "miniature/slider",
+        "label": "1 miniature/slider",
+        "grams": 60
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 189,
+      "protein": 12,
+      "carbohydrates": 26.5,
+      "fat": 3.68,
+      "fiber": 1.2,
+      "sugar": 3.2,
+      "sodium": 624,
+      "saturatedFat": 0.86,
+      "cholesterol": 24,
+      "potassium": 240
+    },
+    "tags": [
+      "fast-food-style"
+    ],
+    "compareGroup": "Fast Food Style",
+    "usda": {
+      "fdcId": 2706981,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707280",
+    "slug": "egg-salad-sandwich",
+    "name": "Egg Salad Sandwich",
+    "searchName": "egg salad sandwich",
+    "displayName": "Egg Salad Sandwich",
+    "aliases": [
+      "egg salad sandwich",
+      "egg salad sandwich on white"
+    ],
+    "category": "Fast Food Style",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "regular",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "regular",
+        "label": "1 regular",
+        "grams": 180,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "miniature/slider",
+        "label": "1 miniature/slider",
+        "grams": 90
+      },
+      {
+        "id": "serve_3",
+        "unit": "piece",
+        "label": "1 large",
+        "grams": 270
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 260,
+      "protein": 9.98,
+      "carbohydrates": 17.1,
+      "fat": 16.6,
+      "fiber": 0.8,
+      "sugar": 2.45,
+      "sodium": 402,
+      "saturatedFat": 3.54,
+      "cholesterol": 205,
+      "potassium": 109
+    },
+    "tags": [
+      "fast-food-style"
+    ],
+    "compareGroup": "Fast Food Style",
+    "usda": {
+      "fdcId": 2707280,
+      "dataType": "Survey (FNDDS)"
+    }
   }
 ];

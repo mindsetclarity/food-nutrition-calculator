@@ -1273,5 +1273,474 @@ export const indianFoods: FoodItem[] = [
       "fdcId": 174288,
       "dataType": "SR Legacy"
     }
+  },
+  {
+    "id": "usda_2709130",
+    "slug": "vada",
+    "name": "Vada",
+    "searchName": "vada",
+    "displayName": "Vada",
+    "aliases": [
+      "vada"
+    ],
+    "category": "Indian Foods",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "item",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "item",
+        "label": "1 item, any size",
+        "grams": 30,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 266,
+      "protein": 12.8,
+      "carbohydrates": 33.2,
+      "fat": 9.73,
+      "fiber": 5.8,
+      "sugar": 1.31,
+      "sodium": 315,
+      "saturatedFat": 1.31,
+      "cholesterol": 0,
+      "potassium": 373
+    },
+    "tags": [
+      "indian-foods"
+    ],
+    "compareGroup": "Indian Foods",
+    "usda": {
+      "fdcId": 2709130,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707430",
+    "slug": "sambar",
+    "name": "Sambar",
+    "searchName": "sambar",
+    "displayName": "Sambar",
+    "aliases": [
+      "sambar",
+      "sambar, vegetable stew"
+    ],
+    "category": "Indian Foods",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 248,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 86,
+      "protein": 4.33,
+      "carbohydrates": 11.8,
+      "fat": 2.71,
+      "fiber": 4,
+      "sugar": 1.97,
+      "sodium": 207,
+      "saturatedFat": 0.37,
+      "cholesterol": 0,
+      "potassium": 237
+    },
+    "tags": [
+      "indian-foods"
+    ],
+    "compareGroup": "Indian Foods",
+    "usda": {
+      "fdcId": 2707430,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2709129",
+    "slug": "masala-dosa",
+    "name": "Masala Dosa",
+    "searchName": "masala dosa",
+    "displayName": "Masala Dosa",
+    "aliases": [
+      "masala dosa",
+      "dosa, with filling"
+    ],
+    "category": "Indian Foods",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 medium",
+        "grams": 267,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "surface",
+        "label": "1 surface inch",
+        "grams": 3.4
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 184,
+      "protein": 5.46,
+      "carbohydrates": 30.8,
+      "fat": 4.27,
+      "fiber": 2.2,
+      "sugar": 1.1,
+      "sodium": 330,
+      "saturatedFat": 0.58,
+      "cholesterol": 0,
+      "potassium": 137
+    },
+    "tags": [
+      "indian-foods"
+    ],
+    "compareGroup": "Indian Foods",
+    "usda": {
+      "fdcId": 2709129,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2706490",
+    "slug": "lamb-biryani",
+    "name": "Lamb Biryani",
+    "searchName": "lamb biryani",
+    "displayName": "Lamb Biryani",
+    "aliases": [
+      "lamb biryani",
+      "biryani with meat"
+    ],
+    "category": "Indian Foods",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 196,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 145,
+      "protein": 8.5,
+      "carbohydrates": 12.2,
+      "fat": 6.79,
+      "fiber": 1,
+      "sugar": 1.69,
+      "sodium": 98,
+      "saturatedFat": 2.97,
+      "cholesterol": 29,
+      "potassium": 229
+    },
+    "tags": [
+      "indian-foods"
+    ],
+    "compareGroup": "Indian Foods",
+    "usda": {
+      "fdcId": 2706490,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2710351",
+    "slug": "ladoo",
+    "name": "Ladoo",
+    "searchName": "ladoo",
+    "displayName": "Ladoo",
+    "aliases": [
+      "ladoo",
+      "ladoo, round ball"
+    ],
+    "category": "Indian Foods",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 piece",
+        "grams": 60,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 411,
+      "protein": 6.92,
+      "carbohydrates": 46.7,
+      "fat": 22.2,
+      "fiber": 4,
+      "sugar": 29.8,
+      "sodium": 140,
+      "saturatedFat": 11.4,
+      "cholesterol": 58,
+      "potassium": 196
+    },
+    "tags": [
+      "indian-foods"
+    ],
+    "compareGroup": "Indian Foods",
+    "usda": {
+      "fdcId": 2710351,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2709309",
+    "slug": "chutney",
+    "name": "Chutney",
+    "searchName": "chutney",
+    "displayName": "Chutney",
+    "aliases": [
+      "chutney"
+    ],
+    "category": "Indian Foods",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "tbsp",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "tbsp",
+        "label": "1 tablespoon",
+        "grams": 16,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 246,
+      "protein": 0.33,
+      "carbohydrates": 60.6,
+      "fat": 0.06,
+      "fiber": 1,
+      "sugar": 42.7,
+      "sodium": 802,
+      "saturatedFat": 0.01,
+      "cholesterol": 0,
+      "potassium": 68
+    },
+    "tags": [
+      "indian-foods"
+    ],
+    "compareGroup": "Indian Foods",
+    "usda": {
+      "fdcId": 2709309,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2710068",
+    "slug": "vegetable-curry-with-rice",
+    "name": "Vegetable Curry with Rice",
+    "searchName": "vegetable curry with rice",
+    "displayName": "Vegetable Curry with Rice",
+    "aliases": [
+      "vegetable curry with rice"
+    ],
+    "category": "Indian Foods",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 200,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 103,
+      "protein": 2.03,
+      "carbohydrates": 16.5,
+      "fat": 3.27,
+      "fiber": 1.3,
+      "sugar": 1.93,
+      "sodium": 331,
+      "saturatedFat": 0.78,
+      "cholesterol": 0,
+      "potassium": 186
+    },
+    "tags": [
+      "indian-foods"
+    ],
+    "compareGroup": "Indian Foods",
+    "usda": {
+      "fdcId": 2710068,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2706389",
+    "slug": "beef-curry-with-rice",
+    "name": "Beef Curry with Rice",
+    "searchName": "beef curry with rice",
+    "displayName": "Beef Curry with Rice",
+    "aliases": [
+      "beef curry with rice"
+    ],
+    "category": "Indian Foods",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 200,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 119,
+      "protein": 5.61,
+      "carbohydrates": 15.1,
+      "fat": 4.05,
+      "fiber": 1,
+      "sugar": 1.56,
+      "sodium": 314,
+      "saturatedFat": 1.11,
+      "cholesterol": 12,
+      "potassium": 187
+    },
+    "tags": [
+      "indian-foods"
+    ],
+    "compareGroup": "Indian Foods",
+    "usda": {
+      "fdcId": 2706389,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707432",
+    "slug": "lentil-curry-with-rice",
+    "name": "Lentil Curry with Rice",
+    "searchName": "lentil curry with rice",
+    "displayName": "Lentil Curry with Rice",
+    "aliases": [
+      "lentil curry with rice"
+    ],
+    "category": "Indian Foods",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 200,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 118,
+      "protein": 3.28,
+      "carbohydrates": 18.6,
+      "fat": 3.5,
+      "fiber": 2.2,
+      "sugar": 1.95,
+      "sodium": 328,
+      "saturatedFat": 0.8,
+      "cholesterol": 0,
+      "potassium": 189
+    },
+    "tags": [
+      "indian-foods"
+    ],
+    "compareGroup": "Indian Foods",
+    "usda": {
+      "fdcId": 2707432,
+      "dataType": "Survey (FNDDS)"
+    }
   }
 ];

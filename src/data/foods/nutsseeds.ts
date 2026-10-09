@@ -1301,5 +1301,524 @@ export const nutsseedsFoods: FoodItem[] = [
       "fdcId": 2707574,
       "dataType": "Survey (FNDDS)"
     }
+  },
+  {
+    "id": "usda_2707526",
+    "slug": "pine-nuts",
+    "name": "Pine Nuts",
+    "searchName": "pine nuts",
+    "displayName": "Pine Nuts",
+    "aliases": [
+      "pine nuts"
+    ],
+    "category": "Nuts & Seeds",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "oz",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "oz",
+        "label": "1 oz",
+        "grams": 28.35,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 135
+      },
+      {
+        "id": "serve_3",
+        "unit": "nut",
+        "label": "1 nut",
+        "grams": 0.2
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 673,
+      "protein": 13.7,
+      "carbohydrates": 13.1,
+      "fat": 68.4,
+      "fiber": 3.7,
+      "sugar": 3.59,
+      "sodium": 2,
+      "saturatedFat": 4.9,
+      "cholesterol": 0,
+      "potassium": 597
+    },
+    "tags": [
+      "nuts-seeds"
+    ],
+    "compareGroup": "Nuts & Seeds",
+    "usda": {
+      "fdcId": 2707526,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_170148",
+    "slug": "hemp-seeds",
+    "name": "Hemp Seeds",
+    "searchName": "hemp seeds",
+    "displayName": "Hemp Seeds",
+    "aliases": [
+      "hemp seeds",
+      "seeds, hemp seed, hulled"
+    ],
+    "category": "Nuts & Seeds",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "tbsp",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "tbsp",
+        "label": "1 tbsp",
+        "grams": 10,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 553,
+      "protein": 31.56,
+      "carbohydrates": 8.67,
+      "fat": 48.75,
+      "fiber": 4,
+      "sugar": 1.5,
+      "sodium": 5,
+      "saturatedFat": 4.6,
+      "cholesterol": 0,
+      "potassium": 1200
+    },
+    "tags": [
+      "nuts-seeds"
+    ],
+    "compareGroup": "Nuts & Seeds",
+    "usda": {
+      "fdcId": 170148,
+      "dataType": "SR Legacy"
+    }
+  },
+  {
+    "id": "usda_2707536",
+    "slug": "cashew-butter",
+    "name": "Cashew Butter",
+    "searchName": "cashew butter",
+    "displayName": "Cashew Butter",
+    "aliases": [
+      "cashew butter"
+    ],
+    "category": "Nuts & Seeds",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "tbsp",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "tbsp",
+        "label": "1 tablespoon",
+        "grams": 16,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 609,
+      "protein": 12.1,
+      "carbohydrates": 30.3,
+      "fat": 53,
+      "fiber": 3,
+      "sugar": 9.09,
+      "sodium": 295,
+      "saturatedFat": 10.6,
+      "cholesterol": 0,
+      "potassium": 447
+    },
+    "tags": [
+      "nuts-seeds"
+    ],
+    "compareGroup": "Nuts & Seeds",
+    "usda": {
+      "fdcId": 2707536,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_170155",
+    "slug": "sunflower-seed-butter",
+    "name": "Sunflower Seed Butter",
+    "searchName": "sunflower seed butter",
+    "displayName": "Sunflower Seed Butter",
+    "aliases": [
+      "sunflower seed butter",
+      "seeds, sunflower seed butter, without salt"
+    ],
+    "category": "Nuts & Seeds",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "tbsp",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "tbsp",
+        "label": "1 tbsp",
+        "grams": 16,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "oz",
+        "label": "1 oz",
+        "grams": 28.4
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 617,
+      "protein": 17.28,
+      "carbohydrates": 23.32,
+      "fat": 55.2,
+      "fiber": 5.7,
+      "sugar": 10.54,
+      "sodium": 3,
+      "saturatedFat": 4.68,
+      "cholesterol": 0,
+      "potassium": 576
+    },
+    "tags": [
+      "nuts-seeds"
+    ],
+    "compareGroup": "Nuts & Seeds",
+    "usda": {
+      "fdcId": 170155,
+      "dataType": "SR Legacy"
+    }
+  },
+  {
+    "id": "usda_2707587",
+    "slug": "tahini",
+    "name": "Tahini",
+    "searchName": "tahini",
+    "displayName": "Tahini",
+    "aliases": [
+      "tahini"
+    ],
+    "category": "Nuts & Seeds",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "tbsp",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "tbsp",
+        "label": "1 tablespoon",
+        "grams": 15,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 697,
+      "protein": 19.7,
+      "carbohydrates": 14.2,
+      "fat": 62.4,
+      "fiber": 8.4,
+      "sugar": 0.49,
+      "sodium": 64,
+      "saturatedFat": 8.97,
+      "cholesterol": 0,
+      "potassium": 408
+    },
+    "tags": [
+      "nuts-seeds"
+    ],
+    "compareGroup": "Nuts & Seeds",
+    "usda": {
+      "fdcId": 2707587,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2707520",
+    "slug": "honey-roasted-peanuts",
+    "name": "Honey Roasted Peanuts",
+    "searchName": "honey roasted peanuts",
+    "displayName": "Honey Roasted Peanuts",
+    "aliases": [
+      "honey roasted peanuts",
+      "peanuts, honey roasted"
+    ],
+    "category": "Nuts & Seeds",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "oz",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "oz",
+        "label": "1 oz",
+        "grams": 28.4,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "nut",
+        "label": "1 nut",
+        "grams": 1
+      },
+      {
+        "id": "serve_3",
+        "unit": "package",
+        "label": "1 package",
+        "grams": 50
+      },
+      {
+        "id": "serve_4",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 146
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 574,
+      "protein": 20.7,
+      "carbohydrates": 30,
+      "fat": 45.2,
+      "fiber": 7.1,
+      "sugar": 16.1,
+      "sodium": 349,
+      "saturatedFat": 6.97,
+      "cholesterol": 0,
+      "potassium": 539
+    },
+    "tags": [
+      "nuts-seeds"
+    ],
+    "compareGroup": "Nuts & Seeds",
+    "usda": {
+      "fdcId": 2707520,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_172460",
+    "slug": "chunky-peanut-butter",
+    "name": "Chunky Peanut Butter",
+    "searchName": "chunky peanut butter",
+    "displayName": "Chunky Peanut Butter",
+    "aliases": [
+      "chunky peanut butter",
+      "peanut butter, chunky, vitamin and mineral fortified"
+    ],
+    "category": "Nuts & Seeds",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "tbsp",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "tbsp",
+        "label": "1 tbsp",
+        "grams": 16,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 258
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 593,
+      "protein": 26.06,
+      "carbohydrates": 17.69,
+      "fat": 51.47,
+      "fiber": 5.7,
+      "sugar": 10.94,
+      "sodium": 366,
+      "saturatedFat": 7.97,
+      "cholesterol": 0,
+      "potassium": 744
+    },
+    "tags": [
+      "nuts-seeds"
+    ],
+    "compareGroup": "Nuts & Seeds",
+    "usda": {
+      "fdcId": 172460,
+      "dataType": "SR Legacy"
+    }
+  },
+  {
+    "id": "usda_170573",
+    "slug": "roasted-chestnuts",
+    "name": "Roasted Chestnuts",
+    "searchName": "roasted chestnuts",
+    "displayName": "Roasted Chestnuts",
+    "aliases": [
+      "roasted chestnuts",
+      "nuts, chestnuts, chinese, roasted"
+    ],
+    "category": "Nuts & Seeds",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "oz",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "oz",
+        "label": "1 oz",
+        "grams": 28.4,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 239,
+      "protein": 4.48,
+      "carbohydrates": 52.36,
+      "fat": 1.19,
+      "fiber": null,
+      "sugar": null,
+      "sodium": 4,
+      "saturatedFat": 0.18,
+      "cholesterol": 0,
+      "potassium": 477
+    },
+    "tags": [
+      "nuts-seeds"
+    ],
+    "compareGroup": "Nuts & Seeds",
+    "usda": {
+      "fdcId": 170573,
+      "dataType": "SR Legacy"
+    }
+  },
+  {
+    "id": "usda_2710326",
+    "slug": "chocolate-covered-almonds",
+    "name": "Chocolate-Covered Almonds",
+    "searchName": "chocolate-covered almonds",
+    "displayName": "Chocolate-Covered Almonds",
+    "aliases": [
+      "chocolate-covered almonds",
+      "almonds, chocolate covered candy"
+    ],
+    "category": "Nuts & Seeds",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "package",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "package",
+        "label": "1 package, any size",
+        "grams": 55,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "piece",
+        "label": "1 piece",
+        "grams": 4
+      },
+      {
+        "id": "serve_3",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 160
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 560,
+      "protein": 13,
+      "carbohydrates": 44,
+      "fat": 38.8,
+      "fiber": 6.4,
+      "sugar": 32.8,
+      "sodium": 49,
+      "saturatedFat": 12.7,
+      "cholesterol": 14,
+      "potassium": 508
+    },
+    "tags": [
+      "nuts-seeds"
+    ],
+    "compareGroup": "Nuts & Seeds",
+    "usda": {
+      "fdcId": 2710326,
+      "dataType": "Survey (FNDDS)"
+    }
   }
 ];
