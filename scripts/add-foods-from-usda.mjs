@@ -13,6 +13,9 @@
  * since it carries household portions); prefix it with "=" to require that exact
  * description instead. Foods whose slug already exists are skipped, so this is
  * safe to re-run. Priority is tier-1 (US/UK) foods first, then Indian.
+ *
+ * Paneer is deliberately absent: USDA's only record (FNDDS 2705740) lists 22.5 g
+ * carbs and 23.3 g sugar per 100 g, far from real paneer.
  */
 import fs from 'node:fs';
 import os from 'node:os';
@@ -84,6 +87,8 @@ const SPEC = {
     ['Bran Flakes', 'bran flakes'], ['Breakfast Burrito', 'breakfast burrito egg'],
     ['Cheese Omelet', '=Egg omelet or scrambled egg, with cheese, made with butter'], 
     ['Breakfast Sandwich (Egg, Cheese, Ham)', '=Egg sandwich on English muffin, with ham'],
+    ['Oatmeal Made with Milk', '=Oatmeal, instant, plain, made with milk, no added fat'], ['Blueberry Pancakes', '=Pancakes, blueberry, prepared from recipe'],
+    ['Cinnamon Raisin Bagel', '=Bagels, cinnamon-raisin'], ['Cheese Grits', '=Grits, with cheese, fat added', /cup/i],
   ]},
   bakery: { exportName: 'bakeryFoods', category: 'Bread & Bakery', foods: [
     ['White Bread', 'bread white'], ['Whole Wheat Bread', 'bread whole wheat', /medium or regular slice/i], ['Sourdough Bread', 'bread sourdough'],
@@ -123,6 +128,18 @@ const SPEC = {
     ['Grilled Cheese Sandwich', 'grilled cheese sandwich'], ['Philly Cheesesteak', '=Cheese steak sandwich or sub on white', /regular|6/i],
     ['Buffalo Wings', '=Chicken "wings" with hot sauce, from fast food / restaurant'], ['Mozzarella Sticks', 'mozzarella sticks'], ['Battered Fried Fish', 'fish battered fried'],
     ['Gyro', 'gyro'], ['Chicken Tenders', 'chicken tenders', /strip|tender/i],
+    ['Chicken Burrito Bowl', '=Burrito bowl, chicken'], ['Fried Chicken Wrap', '=Chicken fillet wrap sandwich, fried, from fast food'],
+    ['Grilled Chicken Wrap', '=Chicken fillet wrap sandwich, grilled, from fast food'], ['Chicken Quesadilla', '=Quesadilla, chicken'],
+    ['Sausage Biscuit', '=Sausage biscuit sandwich'], ['Fast Food Hash Brown', '=Potato, hash brown, from fast food'],
+    ['Chicken Burrito', '=Burrito, chicken, cheese', /^1 (regular|small|medium|large)/i], ['Beef Burrito', '=Burrito, beef, cheese', /^1 (regular|small|medium|large)/i], ['Fish Taco', '=Taco, fish', /^1 (taco|small|regular|medium)/i],
+    ['Chicken Taco', '=Taco, flour tortilla, chicken, cheese'], ['Cheese Enchilada', '=Restaurant, Mexican, cheese enchilada'],
+    ['Beef Tamale', '=Tamale, beef'], ['Meatball Sub', '=Meatball sandwich or sub'], ['Reuben Sandwich', '=Reuben sandwich'],
+    ['Club Sandwich', '=Club sandwich on white'], ['Peanut Butter and Jelly Sandwich', '=Peanut butter and jelly sandwich, with regular peanut butter, regular jelly, on white bread'],
+    ['Tuna Salad Sandwich', '=Tuna salad sandwich on white'], ['Ham and Cheese Sandwich', '=Ham sandwich on white, with cheese'],
+    ['Chicken Salad Sandwich', '=Chicken salad sandwich on white'], ['Falafel', '=Falafel'], ['Falafel Sandwich', '=Falafel sandwich'],
+    ['Taco Salad', '=Taco or tostada salad with meat'], ['Fried Chicken Thigh', '=Fast Foods, Fried Chicken, Thigh, meat and skin and breading'],
+    ['Mashed Potatoes with Gravy', '=Potato, mashed, from fast food, with gravy'], ['Sweet Potato Fries', '=Sweet potato fries, NFS', /cup|order/i],
+    ['Tater Tots', '=Potato tots, NFS'], ['Churros', '=Churros'], ['Funnel Cake', '=Funnel cake with sugar'],
   ]},
   preparedmeals: { exportName: 'preparedmealsFoods', category: 'Prepared Meals', foods: [
     ['Mac and Cheese', 'macaroni cheese'], ['Spaghetti with Meat Sauce', '=Restaurant, Italian, spaghetti with meat sauce'], ['Lasagna with Meat', 'lasagna meat'],
@@ -134,6 +151,16 @@ const SPEC = {
     ['Fried Rice', 'fried rice meatless'], ['California Roll', 'sushi roll california'], ['Pad Thai with Chicken', 'pad thai chicken'],
     ['Chicken Fried Rice', '=Rice, fried, with chicken'], ['Orange Chicken', 'orange chicken', /cup/i], ['Vegetable Soup', 'vegetable soup'],
     ['Minestrone', 'minestrone'], ['Chicken Fajitas', 'chicken fajita'],
+    ['Vegetable Egg Roll', '=Egg roll, meatless'], ['Chicken Ramen', '=Ramen bowl with chicken'], ['Beef Pho', '=Soup, pho, with meat'],
+    ['Teriyaki Chicken', '=Chicken or turkey with teriyaki'], ["General Tso's Chicken", '=General Tso chicken'], ['Kung Pao Chicken', '=Kung pao chicken'],
+    ['Sweet and Sour Pork', '=Sweet and sour pork', /cup/i], ['Lo Mein', '=Lo mein, NFS'],
+    ['Salmon Sushi Roll', '=Sushi roll, salmon'], ['Seafood Paella', '=Paella with seafood'], ['Potato Gnocchi', '=Gnocchi, potato', /cup/i],
+    ['Cheese Ravioli', '=Ravioli, cheese-filled, no sauce'], ['Cheese Tortellini', '=Tortellini, cheese-filled, no sauce'],
+    ['Chicken Parmesan', '=Restaurant, Italian, chicken parmesan without pasta'], ['Bread Stuffing', '=Bread stuffing'], ['Cranberry Sauce', '=Cranberry sauce'],
+    ['Pumpkin Soup', '=Soup, pumpkin', /cup/i], ['French Onion Soup', '=Soup, French onion', /cup/i], ['Broccoli Cheese Soup', '=Soup, broccoli cheese', /cup/i],
+    ['Tortilla Soup', '=Soup, tortilla', /cup/i], ['Lentil Soup', '=Soup, lentil'], ['Split Pea Soup', '=Soup, split pea', /cup/i],
+    ['Cobb Salad', '=Cobb salad, no dressing'], ['Greek Salad', '=Greek Salad, no dressing'], ['Deviled Eggs', '=Egg, deviled'],
+    ['Biscuits and Gravy', '=Biscuit with gravy'], ['Chicken and Dumplings', '=Chicken or turkey with dumplings'],
   ]},
   snacks: { exportName: 'snacksFoods', category: 'Snacks', foods: [
     ['Potato Chips', 'potato chips salted', /oz|bag/i], ['Tortilla Chips', 'tortilla chips plain', /oz|bag/i], ['Air-Popped Popcorn', 'popcorn air popped', /cup/i],
@@ -151,6 +178,13 @@ const SPEC = {
     ['Gummy Candy', 'gummy'], ['Chocolate Pudding', 'pudding chocolate'], ['Banana Bread', '=Bread, banana, prepared from recipe, made with margarine'],
     ['Cinnamon Roll', 'cinnamon roll', /regular|medium/i], ['Scone', 'scone', /medium|regular/i], ['Shortbread', 'shortbread'], ['Custard', 'custard'],
     ['Rice Pudding', 'rice pudding'],
+    ['Trifle', '=Trifle', /cup/i], ['Bread Pudding', '=Pudding, bread'], ['Sponge Cake', '=Cake, sponge'], ['Mince Pie', '=Pie, mince, prepared from recipe', /piece|slice|pie/i],
+    ['Fruit Cake', '=Cake, fruit cake'], ['Peach Cobbler', '=Cobbler, peach', /cup|piece/i], ['Key Lime Pie', '=Pie, key lime'], ['Pecan Pie', '=Pie, pecan', /slice|piece/i],
+    ['Tiramisu', '=Tiramisu', /piece|slice|cup/i], ['Creme Brulee', '=Creme brulee'], ['Chocolate Glazed Doughnut', '=Doughnut, chocolate, with chocolate icing'],
+    ['Eclair', '=Cream puff, eclair, custard or cream filled, iced'], ['Licorice', '=Candy, licorice'], ['Marshmallows', '=Candies, marshmallows', /regular|large|cup/i],
+    ['Caramels', '=Candies, caramels'], ['Fudge', '=Chocolate candy, fudge', /piece/i], ['Toffee', '=Candies, toffee, prepared-from-recipe'],
+    ['Lollipop', '=Candy, lollipop'], ['Sorbet', '=Sorbet', /cup/i], ['Vanilla Gelato', '=Gelato, vanilla', /cup|scoop|small/i], ['Popsicle', '=Popsicle', /regular|single|^1 popsicle/i],
+    ['Chocolate Milkshake', '=Milk shakes, thick chocolate'],
   ]},
   beverages: { exportName: 'beveragesFoods', category: 'Beverages', foods: [
     ['Black Coffee', 'coffee brewed', /cup|mug/i], ['Latte (Nonfat Milk)', '=Coffee, Latte, nonfat'], ['Cappuccino', 'cappuccino'], ['Mocha', 'coffee mocha'],
@@ -159,6 +193,12 @@ const SPEC = {
     ['Red Wine', 'wine red', /glass/i], ['White Wine', 'wine white'], ['Vodka', 'vodka'], ['Hot Chocolate', 'hot chocolate', /cup|mug/i],
     ['Fruit Smoothie', 'smoothie fruit', /cup|small/i], ['Chocolate Milk', 'chocolate milk'], ['Vanilla Milkshake', '=Milk shakes, thick vanilla'],
     ['Coconut Water', '=Coconut water, unsweetened', { unit: 'cup', label: '1 cup', grams: 240 }], ['Tea with Milk', '=Tea, hot, with milk'], ['Sweet Iced Tea', '=Tea, iced, brewed, black, pre-sweetened with sugar'], ['Cranberry Juice', 'cranberry juice cocktail', /cup/i],
+    ['Iced Coffee', '=Iced Coffee, brewed'], ['Espresso', '=Coffee, espresso'], ['Green Tea', '=Tea, hot, leaf, green', /cup/i], ['Kombucha', '=Tea, kombucha', /bottle|cup/i],
+    ['Root Beer', '=Soft drink, root beer', /can/i], ['Ginger Ale', '=Soft drink, ginger ale', /can/i], ['Tonic Water', '=Water, tonic', /cup|can/i],
+    ['Gin', '=Gin'], ['Whiskey', '=Whiskey', /jigger|shot/i], ['Rum', '=Rum'], ['Tequila', '=Tequila', /jigger|shot/i], ['Margarita', '=Margarita', /drink|glass/i], ['Mojito', '=Mojito'],
+    ['Pina Colada', '=Pina Colada', /drink|glass/i], ['Hard Cider', '=Hard cider'], ['Apple Cider', '=Apple cider', { unit: 'cup', label: '1 cup', grams: 248 }], ['Sparkling Wine (Prosecco, Champagne)', '=Wine, sparkling'],
+    ['Gin and Tonic', '=Gin and tonic'], ['Rum and Cola', '=Rum and cola'], ['Protein Shake (Ready-to-Drink)', '=Nutritional drink or shake, high protein, ready-to-drink, NFS', /^1 cup|carton/i],
+    ['Whey Protein Powder', '=Beverages, Protein powder whey based', { unit: 'serving', label: '1 scoop', grams: 30 }],
   ]},
   condiments: { exportName: 'condimentsFoods', category: 'Condiments & Oils', foods: [
     ['Olive Oil', 'oil olive', /tablespoon/i], ['Canola Oil', 'oil canola', /tablespoon/i], ['Coconut Oil', 'oil coconut', /tablespoon/i], ['Mayonnaise', '=Mayonnaise, regular', /tablespoon/i],
@@ -174,7 +214,7 @@ const SPEC = {
     ['Chicken Curry', '=Chicken curry'], ['Chicken Curry with Rice', '=Chicken curry with rice'],
     ['Vegetable Curry', '=Vegetable curry'], ['Fish Curry', '=Fish curry'], ['Beef Curry', '=Beef curry'],
     ['Chicken Biryani', 'biryani chicken'], ['Vegetable Biryani', 'biryani vegetable'], ['Dal (Lentil Curry)', '=Lentil curry'],
-    ['Palak Paneer', 'palak paneer'], ['Channa Saag', '=Channa Saag'], ['Paneer', 'cheese paneer'],
+    ['Palak Paneer', 'palak paneer'], ['Channa Saag', '=Channa Saag'],
     ['Upma', 'upma'], ['Papadum', 'papad'],
     ['Firni (Indian Rice Pudding)', '=Firni, Indian pudding'], ['Barfi', '=Barfi or Burfi, Indian dessert'],
     ['Ghee', '=Butter, Clarified butter (ghee)'], ['Besan (Chickpea Flour)', '=Chickpea flour (besan)'],
@@ -278,6 +318,19 @@ for (const [file, { category, foods }] of Object.entries(SPEC)) {
 }
 
 if (APPLY) {
+  // New foods change which foods are "nearest", which would drop live compare pages.
+  // Freeze every pair the current data builds before adding anything.
+  const { getAllComparePairs } = await import('../src/lib/compare/comparePairs.ts');
+  const pubFile = path.join(ROOT, 'src/data/publishedComparePairs.ts');
+  const pub = fs.readFileSync(pubFile, 'utf8');
+  const known = new Set([...pub.matchAll(/\['([^']+)', '([^']+)'\]/g)].map((m) => `${m[1]}|${m[2]}`));
+  const fresh = getAllComparePairs().filter((p) => !known.has(`${p.a.slug}|${p.b.slug}`));
+  if (fresh.length) {
+    const end = pub.lastIndexOf('];');
+    fs.writeFileSync(pubFile, pub.slice(0, end) + fresh.map((p) => `  ['${p.a.slug}', '${p.b.slug}'],\n`).join('') + pub.slice(end), 'utf8');
+    console.log(`froze ${fresh.length} compare pairs in publishedComparePairs.ts`);
+  }
+
   for (const [file, added] of Object.entries(byFile)) {
     if (!added.length) continue;
     const full = path.join(DATA_DIR, `${file}.ts`);

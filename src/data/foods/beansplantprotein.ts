@@ -121,14 +121,14 @@ export const beansplantproteinFoods: FoodItem[] = [
     "defaultQuantity": 1,
     "servingSizes": [
       {
-        "id": "serve_206",
+        "id": "serve_1",
         "unit": "cup",
-        "label": "1 cup cooked",
-        "grams": 164,
+        "label": "1/4 cup dry",
+        "grams": 50,
         "isDefault": true
       },
       {
-        "id": "serve_207",
+        "id": "serve_100g",
         "unit": "g",
         "label": "100 g",
         "grams": 100
@@ -223,14 +223,14 @@ export const beansplantproteinFoods: FoodItem[] = [
     "defaultQuantity": 1,
     "servingSizes": [
       {
-        "id": "serve_208",
+        "id": "serve_1",
         "unit": "cup",
-        "label": "1 cup cooked",
+        "label": "1 cup, drained",
         "grams": 164,
         "isDefault": true
       },
       {
-        "id": "serve_209",
+        "id": "serve_100g",
         "unit": "g",
         "label": "100 g",
         "grams": 100
@@ -274,14 +274,14 @@ export const beansplantproteinFoods: FoodItem[] = [
     "defaultQuantity": 1,
     "servingSizes": [
       {
-        "id": "serve_209",
+        "id": "serve_1",
         "unit": "cup",
-        "label": "1 cup cooked",
-        "grams": 198,
+        "label": "1/4 cup dry",
+        "grams": 48,
         "isDefault": true
       },
       {
-        "id": "serve_210",
+        "id": "serve_100g",
         "unit": "g",
         "label": "100 g",
         "grams": 100
@@ -376,14 +376,14 @@ export const beansplantproteinFoods: FoodItem[] = [
     "defaultQuantity": 1,
     "servingSizes": [
       {
-        "id": "serve_211",
+        "id": "serve_1",
         "unit": "cup",
-        "label": "1 cup cooked",
+        "label": "1 cup",
         "grams": 198,
         "isDefault": true
       },
       {
-        "id": "serve_212",
+        "id": "serve_100g",
         "unit": "g",
         "label": "100 g",
         "grams": 100
@@ -427,14 +427,14 @@ export const beansplantproteinFoods: FoodItem[] = [
     "defaultQuantity": 1,
     "servingSizes": [
       {
-        "id": "serve_212",
+        "id": "serve_1",
         "unit": "cup",
-        "label": "1 cup cooked",
-        "grams": 172,
+        "label": "1/4 cup dry",
+        "grams": 48.5,
         "isDefault": true
       },
       {
-        "id": "serve_213",
+        "id": "serve_100g",
         "unit": "g",
         "label": "100 g",
         "grams": 100
@@ -529,14 +529,14 @@ export const beansplantproteinFoods: FoodItem[] = [
     "defaultQuantity": 1,
     "servingSizes": [
       {
-        "id": "serve_214",
+        "id": "serve_1",
         "unit": "cup",
-        "label": "1 cup cooked",
+        "label": "1 cup, drained",
         "grams": 172,
         "isDefault": true
       },
       {
-        "id": "serve_215",
+        "id": "serve_100g",
         "unit": "g",
         "label": "100 g",
         "grams": 100

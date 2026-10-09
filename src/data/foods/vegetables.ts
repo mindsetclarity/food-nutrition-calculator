@@ -68,14 +68,14 @@ export const vegetablesFoods: FoodItem[] = [
     "defaultQuantity": 1,
     "servingSizes": [
       {
-        "id": "serve_63",
+        "id": "serve_1",
         "unit": "cup",
         "label": "1 cup chopped",
-        "grams": 91,
+        "grams": 156,
         "isDefault": true
       },
       {
-        "id": "serve_64",
+        "id": "serve_100g",
         "unit": "g",
         "label": "100 g",
         "grams": 100
@@ -114,21 +114,15 @@ export const vegetablesFoods: FoodItem[] = [
     "source": "local",
     "sourceLabel": "USDA FoodData Central",
     "isEstimated": false,
-    "defaultUnit": "cup",
+    "defaultUnit": "g",
     "defaultQuantity": 1,
     "servingSizes": [
       {
-        "id": "serve_67",
-        "unit": "cup",
-        "label": "1 cup chopped",
-        "grams": 91,
-        "isDefault": true
-      },
-      {
-        "id": "serve_68",
+        "id": "serve_100g",
         "unit": "g",
         "label": "100 g",
-        "grams": 100
+        "grams": 100,
+        "isDefault": true
       }
     ],
     "nutrientsPer100g": {
@@ -218,14 +212,14 @@ export const vegetablesFoods: FoodItem[] = [
     "defaultQuantity": 1,
     "servingSizes": [
       {
-        "id": "serve_69",
+        "id": "serve_1",
         "unit": "cup",
-        "label": "1 cup raw",
-        "grams": 30,
+        "label": "1 cup cooked",
+        "grams": 180,
         "isDefault": true
       },
       {
-        "id": "serve_70",
+        "id": "serve_100g",
         "unit": "g",
         "label": "100 g",
         "grams": 100
@@ -268,14 +262,14 @@ export const vegetablesFoods: FoodItem[] = [
     "defaultQuantity": 1,
     "servingSizes": [
       {
-        "id": "serve_72",
+        "id": "serve_1",
         "unit": "cup",
-        "label": "1 cup raw",
-        "grams": 30,
+        "label": "1 cup, drained",
+        "grams": 214,
         "isDefault": true
       },
       {
-        "id": "serve_73",
+        "id": "serve_100g",
         "unit": "g",
         "label": "100 g",
         "grams": 100
@@ -314,21 +308,15 @@ export const vegetablesFoods: FoodItem[] = [
     "source": "local",
     "sourceLabel": "USDA FoodData Central",
     "isEstimated": false,
-    "defaultUnit": "cup",
+    "defaultUnit": "g",
     "defaultQuantity": 1,
     "servingSizes": [
       {
-        "id": "serve_73",
-        "unit": "cup",
-        "label": "1 cup raw",
-        "grams": 30,
-        "isDefault": true
-      },
-      {
-        "id": "serve_74",
+        "id": "serve_100g",
         "unit": "g",
         "label": "100 g",
-        "grams": 100
+        "grams": 100,
+        "isDefault": true
       }
     ],
     "nutrientsPer100g": {
@@ -415,18 +403,18 @@ export const vegetablesFoods: FoodItem[] = [
     "source": "local",
     "sourceLabel": "USDA FoodData Central",
     "isEstimated": false,
-    "defaultUnit": "piece",
+    "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
       {
-        "id": "serve_75",
-        "unit": "piece",
-        "label": "1 medium",
-        "grams": 61,
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup sliced",
+        "grams": 156,
         "isDefault": true
       },
       {
-        "id": "serve_76",
+        "id": "serve_100g",
         "unit": "g",
         "label": "100 g",
         "grams": 100
@@ -466,21 +454,15 @@ export const vegetablesFoods: FoodItem[] = [
     "source": "local",
     "sourceLabel": "USDA FoodData Central",
     "isEstimated": false,
-    "defaultUnit": "piece",
+    "defaultUnit": "g",
     "defaultQuantity": 1,
     "servingSizes": [
       {
-        "id": "serve_78",
-        "unit": "piece",
-        "label": "1 medium",
-        "grams": 61,
-        "isDefault": true
-      },
-      {
-        "id": "serve_79",
+        "id": "serve_100g",
         "unit": "g",
         "label": "100 g",
-        "grams": 100
+        "grams": 100,
+        "isDefault": true
       }
     ],
     "nutrientsPer100g": {
@@ -517,21 +499,15 @@ export const vegetablesFoods: FoodItem[] = [
     "source": "local",
     "sourceLabel": "USDA FoodData Central",
     "isEstimated": false,
-    "defaultUnit": "piece",
+    "defaultUnit": "g",
     "defaultQuantity": 1,
     "servingSizes": [
       {
-        "id": "serve_79",
-        "unit": "piece",
-        "label": "1 medium",
-        "grams": 61,
-        "isDefault": true
-      },
-      {
-        "id": "serve_80",
+        "id": "serve_100g",
         "unit": "g",
         "label": "100 g",
-        "grams": 100
+        "grams": 100,
+        "isDefault": true
       }
     ],
     "nutrientsPer100g": {
@@ -618,18 +594,18 @@ export const vegetablesFoods: FoodItem[] = [
     "source": "local",
     "sourceLabel": "USDA FoodData Central",
     "isEstimated": false,
-    "defaultUnit": "piece",
+    "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
       {
-        "id": "serve_81",
-        "unit": "piece",
-        "label": "1 medium",
-        "grams": 123,
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 240,
         "isDefault": true
       },
       {
-        "id": "serve_82",
+        "id": "serve_100g",
         "unit": "g",
         "label": "100 g",
         "grams": 100
@@ -669,18 +645,18 @@ export const vegetablesFoods: FoodItem[] = [
     "source": "local",
     "sourceLabel": "USDA FoodData Central",
     "isEstimated": false,
-    "defaultUnit": "piece",
+    "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
       {
-        "id": "serve_84",
-        "unit": "piece",
-        "label": "1 medium",
-        "grams": 123,
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 240,
         "isDefault": true
       },
       {
-        "id": "serve_85",
+        "id": "serve_100g",
         "unit": "g",
         "label": "100 g",
         "grams": 100
@@ -871,21 +847,15 @@ export const vegetablesFoods: FoodItem[] = [
     "source": "local",
     "sourceLabel": "USDA FoodData Central",
     "isEstimated": false,
-    "defaultUnit": "piece",
+    "defaultUnit": "g",
     "defaultQuantity": 1,
     "servingSizes": [
       {
-        "id": "serve_90",
-        "unit": "piece",
-        "label": "1 medium",
-        "grams": 173,
-        "isDefault": true
-      },
-      {
-        "id": "serve_91",
+        "id": "serve_100g",
         "unit": "g",
         "label": "100 g",
-        "grams": 100
+        "grams": 100,
+        "isDefault": true
       }
     ],
     "nutrientsPer100g": {
@@ -1073,21 +1043,15 @@ export const vegetablesFoods: FoodItem[] = [
     "source": "local",
     "sourceLabel": "USDA FoodData Central",
     "isEstimated": false,
-    "defaultUnit": "piece",
+    "defaultUnit": "g",
     "defaultQuantity": 1,
     "servingSizes": [
       {
-        "id": "serve_96",
-        "unit": "piece",
-        "label": "1 medium",
-        "grams": 114,
-        "isDefault": true
-      },
-      {
-        "id": "serve_97",
+        "id": "serve_100g",
         "unit": "g",
         "label": "100 g",
-        "grams": 100
+        "grams": 100,
+        "isDefault": true
       }
     ],
     "nutrientsPer100g": {
@@ -1174,18 +1138,18 @@ export const vegetablesFoods: FoodItem[] = [
     "source": "local",
     "sourceLabel": "USDA FoodData Central",
     "isEstimated": false,
-    "defaultUnit": "piece",
+    "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
       {
-        "id": "serve_99",
-        "unit": "piece",
-        "label": "1 medium",
-        "grams": 110,
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 210,
         "isDefault": true
       },
       {
-        "id": "serve_100",
+        "id": "serve_100g",
         "unit": "g",
         "label": "100 g",
         "grams": 100
@@ -1225,21 +1189,15 @@ export const vegetablesFoods: FoodItem[] = [
     "source": "local",
     "sourceLabel": "USDA FoodData Central",
     "isEstimated": false,
-    "defaultUnit": "piece",
+    "defaultUnit": "g",
     "defaultQuantity": 1,
     "servingSizes": [
       {
-        "id": "serve_102",
-        "unit": "piece",
-        "label": "1 medium",
-        "grams": 110,
-        "isDefault": true
-      },
-      {
-        "id": "serve_103",
+        "id": "serve_100g",
         "unit": "g",
         "label": "100 g",
-        "grams": 100
+        "grams": 100,
+        "isDefault": true
       }
     ],
     "nutrientsPer100g": {
@@ -1276,21 +1234,15 @@ export const vegetablesFoods: FoodItem[] = [
     "source": "local",
     "sourceLabel": "USDA FoodData Central",
     "isEstimated": false,
-    "defaultUnit": "piece",
+    "defaultUnit": "g",
     "defaultQuantity": 1,
     "servingSizes": [
       {
-        "id": "serve_103",
-        "unit": "piece",
-        "label": "1 medium",
-        "grams": 110,
-        "isDefault": true
-      },
-      {
-        "id": "serve_104",
+        "id": "serve_100g",
         "unit": "g",
         "label": "100 g",
-        "grams": 100
+        "grams": 100,
+        "isDefault": true
       }
     ],
     "nutrientsPer100g": {
@@ -1378,18 +1330,18 @@ export const vegetablesFoods: FoodItem[] = [
     "source": "local",
     "sourceLabel": "USDA FoodData Central",
     "isEstimated": false,
-    "defaultUnit": "piece",
+    "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
       {
-        "id": "serve_105",
-        "unit": "piece",
-        "label": "1 medium",
-        "grams": 119,
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 136,
         "isDefault": true
       },
       {
-        "id": "serve_106",
+        "id": "serve_100g",
         "unit": "g",
         "label": "100 g",
         "grams": 100
@@ -1429,21 +1381,15 @@ export const vegetablesFoods: FoodItem[] = [
     "source": "local",
     "sourceLabel": "USDA FoodData Central",
     "isEstimated": false,
-    "defaultUnit": "piece",
+    "defaultUnit": "g",
     "defaultQuantity": 1,
     "servingSizes": [
       {
-        "id": "serve_109",
-        "unit": "piece",
-        "label": "1 medium",
-        "grams": 119,
-        "isDefault": true
-      },
-      {
-        "id": "serve_110",
+        "id": "serve_100g",
         "unit": "g",
         "label": "100 g",
-        "grams": 100
+        "grams": 100,
+        "isDefault": true
       }
     ],
     "nutrientsPer100g": {
@@ -1579,18 +1525,18 @@ export const vegetablesFoods: FoodItem[] = [
     "source": "local",
     "sourceLabel": "USDA FoodData Central",
     "isEstimated": false,
-    "defaultUnit": "piece",
+    "defaultUnit": "cup",
     "defaultQuantity": 1,
     "servingSizes": [
       {
-        "id": "serve_117",
-        "unit": "piece",
-        "label": "1 medium",
-        "grams": 196,
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup sliced",
+        "grams": 180,
         "isDefault": true
       },
       {
-        "id": "serve_118",
+        "id": "serve_100g",
         "unit": "g",
         "label": "100 g",
         "grams": 100
@@ -1629,21 +1575,15 @@ export const vegetablesFoods: FoodItem[] = [
     "source": "local",
     "sourceLabel": "USDA FoodData Central",
     "isEstimated": false,
-    "defaultUnit": "piece",
+    "defaultUnit": "g",
     "defaultQuantity": 1,
     "servingSizes": [
       {
-        "id": "serve_121",
-        "unit": "piece",
-        "label": "1 medium",
-        "grams": 196,
-        "isDefault": true
-      },
-      {
-        "id": "serve_122",
+        "id": "serve_100g",
         "unit": "g",
         "label": "100 g",
-        "grams": 100
+        "grams": 100,
+        "isDefault": true
       }
     ],
     "nutrientsPer100g": {

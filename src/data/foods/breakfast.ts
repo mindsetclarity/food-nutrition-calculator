@@ -322,14 +322,14 @@ export const breakfastFoods: FoodItem[] = [
     "defaultQuantity": 1,
     "servingSizes": [
       {
-        "id": "serve_178",
+        "id": "serve_1",
         "unit": "cup",
-        "label": "1 cup dry",
-        "grams": 81,
+        "label": "1 cup cooked",
+        "grams": 234,
         "isDefault": true
       },
       {
-        "id": "serve_179",
+        "id": "serve_100g",
         "unit": "g",
         "label": "100 g",
         "grams": 100
@@ -1128,6 +1128,262 @@ export const breakfastFoods: FoodItem[] = [
     "compareGroup": "Breakfast",
     "usda": {
       "fdcId": 2707318,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2708389",
+    "slug": "oatmeal-made-with-milk",
+    "name": "Oatmeal Made with Milk",
+    "searchName": "oatmeal made with milk",
+    "displayName": "Oatmeal Made with Milk",
+    "aliases": [
+      "oatmeal made with milk",
+      "oatmeal, instant, plain, made with milk, no added fat"
+    ],
+    "category": "Breakfast",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "packet",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "packet",
+        "label": "1 packet, dry, yields",
+        "grams": 148,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "keurig",
+        "label": "1 Keurig cup",
+        "grams": 170
+      },
+      {
+        "id": "serve_3",
+        "unit": "microwave",
+        "label": "1 microwave cup, prepared",
+        "grams": 210
+      },
+      {
+        "id": "serve_4",
+        "unit": "single",
+        "label": "1 single serving container",
+        "grams": 210
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 111,
+      "protein": 4.96,
+      "carbohydrates": 17.1,
+      "fat": 3.04,
+      "fiber": 1.9,
+      "sugar": 4.24,
+      "sodium": 73,
+      "saturatedFat": 1.27,
+      "cholesterol": 7,
+      "potassium": 196
+    },
+    "tags": [
+      "breakfast"
+    ],
+    "compareGroup": "Breakfast",
+    "usda": {
+      "fdcId": 2708389,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_172773",
+    "slug": "blueberry-pancakes",
+    "name": "Blueberry Pancakes",
+    "searchName": "blueberry pancakes",
+    "displayName": "Blueberry Pancakes",
+    "aliases": [
+      "blueberry pancakes",
+      "pancakes, blueberry, prepared from recipe"
+    ],
+    "category": "Breakfast",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "pancake",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "pancake",
+        "label": "1 pancake",
+        "grams": 38,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "oz",
+        "label": "1 oz",
+        "grams": 28.4
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 222,
+      "protein": 6.1,
+      "carbohydrates": 29,
+      "fat": 9.2,
+      "fiber": null,
+      "sugar": null,
+      "sodium": 412,
+      "saturatedFat": 1.99,
+      "cholesterol": 56,
+      "potassium": 138
+    },
+    "tags": [
+      "breakfast"
+    ],
+    "compareGroup": "Breakfast",
+    "usda": {
+      "fdcId": 172773,
+      "dataType": "SR Legacy"
+    }
+  },
+  {
+    "id": "usda_172664",
+    "slug": "cinnamon-raisin-bagel",
+    "name": "Cinnamon Raisin Bagel",
+    "searchName": "cinnamon raisin bagel",
+    "displayName": "Cinnamon Raisin Bagel",
+    "aliases": [
+      "cinnamon raisin bagel",
+      "bagels, cinnamon-raisin"
+    ],
+    "category": "Breakfast",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 medium bagel",
+        "grams": 105,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "mini",
+        "label": "1 mini bagel",
+        "grams": 26
+      },
+      {
+        "id": "serve_3",
+        "unit": "oz",
+        "label": "1 oz",
+        "grams": 28.4
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 274,
+      "protein": 9.8,
+      "carbohydrates": 55.2,
+      "fat": 1.7,
+      "fiber": 2.3,
+      "sugar": 5.98,
+      "sodium": 407,
+      "saturatedFat": 0.27,
+      "cholesterol": 0,
+      "potassium": 148
+    },
+    "tags": [
+      "breakfast"
+    ],
+    "compareGroup": "Breakfast",
+    "usda": {
+      "fdcId": 172664,
+      "dataType": "SR Legacy"
+    }
+  },
+  {
+    "id": "usda_2708369",
+    "slug": "cheese-grits",
+    "name": "Cheese Grits",
+    "searchName": "cheese grits",
+    "displayName": "Cheese Grits",
+    "aliases": [
+      "cheese grits",
+      "grits, with cheese, fat added"
+    ],
+    "category": "Breakfast",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup, cooked",
+        "grams": 240,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "oz",
+        "label": "1 oz, dry, yields",
+        "grams": 185
+      },
+      {
+        "id": "serve_3",
+        "unit": "packet",
+        "label": "1 packet, dry, yields",
+        "grams": 148
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 108,
+      "protein": 3.56,
+      "carbohydrates": 11.4,
+      "fat": 5.28,
+      "fiber": 0.6,
+      "sugar": 0.12,
+      "sodium": 143,
+      "saturatedFat": 2.7,
+      "cholesterol": 13,
+      "potassium": 27
+    },
+    "tags": [
+      "breakfast"
+    ],
+    "compareGroup": "Breakfast",
+    "usda": {
+      "fdcId": 2708369,
       "dataType": "Survey (FNDDS)"
     }
   }

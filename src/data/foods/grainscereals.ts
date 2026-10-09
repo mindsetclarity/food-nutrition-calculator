@@ -19,14 +19,14 @@ export const grainscerealsFoods: FoodItem[] = [
     "defaultQuantity": 1,
     "servingSizes": [
       {
-        "id": "serve_171",
+        "id": "serve_1",
         "unit": "cup",
-        "label": "1 cup cooked",
-        "grams": 158,
+        "label": "1/4 cup dry",
+        "grams": 46,
         "isDefault": true
       },
       {
-        "id": "serve_172",
+        "id": "serve_100g",
         "unit": "g",
         "label": "100 g",
         "grams": 100
@@ -121,14 +121,14 @@ export const grainscerealsFoods: FoodItem[] = [
     "defaultQuantity": 1,
     "servingSizes": [
       {
-        "id": "serve_173",
+        "id": "serve_1",
         "unit": "cup",
-        "label": "1 cup cooked",
-        "grams": 195,
+        "label": "1/4 cup dry",
+        "grams": 46,
         "isDefault": true
       },
       {
-        "id": "serve_174",
+        "id": "serve_100g",
         "unit": "g",
         "label": "100 g",
         "grams": 100
@@ -223,14 +223,14 @@ export const grainscerealsFoods: FoodItem[] = [
     "defaultQuantity": 1,
     "servingSizes": [
       {
-        "id": "serve_175",
+        "id": "serve_1",
         "unit": "cup",
-        "label": "1 cup cooked",
-        "grams": 185,
+        "label": "1/4 cup dry",
+        "grams": 42.5,
         "isDefault": true
       },
       {
-        "id": "serve_176",
+        "id": "serve_100g",
         "unit": "g",
         "label": "100 g",
         "grams": 100
@@ -321,18 +321,18 @@ export const grainscerealsFoods: FoodItem[] = [
     "source": "local",
     "sourceLabel": "USDA FoodData Central",
     "isEstimated": false,
-    "defaultUnit": "cup",
+    "defaultUnit": "oz",
     "defaultQuantity": 1,
     "servingSizes": [
       {
-        "id": "serve_183",
-        "unit": "cup",
-        "label": "1 cup cooked",
-        "grams": 140,
+        "id": "serve_1",
+        "unit": "oz",
+        "label": "2 oz dry",
+        "grams": 56.7,
         "isDefault": true
       },
       {
-        "id": "serve_184",
+        "id": "serve_100g",
         "unit": "g",
         "label": "100 g",
         "grams": 100

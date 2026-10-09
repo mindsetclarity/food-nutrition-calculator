@@ -41,5 +41,16 @@ remaining levers are: search-intent titles, more indexable pages, and authority.
   Snacks, Desserts, Beverages, Condiments & Oils, Indian Foods). USDA lacks many
   Indian/UK dishes (butter chicken, tikka masala, rajma, crumpets) — those need a
   second source such as UK CoFID or India's IFCT before they can be added.
-- Learn articles 8 → 50+ (2–3/week), each linking to food + compare pages.
-- Author/reviewer bylines and "last updated" dates on articles (E-E-A-T).
+  **Now 549** (batch 2 added US/UK takeaway, Chinese/Mexican dishes, desserts, drinks).
+- Learn articles 8 → 50+, each linking to food + compare pages. **Now 19** (pizza, burgers,
+  alcohol, protein, snacks, coffee, bread, Indian takeaway, rice, eggs, fruit).
+- Bylines + "last updated" dates on articles: **done** (editorial team + USDA source links).
+  Still open: a named, credentialed reviewer (a real person; do not invent one).
+
+## Keeping live URLs alive
+
+Compare pages are partly chosen by calorie distance, so adding foods reshuffles them.
+`src/data/publishedComparePairs.ts` freezes every pair that has been published; the
+build always includes them and fails if one references a removed food. The import
+script appends the current pairs before adding foods. Removed foods get a 301 in
+`astro.config.mjs` (`redirects`).

@@ -964,58 +964,6 @@ export const indianFoods: FoodItem[] = [
     }
   },
   {
-    "id": "usda_2705740",
-    "slug": "paneer",
-    "name": "Paneer",
-    "searchName": "paneer",
-    "displayName": "Paneer",
-    "aliases": [
-      "paneer",
-      "cheese, paneer"
-    ],
-    "category": "Indian Foods",
-    "source": "local",
-    "sourceLabel": "USDA FoodData Central",
-    "isEstimated": false,
-    "defaultUnit": "cup",
-    "defaultQuantity": 1,
-    "servingSizes": [
-      {
-        "id": "serve_1",
-        "unit": "cup",
-        "label": "1 cup",
-        "grams": 246,
-        "isDefault": true
-      },
-      {
-        "id": "serve_2",
-        "unit": "g",
-        "label": "100 g",
-        "grams": 100
-      }
-    ],
-    "nutrientsPer100g": {
-      "calories": 299,
-      "protein": 15.9,
-      "carbohydrates": 22.5,
-      "fat": 15.5,
-      "fiber": 0,
-      "sugar": 23.3,
-      "sodium": 185,
-      "saturatedFat": 9.02,
-      "cholesterol": 58,
-      "potassium": 728
-    },
-    "tags": [
-      "indian-foods"
-    ],
-    "compareGroup": "Indian Foods",
-    "usda": {
-      "fdcId": 2705740,
-      "dataType": "Survey (FNDDS)"
-    }
-  },
-  {
     "id": "usda_2709128",
     "slug": "upma",
     "name": "Upma",
