@@ -18,6 +18,7 @@
     "test:llm-client": "node --experimental-strip-types scripts/test-llm-client.mjs",
     "test:escape-html": "node --experimental-strip-types scripts/test-escape-html.mjs",
     "test:seo-paths": "node --experimental-strip-types scripts/test-seo-paths.mjs",
+    "test:byte-range": "node --experimental-strip-types scripts/test-byte-range.mjs",
     "check:links": "node scripts/check-links.mjs"
   },
   "dependencies": {
