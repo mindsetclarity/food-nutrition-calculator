@@ -1,0 +1,68 @@
+---
+// Promo for the Bhaskar app (its 25 s vertical ad + Google Play button).
+// The video costs nothing until it is on screen: preload="none" plus a poster,
+// and it only autoplays (muted) while visible. Copy repeats only the ad's own claims.
+import GooglePlayButton from '../ui/GooglePlayButton.astro';
+
+interface Props {
+  // 'section': full-width homepage band. 'card': compact block for content pages.
+  variant?: 'section' | 'card';
+}
+
+const { variant = 'section' } = Astro.props;
+const isSection = variant === 'section';
+---
+<div class:list={[
+  'app-promo',
+  isSection ? 'py-24 bg-warm-ivory border-t border-border-soft' : 'bg-white rounded-2xl border border-gray-200 shadow-sm p-6 sm:p-8',
+]}>
+  <div class:list={[
+    'flex flex-col sm:flex-row items-center',
+    isSection ? 'max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 gap-12 lg:gap-20' : 'gap-8',
+  ]}>
+    <div class:list={['shrink-0 w-full', isSection ? 'max-w-[280px]' : 'max-w-[200px]']}>
+      <div class="rounded-[2rem] bg-ink-navy p-2 shadow-ink">
+        <video
+          class="block w-full aspect-[9/16] rounded-[1.6rem] bg-ink-navy object-cover"
+          src="/media/bhaskar-app-ad.mp4"
+          poster="/media/bhaskar-app-ad-poster.jpg"
+          preload="none"
+          muted
+          loop
+          playsinline
+          controls
+          aria-label="Bhaskar app video: logging meals and tracking progress"
+          data-app-ad
+        ></video>
+      </div>
+    </div>
+
+    <div class="text-center sm:text-left">
+      <p class="text-xs font-bold uppercase tracking-widest text-usda-emerald mb-3">Bhaskar app · Free on Google Play</p>
+      <h2 class:list={['font-black text-ink-navy tracking-tight mb-4', isSection ? 'text-3xl sm:text-4xl' : 'text-2xl']}>
+        Track every meal without the homework
+      </h2>
+      <p class="text-soft-slate leading-relaxed mb-6 max-w-md mx-auto sm:mx-0">
+        Bhaskar is our nutrition app. Log a meal with one tap, see calories, protein, carbs and fat on one clean screen,
+        and know your plan is working. Built on real food data, not AI guesses.
+      </p>
+      <GooglePlayButton />
+    </div>
+  </div>
+</div>
+
+<script>
+  // Play only while on screen; respect reduced-motion (the visitor can still press play).
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const videos = document.querySelectorAll<HTMLVideoElement>('video[data-app-ad]');
+  if (!reduceMotion && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        const video = entry.target as HTMLVideoElement;
+        if (entry.isIntersecting) video.play().catch(() => {});
+        else video.pause();
+      }
+    }, { threshold: 0.5 });
+    videos.forEach((video) => observer.observe(video));
+  }
+</script>

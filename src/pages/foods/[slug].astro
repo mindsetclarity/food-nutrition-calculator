@@ -10,6 +10,7 @@ import FoodCTASection from '../../components/foods/FoodCTASection.astro';
 import NutritionFactsLabel from '../../components/nutrition-label/NutritionFactsLabel.astro';
 import Breadcrumbs from '../../components/seo/Breadcrumbs.astro';
 import FaqList from '../../components/seo/FaqList.astro';
+import AppPromo from '../../components/app/AppPromo.astro';
 
 import { getAllFoodPages, getFoodDetailSeo, getFoodFaqs, getRelatedFoods } from '../../lib/foods';
 import { getComparePairsForFood } from '../../lib/compare/comparePairs';
@@ -117,6 +118,8 @@ const jsonLd = [
           )}
 
           <FaqList faqs={faqs} heading={`${food.displayName} nutrition FAQ`} />
+
+          <AppPromo variant="card" />
 
           <FoodSourceNotice />
         </div>
