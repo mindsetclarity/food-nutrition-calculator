@@ -23,6 +23,8 @@ declare namespace Cloudflare {
     TURNSTILE_SITE_KEY?: string;
     TURNSTILE_SECRET?: string;
     RESEND_API_KEY?: string;
+    GOOGLE_CLIENT_ID?: string;
+    GOOGLE_CLIENT_SECRET?: string;
   }
 }
 

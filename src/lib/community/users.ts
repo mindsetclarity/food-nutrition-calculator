@@ -21,7 +21,7 @@ export async function banUser(db: Db, id: number): Promise<void> {
 }
 
 export function canWrite(user: User | null): boolean {
-  return !!user && !user.is_banned;
+  return !!user && !user.is_banned && !!user.username;
 }
 
 export async function createEmailUser(
@@ -65,4 +65,16 @@ export async function setPassword(db: Db, userId: number, password: string): Pro
     db.prepare('UPDATE users SET password_hash = ? WHERE id = ?').bind(hash, userId),
     db.prepare('DELETE FROM sessions WHERE user_id = ?').bind(userId),
   ]);
+}
+
+/** Sets the public username for a Google user who has none yet. */
+export async function setUsername(db: Db, userId: number, username: string): Promise<'ok' | 'invalid' | 'username_taken'> {
+  if (validateUsername(username)) return 'invalid';
+  try {
+    const r = await db.prepare('UPDATE users SET username = ? WHERE id = ? AND username IS NULL').bind(username, userId).run();
+    return r.meta.changes ? 'ok' : 'invalid';
+  } catch (e) {
+    if (!/UNIQUE/i.test(String(e))) throw e;
+    return 'username_taken';
+  }
 }

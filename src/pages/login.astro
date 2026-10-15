@@ -10,7 +10,7 @@ export const prerender = false;
 
 if (Astro.locals.user) return Astro.redirect('/account');
 
-let error = '';
+let error = ({ google: 'Google sign-in failed. Please try again.', email_in_use: 'That email already has an account. Log in with your password, then try again.' } as Record<string, string>)[Astro.url.searchParams.get('error') ?? ''] ?? '';
 let email = '';
 
 if (Astro.request.method === 'POST') {
@@ -40,6 +40,6 @@ if (Astro.request.method === 'POST') {
 <SiteLayout title="Log in | Food Nutrition Calculator" description="Log in to your community account." noindex>
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <h1 class="text-3xl font-black text-ink-navy text-center mb-8">Log in</h1>
-    <AuthForm mode="login" error={error} notice={Astro.url.searchParams.get("reset") === "1" ? "Password updated. Please log in." : ""} email={email} />
+    <AuthForm mode="login" google={!!env.GOOGLE_CLIENT_ID} error={error} notice={Astro.url.searchParams.get("reset") === "1" ? "Password updated. Please log in." : ""} email={email} />
   </main>
 </SiteLayout>

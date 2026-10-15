@@ -21,7 +21,7 @@ const ERRORS = {
   turnstile: 'Verification failed. Please try again.',
 };
 
-let error = '';
+let error = Astro.url.searchParams.get('error') === 'age' ? "Please confirm you're 18 or older to create an account" : '';
 let email = '';
 let username = '';
 
@@ -59,6 +59,6 @@ if (Astro.request.method === 'POST') {
 <SiteLayout title="Create an account | Food Nutrition Calculator" description="Create a community account." noindex>
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <h1 class="text-3xl font-black text-ink-navy text-center mb-8">Create an account</h1>
-    <AuthForm mode="signup" error={error} email={email} username={username} siteKey={env.TURNSTILE_SITE_KEY} />
+    <AuthForm mode="signup" google={!!env.GOOGLE_CLIENT_ID} error={error} email={email} username={username} siteKey={env.TURNSTILE_SITE_KEY} />
   </main>
 </SiteLayout>
