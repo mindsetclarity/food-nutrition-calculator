@@ -1,5 +1,5 @@
 import type { User } from './db';
-import { findUserByEmail } from './users';
+import { findUserByEmail, issueCodeOrRollback } from './users';
 
 type Db = D1Database;
 export type GoogleProfile = { sub: string; email: string; emailVerified: boolean };
@@ -105,8 +105,9 @@ export async function findOrCreateGoogleUser(
     const raced = await findUserBySub(db, input.sub);
     return raced ? { ok: true, user: raced, isNew: false } : { ok: false, error: 'email_in_use' };
   }
-  // Task 6: issueReferralCode(db, user.id)
-  return { ok: true, user: (await findUserBySub(db, input.sub))!, isNew: true };
+  const user = (await findUserBySub(db, input.sub))!;
+  await issueCodeOrRollback(db, user.id);
+  return { ok: true, user, isNew: true };
 }
 
 /** Production uses the configured site URL; only DEV trusts the request origin (so localhost works). */

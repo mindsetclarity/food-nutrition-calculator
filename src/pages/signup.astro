@@ -6,8 +6,7 @@ import { createEmailUser } from '../lib/community/users';
 import { createSession, sessionCookie } from '../lib/community/sessions';
 import { verifyTurnstile } from '../lib/community/turnstile';
 import { validateUsername } from '../lib/community/validate';
-import { createEmailToken } from '../lib/community/tokens';
-import { sendEmail } from '../lib/community/email';
+import { sendVerifyEmail } from '../lib/community/email';
 
 export const prerender = false;
 
@@ -41,12 +40,7 @@ if (Astro.request.method === 'POST') {
     const result = await createEmailUser(env.DB, { email, password, username, ageConfirmed: form.get('age') === '1' });
     if (result.ok) {
       const token = await createSession(env.DB, result.user.id);
-      const link = `${Astro.url.origin}/verify-email?token=${await createEmailToken(env.DB, result.user.id, 'verify')}`;
-      await sendEmail(env.RESEND_API_KEY, {
-        to: result.user.email,
-        subject: 'Verify your email',
-        text: `Welcome to the Food Nutrition Calculator community.\n\nVerify your email: ${link}\n\nThis link works for 24 hours.`,
-      });
+      await sendVerifyEmail(env.DB, result.user, Astro.url.origin, env.RESEND_API_KEY);
       return new Response(null, {
         status: 303,
         headers: { Location: '/account', 'Set-Cookie': sessionCookie(token) },

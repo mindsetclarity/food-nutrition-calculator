@@ -25,6 +25,7 @@ declare namespace Cloudflare {
     RESEND_API_KEY?: string;
     GOOGLE_CLIENT_ID?: string;
     GOOGLE_CLIENT_SECRET?: string;
+    BHASKAR_API_SECRET?: string;
   }
 }
 

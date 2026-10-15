@@ -1,6 +1,7 @@
 import type { User } from './db';
 import { hashPassword } from './crypto';
 import { validateUsername } from './validate';
+import { issueReferralCode } from './referral';
 
 type Db = D1Database;
 export type CreateUserResult =
@@ -22,6 +23,16 @@ export async function banUser(db: Db, id: number): Promise<void> {
 
 export function canWrite(user: User | null): boolean {
   return !!user && !user.is_banned && !!user.username;
+}
+
+/** A user must never exist without a code: if issuing fails, delete the just-created row and rethrow. */
+export async function issueCodeOrRollback(db: Db, userId: number): Promise<void> {
+  try {
+    await issueReferralCode(db, userId);
+  } catch (e) {
+    await db.prepare('DELETE FROM users WHERE id = ?').bind(userId).run();
+    throw e;
+  }
 }
 
 export async function createEmailUser(
@@ -50,7 +61,7 @@ export async function createEmailUser(
     return { ok: false, error: /username/i.test(String(e)) ? 'username_taken' : 'exists' };
   }
   const user = (await findUserByEmail(db, email))!;
-  // Task 6: issueReferralCode(db, user.id)
+  await issueCodeOrRollback(db, user.id);
   return { ok: true, user };
 }
 
