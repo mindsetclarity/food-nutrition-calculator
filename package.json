@@ -19,7 +19,8 @@
     "test:escape-html": "node --experimental-strip-types scripts/test-escape-html.mjs",
     "test:seo-paths": "node --experimental-strip-types scripts/test-seo-paths.mjs",
     "test:byte-range": "node --experimental-strip-types scripts/test-byte-range.mjs",
-    "check:links": "node scripts/check-links.mjs"
+    "check:links": "node scripts/check-links.mjs",
+    "test:community": "node --experimental-strip-types scripts/test-community-schema.mjs"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.1",
