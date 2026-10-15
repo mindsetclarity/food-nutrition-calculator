@@ -1,0 +1,48 @@
+---
+interface Props {
+  mode: 'signup' | 'login';
+  error?: string;
+  email?: string;
+  username?: string;
+  siteKey?: string;
+}
+const { mode, error, email = '', username = '', siteKey } = Astro.props;
+const signup = mode === 'signup';
+const field = 'w-full px-4 py-2 rounded-lg border border-border-soft focus:outline-none focus:ring-2 focus:ring-usda-emerald/50';
+const label = 'text-sm font-medium text-ink-navy';
+const link = 'text-[var(--color-primary)] hover:underline';
+---
+<form method="POST" class="bg-white border border-border-soft p-6 rounded-2xl shadow-sm flex flex-col gap-4 max-w-md mx-auto">
+  {error && <p role="alert" class="p-3 rounded-md bg-danger-bg text-danger-text text-sm">{error}</p>}
+  <div class="flex flex-col gap-1">
+    <label for="email" class={label}>Email</label>
+    <input type="email" id="email" name="email" value={email} autocomplete="email" class={field} required />
+  </div>
+  {signup && (
+    <div class="flex flex-col gap-1">
+      <label for="username" class={label}>Username (shown publicly)</label>
+      <input type="text" id="username" name="username" value={username} minlength="3" maxlength="20" pattern="[A-Za-z0-9_]+" autocomplete="username" class={field} required />
+    </div>
+  )}
+  <div class="flex flex-col gap-1">
+    <label for="password" class={label}>Password{signup && ' (at least 10 characters)'}</label>
+    <input type="password" id="password" name="password" minlength={signup ? 10 : undefined} autocomplete={signup ? 'new-password' : 'current-password'} class={field} required />
+  </div>
+  {signup && (
+    <label class="flex items-center gap-2 text-sm text-ink-navy">
+      <input type="checkbox" name="age" value="1" required /> I am 18 or older
+    </label>
+  )}
+  {siteKey && (
+    <>
+      <div class="cf-turnstile" data-sitekey={siteKey}></div>
+      <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    </>
+  )}
+  <button type="submit" class="bg-usda-emerald hover:bg-emerald-700 text-white shadow-premium rounded-lg px-4 py-2 font-medium">
+    {signup ? 'Create account' : 'Log in'}
+  </button>
+  <p class="text-sm text-soft-slate">
+    {signup ? <>Already have an account? <a href="/login" class={link}>Log in</a></> : <>New here? <a href="/signup" class={link}>Create an account</a></>}
+  </p>
+</form>

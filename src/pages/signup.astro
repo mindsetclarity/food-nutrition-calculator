@@ -1,0 +1,57 @@
+---
+import { env } from 'cloudflare:workers';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import AuthForm from '../components/community/AuthForm.astro';
+import { createEmailUser } from '../lib/community/users';
+import { createSession, sessionCookie } from '../lib/community/sessions';
+import { verifyTurnstile } from '../lib/community/turnstile';
+import { validateUsername } from '../lib/community/validate';
+
+export const prerender = false;
+
+if (Astro.locals.user) return Astro.redirect('/account');
+
+const ERRORS = {
+  exists: 'An account with that email already exists. Try logging in.',
+  age: 'You must be 18 or older to create an account.',
+  username_taken: 'That username is taken.',
+  invalid: 'Please check your details. The password needs at least 10 characters.',
+  turnstile: 'Verification failed. Please try again.',
+};
+
+let error = '';
+let email = '';
+let username = '';
+
+if (Astro.request.method === 'POST') {
+  const form = await Astro.request.formData();
+  email = String(form.get('email') ?? '').trim();
+  username = String(form.get('username') ?? '').trim();
+  const password = String(form.get('password') ?? '');
+  const ip = Astro.request.headers.get('CF-Connecting-IP');
+
+  const limit = await env.AUTH_LIMITER?.limit({ key: ip ?? 'unknown' });
+  if (limit && !limit.success) {
+    error = 'Too many attempts. Please wait a minute.';
+  } else if (!(await verifyTurnstile(env.TURNSTILE_SECRET ?? '', String(form.get('cf-turnstile-response') ?? ''), ip))) {
+    error = ERRORS.turnstile;
+  } else {
+    const result = await createEmailUser(env.DB, { email, password, username, ageConfirmed: form.get('age') === '1' });
+    if (result.ok) {
+      const token = await createSession(env.DB, result.user.id);
+      // Task 4: send the verification email here
+      return new Response(null, {
+        status: 303,
+        headers: { Location: '/account', 'Set-Cookie': sessionCookie(token) },
+      });
+    }
+    error = result.error === 'invalid' ? (validateUsername(username) ?? ERRORS.invalid) : ERRORS[result.error];
+  }
+}
+---
+<SiteLayout title="Create an account | Food Nutrition Calculator" description="Create a community account." noindex>
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <h1 class="text-3xl font-black text-ink-navy text-center mb-8">Create an account</h1>
+    <AuthForm mode="signup" error={error} email={email} username={username} siteKey={env.TURNSTILE_SITE_KEY} />
+  </main>
+</SiteLayout>

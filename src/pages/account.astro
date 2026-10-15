@@ -1,0 +1,17 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+
+export const prerender = false;
+
+const user = Astro.locals.user;
+if (!user) return Astro.redirect('/login');
+---
+<SiteLayout title="Your account | Food Nutrition Calculator" description="Your community account." noindex>
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <h1 class="text-3xl font-black text-ink-navy mb-4">Your account</h1>
+    <p class="mb-6 text-soft-slate">Signed in as {user.username}</p>
+    <form method="POST" action="/logout">
+      <button type="submit" class="bg-white hover:bg-gray-50 text-ink-navy border border-gray-200 rounded-lg px-4 py-2 font-medium">Log out</button>
+    </form>
+  </main>
+</SiteLayout>
