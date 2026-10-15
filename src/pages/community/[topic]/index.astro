@@ -1,0 +1,40 @@
+---
+import { env } from 'cloudflare:workers';
+import SiteLayout from '../../../layouts/SiteLayout.astro';
+import PageHeader from '../../../components/site/PageHeader.astro';
+import Button from '../../../components/ui/Button.astro';
+import EmptyState from '../../../components/ui/EmptyState.astro';
+import PostCard from '../../../components/community/PostCard.astro';
+import Disclaimer from '../../../components/community/Disclaimer.astro';
+import { TOPICS } from '../../../lib/community/db';
+import { listPosts, PAGE_SIZE } from '../../../lib/community/posts';
+
+export const prerender = false;
+
+const topic = TOPICS.find((t) => t.slug === Astro.params.topic);
+if (!topic) return new Response(null, { status: 404 });
+const sort = Astro.url.searchParams.get('sort') === 'top' ? 'top' : 'new';
+const n = Number(Astro.url.searchParams.get('page'));
+const page = Number.isInteger(n) && n >= 1 ? n : 1;
+const posts = await listPosts(env.DB, topic.slug, { sort, page });
+const base = `/community/${topic.slug}`;
+const href = (s: string, p: number) => `${base}?${new URLSearchParams({ ...(s === 'top' && { sort: s }), ...(p > 1 && { page: String(p) }) })}`.replace(/\?$/, '');
+const user = Astro.locals.user;
+---
+<SiteLayout title={`${topic.label} | Community`} description={`${topic.label} posts from community members.`} canonicalPath={page > 1 ? `${base}?page=${page}` : base} noindex={!topic.indexable}>
+  <PageHeader title={topic.label} description={`${topic.label} posts from community members.`} breadcrumbs={[{ label: 'Community', href: '/community' }, { label: topic.label }]} />
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <div class="flex flex-wrap items-center gap-3 mb-6">
+      <Button href={href('new', 1)} variant={sort === 'new' ? 'primary' : 'secondary'} size="sm">New</Button>
+      <Button href={href('top', 1)} variant={sort === 'top' ? 'primary' : 'secondary'} size="sm">Top</Button>
+      <span class="grow"></span>
+      {user ? <Button href={`/community/new?topic=${topic.slug}`}>Start a post</Button> : <Button href="/login">Sign in to post</Button>}
+    </div>
+    {posts.length ? <ul>{posts.map((p) => <PostCard post={p} />)}</ul> : <EmptyState title="No posts yet" description="Be the first to post in this topic." />}
+    <nav class="flex gap-4 mt-6 text-sm" aria-label="Pagination">
+      {page > 1 && <a href={href(sort, page - 1)} class="text-usda-emerald hover:underline">Newer page</a>}
+      {posts.length === PAGE_SIZE && <a href={href(sort, page + 1)} class="text-usda-emerald hover:underline">Next page</a>}
+    </nav>
+    <Disclaimer />
+  </main>
+</SiteLayout>

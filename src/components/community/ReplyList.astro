@@ -1,0 +1,12 @@
+---
+import type { ReplyView } from '../../lib/community/posts';
+const { replies } = Astro.props as { replies: ReplyView[] };
+---
+<ol class="flex flex-col gap-4">
+  {replies.map((r) => (
+    <li id={`reply-${r.id}`} class="bg-white border border-border-soft rounded-xl p-4">
+      <p class="text-xs text-muted-text mb-1">{r.username} · {new Date(r.createdAt).toISOString().slice(0, 10)}</p>
+      <div class="text-ink-navy" style="white-space: pre-wrap; overflow-wrap: anywhere;">{r.body}</div>
+    </li>
+  ))}
+</ol>
