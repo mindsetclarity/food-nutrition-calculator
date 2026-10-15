@@ -34,7 +34,7 @@ export const GET: APIRoute = async ({ url, site, cookies }) => {
   if (!profile) return back('/login?error=google');
 
   const result = await findOrCreateGoogleUser(env.DB, { ...profile, ageConfirmed: age });
-  if (!result.ok) return back(result.error === 'age' ? '/signup?error=age' : '/login?error=email_in_use');
+  if (!result.ok) return back(result.error === 'age' ? '/signup?error=age' : `/login?error=${result.error === 'email_unverified' ? 'google_unverified' : 'email_in_use'}`);
 
   const token = await createSession(env.DB, result.user.id);
   return back(result.user.username ? '/account' : '/welcome', sessionCookie(token));

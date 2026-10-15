@@ -10,7 +10,7 @@ export const prerender = false;
 
 if (Astro.locals.user) return Astro.redirect('/account');
 
-let error = ({ google: 'Google sign-in failed. Please try again.', email_in_use: 'That email already has an account. Log in with your password, then try again.' } as Record<string, string>)[Astro.url.searchParams.get('error') ?? ''] ?? '';
+let error = ({ google: 'Google sign-in failed. Please try again.', google_unverified: "Your Google account's email isn't verified. Please verify it with Google or sign up with email instead.", email_in_use: 'That email already has an account. Log in with your password, then try again.' } as Record<string, string>)[Astro.url.searchParams.get('error') ?? ''] ?? '';
 let email = '';
 
 if (Astro.request.method === 'POST') {

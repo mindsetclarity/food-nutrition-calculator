@@ -5,7 +5,7 @@ type Db = D1Database;
 export type GoogleProfile = { sub: string; email: string; emailVerified: boolean };
 export type GoogleUserResult =
   | { ok: true; user: User; isNew: boolean }
-  | { ok: false; error: 'email_in_use' | 'age' };
+  | { ok: false; error: 'email_in_use' | 'email_unverified' | 'age' };
 
 export function googleAuthUrl(clientId: string, redirectUri: string, state: string): string {
   const q = new URLSearchParams({
@@ -75,9 +75,12 @@ export async function findOrCreateGoogleUser(
   const bySub = await findUserBySub(db, input.sub);
   if (bySub) return { ok: true, user: bySub, isNew: false };
 
+  // Unverified Google emails are refused outright (reverse pre-hijack): no row may be created or linked.
+  if (!input.emailVerified) return { ok: false, error: 'email_unverified' };
+
   const byEmail = await findUserByEmail(db, input.email);
   if (byEmail) {
-    if (!input.emailVerified || byEmail.google_sub) return { ok: false, error: 'email_in_use' };
+    if (byEmail.google_sub) return { ok: false, error: 'email_in_use' };
     // If the email was never verified, whoever set its password may not own it: drop password and sessions.
     const stmts = [
       db

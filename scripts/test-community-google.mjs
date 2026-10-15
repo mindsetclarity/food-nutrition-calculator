@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 import { createTestDb } from './lib/test-env.mjs';
 
 const { googleAuthUrl, exchangeGoogleCode, findOrCreateGoogleUser, parseOauthState } = await import('../src/lib/community/google.ts');
-const { createEmailUser, canWrite, setUsername } = await import('../src/lib/community/users.ts');
+const { createEmailUser, canWrite, setUsername, findUserByEmail } = await import('../src/lib/community/users.ts');
 const db = await createTestDb();
 const count = async () => (await db.prepare('SELECT COUNT(*) AS n FROM users').first()).n;
 
@@ -55,7 +55,7 @@ assert.equal(await count(), 3);
 
 // unverified Google email matching existing user -> email_in_use, row untouched
 const p = await createEmailUser(db, { email: 'p@x.com', password: 'correct horse', username: 'pat', ageConfirmed: true });
-assert.deepEqual(await findOrCreateGoogleUser(db, { sub: 'sub-3', email: 'p@x.com', emailVerified: false, ageConfirmed: true }), { ok: false, error: 'email_in_use' });
+assert.deepEqual(await findOrCreateGoogleUser(db, { sub: 'sub-3', email: 'p@x.com', emailVerified: false, ageConfirmed: true }), { ok: false, error: 'email_unverified' });
 const pRow = await db.prepare('SELECT * FROM users WHERE id = ?').bind(p.user.id).first();
 assert.equal(pRow.google_sub, null);
 assert.equal(await count(), 4);
@@ -65,9 +65,11 @@ assert.equal(pRow.email_verified, 0);
 const l2 = await findOrCreateGoogleUser(db, { sub: 'sub-3', email: 'p@x.com', emailVerified: true, ageConfirmed: false });
 assert.equal(l2.ok && l2.user.password_hash, null);
 
-// unverified Google email, unused -> created with email_verified 0
-const uv = await findOrCreateGoogleUser(db, { sub: 'sub-4', email: 'new@x.com', emailVerified: false, ageConfirmed: true });
-assert.equal(uv.ok && uv.user.email_verified, 0);
+// unverified Google email, unused -> refused, nothing written
+const before = await count();
+assert.deepEqual(await findOrCreateGoogleUser(db, { sub: "sub-4", email: "new@x.com", emailVerified: false, ageConfirmed: true }), { ok: false, error: "email_unverified" });
+assert.equal(await count(), before);
+assert.equal(await findUserByEmail(db, "new@x.com"), null);
 
 // exchangeGoogleCode with a fake fetch
 const jwt = (p) => 'h.' + Buffer.from(JSON.stringify(p)).toString('base64url') + '.s';
