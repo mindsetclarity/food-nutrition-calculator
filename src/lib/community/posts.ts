@@ -1,5 +1,5 @@
 import type { Post, TopicSlug, User } from './db';
-import { canWrite } from './users';
+import { canWrite, getUserById } from './users';
 import { validatePost, validateReply } from './validate';
 
 type Db = D1Database;
@@ -133,4 +133,29 @@ export async function listReplies(db: Db, postId: number): Promise<ReplyView[]> 
     .bind(postId)
     .all<any>();
   return results.map((r) => ({ id: r.id, body: r.body, username: r.username, createdAt: r.created_at }));
+}
+
+export async function hasVoted(db: Db, userId: number, postId: number): Promise<boolean> {
+  return !!(await db.prepare('SELECT 1 FROM votes WHERE user_id = ? AND post_id = ?').bind(userId, postId).first());
+}
+
+/** Insert-or-delete the vote, then recompute posts.score from votes in the same batch (no drift). */
+export async function toggleVote(
+  db: Db,
+  userId: number,
+  postId: number,
+): Promise<{ ok: true; voted: boolean; score: number } | { ok: false; error: string }> {
+  const user = await getUserById(db, userId);
+  if (!canWrite(user)) return { ok: false, error: 'Your account cannot vote right now.' };
+  const post = await getPost(db, postId);
+  if (!post || post.deleted_at || post.author_banned) return { ok: false, error: 'That post no longer exists.' };
+  const had = await hasVoted(db, userId, postId);
+  await db.batch([
+    had
+      ? db.prepare('DELETE FROM votes WHERE user_id = ? AND post_id = ?').bind(userId, postId)
+      : db.prepare('INSERT OR IGNORE INTO votes (user_id, post_id) VALUES (?, ?)').bind(userId, postId),
+    db.prepare('UPDATE posts SET score = (SELECT COUNT(*) FROM votes WHERE post_id = ?1) WHERE id = ?1').bind(postId),
+  ]);
+  const score = (await db.prepare('SELECT score FROM posts WHERE id = ?').bind(postId).first<number>('score')) ?? 0;
+  return { ok: true, voted: !had, score };
 }

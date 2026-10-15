@@ -7,7 +7,9 @@ import ReplyList from '../../../components/community/ReplyList.astro';
 import Disclaimer from '../../../components/community/Disclaimer.astro';
 import { TOPICS } from '../../../lib/community/db';
 import { canWrite } from '../../../lib/community/users';
-import { getPost, listReplies, createReply, postUrl } from '../../../lib/community/posts';
+import ReportForm from '../../../components/community/ReportForm.astro';
+import { reportItem } from '../../../lib/community/reports';
+import { getPost, listReplies, createReply, postUrl, toggleVote, hasVoted } from '../../../lib/community/posts';
 
 export const prerender = false;
 
@@ -21,12 +23,31 @@ if (Astro.url.pathname !== canonical) return Astro.redirect(canonical, 301);
 const user = Astro.locals.user;
 let error = '';
 let reply = '';
+const reported = Astro.url.searchParams.get('reported') === '1';
+let voteError = '';
 if (Astro.request.method === 'POST') {
-  reply = String((await Astro.request.formData()).get('body') ?? '');
-  const r = user ? await createReply(env.DB, user, post.id, reply) : ({ ok: false, error: 'Please sign in to reply.' } as const);
-  if (r.ok) return Astro.redirect(`${canonical}#reply-${r.id}`, 303);
-  error = r.error;
+  const form = await Astro.request.formData();
+  const action = String(form.get('action') ?? 'reply');
+  if (action === 'vote') {
+    if (!user) return Astro.redirect('/login', 303);
+    const r = await toggleVote(env.DB, user.id, post.id);
+    if (r.ok) return Astro.redirect(canonical, 303);
+    voteError = r.error;
+  } else if (action === 'report') {
+    if (!user) return Astro.redirect('/login', 303);
+    const num = (k: string) => (form.get(k) ? Number(form.get(k)) : undefined);
+    const r = await reportItem(env.DB, user.id, { postId: num('post_id'), replyId: num('reply_id'), reason: String(form.get('reason') ?? '') });
+    if (r.ok) return Astro.redirect(`${canonical}?reported=1`, 303);
+    voteError = r.error;
+  } else {
+    reply = String(form.get('body') ?? '');
+    const r = user ? await createReply(env.DB, user, post.id, reply) : ({ ok: false, error: 'Please sign in to reply.' } as const);
+    if (r.ok) return Astro.redirect(`${canonical}#reply-${r.id}`, 303);
+    error = r.error;
+  }
 }
+const voted = user ? await hasVoted(env.DB, user.id, post.id) : false;
+const writer = canWrite(user);
 const replies = await listReplies(env.DB, post.id);
 const description = post.body.replace(/\s+/g, ' ').trim().slice(0, 155);
 const field = 'w-full px-4 py-2 rounded-lg border border-border-soft focus:outline-none focus:ring-2 focus:ring-usda-emerald/50';
@@ -36,12 +57,26 @@ const field = 'w-full px-4 py-2 rounded-lg border border-border-soft focus:outli
   <main class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
     <article class="bg-white border border-border-soft rounded-xl p-5 mb-8">
       <div class="text-ink-navy" style="white-space: pre-wrap; overflow-wrap: anywhere;">{post.body}</div>
+      <div class="mt-4 flex items-start gap-4">
+        {user && writer ? (
+          <form method="POST" action={canonical}>
+            <input type="hidden" name="action" value="vote" />
+            <button type="submit" aria-pressed={voted ? 'true' : 'false'} class={`px-3 py-1 rounded-lg border text-sm ${voted ? 'bg-usda-emerald text-white border-usda-emerald' : 'border-border-soft text-ink-navy'}`}>▲ Upvote · {post.score}</button>
+          </form>
+        ) : (
+          <a href="/login" class="px-3 py-1 rounded-lg border border-border-soft text-sm text-ink-navy">▲ Upvote · {post.score}</a>
+        )}
+        {user && writer && <ReportForm action={canonical} postId={post.id} />}
+      </div>
+      {reported && <p role="status" class="mt-3 text-sm text-soft-slate">Thanks — the owner will review this report.</p>}
+      {voteError && <p role="alert" class="mt-3 p-3 rounded-md bg-danger-bg text-danger-text text-sm">{voteError}</p>}
     </article>
     <h2 class="text-xl font-bold text-ink-navy mb-4">{replies.length} {replies.length === 1 ? 'reply' : 'replies'}</h2>
-    <ReplyList replies={replies} />
+    <ReplyList replies={replies} canReport={writer} action={canonical} />
     <div class="mt-8">
       {user && canWrite(user) ? (
         <form method="POST" action={canonical} class="flex flex-col gap-3">
+          <input type="hidden" name="action" value="reply" />
           {error && <p role="alert" class="p-3 rounded-md bg-danger-bg text-danger-text text-sm">{error}</p>}
           <label for="body" class="text-sm font-medium text-ink-navy">Your reply</label>
           <textarea id="body" name="body" rows="4" minlength="2" maxlength="2000" class={field} required>{reply}</textarea>

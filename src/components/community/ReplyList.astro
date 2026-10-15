@@ -1,12 +1,14 @@
 ---
 import type { ReplyView } from '../../lib/community/posts';
-const { replies } = Astro.props as { replies: ReplyView[] };
+import ReportForm from './ReportForm.astro';
+const { replies, canReport = false, action = '' } = Astro.props as { replies: ReplyView[]; canReport?: boolean; action?: string };
 ---
 <ol class="flex flex-col gap-4">
   {replies.map((r) => (
     <li id={`reply-${r.id}`} class="bg-white border border-border-soft rounded-xl p-4">
       <p class="text-xs text-muted-text mb-1">{r.username} · {new Date(r.createdAt).toISOString().slice(0, 10)}</p>
       <div class="text-ink-navy" style="white-space: pre-wrap; overflow-wrap: anywhere;">{r.body}</div>
+      {canReport && <ReportForm action={action} replyId={r.id} />}
     </li>
   ))}
 </ol>

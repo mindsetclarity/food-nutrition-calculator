@@ -1,0 +1,16 @@
+---
+import { REPORT_REASONS } from '../../lib/community/reports';
+const { action, postId, replyId } = Astro.props as { action: string; postId?: number; replyId?: number };
+---
+<details class="text-xs text-muted-text mt-2">
+  <summary class="cursor-pointer hover:text-ink-navy">Report</summary>
+  <form method="POST" action={action} class="mt-2 flex flex-col gap-1">
+    <input type="hidden" name="action" value="report" />
+    {postId != null && <input type="hidden" name="post_id" value={postId} />}
+    {replyId != null && <input type="hidden" name="reply_id" value={replyId} />}
+    {REPORT_REASONS.map((r, i) => (
+      <label class="flex items-center gap-2"><input type="radio" name="reason" value={r.slug} required checked={i === 0} />{r.label}</label>
+    ))}
+    <div><button type="submit" class="underline text-ink-navy">Send report</button></div>
+  </form>
+</details>
