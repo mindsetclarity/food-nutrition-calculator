@@ -22,6 +22,7 @@ declare namespace Cloudflare {
     REFERRAL_LIMITER?: { limit(opts: { key: string }): Promise<{ success: boolean }> };
     TURNSTILE_SITE_KEY?: string;
     TURNSTILE_SECRET?: string;
+    RESEND_API_KEY?: string;
   }
 }
 

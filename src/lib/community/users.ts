@@ -53,3 +53,16 @@ export async function createEmailUser(
   // Task 6: issueReferralCode(db, user.id)
   return { ok: true, user };
 }
+
+export async function verifyEmail(db: Db, userId: number): Promise<void> {
+  await db.prepare('UPDATE users SET email_verified = 1 WHERE id = ?').bind(userId).run();
+}
+
+/** Sets a new password and signs the user out everywhere. */
+export async function setPassword(db: Db, userId: number, password: string): Promise<void> {
+  const hash = await hashPassword(password);
+  await db.batch([
+    db.prepare('UPDATE users SET password_hash = ? WHERE id = ?').bind(hash, userId),
+    db.prepare('DELETE FROM sessions WHERE user_id = ?').bind(userId),
+  ]);
+}

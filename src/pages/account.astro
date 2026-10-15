@@ -5,10 +5,13 @@ export const prerender = false;
 
 const user = Astro.locals.user;
 if (!user) return Astro.redirect('/login');
+const verified = Astro.url.searchParams.get('verified');
 ---
 <SiteLayout title="Your account | Food Nutrition Calculator" description="Your community account." noindex>
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <h1 class="text-3xl font-black text-ink-navy mb-4">Your account</h1>
+    {verified === '1' && <p role="status" class="mb-4 p-3 rounded-md bg-emerald-50 text-sm">Your email is verified.</p>}
+    {verified === '0' && <p role="alert" class="mb-4 p-3 rounded-md bg-danger-bg text-danger-text text-sm">That verification link is invalid or has expired.</p>}
     <p class="mb-6 text-soft-slate">Signed in as {user.username}</p>
     <form method="POST" action="/logout">
       <button type="submit" class="bg-white hover:bg-gray-50 text-ink-navy border border-gray-200 rounded-lg px-4 py-2 font-medium">Log out</button>

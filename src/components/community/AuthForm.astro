@@ -2,11 +2,12 @@
 interface Props {
   mode: 'signup' | 'login';
   error?: string;
+  notice?: string;
   email?: string;
   username?: string;
   siteKey?: string;
 }
-const { mode, error, email = '', username = '', siteKey } = Astro.props;
+const { mode, error, notice, email = '', username = '', siteKey } = Astro.props;
 const signup = mode === 'signup';
 const field = 'w-full px-4 py-2 rounded-lg border border-border-soft focus:outline-none focus:ring-2 focus:ring-usda-emerald/50';
 const label = 'text-sm font-medium text-ink-navy';
@@ -14,6 +15,7 @@ const link = 'text-[var(--color-primary)] hover:underline';
 ---
 <form method="POST" class="bg-white border border-border-soft p-6 rounded-2xl shadow-sm flex flex-col gap-4 max-w-md mx-auto">
   {error && <p role="alert" class="p-3 rounded-md bg-danger-bg text-danger-text text-sm">{error}</p>}
+  {notice && <p role="status" class="p-3 rounded-md bg-emerald-50 text-sm">{notice}</p>}
   <div class="flex flex-col gap-1">
     <label for="email" class={label}>Email</label>
     <input type="email" id="email" name="email" value={email} autocomplete="email" class={field} required />
@@ -42,6 +44,7 @@ const link = 'text-[var(--color-primary)] hover:underline';
   <button type="submit" class="bg-usda-emerald hover:bg-emerald-700 text-white shadow-premium rounded-lg px-4 py-2 font-medium">
     {signup ? 'Create account' : 'Log in'}
   </button>
+  {!signup && <a href="/forgot-password" class={link + " text-sm"}>Forgot password?</a>}
   <p class="text-sm text-soft-slate">
     {signup ? <>Already have an account? <a href="/login" class={link}>Log in</a></> : <>New here? <a href="/signup" class={link}>Create an account</a></>}
   </p>
