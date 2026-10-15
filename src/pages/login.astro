@@ -26,7 +26,7 @@ if (Astro.request.method === 'POST') {
     const user = await findUserByEmail(env.DB, email);
     // Google-only accounts have no password_hash and fail here with the same generic message.
     const ok = !!user?.password_hash && (await verifyPassword(password, user.password_hash));
-    if (user && ok && !user.is_banned) {
+    if (user && ok) {
       const token = await createSession(env.DB, user.id);
       return new Response(null, {
         status: 303,

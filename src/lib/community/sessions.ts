@@ -22,6 +22,16 @@ export async function getSessionUser(db: Db, token: string, now = Date.now()): P
     .first<User>();
 }
 
+/** Like getSessionUser, but a DB failure logs and counts as signed out so public pages keep working. */
+export async function getSessionUserSafe(db: Db, token: string): Promise<User | null> {
+  try {
+    return await getSessionUser(db, token);
+  } catch (e) {
+    console.error('session lookup failed', e);
+    return null;
+  }
+}
+
 export async function deleteSession(db: Db, token: string): Promise<void> {
   await db.prepare('DELETE FROM sessions WHERE token_hash = ?').bind(await sha256Hex(token)).run();
 }

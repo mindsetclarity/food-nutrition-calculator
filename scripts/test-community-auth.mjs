@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 import { createTestDb } from './lib/test-env.mjs';
 
 const { createEmailUser, findUserByEmail, getUserById, banUser, canWrite } = await import('../src/lib/community/users.ts');
-const { createSession, getSessionUser, deleteSession, sessionCookie, isSameOriginPost } = await import('../src/lib/community/sessions.ts');
+const { createSession, getSessionUser, deleteSession, sessionCookie, isSameOriginPost, getSessionUserSafe } = await import('../src/lib/community/sessions.ts');
 const { validateUsername } = await import('../src/lib/community/validate.ts');
 const db = await createTestDb();
 
@@ -42,6 +42,12 @@ assert.equal(canWrite(banned), false);
 assert.equal(canWrite(null), false);
 assert.equal(canWrite({ ...banned, is_banned: 0 }), true);
 assert.equal((await getSessionUser(db, t2)).is_banned, 1);
+
+const origErr = console.error; console.error = () => {};
+assert.equal(await getSessionUserSafe({ prepare() { throw new Error('D1 down'); } }, 'tok'), null);
+assert.equal(await getSessionUserSafe(undefined, 'tok'), null);
+console.error = origErr;
+assert.equal((await getSessionUserSafe(db, t2)).id, r.user.id);
 
 const c = sessionCookie('abc');
 assert.match(c, /^fnc_session=abc; HttpOnly; Secure; SameSite=Lax; Path=\/; Max-Age=2592000$/);

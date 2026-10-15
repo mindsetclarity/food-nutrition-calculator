@@ -1,6 +1,6 @@
 import type { MiddlewareHandler } from 'astro';
 import { env } from 'cloudflare:workers';
-import { getSessionUser, isSameOriginPost } from './lib/community/sessions';
+import { getSessionUserSafe, isSameOriginPost } from './lib/community/sessions';
 
 // public/_headers only applies to static asset responses on Cloudflare Workers.
 // Worker-rendered pages (everything under output: 'server') need these set here.
@@ -14,6 +14,7 @@ const SECURITY_HEADERS: Record<string, string> = {
 
 export const onRequest: MiddlewareHandler = async (context, next) => {
   context.locals.user = null;
+  let blocked: Response | null = null;
 
   if (!context.isPrerendered) {
     // /api/referral/ is server-to-server (Bearer auth), so it has no browser Origin.
@@ -21,14 +22,14 @@ export const onRequest: MiddlewareHandler = async (context, next) => {
       !context.url.pathname.startsWith('/api/referral/') &&
       !isSameOriginPost(context.request, context.url.origin)
     ) {
-      return new Response('Forbidden', { status: 403 });
+      blocked = new Response('Forbidden', { status: 403 });
     }
 
-    const token = context.cookies.get('fnc_session')?.value;
-    if (token) context.locals.user = await getSessionUser(env.DB, token);
+    const token = blocked ? undefined : context.cookies.get('fnc_session')?.value;
+    if (token) context.locals.user = await getSessionUserSafe(env.DB, token);
   }
 
-  const response = await next();
+  const response = blocked ?? (await next());
 
   for (const [name, value] of Object.entries(SECURITY_HEADERS)) {
     if (!response.headers.has(name)) response.headers.set(name, value);
