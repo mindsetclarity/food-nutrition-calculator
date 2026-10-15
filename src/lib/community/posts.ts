@@ -1,5 +1,5 @@
 import type { Post, TopicSlug, User } from './db';
-import { canWrite, getUserById } from './users';
+import { canWrite, getUserById, isAdmin } from './users';
 import { validatePost, validateReply } from './validate';
 import { savePhotos, validatePhotos } from './photos';
 
@@ -19,6 +19,7 @@ export interface PostSummary {
 }
 export interface ReplyView {
   id: number;
+  userId: number;
   body: string;
   username: string;
   createdAt: number;
@@ -145,12 +146,12 @@ export async function createReply(
 export async function listReplies(db: Db, postId: number): Promise<ReplyView[]> {
   const { results } = await db
     .prepare(
-      `SELECT r.id, r.body, u.username, r.created_at FROM replies r JOIN users u ON u.id = r.user_id
+      `SELECT r.id, r.user_id, r.body, u.username, r.created_at FROM replies r JOIN users u ON u.id = r.user_id
        WHERE r.post_id = ? AND r.deleted_at IS NULL AND u.is_banned = 0 ORDER BY r.created_at, r.id`,
     )
     .bind(postId)
     .all<any>();
-  return results.map((r) => ({ id: r.id, body: r.body, username: r.username, createdAt: r.created_at }));
+  return results.map((r) => ({ id: r.id, userId: r.user_id, body: r.body, username: r.username, createdAt: r.created_at }));
 }
 
 export async function hasVoted(db: Db, userId: number, postId: number): Promise<boolean> {
@@ -176,4 +177,35 @@ export async function toggleVote(
   ]);
   const score = (await db.prepare('SELECT score FROM posts WHERE id = ?').bind(postId).first<number>('score')) ?? 0;
   return { ok: true, voted: !had, score };
+}
+
+type DeleteResult = { ok: true } | { ok: false; error: string };
+const DENIED: DeleteResult = { ok: false, error: 'Not allowed.' };
+
+/** Soft-deletes a post (author or owner only), removes its photos from R2 and resolves its open reports. */
+export async function deletePost(db: Db, bucket: R2Bucket, postId: number, actor: User, adminEmail: string | undefined): Promise<DeleteResult> {
+  const post = await db.prepare('SELECT user_id FROM posts WHERE id = ? AND deleted_at IS NULL').bind(postId).first<{ user_id: number }>();
+  if (!post || (post.user_id !== actor.id && !isAdmin(actor, adminEmail))) return DENIED;
+  const now = Date.now();
+  const { results } = await db.prepare('SELECT key FROM photos WHERE post_id = ?').bind(postId).all<{ key: string }>();
+  // Rows first: a leftover R2 object is unreachable, a row pointing at a deleted object is not.
+  await db.batch([
+    db.prepare('UPDATE posts SET deleted_at = ? WHERE id = ?').bind(now, postId),
+    db.prepare('DELETE FROM photos WHERE post_id = ?').bind(postId),
+    db.prepare('UPDATE reports SET resolved_at = ?1 WHERE resolved_at IS NULL AND (post_id = ?2 OR reply_id IN (SELECT id FROM replies WHERE post_id = ?2))').bind(now, postId),
+  ]);
+  await Promise.allSettled(results.map((r) => bucket.delete(r.key)));
+  return { ok: true };
+}
+
+/** Soft-deletes a reply (author or owner only) and resolves its open reports. */
+export async function deleteReply(db: Db, replyId: number, actor: User, adminEmail: string | undefined): Promise<DeleteResult> {
+  const reply = await db.prepare('SELECT user_id FROM replies WHERE id = ? AND deleted_at IS NULL').bind(replyId).first<{ user_id: number }>();
+  if (!reply || (reply.user_id !== actor.id && !isAdmin(actor, adminEmail))) return DENIED;
+  const now = Date.now();
+  await db.batch([
+    db.prepare('UPDATE replies SET deleted_at = ? WHERE id = ?').bind(now, replyId),
+    db.prepare('UPDATE reports SET resolved_at = ? WHERE reply_id = ? AND resolved_at IS NULL').bind(now, replyId),
+  ]);
+  return { ok: true };
 }

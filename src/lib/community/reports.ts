@@ -77,6 +77,18 @@ export async function listOpenReports(db: Db): Promise<OpenReport[]> {
   return out;
 }
 
+/** Which post/reply a report points at and who wrote it (admin actions on a report). */
+export async function getReportTarget(db: Db, id: number) {
+  return db
+    .prepare(
+      `SELECT rp.reply_id, COALESCE(rp.post_id, r.post_id) AS post_id, COALESCE(r.user_id, p.user_id) AS author_id
+       FROM reports rp LEFT JOIN replies r ON r.id = rp.reply_id
+       LEFT JOIN posts p ON p.id = rp.post_id WHERE rp.id = ?`,
+    )
+    .bind(id)
+    .first<{ reply_id: number | null; post_id: number; author_id: number }>();
+}
+
 export async function resolveReport(db: Db, id: number, now = Date.now()): Promise<void> {
   await db.prepare('UPDATE reports SET resolved_at = ? WHERE id = ? AND resolved_at IS NULL').bind(now, id).run();
 }

@@ -6,11 +6,11 @@ import Button from '../../../components/ui/Button.astro';
 import ReplyList from '../../../components/community/ReplyList.astro';
 import Disclaimer from '../../../components/community/Disclaimer.astro';
 import { TOPICS } from '../../../lib/community/db';
-import { canWrite } from '../../../lib/community/users';
+import { canWrite, isAdmin } from '../../../lib/community/users';
 import { listPostPhotos } from '../../../lib/community/photos';
 import ReportForm from '../../../components/community/ReportForm.astro';
 import { reportItem } from '../../../lib/community/reports';
-import { getPost, listReplies, createReply, postUrl, toggleVote, hasVoted } from '../../../lib/community/posts';
+import { getPost, listReplies, createReply, postUrl, toggleVote, hasVoted, deletePost, deleteReply } from '../../../lib/community/posts';
 
 export const prerender = false;
 
@@ -34,6 +34,14 @@ if (Astro.request.method === 'POST') {
     const r = await toggleVote(env.DB, user.id, post.id);
     if (r.ok) return Astro.redirect(canonical, 303);
     voteError = r.error;
+  } else if (action === 'delete-post' || action === 'delete-reply') {
+    if (!user) return Astro.redirect('/login', 303);
+    const r =
+      action === 'delete-post'
+        ? await deletePost(env.DB, env.PHOTOS, post.id, user, env.ADMIN_EMAIL)
+        : await deleteReply(env.DB, Number(form.get('reply_id')), user, env.ADMIN_EMAIL);
+    if (r.ok) return Astro.redirect(action === 'delete-post' ? `/community/${topic.slug}` : canonical, 303);
+    voteError = r.error;
   } else if (action === 'report') {
     if (!user) return Astro.redirect('/login', 303);
     const num = (k: string) => (form.get(k) ? Number(form.get(k)) : undefined);
@@ -49,7 +57,8 @@ if (Astro.request.method === 'POST') {
 }
 const voted = user ? await hasVoted(env.DB, user.id, post.id) : false;
 const writer = canWrite(user);
-const photos = await listPostPhotos(env.DB, post.id, user);
+const owner = isAdmin(user, env.ADMIN_EMAIL);
+const photos = await listPostPhotos(env.DB, post.id, user, owner);
 const replies = await listReplies(env.DB, post.id);
 const description = post.body.replace(/\s+/g, ' ').trim().slice(0, 155);
 const field = 'w-full px-4 py-2 rounded-lg border border-border-soft focus:outline-none focus:ring-2 focus:ring-usda-emerald/50';
@@ -79,12 +88,21 @@ const field = 'w-full px-4 py-2 rounded-lg border border-border-soft focus:outli
           <a href="/login" class="px-3 py-1 rounded-lg border border-border-soft text-sm text-ink-navy">▲ Upvote · {post.score}</a>
         )}
         {user && writer && <ReportForm action={canonical} />}
+        {user && (owner || user.id === post.user_id) && (
+          <details class="text-sm">
+            <summary class="cursor-pointer text-soft-slate py-1">Delete</summary>
+            <form method="POST" action={canonical} class="mt-2">
+              <input type="hidden" name="action" value="delete-post" />
+              <button type="submit" class="px-3 py-1 rounded-lg border border-border-soft text-danger-text">Confirm delete post</button>
+            </form>
+          </details>
+        )}
       </div>
       {reported && <p role="status" class="mt-3 text-sm text-soft-slate">Thanks — the owner will review this report.</p>}
       {voteError && <p role="alert" class="mt-3 p-3 rounded-md bg-danger-bg text-danger-text text-sm">{voteError}</p>}
     </article>
     <h2 class="text-xl font-bold text-ink-navy mb-4">{replies.length} {replies.length === 1 ? 'reply' : 'replies'}</h2>
-    <ReplyList replies={replies} canReport={writer} action={canonical} />
+    <ReplyList replies={replies} canReport={writer} action={canonical} viewerId={user?.id ?? 0} isOwner={owner} />
     <div class="mt-8">
       {user && canWrite(user) ? (
         <form method="POST" action={canonical} class="flex flex-col gap-3">

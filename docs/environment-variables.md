@@ -23,6 +23,7 @@ Set as Worker secrets (`wrangler secret put NAME`) in production; use `.dev.vars
 | `GOOGLE_CLIENT_ID` | Optional | Google sign-in | Unset hides the Google button. |
 | `GOOGLE_CLIENT_SECRET` | Optional | Google sign-in token exchange | Required if `GOOGLE_CLIENT_ID` is set. |
 | `BHASKAR_API_SECRET` | Required for the Bhaskar API | Bearer secret the Bhaskar app sends to `/api/referral/*` | Long random string. Unset = every request gets 401. Share only with the Bhaskar app. |
+| `ADMIN_EMAIL` | Required in prod | Owner account for `/admin`: the verified account with this email (`mindsetclarityofficial@gmail.com`) | Plain var or secret. Unset = nobody is admin and `/admin` returns 404. |
 
 ## Bhaskar API
 

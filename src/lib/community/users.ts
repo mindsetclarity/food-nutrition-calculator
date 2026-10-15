@@ -21,6 +21,26 @@ export async function banUser(db: Db, id: number): Promise<void> {
   await db.prepare('UPDATE users SET is_banned = 1 WHERE id = ?').bind(id).run();
 }
 
+export async function unbanUser(db: Db, id: number): Promise<void> {
+  await db.prepare('UPDATE users SET is_banned = 0 WHERE id = ?').bind(id).run();
+}
+
+/** Owner = verified account whose email equals ADMIN_EMAIL (unset/empty = nobody). */
+export function isAdmin(user: User | null, adminEmail: string | undefined): boolean {
+  const want = adminEmail?.trim().toLowerCase();
+  return !!user && !!want && !!user.email_verified && user.email.trim().toLowerCase() === want;
+}
+
+/** Admin user search by username or email (substring, LIKE wildcards escaped), max 50. */
+export async function searchUsers(db: Db, q: string): Promise<User[]> {
+  const like = `%${q.trim().replace(/[\\%_]/g, '\\$&')}%`;
+  const { results } = await db
+    .prepare("SELECT * FROM users WHERE username LIKE ?1 ESCAPE '\\' OR email LIKE ?1 ESCAPE '\\' ORDER BY created_at DESC, id DESC LIMIT 50")
+    .bind(like)
+    .all<User>();
+  return results;
+}
+
 export function canWrite(user: User | null): boolean {
   return !!user && !user.is_banned && !!user.username;
 }
