@@ -6,6 +6,7 @@ import Disclaimer from '../../components/community/Disclaimer.astro';
 import { TOPICS } from '../../lib/community/db';
 import { canWrite } from '../../lib/community/users';
 import { createPost } from '../../lib/community/posts';
+import PhotoInput from '../../components/community/PhotoInput.astro';
 import { verifyTurnstile } from '../../lib/community/turnstile';
 
 export const prerender = false;
@@ -26,7 +27,8 @@ if (canWrite(user) && Astro.request.method === 'POST') {
   if (!(await verifyTurnstile(env.TURNSTILE_SECRET ?? '', String(form.get('cf-turnstile-response') ?? ''), ip))) {
     error = 'Verification failed. Please try again.';
   } else {
-    const r = await createPost(env.DB, user, { topic, title, body });
+    const files = form.getAll('photos').filter((f): f is File => f instanceof File && f.size > 0);
+    const r = await createPost(env.DB, user, { topic, title, body, files }, Date.now(), env.PHOTOS);
     if (r.ok) return Astro.redirect(r.url, 303);
     error = r.error;
   }
@@ -39,7 +41,7 @@ const siteKey = env.TURNSTILE_SITE_KEY;
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <h1 class="text-3xl font-black text-ink-navy text-center mb-8">Start a post</h1>
     {canWrite(user) ? (
-      <form method="POST" class="bg-white border border-border-soft p-6 rounded-2xl shadow-sm flex flex-col gap-4 max-w-2xl mx-auto">
+      <form method="POST" enctype="multipart/form-data" class="bg-white border border-border-soft p-6 rounded-2xl shadow-sm flex flex-col gap-4 max-w-2xl mx-auto">
         {error && <p role="alert" class="p-3 rounded-md bg-danger-bg text-danger-text text-sm">{error}</p>}
         <div class="flex flex-col gap-1">
           <label for="topic" class={label}>Topic</label>
@@ -56,6 +58,7 @@ const siteKey = env.TURNSTILE_SITE_KEY;
           <label for="body" class={label}>Post</label>
           <textarea id="body" name="body" rows="8" minlength="20" maxlength="5000" class={field} required>{body}</textarea>
         </div>
+        <PhotoInput verified={!!user.email_verified} />
         {siteKey && (
           <>
             <div class="cf-turnstile" data-sitekey={siteKey}></div>

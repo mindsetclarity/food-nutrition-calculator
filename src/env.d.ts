@@ -13,11 +13,22 @@ interface D1Database {
   batch(statements: D1PreparedStatement[]): Promise<{ meta: { changes: number } }[]>;
 }
 
+// Same for the slice of R2 we use.
+interface R2ObjectBody {
+  body: ReadableStream;
+  httpMetadata?: { contentType?: string };
+}
+interface R2Bucket {
+  put(key: string, value: ArrayBuffer | Uint8Array, options?: { httpMetadata?: { contentType?: string } }): Promise<unknown>;
+  get(key: string): Promise<R2ObjectBody | null>;
+  delete(key: string): Promise<void>;
+}
+
 // Bindings and secrets, read via `import { env } from 'cloudflare:workers'`.
 declare namespace Cloudflare {
   interface Env {
     DB: D1Database;
-    PHOTOS: unknown;
+    PHOTOS: R2Bucket;
     AUTH_LIMITER?: { limit(opts: { key: string }): Promise<{ success: boolean }> };
     REFERRAL_LIMITER?: { limit(opts: { key: string }): Promise<{ success: boolean }> };
     TURNSTILE_SITE_KEY?: string;

@@ -7,6 +7,7 @@ import ReplyList from '../../../components/community/ReplyList.astro';
 import Disclaimer from '../../../components/community/Disclaimer.astro';
 import { TOPICS } from '../../../lib/community/db';
 import { canWrite } from '../../../lib/community/users';
+import { listPostPhotos } from '../../../lib/community/photos';
 import ReportForm from '../../../components/community/ReportForm.astro';
 import { reportItem } from '../../../lib/community/reports';
 import { getPost, listReplies, createReply, postUrl, toggleVote, hasVoted } from '../../../lib/community/posts';
@@ -48,6 +49,7 @@ if (Astro.request.method === 'POST') {
 }
 const voted = user ? await hasVoted(env.DB, user.id, post.id) : false;
 const writer = canWrite(user);
+const photos = await listPostPhotos(env.DB, post.id, user);
 const replies = await listReplies(env.DB, post.id);
 const description = post.body.replace(/\s+/g, ' ').trim().slice(0, 155);
 const field = 'w-full px-4 py-2 rounded-lg border border-border-soft focus:outline-none focus:ring-2 focus:ring-usda-emerald/50';
@@ -57,6 +59,16 @@ const field = 'w-full px-4 py-2 rounded-lg border border-border-soft focus:outli
   <main class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
     <article class="bg-white border border-border-soft rounded-xl p-5 mb-8">
       <div class="text-ink-navy" style="white-space: pre-wrap; overflow-wrap: anywhere;">{post.body}</div>
+      {photos.length > 0 && (
+        <div class="mt-4 grid grid-cols-2 gap-3">
+          {photos.map((p, i) => (
+            <figure>
+              <img src={`/community/photo/${p.key}`} alt={`Photo ${i + 1} for: ${post.title}`} loading="lazy" class="w-full rounded-lg border border-border-soft object-cover" style="aspect-ratio: 4 / 3;" />
+              {p.status === 'pending' && <figcaption class="mt-1 text-xs text-soft-slate">Waiting for approval</figcaption>}
+            </figure>
+          ))}
+        </div>
+      )}
       <div class="mt-4 flex items-start gap-4">
         {user && writer ? (
           <form method="POST" action={canonical}>

@@ -2,9 +2,14 @@
 import type { PostSummary } from '../../lib/community/posts';
 const { post } = Astro.props as { post: PostSummary };
 ---
-<li class="py-3 border-b border-border-soft last:border-0">
+<li class="py-3 border-b border-border-soft last:border-0 flex gap-3 items-start">
+  {post.firstPhotoKey && (
+    <img src={`/community/photo/${post.firstPhotoKey}`} alt={`Photo for: ${post.title}`} width="56" height="56" loading="lazy" class="rounded-md object-cover shrink-0" style="width:56px;height:56px;" />
+  )}
+  <div>
   <a href={post.url} class="font-semibold text-ink-navy hover:text-usda-emerald">{post.title}</a>
   <p class="text-xs text-muted-text">
     by {post.username} · {new Date(post.createdAt).toISOString().slice(0, 10)} · {post.replyCount} {post.replyCount === 1 ? 'reply' : 'replies'}{post.score > 0 && ` · ${post.score} points`}
   </p>
+  </div>
 </li>

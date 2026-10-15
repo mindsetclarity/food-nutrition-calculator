@@ -1,0 +1,39 @@
+---
+const { verified } = Astro.props as { verified: boolean };
+---
+<div class="flex flex-col gap-1">
+  <label for="photos" class="text-sm font-medium text-ink-navy">Photos (optional)</label>
+  {verified ? (
+    <>
+      <input type="file" id="photos" name="photos" accept="image/jpeg,image/png,image/webp" multiple data-photo-input class="text-sm" />
+      <p class="text-xs text-muted-text">Up to 4 photos, 5 MB each. JPEG, PNG or WebP. Photos from new accounts are reviewed before they appear.</p>
+    </>
+  ) : (
+    <p class="text-sm text-soft-slate">Verify your email to add photos.</p>
+  )}
+</div>
+<script>
+  // Shrink photos in the browser (max 1600px long edge, JPEG 0.85). Any failure leaves the originals; the server re-validates.
+  const input = document.querySelector<HTMLInputElement>('[data-photo-input]');
+  async function shrink(file: File): Promise<File> {
+    const bmp = await createImageBitmap(file);
+    const scale = Math.min(1, 1600 / Math.max(bmp.width, bmp.height));
+    const canvas = document.createElement('canvas');
+    canvas.width = Math.round(bmp.width * scale);
+    canvas.height = Math.round(bmp.height * scale);
+    canvas.getContext('2d')!.drawImage(bmp, 0, 0, canvas.width, canvas.height);
+    const blob = await new Promise<Blob | null>((r) => canvas.toBlob(r, 'image/jpeg', 0.85));
+    if (!blob) throw new Error('encode');
+    return new File([blob], file.name.replace(/\.\w+$/, '') + '.jpg', { type: 'image/jpeg' });
+  }
+  input?.addEventListener('change', async () => {
+    try {
+      const files = await Promise.all([...(input.files ?? [])].map(shrink));
+      const dt = new DataTransfer();
+      files.forEach((f) => dt.items.add(f));
+      input.files = dt.files;
+    } catch {
+      /* keep originals */
+    }
+  });
+</script>
