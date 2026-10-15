@@ -22,24 +22,28 @@ export interface OpenReport {
 export async function reportItem(
   db: Db,
   reporterId: number,
-  { postId, replyId, reason }: { postId?: number; replyId?: number; reason: string },
+  { postId, replyId, reason }: { postId: number; replyId?: number; reason: string },
 ): Promise<{ ok: true } | { ok: false; error: string }> {
-  if ((postId == null) === (replyId == null)) return { ok: false, error: 'Nothing to report.' };
   if (!REPORT_REASONS.some((r) => r.slug === reason)) return { ok: false, error: 'Please choose a reason.' };
   if (!canWrite(await getUserById(db, reporterId))) return { ok: false, error: 'Your account cannot report right now.' };
-  const live =
-    postId != null
-      ? await db.prepare('SELECT 1 FROM posts WHERE id = ? AND deleted_at IS NULL').bind(postId).first()
-      : await db.prepare('SELECT 1 FROM replies WHERE id = ? AND deleted_at IS NULL').bind(replyId).first();
+  const post = await getPost(db, postId);
+  let live = !!post && !post.deleted_at && !post.author_banned;
+  if (live && replyId != null) {
+    const r = await db
+      .prepare('SELECT 1 FROM replies r JOIN users u ON u.id = r.user_id WHERE r.id = ? AND r.post_id = ? AND r.deleted_at IS NULL AND u.is_banned = 0')
+      .bind(replyId, postId)
+      .first();
+    live = !!r;
+  }
   if (!live) return { ok: false, error: 'That item no longer exists.' };
-  // One open report per reporter per item: insert only if none exists.
+  // Reply reports store only reply_id (post is derived). One open report per reporter per item: insert only if none exists.
   await db
     .prepare(
       `INSERT INTO reports (reporter_id, post_id, reply_id, reason, created_at)
        SELECT ?1, ?2, ?3, ?4, ?5 WHERE NOT EXISTS (
          SELECT 1 FROM reports WHERE reporter_id = ?1 AND resolved_at IS NULL AND post_id IS ?2 AND reply_id IS ?3)`,
     )
-    .bind(reporterId, postId ?? null, replyId ?? null, reason, Date.now())
+    .bind(reporterId, replyId == null ? postId : null, replyId ?? null, reason, Date.now())
     .run();
   return { ok: true };
 }

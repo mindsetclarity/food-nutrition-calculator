@@ -36,7 +36,7 @@ if (Astro.request.method === 'POST') {
   } else if (action === 'report') {
     if (!user) return Astro.redirect('/login', 303);
     const num = (k: string) => (form.get(k) ? Number(form.get(k)) : undefined);
-    const r = await reportItem(env.DB, user.id, { postId: num('post_id'), replyId: num('reply_id'), reason: String(form.get('reason') ?? '') });
+    const r = await reportItem(env.DB, user.id, { postId: post.id, replyId: num('reply_id'), reason: String(form.get('reason') ?? '') });
     if (r.ok) return Astro.redirect(`${canonical}?reported=1`, 303);
     voteError = r.error;
   } else {
@@ -66,7 +66,7 @@ const field = 'w-full px-4 py-2 rounded-lg border border-border-soft focus:outli
         ) : (
           <a href="/login" class="px-3 py-1 rounded-lg border border-border-soft text-sm text-ink-navy">▲ Upvote · {post.score}</a>
         )}
-        {user && writer && <ReportForm action={canonical} postId={post.id} />}
+        {user && writer && <ReportForm action={canonical} />}
       </div>
       {reported && <p role="status" class="mt-3 text-sm text-soft-slate">Thanks — the owner will review this report.</p>}
       {voteError && <p role="alert" class="mt-3 p-3 rounded-md bg-danger-bg text-danger-text text-sm">{voteError}</p>}

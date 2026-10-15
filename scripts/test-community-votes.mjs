@@ -49,14 +49,26 @@ assert.equal((await reportItem(db, b.id, { postId: post.id, reason: 'spam' })).o
 assert.equal((await reportItem(db, b.id, { postId: post.id, reason: 'spam' })).ok, true);
 assert.equal((await db.prepare('SELECT COUNT(*) n FROM reports').first()).n, 1, 'duplicate -> no new row');
 assert.equal((await reportItem(db, a.id, { postId: post.id, reason: 'other' })).ok, true);
-assert.equal((await reportItem(db, a.id, { replyId: reply.id, reason: 'harmful' })).ok, true);
-assert.equal((await reportItem(db, a.id, { postId: post.id, replyId: reply.id, reason: 'spam' })).ok, false, 'both ids');
-assert.equal((await reportItem(db, a.id, { reason: 'spam' })).ok, false, 'neither id');
+assert.equal((await reportItem(db, a.id, { postId: post.id, replyId: reply.id, reason: 'harmful' })).ok, true);
 assert.equal((await reportItem(db, a.id, { postId: post.id, reason: 'bogus' })).ok, false, 'bad reason');
 assert.equal((await reportItem(db, a.id, { postId: 999999, reason: 'spam' })).ok, false, 'missing post');
-assert.equal((await reportItem(db, a.id, { replyId: 999999, reason: 'spam' })).ok, false, 'missing reply');
+assert.equal((await reportItem(db, a.id, { postId: post.id, replyId: 999999, reason: 'spam' })).ok, false, 'missing reply');
 assert.equal((await reportItem(db, c.id, { postId: post.id, reason: 'spam' })).ok, false, 'banned reporter');
 assert.equal((await reportItem(db, b.id, { postId: bp.id, reason: 'spam' })).ok, false, 'deleted post');
+
+// context binding
+const other = await createPost(db, b, { topic: 'diet', title: 'Other post', body });
+assert.equal((await reportItem(db, a.id, { postId: other.id, replyId: reply.id, reason: 'spam' })).ok, false, 'reply from another post');
+const dr = await createReply(db, b, post.id, 'to be deleted');
+await db.prepare('UPDATE replies SET deleted_at = 1 WHERE id = ?').bind(dr.id).run();
+assert.equal((await reportItem(db, a.id, { postId: post.id, replyId: dr.id, reason: 'spam' })).ok, false, 'deleted reply');
+const d = await mk('dave');
+const dp = await createPost(db, d, { topic: 'diet', title: 'Dave post', body });
+const dpr = await createReply(db, d, post.id, 'dave reply here');
+await banUser(db, d.id);
+assert.equal((await reportItem(db, a.id, { postId: dp.id, reason: 'spam' })).ok, false, 'banned author post');
+assert.equal((await reportItem(db, a.id, { postId: post.id, replyId: dpr.id, reason: 'spam' })).ok, false, 'banned author reply');
+assert.equal((await db.prepare('SELECT COUNT(*) n FROM reports').first()).n, 3);
 
 const open = await listOpenReports(db);
 assert.equal(open.length, 3);
@@ -68,7 +80,7 @@ assert.equal(open[2].excerpt, 'Vote on me');
 await resolveReport(db, open[0].id);
 assert.equal((await listOpenReports(db)).length, 2);
 // after resolving, the same reporter may report again
-assert.equal((await reportItem(db, a.id, { replyId: reply.id, reason: 'harmful' })).ok, true);
+assert.equal((await reportItem(db, a.id, { postId: post.id, replyId: reply.id, reason: 'harmful' })).ok, true);
 assert.equal((await listOpenReports(db)).length, 3);
 
 console.log('community votes/reports tests passed');
