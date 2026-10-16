@@ -75,3 +75,14 @@ CREATE TABLE feedback (
   created_at INTEGER NOT NULL,
   replied_at INTEGER
 );
+-- Indexes for the hot lookups (D1 bills rows read; without these the queries below full-scan).
+CREATE INDEX idx_replies_post_created ON replies(post_id, created_at);
+CREATE INDEX idx_replies_user_created ON replies(user_id, created_at);
+CREATE INDEX idx_photos_post ON photos(post_id);
+CREATE INDEX idx_photos_pending ON photos(status) WHERE status = 'pending';
+CREATE INDEX idx_votes_post ON votes(post_id);
+CREATE INDEX idx_posts_user_created ON posts(user_id, created_at);
+CREATE INDEX idx_sessions_user ON sessions(user_id);
+CREATE INDEX idx_email_tokens_user ON email_tokens(user_id);
+CREATE INDEX idx_feedback_user_created ON feedback(user_id, created_at);
+CREATE INDEX idx_reports_resolved ON reports(resolved_at);
