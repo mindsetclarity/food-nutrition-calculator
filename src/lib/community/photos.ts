@@ -1,5 +1,6 @@
 import type { User } from './db';
 import { randomToken } from './crypto';
+import { isAdmin } from './users';
 
 type Db = D1Database;
 const DAY = 86400000;
@@ -204,4 +205,22 @@ export async function approvePhoto(db: Db, key: string): Promise<void> {
 export async function rejectPhoto(db: Db, bucket: R2Bucket, key: string): Promise<void> {
   await db.prepare("UPDATE photos SET status = 'rejected' WHERE key = ?").bind(key).run();
   await bucket.delete(key);
+}
+
+/** Removes one photo (row, then R2 object). Only the post's author or the owner may do this. */
+export async function removePhoto(
+  db: Db,
+  bucket: R2Bucket,
+  key: string,
+  actor: User,
+  adminEmail: string | undefined,
+): Promise<{ ok: true } | { ok: false; error: string }> {
+  const row = await db
+    .prepare('SELECT p.user_id FROM photos ph JOIN posts p ON p.id = ph.post_id WHERE ph.key = ?')
+    .bind(key)
+    .first<{ user_id: number }>();
+  if (!row || (row.user_id !== actor.id && !isAdmin(actor, adminEmail))) return { ok: false, error: 'Not allowed.' };
+  await db.prepare('DELETE FROM photos WHERE key = ?').bind(key).run();
+  await bucket.delete(key);
+  return { ok: true };
 }

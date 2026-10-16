@@ -57,10 +57,15 @@ assert.equal(await sendEmail('key', { to: 'a@x.com', subject: 'S', text: 'T' }),
 assert.equal(call.url, 'https://api.resend.com/emails');
 assert.equal(call.init.headers.Authorization, 'Bearer key');
 assert.equal(JSON.parse(call.init.body).from, 'Food Nutrition Calculator <community@foodnutritioncalculator.com>');
+const realError = console.error;
+const logged = [];
+console.error = (...a) => logged.push(a.join(' '));
 globalThis.fetch = async () => new Response('no', { status: 422 });
 assert.equal(await sendEmail('key', { to: 'a@x.com', subject: 'S', text: 'T' }), false);
 globalThis.fetch = async () => { throw new Error('net'); };
 assert.equal(await sendEmail('key', { to: 'a@x.com', subject: 'S', text: 'T' }), false);
 globalThis.fetch = realFetch;
+console.error = realError;
+assert.ok(logged[0].includes('422') && logged[1].includes('failed'), 'failures are logged');
 
 console.log('community tokens tests passed');

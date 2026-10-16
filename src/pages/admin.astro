@@ -6,6 +6,7 @@ import { deletePost, deleteReply, getPost, postUrl } from '../lib/community/post
 import { listOpenReports, resolveReport, getReportTarget } from '../lib/community/reports';
 import { listPendingPhotos, approvePhoto, rejectPhoto } from '../lib/community/photos';
 import { listAllFeedback, replyToFeedback } from '../lib/community/feedback';
+import { toId } from '../lib/community/validate';
 
 export const prerender = false;
 
@@ -20,7 +21,7 @@ const back = `/admin?tab=${tab}${tab === 'users' && q ? `&q=${encodeURIComponent
 if (Astro.request.method === 'POST') {
   const form = await Astro.request.formData();
   const action = String(form.get('action') ?? '');
-  const id = Number(form.get('id'));
+  const id = toId(form.get('id')) ?? 0; // 0 matches no row
   const key = String(form.get('key') ?? '');
   if (action === 'dismiss-report') await resolveReport(env.DB, id);
   else if (action === 'delete-item' || action === 'ban-author') {

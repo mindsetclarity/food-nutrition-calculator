@@ -7,7 +7,8 @@ import ReplyList from '../../../components/community/ReplyList.astro';
 import Disclaimer from '../../../components/community/Disclaimer.astro';
 import { TOPICS } from '../../../lib/community/db';
 import { canWrite, isAdmin } from '../../../lib/community/users';
-import { listPostPhotos } from '../../../lib/community/photos';
+import { listPostPhotos, removePhoto } from '../../../lib/community/photos';
+import { toId } from '../../../lib/community/validate';
 import ReportForm from '../../../components/community/ReportForm.astro';
 import { buildDiscussionForumPostingSchema } from '../../../lib/seo/schema';
 import { siteConfig } from '../../../lib/seo/siteConfig';
@@ -41,13 +42,17 @@ if (Astro.request.method === 'POST') {
     const r =
       action === 'delete-post'
         ? await deletePost(env.DB, env.PHOTOS, post.id, user, env.ADMIN_EMAIL)
-        : await deleteReply(env.DB, Number(form.get('reply_id')), user, env.ADMIN_EMAIL);
+        : await deleteReply(env.DB, toId(form.get('reply_id')) ?? 0, user, env.ADMIN_EMAIL);
     if (r.ok) return Astro.redirect(action === 'delete-post' ? `/community/${topic.slug}` : canonical, 303);
+    voteError = r.error;
+  } else if (action === 'remove-photo') {
+    if (!user) return Astro.redirect('/login', 303);
+    const r = await removePhoto(env.DB, env.PHOTOS, String(form.get('key') ?? ''), user, env.ADMIN_EMAIL);
+    if (r.ok) return Astro.redirect(canonical, 303);
     voteError = r.error;
   } else if (action === 'report') {
     if (!user) return Astro.redirect('/login', 303);
-    const num = (k: string) => (form.get(k) ? Number(form.get(k)) : undefined);
-    const r = await reportItem(env.DB, user.id, { postId: post.id, replyId: num('reply_id'), reason: String(form.get('reason') ?? '') });
+    const r = await reportItem(env.DB, user.id, { postId: post.id, replyId: toId(form.get('reply_id')), reason: String(form.get('reason') ?? '') });
     if (r.ok) return Astro.redirect(`${canonical}?reported=1`, 303);
     voteError = r.error;
   } else {
@@ -87,6 +92,13 @@ const field = 'w-full px-4 py-2 rounded-lg border border-border-soft focus:outli
             <figure>
               <img src={`/community/photo/${p.key}`} alt={`Photo ${i + 1} for: ${post.title}`} loading="lazy" class="w-full rounded-lg border border-border-soft object-cover" style="aspect-ratio: 4 / 3;" />
               {p.status === 'pending' && <figcaption class="mt-1 text-xs text-soft-slate">Waiting for approval</figcaption>}
+              {user && (owner || user.id === post.user_id) && (
+                <form method="POST" action={canonical} class="mt-1">
+                  <input type="hidden" name="action" value="remove-photo" />
+                  <input type="hidden" name="key" value={p.key} />
+                  <button type="submit" class="text-xs text-danger-text underline">Remove photo</button>
+                </form>
+              )}
             </figure>
           ))}
         </div>

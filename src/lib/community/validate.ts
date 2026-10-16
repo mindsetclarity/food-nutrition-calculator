@@ -38,3 +38,12 @@ export function validateReply(body: string, user: User, now = Date.now()): Resul
   if (linkBlocked(text, user, now)) return { ok: false, error: LINK_ERROR };
   return { ok: true, value: text };
 }
+
+/** A form/query id: only a safe positive integer in plain decimal, else undefined (treat as missing). */
+export function toId(v: unknown): number | undefined {
+  const n = typeof v === 'number' ? v : typeof v === 'string' && /^\d+$/.test(v) ? Number(v) : NaN;
+  return Number.isSafeInteger(n) && n > 0 ? n : undefined;
+}
+
+/** `?page=` value: safe positive integer capped at 10000, else 1. */
+export const toPage = (v: unknown): number => Math.min(toId(v) ?? 1, 10000);

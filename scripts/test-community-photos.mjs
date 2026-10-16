@@ -166,4 +166,21 @@ assert.deepEqual(r, { ok: false, error: "Couldn't process this photo. Please try
 assert.equal(await count('posts'), posts1);
 assert.equal(b.calls.length, 0);
 
+// removePhoto: post author or admin only; deletes row and R2 object
+const ADMIN = 'boss@x.com';
+const admin = await mk('bossuser', true, 8 * DAY);
+await db.prepare('UPDATE users SET email = ? WHERE id = ?').bind(ADMIN, admin.id).run();
+const adminU = await getUserById(db, admin.id);
+b = bucket();
+r = await createPost(db, old, { topic: 'diet', title: 'Removable photos', body, files: [fakeFile(PNG), fakeFile(PNG)] }, now, b);
+const [k1, k2] = [...b.store.keys()];
+assert.deepEqual(await P.removePhoto(db, b, k1, other, ADMIN), { ok: false, error: 'Not allowed.' });
+assert.ok(b.store.has(k1));
+assert.equal((await P.listPostPhotos(db, r.id, null)).length, 2);
+assert.deepEqual(await P.removePhoto(db, b, k1, old, ADMIN), { ok: true }, 'author');
+assert.deepEqual(await P.removePhoto(db, b, k2, adminU, ADMIN), { ok: true }, 'admin');
+assert.equal(b.store.size, 0);
+assert.equal((await P.listPostPhotos(db, r.id, null, true)).length, 0);
+assert.deepEqual(await P.removePhoto(db, b, k1, old, ADMIN), { ok: false, error: 'Not allowed.' }, 'already gone');
+
 console.log('photos: all assertions passed');

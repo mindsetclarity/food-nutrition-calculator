@@ -8,14 +8,14 @@ import PostCard from '../../../components/community/PostCard.astro';
 import Disclaimer from '../../../components/community/Disclaimer.astro';
 import { TOPICS } from '../../../lib/community/db';
 import { listPosts, PAGE_SIZE } from '../../../lib/community/posts';
+import { toPage } from '../../../lib/community/validate';
 
 export const prerender = false;
 
 const topic = TOPICS.find((t) => t.slug === Astro.params.topic);
 if (!topic) return new Response(null, { status: 404 });
 const sort = Astro.url.searchParams.get('sort') === 'top' ? 'top' : 'new';
-const n = Number(Astro.url.searchParams.get('page'));
-const page = Number.isInteger(n) && n >= 1 ? n : 1;
+const page = toPage(Astro.url.searchParams.get('page'));
 const posts = await listPosts(env.DB, topic.slug, { sort, page });
 const base = `/community/${topic.slug}`;
 const href = (s: string, p: number) => `${base}?${new URLSearchParams({ ...(s === 'top' && { sort: s }), ...(p > 1 && { page: String(p) }) })}`.replace(/\?$/, '');

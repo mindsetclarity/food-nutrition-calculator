@@ -22,14 +22,21 @@ Set as Worker secrets (`wrangler secret put NAME`) in production; use `.dev.vars
 | `RESEND_API_KEY` | Required in prod | Sends verification and reset emails via Resend | Unset in dev logs the email to the console. |
 | `GOOGLE_CLIENT_ID` | Optional | Google sign-in | Unset hides the Google button. |
 | `GOOGLE_CLIENT_SECRET` | Optional | Google sign-in token exchange | Required if `GOOGLE_CLIENT_ID` is set. |
-| `BHASKAR_API_SECRET` | Required for the Bhaskar API | Bearer secret the Bhaskar app sends to `/api/referral/*` | Long random string. Unset = every request gets 401. Share only with the Bhaskar app. |
+| `BHASKAR_API_SECRET` | Required for the Bhaskar API | Bearer secret the Bhaskar backend sends to `/api/referral/*` | Long random string. Unset = every request gets 401. Store only on Bhaskar's server, never in the app/APK. |
 | `ADMIN_EMAIL` | Required in prod | Owner account for `/admin`: the verified account with this email (`mindsetclarityofficial@gmail.com`) | Plain var or secret. Unset = nobody is admin and `/admin` returns 404. |
 
 ## Bhaskar API
 
 Both endpoints are `POST` only, take a JSON body `{ "code": "BSK-XXXXXXXX" }`, and require
 `Authorization: Bearer <BHASKAR_API_SECRET>`. Codes are trimmed and upper-cased before lookup.
-Responses are `application/json` with `Cache-Control: no-store`. Requests are rate limited per IP.
+Responses are `application/json` with `Cache-Control: no-store`.
+
+- **`Content-Type: application/json` is required.** Astro's `checkOrigin` CSRF guard answers `403`
+  to any cross-site POST without it (form-like content types), before our code runs.
+- **Keep `BHASKAR_API_SECRET` on Bhaskar's server only.** Call these endpoints from the Bhaskar
+  backend, never from inside the app/APK: anything shipped in the app can be extracted.
+- **Rate limit: 60 requests per minute per IP**, shared by both endpoints. All calls from a single
+  Bhaskar backend IP share that one budget; ask for a higher limit before batch jobs.
 
 ### Verify (read-only)
 

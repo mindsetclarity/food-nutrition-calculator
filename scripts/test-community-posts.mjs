@@ -5,7 +5,14 @@ import assert from 'node:assert/strict';
 import { createTestDb } from './lib/test-env.mjs';
 
 const { createEmailUser, banUser } = await import('../src/lib/community/users.ts');
-const { validatePost, validateReply, containsLink } = await import('../src/lib/community/validate.ts');
+const { validatePost, validateReply, containsLink, toId, toPage } = await import('../src/lib/community/validate.ts');
+
+// form ids / page numbers: only safe positive integers
+for (const v of ['1', '42', 7]) assert.equal(toId(v), Number(v));
+for (const v of [null, '', '0', '-3', '1.5', 'abc', '1e400', '9007199254740993', 'Infinity', ' ', '0x10']) assert.equal(toId(v), undefined, String(v));
+assert.equal(toPage('3'), 3);
+for (const v of [null, '', '0', '-1', '2.5', 'x', '1e400', '99999999999999999999']) assert.equal(toPage(v), 1, String(v));
+assert.equal(toPage('10001'), 10000, 'capped');
 const { slugify, createPost, listPosts, getPost, createReply, listReplies, countRecent, postUrl } = await import('../src/lib/community/posts.ts');
 const db = await createTestDb();
 const HOUR = 3600000, DAY = 24 * HOUR;
