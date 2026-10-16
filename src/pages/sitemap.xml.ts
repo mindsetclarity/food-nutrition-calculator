@@ -1,4 +1,7 @@
 import type { APIRoute } from 'astro';
+import { env } from 'cloudflare:workers';
+import { TOPICS } from '../lib/community/db';
+import { postUrl } from '../lib/community/posts';
 import { getAllFoodPages } from '../lib/foods';
 import { getAllLearnArticles } from '../lib/learn';
 import { getAllComparePairs } from '../lib/compare/comparePairs';
@@ -11,6 +14,8 @@ function generateUrlElement(url: string, priority?: string, changefreq?: string)
   xml += `  </url>\n`;
   return xml;
 }
+
+export const prerender = false;
 
 export const GET: APIRoute = async ({ site }) => {
   const baseUrl = site ? site.origin : siteConfig.siteUrl;
@@ -30,6 +35,8 @@ export const GET: APIRoute = async ({ site }) => {
     { path: '/terms', priority: '0.5', changefreq: 'monthly' },
     { path: '/disclaimer', priority: '0.5', changefreq: 'monthly' },
     { path: '/data-sources', priority: '0.6', changefreq: 'monthly' },
+    { path: '/community', priority: '0.6', changefreq: 'daily' },
+    ...TOPICS.filter((t) => t.indexable).map((t) => ({ path: `/community/${t.slug}`, priority: '0.6', changefreq: 'daily' })),
   ];
 
   const foods = getAllFoodPages();
@@ -51,6 +58,22 @@ export const GET: APIRoute = async ({ site }) => {
 
   for (const article of articles) {
     sitemap += generateUrlElement(`${baseUrl}/learn/${article.slug}`, '0.7', 'monthly');
+  }
+
+  // Community posts: a D1 failure must not take the rest of the sitemap down.
+  try {
+    const slugs = TOPICS.filter((t) => t.indexable).map((t) => t.slug);
+    const { results } = await env.DB
+      .prepare(
+        `SELECT p.id, p.topic, p.slug FROM posts p JOIN users u ON u.id = p.user_id
+         WHERE p.deleted_at IS NULL AND u.is_banned = 0 AND p.topic IN (${slugs.map(() => '?').join(',')})
+         ORDER BY p.created_at DESC, p.id DESC LIMIT 5000`,
+      )
+      .bind(...slugs)
+      .all<{ id: number; topic: string; slug: string }>();
+    for (const p of results) sitemap += generateUrlElement(`${baseUrl}${postUrl(p)}`, '0.5', 'weekly');
+  } catch (e) {
+    console.error('sitemap: community posts skipped', e);
   }
 
   sitemap += `</urlset>`;

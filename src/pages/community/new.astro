@@ -1,0 +1,77 @@
+---
+import { env } from 'cloudflare:workers';
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import Button from '../../components/ui/Button.astro';
+import Disclaimer from '../../components/community/Disclaimer.astro';
+import { TOPICS } from '../../lib/community/db';
+import { canWrite } from '../../lib/community/users';
+import { createPost } from '../../lib/community/posts';
+import PhotoInput from '../../components/community/PhotoInput.astro';
+import { verifyTurnstile } from '../../lib/community/turnstile';
+
+export const prerender = false;
+
+const user = Astro.locals.user;
+if (!user) return Astro.redirect('/login');
+
+let error = '';
+let topic = Astro.url.searchParams.get('topic') ?? '';
+let title = '';
+let body = '';
+if (canWrite(user) && Astro.request.method === 'POST') {
+  const form = await Astro.request.formData();
+  topic = String(form.get('topic') ?? '');
+  title = String(form.get('title') ?? '');
+  body = String(form.get('body') ?? '');
+  const ip = Astro.request.headers.get('CF-Connecting-IP');
+  if (!(await verifyTurnstile(env.TURNSTILE_SECRET ?? '', String(form.get('cf-turnstile-response') ?? ''), ip))) {
+    error = 'Verification failed. Please try again.';
+  } else {
+    const files = form.getAll('photos').filter((f): f is File => f instanceof File && f.size > 0);
+    const r = await createPost(env.DB, user, { topic, title, body, files }, Date.now(), env.PHOTOS);
+    if (r.ok) return Astro.redirect(r.url, 303);
+    error = r.error;
+  }
+}
+const field = 'w-full px-4 py-2 rounded-lg border border-border-soft focus:outline-none focus:ring-2 focus:ring-usda-emerald/50';
+const label = 'text-sm font-medium text-ink-navy';
+const siteKey = env.TURNSTILE_SITE_KEY;
+---
+<SiteLayout title="Start a post | Community" description="Start a community post." canonicalPath="/community/new" noindex>
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <h1 class="text-3xl font-black text-ink-navy text-center mb-8">Start a post</h1>
+    {canWrite(user) ? (
+      <form method="POST" enctype="multipart/form-data" class="bg-white border border-border-soft p-6 rounded-2xl shadow-sm flex flex-col gap-4 max-w-2xl mx-auto">
+        {error && <p role="alert" class="p-3 rounded-md bg-danger-bg text-danger-text text-sm">{error}</p>}
+        <div class="flex flex-col gap-1">
+          <label for="topic" class={label}>Topic</label>
+          <select id="topic" name="topic" class={field} required>
+            <option value="" disabled selected={!TOPICS.some((t) => t.slug === topic)}>Choose a topic</option>
+            {TOPICS.map((t) => <option value={t.slug} selected={t.slug === topic}>{t.label}</option>)}
+          </select>
+        </div>
+        <div class="flex flex-col gap-1">
+          <label for="title" class={label}>Title</label>
+          <input type="text" id="title" name="title" value={title} minlength="5" maxlength="120" class={field} required />
+        </div>
+        <div class="flex flex-col gap-1">
+          <label for="body" class={label}>Post</label>
+          <textarea id="body" name="body" rows="8" minlength="20" maxlength="5000" class={field} required>{body}</textarea>
+        </div>
+        <PhotoInput verified={!!user.email_verified} />
+        {siteKey && (
+          <>
+            <div class="cf-turnstile" data-sitekey={siteKey}></div>
+            <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+          </>
+        )}
+        <div><Button type="submit">Post</Button></div>
+      </form>
+    ) : (
+      <p class="text-center text-soft-slate">
+        {user.is_banned ? 'Your account cannot post.' : <>Choose a username in <a href="/welcome" class="text-usda-emerald underline">your account setup</a> before posting.</>}
+      </p>
+    )}
+    <Disclaimer />
+  </main>
+</SiteLayout>
