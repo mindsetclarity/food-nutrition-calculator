@@ -22,6 +22,94 @@ export function sniffImageType(b: Uint8Array): ImageType | null {
   return null;
 }
 
+const ascii = (b: Uint8Array, i: number, n: number) => String.fromCharCode(...b.subarray(i, i + n));
+function concat(parts: Uint8Array[]): Uint8Array {
+  const out = new Uint8Array(parts.reduce((n, p) => n + p.length, 0));
+  let o = 0;
+  for (const p of parts) {
+    out.set(p, o);
+    o += p.length;
+  }
+  return out;
+}
+
+/** JPEG: drop APP1 (Exif/XMP) and APP13 (IPTC) segments; everything from SOS on is copied verbatim. */
+function stripJpeg(b: Uint8Array): Uint8Array | null {
+  if (b[0] !== 0xff || b[1] !== 0xd8) return null;
+  const out = [b.subarray(0, 2)];
+  let i = 2;
+  for (;;) {
+    if (b[i] !== 0xff) return null;
+    let m = i + 1;
+    while (b[m] === 0xff) m++; // fill bytes
+    const marker = b[m];
+    // Markers without a length (or EOI) before the first scan mean a malformed or image-less file.
+    if (marker === undefined || marker === 0x00 || marker === 0x01 || (marker >= 0xd0 && marker <= 0xd9)) return null;
+    if (m + 2 >= b.length) return null;
+    const len = (b[m + 1] << 8) | b[m + 2];
+    const end = m + 1 + len;
+    if (len < 2 || end > b.length) return null;
+    if (marker === 0xda) return concat([...out, b.subarray(i)]);
+    if (marker !== 0xe1 && marker !== 0xed) out.push(b.subarray(i, end));
+    i = end;
+  }
+}
+
+const PNG_DROP = new Set(['eXIf', 'tEXt', 'iTXt', 'zTXt']);
+/** PNG: drop eXIf and text chunks; stop at IEND (trailing bytes are dropped). */
+function stripPng(b: Uint8Array): Uint8Array | null {
+  if (sniffImageType(b) !== 'image/png') return null;
+  const dv = new DataView(b.buffer, b.byteOffset, b.byteLength);
+  const out = [b.subarray(0, 8)];
+  for (let i = 8; i + 12 <= b.length; ) {
+    const type = ascii(b, i + 4, 4);
+    const end = i + 12 + dv.getUint32(i);
+    if (end > b.length) return null;
+    if (!PNG_DROP.has(type)) out.push(b.subarray(i, end));
+    if (type === 'IEND') return concat(out);
+    i = end;
+  }
+  return null;
+}
+
+/** WebP: drop EXIF and XMP chunks, clear their VP8X flags and rewrite the RIFF size. */
+function stripWebp(b: Uint8Array): Uint8Array | null {
+  if (sniffImageType(b) !== 'image/webp') return null;
+  const dv = new DataView(b.buffer, b.byteOffset, b.byteLength);
+  const riffEnd = 8 + dv.getUint32(4, true);
+  if (riffEnd > b.length) return null;
+  const parts: Uint8Array[] = [];
+  for (let i = 12; i < riffEnd; ) {
+    if (i + 8 > riffEnd) return null;
+    const fourcc = ascii(b, i, 4);
+    const size = dv.getUint32(i + 4, true);
+    const end = i + 8 + size + (size & 1);
+    if (end > riffEnd) return null;
+    if (fourcc === 'VP8X') {
+      if (size < 10) return null;
+      const c = b.slice(i, end);
+      c[8] &= ~0x0c; // EXIF (0x08) and XMP (0x04) present flags
+      parts.push(c);
+    } else if (fourcc !== 'EXIF' && fourcc !== 'XMP ') parts.push(b.subarray(i, end));
+    i = end;
+  }
+  const out = concat([b.subarray(0, 12), ...parts]);
+  new DataView(out.buffer).setUint32(4, out.length - 8, true);
+  return out;
+}
+
+/**
+ * Removes EXIF/GPS/XMP/text metadata so originals uploaded without client-side re-encoding never leak it.
+ * Returns null on any parse anomaly: callers must reject the photo rather than store unstripped bytes.
+ */
+export function stripImageMetadata(bytes: Uint8Array, type: ImageType): Uint8Array | null {
+  try {
+    return type === 'image/jpeg' ? stripJpeg(bytes) : type === 'image/png' ? stripPng(bytes) : stripWebp(bytes);
+  } catch {
+    return null;
+  }
+}
+
 /** `bytes` only needs the file header; `size` is the full length. */
 export function validatePhotos(
   files: { size: number; bytes: Uint8Array }[],

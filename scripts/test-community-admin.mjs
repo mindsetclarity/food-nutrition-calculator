@@ -2,7 +2,7 @@
  *   node --experimental-strip-types scripts/test-community-admin.mjs
  */
 import assert from 'node:assert/strict';
-import { createTestDb } from './lib/test-env.mjs';
+import { createTestDb, IMG } from './lib/test-env.mjs';
 
 const U = await import('../src/lib/community/users.ts');
 const { createPost, createReply, listPosts, listReplies } = await import('../src/lib/community/posts.ts');
@@ -30,7 +30,7 @@ assert.equal(U.isAdmin(null, ADMIN), false);
 assert.equal(U.isAdmin(author, ADMIN), false);
 assert.equal(U.isAdmin(unverifiedAdmin, 'fake@x.com'), false);
 
-const PNG = Uint8Array.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a, 0, 0, 0, 0]);
+const PNG = IMG.png;
 const objs = new Map();
 const bucket = { put: async (k, v) => void objs.set(k, v), get: async (k) => objs.get(k) ?? null, delete: async (k) => void objs.delete(k) };
 const file = () => new File([PNG], 'a.png', { type: 'image/png' });

@@ -1,7 +1,7 @@
 import type { Post, TopicSlug, User } from './db';
 import { canWrite, getUserById, isAdmin } from './users';
 import { validatePost, validateReply } from './validate';
-import { savePhotos, validatePhotos } from './photos';
+import { savePhotos, stripImageMetadata, validatePhotos, type ImageType } from './photos';
 
 type Db = D1Database;
 const HOUR = 3600000;
@@ -63,6 +63,12 @@ export async function createPost(
   const heads = await Promise.all(files.map(async (f) => ({ size: f.size, bytes: new Uint8Array(await f.slice(0, 16).arrayBuffer()) })));
   const pv = validatePhotos(heads, user, now);
   if (!pv.ok) return pv;
+  const data: { data: Uint8Array; type: ImageType }[] = [];
+  for (const [i, f] of files.entries()) {
+    const stripped = stripImageMetadata(new Uint8Array(await f.arrayBuffer()), pv.types[i]);
+    if (!stripped) return { ok: false, error: "Couldn't process this photo. Please try a different one." };
+    data.push({ data: stripped, type: pv.types[i] });
+  }
   const slug = slugify(title);
   const r = await db
     .prepare('INSERT INTO posts (user_id, topic, title, body, slug, created_at) VALUES (?, ?, ?, ?, ?, ?)')
@@ -71,7 +77,6 @@ export async function createPost(
   const id = r.meta.last_row_id;
   if (files.length) {
     try {
-      const data = await Promise.all(files.map(async (f, i) => ({ data: await f.arrayBuffer(), type: pv.types[i] })));
       await savePhotos(db, bucket!, id, user, data, now);
     } catch {
       // savePhotos removed any objects it wrote; remove the post row too (soft-delete would leave it).

@@ -2,7 +2,7 @@
  *   node --experimental-strip-types scripts/test-community-photos.mjs
  */
 import assert from 'node:assert/strict';
-import { createTestDb } from './lib/test-env.mjs';
+import { createTestDb, IMG } from './lib/test-env.mjs';
 
 const { createEmailUser, verifyEmail, getUserById } = await import('../src/lib/community/users.ts');
 const { createPost } = await import('../src/lib/community/posts.ts');
@@ -11,9 +11,9 @@ const db = await createTestDb();
 const DAY = 86400000;
 const now = Date.now();
 
-const PNG = Uint8Array.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a, 0, 0, 0, 0]);
-const JPG = Uint8Array.from([0xff, 0xd8, 0xff, 0xe0, 0, 0x10, 0x4a, 0x46]);
-const WEBP = Uint8Array.from([0x52, 0x49, 0x46, 0x46, 1, 2, 3, 4, 0x57, 0x45, 0x42, 0x50]);
+const PNG = IMG.png;
+const JPG = IMG.jpg;
+const WEBP = IMG.webp;
 const PDF = new TextEncoder().encode('%PDF-1.4 renamed.jpg');
 
 // sniffing
@@ -129,5 +129,41 @@ assert.equal(r.ok, false);
 assert.equal(await count('posts'), posts0);
 assert.equal(await count('photos'), photos0);
 assert.equal(b.store.size, 0);
+
+// metadata stripping (EXIF/GPS must never be stored)
+const has = (b, s) => Buffer.from(b).includes(s);
+const strip = P.stripImageMetadata;
+assert.deepEqual(strip(IMG.pngMeta, 'image/png'), IMG.png, 'png: eXIf/tEXt/iTXt/zTXt dropped, rest intact');
+assert.deepEqual(strip(IMG.png, 'image/png'), IMG.png);
+assert.deepEqual(strip(IMG.jpgMeta, 'image/jpeg'), IMG.jpg, 'jpeg: APP1/APP13 dropped, rest intact');
+assert.ok(!has(strip(IMG.jpgMeta, 'image/jpeg'), 'Exif') && has(strip(IMG.jpgMeta, 'image/jpeg'), 'JFIF'));
+const w = strip(IMG.webpMeta, 'image/webp');
+assert.deepEqual(w, IMG.webp, 'webp: EXIF/XMP dropped, RIFF size fixed, VP8X flags cleared');
+assert.ok(!has(w, 'EXIF') && !has(w, 'XMP ') && has(w, 'VP8L'));
+assert.equal(Buffer.from(w).readUInt32LE(4), w.length - 8);
+assert.equal(w[20] & 0x0c, 0);
+assert.equal(w[20] & 0x10, 0x10, 'alpha flag kept');
+// anomalies -> null
+assert.equal(strip(IMG.png.slice(0, -12), 'image/png'), null, 'png without IEND');
+assert.equal(strip(IMG.png.slice(0, 20), 'image/png'), null, 'png truncated chunk');
+assert.equal(strip(IMG.jpg.slice(0, 10), 'image/jpeg'), null, 'jpeg truncated segment');
+assert.equal(strip(Uint8Array.from([0xff, 0xd8, 0xff, 0xd9]), 'image/jpeg'), null, 'jpeg without scan');
+assert.equal(strip(Uint8Array.from([0xff, 0xd8, 0x00, 0x00]), 'image/jpeg'), null, 'jpeg garbage');
+assert.equal(strip(IMG.webp.slice(0, -2), 'image/webp'), null, 'webp riff size beyond data');
+assert.equal(strip(JPG.slice(0, 3), 'image/jpeg'), null);
+
+// createPost stores stripped bytes; unparseable photos are rejected with nothing written
+b = bucket();
+r = await createPost(db, old, { topic: 'diet', title: 'Exif photo post', body, files: [fakeFile(IMG.jpgMeta), fakeFile(IMG.pngMeta), fakeFile(IMG.webpMeta)] }, now, b);
+assert.equal(r.ok, true);
+const stored = [...b.store.values()].map((x) => new Uint8Array(x.v));
+assert.equal(stored.length, 3);
+for (const s of stored) assert.ok(!has(s, 'GPS!'), 'no metadata stored');
+const posts1 = await count('posts');
+b = bucket();
+r = await createPost(db, old, { topic: 'diet', title: 'Broken photo post', body, files: [fakeFile(IMG.png.slice(0, 20))] }, now, b);
+assert.deepEqual(r, { ok: false, error: "Couldn't process this photo. Please try a different one." });
+assert.equal(await count('posts'), posts1);
+assert.equal(b.calls.length, 0);
 
 console.log('photos: all assertions passed');

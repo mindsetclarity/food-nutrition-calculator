@@ -63,3 +63,29 @@ export async function createTestDb() {
     },
   };
 }
+
+// Tiny hand-built image byte fixtures (structurally valid containers, not decodable pictures).
+const enc = (s) => [...new TextEncoder().encode(s)];
+const u32be = (n) => [(n >>> 24) & 255, (n >>> 16) & 255, (n >>> 8) & 255, n & 255];
+const u32le = (n) => [n & 255, (n >>> 8) & 255, (n >>> 16) & 255, (n >>> 24) & 255];
+const pngChunk = (type, data) => [...u32be(data.length), ...enc(type), ...data, 0, 0, 0, 0];
+const jpgSeg = (marker, data) => [0xff, marker, (data.length + 2) >> 8, (data.length + 2) & 255, ...data];
+const riffChunk = (fourcc, data) => [...enc(fourcc), ...u32le(data.length), ...data, ...(data.length & 1 ? [0] : [])];
+const riff = (chunks) => { const body = chunks.flat(); return Uint8Array.from([...enc('RIFF'), ...u32le(body.length + 4), ...enc('WEBP'), ...body]); };
+
+const png = (extra = []) => Uint8Array.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a,
+  ...pngChunk('IHDR', [0, 0, 0, 1, 0, 0, 0, 1, 8, 2, 0, 0, 0]), ...extra.flat(), ...pngChunk('IDAT', [1, 2, 3]), ...pngChunk('IEND', [])]);
+const SCAN = [...jpgSeg(0xda, [1, 1, 0, 0, 63, 0]), 0x12, 0xff, 0x00, 0x34, 0xff, 0xd9];
+const jpg = (extra = []) => Uint8Array.from([0xff, 0xd8, ...jpgSeg(0xe0, [...enc('JFIF'), 0, 1, 1, 0, 0, 1, 0, 1, 0, 0]),
+  ...extra.flat(), ...jpgSeg(0xdb, [0, 1, 2, 3]), ...SCAN]);
+const VP8L = riffChunk('VP8L', [0x2f, 0, 0, 0, 0]);
+const vp8x = (flags) => riffChunk('VP8X', [flags, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
+
+export const IMG = {
+  png: png(),
+  pngMeta: png([pngChunk('eXIf', enc('GPS!')), pngChunk('tEXt', enc('k\0v')), pngChunk('iTXt', enc('x')), pngChunk('zTXt', enc('z'))]),
+  jpg: jpg(),
+  jpgMeta: jpg([jpgSeg(0xe1, [...enc('Exif'), 0, 0, ...enc('GPS!')]), jpgSeg(0xed, [...enc('Photoshop 3.0'), 0])]),
+  webp: riff([vp8x(0x10), VP8L]),
+  webpMeta: riff([vp8x(0x10 | 0x08 | 0x04), VP8L, riffChunk('EXIF', enc('GPS!')), riffChunk('XMP ', enc('xmp'))]),
+};

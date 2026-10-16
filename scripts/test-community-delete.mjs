@@ -2,7 +2,7 @@
  *   node --experimental-strip-types scripts/test-community-delete.mjs
  */
 import assert from 'node:assert/strict';
-import { createTestDb } from './lib/test-env.mjs';
+import { createTestDb, IMG } from './lib/test-env.mjs';
 
 const { createEmailUser, deleteUser, getUserById, findUserByEmail } = await import('../src/lib/community/users.ts');
 const { createPost, listPosts, createReply, toggleVote, getPost } = await import('../src/lib/community/posts.ts');
@@ -27,7 +27,7 @@ const bucket = () => {
   return { store, async put(k, v) { store.set(k, v); }, async delete(k) { store.delete(k); } };
 };
 const b = bucket();
-const PNG = Uint8Array.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a, 0, 0, 0, 0]);
+const PNG = IMG.png;
 const ap = await createPost(db, alice, { topic: 'diet', title: 'Alice post', body, files: [new File([PNG], 'a.png')] }, Date.now(), b);
 const bp = await createPost(db, bob, { topic: 'diet', title: 'Bob post', body });
 assert.equal(b.store.size, 1);
