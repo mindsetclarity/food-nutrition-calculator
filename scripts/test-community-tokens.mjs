@@ -7,7 +7,7 @@ import { createTestDb } from './lib/test-env.mjs';
 const { createEmailUser, getUserById, verifyEmail, setPassword } = await import('../src/lib/community/users.ts');
 const { createSession, getSessionUser } = await import('../src/lib/community/sessions.ts');
 const { verifyPassword } = await import('../src/lib/community/crypto.ts');
-const { createEmailToken, consumeEmailToken } = await import('../src/lib/community/tokens.ts');
+const { createEmailToken, consumeEmailToken, redeemVerifyToken } = await import('../src/lib/community/tokens.ts');
 const { sendEmail } = await import('../src/lib/community/email.ts');
 const db = await createTestDb();
 
@@ -36,6 +36,18 @@ assert.equal(await getSessionUser(db, s), null, 'sessions invalidated');
 const after = await getUserById(db, user.id);
 assert.equal(await verifyPassword('brand new password', after.password_hash), true);
 assert.equal(await verifyPassword('correct horse', after.password_hash), false);
+
+// verify link only works for the signed-in owner of the token (pre-hijack guard)
+const { user: ua } = await createEmailUser(db, { email: 'va@x.com', password: 'correct horse', username: 'vuser_a', ageConfirmed: true });
+const { user: ub } = await createEmailUser(db, { email: 'vb@x.com', password: 'correct horse', username: 'vuser_b', ageConfirmed: true });
+const vt = await createEmailToken(db, ua.id, 'verify');
+assert.equal(await redeemVerifyToken(db, vt, null), 'login', 'nobody signed in');
+assert.equal(await redeemVerifyToken(db, vt, ub.id), 'invalid', 'other user');
+assert.equal((await getUserById(db, ua.id)).email_verified, 0, 'not verified by others');
+assert.equal(await consumeEmailToken(db, vt, 'verify', Date.now(), ub.id), null, 'consume for wrong user');
+assert.equal(await redeemVerifyToken(db, vt, ua.id), 'verified', 'token survived and works for its owner');
+assert.equal((await getUserById(db, ua.id)).email_verified, 1);
+assert.equal(await redeemVerifyToken(db, vt, ua.id), 'invalid', 'consumed');
 
 // sendEmail: posts to Resend, reports success/failure
 const realFetch = globalThis.fetch;

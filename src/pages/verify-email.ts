@@ -1,13 +1,11 @@
 import type { APIRoute } from 'astro';
 import { env } from 'cloudflare:workers';
-import { consumeEmailToken } from '../lib/community/tokens';
-import { verifyEmail } from '../lib/community/users';
+import { redeemVerifyToken } from '../lib/community/tokens';
 
 export const prerender = false;
 
 export const GET: APIRoute = async ({ url, locals, redirect }) => {
-  const userId = await consumeEmailToken(env.DB, url.searchParams.get('token') ?? '', 'verify');
-  if (userId) await verifyEmail(env.DB, userId);
-  if (!userId && !locals.user) return redirect('/login');
-  return redirect(`/account?verified=${userId ? 1 : 0}`);
+  const r = await redeemVerifyToken(env.DB, url.searchParams.get('token') ?? '', locals.user?.id ?? null);
+  if (r === 'login') return redirect('/login?next=verify');
+  return redirect(`/account?verified=${r === 'verified' ? 1 : 0}`);
 };

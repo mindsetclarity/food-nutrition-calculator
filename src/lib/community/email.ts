@@ -18,8 +18,10 @@ export async function sendEmail(
       headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
       body: JSON.stringify({ from: FROM, ...msg }),
     });
+    if (!res.ok) console.error(`[email] Resend responded ${res.status}`);
     return res.ok;
-  } catch {
+  } catch (e) {
+    console.error('[email] Resend request failed', e);
     return false;
   }
 }
@@ -35,6 +37,6 @@ export async function sendVerifyEmail(
   return sendEmail(apiKey, {
     to: user.email,
     subject: 'Verify your email',
-    text: `Welcome to the Food Nutrition Calculator community.\n\nVerify your email: ${link}\n\nThis link works for 24 hours.`,
+    text: `Welcome to the Food Nutrition Calculator community.\n\nVerify your email: ${link}\n\nThis link works for 24 hours. Sign in first, then open the link.\n\nIf you didn't create this account, ignore this email — nothing will happen.`,
   });
 }
