@@ -9,6 +9,8 @@ import { TOPICS } from '../../../lib/community/db';
 import { canWrite, isAdmin } from '../../../lib/community/users';
 import { listPostPhotos } from '../../../lib/community/photos';
 import ReportForm from '../../../components/community/ReportForm.astro';
+import { buildDiscussionForumPostingSchema } from '../../../lib/seo/schema';
+import { siteConfig } from '../../../lib/seo/siteConfig';
 import { reportItem } from '../../../lib/community/reports';
 import { getPost, listReplies, createReply, postUrl, toggleVote, hasVoted, deletePost, deleteReply } from '../../../lib/community/posts';
 
@@ -61,9 +63,20 @@ const owner = isAdmin(user, env.ADMIN_EMAIL);
 const photos = await listPostPhotos(env.DB, post.id, user, owner);
 const replies = await listReplies(env.DB, post.id);
 const description = post.body.replace(/\s+/g, ' ').trim().slice(0, 155);
+const jsonLd = topic.indexable
+  ? buildDiscussionForumPostingSchema({
+      headline: post.title,
+      text: post.body,
+      author: post.username,
+      datePublished: new Date(post.created_at).toISOString(),
+      url: `${Astro.site?.origin ?? siteConfig.siteUrl}${canonical}`,
+      upvotes: post.score,
+      replies: replies.length,
+    })
+  : undefined;
 const field = 'w-full px-4 py-2 rounded-lg border border-border-soft focus:outline-none focus:ring-2 focus:ring-usda-emerald/50';
 ---
-<SiteLayout title={`${post.title} | Community`} description={description} canonicalPath={canonical} noindex={!topic.indexable}>
+<SiteLayout title={`${post.title} | Community`} description={description} canonicalPath={canonical} noindex={!topic.indexable} jsonLd={jsonLd}>
   <PageHeader title={post.title} description={`by ${post.username} · ${new Date(post.created_at).toISOString().slice(0, 10)}`} breadcrumbs={[{ label: 'Community', href: '/community' }, { label: topic.label, href: `/community/${topic.slug}` }, { label: post.title }]} />
   <main class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
     <article class="bg-white border border-border-soft rounded-xl p-5 mb-8">

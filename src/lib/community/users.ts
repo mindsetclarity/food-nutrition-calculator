@@ -109,3 +109,32 @@ export async function setUsername(db: Db, userId: number, username: string): Pro
     return 'username_taken';
   }
 }
+
+/**
+ * Removes the account and everything that references it (posts/replies carry NOT NULL user_id foreign keys,
+ * so they are hard-deleted along with their votes, photos, reports and other people's replies on those posts).
+ * The Bhaskar code is revoked and detached, not deleted. Rows go first in one batch; R2 objects after
+ * (a leftover object is unreachable, a dangling row is not).
+ */
+export async function deleteUser(db: Db, bucket: R2Bucket, userId: number): Promise<void> {
+  const mine = 'SELECT id FROM posts WHERE user_id = ?1';
+  const { results } = await db
+    .prepare(`SELECT key FROM photos WHERE user_id = ?1 OR post_id IN (${mine})`)
+    .bind(userId)
+    .all<{ key: string }>();
+  await db.batch([
+    db.prepare('UPDATE posts SET score = (SELECT COUNT(*) FROM votes v WHERE v.post_id = posts.id AND v.user_id != ?1) WHERE id IN (SELECT post_id FROM votes WHERE user_id = ?1)').bind(userId),
+    db.prepare(`DELETE FROM votes WHERE user_id = ?1 OR post_id IN (${mine})`).bind(userId),
+    db.prepare(`DELETE FROM reports WHERE reporter_id = ?1 OR post_id IN (${mine}) OR reply_id IN (SELECT id FROM replies WHERE user_id = ?1 OR post_id IN (${mine}))`).bind(userId),
+    db.prepare(`DELETE FROM photos WHERE user_id = ?1 OR post_id IN (${mine})`).bind(userId),
+    db.prepare(`DELETE FROM replies WHERE user_id = ?1 OR post_id IN (${mine})`).bind(userId),
+    db.prepare('DELETE FROM posts WHERE user_id = ?').bind(userId),
+    db.prepare('DELETE FROM sessions WHERE user_id = ?').bind(userId),
+    db.prepare('DELETE FROM email_tokens WHERE user_id = ?').bind(userId),
+    db.prepare('DELETE FROM feedback WHERE user_id = ?').bind(userId),
+    db.prepare('UPDATE referral_codes SET revoked_at = COALESCE(revoked_at, ?), user_id = NULL WHERE user_id = ?').bind(Date.now(), userId),
+    db.prepare('DELETE FROM users WHERE id = ?').bind(userId),
+  ]);
+  const settled = await Promise.allSettled(results.map((r) => bucket.delete(r.key)));
+  settled.forEach((s) => s.status === 'rejected' && console.error('R2 delete failed during account deletion', s.reason));
+}

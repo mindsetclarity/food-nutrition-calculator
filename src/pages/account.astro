@@ -4,6 +4,8 @@ import SiteLayout from '../layouts/SiteLayout.astro';
 import { siteConfig } from '../lib/seo/siteConfig';
 import { getReferralForUser } from '../lib/community/referral';
 import { sendVerifyEmail } from '../lib/community/email';
+import { deleteUser } from '../lib/community/users';
+import { deleteSession, sessionCookie } from '../lib/community/sessions';
 import { sendFeedback, listFeedbackForUser } from '../lib/community/feedback';
 
 export const prerender = false;
@@ -16,6 +18,7 @@ const verified = Astro.url.searchParams.get('verified');
 let resendMsg = '';
 let feedbackError = '';
 let feedbackText = '';
+let deleteError = '';
 const form = Astro.request.method === 'POST' ? await Astro.request.formData() : null;
 const action = form?.get('action');
 if (action === 'feedback') {
@@ -23,6 +26,16 @@ if (action === 'feedback') {
   const r = await sendFeedback(env.DB, user, feedbackText);
   if (r.ok) return Astro.redirect('/account?sent=1#feedback', 303);
   feedbackError = r.error;
+}
+if (action === 'delete-account') {
+  if (String(form?.get('confirm') ?? '').trim().toLowerCase() !== user.username.toLowerCase()) {
+    deleteError = 'Type your username exactly to confirm.';
+  } else {
+    const token = Astro.cookies.get('fnc_session')?.value;
+    if (token) await deleteSession(env.DB, token);
+    await deleteUser(env.DB, env.PHOTOS, user.id);
+    return new Response(null, { status: 303, headers: { Location: '/?deleted=1', 'Set-Cookie': sessionCookie(null) } });
+  }
 }
 if (action === 'resend' && !user.email_verified) {
   const ip = Astro.request.headers.get('CF-Connecting-IP');
@@ -93,6 +106,18 @@ const redeemedOn = referral?.redeemedAt ? new Date(referral.redeemedAt).toISOStr
     <form method="POST" action="/logout">
       <button type="submit" class="bg-white hover:bg-gray-50 text-ink-navy border border-gray-200 rounded-lg px-4 py-2 font-medium">Log out</button>
     </form>
+
+    <details id="delete-account" class="mt-10 max-w-xl bg-white rounded-2xl border border-gray-200 p-6" open={!!deleteError}>
+      <summary class="cursor-pointer text-sm font-medium text-danger-text">Delete my account</summary>
+      <p class="mt-3 text-sm text-soft-slate">This removes your account, your posts and replies, and your photos. Your Bhaskar code will stop working. This cannot be undone.</p>
+      {deleteError && <p role="alert" class="mt-3 p-3 rounded-md bg-danger-bg text-danger-text text-sm">{deleteError}</p>}
+      <form method="POST" action="/account#delete-account" class="mt-3">
+        <input type="hidden" name="action" value="delete-account" />
+        <label for="delete-confirm" class="block text-sm font-medium text-ink-navy mb-1">Type your username to confirm</label>
+        <input id="delete-confirm" name="confirm" required autocomplete="off" class="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm" />
+        <button type="submit" class="mt-3 bg-white hover:bg-gray-50 text-danger-text border border-gray-200 rounded-lg px-4 py-2 text-sm font-medium">Permanently delete my account</button>
+      </form>
+    </details>
   </main>
 </SiteLayout>
 <script>
