@@ -1036,3 +1036,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
     relatedSlugs: ['low-calorie-snacks-under-100-calories', 'how-to-compare-two-foods']
   }
 ];
+
+// Newer articles live one per file in ./learn, each exporting `article`.
+const modules = import.meta.glob<{ article: LearnArticle }>('./learn/*.ts', { eager: true });
+LEARN_ARTICLES.push(...Object.values(modules).map((m) => m.article));
