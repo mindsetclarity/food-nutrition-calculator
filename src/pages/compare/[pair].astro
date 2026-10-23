@@ -4,7 +4,7 @@ import Breadcrumbs from '../../components/seo/Breadcrumbs.astro';
 import FaqList from '../../components/seo/FaqList.astro';
 import FoodSourceNotice from '../../components/foods/FoodSourceNotice.astro';
 
-import { getAllComparePairs, getComparePairsForFood, type ComparePair } from '../../lib/compare/comparePairs';
+import { getAllComparePairs, getComparePairsForFood, isIndexedComparePair, type ComparePair } from '../../lib/compare/comparePairs';
 import { getDefaultServing, nutrientFor, servingText } from '../../lib/foods/foodSeo';
 import { buildFAQPageSchema, buildWebPageSchema } from '../../lib/seo/schema';
 import { siteConfig } from '../../lib/seo/siteConfig';
@@ -89,7 +89,7 @@ const fmt = (v: number | null, unit: string) => (v == null ? '—' : `${v} ${uni
 const winner = (va: number | null, vb: number | null, side: 'a' | 'b') =>
   va != null && vb != null && va !== vb && (side === 'a' ? va > vb : vb > va);
 ---
-<Layout title={title} description={description} jsonLd={jsonLd}>
+<Layout title={title} description={description} jsonLd={jsonLd} noindex={!isIndexedComparePair(pair.slug)}>
   <main id="main-content" class="min-h-screen bg-gray-50 pb-24">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
       <Breadcrumbs items={breadcrumbItems} />

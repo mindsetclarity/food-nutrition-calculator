@@ -1,7 +1,7 @@
 import type { APIRoute } from 'astro';
 import { getAllFoodPages } from '../lib/foods';
 import { getAllLearnArticles } from '../lib/learn';
-import { getAllComparePairs } from '../lib/compare/comparePairs';
+import { getAllComparePairs, isIndexedComparePair, isIndexedFood } from '../lib/compare/comparePairs';
 import { siteConfig } from '../lib/seo/siteConfig';
 
 function generateUrlElement(url: string, priority?: string, changefreq?: string) {
@@ -41,11 +41,11 @@ export const GET: APIRoute = async ({ site }) => {
     sitemap += generateUrlElement(`${baseUrl}${route.path}`, route.priority, route.changefreq);
   }
 
-  for (const food of foods) {
+  for (const food of foods.filter((f) => isIndexedFood(f.slug))) {
     sitemap += generateUrlElement(`${baseUrl}/foods/${food.slug}`, '0.7', 'monthly');
   }
 
-  for (const pair of getAllComparePairs()) {
+  for (const pair of getAllComparePairs().filter((p) => isIndexedComparePair(p.slug))) {
     sitemap += generateUrlElement(`${baseUrl}/compare/${pair.slug}`, '0.6', 'monthly');
   }
 

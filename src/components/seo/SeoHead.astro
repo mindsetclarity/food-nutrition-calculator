@@ -21,7 +21,7 @@ const canonical = canonicalPath ? buildCanonicalUrl(canonicalPath) : undefined;
 <meta name="description" content={seo.description} />
 {seo.keywords && <meta name="keywords" content={seo.keywords} />}
 {canonical && <link rel="canonical" href={canonical} />}
-{seo.noindex && <meta name="robots" content="noindex, nofollow" />}
+{seo.noindex && <meta name="robots" content="noindex, follow" />}
 {!seo.noindex && <meta name="robots" content={siteConfig.robots} />}
 
 <!-- Open Graph -->

@@ -60,6 +60,15 @@ export function getAllComparePairs(): ComparePair[] {
   return (cache ??= buildPairs());
 }
 
+// AdSense rejected the site for low-value content: thousands of near-identical generated
+// pages. Only the CURATED pairs (real searches) and the foods in them are indexed; the
+// rest stay live for visitors but are noindex and left out of the sitemap.
+const pairSlug = (x: string, y: string) => [x, y].sort((p, q) => p.localeCompare(q)).join('-vs-');
+const INDEXED_PAIRS = new Set(CURATED.map(([x, y]) => pairSlug(x, y)));
+const INDEXED_FOODS = new Set(CURATED.flat());
+export const isIndexedComparePair = (slug: string) => INDEXED_PAIRS.has(slug);
+export const isIndexedFood = (slug: string) => INDEXED_FOODS.has(slug);
+
 export function getComparePairsForFood(slug: string): ComparePair[] {
   return getAllComparePairs().filter(p => p.a.slug === slug || p.b.slug === slug);
 }

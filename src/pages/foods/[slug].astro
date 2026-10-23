@@ -13,7 +13,7 @@ import FaqList from '../../components/seo/FaqList.astro';
 import AppPromo from '../../components/app/AppPromo.astro';
 
 import { getAllFoodPages, getFoodDetailSeo, getFoodFaqs, getRelatedFoods } from '../../lib/foods';
-import { getComparePairsForFood } from '../../lib/compare/comparePairs';
+import { getComparePairsForFood, isIndexedFood } from '../../lib/compare/comparePairs';
 import { buildFAQPageSchema, buildWebPageSchema } from '../../lib/seo/schema';
 import { siteConfig } from '../../lib/seo/siteConfig';
 
@@ -61,9 +61,6 @@ const formatLabelNutrients = (foodNutrients: any) => {
 };
 
 const labelNutrients = formatLabelNutrients(food.nutrientsPer100g);
-const commonServingSize = food.servingSizes && food.servingSizes.length > 0 
-  ? food.servingSizes[0] 
-  : { label: '100g', grams: 100 };
 
 const breadcrumbItems = [
   { label: 'Home', href: '/' },
@@ -80,7 +77,7 @@ const jsonLd = [
   ...(faqs.length ? [buildFAQPageSchema(faqs)] : []),
 ];
 ---
-<Layout title={seo.title} description={seo.description} jsonLd={jsonLd}>
+<Layout title={seo.title} description={seo.description} jsonLd={jsonLd} noindex={!isIndexedFood(food.slug)}>
   <main id="main-content" class="min-h-screen bg-gray-50 pb-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
       <Breadcrumbs items={breadcrumbItems} />
@@ -136,7 +133,7 @@ const jsonLd = [
               {labelNutrients && (
                 <NutritionFactsLabel 
                   title="Nutrition Facts"
-                  servingLabel={commonServingSize.label}
+                  servingLabel="100 g"
                   nutrients={labelNutrients}
                   sourceSummary={{
                     source: food.source || 'local',
