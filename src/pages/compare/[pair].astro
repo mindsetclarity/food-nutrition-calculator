@@ -114,8 +114,8 @@ const winner = (va: number | null, vb: number | null, side: 'a' | 'b') =>
             <h2 class="text-2xl font-black text-gray-900 mb-4">Which should you pick?</h2>
             <div class="space-y-4 text-gray-700 leading-relaxed">
               {note.body.map(p => <p>{p}</p>)}
-              <p><strong class="text-gray-900">Pick {a.displayName.toLowerCase()} if</strong> {note.chooseA}</p>
-              <p><strong class="text-gray-900">Pick {b.displayName.toLowerCase()} if</strong> {note.chooseB}</p>
+              <p><strong class="text-gray-900">Pick {a.displayName} if</strong> {note.chooseA}</p>
+              <p><strong class="text-gray-900">Pick {b.displayName} if</strong> {note.chooseB}</p>
             </div>
           </section>
         )}
