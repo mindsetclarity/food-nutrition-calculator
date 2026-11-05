@@ -1,6 +1,8 @@
 import { getAllFoodPages } from '../foods/foodPageData';
 import type { FoodItem } from '../nutrition/types';
 import { PUBLISHED_COMPARE_PAIRS } from '../../data/publishedComparePairs';
+import { COMPARE_NOTES } from '../../data/compareNotes';
+import { FOOD_NOTES } from '../../data/foodNotes';
 
 export interface ComparePair {
   slug: string; // "apple-vs-banana" (food slugs in alphabetical order)
@@ -11,7 +13,7 @@ export interface ComparePair {
 const NEIGHBORS = 3;
 
 // Popular "X vs Y" searches that calorie distance alone misses. Extend from Search Console queries.
-const CURATED: [string, string][] = [
+export const CURATED: [string, string][] = [
   ['apple', 'banana'], ['banana', 'orange'], ['strawberry', 'blueberry'], ['avocado', 'banana'],
   ['cheese-pizza', 'pepperoni-pizza'], ['cheeseburger', 'cheese-pizza'], ['french-fries', 'onion-rings'],
   ['white-bread', 'whole-wheat-bread'], ['sourdough-bread', 'white-bread'], ['bagel', 'english-muffin'], ['bagel', 'croissant'],
@@ -61,13 +63,11 @@ export function getAllComparePairs(): ComparePair[] {
 }
 
 // AdSense rejected the site for low-value content: thousands of near-identical generated
-// pages. Only the CURATED pairs (real searches) and the foods in them are indexed; the
-// rest stay live for visitors but are noindex and left out of the sitemap.
-const pairSlug = (x: string, y: string) => [x, y].sort((p, q) => p.localeCompare(q)).join('-vs-');
-const INDEXED_PAIRS = new Set(CURATED.map(([x, y]) => pairSlug(x, y)));
-const INDEXED_FOODS = new Set(CURATED.flat());
-export const isIndexedComparePair = (slug: string) => INDEXED_PAIRS.has(slug);
-export const isIndexedFood = (slug: string) => INDEXED_FOODS.has(slug);
+// pages. A page is indexed only when it has a hand-written note; the rest stay live for
+// visitors but are noindex and left out of the sitemap. scripts/test-editorial-notes.mjs
+// checks every CURATED pair and food has one.
+export const isIndexedComparePair = (slug: string) => Object.hasOwn(COMPARE_NOTES, slug);
+export const isIndexedFood = (slug: string) => Object.hasOwn(FOOD_NOTES, slug);
 
 export function getComparePairsForFood(slug: string): ComparePair[] {
   return getAllComparePairs().filter(p => p.a.slug === slug || p.b.slug === slug);
