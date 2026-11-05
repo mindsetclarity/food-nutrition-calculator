@@ -1,0 +1,45 @@
+---
+import { env } from 'cloudflare:workers';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import AuthForm from '../components/community/AuthForm.astro';
+import { findUserByEmail } from '../lib/community/users';
+import { verifyPassword } from '../lib/community/crypto';
+import { createSession, sessionCookie } from '../lib/community/sessions';
+
+export const prerender = false;
+
+if (Astro.locals.user) return Astro.redirect('/account');
+
+let error = ({ google: 'Google sign-in failed. Please try again.', google_unverified: "Your Google account's email isn't verified. Please verify it with Google or sign up with email instead.", email_in_use: 'That email already has an account. Log in with your password, then try again.' } as Record<string, string>)[Astro.url.searchParams.get('error') ?? ''] ?? '';
+let email = '';
+
+if (Astro.request.method === 'POST') {
+  const form = await Astro.request.formData();
+  email = String(form.get('email') ?? '').trim();
+  const password = String(form.get('password') ?? '');
+  const ip = Astro.request.headers.get('CF-Connecting-IP');
+
+  const limit = await env.AUTH_LIMITER?.limit({ key: ip ?? 'unknown' });
+  if (limit && !limit.success) {
+    error = 'Too many attempts. Please wait a minute.';
+  } else {
+    const user = await findUserByEmail(env.DB, email);
+    // Google-only accounts have no password_hash and fail here with the same generic message.
+    const ok = !!user?.password_hash && (await verifyPassword(password, user.password_hash));
+    if (user && ok) {
+      const token = await createSession(env.DB, user.id);
+      return new Response(null, {
+        status: 303,
+        headers: { Location: '/account', 'Set-Cookie': sessionCookie(token) },
+      });
+    }
+    error = 'Email or password is wrong';
+  }
+}
+---
+<SiteLayout title="Log in | Food Nutrition Calculator" description="Log in to your community account." noindex>
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <h1 class="text-3xl font-black text-ink-navy text-center mb-8">Log in</h1>
+    <AuthForm mode="login" google={!!env.GOOGLE_CLIENT_ID} error={error} notice={Astro.url.searchParams.get("reset") === "1" ? "Password updated. Please log in." : Astro.url.searchParams.get("next") === "verify" ? "Sign in, then click the link in your email again to verify." : ""} email={email} />
+  </main>
+</SiteLayout>

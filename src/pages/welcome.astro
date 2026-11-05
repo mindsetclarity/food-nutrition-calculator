@@ -1,0 +1,35 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { env } from 'cloudflare:workers';
+import { setUsername } from '../lib/community/users';
+import { validateUsername } from '../lib/community/validate';
+
+export const prerender = false;
+
+const user = Astro.locals.user;
+if (!user) return Astro.redirect('/login');
+if (user.username) return Astro.redirect('/account');
+
+let error = '';
+let username = '';
+if (Astro.request.method === 'POST') {
+  username = String((await Astro.request.formData()).get('username') ?? '').trim();
+  const result = await setUsername(env.DB, user.id, username);
+  if (result === 'ok') return Astro.redirect('/account', 303);
+  error = result === 'username_taken' ? 'That username is taken.' : (validateUsername(username) ?? 'Please pick another username.');
+}
+const field = 'w-full px-4 py-2 rounded-lg border border-border-soft focus:outline-none focus:ring-2 focus:ring-usda-emerald/50';
+---
+<SiteLayout title="Choose a username | Food Nutrition Calculator" description="Choose your community username." noindex>
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <h1 class="text-3xl font-black text-ink-navy text-center mb-8">Choose a username</h1>
+    <form method="POST" class="bg-white border border-border-soft p-6 rounded-2xl shadow-sm flex flex-col gap-4 max-w-md mx-auto">
+      {error && <p role="alert" class="p-3 rounded-md bg-danger-bg text-danger-text text-sm">{error}</p>}
+      <div class="flex flex-col gap-1">
+        <label for="username" class="text-sm font-medium text-ink-navy">Username (shown publicly)</label>
+        <input type="text" id="username" name="username" value={username} minlength="3" maxlength="20" pattern="[A-Za-z0-9_]+" autocomplete="username" class={field} required />
+      </div>
+      <button type="submit" class="bg-usda-emerald hover:bg-emerald-700 text-white shadow-premium rounded-lg px-4 py-2 font-medium">Continue</button>
+    </form>
+  </main>
+</SiteLayout>

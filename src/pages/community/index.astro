@@ -1,0 +1,36 @@
+---
+import { env } from 'cloudflare:workers';
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import PageHeader from '../../components/site/PageHeader.astro';
+import Button from '../../components/ui/Button.astro';
+import Card from '../../components/ui/Card.astro';
+import PostCard from '../../components/community/PostCard.astro';
+import Disclaimer from '../../components/community/Disclaimer.astro';
+import { TOPICS } from '../../lib/community/db';
+import { listPosts } from '../../lib/community/posts';
+
+export const prerender = false;
+
+const user = Astro.locals.user;
+const topics = await Promise.all(
+  TOPICS.map(async (t) => ({ ...t, posts: (await listPosts(env.DB, t.slug, { sort: 'new', page: 1 })).slice(0, 3) })),
+);
+---
+<SiteLayout title="Community | Food Nutrition Calculator" description="Share diet, exercise and progress tips with other members." canonicalPath="/community">
+  <PageHeader title="Community" description="Share diet, exercise and progress tips with other members." breadcrumbs={[{ label: 'Community' }]} />
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <div class="flex flex-wrap gap-3 mb-8">
+      {user ? <Button href="/community/new">Start a post</Button> : <Button href="/login">Sign in to post</Button>}
+      <Button href="/account#feedback" variant="secondary">Message the owner</Button>
+    </div>
+    <div class="grid gap-6 md:grid-cols-2">
+      {topics.map((t) => (
+        <Card class="p-5">
+          <h2 class="text-xl font-bold text-ink-navy mb-2"><a href={`/community/${t.slug}`} class="hover:text-usda-emerald">{t.label}</a></h2>
+          {t.posts.length ? <ul>{t.posts.map((p) => <PostCard post={p} />)}</ul> : <p class="text-sm text-muted-text">No posts yet.</p>}
+        </Card>
+      ))}
+    </div>
+    <Disclaimer />
+  </main>
+</SiteLayout>

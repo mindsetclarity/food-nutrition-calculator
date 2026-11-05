@@ -1,0 +1,133 @@
+---
+import { env } from 'cloudflare:workers';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { siteConfig } from '../lib/seo/siteConfig';
+import { getReferralForUser } from '../lib/community/referral';
+import { sendVerifyEmail } from '../lib/community/email';
+import { deleteUser } from '../lib/community/users';
+import { deleteSession, sessionCookie } from '../lib/community/sessions';
+import { sendFeedback, listFeedbackForUser } from '../lib/community/feedback';
+
+export const prerender = false;
+
+const user = Astro.locals.user;
+if (!user) return Astro.redirect('/login');
+if (!user.username) return Astro.redirect('/welcome');
+
+const verified = Astro.url.searchParams.get('verified');
+let resendMsg = '';
+let feedbackError = '';
+let feedbackText = '';
+let deleteError = '';
+const form = Astro.request.method === 'POST' ? await Astro.request.formData() : null;
+const action = form?.get('action');
+if (action === 'feedback') {
+  feedbackText = String(form?.get('message') ?? '');
+  const r = await sendFeedback(env.DB, user, feedbackText);
+  if (r.ok) return Astro.redirect('/account?sent=1#feedback', 303);
+  feedbackError = r.error;
+}
+if (action === 'delete-account') {
+  if (String(form?.get('confirm') ?? '').trim().toLowerCase() !== user.username.toLowerCase()) {
+    deleteError = 'Type your username exactly to confirm.';
+  } else {
+    const token = Astro.cookies.get('fnc_session')?.value;
+    if (token) await deleteSession(env.DB, token);
+    await deleteUser(env.DB, env.PHOTOS, user.id);
+    return new Response(null, { status: 303, headers: { Location: '/?deleted=1', 'Set-Cookie': sessionCookie(null) } });
+  }
+}
+if (action === 'resend' && !user.email_verified) {
+  const ip = Astro.request.headers.get('CF-Connecting-IP');
+  const limit = await env.AUTH_LIMITER?.limit({ key: ip ?? 'unknown' });
+  if (limit && !limit.success) resendMsg = 'Too many attempts. Please wait a minute.';
+  else if (await sendVerifyEmail(env.DB, user, Astro.url.origin, env.RESEND_API_KEY)) resendMsg = 'Verification email sent. Check your inbox.';
+  else resendMsg = 'We could not send the email. Please try again later.';
+}
+const feedbackList = await listFeedbackForUser(env.DB, user.id);
+const referral = await getReferralForUser(env.DB, user.id);
+const redeemedOn = referral?.redeemedAt ? new Date(referral.redeemedAt).toISOString().slice(0, 10) : null;
+---
+<SiteLayout title="Your account | Food Nutrition Calculator" description="Your community account." noindex>
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <h1 class="text-3xl font-black text-ink-navy mb-4">Your account</h1>
+    {verified === '1' && <p role="status" class="mb-4 p-3 rounded-md bg-emerald-50 text-sm">Your email is verified.</p>}
+    {verified === '0' && <p role="alert" class="mb-4 p-3 rounded-md bg-danger-bg text-danger-text text-sm">That verification link is invalid or has expired.</p>}
+    {resendMsg && <p role="status" class="mb-4 p-3 rounded-md bg-emerald-50 text-sm">{resendMsg}</p>}
+    <p class="mb-2 text-soft-slate">Signed in as <strong class="text-ink-navy">{user.username}</strong></p>
+    {user.email_verified ? (
+      <p class="mb-6 text-sm text-soft-slate">Email verified.</p>
+    ) : (
+      <form method="POST" class="mb-6 flex flex-wrap items-center gap-3">
+        <input type="hidden" name="action" value="resend" />
+        <span class="text-sm text-soft-slate">Email not verified.</span>
+        <button type="submit" class="bg-white hover:bg-gray-50 text-ink-navy border border-gray-200 rounded-lg px-4 py-2 text-sm font-medium">Resend verification email</button>
+      </form>
+    )}
+
+    {referral && (
+      <section class="mb-8 max-w-xl bg-white rounded-2xl border border-gray-200 p-6" aria-labelledby="bsk-code">
+        <h2 id="bsk-code" class="text-lg font-bold text-ink-navy mb-3">Your Bhaskar code</h2>
+        <div class="flex items-center gap-3">
+          <code id="bsk-code-value" class="flex-1 select-all rounded-lg bg-warm-ivory border border-gray-200 px-4 py-3 font-mono text-lg tracking-wider text-ink-navy">{referral.code}</code>
+          <button type="button" id="bsk-copy" hidden class="bg-white hover:bg-gray-50 text-ink-navy border border-gray-200 rounded-lg px-4 py-2 text-sm font-medium">Copy</button>
+        </div>
+        {redeemedOn && <p class="mt-3 text-sm text-soft-slate">Redeemed on {redeemedOn}</p>}
+        <p class="mt-3 text-sm text-soft-slate">
+          Enter this code in the <a href={siteConfig.playStoreUrl} target="_blank" rel="noopener" class="underline">Bhaskar app (free on Google Play)</a>. It can be used once.
+        </p>
+      </section>
+    )}
+
+    <section id="feedback" class="mb-8 max-w-xl bg-white rounded-2xl border border-gray-200 p-6" aria-labelledby="fb-h">
+      <h2 id="fb-h" class="text-lg font-bold text-ink-navy mb-1">Message the owner</h2>
+      <p class="mb-3 text-sm text-soft-slate">Ideas, bugs or questions about the website — only the owner sees this.</p>
+      {Astro.url.searchParams.get('sent') === '1' && <p role="status" class="mb-3 p-3 rounded-md bg-emerald-50 text-sm">Thanks, your message was sent.</p>}
+      {feedbackError && <p role="alert" class="mb-3 p-3 rounded-md bg-danger-bg text-danger-text text-sm">{feedbackError}</p>}
+      <form method="POST" action="/account#feedback">
+        <input type="hidden" name="action" value="feedback" />
+        <label for="fb-message" class="sr-only">Your message</label>
+        <textarea id="fb-message" name="message" required minlength="10" maxlength="3000" rows="5" class="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm">{feedbackText}</textarea>
+        <button type="submit" class="mt-3 bg-white hover:bg-gray-50 text-ink-navy border border-gray-200 rounded-lg px-4 py-2 text-sm font-medium">Send message</button>
+      </form>
+      {feedbackList.length > 0 && (
+        <ul class="mt-6 space-y-4">
+          {feedbackList.map((f) => (
+            <li class="border-t border-gray-200 pt-4 text-sm">
+              <p class="text-xs text-soft-slate mb-1">{new Date(f.created_at).toISOString().slice(0, 10)}</p>
+              <p class="whitespace-pre-wrap text-ink-navy">{f.message}</p>
+              <p class="mt-2 whitespace-pre-wrap text-soft-slate">{f.owner_reply ? <><strong>Owner reply:</strong> {f.owner_reply}</> : 'No reply yet'}</p>
+            </li>
+          ))}
+        </ul>
+      )}
+    </section>
+
+    <form method="POST" action="/logout">
+      <button type="submit" class="bg-white hover:bg-gray-50 text-ink-navy border border-gray-200 rounded-lg px-4 py-2 font-medium">Log out</button>
+    </form>
+
+    <details id="delete-account" class="mt-10 max-w-xl bg-white rounded-2xl border border-gray-200 p-6" open={!!deleteError}>
+      <summary class="cursor-pointer text-sm font-medium text-danger-text">Delete my account</summary>
+      <p class="mt-3 text-sm text-soft-slate">This removes your account, your posts and replies, and your photos. Your Bhaskar code will stop working. This cannot be undone.</p>
+      {deleteError && <p role="alert" class="mt-3 p-3 rounded-md bg-danger-bg text-danger-text text-sm">{deleteError}</p>}
+      <form method="POST" action="/account#delete-account" class="mt-3">
+        <input type="hidden" name="action" value="delete-account" />
+        <label for="delete-confirm" class="block text-sm font-medium text-ink-navy mb-1">Type your username to confirm</label>
+        <input id="delete-confirm" name="confirm" required autocomplete="off" class="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm" />
+        <button type="submit" class="mt-3 bg-white hover:bg-gray-50 text-danger-text border border-gray-200 rounded-lg px-4 py-2 text-sm font-medium">Permanently delete my account</button>
+      </form>
+    </details>
+  </main>
+</SiteLayout>
+<script>
+  const btn = document.getElementById('bsk-copy');
+  const code = document.getElementById('bsk-code-value');
+  if (btn && code && navigator.clipboard) {
+    btn.hidden = false;
+    btn.addEventListener('click', async () => {
+      await navigator.clipboard.writeText(code.textContent ?? '');
+      btn.textContent = 'Copied';
+    });
+  }
+</script>

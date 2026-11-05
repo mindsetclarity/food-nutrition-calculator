@@ -1,0 +1,153 @@
+---
+import { env } from 'cloudflare:workers';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { isAdmin, banUser, unbanUser, searchUsers } from '../lib/community/users';
+import { deletePost, deleteReply, getPost, postUrl } from '../lib/community/posts';
+import { listOpenReports, resolveReport, getReportTarget } from '../lib/community/reports';
+import { listPendingPhotos, approvePhoto, rejectPhoto } from '../lib/community/photos';
+import { listAllFeedback, replyToFeedback } from '../lib/community/feedback';
+import { toId } from '../lib/community/validate';
+
+export const prerender = false;
+
+const user = Astro.locals.user;
+if (!user || !isAdmin(user, env.ADMIN_EMAIL)) return new Response(null, { status: 404 });
+
+const TABS = ['reports', 'photos', 'feedback', 'users'] as const;
+const q = Astro.url.searchParams.get('q') ?? '';
+const tab = TABS.find((t) => t === Astro.url.searchParams.get('tab')) ?? 'reports';
+const back = `/admin?tab=${tab}${tab === 'users' && q ? `&q=${encodeURIComponent(q)}` : ''}`;
+
+if (Astro.request.method === 'POST') {
+  const form = await Astro.request.formData();
+  const action = String(form.get('action') ?? '');
+  const id = toId(form.get('id')) ?? 0; // 0 matches no row
+  const key = String(form.get('key') ?? '');
+  if (action === 'dismiss-report') await resolveReport(env.DB, id);
+  else if (action === 'delete-item' || action === 'ban-author') {
+    const t = await getReportTarget(env.DB, id);
+    if (t && action === 'ban-author') {
+      if (t.author_id === user.id) return Astro.redirect(`${back}&err=self`, 303);
+      await banUser(env.DB, t.author_id);
+      await resolveReport(env.DB, id);
+    } else if (t?.reply_id) await deleteReply(env.DB, t.reply_id, user, env.ADMIN_EMAIL);
+    else if (t) await deletePost(env.DB, env.PHOTOS, t.post_id, user, env.ADMIN_EMAIL);
+  } else if (action === 'approve-photo') await approvePhoto(env.DB, key);
+  else if (action === 'reject-photo') await rejectPhoto(env.DB, env.PHOTOS, key);
+  else if (action === 'reply-feedback') await replyToFeedback(env.DB, id, String(form.get('reply') ?? ''));
+  else if (action === 'ban-user' || action === 'unban-user') {
+    if (id === user.id) return Astro.redirect(`${back}&err=self`, 303);
+    await (action === 'ban-user' ? banUser : unbanUser)(env.DB, id);
+  }
+  return Astro.redirect(back, 303);
+}
+const notice = Astro.url.searchParams.get('err') === 'self' ? 'You cannot ban yourself.' : '';
+
+const reports = tab === 'reports' ? await listOpenReports(env.DB) : [];
+const photos = tab === 'photos' ? await listPendingPhotos(env.DB) : [];
+const feedback = tab === 'feedback' ? await listAllFeedback(env.DB, { unrepliedFirst: true }) : [];
+const users = tab === 'users' ? await searchUsers(env.DB, q) : [];
+const photoPosts = new Map<number, string>();
+for (const p of photos) {
+  const post = await getPost(env.DB, p.postId);
+  if (post) photoPosts.set(p.postId, postUrl(post));
+}
+const day = (ms: number) => new Date(ms).toISOString().slice(0, 10);
+const btn = 'px-3 py-1 rounded-lg border border-border-soft text-sm text-ink-navy bg-white';
+---
+<SiteLayout title="Admin | Food Nutrition Calculator" description="Owner admin." noindex>
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <h1 class="text-3xl font-black text-ink-navy mb-4">Admin</h1>
+    <nav class="flex flex-wrap gap-2 mb-6" aria-label="Admin sections">
+      {TABS.map((t) => (
+        <a href={`/admin?tab=${t}`} aria-current={t === tab ? 'page' : undefined} class={`px-3 py-1 rounded-lg border text-sm capitalize ${t === tab ? 'bg-usda-emerald text-white border-usda-emerald' : 'border-border-soft text-ink-navy'}`}>{t}</a>
+      ))}
+    </nav>
+    {notice && <p role="alert" class="mb-4 p-3 rounded-md bg-danger-bg text-danger-text text-sm">{notice}</p>}
+
+    {tab === 'reports' && (
+      reports.length === 0 ? <p class="text-soft-slate">No open reports.</p> : (
+        <ul class="space-y-4">
+          {reports.map((r) => (
+            <li class="bg-white border border-border-soft rounded-xl p-4 text-sm">
+              <p class="text-xs text-soft-slate mb-1">{r.kind} · {r.reason} · reported by {r.reporter} · {day(r.createdAt)}</p>
+              <p class="mb-3 text-ink-navy" style="overflow-wrap: anywhere;"><a href={r.url} class="underline">{r.excerpt}</a></p>
+              <form method="POST" action={back} class="flex flex-wrap gap-2">
+                <input type="hidden" name="id" value={r.id} />
+                <button type="submit" name="action" value="delete-item" class={btn}>Delete item</button>
+                <button type="submit" name="action" value="ban-author" class={btn}>Ban author</button>
+                <button type="submit" name="action" value="dismiss-report" class={btn}>Dismiss</button>
+              </form>
+            </li>
+          ))}
+        </ul>
+      )
+    )}
+
+    {tab === 'photos' && (
+      photos.length === 0 ? <p class="text-soft-slate">No photos waiting.</p> : (
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {photos.map((p) => (
+            <li class="bg-white border border-border-soft rounded-xl p-4 text-sm">
+              <img src={`/community/photo/${p.key}`} alt={`Pending photo from ${p.username}`} loading="lazy" class="w-full rounded-lg border border-border-soft object-cover mb-2" style="aspect-ratio: 4 / 3;" />
+              <p class="text-xs text-soft-slate mb-2">{p.username} · {day(p.createdAt)} · {photoPosts.get(p.postId) ? <a href={photoPosts.get(p.postId)} class="underline">post</a> : 'post removed'}</p>
+              <form method="POST" action={back} class="flex gap-2">
+                <input type="hidden" name="key" value={p.key} />
+                <button type="submit" name="action" value="approve-photo" class={btn}>Approve</button>
+                <button type="submit" name="action" value="reject-photo" class={btn}>Reject</button>
+              </form>
+            </li>
+          ))}
+        </ul>
+      )
+    )}
+
+    {tab === 'feedback' && (
+      feedback.length === 0 ? <p class="text-soft-slate">No messages yet.</p> : (
+        <ul class="space-y-4">
+          {feedback.map((f) => (
+            <li class="bg-white border border-border-soft rounded-xl p-4 text-sm">
+              <p class="text-xs text-soft-slate mb-1">{f.username ?? '(no username)'} · {f.email} · {day(f.created_at)}{f.owner_reply ? ' · replied' : ' · unreplied'}</p>
+              <p class="mb-3 whitespace-pre-wrap text-ink-navy" style="overflow-wrap: anywhere;">{f.message}</p>
+              <form method="POST" action={back} class="flex flex-col gap-2">
+                <input type="hidden" name="action" value="reply-feedback" />
+                <input type="hidden" name="id" value={f.id} />
+                <label for={`fr-${f.id}`} class="sr-only">Reply</label>
+                <textarea id={`fr-${f.id}`} name="reply" rows="3" maxlength="3000" required class="w-full rounded-lg border border-border-soft px-3 py-2">{f.owner_reply ?? ''}</textarea>
+                <div><button type="submit" class={btn}>Send reply</button></div>
+              </form>
+            </li>
+          ))}
+        </ul>
+      )
+    )}
+
+    {tab === 'users' && (
+      <>
+        <form method="GET" action="/admin" class="flex gap-2 mb-4">
+          <input type="hidden" name="tab" value="users" />
+          <label for="uq" class="sr-only">Search username or email</label>
+          <input id="uq" name="q" value={q} placeholder="Username or email" class="flex-1 rounded-lg border border-border-soft px-3 py-2 text-sm" />
+          <button type="submit" class={btn}>Search</button>
+        </form>
+        <ul class="space-y-3">
+          {users.map((u) => (
+            <li class="bg-white border border-border-soft rounded-xl p-4 text-sm flex flex-wrap items-center gap-3">
+              <div class="flex-1 min-w-0" style="overflow-wrap: anywhere;">
+                <strong class="text-ink-navy">{u.username ?? '(no username)'}</strong> · {u.email}
+                <div class="text-xs text-soft-slate">joined {day(u.created_at)} · {u.email_verified ? 'verified' : 'unverified'} · {u.is_banned ? 'banned' : 'active'}</div>
+              </div>
+              {u.id !== user.id && (
+                <form method="POST" action={back}>
+                  <input type="hidden" name="id" value={u.id} />
+                  <button type="submit" name="action" value={u.is_banned ? 'unban-user' : 'ban-user'} class={btn}>{u.is_banned ? 'Unban' : 'Ban'}</button>
+                </form>
+              )}
+            </li>
+          ))}
+          {users.length === 0 && <li class="text-soft-slate">No users found.</li>}
+        </ul>
+      </>
+    )}
+  </main>
+</SiteLayout>

@@ -94,3 +94,21 @@ export function buildFAQPageSchema(faqs: { question: string; answer: string }[])
     }))
   };
 }
+
+export function buildDiscussionForumPostingSchema(input: {
+  headline: string; text: string; author: string; datePublished: string; url: string; upvotes: number; replies: number;
+}): JsonLdSchema {
+  return {
+    "@context": "https://schema.org",
+    "@type": "DiscussionForumPosting",
+    "headline": input.headline,
+    "text": input.text.replace(/\s+/g, ' ').trim().slice(0, 300),
+    "author": { "@type": "Person", "name": input.author },
+    "datePublished": input.datePublished,
+    "url": input.url,
+    "interactionStatistic": [
+      { "@type": "InteractionCounter", "interactionType": "https://schema.org/LikeAction", "userInteractionCount": input.upvotes },
+      { "@type": "InteractionCounter", "interactionType": "https://schema.org/CommentAction", "userInteractionCount": input.replies },
+    ],
+  };
+}

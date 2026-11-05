@@ -1,0 +1,148 @@
+---
+import { env } from 'cloudflare:workers';
+import SiteLayout from '../../../layouts/SiteLayout.astro';
+import PageHeader from '../../../components/site/PageHeader.astro';
+import Button from '../../../components/ui/Button.astro';
+import ReplyList from '../../../components/community/ReplyList.astro';
+import Disclaimer from '../../../components/community/Disclaimer.astro';
+import { TOPICS } from '../../../lib/community/db';
+import { canWrite, isAdmin } from '../../../lib/community/users';
+import { listPostPhotos, removePhoto } from '../../../lib/community/photos';
+import { toId } from '../../../lib/community/validate';
+import ReportForm from '../../../components/community/ReportForm.astro';
+import { buildDiscussionForumPostingSchema } from '../../../lib/seo/schema';
+import { siteConfig } from '../../../lib/seo/siteConfig';
+import { reportItem } from '../../../lib/community/reports';
+import { getPost, listReplies, createReply, postUrl, toggleVote, hasVoted, deletePost, deleteReply } from '../../../lib/community/posts';
+
+export const prerender = false;
+
+const topic = TOPICS.find((t) => t.slug === Astro.params.topic);
+const id = Number(/^(\d+)-/.exec(Astro.params.post ?? '')?.[1]);
+const post = topic && Number.isSafeInteger(id) ? await getPost(env.DB, id) : null;
+if (!topic || !post || post.deleted_at || post.author_banned) return new Response(null, { status: 404 });
+const canonical = postUrl(post);
+if (Astro.url.pathname !== canonical) return Astro.redirect(canonical, 301);
+
+const user = Astro.locals.user;
+let error = '';
+let reply = '';
+const reported = Astro.url.searchParams.get('reported') === '1';
+let voteError = '';
+if (Astro.request.method === 'POST') {
+  const form = await Astro.request.formData();
+  const action = String(form.get('action') ?? 'reply');
+  if (action === 'vote') {
+    if (!user) return Astro.redirect('/login', 303);
+    const r = await toggleVote(env.DB, user.id, post.id);
+    if (r.ok) return Astro.redirect(canonical, 303);
+    voteError = r.error;
+  } else if (action === 'delete-post' || action === 'delete-reply') {
+    if (!user) return Astro.redirect('/login', 303);
+    const r =
+      action === 'delete-post'
+        ? await deletePost(env.DB, env.PHOTOS, post.id, user, env.ADMIN_EMAIL)
+        : await deleteReply(env.DB, toId(form.get('reply_id')) ?? 0, user, env.ADMIN_EMAIL);
+    if (r.ok) return Astro.redirect(action === 'delete-post' ? `/community/${topic.slug}` : canonical, 303);
+    voteError = r.error;
+  } else if (action === 'remove-photo') {
+    if (!user) return Astro.redirect('/login', 303);
+    const r = await removePhoto(env.DB, env.PHOTOS, String(form.get('key') ?? ''), user, env.ADMIN_EMAIL);
+    if (r.ok) return Astro.redirect(canonical, 303);
+    voteError = r.error;
+  } else if (action === 'report') {
+    if (!user) return Astro.redirect('/login', 303);
+    const r = await reportItem(env.DB, user.id, { postId: post.id, replyId: toId(form.get('reply_id')), reason: String(form.get('reason') ?? '') });
+    if (r.ok) return Astro.redirect(`${canonical}?reported=1`, 303);
+    voteError = r.error;
+  } else {
+    reply = String(form.get('body') ?? '');
+    const r = user ? await createReply(env.DB, user, post.id, reply) : ({ ok: false, error: 'Please sign in to reply.' } as const);
+    if (r.ok) return Astro.redirect(`${canonical}#reply-${r.id}`, 303);
+    error = r.error;
+  }
+}
+const voted = user ? await hasVoted(env.DB, user.id, post.id) : false;
+const writer = canWrite(user);
+const owner = isAdmin(user, env.ADMIN_EMAIL);
+const photos = await listPostPhotos(env.DB, post.id, user, owner);
+const replies = await listReplies(env.DB, post.id);
+const description = post.body.replace(/\s+/g, ' ').trim().slice(0, 155);
+const jsonLd = topic.indexable
+  ? buildDiscussionForumPostingSchema({
+      headline: post.title,
+      text: post.body,
+      author: post.username,
+      datePublished: new Date(post.created_at).toISOString(),
+      url: `${Astro.site?.origin ?? siteConfig.siteUrl}${canonical}`,
+      upvotes: post.score,
+      replies: replies.length,
+    })
+  : undefined;
+const field = 'w-full px-4 py-2 rounded-lg border border-border-soft focus:outline-none focus:ring-2 focus:ring-usda-emerald/50';
+---
+<SiteLayout title={`${post.title} | Community`} description={description} canonicalPath={canonical} noindex={!topic.indexable} jsonLd={jsonLd}>
+  <PageHeader title={post.title} description={`by ${post.username} · ${new Date(post.created_at).toISOString().slice(0, 10)}`} breadcrumbs={[{ label: 'Community', href: '/community' }, { label: topic.label, href: `/community/${topic.slug}` }, { label: post.title }]} />
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <article class="bg-white border border-border-soft rounded-xl p-5 mb-8">
+      <div class="text-ink-navy" style="white-space: pre-wrap; overflow-wrap: anywhere;">{post.body}</div>
+      {photos.length > 0 && (
+        <div class="mt-4 grid grid-cols-2 gap-3">
+          {photos.map((p, i) => (
+            <figure>
+              <img src={`/community/photo/${p.key}`} alt={`Photo ${i + 1} for: ${post.title}`} loading="lazy" class="w-full rounded-lg border border-border-soft object-cover" style="aspect-ratio: 4 / 3;" />
+              {p.status === 'pending' && <figcaption class="mt-1 text-xs text-soft-slate">Waiting for approval</figcaption>}
+              {user && (owner || user.id === post.user_id) && (
+                <form method="POST" action={canonical} class="mt-1">
+                  <input type="hidden" name="action" value="remove-photo" />
+                  <input type="hidden" name="key" value={p.key} />
+                  <button type="submit" class="text-xs text-danger-text underline">Remove photo</button>
+                </form>
+              )}
+            </figure>
+          ))}
+        </div>
+      )}
+      <div class="mt-4 flex items-start gap-4">
+        {user && writer ? (
+          <form method="POST" action={canonical}>
+            <input type="hidden" name="action" value="vote" />
+            <button type="submit" aria-pressed={voted ? 'true' : 'false'} class={`px-3 py-1 rounded-lg border text-sm ${voted ? 'bg-usda-emerald text-white border-usda-emerald' : 'border-border-soft text-ink-navy'}`}>▲ Upvote · {post.score}</button>
+          </form>
+        ) : (
+          <a href="/login" class="px-3 py-1 rounded-lg border border-border-soft text-sm text-ink-navy">▲ Upvote · {post.score}</a>
+        )}
+        {user && writer && <ReportForm action={canonical} />}
+        {user && (owner || user.id === post.user_id) && (
+          <details class="text-sm">
+            <summary class="cursor-pointer text-soft-slate py-1">Delete</summary>
+            <form method="POST" action={canonical} class="mt-2">
+              <input type="hidden" name="action" value="delete-post" />
+              <button type="submit" class="px-3 py-1 rounded-lg border border-border-soft text-danger-text">Confirm delete post</button>
+            </form>
+          </details>
+        )}
+      </div>
+      {reported && <p role="status" class="mt-3 text-sm text-soft-slate">Thanks — the owner will review this report.</p>}
+      {voteError && <p role="alert" class="mt-3 p-3 rounded-md bg-danger-bg text-danger-text text-sm">{voteError}</p>}
+    </article>
+    <h2 class="text-xl font-bold text-ink-navy mb-4">{replies.length} {replies.length === 1 ? 'reply' : 'replies'}</h2>
+    <ReplyList replies={replies} canReport={writer} action={canonical} viewerId={user?.id ?? 0} isOwner={owner} />
+    <div class="mt-8">
+      {user && canWrite(user) ? (
+        <form method="POST" action={canonical} class="flex flex-col gap-3">
+          <input type="hidden" name="action" value="reply" />
+          {error && <p role="alert" class="p-3 rounded-md bg-danger-bg text-danger-text text-sm">{error}</p>}
+          <label for="body" class="text-sm font-medium text-ink-navy">Your reply</label>
+          <textarea id="body" name="body" rows="4" minlength="2" maxlength="2000" class={field} required>{reply}</textarea>
+          <div><Button type="submit">Reply</Button></div>
+        </form>
+      ) : user ? (
+        <p class="text-sm text-soft-slate">{user.is_banned ? 'Your account cannot post replies.' : <>Choose a username in <a href="/welcome" class="text-usda-emerald underline">your account setup</a> to reply.</>}</p>
+      ) : (
+        <Button href="/login">Sign in to post</Button>
+      )}
+    </div>
+    <Disclaimer />
+  </main>
+</SiteLayout>

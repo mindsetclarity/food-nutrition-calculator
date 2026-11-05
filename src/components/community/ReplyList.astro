@@ -1,0 +1,24 @@
+---
+import type { ReplyView } from '../../lib/community/posts';
+import ReportForm from './ReportForm.astro';
+const { replies, canReport = false, action = '', viewerId = 0, isOwner = false } = Astro.props as { replies: ReplyView[]; canReport?: boolean; action?: string; viewerId?: number; isOwner?: boolean };
+---
+<ol class="flex flex-col gap-4">
+  {replies.map((r) => (
+    <li id={`reply-${r.id}`} class="bg-white border border-border-soft rounded-xl p-4">
+      <p class="text-xs text-muted-text mb-1">{r.username} · {new Date(r.createdAt).toISOString().slice(0, 10)}</p>
+      <div class="text-ink-navy" style="white-space: pre-wrap; overflow-wrap: anywhere;">{r.body}</div>
+      {canReport && <ReportForm action={action} replyId={r.id} />}
+      {(isOwner || (viewerId > 0 && r.userId === viewerId)) && (
+        <details class="mt-2 text-sm">
+          <summary class="cursor-pointer text-soft-slate">Delete</summary>
+          <form method="POST" action={action} class="mt-2">
+            <input type="hidden" name="action" value="delete-reply" />
+            <input type="hidden" name="reply_id" value={r.id} />
+            <button type="submit" class="px-3 py-1 rounded-lg border border-border-soft text-danger-text">Confirm delete reply</button>
+          </form>
+        </details>
+      )}
+    </li>
+  ))}
+</ol>

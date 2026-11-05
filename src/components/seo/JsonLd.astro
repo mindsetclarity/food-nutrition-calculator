@@ -1,12 +1,13 @@
 ---
 import type { JsonLdSchema } from '../../lib/seo/types';
+import { serializeJsonLd } from '../../lib/seo/jsonLd';
 
 interface Props {
   schema: JsonLdSchema | JsonLdSchema[];
 }
 
 const { schema } = Astro.props;
-const jsonLdString = JSON.stringify(schema);
+const jsonLdString = serializeJsonLd(schema);
 ---
 
 <script type="application/ld+json" set:html={jsonLdString}></script>
