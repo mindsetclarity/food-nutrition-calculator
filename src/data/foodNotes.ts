@@ -80,7 +80,7 @@ export const FOOD_NOTES: Record<string, FoodNote> = {
   cashews: {
     body: [
       "Cashews are a soft, slightly sweet nut eaten as a snack, tossed into stir-fries and curries, and soaked and blended into creamy dairy-free sauces, cheeses and desserts. A one-ounce serving is about 18 cashews and 157 calories.",
-      "They are a good source of copper, magnesium and iron, and have a little more carbohydrate and less fiber than almonds or walnuts. Their buttery texture makes them easy to eat by the handful, so portioning matters. In cooking, cashew cream is a popular swap for heavy cream in pasta sauces and soups, and it gives a rich texture for fewer saturated fats. Choose unsalted or lightly salted cashews for snacking; honey-roasted and chili versions add sugar and salt.",
+      "They are a good source of copper, magnesium and iron, and have a little more carbohydrate and less fiber than almonds or walnuts. Their buttery texture makes them easy to eat by the handful, so portioning matters. In cooking, cashew cream is a popular swap for heavy cream in pasta sauces and soups, and it gives a rich texture with less saturated fat. Choose unsalted or lightly salted cashews for snacking; honey-roasted and chili versions add sugar and salt.",
     ],
   },
   cauliflower: {
@@ -254,7 +254,7 @@ export const FOOD_NOTES: Record<string, FoodNote> = {
   'latte-nonfat-milk': {
     body: [
       "A latte is espresso topped with steamed milk and a thin layer of foam. Made with nonfat milk, a medium 16 oz latte has about 144 calories and nearly 14 g of protein, which makes it closer to a light snack than just a coffee.",
-      "Its sugar, around 20 g, is lactose naturally present in the milk, not added sugar. That changes quickly with flavored syrups: each pump adds about 20 to 25 calories, and seasonal lattes with syrups, sauces and whipped cream can reach 300 to 400 calories. Switching from whole milk to nonfat saves about 70 calories in a medium latte. Plant-milk lattes vary: oat milk is usually higher in calories, unsweetened almond milk lower, and soy milk closest to dairy for protein.",
+      "Its sugar, around 20 g, is lactose naturally present in the milk, not added sugar. That changes quickly with flavored syrups: each pump adds about 20 to 25 calories, and seasonal lattes with syrups, sauces and whipped cream can reach 300 to 400 calories. Switching from whole milk to nonfat saves about 90 to 100 calories in a medium latte. Plant-milk lattes vary: oat milk is usually higher in calories, unsweetened almond milk lower, and soy milk closest to dairy for protein.",
     ],
   },
   'light-beer': {
@@ -271,7 +271,7 @@ export const FOOD_NOTES: Record<string, FoodNote> = {
   },
   margarine: {
     body: [
-      "Margarine and vegetable-oil spreads were developed as an alternative to butter, and are used on toast and in cooking and baking. The values here are for a stick-style margarine at 579 calories per 100 g; a 5 g portion is about 29 calories. Light and tub spreads can be much lower, so check the label of the product you buy.",
+      "Margarine and vegetable-oil spreads were developed as an alternative to butter, and are used on toast and in cooking and baking. The values here are for a spread-style margarine at 579 calories per 100 g; a 5 g portion is about 29 calories. Light and tub spreads can be much lower, so check the label of the product you buy.",
       "Most modern spreads are made from vegetable oils and contain less saturated fat than butter, which fits US and UK advice to replace saturated fats with unsaturated ones. Older margarines contained trans fats from partially hydrogenated oils, but those were removed from the US food supply in 2018 and are now rare in UK spreads too. Margarine is fairly salty. For baking, use a block margarine designed for baking, since light spreads contain too much water.",
     ],
   },
@@ -325,14 +325,14 @@ export const FOOD_NOTES: Record<string, FoodNote> = {
   },
   orange: {
     body: [
-      "Oranges are eaten peeled as a snack, segmented into salads, or juiced. A medium orange of about 131 g has around 62 calories and provides more than a full day's vitamin C for most adults, along with about 3 g of fiber.",
+      "Oranges are eaten peeled as a snack, segmented into salads, or juiced. A medium orange of about 131 g has around 62 calories and provides about 70 mg of vitamin C, most of the US daily value and well over the UK's 40 mg reference, along with about 3 g of fiber.",
       "Whole oranges are far more filling than orange juice. A glass of juice contains the sugar of two or three oranges but little of the fiber, and it is easy to drink quickly. That is why the NHS counts fruit juice as only one of your five a day, however much you drink, and recommends limiting it to 150 ml a day. Easy-peel varieties such as clementines and mandarins are smaller, about 35 to 45 calories each, and make a handy lunch-box fruit.",
     ],
   },
   pakora: {
     body: [
       "Pakoras are Indian fritters made by dipping vegetables such as onion, potato, spinach or cauliflower in a spiced chickpea-flour (besan) batter and frying them. Each small pakora of about 12 g has around 15 calories in this data, which reflects a lighter, vegetable-heavy recipe.",
-      "Restaurant and takeaway pakoras are often fried in more oil and made larger, so they can be considerably higher in calories. Because they are small, they are easy to eat in large numbers: a plate of 10 to 15 is a meal's worth of calories. Chickpea flour is naturally gluten-free and adds some protein and fiber. Baked or air-fried pakoras are a good lighter option at home, and a mint-yogurt raita makes a lighter dip than sweet chutneys.",
+      "Restaurant and takeaway pakoras are often fried in more oil and made larger, so they can be considerably higher in calories. Because they are small, they are easy to eat in large numbers, so it is worth counting them, especially larger restaurant ones. Chickpea flour is naturally gluten-free and adds some protein and fiber. Baked or air-fried pakoras are a good lighter option at home, and a mint-yogurt raita makes a lighter dip than sweet chutneys.",
     ],
   },
   paratha: {
@@ -374,7 +374,7 @@ export const FOOD_NOTES: Record<string, FoodNote> = {
   salmon: {
     body: [
       "These values are for raw farmed Atlantic salmon, which is what most supermarkets in the US and UK sell. A 4 oz raw portion has about 235 calories and 23 g of protein, along with plenty of omega-3 fats.",
-      "Salmon is one of the best food sources of the long-chain omega-3 fats EPA and DHA, as well as vitamin D and B12. Both the NHS and US guidelines recommend eating fish regularly, including oily fish like salmon, and salmon is low in mercury, so it is a good choice during pregnancy. Wild salmon is usually leaner than farmed. Cooking methods matter for the final calories: baking, grilling or poaching adds little, while pan-frying in butter or using sweet glazes adds more. Weigh raw where you can.",
+      "Salmon is one of the best food sources of the long-chain omega-3 fats EPA and DHA, as well as vitamin D and B12. Both the NHS and US guidelines recommend eating fish regularly, including oily fish like salmon, and salmon is low in mercury, so it is a good choice during pregnancy, within the NHS advice of up to two portions of oily fish a week. Wild salmon is usually leaner than farmed. Cooking methods matter for the final calories: baking, grilling or poaching adds little, while pan-frying in butter or using sweet glazes adds more. Weigh raw where you can.",
     ],
   },
   samosa: {
@@ -404,7 +404,7 @@ export const FOOD_NOTES: Record<string, FoodNote> = {
   strawberry: {
     body: [
       "Strawberries are eaten fresh, sliced over cereal and yogurt, blended into smoothies, and as a classic summer dessert with cream. A cup of halves, about 152 g, has only around 49 calories, making them one of the lowest-calorie fruits.",
-      "They are an excellent source of vitamin C, with a cup providing more than a day's needs for most adults, plus a few grams of fiber. Their low sugar content, about 5 g per 100 g, makes them a good fruit choice if you are watching sugar. The calories in a strawberry dessert usually come from what goes with it: a portion of cream, ice cream, chocolate dip or shortcake can add hundreds of calories. Frozen strawberries are great for smoothies.",
+      "They are an excellent source of vitamin C, with a cup providing about a full day's worth by the US daily value, plus a few grams of fiber. Their low sugar content, about 5 g per 100 g, makes them a good fruit choice if you are watching sugar. The calories in a strawberry dessert usually come from what goes with it: a portion of cream, ice cream, chocolate dip or shortcake can add hundreds of calories. Frozen strawberries are great for smoothies.",
     ],
   },
   'sweet-potato': {
@@ -416,7 +416,7 @@ export const FOOD_NOTES: Record<string, FoodNote> = {
   tuna: {
     body: [
       "These values are for raw yellowfin tuna, at about 109 calories and 24 g of protein per 100 g, with almost no fat. It is eaten as steaks, seared, or raw in sushi and poke bowls. Canned tuna in water has similar figures, while tuna canned in oil is higher in calories.",
-      "Tuna is one of the leanest, cheapest protein sources available, which makes it a favorite for high-protein meals. Unlike salmon, tuna does not count as an oily fish in UK guidance. Larger tuna species, including yellowfin and albacore, contain more mercury than smaller fish. The FDA and NHS both set limits on how much tuna pregnant people and young children should eat. Mayonnaise in tuna salad adds around 90 calories per tablespoon, so Greek yogurt is a popular lighter swap.",
+      "Tuna is one of the leanest, cheapest protein sources available, which makes it a favorite for high-protein meals. Unlike salmon, tuna does not count as an oily fish in UK guidance. Larger tuna species, including yellowfin and albacore, contain more mercury than smaller fish. The FDA and NHS both advise limiting tuna during pregnancy, and the FDA also gives limits for young children. Mayonnaise in tuna salad adds around 90 calories per tablespoon, so Greek yogurt is a popular lighter swap.",
     ],
   },
   'vanilla-ice-cream': {

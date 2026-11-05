@@ -28,7 +28,7 @@ export const COMPARE_NOTES: Record<string, CompareNote> = {
       "If you are tracking sugar, note that a medium banana has a little more than a medium orange (about 14 g against 12 g), and the gap grows as bananas ripen.",
     ],
     chooseA: 'you want a quick, portable carb source before training or a soft fruit to mash into oats or baking.',
-    chooseB: 'you want the most fruit for the fewest calories, or a refreshing snack that also covers your vitamin C for the day.',
+    chooseB: 'you want the most fruit for the fewest calories, or a refreshing snack that covers most of your vitamin C for the day.',
   },
   'blueberry-vs-strawberry': {
     summary: 'Strawberries are the lower-calorie berry, with about 49 calories per cup against about 84 for blueberries, but both are among the best fruit picks if you are watching sugar.',
@@ -173,7 +173,7 @@ export const COMPARE_NOTES: Record<string, CompareNote> = {
   'cola-vs-diet-cola': {
     summary: 'Diet cola is effectively calorie-free (about 7 calories a can) while regular cola has about 156 calories and 37 g of sugar per can, more than the daily added-sugar limit for many adults.',
     body: [
-      "The difference is all sugar. Regular cola has 9.9 g of sugar per 100 g, so a single can goes past the American Heart Association's suggested limit of 36 g a day for men and 25 g for women. The UK recommends no more than 30 g of free sugars a day for adults, and a 330 ml can comes close on its own.",
+      "The difference is all sugar. Regular cola has 9.9 g of sugar per 100 g, so a single can goes past the American Heart Association's suggested limit of 36 g a day for men and 25 g for women. The UK recommends no more than 30 g of free sugars a day for adults, and a 330 ml can, at about 33 g, goes past it on its own.",
       "Liquid sugar is easy to overdo because it does not fill you up. Swapping one daily can of regular cola for diet saves around 1,000 calories a week.",
       "Sweeteners in diet cola are approved as safe by US and UK regulators. The WHO advises against relying on sweeteners for long-term weight control, though, so the best long-term swap is water, sparkling water or unsweetened tea. Both colas contain caffeine and are acidic, which is hard on teeth.",
     ],
@@ -184,7 +184,7 @@ export const COMPARE_NOTES: Record<string, CompareNote> = {
     summary: 'Black coffee is practically calorie-free (about 2 calories a cup), while a medium nonfat latte has about 144 calories, almost all from milk.',
     body: [
       "Those latte calories are not empty, though. A 16 oz nonfat latte provides about 14 g of protein and a good share of your daily calcium, so it works as a light breakfast or snack, not just a drink. Its sugar, about 20 g, is lactose from the milk rather than added sugar, as long as you skip the syrup.",
-      "Where coffee drinks go wrong is in the extras. Each pump of flavored syrup adds around 20 to 25 calories, and switching to whole milk adds about 70 calories to a medium latte. Black coffee leaves room for whatever else you want to eat.",
+      "Where coffee drinks go wrong is in the extras. Each pump of flavored syrup adds around 20 to 25 calories, and switching to whole milk adds about 90 to 100 calories to a medium latte. Black coffee leaves room for whatever else you want to eat.",
       "Both have about the same caffeine for the same number of espresso shots. The FDA suggests up to 400 mg of caffeine a day is generally fine for healthy adults, which is roughly four cups of brewed coffee.",
     ],
     chooseA: 'you want caffeine with no calories, or you drink several cups a day.',
@@ -295,9 +295,9 @@ export const COMPARE_NOTES: Record<string, CompareNote> = {
     body: [
       "Tuna also has a little more protein, 24.4 g against 20.4 g per 100 g, so it is a favorite for high-protein, low-calorie meals. Canned tuna in water is one of the cheapest protein sources in any supermarket.",
       "Salmon's extra calories come with something tuna mostly lacks: long-chain omega-3 fats. That is why salmon counts as an oily fish in UK guidance, while canned tuna does not.",
-      "Mercury is the other consideration. Large tuna species like yellowfin and albacore build up more mercury than salmon. The FDA and NHS both give limits on tuna for pregnant people and young children, while salmon sits in the lowest-mercury group. For most adults, mixing both across the week works well.",
+      "Mercury is the other consideration. Large tuna species like yellowfin and albacore build up more mercury than salmon. The FDA and NHS both advise limiting tuna during pregnancy, and the FDA also for young children, while salmon sits in the lowest-mercury group. For most adults, mixing both across the week works well.",
     ],
-    chooseA: 'you want omega-3 fats, or are choosing fish for pregnancy or young children.',
+    chooseA: 'you want omega-3 fats, or are choosing fish for pregnancy or young children (in pregnancy, the NHS advises up to two portions of oily fish a week).',
     chooseB: 'you want the most protein for the fewest calories, such as in salads, sandwiches or meal prep.',
   },
   'dry-tofu-vs-grilled-chicken-breast': {
@@ -454,7 +454,7 @@ export const COMPARE_NOTES: Record<string, CompareNote> = {
     summary: 'In this data, samosa is far more calorie-dense than pakora (310 against 125 kcal per 100 g), because its pastry shell soaks up oil when fried.',
     body: [
       "Samosas have 17.5 g of fat per 100 g against 4.8 g for pakoras. The pakora figures here reflect a lighter, vegetable-heavy recipe, and restaurant pakoras fried in a lot of oil can be much higher, so treat them as the lower end.",
-      "Size is the other big factor. A small 25 g samosa is about 78 calories, but a standard takeaway or bakery samosa is often 80 to 100 g, roughly 250 to 310 calories each. Pakoras are small, so the count adds up quietly: a plate of eight to ten is a meal in itself.",
+      "Size is the other big factor. A small 25 g samosa is about 78 calories, but a standard takeaway or bakery samosa is often 80 to 100 g, roughly 250 to 310 calories each. Pakoras are small, so the count adds up quietly, especially with larger restaurant pakoras, which can be several times the size of the ones here.",
       "Both are fried snacks to enjoy now and then. Baked or air-fried versions cut the fat a lot, and a mint-yogurt chutney is lighter than sweet tamarind sauce.",
     ],
     chooseA: 'you want a lighter fried snack and keep track of how many you eat.',
