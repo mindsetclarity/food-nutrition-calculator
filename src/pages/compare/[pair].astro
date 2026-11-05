@@ -9,6 +9,7 @@ import { getDefaultServing, nutrientFor, servingText } from '../../lib/foods/foo
 import { buildFAQPageSchema, buildWebPageSchema } from '../../lib/seo/schema';
 import { siteConfig } from '../../lib/seo/siteConfig';
 import type { NutrientProfile } from '../../lib/nutrition/types';
+import { COMPARE_NOTES } from '../../data/compareNotes';
 
 export const prerender = true;
 
@@ -70,7 +71,12 @@ const faqs = [
 
 // The "|" stops metadata.ts appending the site name, keeping the title near 60 chars.
 const title = `${a.displayName} vs ${b.displayName} | Calories & Nutrition Compared`;
-const description = `${a.displayName} has ${kA} kcal and ${b.displayName.toLowerCase()} has ${kB} kcal per 100 g. Compare protein, carbs, fat, fiber and sugar side by side.`;
+const note = COMPARE_NOTES[pair.slug];
+// Meta descriptions are cut around 160 chars; trim at a word boundary.
+const clip = (s: string) => (s.length <= 160 ? s : s.slice(0, s.lastIndexOf(' ', 157)) + '…');
+const description = note
+  ? clip(note.summary)
+  : `${a.displayName} has ${kA} kcal and ${b.displayName.toLowerCase()} has ${kB} kcal per 100 g. Compare protein, carbs, fat, fiber and sugar side by side.`;
 const url = `${siteConfig.siteUrl}/compare/${pair.slug}`;
 
 const jsonLd = [buildWebPageSchema({ name: title, description, url }), buildFAQPageSchema(faqs)];
@@ -97,11 +103,22 @@ const winner = (va: number | null, vb: number | null, side: 'a' | 'b') =>
       <h1 class="text-3xl sm:text-4xl font-black text-gray-900 tracking-tight mb-4">
         {a.displayName} vs {b.displayName}: Calories &amp; Nutrition
       </h1>
+      {note && <p class="text-lg text-gray-800 mb-4">{note.summary}</p>}
       <ul class="space-y-2 text-lg text-gray-700 mb-10">
         {summary.map(line => <li>{line}</li>)}
       </ul>
 
       <div class="space-y-8">
+        {note && (
+          <section class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 sm:p-8">
+            <h2 class="text-2xl font-black text-gray-900 mb-4">Which should you pick?</h2>
+            <div class="space-y-4 text-gray-700 leading-relaxed">
+              {note.body.map(p => <p>{p}</p>)}
+              <p><strong class="text-gray-900">Pick {a.displayName.toLowerCase()} if</strong> {note.chooseA}</p>
+              <p><strong class="text-gray-900">Pick {b.displayName.toLowerCase()} if</strong> {note.chooseB}</p>
+            </div>
+          </section>
+        )}
         <section class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 sm:p-8 overflow-x-auto">
           <h2 class="text-2xl font-black text-gray-900 mb-4">Nutrition per 100 g</h2>
           <table class="min-w-full text-left">

@@ -10,7 +10,7 @@ import FoodCTASection from '../../components/foods/FoodCTASection.astro';
 import NutritionFactsLabel from '../../components/nutrition-label/NutritionFactsLabel.astro';
 import Breadcrumbs from '../../components/seo/Breadcrumbs.astro';
 import FaqList from '../../components/seo/FaqList.astro';
-import AppPromo from '../../components/app/AppPromo.astro';
+import { FOOD_NOTES } from '../../data/foodNotes';
 
 import { getAllFoodPages, getFoodDetailSeo, getFoodFaqs, getRelatedFoods } from '../../lib/foods';
 import { getComparePairsForFood, isIndexedFood } from '../../lib/compare/comparePairs';
@@ -37,6 +37,7 @@ const seo = getFoodDetailSeo(food);
 const relatedFoods = getRelatedFoods(food, 4);
 const faqs = getFoodFaqs(food);
 const comparePairs = getComparePairsForFood(food.slug);
+const note = FOOD_NOTES[food.slug];
 
 // Format nutrients for NutritionFactsLabel
 const formatLabelNutrients = (foodNutrients: any) => {
@@ -90,7 +91,16 @@ const jsonLd = [
         {/* Main Column */}
         <div class="lg:col-span-8 space-y-8">
           <FoodNutritionSummary food={food} />
-          
+
+          {note && (
+            <section class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 sm:p-8">
+              <h2 class="text-2xl font-black text-gray-900 mb-4">About {food.displayName.toLowerCase()}</h2>
+              <div class="space-y-4 text-gray-700 leading-relaxed">
+                {note.body.map(p => <p>{p}</p>)}
+              </div>
+            </section>
+          )}
+
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <FoodServingSizes food={food} />
             <FoodMacroBreakdown food={food} />
@@ -115,8 +125,6 @@ const jsonLd = [
           )}
 
           <FaqList faqs={faqs} heading={`${food.displayName} nutrition FAQ`} />
-
-          <AppPromo variant="card" />
 
           <FoodSourceNotice />
         </div>
