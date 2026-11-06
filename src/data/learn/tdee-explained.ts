@@ -9,7 +9,7 @@ export const article: LearnArticle = {
   tags: ['TDEE', 'BMR', 'NEAT', 'metabolism', 'maintenance calories'],
   readingTimeMinutes: 8,
   updatedAt: '2026-10-23',
-  relatedTool: { label: 'Food Calorie Counter', href: '/food-calorie-counter' },
+  relatedTool: { label: 'TDEE Calculator', href: '/tdee-calculator' },
   heroSummary: "TDEE, or total daily energy expenditure, is the total number of calories your body burns in a day, and it is the number you would eat to keep your weight stable. It is made up of four parts: your basal metabolic rate (BMR), everyday movement (NEAT), the energy used to digest food (TEF), and deliberate exercise. Online calculators give a reasonable first estimate, but the most accurate TDEE is the one you work out from your own food log and weigh-ins over two to three weeks, and this guide shows the arithmetic.",
   keyTakeaway: "TDEE = BMR + NEAT + TEF + exercise. Estimate it with the Mifflin-St Jeor equation and an activity factor, then correct it: average intake + (weight lost in kg x 7,700 / days) gives your real maintenance.",
   seoTitle: 'TDEE Explained: BMR, NEAT, TEF and How to Calculate It | Food Nutrition Calculator',
@@ -87,7 +87,7 @@ export const article: LearnArticle = {
         'Energy from stores: 0.4 x 7,700 = 3,080 kcal; 3,080 / 14 = 220 kcal a day',
         'Calibrated TDEE: 2,350 + 220 = about 2,570 kcal a day'
       ],
-      toolCta: { label: 'Log foods with the calorie counter', href: '/food-calorie-counter' }
+      toolCta: { label: 'Log foods with the calculator', href: '/calculator' }
     },
     {
       id: 'calibrating-in-pounds',

@@ -9,7 +9,7 @@ export const article: LearnArticle = {
   tags: ['calorie tracking', 'food scale', 'portion size', 'weight loss'],
   readingTimeMinutes: 8,
   updatedAt: '2026-10-23',
-  relatedTool: { label: 'Food Calorie Counter', href: '/food-calorie-counter' },
+  relatedTool: { label: 'Food Nutrition Calculator', href: '/calculator' },
   heroSummary: "The most accurate way to track calories is to weigh food in grams on a digital kitchen scale, log it in the state you weighed it (raw or cooked), and count every oil, spread and sauce. Measuring cups and spoons are fine for liquids but can be off by 50% or more for dense foods like peanut butter, oats and granola. Below are the common errors, with real numbers from USDA data, and a simple routine that keeps your log close to reality without turning meals into a chore.",
   keyTakeaway: "Weigh dense and calorie-rich foods, match raw weights to raw entries and cooked to cooked, log cooking fats, and judge progress on weekly averages. A consistent log that is slightly off is more useful than a perfect one you abandon after a week.",
   seoTitle: 'How to Track Calories Accurately: Scale, Raw vs Cooked, Oils | Food Nutrition Calculator',

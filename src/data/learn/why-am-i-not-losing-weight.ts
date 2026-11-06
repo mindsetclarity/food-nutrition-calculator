@@ -9,7 +9,7 @@ export const article: LearnArticle = {
   tags: ['weight loss', 'calorie deficit', 'plateau', 'calorie tracking'],
   readingTimeMinutes: 8,
   updatedAt: '2026-10-23',
-  relatedTool: { label: 'Food Calorie Counter', href: '/food-calorie-counter' },
+  relatedTool: { label: 'Food Nutrition Calculator', href: '/calculator' },
   heroSummary: "If you are eating less but the scale will not move, the most likely reason is that you are eating more than you think, usually through small untracked extras, drinks and weekends. The next most likely is that normal water swings are hiding fat loss that is actually happening. Medical causes exist, but they are less common, and a careful two-week check will usually show you which group you fall into.",
   keyTakeaway: "Judge progress on 2 to 4 weeks of averaged weigh-ins, not single days. Log everything for two weeks, including oil, drinks and weekends, and treat exercise calorie estimates as rough. If you have truly been in a deficit for a month with no change, or you have symptoms such as tiredness and feeling cold, speak to a doctor.",
   seoTitle: "Why Am I Not Losing Weight? 8 Reasons and a Fix | Food Nutrition Calculator",
@@ -43,7 +43,7 @@ export const article: LearnArticle = {
         "Peanut butter, 1 level tablespoon (16 g): about 95 calories. A heaped spoon can be close to double",
         "A splash of oil in the pan, a buttered slice of toast and a spoon of peanut butter from the jar: easily 300 calories that may never be written down"
       ],
-      toolCta: { label: 'Look up calories for any food', href: '/food-calorie-counter' }
+      toolCta: { label: 'Look up calories for any food', href: '/calculator' }
     },
     {
       id: 'overestimating-exercise',

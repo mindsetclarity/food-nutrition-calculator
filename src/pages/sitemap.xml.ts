@@ -22,6 +22,8 @@ export const GET: APIRoute = async ({ site }) => {
     { path: '/recipe-nutrition-calculator', priority: '0.9', changefreq: 'weekly' },
     { path: '/compare-foods', priority: '0.9', changefreq: 'weekly' },
     { path: '/meal-calorie-calculator', priority: '0.9', changefreq: 'weekly' },
+    { path: '/tdee-calculator', priority: '0.9', changefreq: 'monthly' },
+    { path: '/macro-calculator', priority: '0.9', changefreq: 'monthly' },
     { path: '/foods', priority: '0.8', changefreq: 'weekly' },
     { path: '/learn', priority: '0.8', changefreq: 'weekly' },
     { path: '/about', priority: '0.5', changefreq: 'monthly' },

@@ -9,7 +9,7 @@ export const article: LearnArticle = {
   tags: ['protein', 'macros', 'strength training', 'healthy ageing'],
   readingTimeMinutes: 8,
   updatedAt: '2026-10-23',
-  relatedTool: { label: 'Meal Calorie Calculator', href: '/meal-calorie-calculator' },
+  relatedTool: { label: 'Macro Calculator', href: '/macro-calculator' },
   heroSummary: "Most healthy adults need at least 0.8 g of protein per kilogram of body weight a day (about 0.36 g per pound), which is the US RDA; the UK reference figure is a little lower at 0.75 g/kg. People who lift weights, and adults over about 65, often do better with more, roughly 1.0 to 2.0 g/kg depending on the goal. This guide shows where those numbers come from, how to work out your own target in kilos, pounds or stone, and what a day of food that hits it actually looks like.",
   keyTakeaway: "Multiply your weight in kg by 0.8 (or your weight in lb by 0.36) for the basic minimum. A 150 lb (68 kg) adult needs about 54 g a day. If you strength train, aim for 1.2 to 2.0 g/kg; if you are over 65, 1.0 to 1.2 g/kg is a common recommendation.",
   seoTitle: 'How Much Protein Do I Need a Day? (Per kg and Per lb) | Food Nutrition Calculator',

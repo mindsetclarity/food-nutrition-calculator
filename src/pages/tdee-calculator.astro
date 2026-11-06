@@ -1,0 +1,83 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import PageHeader from '../components/site/PageHeader.astro';
+import EnergyCalculator from '../components/calculator/EnergyCalculator.astro';
+import FaqList from '../components/seo/FaqList.astro';
+import { buildFAQPageSchema, buildWebPageSchema } from '../lib/seo/schema';
+import { siteConfig } from '../lib/seo/siteConfig';
+
+export const prerender = true;
+
+// The "|" stops metadata.ts appending the site name.
+const title = 'TDEE Calculator | Daily Calories to Lose, Maintain or Gain';
+const description = 'Free TDEE calculator using the Mifflin-St Jeor equation. Enter your age, height, weight and activity to estimate your BMR and daily calorie targets.';
+
+const faqs = [
+  {
+    question: 'What is TDEE?',
+    answer: 'TDEE stands for total daily energy expenditure: all the calories your body burns in a day, including rest, movement, exercise and digesting food. Eating about that amount keeps your weight roughly stable.',
+  },
+  {
+    question: 'How accurate is a TDEE calculator?',
+    answer: 'It is a starting estimate. The Mifflin-St Jeor equation predicts resting energy use within about 10% for most adults, and activity level adds more uncertainty. Your own weight trend over two to three weeks is the best way to correct it.',
+  },
+  {
+    question: 'Should I eat back the calories I burn exercising?',
+    answer: 'Not separately. Your activity level already includes planned exercise, so adding it again counts it twice. Pick the level that matches a typical week rather than your most active one.',
+  },
+  {
+    question: 'How many calories should I cut to lose weight?',
+    answer: 'A deficit of about 500 calories a day is a common starting point and works out at very roughly 1 lb (0.45 kg) a week. This calculator will not suggest less than 1,200 calories a day for women or 1,500 for men.',
+  },
+];
+
+const jsonLd = [
+  buildWebPageSchema({ name: title, description, url: `${siteConfig.siteUrl}/tdee-calculator` }),
+  buildFAQPageSchema(faqs),
+];
+---
+<SiteLayout title={title} description={description} jsonLd={jsonLd}>
+  <PageHeader
+    title="TDEE Calculator"
+    description="Estimate how many calories you burn in a day, and what to eat to lose, maintain or gain weight."
+    breadcrumbs={[{ label: 'TDEE Calculator' }]}
+    chipType="calculator"
+  />
+  <main id="main-content" class="bg-warm-ivory pb-24 relative z-10">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+      <EnergyCalculator mode="tdee" />
+
+      <p class="text-sm text-gray-600">
+        Your answers stay in your browser and are not sent or saved. Results are estimates for healthy adults, not medical advice. This calculator is not suitable during pregnancy or breastfeeding, for under-18s, or if you have or have had an eating disorder. Please speak to a doctor or registered dietitian in those cases.
+      </p>
+
+      <section class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 sm:p-8 space-y-4 text-gray-700 leading-relaxed">
+        <h2 class="text-2xl font-black text-gray-900">How this calculator works</h2>
+        <p>
+          First it estimates your basal metabolic rate (BMR), the energy your body uses at complete rest, with the Mifflin-St Jeor equation. Published in 1990, it is the formula dietitians most often use for adults, because reviews have found it more accurate than older equations such as Harris-Benedict.
+        </p>
+        <p>
+          It then multiplies your BMR by an activity factor, from 1.2 for a mostly seated day to 1.9 for a physical job plus hard training. The result is your TDEE, your estimated maintenance calories. The weight-loss target is your TDEE minus 500 calories, and the gain target is your TDEE plus 300, a smaller surplus that limits fat gain.
+        </p>
+
+        <h2 class="text-2xl font-black text-gray-900 pt-2">Choosing your activity level</h2>
+        <p>
+          This is where most people go wrong, and nearly always in the same direction: choosing a level that is too high. Three gym sessions a week does not make you very active if you sit at a desk the rest of the time. If you are torn between two levels, start with the lower one. Daily movement such as walking and standing often matters more than formal exercise, which is why two people with the same workouts can burn quite different amounts.
+        </p>
+
+        <h2 class="text-2xl font-black text-gray-900 pt-2">Turn the estimate into your real number</h2>
+        <p>
+          No formula knows your body, so treat the result as a first guess and test it. Eat at your target for two to three weeks, logging food honestly and weighing yourself a few times a week. Then compare the average weights. If your weight is steady on your maintenance number, the estimate is right. If you are losing or gaining when you did not expect to, adjust by 100 to 200 calories and check again. Daily weight swings from water are normal, so look at the trend rather than any single morning.
+        </p>
+        <p>
+          Your TDEE also changes over time. As you lose weight you need less energy, so it is worth recalculating after every 10 lb (about 5 kg) or so.
+        </p>
+        <p>
+          To go further, read <a href="/learn/tdee-explained" class="text-emerald-700 font-semibold hover:underline">TDEE explained</a> and <a href="/learn/what-is-a-calorie-deficit" class="text-emerald-700 font-semibold hover:underline">what a calorie deficit is</a>, set your protein, carbs and fat with the <a href="/macro-calculator" class="text-emerald-700 font-semibold hover:underline">macro calculator</a>, and check what you eat with the <a href="/calculator" class="text-emerald-700 font-semibold hover:underline">food calculator</a>.
+        </p>
+      </section>
+
+      <FaqList faqs={faqs} heading="TDEE calculator FAQ" />
+    </div>
+  </main>
+</SiteLayout>

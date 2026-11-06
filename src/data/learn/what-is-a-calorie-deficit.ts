@@ -9,7 +9,7 @@ export const article: LearnArticle = {
   tags: ['calorie deficit', 'weight loss', 'water weight', 'metabolism'],
   readingTimeMinutes: 7,
   updatedAt: '2026-10-23',
-  relatedTool: { label: 'Meal Calorie Calculator', href: '/meal-calorie-calculator' },
+  relatedTool: { label: 'TDEE Calculator', href: '/tdee-calculator' },
   heroSummary: "A calorie deficit is when you take in fewer calories from food and drink than your body uses, so it has to make up the difference from stored energy, mostly body fat. A deficit of around 500 kcal a day is a common, sustainable starting point and works out to roughly 1 lb (0.45 kg) a week. This guide covers how big a deficit should be, the easiest ways to create one, and why your weight bounces around even when you are doing everything right.",
   keyTakeaway: "A calorie deficit is eating less energy than you burn. Around 500 kcal a day is a sensible start. Daily weigh-ins swing with water and glycogen, so judge progress by weekly averages, and expect loss to slow a little as you get lighter.",
   seoTitle: 'What Is a Calorie Deficit? How Big and How to Create One | Food Nutrition Calculator',
@@ -113,7 +113,7 @@ export const article: LearnArticle = {
         'Trusting fitness tracker calorie burns and eating them all back',
         'Changing the plan after a single bad weigh-in'
       ],
-      toolCta: { label: 'Look up calories for any food', href: '/food-calorie-counter' }
+      toolCta: { label: 'Look up calories for any food', href: '/calculator' }
     },
     {
       id: 'who-should-not',

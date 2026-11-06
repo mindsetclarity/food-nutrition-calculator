@@ -1,0 +1,85 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import PageHeader from '../components/site/PageHeader.astro';
+import EnergyCalculator from '../components/calculator/EnergyCalculator.astro';
+import FaqList from '../components/seo/FaqList.astro';
+import { buildFAQPageSchema, buildWebPageSchema } from '../lib/seo/schema';
+import { siteConfig } from '../lib/seo/siteConfig';
+
+export const prerender = true;
+
+// The "|" stops metadata.ts appending the site name.
+const title = 'Macro Calculator | Daily Protein, Carbs and Fat for Your Goal';
+const description = 'Free macro calculator. Enter your age, height, weight, activity and goal to get daily calories plus grams of protein, carbs and fat.';
+
+const faqs = [
+  {
+    question: 'What are macros?',
+    answer: 'Macros, short for macronutrients, are the three main nutrients that provide calories: protein and carbohydrate at about 4 calories per gram, and fat at about 9 calories per gram.',
+  },
+  {
+    question: 'Do I have to hit my macros exactly?',
+    answer: 'No. Being within about 5 to 10 g on most days is plenty. Calories and protein matter most for most goals, so if you only track two numbers, track those.',
+  },
+  {
+    question: 'How much protein do I need?',
+    answer: 'This calculator uses 1.6 g per kg of body weight to maintain, and 1.8 g per kg when losing weight or building muscle. That sits inside the 1.4 to 2.0 g per kg suggested for active people by the International Society of Sports Nutrition, and above the general RDA of 0.8 g per kg.',
+  },
+  {
+    question: 'Is a low-carb split better for weight loss?',
+    answer: 'Studies comparing diets with the same calories and protein generally find similar fat loss whether carbs or fat are higher. If you prefer fewer carbs, you can swap carbs for fat, keeping in mind that 1 g of fat has about twice the calories of 1 g of carbs.',
+  },
+];
+
+const jsonLd = [
+  buildWebPageSchema({ name: title, description, url: `${siteConfig.siteUrl}/macro-calculator` }),
+  buildFAQPageSchema(faqs),
+];
+---
+<SiteLayout title={title} description={description} jsonLd={jsonLd}>
+  <PageHeader
+    title="Macro Calculator"
+    description="Get a daily target for calories, protein, carbs and fat based on your body and your goal."
+    breadcrumbs={[{ label: 'Macro Calculator' }]}
+    chipType="calculator"
+  />
+  <main id="main-content" class="bg-warm-ivory pb-24 relative z-10">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+      <EnergyCalculator mode="macros" />
+
+      <p class="text-sm text-gray-600">
+        Your answers stay in your browser and are not sent or saved. Results are estimates for healthy adults, not medical advice. This calculator is not suitable during pregnancy or breastfeeding, for under-18s, if you have or have had an eating disorder, or if you follow a protein-restricted diet for a medical reason such as kidney disease. Please speak to a doctor or registered dietitian in those cases.
+      </p>
+
+      <section class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 sm:p-8 space-y-4 text-gray-700 leading-relaxed">
+        <h2 class="text-2xl font-black text-gray-900">How your macros are worked out</h2>
+        <p>
+          The calculator starts with your daily calories, using the same Mifflin-St Jeor method as our <a href="/tdee-calculator" class="text-emerald-700 font-semibold hover:underline">TDEE calculator</a>: your TDEE minus 500 calories to lose weight, your TDEE to maintain, or your TDEE plus 300 to gain muscle. It then splits those calories in three steps.
+        </p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li><strong class="text-gray-900">Protein comes first,</strong> because it depends on your body weight rather than your calories: 1.6 g per kg to maintain, and 1.8 g per kg when losing or gaining.</li>
+          <li><strong class="text-gray-900">Fat is set at 25% of calories,</strong> inside the 20 to 35% range in the US Dietary Guidelines.</li>
+          <li><strong class="text-gray-900">Carbs take whatever is left.</strong> They are your main fuel for training, and the most flexible of the three.</li>
+        </ul>
+
+        <h2 class="text-2xl font-black text-gray-900 pt-2">Why the goal changes your numbers</h2>
+        <p>
+          When you are losing weight, extra protein helps protect muscle and keeps you fuller on fewer calories, so protein goes up while carbs and fat come down. When you are gaining, the higher protein supports new muscle, and most of the extra calories go to carbs to fuel your training. A small surplus is enough for this, since a larger one mostly adds fat.
+        </p>
+
+        <h2 class="text-2xl font-black text-gray-900 pt-2">Putting your targets into practice</h2>
+        <p>
+          Numbers are only useful if you can eat them. Most people find it easiest to start with protein, aiming for a good source at each meal, such as eggs, Greek yogurt, chicken, fish, tofu or beans. Spreading it across three or four meals is simpler than trying to fit it all into dinner. After that, fill in carbs and fat with foods you enjoy.
+        </p>
+        <p>
+          Give any plan two to three weeks before you change it, since daily weight moves around with water and salt. If your weight is not changing as expected, adjust calories by 100 to 200 a day, mostly from carbs or fat, and keep protein where it is. Recalculate as your weight changes.
+        </p>
+        <p>
+          To learn more, read <a href="/learn/how-to-count-macros-for-beginners" class="text-emerald-700 font-semibold hover:underline">how to count macros</a> and <a href="/learn/how-much-protein-do-i-need" class="text-emerald-700 font-semibold hover:underline">how much protein you need</a>, then look up what you eat with the <a href="/calculator" class="text-emerald-700 font-semibold hover:underline">food calculator</a> or our <a href="/foods/category/protein-foods" class="text-emerald-700 font-semibold hover:underline">protein foods chart</a>.
+        </p>
+      </section>
+
+      <FaqList faqs={faqs} heading="Macro calculator FAQ" />
+    </div>
+  </main>
+</SiteLayout>

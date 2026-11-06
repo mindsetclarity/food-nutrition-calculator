@@ -7,6 +7,8 @@ const navLinks = [
   { name: 'Calculator', href: '/calculator' },
   { name: 'Recipe', href: '/recipe-nutrition-calculator' },
   { name: 'Meal', href: '/meal-calorie-calculator' },
+  { name: 'TDEE', href: '/tdee-calculator' },
+  { name: 'Macros', href: '/macro-calculator' },
   { name: 'Foods', href: '/foods' },
   { name: 'Compare', href: '/compare-foods' },
   { name: 'Learn', href: '/learn' },
@@ -26,7 +28,7 @@ const navLinks = [
       </div>
       
       <nav class="hidden lg:flex space-x-1 xl:space-x-2 items-center" aria-label="Desktop navigation">
-        {navLinks.map((link) => (
+        {navLinks.filter((link) => !link.exact).map((link) => (
           <NavigationLink href={link.href} exact={link.exact} class="text-[14px] xl:text-[15px] font-medium px-2 xl:px-3 py-2 rounded-md hover:bg-slate-100/50" activeClass="text-usda-emerald font-semibold bg-mint-wash/50" inactiveClass="text-soft-slate hover:text-ink-navy">
             {link.name}
           </NavigationLink>
@@ -34,9 +36,9 @@ const navLinks = [
       </nav>
 
       <div class="hidden lg:flex items-center space-x-4 shrink-0">
-        <Button href="/contact" variant="secondary" size="sm" class="hover-lift interactive-button shadow-soft">
+        <span class="hidden xl:inline"><Button href="/contact" variant="secondary" size="sm" class="hover-lift interactive-button shadow-soft">
           Feedback
-        </Button>
+        </Button></span>
         <Button href="/calculator" variant="primary" size="sm" class="hover-lift interactive-button shadow-ink">
           Start Calculating
         </Button>

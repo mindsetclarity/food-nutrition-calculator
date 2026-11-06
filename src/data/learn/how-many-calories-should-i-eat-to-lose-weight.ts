@@ -9,7 +9,7 @@ export const article: LearnArticle = {
   tags: ['weight loss', 'calorie deficit', 'BMR', 'TDEE', 'calorie target'],
   readingTimeMinutes: 8,
   updatedAt: '2026-10-23',
-  relatedTool: { label: 'Food Calorie Counter', href: '/food-calorie-counter' },
+  relatedTool: { label: 'TDEE Calculator', href: '/tdee-calculator' },
   heroSummary: "To lose weight, most adults should eat about 500 calories a day less than they burn, which for many women lands around 1,400 to 1,800 kcal and for many men around 1,900 to 2,400 kcal. The exact number depends on your size, age, sex and how active you are, so the reliable way to find it is to estimate your maintenance calories first and then subtract from that. Below are the arithmetic, two worked examples and a realistic rate of loss.",
   keyTakeaway: "Estimate your BMR with the Mifflin-St Jeor equation, multiply it by an activity factor to get your maintenance calories, then subtract about 500 kcal a day. Aim to lose 0.5 to 1 kg (1 to 2 lb) a week, as the NHS advises, and do not go very low without medical supervision.",
   seoTitle: 'How Many Calories Should I Eat to Lose Weight? | Food Nutrition Calculator',
@@ -65,7 +65,7 @@ export const article: LearnArticle = {
         "The 3,500 kcal rule is an approximation. Early weight loss is faster because of water, and later loss is slower because a lighter body burns less.",
         "You do not have to cut all 500 kcal from food. Walking more or adding exercise can make up part of it, though food is usually the bigger and more reliable lever. Swapping one 12 oz can of regular cola (about 156 kcal in USDA data) for diet cola (about 7 kcal) covers almost a third of the deficit on its own."
       ],
-      toolCta: { label: 'Check calories in the foods you eat', href: '/food-calorie-counter' }
+      toolCta: { label: 'Check calories in the foods you eat', href: '/calculator' }
     },
     {
       id: 'worked-example-us-woman',

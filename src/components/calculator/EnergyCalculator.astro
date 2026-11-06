@@ -1,0 +1,187 @@
+---
+// Shared form for /tdee-calculator and /macro-calculator. Runs entirely in the browser.
+interface Props {
+  mode: 'tdee' | 'macros';
+}
+const { mode } = Astro.props;
+
+const input = 'block w-full h-11 px-3 border border-gray-300 rounded-lg bg-white text-gray-900 focus-ring';
+const label = 'block text-sm font-semibold text-gray-800 mb-1';
+const stat = 'rounded-xl border border-gray-200 bg-gray-50 p-4';
+const statValue = 'block text-2xl font-black text-gray-900 tabular-nums';
+const statLabel = 'block text-sm text-gray-600';
+---
+<section id="energy-calculator" data-mode={mode} class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 sm:p-8">
+  <form novalidate class="space-y-5">
+    <div class="flex flex-wrap gap-x-8 gap-y-4">
+      <fieldset>
+        <legend class={label}>Units</legend>
+        <label class="mr-4"><input type="radio" name="units" value="us" checked /> US (lb, ft)</label>
+        <label><input type="radio" name="units" value="metric" /> Metric (kg, cm)</label>
+      </fieldset>
+      <fieldset>
+        <legend class={label}>Sex</legend>
+        <label class="mr-4"><input type="radio" name="sex" value="female" checked /> Female</label>
+        <label><input type="radio" name="sex" value="male" /> Male</label>
+      </fieldset>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+      <div>
+        <label for="age" class={label}>Age (years)</label>
+        <input id="age" name="age" type="number" inputmode="numeric" class={input} />
+      </div>
+      <div data-units="us">
+        <label for="ft" class={label}>Height (ft)</label>
+        <input id="ft" name="ft" type="number" inputmode="numeric" class={input} />
+      </div>
+      <div data-units="us">
+        <label for="in" class={label}>Height (in)</label>
+        <input id="in" name="in" type="number" inputmode="decimal" class={input} />
+      </div>
+      <div data-units="us">
+        <label for="lb" class={label}>Weight (lb)</label>
+        <input id="lb" name="lb" type="number" inputmode="decimal" class={input} />
+      </div>
+      <div data-units="metric" hidden>
+        <label for="cm" class={label}>Height (cm)</label>
+        <input id="cm" name="cm" type="number" inputmode="decimal" class={input} />
+      </div>
+      <div data-units="metric" hidden>
+        <label for="kg" class={label}>Weight (kg)</label>
+        <input id="kg" name="kg" type="number" inputmode="decimal" class={input} />
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div>
+        <label for="activity" class={label}>Activity level</label>
+        <select id="activity" name="activity" class={input}>
+          <option value="sedentary">Sedentary: little or no exercise</option>
+          <option value="light">Light: exercise 1 to 3 days a week</option>
+          <option value="moderate" selected>Moderate: exercise 3 to 5 days a week</option>
+          <option value="very">Very active: hard exercise 6 to 7 days a week</option>
+          <option value="extra">Extra active: physical job and hard training</option>
+        </select>
+      </div>
+      {mode === 'macros' && (
+        <div>
+          <label for="goal" class={label}>Goal</label>
+          <select id="goal" name="goal" class={input}>
+            <option value="lose">Lose weight</option>
+            <option value="maintain" selected>Maintain weight</option>
+            <option value="gain">Gain muscle</option>
+          </select>
+        </div>
+      )}
+    </div>
+
+    <button type="submit" class="px-6 py-3 rounded-lg bg-emerald-700 text-white font-bold hover:bg-emerald-800 focus-ring transition-colors">Calculate</button>
+  </form>
+
+  <div aria-live="polite" class="mt-6">
+    <ul data-errors hidden class="space-y-1 text-red-700 font-medium"></ul>
+    <div data-results hidden>
+      <h2 class="text-xl font-black text-gray-900 mb-3">Your estimate</h2>
+      {mode === 'tdee' ? (
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+          <div class={stat}><span class={statValue} data-out="bmr"></span><span class={statLabel}>BMR, calories at rest</span></div>
+          <div class={stat}><span class={statValue} data-out="maintain"></span><span class={statLabel}>TDEE, to maintain</span></div>
+          <div class={stat}><span class={statValue} data-out="lose"></span><span class={statLabel}>To lose weight</span></div>
+          <div class={stat}><span class={statValue} data-out="gain"></span><span class={statLabel}>To gain weight</span></div>
+        </div>
+      ) : (
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+          <div class={stat}><span class={statValue} data-out="calories"></span><span class={statLabel}>Calories a day</span></div>
+          <div class={stat}><span class={statValue} data-out="protein"></span><span class={statLabel}>Protein</span></div>
+          <div class={stat}><span class={statValue} data-out="carbs"></span><span class={statLabel}>Carbs</span></div>
+          <div class={stat}><span class={statValue} data-out="fat"></span><span class={statLabel}>Fat</span></div>
+        </div>
+      )}
+      <p data-floor hidden class="mt-3 text-sm text-amber-800 bg-amber-50 border border-amber-200 rounded-lg p-3"></p>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { ACTIVITY_FACTORS, CALORIE_FLOOR, bmr, calorieTargets, cmToFtIn, ftInToCm, kgToLb, lbToKg, macros, validateProfile } from '../../lib/nutrition/energy';
+  import type { Activity, Goal, Sex } from '../../lib/nutrition/energy';
+
+  const root = document.getElementById('energy-calculator')!;
+  const form = root.querySelector('form')!;
+  const errors = root.querySelector<HTMLElement>('[data-errors]')!;
+  const results = root.querySelector<HTMLElement>('[data-results]')!;
+  const floorNote = root.querySelector<HTMLElement>('[data-floor]')!;
+
+  const field = (name: string) => form.elements.namedItem(name) as HTMLInputElement;
+  // An empty box is "not entered", not 0.
+  const num = (name: string) => (field(name).value.trim() === '' ? NaN : Number(field(name).value));
+  const units = () => (form.elements.namedItem('units') as RadioNodeList).value;
+  const out = (name: string, text: string) => {
+    root.querySelector(`[data-out="${name}"]`)!.textContent = text;
+  };
+  const round1 = (v: number) => String(Math.round(v * 10) / 10);
+
+  // Keep what the person typed when they switch units.
+  form.querySelectorAll<HTMLInputElement>('input[name="units"]').forEach(radio => {
+    radio.addEventListener('change', () => {
+      const toMetric = units() === 'metric';
+      if (toMetric) {
+        if (field('ft').value !== '') field('cm').value = round1(ftInToCm(num('ft'), num('in') || 0));
+        if (field('lb').value !== '') field('kg').value = round1(lbToKg(num('lb')));
+      } else {
+        if (field('cm').value !== '') {
+          const { ft, inches } = cmToFtIn(num('cm'));
+          field('ft').value = String(ft);
+          field('in').value = String(inches);
+        }
+        if (field('kg').value !== '') field('lb').value = round1(kgToLb(num('kg')));
+      }
+      root.querySelectorAll<HTMLElement>('[data-units]').forEach(el => {
+        el.hidden = el.dataset.units !== units();
+      });
+    });
+  });
+
+  form.addEventListener('submit', event => {
+    event.preventDefault();
+    const metric = units() === 'metric';
+    const profile = {
+      age: num('age'),
+      heightCm: metric ? num('cm') : ftInToCm(num('ft'), num('in') || 0),
+      weightKg: metric ? num('kg') : lbToKg(num('lb')),
+    };
+
+    const problems = validateProfile(profile);
+    errors.hidden = problems.length === 0;
+    results.hidden = problems.length > 0;
+    errors.replaceChildren(...problems.map(p => Object.assign(document.createElement('li'), { textContent: p })));
+    if (problems.length) return;
+
+    const sex = (form.elements.namedItem('sex') as RadioNodeList).value as Sex;
+    const base = bmr({ sex, ...profile });
+    const tdee = Math.round(base * ACTIVITY_FACTORS[field('activity').value as Activity]);
+    const targets = calorieTargets(tdee, sex);
+    const kcal = (v: number) => Math.round(v).toLocaleString('en-US');
+
+    let floorApplies = targets.floorApplied;
+    if (root.dataset.mode === 'tdee') {
+      out('bmr', kcal(base));
+      out('maintain', kcal(targets.maintain));
+      out('lose', kcal(targets.lose));
+      out('gain', kcal(targets.gain));
+    } else {
+      const goal = field('goal').value as Goal;
+      const calories = targets[goal];
+      const m = macros({ calories, weightKg: profile.weightKg, goal });
+      out('calories', kcal(calories));
+      out('protein', `${m.protein} g`);
+      out('carbs', `${m.carbs} g`);
+      out('fat', `${m.fat} g`);
+      floorApplies = goal === 'lose' && targets.floorApplied;
+    }
+
+    floorNote.hidden = !floorApplies;
+    floorNote.textContent = `The weight-loss target is held at a minimum of ${kcal(CALORIE_FLOOR[sex])} calories, or at your TDEE if that is lower. Talk to a doctor or registered dietitian before eating less than this.`;
+  });
+</script>

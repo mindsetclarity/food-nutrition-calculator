@@ -9,7 +9,7 @@ export const article: LearnArticle = {
   tags: ['macros', 'protein', 'carbs', 'fat', 'tracking'],
   readingTimeMinutes: 7,
   updatedAt: '2026-10-23',
-  relatedTool: { label: 'Food Nutrition Calculator', href: '/calculator' },
+  relatedTool: { label: 'Macro Calculator', href: '/macro-calculator' },
   heroSummary: "To count macros, set a daily calorie target first, then give protein its grams, give fat a share of calories, and let carbohydrate fill whatever is left. You then log what you eat in grams and aim to land close to each number most days. Below is the full method, a worked example with every sum shown, and the handful of logging errors (cooking oil, sauces, raw versus cooked weights) that cause most of the gap between what people log and what they actually eat.",
   keyTakeaway: "Protein and carbohydrate have 4 calories per gram, fat has 9 and alcohol has 7. Set calories, then protein (about 1.2 to 1.6 g/kg if you are active), then fat (20% to 35% of calories), then carbs from the remainder. Weigh food where you can, and always log cooking oil.",
   seoTitle: 'How to Count Macros for Beginners (With Worked Example) | Food Nutrition Calculator',

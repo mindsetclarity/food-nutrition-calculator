@@ -85,7 +85,7 @@ export const article: LearnArticle = {
         'Ketchup, 1 tablespoon (17 g): about 3.7 g, or almost 1 teaspoon',
         'Barbecue sauce, 1 tablespoon (17 g): about 5.6 g, or 1.5 teaspoons'
       ],
-      toolCta: { label: 'Check sugar in any food', href: '/food-calorie-counter' }
+      toolCta: { label: 'Check sugar in any food', href: '/calculator' }
     },
     {
       id: 'reading-labels',
