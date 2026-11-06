@@ -7,6 +7,8 @@ import { getFoodsDirectorySeo } from '../../lib/foods';
 import { buildWebPageSchema } from '../../lib/seo/schema';
 import { siteConfig } from '../../lib/seo/siteConfig';
 
+export const prerender = true;
+
 const seo = getFoodsDirectorySeo();
 
 const jsonLd = buildWebPageSchema({

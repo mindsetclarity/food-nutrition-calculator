@@ -11,6 +11,7 @@ import NutritionFactsLabel from '../../components/nutrition-label/NutritionFacts
 import Breadcrumbs from '../../components/seo/Breadcrumbs.astro';
 import FaqList from '../../components/seo/FaqList.astro';
 import { FOOD_NOTES } from '../../data/foodNotes';
+import { categorySlug } from '../../lib/foods/categories';
 
 import { getAllFoodPages, getFoodDetailSeo, getFoodFaqs, getRelatedFoods } from '../../lib/foods';
 import { getComparePairsForFood, isIndexedFood } from '../../lib/compare/comparePairs';
@@ -66,6 +67,7 @@ const labelNutrients = formatLabelNutrients(food.nutrientsPer100g);
 const breadcrumbItems = [
   { label: 'Home', href: '/' },
   { label: 'Foods', href: '/foods' },
+  ...(food.category ? [{ label: food.category, href: `/foods/category/${categorySlug(food.category)}` }] : []),
   { label: food.displayName, href: `/foods/${food.slug}` }
 ];
 

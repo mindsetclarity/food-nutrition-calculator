@@ -1,0 +1,111 @@
+---
+import SiteLayout from '../../../layouts/SiteLayout.astro';
+import PageHeader from '../../../components/site/PageHeader.astro';
+import CategoryTiles from '../../../components/foods/CategoryTiles.astro';
+import { CATEGORY_INTROS } from '../../../data/categoryIntros';
+import { getAllCategories, isIndexedCategory } from '../../../lib/foods/categories';
+import { buildWebPageSchema } from '../../../lib/seo/schema';
+import { siteConfig } from '../../../lib/seo/siteConfig';
+
+export const prerender = true;
+
+export function getStaticPaths() {
+  return getAllCategories().map(category => ({ params: { category: category.slug }, props: { category } }));
+}
+
+const { category } = Astro.props;
+const intro = CATEGORY_INTROS[category.slug];
+const heading = intro?.heading ?? `${category.name} Calorie Chart`;
+// The "|" stops metadata.ts appending the site name, keeping the title near 60 chars.
+const title = `${heading} | ${category.foods.length} Foods per 100 g`;
+const description = intro?.metaDescription ?? `Calories, protein, carbs and fat per 100 g for ${category.foods.length} foods in ${category.name}.`;
+const jsonLd = buildWebPageSchema({ name: title, description, url: `${siteConfig.siteUrl}/foods/category/${category.slug}` });
+
+const COLUMNS = [
+  { key: 'calories', label: 'Calories', unit: 'kcal' },
+  { key: 'protein', label: 'Protein', unit: 'g' },
+  { key: 'carbohydrates', label: 'Carbs', unit: 'g' },
+  { key: 'fat', label: 'Fat', unit: 'g' },
+] as const;
+const value = (food: (typeof category.foods)[number], key: (typeof COLUMNS)[number]['key']) => {
+  const v = food.nutrientsPer100g?.[key];
+  if (v == null) return null;
+  return key === 'calories' ? Math.round(v) : Math.round(v * 10) / 10;
+};
+---
+<SiteLayout title={title} description={description} jsonLd={jsonLd} noindex={!isIndexedCategory(category.slug)}>
+  <PageHeader
+    title={heading}
+    description={`Calories, protein, carbs and fat per 100 g for ${category.foods.length} foods, lowest calories first.`}
+    breadcrumbs={[{ label: 'Foods', href: '/foods' }, { label: category.name }]}
+    chipType="foods"
+  />
+  <main id="main-content" class="bg-warm-ivory pb-24 relative z-10">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+      {intro && (
+        <section class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 sm:p-8 space-y-4 text-gray-700 leading-relaxed">
+          {intro.body.map(p => <p>{p}</p>)}
+        </section>
+      )}
+
+      <section class="bg-white rounded-2xl border border-gray-200 shadow-sm p-4 sm:p-8">
+        <h2 class="text-2xl font-black text-gray-900 mb-1">{category.name} per 100 g</h2>
+        <p class="text-sm text-gray-500 mb-4">Select a column heading to sort. Values are estimates and vary by brand and preparation.</p>
+        <div class="overflow-x-auto">
+          <table id="category-table" class="min-w-full text-left">
+            <thead>
+              <tr class="border-b border-gray-200 text-sm text-gray-500">
+                <th scope="col" class="py-3 pr-4 font-semibold">
+                  <button type="button" data-sort="name" class="font-semibold hover:text-emerald-700 focus-ring rounded-sm">Food</button>
+                </th>
+                {COLUMNS.map((c, i) => (
+                  <th scope="col" class="py-3 px-3 font-semibold text-right whitespace-nowrap" aria-sort={i === 0 ? 'ascending' : undefined}>
+                    <button type="button" data-sort={c.key} class="font-semibold hover:text-emerald-700 focus-ring rounded-sm">{c.label} <span class="font-normal">({c.unit})</span></button>
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100">
+              {category.foods.map(food => (
+                <tr data-name={food.displayName} {...Object.fromEntries(COLUMNS.map(c => [`data-${c.key}`, value(food, c.key) ?? '']))}>
+                  <th scope="row" class="py-2.5 pr-4 font-medium"><a href={`/foods/${food.slug}`} class="text-emerald-700 hover:underline">{food.displayName}</a></th>
+                  {COLUMNS.map(c => <td class="py-2.5 px-3 text-right tabular-nums text-gray-700">{value(food, c.key) ?? '—'}</td>)}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 sm:p-8">
+        <h2 class="text-2xl font-black text-gray-900 mb-4">Browse other categories</h2>
+        <CategoryTiles exclude={category.slug} />
+        <p class="mt-6 text-gray-700">Can't find a food? <a href="/calculator" class="text-emerald-700 font-semibold hover:underline">Search the full USDA database in the calculator</a>.</p>
+      </section>
+    </div>
+  </main>
+</SiteLayout>
+
+<script>
+  const table = document.getElementById('category-table');
+  const tbody = table?.querySelector('tbody');
+  table?.querySelectorAll<HTMLButtonElement>('button[data-sort]').forEach(button => {
+    button.addEventListener('click', () => {
+      const key = button.dataset.sort!;
+      const th = button.closest('th')!;
+      const direction = th.getAttribute('aria-sort') === 'ascending' ? 'descending' : 'ascending';
+      table.querySelectorAll('th[aria-sort]').forEach(h => h.removeAttribute('aria-sort'));
+      th.setAttribute('aria-sort', direction);
+      const sign = direction === 'ascending' ? 1 : -1;
+      const rows = [...tbody!.querySelectorAll<HTMLTableRowElement>('tr')];
+      rows.sort((a, b) => {
+        const x = a.dataset[key] ?? '', y = b.dataset[key] ?? '';
+        if (key === 'name') return sign * x.localeCompare(y);
+        // Missing values stay at the bottom in both directions.
+        if (x === '' || y === '') return Number(x === '') - Number(y === '');
+        return sign * (Number(x) - Number(y));
+      });
+      tbody!.append(...rows);
+    });
+  });
+</script>

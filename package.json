@@ -21,7 +21,7 @@
     "test:byte-range": "node --experimental-strip-types scripts/test-byte-range.mjs",
     "check:links": "node scripts/check-links.mjs",
     "test:notes": "node --experimental-strip-types scripts/test-editorial-notes.mjs",
-    "prebuild": "npm run -s test:notes",
+    "prebuild": "npm run -s test:notes && npm run -s test:categories && npm run -s test:energy",
     "test:energy": "node --experimental-strip-types scripts/test-energy.mjs",
     "test:categories": "node --experimental-strip-types scripts/test-categories.mjs"
   },

@@ -1,22 +1,29 @@
 ---
 import FoodSearchFilter from './FoodSearchFilter.astro';
-import FoodCategoryGrid from './FoodCategoryGrid.astro';
+import CategoryTiles from './CategoryTiles.astro';
 import FoodCard from './FoodCard.astro';
 import FoodEmptyState from './FoodEmptyState.astro';
 
 import { getAllFoodPages, sortFoodsForDirectory } from '../../lib/foods';
+import { isIndexedFood } from '../../lib/compare/comparePairs';
 
-const foods = sortFoodsForDirectory(getAllFoodPages());
+// All 1,018 cards made this page 2.1 MB. The full lists live on the category pages.
+const foods = sortFoodsForDirectory(getAllFoodPages().filter(f => isIndexedFood(f.slug)));
 ---
 
 <main id="main-content" class="min-h-screen bg-warm-ivory pb-24 relative z-10">
   <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
     <div class="luxury-card bg-pure-card overflow-hidden">
       <div class="p-6 md:p-8 bg-white/50 border-b border-border-soft">
-        <FoodSearchFilter />
-        <FoodCategoryGrid foods={foods} />
+        <h2 class="text-2xl font-bold text-ink-navy mb-4">Calorie charts by category</h2>
+        <CategoryTiles />
       </div>
       <div class="p-6 md:p-8">
+        <h2 class="text-2xl font-bold text-ink-navy mb-2">Food guides</h2>
+        <p class="text-[15px] text-soft-slate mb-6">
+          Foods with a written guide. For anything else, open its category above or <a href="/calculator" class="text-usda-emerald font-semibold hover:underline">search the calculator</a>.
+        </p>
+        <FoodSearchFilter />
         <div id="food-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {foods.map(food => (
             <FoodCard food={food} />
