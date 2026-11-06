@@ -53,6 +53,7 @@ const value = (food: (typeof category.foods)[number], key: (typeof COLUMNS)[numb
         <p class="text-sm text-gray-500 mb-4">Select a column heading to sort. Values are estimates and vary by brand and preparation.</p>
         <div class="overflow-x-auto">
           <table id="category-table" class="min-w-full text-left">
+            <caption class="sr-only">{category.name}: calories, protein, carbs and fat per 100 g. Column headings sort the table.</caption>
             <thead>
               <tr class="border-b border-gray-200 text-sm text-gray-500">
                 <th scope="col" class="py-3 pr-4 font-semibold">
@@ -68,7 +69,7 @@ const value = (food: (typeof category.foods)[number], key: (typeof COLUMNS)[numb
             <tbody class="divide-y divide-gray-100">
               {category.foods.map(food => (
                 <tr data-name={food.displayName} {...Object.fromEntries(COLUMNS.map(c => [`data-${c.key}`, value(food, c.key) ?? '']))}>
-                  <th scope="row" class="py-2.5 pr-4 font-medium"><a href={`/foods/${food.slug}`} class="text-emerald-700 hover:underline">{food.displayName}</a></th>
+                  <th scope="row" class="py-2.5 pr-4 font-medium sticky left-0 bg-white"><a href={`/foods/${food.slug}`} class="text-emerald-700 hover:underline">{food.displayName}</a></th>
                   {COLUMNS.map(c => <td class="py-2.5 px-3 text-right tabular-nums text-gray-700">{value(food, c.key) ?? '—'}</td>)}
                 </tr>
               ))}
@@ -85,6 +86,11 @@ const value = (food: (typeof category.foods)[number], key: (typeof COLUMNS)[numb
     </div>
   </main>
 </SiteLayout>
+
+<style>
+  th[aria-sort='ascending'] button::after { content: ' ▲'; font-size: 0.7em; }
+  th[aria-sort='descending'] button::after { content: ' ▼'; font-size: 0.7em; }
+</style>
 
 <script>
   const table = document.getElementById('category-table');

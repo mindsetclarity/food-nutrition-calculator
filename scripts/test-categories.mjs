@@ -39,6 +39,8 @@ assert.ok(categories.reduce((n, c) => n + c.foods.length, 0) > 1000, 'every food
 for (const s of slugs) assert.ok(CATEGORY_INTROS[s], `category missing intro: ${s}`);
 for (const [k, intro] of Object.entries(CATEGORY_INTROS)) {
   assert.ok(slugs.includes(k), `intro for unknown category: ${k}`);
+  const count = categories.find(c => c.slug === k).foods.length;
+  assert.ok(intro.metaDescription.includes(String(count)), `${k}: meta description should say ${count} foods`);
   const w = intro.body.join(' ').trim().split(/\s+/).length;
   assert.ok(w >= 120 && w <= 200, `${k}: ${w} words (want 120-200)`);
   assert.ok(intro.metaDescription.length <= 160, `${k}: meta description is ${intro.metaDescription.length} chars`);

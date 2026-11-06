@@ -5,7 +5,7 @@
  */
 import assert from 'node:assert/strict';
 
-const { bmr, calorieTargets, macros, lbToKg, kgToLb, ftInToCm, cmToFtIn, validateProfile, ACTIVITY_FACTORS } =
+const { bmr, calorieTargets, macros, lbToKg, kgToLb, ftInToCm, cmToFtIn, validateProfile, validateUsHeight, ACTIVITY_FACTORS } =
   await import('../src/lib/nutrition/energy.ts');
 
 // Mifflin-St Jeor, worked by hand.
@@ -24,7 +24,9 @@ assert.deepEqual(calorieTargets(1112, 'female'), { lose: 1112, maintain: 1112, g
 assert.deepEqual(macros({ calories: 2000, weightKg: 80, goal: 'maintain' }), { protein: 128, fat: 56, carbs: 247 });
 assert.equal(macros({ calories: 2000, weightKg: 80, goal: 'lose' }).protein, 144);
 assert.equal(macros({ calories: 2000, weightKg: 80, goal: 'gain' }).protein, 144);
-assert.equal(macros({ calories: 1200, weightKg: 300, goal: 'lose' }).carbs, 0, 'carbs never go negative');
+// Body-weight protein is capped at 35% of calories, which matters at higher weights.
+assert.deepEqual(macros({ calories: 1200, weightKg: 300, goal: 'lose' }), { protein: 105, fat: 33, carbs: 120 });
+assert.equal(macros({ calories: 2500, weightKg: 150, goal: 'lose' }).protein, 219);
 
 // Units.
 assert.ok(Math.abs(lbToKg(176) - 79.83) < 0.01);
@@ -43,5 +45,14 @@ for (const bad of [NaN, 0, -5, Infinity]) {
 }
 assert.equal(validateProfile({ ...ok, age: 17 }).length, 1, 'adult formula: under 18 rejected');
 assert.equal(validateProfile({ age: NaN, weightKg: NaN, heightCm: NaN }).length, 3);
+
+// US height has to be checked before it becomes centimetres: 5.11 ft is not 5 ft 11 in.
+assert.deepEqual(validateUsHeight(5, 11), []);
+assert.deepEqual(validateUsHeight(5, 0), []);
+assert.deepEqual(validateUsHeight(5, 6.5), []);
+for (const [ft, inches] of [[5.11, 0], [5, 15], [5, 12], [5, -3], [-1, 90], [0, 70]]) {
+  assert.equal(validateUsHeight(ft, inches).length, 1, `${ft} ft ${inches} in`);
+}
+assert.deepEqual(validateUsHeight(NaN, 0), [], 'an empty box is reported by validateProfile');
 
 console.log('energy checks passed');

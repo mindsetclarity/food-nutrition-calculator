@@ -23,7 +23,7 @@ const faqs = [
   },
   {
     question: 'How much protein do I need?',
-    answer: 'This calculator uses 1.6 g per kg of body weight to maintain, and 1.8 g per kg when losing weight or building muscle. That sits inside the 1.4 to 2.0 g per kg suggested for active people by the International Society of Sports Nutrition, and above the general RDA of 0.8 g per kg.',
+    answer: 'This calculator uses 1.6 g per kg of body weight to maintain, and 1.8 g per kg when losing weight or building muscle. That sits inside the 1.4 to 2.0 g per kg suggested for active people by the International Society of Sports Nutrition, and above the general RDA of 0.8 g per kg. It is capped at 35% of your calories, which mainly matters at higher body weights.',
   },
   {
     question: 'Is a low-carb split better for weight loss?',
@@ -54,11 +54,11 @@ const jsonLd = [
       <section class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 sm:p-8 space-y-4 text-gray-700 leading-relaxed">
         <h2 class="text-2xl font-black text-gray-900">How your macros are worked out</h2>
         <p>
-          The calculator starts with your daily calories, using the same Mifflin-St Jeor method as our <a href="/tdee-calculator" class="text-emerald-700 font-semibold hover:underline">TDEE calculator</a>: your TDEE minus 500 calories to lose weight, your TDEE to maintain, or your TDEE plus 300 to gain muscle. It then splits those calories in three steps.
+          The calculator starts with your daily calories, using the same Mifflin-St Jeor method as our <a href="/tdee-calculator" class="text-emerald-700 font-semibold hover:underline">TDEE calculator</a>: your TDEE minus 500 calories to lose weight (never below 1,200 for women or 1,500 for men, or your TDEE if that is lower), your TDEE to maintain, or your TDEE plus 300 to gain muscle. It then splits those calories in three steps.
         </p>
         <ul class="list-disc pl-6 space-y-2">
-          <li><strong class="text-gray-900">Protein comes first,</strong> because it depends on your body weight rather than your calories: 1.6 g per kg to maintain, and 1.8 g per kg when losing or gaining.</li>
-          <li><strong class="text-gray-900">Fat is set at 25% of calories,</strong> inside the 20 to 35% range in the US Dietary Guidelines.</li>
+          <li><strong class="text-gray-900">Protein comes first,</strong> because it depends on your body weight rather than your calories: 1.6 g per kg to maintain, and 1.8 g per kg when losing or gaining, up to 35% of your calories.</li>
+          <li><strong class="text-gray-900">Fat is set at 25% of calories,</strong> inside the 20 to 35% range set by the US National Academies.</li>
           <li><strong class="text-gray-900">Carbs take whatever is left.</strong> They are your main fuel for training, and the most flexible of the three.</li>
         </ul>
 
@@ -72,10 +72,10 @@ const jsonLd = [
           Numbers are only useful if you can eat them. Most people find it easiest to start with protein, aiming for a good source at each meal, such as eggs, Greek yogurt, chicken, fish, tofu or beans. Spreading it across three or four meals is simpler than trying to fit it all into dinner. After that, fill in carbs and fat with foods you enjoy.
         </p>
         <p>
-          Give any plan two to three weeks before you change it, since daily weight moves around with water and salt. If your weight is not changing as expected, adjust calories by 100 to 200 a day, mostly from carbs or fat, and keep protein where it is. Recalculate as your weight changes.
+          Give any plan two to three weeks before you change it, since daily weight moves around with water and salt. If your weight is not changing as expected, adjust calories by 100 to 200 a day, staying above the minimum, mostly from carbs or fat, and keep protein where it is. Recalculate as your weight changes.
         </p>
         <p>
-          To learn more, read <a href="/learn/how-to-count-macros-for-beginners" class="text-emerald-700 font-semibold hover:underline">how to count macros</a> and <a href="/learn/how-much-protein-do-i-need" class="text-emerald-700 font-semibold hover:underline">how much protein you need</a>, then look up what you eat with the <a href="/calculator" class="text-emerald-700 font-semibold hover:underline">food calculator</a> or our <a href="/foods/category/protein-foods" class="text-emerald-700 font-semibold hover:underline">protein foods chart</a>.
+          To learn more, read <a href="/learn/how-to-count-macros-for-beginners" class="text-emerald-700 font-semibold hover:underline">how to count macros</a> and <a href="/learn/how-much-protein-do-i-need" class="text-emerald-700 font-semibold hover:underline">how much protein you need</a>, as well as <a href="/learn/tdee-explained" class="text-emerald-700 font-semibold hover:underline">TDEE explained</a>, then look up what you eat with the <a href="/calculator" class="text-emerald-700 font-semibold hover:underline">food calculator</a> or our <a href="/foods/category/protein-foods" class="text-emerald-700 font-semibold hover:underline">protein foods chart</a>.
         </p>
       </section>
 

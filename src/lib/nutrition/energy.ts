@@ -17,6 +17,7 @@ const DEFICIT = 500;
 const SURPLUS = 300;
 const PROTEIN_G_PER_KG: Record<Goal, number> = { lose: 1.8, maintain: 1.6, gain: 1.8 };
 const FAT_SHARE = 0.25;
+const MAX_PROTEIN_SHARE = 0.35;
 
 // Mifflin-St Jeor.
 export function bmr(p: { sex: Sex; age: number; weightKg: number; heightCm: number }): number {
@@ -34,14 +35,15 @@ export function calorieTargets(tdee: number, sex: Sex) {
   };
 }
 
-// Grams per day. Protein is set by body weight, fat by share of calories, carbs take the rest.
+// Grams per day. Protein is set by body weight up to 35% of calories (the top of the usual
+// 10 to 35% range), fat by share of calories, and carbs take the rest.
 export function macros(p: { calories: number; weightKg: number; goal: Goal }) {
-  const protein = Math.round(p.weightKg * PROTEIN_G_PER_KG[p.goal]);
+  const protein = Math.round(Math.min(p.weightKg * PROTEIN_G_PER_KG[p.goal], (p.calories * MAX_PROTEIN_SHARE) / 4));
   const fatCalories = p.calories * FAT_SHARE;
   return {
     protein,
     fat: Math.round(fatCalories / 9),
-    carbs: Math.max(0, Math.round((p.calories - protein * 4 - fatCalories) / 4)),
+    carbs: Math.round((p.calories - protein * 4 - fatCalories) / 4),
   };
 }
 
@@ -60,10 +62,18 @@ export function cmToFtIn(cm: number) {
 
 const inRange = (v: number, min: number, max: number) => Number.isFinite(v) && v >= min && v <= max;
 
+// Checked before conversion, because 5.11 ft or 5 ft 15 in still make a believable height in cm.
+// Empty boxes are left to validateProfile.
+export function validateUsHeight(ft: number, inches: number): string[] {
+  const badFt = Number.isFinite(ft) && (!Number.isInteger(ft) || ft < 1);
+  const badIn = Number.isFinite(inches) && (inches < 0 || inches >= 12);
+  return badFt || badIn ? ['Enter height as whole feet plus 0 to 11 inches, for example 5 ft 11 in.'] : [];
+}
+
 export function validateProfile(p: { age: number; weightKg: number; heightCm: number }): string[] {
   const errors: string[] = [];
   if (!inRange(p.age, 18, 100)) errors.push('Enter an age from 18 to 100. These formulas are for adults.');
   if (!inRange(p.heightCm, 120, 230)) errors.push('Enter a height between 4 ft (120 cm) and 7 ft 6 in (230 cm).');
-  if (!inRange(p.weightKg, 30, 300)) errors.push('Enter a weight between 66 lb (30 kg) and 660 lb (300 kg).');
+  if (!inRange(p.weightKg, 30, 300)) errors.push('Enter a weight between 67 lb (30 kg) and 660 lb (300 kg).');
   return errors;
 }
