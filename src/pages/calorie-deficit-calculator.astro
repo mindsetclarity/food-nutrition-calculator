@@ -1,0 +1,87 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import PageHeader from '../components/site/PageHeader.astro';
+import EnergyCalculator from '../components/calculator/EnergyCalculator.astro';
+import FaqList from '../components/seo/FaqList.astro';
+import { buildFAQPageSchema, buildWebPageSchema } from '../lib/seo/schema';
+import { siteConfig } from '../lib/seo/siteConfig';
+
+export const prerender = true;
+
+// The "|" stops metadata.ts appending the site name.
+const title = 'Calorie Deficit Calculator | Daily Calories and Goal Date';
+const description = 'Free calorie deficit calculator. Enter your details, goal weight and pace to get daily calories and a realistic date for reaching your goal.';
+
+const faqs = [
+  {
+    question: 'What is a good calorie deficit?',
+    answer: 'A deficit of about 250 to 500 calories a day suits most people, which works out at very roughly 0.5 to 1 lb a week. Bigger deficits are harder to keep up and make it more difficult to hold on to muscle.',
+  },
+  {
+    question: 'How fast can I safely lose weight?',
+    answer: 'The CDC describes losing about 1 to 2 lb a week as gradual and steady, and people who lose weight at that kind of pace are more likely to keep it off. If you have less to lose, the slower end usually makes more sense.',
+  },
+  {
+    question: 'Why does my date differ from other calculators?',
+    answer: 'Many calculators divide the weight you want to lose by a fixed weekly amount. A smaller body burns less, so at a fixed intake your deficit shrinks and loss slows. This calculator recalculates each week, so its dates are usually later and more realistic.',
+  },
+  {
+    question: 'Why will this calculator not go lower than a certain number of calories?',
+    answer: 'It will not suggest less than 1,200 calories a day for women or 1,500 for men, or your TDEE if that is lower. Eating less than this makes it hard to get enough nutrients, and is best done only with medical supervision.',
+  },
+];
+
+const jsonLd = [
+  buildWebPageSchema({ name: title, description, url: `${siteConfig.siteUrl}/calorie-deficit-calculator` }),
+  buildFAQPageSchema(faqs),
+];
+const link = 'text-emerald-700 font-semibold hover:underline';
+---
+<SiteLayout title={title} description={description} jsonLd={jsonLd}>
+  <PageHeader
+    title="Calorie Deficit Calculator"
+    description="Find out how much to eat to reach your goal weight, and roughly when you will get there."
+    breadcrumbs={[{ label: 'Calorie Deficit Calculator' }]}
+    chipType="calculator"
+  />
+  <main id="main-content" class="bg-warm-ivory pb-24 relative z-10">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+      <EnergyCalculator mode="deficit" />
+
+      <p class="text-sm text-gray-600">
+        Your answers stay in your browser and are not sent or saved. Results are estimates for healthy adults, not medical advice. This calculator is not suitable during pregnancy or breastfeeding, for under-18s, or if you have or have had an eating disorder. Please speak to a doctor or registered dietitian in those cases.
+      </p>
+
+      <section class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 sm:p-8 space-y-4 text-gray-700 leading-relaxed">
+        <h2 class="text-2xl font-black text-gray-900">How the calculator works</h2>
+        <p>
+          A calorie deficit means eating less than your body burns, so it draws on stored energy to make up the difference. The calculator first estimates your total daily energy expenditure with the Mifflin-St Jeor equation, the same method as our <a href="/tdee-calculator" class={link}>TDEE calculator</a>. It then subtracts about 500 calories a day for each pound a week you want to lose.
+        </p>
+        <p>
+          The date comes from a week-by-week estimate. Each simulated week, it works out what you would burn at your new, lower weight, and how much you would lose at that week's deficit, using about 7,700 calories per kilogram of body fat. It stops when you reach your goal.
+        </p>
+
+        <h2 class="text-2xl font-black text-gray-900 pt-2">Why weight loss slows down</h2>
+        <p>
+          The popular rule that 3,500 calories equals a pound of fat is a fair rough guide, but it overstates long-term loss if you treat it as constant. As you get lighter, your body has less mass to move and maintain, so it burns less. If you keep eating the same amount, your deficit gets smaller week by week, and eventually your weight levels off.
+        </p>
+        <p>
+          That is why the calculator can sometimes say your weight would level off before your goal. It does not mean the goal is out of reach. It means the same calorie number will not take you all the way, so you would need to recalculate as you go or become more active. Doing this every 10 lb (about 5 kg) or so is a good habit.
+        </p>
+
+        <h2 class="text-2xl font-black text-gray-900 pt-2">Choosing your pace</h2>
+        <p>
+          Faster is not automatically better. A pace you can keep up for months will beat an aggressive one you give up after three weeks. Larger deficits can also leave you hungrier and more tired, and make it harder to hold on to muscle. If you are close to your goal already, 0.5 lb a week is often the sensible choice. Eating enough protein and doing some strength training both help you keep muscle while you lose fat.
+        </p>
+        <p>
+          Your weight will still bounce around from day to day with water and salt, so compare weekly averages. If nothing has changed after two to three weeks, your real TDEE may be lower than this estimate, or your food log may be missing something. Check your portions before you cut further.
+        </p>
+        <p>
+          To go further, read <a href="/learn/what-is-a-calorie-deficit" class={link}>what a calorie deficit is</a> and <a href="/learn/why-am-i-not-losing-weight" class={link}>why you might not be losing weight</a>, set your daily targets with the <a href="/protein-calculator" class={link}>protein calculator</a> and the <a href="/macro-calculator" class={link}>macro calculator</a>, and look up what you eat with the <a href="/calculator" class={link}>food calculator</a>.
+        </p>
+      </section>
+
+      <FaqList faqs={faqs} heading="Calorie deficit calculator FAQ" />
+    </div>
+  </main>
+</SiteLayout>

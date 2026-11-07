@@ -1,0 +1,110 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import RecipeCalculatorShell from '../components/recipe/RecipeCalculatorShell.astro';
+import ToolSeoFaq from '../components/seo/ToolSeoFaq.astro';
+import { buildEmbedHtml } from '../lib/nutrition-label/embedLabel';
+import { buildSoftwareApplicationSchema } from '../lib/seo/schema';
+import { siteConfig } from '../lib/seo/siteConfig';
+
+export const prerender = true;
+
+// The "|" stops metadata.ts appending the site name.
+const title = 'Free Nutrition Label Generator for Recipes and Food Blogs';
+const description = 'Paste a recipe to create a free Nutrition Facts style label for your food blog. Copy the code into WordPress or any blog, with no plugin or account.';
+
+const jsonLd = buildSoftwareApplicationSchema({
+  name: 'Nutrition Label Generator',
+  description,
+  url: `${siteConfig.siteUrl}/nutrition-label-generator`,
+});
+
+// A real example of what the tool produces, rendered with the same code bloggers get.
+const sample = buildEmbedHtml({
+  recipeName: 'Sample: Chicken and Vegetable Soup',
+  servings: 4,
+  nutrients: { calories: 285, protein: 26.5, carbohydrates: 24, fat: 9.5, fiber: 5, sugar: 7, sodium: 640 },
+});
+
+const sections = [
+  {
+    heading: 'Add nutrition facts to your recipes in three steps',
+    paragraphs: [
+      'Readers often look for nutrition information on a recipe, especially if they are counting calories or macros. Paste your ingredient list above and set the number of servings, then check that each ingredient has matched the right food. When the numbers look right, select <strong>Get embed code</strong> and copy the result.',
+      'In WordPress, add a Custom HTML block and paste the code where you want the label to appear. Squarespace, Wix, Ghost and most other blog platforms have a similar HTML or code block. There is no plugin to install, no account to create, and no limit on how many recipes you can run.',
+    ],
+  },
+  {
+    heading: 'What makes this label easy on your site',
+    paragraphs: [
+      'The label is plain HTML with its styling included, so it needs no scripts or images. It will not slow your page, cannot break if our site is ever unavailable, and does not track your readers. It also sits within your page content rather than inside a frame.',
+      'Because it is a fixed copy, it will not update by itself. If you change a recipe, come back, make the change and paste a new label over the old one.',
+    ],
+  },
+  {
+    heading: 'How to get accurate numbers',
+    paragraphs: [
+      'The result depends on your ingredient list, so be specific. "2 cups cooked brown rice" gives a better match than "rice", and it matters whether a weight is cooked or dry. Be careful with cooking oil and butter, which are easy to leave out and add a lot of calories. Decide on your serving count by how you actually divide the dish, since every per-serving number depends on it.',
+      'Ingredients are matched against USDA FoodData Central where available. If any ingredient has no data, the tool warns you before you copy the code, so that you can fix it first.',
+    ],
+  },
+  {
+    heading: 'Using the label responsibly',
+    paragraphs: [
+      'These are estimates based on ingredients. They do not allow for moisture lost in cooking, for oil left behind in the pan, or for differences between brands. That is normal for recipe nutrition, and the label says so. A short note in your post, such as "nutrition information is an estimate", is good practice.',
+      'This tool is for recipes shared online. It is not for commercial packaging. If you sell packaged food, labeling rules such as FDA requirements in the US or the rules for pre-packed food in the UK apply, and you should use a compliant service.',
+    ],
+  },
+];
+
+const faqs = [
+  {
+    question: 'Is the nutrition label generator really free?',
+    answer: 'Yes. There is no account, no plugin and no limit on recipes. Each label includes a small credit link to foodnutritioncalculator.com, which is how we keep the tool free.',
+  },
+  {
+    question: 'Does it work with WordPress?',
+    answer: 'Yes. Add a Custom HTML block in the WordPress editor and paste the code. It also works in other platforms that let you add an HTML or code block.',
+  },
+  {
+    question: 'Can I change how the label looks?',
+    answer: 'Yes. It is plain HTML, so you can adjust the styles in the code. We ask that you keep the note saying it is an estimate, so your readers know how the numbers were produced.',
+  },
+  {
+    question: 'Can I use this label on food I sell?',
+    answer: 'No. It is an estimate for recipes shared online, not a compliant label for packaged food. If you sell food, follow the labeling rules where you sell it, such as FDA rules in the US.',
+  },
+  {
+    question: 'Will the label slow down my blog?',
+    answer: 'No. It contains no scripts, images or external files. It is a small piece of text and styling that loads as part of your page.',
+  },
+];
+---
+<SiteLayout title={title} description={description} jsonLd={jsonLd}>
+  <div class="bg-white py-12 border-b border-border-soft">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="text-[11px] font-bold text-usda-emerald uppercase tracking-widest mb-3 block">For food bloggers</span>
+      <h1 class="text-3xl md:text-4xl font-black text-ink-navy mb-4 tracking-tight">Free nutrition label generator for your recipes</h1>
+      <p class="text-[15px] text-soft-slate max-w-2xl mx-auto leading-relaxed">
+        Paste your recipe, check the ingredients, and copy a ready-made nutrition label into your blog. No plugin and no account.
+      </p>
+    </div>
+  </div>
+
+  <RecipeCalculatorShell />
+
+  <section class="bg-white py-12 border-t border-border-soft">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-black text-ink-navy mb-2">What your label looks like</h2>
+      <p class="text-soft-slate mb-6">This is a sample of what appears on your page, with made-up values. Nutrients with no data are left out rather than shown as zero.</p>
+      <Fragment set:html={sample} />
+    </div>
+  </section>
+
+  <ToolSeoFaq
+    seoHeading="Nutrition Facts Labels for Food Blogs"
+    sections={sections}
+    faqHeading="Nutrition Label Generator FAQs"
+    faqIntro="Common questions from recipe writers about adding nutrition information to their posts."
+    faqs={faqs}
+  />
+</SiteLayout>

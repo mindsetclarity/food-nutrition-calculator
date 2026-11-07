@@ -1,0 +1,87 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import PageHeader from '../components/site/PageHeader.astro';
+import ProteinCalculator from '../components/calculator/ProteinCalculator.astro';
+import FaqList from '../components/seo/FaqList.astro';
+import { buildFAQPageSchema, buildWebPageSchema } from '../lib/seo/schema';
+import { siteConfig } from '../lib/seo/siteConfig';
+
+export const prerender = true;
+
+// The "|" stops metadata.ts appending the site name.
+const title = 'Protein Calculator | How Much Protein You Need a Day';
+const description = 'Free protein calculator. Enter your weight, activity and goal to get a daily protein range in grams and a practical amount for each meal.';
+
+const faqs = [
+  {
+    question: 'How much protein do I need a day?',
+    answer: 'The US RDA is 0.8 g per kg of body weight, which is the amount that prevents deficiency in most adults. Active people, people losing weight and people building muscle usually do better with more, roughly 1.4 to 2.0 g per kg.',
+  },
+  {
+    question: 'Can I eat too much protein?',
+    answer: 'For healthy adults, the ranges here are generally well tolerated. If you have kidney disease, or have been told to limit protein, follow your doctor\'s or dietitian\'s advice rather than this calculator.',
+  },
+  {
+    question: 'Do I need protein shakes?',
+    answer: 'No. Shakes are simply a convenient way to reach a target. Whole foods such as eggs, yogurt, chicken, fish, tofu and beans do the same job and also bring other nutrients.',
+  },
+  {
+    question: 'Should I use my current weight or my goal weight?',
+    answer: 'Use your current weight if you are close to a healthy weight. If you have a lot to lose, use your goal weight, because protein needs follow lean body mass, not total weight, and current weight would give a figure that is too high.',
+  },
+];
+
+const jsonLd = [
+  buildWebPageSchema({ name: title, description, url: `${siteConfig.siteUrl}/protein-calculator` }),
+  buildFAQPageSchema(faqs),
+];
+const link = 'text-emerald-700 font-semibold hover:underline';
+---
+<SiteLayout title={title} description={description} jsonLd={jsonLd}>
+  <PageHeader
+    title="Protein Calculator"
+    description="Get a daily protein range for your weight, activity and goal, and see what that means at each meal."
+    breadcrumbs={[{ label: 'Protein Calculator' }]}
+    chipType="calculator"
+  />
+  <main id="main-content" class="bg-warm-ivory pb-24 relative z-10">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+      <ProteinCalculator />
+
+      <p class="text-sm text-gray-600">
+        Your answers stay in your browser and are not sent or saved. Results are estimates for healthy adults, not medical advice. This calculator is not suitable if you have kidney disease or follow a protein-restricted diet, during pregnancy or breastfeeding, or for under-18s. Please speak to a doctor or registered dietitian in those cases.
+      </p>
+
+      <section class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 sm:p-8 space-y-4 text-gray-700 leading-relaxed">
+        <h2 class="text-2xl font-black text-gray-900">How your range is worked out</h2>
+        <p>
+          There is no single correct protein number, so this calculator gives a range, based on your body weight and what you are trying to do:
+        </p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li><strong class="text-gray-900">Less active, maintaining: 0.8 to 1.2 g per kg.</strong> This starts at the US RDA of 0.8 g per kg, the minimum for most adults, not necessarily the best amount.</li>
+          <li><strong class="text-gray-900">Active, maintaining: 1.4 to 1.6 g per kg.</strong> This sits within the 1.4 to 2.0 g per kg that the International Society of Sports Nutrition suggests for people who exercise.</li>
+          <li><strong class="text-gray-900">Losing weight: 1.6 to 2.0 g per kg.</strong> Extra protein helps you hold on to muscle in a calorie deficit, and it is the most filling of the three macronutrients.</li>
+          <li><strong class="text-gray-900">Building muscle: 1.6 to 2.2 g per kg.</strong> Research reviews suggest that the benefit of more protein for muscle tends to level off at around 1.6 g per kg, with 2.2 g per kg as a generous upper limit.</li>
+        </ul>
+
+        <h2 class="text-2xl font-black text-gray-900 pt-2">What your target looks like on a plate</h2>
+        <p>
+          Numbers are easier to hit when you know what they mean in food. A 4 oz portion of <a href="/foods/grilled-chicken-breast" class={link}>grilled chicken breast</a> has about 33 g of protein. A 150 g pot of <a href="/foods/greek-yogurt-plain-nonfat" class={link}>plain nonfat Greek yogurt</a> has about 15 g, half a cup of <a href="/foods/dry-tofu" class={link}>firm tofu</a> about 21 g, and a large <a href="/foods/egg" class={link}>egg</a> about 6 g. Our <a href="/foods/category/protein-foods" class={link}>protein foods chart</a> and <a href="/foods/category/beans-plant-protein" class={link}>beans and plant protein chart</a> have many more.
+        </p>
+
+        <h2 class="text-2xl font-black text-gray-900 pt-2">Spreading it across the day</h2>
+        <p>
+          Many people eat most of their protein at dinner and very little at breakfast. Spreading it out across three or four meals is often easier than fitting it all in one sitting, and it means a good protein source at each meal can do most of the work. That is why the calculator also gives a per-meal range. If breakfast is your gap, eggs or Greek yogurt are a simple way to close it.
+        </p>
+        <p>
+          You do not have to be exact. Hitting somewhere in your range on most days matters far more than being perfect on any one of them. Older adults may benefit from the higher end of the less-active range, which is worth raising with your doctor.
+        </p>
+        <p>
+          To go further, read <a href="/learn/how-much-protein-do-i-need" class={link}>how much protein you need</a>, set your full calories, carbs and fat with the <a href="/macro-calculator" class={link}>macro calculator</a>, or plan your weight loss with the <a href="/calorie-deficit-calculator" class={link}>calorie deficit calculator</a>.
+        </p>
+      </section>
+
+      <FaqList faqs={faqs} heading="Protein calculator FAQ" />
+    </div>
+  </main>
+</SiteLayout>

@@ -1,0 +1,103 @@
+---
+// Form for /protein-calculator. Runs entirely in the browser.
+const input = 'block w-full h-11 px-3 border border-gray-300 rounded-lg bg-white text-gray-900 focus-ring';
+const label = 'block text-sm font-semibold text-gray-800 mb-1';
+const stat = 'rounded-xl border border-gray-200 bg-gray-50 p-4';
+const statValue = 'block text-2xl font-black text-gray-900 tabular-nums';
+const statLabel = 'block text-sm text-gray-600';
+---
+<section id="protein-calculator" class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 sm:p-8">
+  <form novalidate class="space-y-5">
+    <fieldset>
+      <legend class={label}>Units</legend>
+      <label class="mr-4"><input type="radio" name="units" value="us" checked /> US (lb)</label>
+      <label><input type="radio" name="units" value="metric" /> Metric (kg)</label>
+    </fieldset>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div data-units="us">
+        <label for="lb" class={label}>Weight (lb)</label>
+        <input id="lb" name="lb" type="number" inputmode="decimal" class={input} />
+      </div>
+      <div data-units="metric" hidden>
+        <label for="kg" class={label}>Weight (kg)</label>
+        <input id="kg" name="kg" type="number" inputmode="decimal" class={input} />
+      </div>
+      <div>
+        <label for="goal" class={label}>Goal</label>
+        <select id="goal" name="goal" class={input}>
+          <option value="maintain" selected>Maintain weight</option>
+          <option value="lose">Lose weight</option>
+          <option value="gain">Build muscle</option>
+        </select>
+      </div>
+      <div>
+        <label for="activity" class={label}>Activity</label>
+        <select id="activity" name="activity" class={input}>
+          <option value="low">Less active: little regular exercise</option>
+          <option value="active" selected>Active: exercise most weeks</option>
+        </select>
+      </div>
+    </div>
+
+    <p class="text-sm text-gray-600">If you have a lot of weight to lose, enter your goal weight instead of your current weight. Protein needs follow lean body mass, not total weight.</p>
+
+    <button type="submit" class="px-6 py-3 rounded-lg bg-emerald-700 text-white font-bold hover:bg-emerald-800 focus-ring transition-colors">Calculate</button>
+  </form>
+
+  <div aria-live="polite" class="mt-6">
+    <ul data-errors hidden class="space-y-1 text-red-700 font-medium"></ul>
+    <div data-results hidden>
+      <h2 class="text-xl font-black text-gray-900 mb-3">Your estimate</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div class={stat}><span class={statValue} data-out="day"></span><span class={statLabel}>Protein a day</span></div>
+        <div class={stat}><span class={statValue} data-out="meal"></span><span class={statLabel}>Per meal, across 3 or 4 meals</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { kgToLb, lbToKg, proteinRange, validateWeight } from '../../lib/nutrition/energy';
+  import type { Goal } from '../../lib/nutrition/energy';
+
+  const root = document.getElementById('protein-calculator')!;
+  const form = root.querySelector('form')!;
+  const errors = root.querySelector<HTMLElement>('[data-errors]')!;
+  const results = root.querySelector<HTMLElement>('[data-results]')!;
+
+  const field = (name: string) => form.elements.namedItem(name) as HTMLInputElement;
+  const num = (name: string) => (field(name).value.trim() === '' ? NaN : Number(field(name).value));
+  const units = () => (form.elements.namedItem('units') as RadioNodeList).value;
+  const round1 = (v: number) => String(Math.round(v * 10) / 10);
+  const out = (name: string, text: string) => {
+    root.querySelector(`[data-out="${name}"]`)!.textContent = text;
+  };
+
+  form.querySelectorAll<HTMLInputElement>('input[name="units"]').forEach(radio => {
+    radio.addEventListener('change', () => {
+      if (units() === 'metric') {
+        if (field('lb').value !== '') field('kg').value = round1(lbToKg(num('lb')));
+      } else if (field('kg').value !== '') {
+        field('lb').value = round1(kgToLb(num('kg')));
+      }
+      root.querySelectorAll<HTMLElement>('[data-units]').forEach(el => {
+        el.hidden = el.dataset.units !== units();
+      });
+    });
+  });
+
+  form.addEventListener('submit', event => {
+    event.preventDefault();
+    const weightKg = units() === 'metric' ? num('kg') : lbToKg(num('lb'));
+    const problems = validateWeight(weightKg);
+    errors.hidden = problems.length === 0;
+    results.hidden = problems.length > 0;
+    errors.replaceChildren(...problems.map(p => Object.assign(document.createElement('li'), { textContent: p })));
+    if (problems.length) return;
+
+    const r = proteinRange({ weightKg, goal: field('goal').value as Goal, activity: field('activity').value as 'low' | 'active' });
+    out('day', `${r.min} to ${r.max} g`);
+    out('meal', `${r.perMealMin} to ${r.perMealMax} g`);
+  });
+</script>

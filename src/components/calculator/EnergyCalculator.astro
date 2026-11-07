@@ -1,7 +1,7 @@
 ---
-// Shared form for /tdee-calculator and /macro-calculator. Runs entirely in the browser.
+// Shared form for the TDEE, macro and calorie deficit calculators. Runs entirely in the browser.
 interface Props {
-  mode: 'tdee' | 'macros';
+  mode: 'tdee' | 'macros' | 'deficit';
 }
 const { mode } = Astro.props;
 
@@ -74,6 +74,29 @@ const statLabel = 'block text-sm text-gray-600';
           </select>
         </div>
       )}
+      {mode === 'deficit' && (
+        <div>
+          <label for="pace" class={label}>Pace</label>
+          <select id="pace" name="pace" class={input}>
+            <option value="0.5">0.5 lb (0.2 kg) a week</option>
+            <option value="1" selected>1 lb (0.45 kg) a week</option>
+            <option value="1.5">1.5 lb (0.7 kg) a week</option>
+            <option value="2">2 lb (0.9 kg) a week</option>
+          </select>
+        </div>
+      )}
+      {mode === 'deficit' && (
+        <div data-units="us">
+          <label for="goal-lb" class={label}>Goal weight (lb)</label>
+          <input id="goal-lb" name="goal-lb" type="number" inputmode="decimal" class={input} />
+        </div>
+      )}
+      {mode === 'deficit' && (
+        <div data-units="metric" hidden>
+          <label for="goal-kg" class={label}>Goal weight (kg)</label>
+          <input id="goal-kg" name="goal-kg" type="number" inputmode="decimal" class={input} />
+        </div>
+      )}
     </div>
 
     <button type="submit" class="px-6 py-3 rounded-lg bg-emerald-700 text-white font-bold hover:bg-emerald-800 focus-ring transition-colors">Calculate</button>
@@ -83,7 +106,14 @@ const statLabel = 'block text-sm text-gray-600';
     <ul data-errors hidden class="space-y-1 text-red-700 font-medium"></ul>
     <div data-results hidden>
       <h2 class="text-xl font-black text-gray-900 mb-3">Your estimate</h2>
-      {mode === 'tdee' ? (
+      {mode === 'deficit' ? (
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+          <div class={stat}><span class={statValue} data-out="target"></span><span class={statLabel}>Calories to eat a day</span></div>
+          <div class={stat}><span class={statValue} data-out="deficit"></span><span class={statLabel}>Daily deficit</span></div>
+          <div class={stat}><span class={statValue} data-out="weeks"></span><span class={statLabel}>To reach your goal</span></div>
+          <div class={stat}><span class={statValue} data-out="goalTdee"></span><span class={statLabel}>To maintain at your goal</span></div>
+        </div>
+      ) : mode === 'tdee' ? (
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
           <div class={stat}><span class={statValue} data-out="bmr"></span><span class={statLabel}>BMR, calories at rest</span></div>
           <div class={stat}><span class={statValue} data-out="maintain"></span><span class={statLabel}>TDEE, to maintain</span></div>
@@ -98,13 +128,14 @@ const statLabel = 'block text-sm text-gray-600';
           <div class={stat}><span class={statValue} data-out="fat"></span><span class={statLabel}>Fat</span></div>
         </div>
       )}
+      <p data-plan hidden class="mt-3 text-gray-700"></p>
       <p data-floor hidden class="mt-3 text-sm text-amber-800 bg-amber-50 border border-amber-200 rounded-lg p-3"></p>
     </div>
   </div>
 </section>
 
 <script>
-  import { ACTIVITY_FACTORS, CALORIE_FLOOR, bmr, calorieTargets, cmToFtIn, ftInToCm, kgToLb, lbToKg, macros, validateProfile, validateUsHeight } from '../../lib/nutrition/energy';
+  import { ACTIVITY_FACTORS, CALORIE_FLOOR, bmr, calorieTargets, cmToFtIn, deficitPlan, ftInToCm, kgToLb, lbToKg, macros, validateGoalWeight, validateProfile, validateUsHeight } from '../../lib/nutrition/energy';
   import type { Activity, Goal, Sex } from '../../lib/nutrition/energy';
 
   const root = document.getElementById('energy-calculator')!;
@@ -112,6 +143,8 @@ const statLabel = 'block text-sm text-gray-600';
   const errors = root.querySelector<HTMLElement>('[data-errors]')!;
   const results = root.querySelector<HTMLElement>('[data-results]')!;
   const floorNote = root.querySelector<HTMLElement>('[data-floor]')!;
+  const planNote = root.querySelector<HTMLElement>('[data-plan]')!;
+  const isDeficit = root.dataset.mode === 'deficit';
 
   const field = (name: string) => form.elements.namedItem(name) as HTMLInputElement;
   // An empty box is "not entered", not 0.
@@ -129,6 +162,7 @@ const statLabel = 'block text-sm text-gray-600';
       if (toMetric) {
         if (field('ft').value !== '') field('cm').value = round1(ftInToCm(num('ft'), num('in') || 0));
         if (field('lb').value !== '') field('kg').value = round1(lbToKg(num('lb')));
+        if (isDeficit && field('goal-lb').value !== '') field('goal-kg').value = round1(lbToKg(num('goal-lb')));
       } else {
         if (field('cm').value !== '') {
           const { ft, inches } = cmToFtIn(num('cm'));
@@ -136,6 +170,7 @@ const statLabel = 'block text-sm text-gray-600';
           field('in').value = String(inches);
         }
         if (field('kg').value !== '') field('lb').value = round1(kgToLb(num('kg')));
+        if (isDeficit && field('goal-kg').value !== '') field('goal-lb').value = round1(kgToLb(num('goal-kg')));
       }
       root.querySelectorAll<HTMLElement>('[data-units]').forEach(el => {
         el.hidden = el.dataset.units !== units();
@@ -153,6 +188,9 @@ const statLabel = 'block text-sm text-gray-600';
     };
 
     const problems = [...validateProfile(profile), ...(metric ? [] : validateUsHeight(num('ft'), num('in') || 0))];
+    const goalKg = isDeficit ? (metric ? num('goal-kg') : lbToKg(num('goal-lb'))) : NaN;
+    if (isDeficit && !problems.length) problems.push(...validateGoalWeight(goalKg, profile.weightKg, profile.heightCm));
+
     errors.hidden = problems.length === 0;
     results.hidden = problems.length > 0;
     errors.replaceChildren(...problems.map(p => Object.assign(document.createElement('li'), { textContent: p })));
@@ -165,7 +203,24 @@ const statLabel = 'block text-sm text-gray-600';
     const kcal = (v: number) => Math.round(v).toLocaleString('en-US');
 
     let floorApplies = targets.floorApplied;
-    if (root.dataset.mode === 'tdee') {
+    if (isDeficit) {
+      const plan = deficitPlan({ sex, ...profile, goalKg, activity: field('activity').value as Activity, lbPerWeek: Number(field('pace').value) });
+      const weight = (kg: number) => (metric ? `${round1(kg)} kg` : `${Math.round(kgToLb(kg))} lb`);
+      out('target', kcal(plan.target));
+      out('deficit', kcal(plan.dailyDeficit));
+      out('weeks', plan.weeks ? `${plan.weeks} weeks` : '—');
+      out('goalTdee', kcal(plan.goalTdee));
+      floorApplies = plan.floorLimited;
+      planNote.hidden = false;
+      if (plan.weeks) {
+        const date = new Date(Date.now() + plan.weeks * 7 * 864e5).toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+        planNote.textContent = `Eating this every day, you would reach your goal around ${date}. Loss slows as you get lighter, because a smaller body burns less, so this date already allows for that.`;
+      } else if (plan.dailyDeficit === 0) {
+        planNote.textContent = 'Your estimated TDEE is already at or below the minimum, so there is no deficit this calculator can plan. A doctor or registered dietitian can advise you.';
+      } else {
+        planNote.textContent = `Eating this every day, your weight would level off near ${weight(plan.plateauKg!)}, before your goal, because a smaller body burns less. To keep going, recalculate as you lose weight, or move more.`;
+      }
+    } else if (root.dataset.mode === 'tdee') {
       out('bmr', kcal(base));
       out('maintain', kcal(targets.maintain));
       out('lose', kcal(targets.lose));
@@ -182,6 +237,8 @@ const statLabel = 'block text-sm text-gray-600';
     }
 
     floorNote.hidden = !floorApplies;
-    floorNote.textContent = `The weight-loss target is held at a minimum of ${kcal(CALORIE_FLOOR[sex])} calories, or at your TDEE if that is lower. Talk to a doctor or registered dietitian before eating less than this.`;
+    floorNote.textContent = isDeficit
+      ? `This pace would take you below the minimum of ${kcal(CALORIE_FLOOR[sex])} calories, so the target is held at the minimum or at your TDEE if that is lower. That makes the real pace slower. Talk to a doctor or registered dietitian before eating less than this.`
+      : `The weight-loss target is held at a minimum of ${kcal(CALORIE_FLOOR[sex])} calories, or at your TDEE if that is lower. Talk to a doctor or registered dietitian before eating less than this.`;
   });
 </script>

@@ -136,6 +136,20 @@ import NutritionFactsLabel from '../nutrition-label/NutritionFactsLabel.astro';
               <p class="text-[10px] text-center text-soft-slate mt-2">For personal planning only. Not a commercial packaging label.</p>
             </div>
 
+            <div id="embed-panel" hidden class="bg-white rounded-[var(--radius-card)] border border-border-soft shadow-soft p-5">
+              <h3 class="font-bold text-ink-navy mb-1">Publishing this recipe?</h3>
+              <p class="text-sm text-soft-slate mb-3">Get this label as code you can paste into your blog. It is free, and it needs no account.</p>
+              <button type="button" id="embed-btn" class="px-4 py-2 rounded-[var(--radius-button)] bg-ink-navy text-white text-sm font-bold focus-ring">Get embed code</button>
+              <div id="embed-output" hidden class="mt-3">
+                <p id="embed-warning" hidden class="text-sm text-amber-800 bg-amber-50 border border-amber-200 rounded-lg p-3 mb-3"></p>
+                <label for="embed-code" class="block text-sm font-semibold text-ink-navy mb-1">Your label code</label>
+                <textarea id="embed-code" readonly rows="6" class="w-full p-2 border border-border-soft rounded-lg font-mono text-xs text-ink-navy bg-slate-50"></textarea>
+                <button type="button" id="embed-copy" class="mt-2 px-4 py-2 rounded-[var(--radius-button)] border border-border-soft text-sm font-bold text-ink-navy focus-ring">Copy code</button>
+                <span id="embed-copied" role="status" class="ml-2 text-sm text-usda-emerald"></span>
+                <p class="text-sm text-soft-slate mt-3">In WordPress, add a Custom HTML block and paste the code. Most other blog platforms have a similar HTML block. If you change the recipe, come back and make a new label.</p>
+              </div>
+            </div>
+
             <details class="bg-white rounded-[var(--radius-card)] border border-border-soft shadow-soft group">
               <summary class="p-4 font-bold text-sm text-ink-navy cursor-pointer list-none flex items-center justify-between outline-none focus-visible:ring-2 focus-visible:ring-usda-emerald">
                 Show ingredient breakdown
@@ -197,6 +211,7 @@ import NutritionFactsLabel from '../nutrition-label/NutritionFactsLabel.astro';
   import { calculateFoodItem } from '../../lib/nutrition/calculateNutrition';
   import { calculateRecipeTotals, validateServings } from '../../lib/recipe';
   import { getFromCache, setInCache, generateCacheKey } from '../../lib/performance/clientCache';
+  import { buildEmbedHtml } from '../../lib/nutrition-label/embedLabel';
   
   const recipeForm = document.getElementById('recipe-form');
   const ingredientsInput = document.getElementById('recipe-ingredients') as HTMLTextAreaElement;
@@ -522,6 +537,38 @@ import NutritionFactsLabel from '../nutrition-label/NutritionFactsLabel.astro';
     }
   }
 
+  const embedPanel = document.getElementById('embed-panel');
+  const embedOutput = document.getElementById('embed-output');
+  const embedCode = document.getElementById('embed-code') as HTMLTextAreaElement;
+  const embedWarning = document.getElementById('embed-warning');
+  const embedCopied = document.getElementById('embed-copied');
+  let embedInput = null;
+
+  function renderEmbed() {
+    if (!embedInput) return;
+    embedCode.value = buildEmbedHtml({ recipeName: nameInput.value, servings: embedInput.servings, nutrients: embedInput.nutrients });
+    embedWarning.hidden = embedInput.missing === 0;
+    embedWarning.textContent = embedInput.missing === 1
+      ? '1 ingredient has no nutrition data yet and is not counted in this label. Fix it above before you publish.'
+      : `${embedInput.missing} ingredients have no nutrition data yet and are not counted in this label. Fix them above before you publish.`;
+    embedCopied.textContent = '';
+  }
+
+  document.getElementById('embed-btn').addEventListener('click', () => {
+    embedOutput.hidden = false;
+    renderEmbed();
+  });
+  nameInput.addEventListener('input', () => { if (!embedOutput.hidden) renderEmbed(); });
+  document.getElementById('embed-copy').addEventListener('click', async () => {
+    embedCode.select();
+    try {
+      await navigator.clipboard.writeText(embedCode.value);
+      embedCopied.textContent = 'Copied';
+    } catch {
+      embedCopied.textContent = 'Press Ctrl+C or Cmd+C to copy';
+    }
+  });
+
   function updateCalculations() {
     const servingsVal = parseFloat(servingsInput.value);
     const servingsValid = validateServings(servingsVal);
@@ -556,6 +603,11 @@ import NutritionFactsLabel from '../nutrition-label/NutritionFactsLabel.astro';
     totSug.textContent = formatN(totals.nutrients.sugar);
     totSod.textContent = formatInt(totals.nutrients.sodium);
     
+    embedInput = { servings, nutrients: totals.perServing, missing: parsedIngredients.length - validCalculatedItems.length };
+    embedPanel.hidden = validCalculatedItems.length === 0;
+    // Never leave stale code on screen to be copied after the recipe changes.
+    if (!embedOutput.hidden) renderEmbed();
+
     // Dispatch event to update the label
     window.dispatchEvent(new CustomEvent('update-nutrition-label', {
       detail: {

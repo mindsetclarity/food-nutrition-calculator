@@ -70,10 +70,82 @@ export function validateUsHeight(ft: number, inches: number): string[] {
   return badFt || badIn ? ['Enter height as whole feet plus 0 to 11 inches, for example 5 ft 11 in.'] : [];
 }
 
+export function validateWeight(weightKg: number): string[] {
+  return inRange(weightKg, 30, 300) ? [] : ['Enter a weight between 67 lb (30 kg) and 660 lb (300 kg).'];
+}
+
 export function validateProfile(p: { age: number; weightKg: number; heightCm: number }): string[] {
   const errors: string[] = [];
   if (!inRange(p.age, 18, 100)) errors.push('Enter an age from 18 to 100. These formulas are for adults.');
   if (!inRange(p.heightCm, 120, 230)) errors.push('Enter a height between 4 ft (120 cm) and 7 ft 6 in (230 cm).');
-  if (!inRange(p.weightKg, 30, 300)) errors.push('Enter a weight between 67 lb (30 kg) and 660 lb (300 kg).');
-  return errors;
+  return [...errors, ...validateWeight(p.weightKg)];
+}
+
+const MIN_HEALTHY_BMI = 18.5;
+
+export function validateGoalWeight(goalKg: number, currentKg: number, heightCm: number): string[] {
+  if (!Number.isFinite(goalKg) || goalKg <= 0) return ['Enter your goal weight.'];
+  if (goalKg >= currentKg) return ['Your goal weight needs to be below your current weight.'];
+  if (goalKg / (heightCm / 100) ** 2 < MIN_HEALTHY_BMI) {
+    return ['That goal is below the healthy weight range for your height, so this calculator will not plan for it. A doctor or registered dietitian can advise you.'];
+  }
+  return [];
+}
+
+const KCAL_PER_KG = 7700;
+const KCAL_PER_LB_WEEK_PER_DAY = 500; // 1 lb a week is roughly 500 kcal a day.
+const MIN_WEEKLY_LOSS_KG = 0.02; // Below this, weight has effectively levelled off.
+const MAX_WEEKS = 520;
+
+// Holds intake fixed and recalculates TDEE each week from the falling weight, so loss slows
+// the way it does in practice. Age is held constant. weeks is null if weight levels off first.
+export function deficitPlan(p: {
+  sex: Sex; age: number; heightCm: number; activity: Activity; weightKg: number; goalKg: number; lbPerWeek: number;
+}) {
+  const tdeeAt = (weightKg: number) => bmr({ ...p, weightKg }) * ACTIVITY_FACTORS[p.activity];
+  const tdee = Math.round(tdeeAt(p.weightKg));
+  const wanted = tdee - p.lbPerWeek * KCAL_PER_LB_WEEK_PER_DAY;
+  const target = Math.min(tdee, Math.max(CALORIE_FLOOR[p.sex], wanted));
+
+  let weight = p.weightKg;
+  let weeks: number | null = null;
+  let plateauKg: number | null = null;
+  for (let week = 1; week <= MAX_WEEKS; week++) {
+    const loss = ((tdeeAt(weight) - target) * 7) / KCAL_PER_KG;
+    if (loss < MIN_WEEKLY_LOSS_KG) {
+      plateauKg = Math.round(weight * 10) / 10;
+      break;
+    }
+    weight -= loss;
+    if (weight <= p.goalKg) {
+      weeks = week;
+      break;
+    }
+  }
+
+  return {
+    tdee,
+    target,
+    dailyDeficit: tdee - target,
+    floorLimited: wanted < CALORIE_FLOOR[p.sex],
+    weeks,
+    plateauKg,
+    goalTdee: Math.round(tdeeAt(p.goalKg)),
+  };
+}
+
+// Grams of protein per kg of body weight, low and high.
+const PROTEIN_RANGES: Record<'low' | 'active' | 'lose' | 'gain', [number, number]> = {
+  low: [0.8, 1.2],
+  active: [1.4, 1.6],
+  lose: [1.6, 2.0],
+  gain: [1.6, 2.2],
+};
+
+export function proteinRange(p: { weightKg: number; goal: Goal; activity: 'low' | 'active' }) {
+  const [low, high] = PROTEIN_RANGES[p.goal === 'maintain' ? p.activity : p.goal];
+  const min = Math.round(p.weightKg * low);
+  const max = Math.round(p.weightKg * high);
+  // Across three or four meals a day.
+  return { min, max, perMealMin: Math.round((p.weightKg * low) / 4), perMealMax: Math.round((p.weightKg * high) / 3) };
 }
