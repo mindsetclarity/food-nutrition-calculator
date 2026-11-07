@@ -208,17 +208,17 @@ const statLabel = 'block text-sm text-gray-600';
       const weight = (kg: number) => (metric ? `${round1(kg)} kg` : `${Math.round(kgToLb(kg))} lb`);
       out('target', kcal(plan.target));
       out('deficit', kcal(plan.dailyDeficit));
-      out('weeks', plan.weeks ? `${plan.weeks} weeks` : '—');
+      out('weeks', plan.weeks ? `${plan.weeks} ${plan.weeks === 1 ? 'week' : 'weeks'}` : '—');
       out('goalTdee', kcal(plan.goalTdee));
       floorApplies = plan.floorLimited;
       planNote.hidden = false;
       if (plan.weeks) {
         const date = new Date(Date.now() + plan.weeks * 7 * 864e5).toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
-        planNote.textContent = `Eating this every day, you would reach your goal around ${date}. Loss slows as you get lighter, because a smaller body burns less, so this date already allows for that.`;
-      } else if (plan.dailyDeficit === 0) {
-        planNote.textContent = 'Your estimated TDEE is already at or below the minimum, so there is no deficit this calculator can plan. A doctor or registered dietitian can advise you.';
+        planNote.textContent = `Eating this every day, you would reach your goal around ${date}. Loss slows as you get lighter, because a smaller body burns less, so this date already allows for that. If you recalculate as you go, it would be sooner.`;
+      } else if (plan.noRealDeficit) {
+        planNote.textContent = 'Your estimated TDEE is at or very close to the minimum, so there is no real deficit this calculator can plan. A doctor or registered dietitian can advise you.';
       } else {
-        planNote.textContent = `Eating this every day, your weight would level off near ${weight(plan.plateauKg!)}, before your goal, because a smaller body burns less. To keep going, recalculate as you lose weight, or move more.`;
+        planNote.textContent = `Eating this every day, your weight would level off near ${weight(plan.plateauKg!)}, before your goal, because a smaller body burns less. ${plan.floorLimited ? 'You are already at the minimum calories, so moving more is the way to go further.' : 'To keep going, recalculate as you lose weight, or move more.'}`;
       }
     } else if (root.dataset.mode === 'tdee') {
       out('bmr', kcal(base));

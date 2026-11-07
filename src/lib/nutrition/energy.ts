@@ -128,6 +128,7 @@ export function deficitPlan(p: {
     target,
     dailyDeficit: tdee - target,
     floorLimited: wanted < CALORIE_FLOOR[p.sex],
+    noRealDeficit: ((tdee - target) * 7) / KCAL_PER_KG < MIN_WEEKLY_LOSS_KG,
     weeks,
     plateauKg,
     goalTdee: Math.round(tdeeAt(p.goalKg)),

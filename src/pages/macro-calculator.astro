@@ -43,7 +43,7 @@ const jsonLd = [
     breadcrumbs={[{ label: 'Macro Calculator' }]}
     chipType="calculator"
   />
-  <main id="main-content" class="bg-warm-ivory pb-24 relative z-10">
+  <div class="bg-warm-ivory pb-24 relative z-10">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
       <EnergyCalculator mode="macros" />
 
@@ -57,7 +57,7 @@ const jsonLd = [
           The calculator starts with your daily calories, using the same Mifflin-St Jeor method as our <a href="/tdee-calculator" class="text-emerald-700 font-semibold hover:underline">TDEE calculator</a>: your TDEE minus 500 calories to lose weight (never below 1,200 for women or 1,500 for men, or your TDEE if that is lower), your TDEE to maintain, or your TDEE plus 300 to gain muscle. It then splits those calories in three steps.
         </p>
         <ul class="list-disc pl-6 space-y-2">
-          <li><strong class="text-gray-900">Protein comes first,</strong> because it depends on your body weight rather than your calories: 1.6 g per kg to maintain, and 1.8 g per kg when losing or gaining, up to 35% of your calories.</li>
+          <li><strong class="text-gray-900">Protein comes first,</strong> because it depends on your body weight rather than your calories: 1.6 g per kg to maintain, and 1.8 g per kg when losing or gaining, up to 35% of your calories. These figures assume you exercise regularly. If you do not, the <a href="/protein-calculator" class="text-emerald-700 font-semibold hover:underline">protein calculator</a> gives a lower range.</li>
           <li><strong class="text-gray-900">Fat is set at 25% of calories,</strong> inside the 20 to 35% range set by the US National Academies.</li>
           <li><strong class="text-gray-900">Carbs take whatever is left.</strong> They are your main fuel for training, and the most flexible of the three.</li>
         </ul>
@@ -81,5 +81,5 @@ const jsonLd = [
 
       <FaqList faqs={faqs} heading="Macro calculator FAQ" />
     </div>
-  </main>
+  </div>
 </SiteLayout>

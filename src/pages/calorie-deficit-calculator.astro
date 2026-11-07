@@ -19,7 +19,7 @@ const faqs = [
   },
   {
     question: 'How fast can I safely lose weight?',
-    answer: 'The CDC describes losing about 1 to 2 lb a week as gradual and steady, and people who lose weight at that kind of pace are more likely to keep it off. If you have less to lose, the slower end usually makes more sense.',
+    answer: 'The CDC describes losing about 1 to 2 lb a week as gradual and steady, and says people who lose weight at that pace are more likely to keep it off. If you have less to lose, the slower end usually makes more sense.',
   },
   {
     question: 'Why does my date differ from other calculators?',
@@ -44,7 +44,7 @@ const link = 'text-emerald-700 font-semibold hover:underline';
     breadcrumbs={[{ label: 'Calorie Deficit Calculator' }]}
     chipType="calculator"
   />
-  <main id="main-content" class="bg-warm-ivory pb-24 relative z-10">
+  <div class="bg-warm-ivory pb-24 relative z-10">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
       <EnergyCalculator mode="deficit" />
 
@@ -66,7 +66,7 @@ const link = 'text-emerald-700 font-semibold hover:underline';
           The popular rule that 3,500 calories equals a pound of fat is a fair rough guide, but it overstates long-term loss if you treat it as constant. As you get lighter, your body has less mass to move and maintain, so it burns less. If you keep eating the same amount, your deficit gets smaller week by week, and eventually your weight levels off.
         </p>
         <p>
-          That is why the calculator can sometimes say your weight would level off before your goal. It does not mean the goal is out of reach. It means the same calorie number will not take you all the way, so you would need to recalculate as you go or become more active. Doing this every 10 lb (about 5 kg) or so is a good habit.
+          That is why the calculator can sometimes say your weight would level off before your goal. It does not mean the goal is out of reach. It means the same calorie number will not take you all the way, so you would need to recalculate as you go, or become more active if you are already at the minimum calories. Doing this every 10 lb (about 5 kg) or so is a good habit.
         </p>
 
         <h2 class="text-2xl font-black text-gray-900 pt-2">Choosing your pace</h2>
@@ -83,5 +83,5 @@ const link = 'text-emerald-700 font-semibold hover:underline';
 
       <FaqList faqs={faqs} heading="Calorie deficit calculator FAQ" />
     </div>
-  </main>
+  </div>
 </SiteLayout>

@@ -44,7 +44,7 @@ const link = 'text-emerald-700 font-semibold hover:underline';
     breadcrumbs={[{ label: 'Protein Calculator' }]}
     chipType="calculator"
   />
-  <main id="main-content" class="bg-warm-ivory pb-24 relative z-10">
+  <div class="bg-warm-ivory pb-24 relative z-10">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
       <ProteinCalculator />
 
@@ -58,7 +58,7 @@ const link = 'text-emerald-700 font-semibold hover:underline';
           There is no single correct protein number, so this calculator gives a range, based on your body weight and what you are trying to do:
         </p>
         <ul class="list-disc pl-6 space-y-2">
-          <li><strong class="text-gray-900">Less active, maintaining: 0.8 to 1.2 g per kg.</strong> This starts at the US RDA of 0.8 g per kg, the minimum for most adults, not necessarily the best amount.</li>
+          <li><strong class="text-gray-900">Less active, maintaining: 0.8 to 1.2 g per kg.</strong> This starts at the US RDA of 0.8 g per kg, the minimum for most adults, not necessarily the best amount. Our macro calculator uses a higher figure because it assumes regular exercise.</li>
           <li><strong class="text-gray-900">Active, maintaining: 1.4 to 1.6 g per kg.</strong> This sits within the 1.4 to 2.0 g per kg that the International Society of Sports Nutrition suggests for people who exercise.</li>
           <li><strong class="text-gray-900">Losing weight: 1.6 to 2.0 g per kg.</strong> Extra protein helps you hold on to muscle in a calorie deficit, and it is the most filling of the three macronutrients.</li>
           <li><strong class="text-gray-900">Building muscle: 1.6 to 2.2 g per kg.</strong> Research reviews suggest that the benefit of more protein for muscle tends to level off at around 1.6 g per kg, with 2.2 g per kg as a generous upper limit.</li>
@@ -83,5 +83,5 @@ const link = 'text-emerald-700 font-semibold hover:underline';
 
       <FaqList faqs={faqs} heading="Protein calculator FAQ" />
     </div>
-  </main>
+  </div>
 </SiteLayout>

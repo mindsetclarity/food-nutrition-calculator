@@ -40,6 +40,14 @@ assert.equal(under.dailyDeficit, 0);
 assert.equal(under.weeks, null);
 assert.equal(under.plateauKg, 45);
 
+// A deficit too small to move the scale is reported as such, not as a level-off.
+const tiny = deficitPlan({ sex: 'female', age: 60, heightCm: 150, activity: 'sedentary', weightKg: 53.4, goalKg: 52, lbPerWeek: 2 });
+assert.equal(tiny.floorLimited, true);
+assert.ok(tiny.dailyDeficit >= 0 && tiny.dailyDeficit < 22, `tiny deficit: ${tiny.dailyDeficit}`);
+assert.equal(tiny.noRealDeficit, true);
+assert.equal(plan.noRealDeficit, false);
+assert.equal(under.noRealDeficit, true);
+
 // Goal weight: below current, and not under a healthy BMI of 18.5 (about 59.9 kg at 180 cm).
 assert.deepEqual(validateGoalWeight(70, 80, 180), []);
 assert.deepEqual(validateGoalWeight(61, 80, 180), []);
@@ -48,7 +56,7 @@ assert.equal(validateGoalWeight(80, 80, 180).length, 1, 'same as current');
 assert.equal(validateGoalWeight(90, 80, 180).length, 1, 'above current');
 assert.equal(validateGoalWeight(NaN, 80, 180).length, 1, 'empty');
 
-// Protein ranges, and they agree with what the macro calculator uses.
+// Protein ranges. The macro calculator assumes regular exercise, so it sits inside the active ranges.
 assert.deepEqual(proteinRange({ weightKg: 80, goal: 'maintain', activity: 'low' }), { min: 64, max: 96, perMealMin: 16, perMealMax: 32 });
 assert.deepEqual(proteinRange({ weightKg: 80, goal: 'maintain', activity: 'active' }), { min: 112, max: 128, perMealMin: 28, perMealMax: 43 });
 assert.deepEqual(proteinRange({ weightKg: 80, goal: 'lose', activity: 'low' }), { min: 128, max: 160, perMealMin: 32, perMealMax: 53 });

@@ -41,6 +41,12 @@ assert.match(html, /Estimate by <a href="https:\/\/foodnutritioncalculator\.com"
 assert.equal((html.match(/<a /g) ?? []).length, 1, 'exactly one link');
 assert.match(html, /Not for commercial packaging/);
 
+// Host themes that restyle every element must not leave pale text on the white box.
+for (const tag of html.match(/<(?:div|span|h3)[ >][^>]*>?/g) ?? []) assert.match(tag, /color:#000/, `no colour on ${tag}`);
+assert.ok(/<div/.test(html), 'label has markup to check');
+assert.match(html, /overflow-wrap:anywhere/, 'a long name cannot overflow the box');
+assert.match(html, /margin:0 0 16px/, 'following text does not touch the box');
+
 // Injection through the recipe name.
 const evil = buildEmbedHtml({ recipeName: '<img src=x onerror=alert(1)>"\'&', servings: 2, nutrients });
 assert.doesNotMatch(evil, /<img/);
