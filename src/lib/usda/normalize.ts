@@ -95,19 +95,38 @@ export function hasUsableNutrients(profile: NutrientProfile): boolean {
   return typeof profile.calories === 'number';
 }
 
+// Branded labels give the serving in grams ("g", "GRM") or millilitres ("ml", "MLT").
+// Their nutrients are per 100 g, or per 100 mL for liquids, so a mL amount lines up
+// with the "grams" every calculation multiplies by.
+const LABEL_MASS_UNITS = new Set(['g', 'grm', 'ml', 'mlt']);
+// Household measures a label serving can be split into ("2 Tbsp", "1/2 cup").
+const LABEL_HOUSEHOLD_UNITS = new Set(['cup', 'tbsp', 'tsp', 'slice', 'piece', 'scoop', 'packet', 'bottle', 'can']);
+
+function parseAmount(text: string): number {
+  const [whole, fraction] = text.includes('/') ? [0, text] : [Number(text), ''];
+  if (!fraction) return whole;
+  const [n, d] = fraction.split('/').map(Number);
+  return d ? n / d : NaN;
+}
+
 export function createServingSizesFromUsda(food: UsdaFoodDetails): ServingSize[] {
   const sizes: ServingSize[] = [];
-  
-  if (food.servingSize && food.servingSizeUnit === 'g') {
-    let label = `${food.servingSize}g`;
-    if (food.householdServingFullText) {
-      label = `${food.householdServingFullText} (${label})`;
+  const grams = food.servingSize;
+  const unit = (food.servingSizeUnit ?? '').toLowerCase();
+
+  if (grams && grams > 0 && LABEL_MASS_UNITS.has(unit)) {
+    const amountText = `${grams}${unit.startsWith('m') ? 'mL' : 'g'}`;
+    const household = food.householdServingFullText?.trim();
+    sizes.push({ unit: 'serving', label: household ? `${household} (${amountText})` : amountText, grams });
+
+    // "1 cup (240mL)" or "2 Tbsp (32g)": also offer that measure, so a recipe's
+    // "1 cup whole milk" can use a Branded record.
+    const match = household?.match(/^(\d+(?:\.\d+)?|\d+\/\d+)\s*([a-z]+)\b/i);
+    const amount = match ? parseAmount(match[1]) : NaN;
+    const measure = match ? normalizeUnit(match[2]) : '';
+    if (amount > 0 && LABEL_HOUSEHOLD_UNITS.has(measure)) {
+      sizes.push({ unit: measure, label: `1 ${measure}`, grams: grams / amount });
     }
-    sizes.push({
-      unit: 'serving',
-      label: label,
-      grams: food.servingSize
-    });
   }
 
   return [...sizes, ...servingSizesFromPortions(food.foodPortions, food.description)];

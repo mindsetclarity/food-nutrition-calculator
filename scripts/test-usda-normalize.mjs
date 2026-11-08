@@ -139,4 +139,24 @@ assert.equal(grams(food([{ amount: 5, measureUnit: { name: 'tomatoes' }, gramWei
 assert.match(resolveQuantityToGrams(cheddar, 1, 'clove').error, /g, oz, lb, cup, serving/);
 assert.doesNotThrow(() => food(undefined));
 
-console.log('usda normalize checks passed (30)');
+// --- Branded label servings --------------------------------------------------
+// Branded records store the label serving, often in GRM or MLT rather than "g",
+// and say the household measure in text: fdcId 2616918 WHOLE MILK is 240 MLT,
+// "1 cup (240mL)". Branded nutrients are per 100 g, or per 100 mL for liquids,
+// so a mL amount lines up with the "grams" the calculator multiplies by.
+const labelled = (servingSize, servingSizeUnit, householdServingFullText) =>
+  normalizeUsdaFoodDetails({ fdcId: 1, description: 'X', dataType: 'Branded', foodNutrients: [], foodPortions: [], servingSize, servingSizeUnit, householdServingFullText });
+const units = f => Object.fromEntries(f.servingSizes.map(s => [s.unit, s.grams]));
+
+assert.deepEqual(units(labelled(240, 'MLT', '1 cup (240mL)')), { serving: 240, cup: 240 });
+assert.equal(resolveQuantityToGrams(labelled(240, 'MLT', '1 cup (240mL)'), 1, 'cup').grams, 240, '1 cup whole milk');
+assert.deepEqual(units(labelled(32, 'GRM', '2 Tbsp (32g)')), { serving: 32, tbsp: 16 });
+assert.deepEqual(units(labelled(32, 'g', '2 tbsp')), { serving: 32, tbsp: 16 });
+assert.deepEqual(units(labelled(40, 'GRM', '1/2 cup (40g)')), { serving: 40, cup: 80 });
+assert.deepEqual(units(labelled(28, 'GRM', '1 ONZ')), { serving: 28 }, 'unknown household words add nothing');
+assert.deepEqual(units(labelled(240, 'MLT', '8 fl oz (240 mL)')), { serving: 240 }, 'fluid ounces are not weight ounces');
+assert.deepEqual(units(labelled(30, 'GRM', undefined)), { serving: 30 });
+assert.deepEqual(units(labelled(5, 'IU', '1 tsp')), {}, 'non-mass units are ignored');
+assert.deepEqual(units(labelled(0, 'GRM', '1 cup')), {}, 'zero serving is ignored');
+
+console.log('usda normalize checks passed (40)');

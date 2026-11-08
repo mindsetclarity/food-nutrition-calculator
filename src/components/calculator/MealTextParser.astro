@@ -54,6 +54,8 @@
 </style>
 
 <script>
+  import { findMeasurableFood } from '../../lib/foods/resolveFood';
+
   const parserForm = document.getElementById('parser-form');
   const mealText = document.getElementById('meal-text') as HTMLTextAreaElement;
   const submitBtn = document.getElementById('parser-submit-btn') as HTMLButtonElement;
@@ -244,30 +246,12 @@
     renderItems();
     
     try {
-      const q = encodeURIComponent(item.usdaSearchQuery || item.foodName);
-      const searchRes = await fetch(`/api/foods/search?q=${q}`);
-      const searchData = await searchRes.json();
-      
-      if (searchData.results && searchData.results.length > 0) {
-        const topResult = searchData.results[0];
-        let url = `/api/foods/details?`;
-        if (topResult.source === 'usda' && topResult.fdcId && topResult.fdcId !== '0') {
-          url += `fdcId=${topResult.fdcId}`;
-        } else {
-          url += `id=${encodeURIComponent(topResult.id)}&source=local`;
-        }
-        
-        const detailsRes = await fetch(url);
-        const detailsData = await detailsRes.json();
-        
-        if (detailsData.ok && detailsData.food) {
-          item.resolvedFood = detailsData.food;
-          item.needsReview = false; 
-        } else {
-          item.resolutionError = "Could not find details";
-        }
+      const { food, error } = await findMeasurableFood(item.usdaSearchQuery || item.foodName, item.quantity, item.unit, async url => (await fetch(url)).json());
+      if (food) {
+        item.resolvedFood = food;
+        item.needsReview = false;
       } else {
-        item.resolutionError = "No match found";
+        item.resolutionError = error;
       }
     } catch (err) {
       item.resolutionError = "Network error";

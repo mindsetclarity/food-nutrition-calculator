@@ -210,8 +210,9 @@ import NutritionFactsLabel from '../nutrition-label/NutritionFactsLabel.astro';
 <script>
   import { calculateFoodItem } from '../../lib/nutrition/calculateNutrition';
   import { calculateRecipeTotals, validateServings } from '../../lib/recipe';
-  import { getFromCache, setInCache, generateCacheKey } from '../../lib/performance/clientCache';
+  import { getFromCache, setInCache } from '../../lib/performance/clientCache';
   import { buildEmbedHtml } from '../../lib/nutrition-label/embedLabel';
+  import { findMeasurableFood } from '../../lib/foods/resolveFood';
   
   const recipeForm = document.getElementById('recipe-form');
   const ingredientsInput = document.getElementById('recipe-ingredients') as HTMLTextAreaElement;
@@ -441,6 +442,16 @@ import NutritionFactsLabel from '../nutrition-label/NutritionFactsLabel.astro';
     });
   }
 
+  // Search and details responses, cached by URL so re-analysing a recipe is quick.
+  async function cachedJson(url: string) {
+    let data = getFromCache(url);
+    if (!data) {
+      data = await (await fetch(url)).json();
+      setInCache(url, data, 15);
+    }
+    return data;
+  }
+
   async function resolveSingleItem(idx: number) {
     const item = parsedIngredients[idx];
     item.resolving = true;
@@ -451,46 +462,13 @@ import NutritionFactsLabel from '../nutrition-label/NutritionFactsLabel.astro';
     updateCalculations();
     
     try {
-      const q = encodeURIComponent(item.usdaSearchQuery || item.foodName);
-      const cacheKey = generateCacheKey('/api/foods/search', { q: item.usdaSearchQuery || item.foodName });
-      let searchData = getFromCache(cacheKey);
-      if (!searchData) {
-        const searchRes = await fetch(`/api/foods/search?q=${q}`);
-        searchData = await searchRes.json();
-        setInCache(cacheKey, searchData, 15);
-      }
-      
-      if (searchData.results && searchData.results.length > 0) {
-        const topResult = searchData.results[0];
-        let url = `/api/foods/details?`;
-        if (topResult.source === 'usda' && topResult.fdcId && topResult.fdcId !== '0') {
-          url += `fdcId=${topResult.fdcId}`;
-        } else {
-          url += `id=${encodeURIComponent(topResult.id)}&source=local`;
-        }
-        
-        const detailsCacheKey = generateCacheKey('/api/foods/details', { 
-          id: (topResult.source === 'usda' && topResult.fdcId && topResult.fdcId !== '0') ? undefined : topResult.id,
-          fdcId: (topResult.source === 'usda' && topResult.fdcId && topResult.fdcId !== '0') ? topResult.fdcId : undefined,
-          source: (topResult.source === 'usda' && topResult.fdcId && topResult.fdcId !== '0') ? undefined : 'local'
-        });
-        
-        let detailsData = getFromCache(detailsCacheKey);
-        if (!detailsData) {
-          const detailsRes = await fetch(url);
-          detailsData = await detailsRes.json();
-          setInCache(detailsCacheKey, detailsData, 30);
-        }
-        
-        if (detailsData.ok && detailsData.food) {
-          item.resolvedFood = detailsData.food;
-          item.needsReview = false; 
-          recalculateSingleItem(idx);
-        } else {
-          item.resolutionError = "Could not find details";
-        }
+      const { food, error } = await findMeasurableFood(item.usdaSearchQuery || item.foodName, item.quantity, item.unit, cachedJson);
+      if (food) {
+        item.resolvedFood = food;
+        item.needsReview = false;
+        recalculateSingleItem(idx);
       } else {
-        item.resolutionError = "No match found";
+        item.resolutionError = error;
       }
     } catch (err) {
       item.resolutionError = "Network error";

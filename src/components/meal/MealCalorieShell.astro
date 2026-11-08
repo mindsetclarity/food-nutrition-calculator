@@ -179,6 +179,7 @@ import MealSummary from './MealSummary.astro';
   import { calculateDayTotals, calculateMealSectionTotals, getMealSourceSummary, getMealWarnings, hasAnyMealItems, calculateMealContributionPercent } from '../../lib/meal/mealCalculation';
   import { formatMealCalories, formatMealMacro, formatMealSodium, formatMealQuantity, formatMealSectionLabel } from '../../lib/meal/mealFormatting';
   import { calculateFoodItem } from '../../lib/nutrition/calculateNutrition';
+  import { findMeasurableFood } from '../../lib/foods/resolveFood';
   import type { MealDayState, MealSectionState, MealFoodItem, MealSectionId } from '../../lib/meal/types';
   import { getFromCache, setInCache, generateCacheKey } from '../../lib/performance/clientCache';
 
@@ -647,16 +648,11 @@ import MealSummary from './MealSummary.astro';
      
      const promises = ex.items.map(async (item) => {
         try {
-           const sRes = await fetch(`/api/foods/search?q=${encodeURIComponent(item.query)}`);
-           const sData = await sRes.json();
-           const match = sData.results?.[0];
-           
-           if (match) {
-              const dRes = await fetch(`/api/foods/details?id=${match.id}&source=${match.source}`);
-              const dData = await dRes.json();
-              
+           const { food } = await findMeasurableFood(item.query, item.quantity, item.unit, async url => (await fetch(url)).json());
+
+           if (food) {
               const calcItem = calculateFoodItem({
-                 food: dData.food,
+                 food,
                  quantity: item.quantity,
                  unit: item.unit
               });
