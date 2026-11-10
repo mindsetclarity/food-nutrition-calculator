@@ -213,6 +213,7 @@ import NutritionFactsLabel from '../nutrition-label/NutritionFactsLabel.astro';
   import { getFromCache, setInCache } from '../../lib/performance/clientCache';
   import { buildEmbedHtml } from '../../lib/nutrition-label/embedLabel';
   import { findMeasurableFood } from '../../lib/foods/resolveFood';
+  import { escapeHtml } from '../../lib/safety/escapeHtml';
   
   const recipeForm = document.getElementById('recipe-form');
   const ingredientsInput = document.getElementById('recipe-ingredients') as HTMLTextAreaElement;
@@ -338,20 +339,20 @@ import NutritionFactsLabel from '../nutrition-label/NutritionFactsLabel.astro';
       if (item.resolving) {
         statusHtml = `<span class="text-[11px] font-bold text-soft-slate uppercase tracking-widest flex items-center gap-1.5"><svg class="animate-spin h-3.5 w-3.5 text-usda-emerald" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path></svg> Finding match...</span>`;
       } else if (item.resolutionError) {
-        statusHtml = `<span class="text-[11px] font-bold uppercase tracking-widest text-red-600">${item.resolutionError}</span>`;
+        statusHtml = `<span class="text-[11px] font-bold uppercase tracking-widest text-red-600">${escapeHtml(item.resolutionError)}</span>`;
       } else if (item.resolvedFood) {
         const isUsda = item.resolvedFood.source === 'usda';
         const badgeClasses = isUsda ? "bg-mint-wash text-usda-emerald border-emerald-soft" : "bg-slate-50 text-soft-slate border-border-soft";
         statusHtml = `<div class="flex items-center gap-2 mt-1">
-          <span class="text-[13px] font-bold text-ink-navy truncate max-w-[200px]" title="${item.resolvedFood.displayName}">${item.resolvedFood.displayName}</span>
-          <span class="text-[10px] uppercase font-bold tracking-widest px-1.5 py-0.5 rounded border ${badgeClasses}">${item.resolvedFood.sourceLabel || (isUsda ? 'USDA' : 'Local')}</span>
+          <span class="text-[13px] font-bold text-ink-navy truncate max-w-[200px]" title="${escapeHtml(item.resolvedFood.displayName)}">${escapeHtml(item.resolvedFood.displayName)}</span>
+          <span class="text-[10px] uppercase font-bold tracking-widest px-1.5 py-0.5 rounded border ${badgeClasses}">${escapeHtml(item.resolvedFood.sourceLabel || (isUsda ? 'USDA' : 'Local'))}</span>
         </div>`;
       }
       
       const warningsHtml = (item.warnings.length > 0 || item.needsReview) 
         ? `<div class="mt-4 text-[11px] font-medium text-amber-800 bg-amber-50 px-3 py-2 rounded-[var(--radius-button)] border border-amber-200 flex items-start gap-2">
             <svg class="w-4 h-4 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
-            <div>${item.warnings.join(' ')} ${item.needsReview ? 'Please review quantity/unit.' : ''}</div>
+            <div>${escapeHtml(item.warnings.join(' '))} ${item.needsReview ? 'Please review quantity/unit.' : ''}</div>
            </div>` 
         : '';
         
@@ -363,21 +364,21 @@ import NutritionFactsLabel from '../nutrition-label/NutritionFactsLabel.astro';
         
         <div class="mb-5 pr-10">
           <span class="text-[10px] uppercase font-bold text-usda-emerald tracking-widest block mb-1">Parsed:</span>
-          <span class="text-[15px] font-medium text-ink-navy">${item.rawText}</span>
+          <span class="text-[15px] font-medium text-ink-navy">${escapeHtml(item.rawText)}</span>
         </div>
         
         <div class="grid grid-cols-12 gap-3 items-end">
           <div class="col-span-12 sm:col-span-6">
             <label class="block text-[10px] font-bold text-ink-navy uppercase tracking-widest mb-1.5">Ingredient Search</label>
-            <input type="text" aria-label="Ingredient Search" class="edit-query w-full h-10 px-3 text-base font-medium rounded bg-white border border-border-soft text-ink-navy focus:outline-none focus:border-usda-emerald focus:ring-1 focus:ring-usda-emerald transition-colors" value="${item.usdaSearchQuery || item.foodName}">
+            <input type="text" aria-label="Ingredient Search" class="edit-query w-full h-10 px-3 text-base font-medium rounded bg-white border border-border-soft text-ink-navy focus:outline-none focus:border-usda-emerald focus:ring-1 focus:ring-usda-emerald transition-colors" value="${escapeHtml(item.usdaSearchQuery || item.foodName)}">
           </div>
           <div class="col-span-6 sm:col-span-3">
             <label class="block text-[10px] font-bold text-ink-navy uppercase tracking-widest mb-1.5">Qty</label>
-            <input type="number" aria-label="Quantity" min="0" step="any" class="edit-qty w-full h-10 px-3 text-base font-medium rounded bg-white border border-border-soft text-ink-navy focus:outline-none focus:border-usda-emerald focus:ring-1 focus:ring-usda-emerald transition-colors" value="${item.quantity || ''}">
+            <input type="number" aria-label="Quantity" min="0" step="any" class="edit-qty w-full h-10 px-3 text-base font-medium rounded bg-white border border-border-soft text-ink-navy focus:outline-none focus:border-usda-emerald focus:ring-1 focus:ring-usda-emerald transition-colors" value="${escapeHtml(item.quantity || '')}">
           </div>
           <div class="col-span-6 sm:col-span-3">
             <label class="block text-[10px] font-bold text-ink-navy uppercase tracking-widest mb-1.5">Unit</label>
-            <input type="text" aria-label="Unit" class="edit-unit w-full h-10 px-3 text-base font-medium rounded bg-white border border-border-soft text-ink-navy focus:outline-none focus:border-usda-emerald focus:ring-1 focus:ring-usda-emerald transition-colors" value="${item.unit || ''}">
+            <input type="text" aria-label="Unit" class="edit-unit w-full h-10 px-3 text-base font-medium rounded bg-white border border-border-soft text-ink-navy focus:outline-none focus:border-usda-emerald focus:ring-1 focus:ring-usda-emerald transition-colors" value="${escapeHtml(item.unit || '')}">
           </div>
         </div>
         
@@ -415,11 +416,12 @@ import NutritionFactsLabel from '../nutrition-label/NutritionFactsLabel.astro';
         const qty = parseFloat((card.querySelector('.edit-qty') as HTMLInputElement).value);
         const unit = (card.querySelector('.edit-unit') as HTMLInputElement).value.trim();
         
-        parsedIngredients[idx].usdaSearchQuery = query;
-        parsedIngredients[idx].quantity = qty;
-        parsedIngredients[idx].unit = unit;
+        const item = parsedIngredients[idx];
+        item.usdaSearchQuery = query;
+        item.quantity = qty;
+        item.unit = unit;
         
-        resolveSingleItem(idx);
+        resolveItem(item);
       });
     });
     
@@ -435,7 +437,7 @@ import NutritionFactsLabel from '../nutrition-label/NutritionFactsLabel.astro';
         }
         
         if (parsedIngredients[idx].resolvedFood) {
-          recalculateSingleItem(idx);
+          recalculateItem(parsedIngredients[idx]);
           updateCalculations();
         }
       });
@@ -452,8 +454,11 @@ import NutritionFactsLabel from '../nutrition-label/NutritionFactsLabel.astro';
     return data;
   }
 
-  async function resolveSingleItem(idx: number) {
-    const item = parsedIngredients[idx];
+  // Ingredients are passed around as objects, never as list positions: removing one, or
+  // analysing a new recipe, while matches were still loading shifted the positions, so a
+  // finished match was applied to the wrong ingredient and queued ones pointed past the end.
+  async function resolveItem(item) {
+    const token = (item.resolveToken = (item.resolveToken ?? 0) + 1);
     item.resolving = true;
     item.resolutionError = null;
     item.resolvedFood = null;
@@ -463,31 +468,40 @@ import NutritionFactsLabel from '../nutrition-label/NutritionFactsLabel.astro';
     
     try {
       const { food, error } = await findMeasurableFood(item.usdaSearchQuery || item.foodName, item.quantity, item.unit, cachedJson);
+      // A newer match was started for this ingredient: its answer wins.
+      if (token !== item.resolveToken) return;
       if (food) {
         item.resolvedFood = food;
         item.needsReview = false;
-        recalculateSingleItem(idx);
+        recalculateItem(item);
       } else {
         item.resolutionError = error;
       }
     } catch (err) {
+      if (token !== item.resolveToken) return;
       item.resolutionError = "Network error";
     } finally {
-      item.resolving = false;
-      renderIngredients();
-      updateCalculations();
+      if (token === item.resolveToken) {
+        item.resolving = false;
+        // Removed, or replaced by a new analysis, while this was loading.
+        if (parsedIngredients.includes(item)) {
+          renderIngredients();
+          updateCalculations();
+        }
+      }
     }
   }
 
   async function resolveIngredients() {
-    const queue = parsedIngredients.map((_, idx) => idx);
+    const queue = [...parsedIngredients];
     const inFlight = new Set();
     
     while(queue.length > 0 || inFlight.size > 0) {
       while(inFlight.size < 3 && queue.length > 0) {
-        const idx = queue.shift();
-        if(idx !== undefined) {
-          const p = resolveSingleItem(idx).finally(() => inFlight.delete(p));
+        const item = queue.shift();
+        // Skip ingredients removed, or replaced by a new analysis, while waiting.
+        if (item && parsedIngredients.includes(item)) {
+          const p = resolveItem(item).finally(() => inFlight.delete(p));
           inFlight.add(p);
         }
       }
@@ -497,8 +511,7 @@ import NutritionFactsLabel from '../nutrition-label/NutritionFactsLabel.astro';
     }
   }
 
-  function recalculateSingleItem(idx: number) {
-    const item = parsedIngredients[idx];
+  function recalculateItem(item) {
     if (item.resolvedFood && item.quantity > 0 && item.unit) {
       const calculated = calculateFoodItem({
         food: item.resolvedFood,
