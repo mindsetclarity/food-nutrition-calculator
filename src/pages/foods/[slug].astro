@@ -15,6 +15,7 @@ import { categorySlug } from '../../lib/foods/categories';
 
 import { getAllFoodPages, getFoodDetailSeo, getFoodFaqs, getRelatedFoods } from '../../lib/foods';
 import { getComparePairsForFood, isIndexedFood } from '../../lib/compare/comparePairs';
+import { compareHref } from '../../lib/compare/compareLink';
 import { buildFAQPageSchema, buildWebPageSchema } from '../../lib/seo/schema';
 import { siteConfig } from '../../lib/seo/siteConfig';
 
@@ -108,10 +109,10 @@ const jsonLd = [
             <FoodMacroBreakdown food={food} />
           </div>
           
-          {comparePairs.length > 0 && (
-            <section class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 sm:p-8">
-              <h2 class="text-2xl font-black text-gray-900 mb-4">Compare {food.displayName.toLowerCase()} with similar foods</h2>
-              <ul class="flex flex-wrap gap-3">
+          <section class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 sm:p-8">
+            <h2 class="text-2xl font-black text-gray-900 mb-4">Compare {food.displayName.toLowerCase()} with other foods</h2>
+            {comparePairs.length > 0 && (
+              <ul class="flex flex-wrap gap-3 mb-5">
                 {comparePairs.map(pair => {
                   const other = pair.a.slug === food.slug ? pair.b : pair.a;
                   return (
@@ -123,8 +124,11 @@ const jsonLd = [
                   );
                 })}
               </ul>
-            </section>
-          )}
+            )}
+            <a href={compareHref([food.slug])} rel="nofollow" class="inline-flex items-center px-5 py-3 rounded-xl bg-emerald-700 text-white font-semibold hover:bg-emerald-800 transition-colors">
+              Compare with another food
+            </a>
+          </section>
 
           <FaqList faqs={faqs} heading={`${food.displayName} nutrition FAQ`} />
 

@@ -21,14 +21,15 @@
     "test:byte-range": "node --experimental-strip-types scripts/test-byte-range.mjs",
     "check:links": "node scripts/check-links.mjs",
     "test:notes": "node --experimental-strip-types scripts/test-editorial-notes.mjs",
-    "prebuild": "npm run -s test:notes && npm run -s test:categories && npm run -s test:energy && npm run -s test:embed && npm run -s test:resolve-food && npm run -s test:cleanup-sitemap && npm run -s test:body-metrics && npm run -s test:topic-clusters",
+    "prebuild": "npm run -s test:notes && npm run -s test:categories && npm run -s test:energy && npm run -s test:embed && npm run -s test:resolve-food && npm run -s test:cleanup-sitemap && npm run -s test:body-metrics && npm run -s test:topic-clusters && npm run -s test:food-upgrades",
     "test:energy": "node --experimental-strip-types scripts/test-energy.mjs",
     "test:categories": "node --experimental-strip-types scripts/test-categories.mjs",
     "test:embed": "node --experimental-strip-types scripts/test-embed.mjs",
     "test:resolve-food": "node --experimental-strip-types scripts/test-resolve-food.mjs",
     "test:cleanup-sitemap": "node --experimental-strip-types scripts/test-cleanup-sitemap.mjs",
     "test:body-metrics": "node --experimental-strip-types scripts/test-body-metrics.mjs",
-    "test:topic-clusters": "node --experimental-strip-types scripts/test-topic-clusters.mjs"
+    "test:topic-clusters": "node --experimental-strip-types scripts/test-topic-clusters.mjs",
+    "test:food-upgrades": "node --experimental-strip-types scripts/test-food-upgrades.mjs"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.1",

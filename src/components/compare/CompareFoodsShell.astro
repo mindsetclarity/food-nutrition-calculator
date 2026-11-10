@@ -41,6 +41,7 @@ import CompareNotice from './CompareNotice.astro';
   import { buildCompareResult } from '../../lib/compare/compareFoods';
   import { getFromCache, setInCache, generateCacheKey } from '../../lib/performance/clientCache';
   import { escapeHtml } from '../../lib/safety/escapeHtml';
+  import { compareHref, compareToken, parseCompareParams } from '../../lib/compare/compareLink';
   
   let selectedFoods: CompareFood[] = [];
   let currentBasis: CompareBasis = '100g';
@@ -175,7 +176,7 @@ import CompareNotice from './CompareNotice.astro';
       });
     }
 
-    async function addFoodToCompare(item: any) {
+    async function addFoodToCompare(item: any, quiet = false) {
       if (selectedFoods.length >= MAX_FOODS) return;
       
       searchResults?.classList.add('hidden');
@@ -202,7 +203,8 @@ import CompareNotice from './CompareNotice.astro';
         if (el) el.textContent = `${compareFood.displayName} added to comparison.`;
         
       } catch (err) {
-        alert('Food details could not be loaded.');
+        // A mistyped shared link shouldn't pop up a dialog; just skip that food.
+        if (!quiet) alert('Food details could not be loaded.');
         const el = document.getElementById('a11y-status');
         if (el) el.textContent = 'Error loading food details.';
       }
@@ -244,6 +246,10 @@ import CompareNotice from './CompareNotice.astro';
 
     // --- UI Update Logic ---
     function updateUI() {
+      // Keep the address in step with the picked foods so a comparison can be shared.
+      const tokens = selectedFoods.map(compareToken).filter((t): t is string => t !== null);
+      history.replaceState(history.state, '', compareHref(tokens));
+
       renderSelectedCards();
       
       if (selectedFoods.length >= 2) {
@@ -428,5 +434,9 @@ import CompareNotice from './CompareNotice.astro';
       });
     });
 
+    // --- Prefill from ?a=…&b=… (food pages link here with ?a=<slug>) ---
+    (async () => {
+      for (const item of parseCompareParams(location.search)) await addFoodToCompare(item, true);
+    })();
   });
 </script>
