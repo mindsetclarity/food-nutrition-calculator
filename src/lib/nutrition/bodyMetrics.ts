@@ -34,6 +34,16 @@ const BODY_FAT_BANDS: Record<Sex, [number, string][]> = {
   female: [[14, 'Essential fat'], [21, 'Athletes'], [25, 'Fitness'], [32, 'Average']],
 };
 
+// Below essential fat, or implausibly high, means the measurements are off rather than
+// the body: very lean builds can push the Navy formula negative.
+const PLAUSIBLE_BODY_FAT: Record<Sex, [number, number]> = { male: [2, 60], female: [10, 65] };
+
+export function isPlausibleBodyFat(sex: Sex, pct: number): boolean {
+  const [min, max] = PLAUSIBLE_BODY_FAT[sex];
+  return Number.isFinite(pct) && pct >= min && pct <= max;
+}
+
+// ACE calls the top band "Obese"; it is shown here as "Above average".
 export function bodyFatCategory(sex: Sex, pct: number): string {
   return BODY_FAT_BANDS[sex].find(([upTo]) => pct < upTo)?.[1] ?? 'Above average';
 }
@@ -41,7 +51,9 @@ export function bodyFatCategory(sex: Sex, pct: number): string {
 const inRange = (v: number | undefined, min: number, max: number) => v !== undefined && Number.isFinite(v) && v >= min && v <= max;
 
 export function validateTape(p: { sex: Sex; neckCm: number; waistCm: number; hipCm?: number }): string[] {
-  if (!inRange(p.neckCm, 20, 70) || !inRange(p.waistCm, 40, 250)) return ['Enter your neck and waist measurements.'];
+  if (!inRange(p.neckCm, 20, 70) || !inRange(p.waistCm, 40, 250)) {
+    return ['Check your neck and waist measurements: a neck of 8 to 27 in (20 to 70 cm) and a waist of 16 to 98 in (40 to 250 cm), in the units you chose.'];
+  }
   if (p.sex === 'female' && !inRange(p.hipCm, 50, 250)) return ['Enter your hip measurement. The method for women uses it.'];
   if (p.waistCm <= p.neckCm) return ['Your waist measurement needs to be larger than your neck. Check both measurements.'];
   return [];
@@ -85,6 +97,7 @@ export const caloriesBurned = (p: { met: number; weightKg: number; minutes: numb
 // --- Water (US National Academies adequate intake, total water from food and drinks) ---
 const BASE_WATER_L: Record<Sex, number> = { male: 3.7, female: 2.7 };
 const FROM_DRINKS = 0.8; // About 20% of water comes from food.
+// Rules of thumb (about 12 fl oz per 30 minutes of exercise), not National Academies figures.
 const EXERCISE_L_PER_30_MIN = 0.35;
 const HOT_WEATHER_L = 0.5;
 

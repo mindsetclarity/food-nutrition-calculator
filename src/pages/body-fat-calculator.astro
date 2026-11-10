@@ -7,7 +7,7 @@ export const prerender = true;
 const link = 'text-emerald-700 font-semibold hover:underline';
 const h2 = 'text-2xl font-black text-gray-900 pt-2';
 const faqs = [
-  { question: 'How accurate is the US Navy body fat method?', answer: 'It is usually within about 3 to 4 percentage points of lab methods such as DEXA scans for most people, which makes it a good, free way to track change over time. Single readings can be off, so measure consistently and watch the trend.' },
+  { question: 'How accurate is the US Navy body fat method?', answer: 'It is typically within about 3 to 4 percentage points of lab methods such as underwater weighing or DEXA scans, which makes it a good, free way to track change over time. Single readings can be off, so measure consistently and watch the trend.' },
   { question: 'What is a healthy body fat percentage?', answer: 'Using the American Council on Exercise ranges, about 14 to 24% is typical for fit and average men, and about 21 to 31% for fit and average women. Women naturally carry more essential fat than men.' },
   { question: 'Why does the calculator need my neck measurement?', answer: 'Neck size is a rough guide to muscle mass and frame. Subtracting it from waist size, which mostly reflects fat, helps the formula separate fat from overall body size.' },
   { question: 'Is a smart scale more accurate?', answer: 'Not necessarily. Home scales estimate body fat from a small electrical current, and their readings change with hydration, meals and time of day. Like tape measurements, they are best for spotting trends.' },
@@ -37,6 +37,6 @@ const faqs = [
   <p>Keep the tape level and snug but not pressing into the skin. Measure at the same time of day, ideally in the morning before eating, and take each measurement twice.</p>
 
   <h2 class={h2}>Making sense of your result</h2>
-  <p>Some fat is essential: about 2 to 5% for men and 10 to 13% for women. Above that, the American Council on Exercise groups results into athletes, fitness, average and above-average ranges. Rather than chasing a particular number, use the result to track change. If your weight stays the same but your body fat falls, you are likely gaining muscle and losing fat at the same time.</p>
+  <p>Some fat is essential: about 2 to 5% for men and 10 to 13% for women. Above that, the American Council on Exercise groups results into athletes, fitness and average ranges, with a top range it calls obese, which this calculator shows as "above average". If your measurements give a result below essential fat, the calculator asks you to check them instead of showing a number. Rather than chasing a particular number, use the result to track change. If your weight stays the same but your body fat falls, you are likely gaining muscle and losing fat at the same time.</p>
   <p>To compare this with a simpler measure, try the <a href="/bmi-calculator" class={link}>BMI calculator</a>. To change your body composition, the <a href="/protein-calculator" class={link}>protein calculator</a> and <a href="/macro-calculator" class={link}>macro calculator</a> give daily targets to support it.</p>
 </ToolPage>

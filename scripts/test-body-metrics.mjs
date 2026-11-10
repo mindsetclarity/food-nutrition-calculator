@@ -8,7 +8,7 @@ import assert from 'node:assert/strict';
 
 const {
   bmi, bmiCategory, healthyWeightRange, navyBodyFat, bodyFatCategory, ACTIVITIES, caloriesBurned,
-  waterIntake, idealWeights, validateTape,
+  waterIntake, idealWeights, validateTape, isPlausibleBodyFat,
 } = await import('../src/lib/nutrition/bodyMetrics.ts');
 
 const near = (a, b, tol, msg) => assert.ok(Math.abs(a - b) <= tol, `${msg}: ${a} vs ${b}`);
@@ -36,6 +36,17 @@ assert.equal(bodyFatCategory('female', 24.9), 'Fitness', 'ACE: women 21 to 24% i
 assert.equal(bodyFatCategory('female', 25), 'Average', 'ACE: women 25 to 31% is average');
 assert.equal(bodyFatCategory('male', 10), 'Athletes');
 assert.equal(bodyFatCategory('female', 33), 'Above average');
+// Results the method cannot really give are refused, not labelled: a slim man with a
+// 26 in waist and 15 in neck came out at -2.4%, shown as "Essential fat".
+assert.equal(isPlausibleBodyFat('male', navyBodyFat({ sex: 'male', heightCm: 183, neckCm: 38.1, waistCm: 66 })), false);
+assert.equal(isPlausibleBodyFat('female', navyBodyFat({ sex: 'female', heightCm: 180, neckCm: 36, waistCm: 55, hipCm: 80 })), false, '1.8% for a woman is below essential fat');
+assert.equal(isPlausibleBodyFat('male', 16.1), true);
+assert.equal(isPlausibleBodyFat('female', 24.9), true);
+assert.equal(isPlausibleBodyFat('male', 2), true, 'lowest essential fat for men');
+assert.equal(isPlausibleBodyFat('female', 10), true, 'lowest essential fat for women');
+assert.equal(isPlausibleBodyFat('female', 75), false);
+assert.equal(isPlausibleBodyFat('male', NaN), false);
+
 // Tape checks: a waist not bigger than the neck cannot be measured this way.
 assert.deepEqual(validateTape({ sex: 'male', neckCm: 38, waistCm: 85 }), []);
 assert.equal(validateTape({ sex: 'male', neckCm: 40, waistCm: 38 }).length, 1);

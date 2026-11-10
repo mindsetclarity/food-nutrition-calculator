@@ -109,7 +109,7 @@ const STATS: Record<Props['mode'], [string, string][]> = {
 </section>
 
 <script>
-  import { ACTIVITIES, bmi, bmiCategory, bodyFatCategory, caloriesBurned, healthyWeightRange, idealWeights, navyBodyFat, validateTape, waterIntake } from '../../lib/nutrition/bodyMetrics';
+  import { ACTIVITIES, bmi, bmiCategory, bodyFatCategory, caloriesBurned, healthyWeightRange, idealWeights, isPlausibleBodyFat, navyBodyFat, validateTape, waterIntake } from '../../lib/nutrition/bodyMetrics';
   import { cmToFtIn, ftInToCm, kgToLb, lbToKg, validateHeight, validateUsHeight, validateWeight } from '../../lib/nutrition/energy';
   import type { Sex } from '../../lib/nutrition/energy';
 
@@ -192,14 +192,23 @@ const STATS: Record<Props['mode'], [string, string][]> = {
     note.textContent = '';
 
     if (mode === 'bmi') {
-      const value = bmi(weightKg(), heightCm());
+      // Categorize the number shown, so "25" never appears next to "Healthy weight".
+      const value = Math.round(bmi(weightKg(), heightCm()) * 10) / 10;
       const range = healthyWeightRange(heightCm());
-      out('bmi', round1(value));
+      out('bmi', String(value));
       out('category', bmiCategory(value).label);
       out('range', `${weight(range.min)} to ${weight(range.max)}`);
       note.textContent = 'BMI does not measure body fat directly. Muscular people can score high, and the healthy range can differ for some ethnic groups and older adults.';
     } else if (mode === 'bodyfat') {
       const pct = navyBodyFat({ sex: sex(), heightCm: heightCm(), neckCm: tapeCm('neck'), waistCm: tapeCm('waist'), hipCm: tapeCm('hip') });
+      if (!isPlausibleBodyFat(sex(), pct)) {
+        results.hidden = true;
+        errors.hidden = false;
+        errors.replaceChildren(Object.assign(document.createElement('li'), {
+          textContent: 'Your measurements are outside the range this method can estimate. Check that each one is right and in the units you chose, then try again.',
+        }));
+        return;
+      }
       out('fat', `${pct}%`);
       out('category', bodyFatCategory(sex(), pct));
       note.textContent = 'Tape methods are usually within a few percentage points of lab measurements. Measure the same way each time and compare trends rather than single readings.';
@@ -223,7 +232,7 @@ const STATS: Record<Props['mode'], [string, string][]> = {
       out('formulas', values.length ? weight(values.reduce((a, b) => a + b, 0) / values.length) : 'Not available');
       note.textContent = values.length
         ? `Devine ${weight(f.devine!)}, Robinson ${weight(f.robinson!)}, Miller ${weight(f.miller!)}, Hamwi ${weight(f.hamwi!)}. These older formulas give one number each; the range above is a better guide.`
-        : 'The classic formulas only work from 5 ft (152 cm), so only the healthy BMI range is shown.';
+        : 'The classic formulas only work from 5 ft (152.4 cm), so only the healthy BMI range is shown.';
     }
   });
 </script>
