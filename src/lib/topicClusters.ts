@@ -57,21 +57,62 @@ export const TOPIC_CLUSTERS: ({ id: string } & Related)[] = [
   },
 ];
 
+// Best matches shown first, before the rotated cluster links. Keyed by page id;
+// values may come from outside the page's clusters.
+export const PINNED: Record<string, Partial<Related>> = {
+  // charts
+  'indian-foods': { articles: ['indian-takeaway-calories'] },
+  'fast-food-style': { articles: ['healthier-fast-food-swaps', 'calories-in-a-burger-and-fries', 'how-many-calories-in-a-slice-of-pizza'] },
+  beverages: { tools: ['/water-intake-calculator'], articles: ['calories-in-coffee-drinks', 'calories-in-beer-wine-and-spirits'] },
+  breakfast: { articles: ['calories-in-breakfast-foods', 'how-many-calories-in-an-egg'] },
+  'bread-bakery': { articles: ['calories-in-bread'] },
+  fruits: { articles: ['calories-in-fruit-lowest-to-highest'] },
+  'grains-cereals': { articles: ['calories-in-rice-cooked-vs-uncooked'] },
+  'protein-foods': { articles: ['high-protein-foods-list', 'how-much-protein-do-i-need'] },
+  snacks: { articles: ['low-calorie-snacks-under-100-calories'] },
+  // articles
+  'calories-in-fruit-lowest-to-highest': { charts: ['fruits'] },
+  'how-many-calories-in-an-egg': { charts: ['breakfast', 'protein-foods'] },
+  'calories-in-a-burger-and-fries': { charts: ['fast-food-style'] },
+  'how-many-calories-in-a-slice-of-pizza': { charts: ['fast-food-style'] },
+  'healthier-fast-food-swaps': { charts: ['fast-food-style'] },
+  'calories-in-coffee-drinks': { charts: ['beverages'] },
+  'calories-in-beer-wine-and-spirits': { charts: ['beverages'] },
+  'indian-takeaway-calories': { charts: ['indian-foods'] },
+  'calories-in-bread': { charts: ['bread-bakery'] },
+  'calories-in-breakfast-foods': { charts: ['breakfast'] },
+  'calories-in-rice-cooked-vs-uncooked': { charts: ['grains-cereals'] },
+  'high-protein-foods-list': { charts: ['protein-foods'] },
+  'low-calorie-snacks-under-100-calories': { charts: ['snacks'] },
+};
+
 const GROUP: Record<RelatedKind, keyof Related> = { tool: 'tools', article: 'articles', chart: 'charts' };
 
-/** Same-topic pages for one page, excluding itself and `skip`. */
+/** Page id from a site href: '/learn/x' → 'x', '/foods/category/x' → 'x', tool paths unchanged. */
+export const idFromHref = (href: string) => href.replace(/^\/(learn|foods\/category)\//, '');
+
+/**
+ * Same-topic pages for one page, excluding itself and `skip` (ids or hrefs of
+ * links the page already shows). Article pages get no articles and chart pages
+ * no charts, since those pages already list their own kind.
+ */
 export function getRelated(kind: RelatedKind, id: string, skip: string[] = []): Related {
   const own = GROUP[kind];
   const clusters = TOPIC_CLUSTERS.filter(c => c[own].includes(id));
   const result: Related = { tools: [], articles: [], charts: [] };
   if (!clusters.length) return result;
+  const skipIds = new Set([id, ...skip.map(idFromHref)]);
   // Rotate by the page's position so neighbours show different links rather
   // than every page in a cluster linking to its first few members.
   const offset = clusters[0][own].indexOf(id);
   for (const group of Object.keys(result) as (keyof Related)[]) {
-    const pool = [...new Set(clusters.flatMap(c => c[group]))].filter(x => x !== id && !skip.includes(x));
+    if (group === own && kind !== 'tool') continue;
+    const pool = [...new Set(clusters.flatMap(c => c[group]))];
     const start = pool.length ? offset % pool.length : 0;
-    result[group] = [...pool.slice(start), ...pool.slice(0, start)].slice(0, LIMITS[group]);
+    const rotated = [...pool.slice(start), ...pool.slice(0, start)];
+    result[group] = [...new Set([...(PINNED[id]?.[group] ?? []), ...rotated])]
+      .filter(x => !skipIds.has(x))
+      .slice(0, LIMITS[group]);
   }
   return result;
 }

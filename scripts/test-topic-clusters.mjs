@@ -19,7 +19,7 @@ registerHooks({
   }
 });
 
-const { TOPIC_CLUSTERS, TOOL_NAMES, getRelated, LIMITS } = await import('../src/lib/topicClusters.ts');
+const { TOPIC_CLUSTERS, TOOL_NAMES, PINNED, getRelated, LIMITS } = await import('../src/lib/topicClusters.ts');
 const { CATEGORY_INTROS } = await import('../src/data/categoryIntros.ts');
 
 const inCluster = (kind, id) => TOPIC_CLUSTERS.some(c => c[kind].includes(id));
@@ -56,6 +56,20 @@ for (const c of TOPIC_CLUSTERS) for (const [group, kind] of Object.entries(KIND)
   }
   assert.ok(r.tools.length + r.articles.length + r.charts.length > 0, `${id} gets no related links`);
 }
+
+// Pins point at real pages and win the first slot.
+const known = { tools: new Set(Object.keys(TOOL_NAMES)), articles: articleSlugs, charts: new Set(Object.keys(CATEGORY_INTROS)) };
+for (const [id, pins] of Object.entries(PINNED)) for (const [group, ids] of Object.entries(pins)) for (const x of ids) {
+  assert.ok(known[group].has(x), `PINNED ${id} → unknown ${group} ${x}`);
+  assert.notEqual(x, id, `PINNED ${id} pins itself`);
+}
+assert.equal(getRelated('chart', 'indian-foods').articles[0], 'indian-takeaway-calories');
+assert.equal(getRelated('chart', 'beverages').tools[0], '/water-intake-calculator');
+assert.equal(getRelated('article', 'calories-in-fruit-lowest-to-highest').charts[0], 'fruits');
+assert.deepEqual(getRelated('article', 'tdee-explained').articles, [], 'articles get no article links');
+assert.deepEqual(getRelated('chart', 'fruits').charts, [], 'charts get no chart links');
+assert.ok(!getRelated('tool', '/macro-calculator', ['/learn/how-much-protein-do-i-need', '/foods/category/protein-foods']).articles.includes('how-much-protein-do-i-need'), 'href skips work');
+assert.ok(!getRelated('tool', '/macro-calculator', ['/foods/category/protein-foods']).charts.includes('protein-foods'), 'chart href skips work');
 
 assert.ok(getRelated('tool', '/bmi-calculator').articles.length > 0, 'small cluster still yields articles');
 assert.ok(!getRelated('article', 'tdee-explained', ['/tdee-calculator']).tools.includes('/tdee-calculator'), 'skip list honoured');

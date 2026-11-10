@@ -18,6 +18,9 @@ interface Props {
   faqs: { question: string; answer: string }[];
 }
 const { title, description, heading, intro, path, safety, faqs } = Astro.props;
+// Render the explanation first so the related block can skip links it already has.
+const body = await Astro.slots.render('default');
+const bodyLinks = [...body.matchAll(/href="([^"]+)"/g)].map(m => m[1]);
 const jsonLd = [buildWebPageSchema({ name: title, description, url: `${siteConfig.siteUrl}${path}` }), buildFAQPageSchema(faqs)];
 ---
 <SiteLayout title={title} description={description} jsonLd={jsonLd}>
@@ -27,10 +30,10 @@ const jsonLd = [buildWebPageSchema({ name: title, description, url: `${siteConfi
       <slot name="tool" />
       <p class="text-sm text-gray-600">Your answers stay in your browser and are not sent or saved. {safety}</p>
       <section class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 sm:p-8 space-y-4 text-gray-700 leading-relaxed">
-        <slot />
+        <Fragment set:html={body} />
       </section>
       <FaqList faqs={faqs} heading={`${heading} FAQ`} />
-      <RelatedLinks kind="tool" id={path} />
+      <RelatedLinks kind="tool" id={path} skip={bodyLinks} />
     </div>
   </div>
 </SiteLayout>

@@ -83,7 +83,8 @@ const link = 'text-emerald-700 font-semibold hover:underline';
       </section>
 
       <FaqList faqs={faqs} heading="Calorie deficit calculator FAQ" />
-      <RelatedLinks kind="tool" id="/calorie-deficit-calculator" />
+      {/* skip: links already in the text above */}
+      <RelatedLinks kind="tool" id="/calorie-deficit-calculator" skip={['/calculator','/macro-calculator','/protein-calculator','/tdee-calculator','/learn/what-is-a-calorie-deficit','/learn/why-am-i-not-losing-weight']} />
     </div>
   </div>
 </SiteLayout>

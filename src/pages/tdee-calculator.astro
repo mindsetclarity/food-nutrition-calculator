@@ -79,7 +79,8 @@ const jsonLd = [
       </section>
 
       <FaqList faqs={faqs} heading="TDEE calculator FAQ" />
-      <RelatedLinks kind="tool" id="/tdee-calculator" />
+      {/* skip: links already in the text above */}
+      <RelatedLinks kind="tool" id="/tdee-calculator" skip={['/calculator','/calorie-deficit-calculator','/macro-calculator','/learn/tdee-explained','/learn/what-is-a-calorie-deficit']} />
     </div>
   </div>
 </SiteLayout>

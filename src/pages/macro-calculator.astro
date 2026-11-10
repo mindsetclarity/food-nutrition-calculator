@@ -81,7 +81,8 @@ const jsonLd = [
       </section>
 
       <FaqList faqs={faqs} heading="Macro calculator FAQ" />
-      <RelatedLinks kind="tool" id="/macro-calculator" />
+      {/* skip: links already in the text above */}
+      <RelatedLinks kind="tool" id="/macro-calculator" skip={['/calculator','/protein-calculator','/tdee-calculator','/learn/how-much-protein-do-i-need','/learn/how-to-count-macros-for-beginners','/learn/tdee-explained','/foods/category/protein-foods']} />
     </div>
   </div>
 </SiteLayout>
