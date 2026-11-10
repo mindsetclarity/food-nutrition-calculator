@@ -1,0 +1,43 @@
+---
+import ToolPage from '../components/calculator/ToolPage.astro';
+import BodyCalculator from '../components/calculator/BodyCalculator.astro';
+
+export const prerender = true;
+
+const link = 'text-emerald-700 font-semibold hover:underline';
+const h2 = 'text-2xl font-black text-gray-900 pt-2';
+const faqs = [
+  { question: 'What is a healthy BMI?', answer: 'For most adults, a BMI from 18.5 to 24.9 is classed as a healthy weight by the WHO, the CDC and the NHS. From 25 to 29.9 is overweight, and 30 or more is obesity.' },
+  { question: 'Is BMI accurate?', answer: 'BMI is a quick screening tool, not a diagnosis. It cannot tell muscle from fat, so it can overstate risk for very muscular people and understate it for people who carry little muscle. Waist size adds useful information.' },
+  { question: 'Is BMI different for Asian and Black adults?', answer: 'UK guidance from NICE suggests lower thresholds for people of South Asian, Chinese, other Asian, Middle Eastern, Black African or African-Caribbean family background: overweight from a BMI of 23 and obesity from 27.5, because health risks start at a lower BMI.' },
+  { question: 'Can children use this calculator?', answer: 'No. Children and teenagers are still growing, so their BMI is compared with growth charts for their age and sex. Ask a pediatrician or use a child BMI calculator from the CDC or NHS.' },
+];
+---
+<ToolPage
+  title="BMI Calculator | Body Mass Index and Healthy Weight Range"
+  description="Free BMI calculator for adults. Enter your height and weight to see your body mass index, your category and the healthy weight range for your height."
+  heading="BMI Calculator"
+  intro="Work out your body mass index and the healthy weight range for your height."
+  path="/bmi-calculator"
+  safety="Results are for adults and are not medical advice. BMI is not suitable during pregnancy or for under-18s."
+  faqs={faqs}
+>
+  <BodyCalculator slot="tool" mode="bmi" />
+
+  <h2 class="text-2xl font-black text-gray-900">How BMI is worked out</h2>
+  <p>Body mass index is your weight in kilograms divided by your height in meters squared. For example, someone who weighs 80 kg (176 lb) and is 1.8 m (5 ft 11 in) tall has a BMI of 80 ÷ 1.8², which is about 24.7. The same formula is used worldwide, which makes BMI a simple way to compare weight against height.</p>
+  <ul class="list-disc pl-6 space-y-1">
+    <li><strong class="text-gray-900">Under 18.5:</strong> underweight</li>
+    <li><strong class="text-gray-900">18.5 to 24.9:</strong> healthy weight</li>
+    <li><strong class="text-gray-900">25 to 29.9:</strong> overweight</li>
+    <li><strong class="text-gray-900">30 or more:</strong> obesity</li>
+  </ul>
+
+  <h2 class={h2}>What BMI can and cannot tell you</h2>
+  <p>BMI is useful for spotting weight-related health risk across large groups of people, which is why doctors use it as a first check. It has clear limits for individuals. It cannot tell muscle from fat, so athletes and people who lift weights often score as overweight while carrying little fat. It also says nothing about where fat is stored, and fat around the waist carries more risk than fat elsewhere.</p>
+  <p>That is why waist size is a helpful second measure. A simple rule from UK guidance is to keep your waist to less than half your height. Our <a href="/body-fat-calculator" class={link}>body fat calculator</a> uses waist and neck measurements to estimate body fat more directly.</p>
+
+  <h2 class={h2}>If your BMI is outside the healthy range</h2>
+  <p>A single number is not a reason to panic, but it is a reason to look at the bigger picture with your doctor, especially if you also have high blood pressure, high cholesterol or a family history of diabetes. If you want to lose weight gradually, the <a href="/calorie-deficit-calculator" class={link}>calorie deficit calculator</a> gives a daily target and a realistic timeline, and the <a href="/protein-calculator" class={link}>protein calculator</a> helps you keep muscle while you lose fat. If your BMI is low, speak to a doctor before trying to change it, particularly if you have lost weight without trying.</p>
+  <p>For the healthy weight range at your height in more detail, see the <a href="/ideal-weight-calculator" class={link}>ideal weight calculator</a>.</p>
+</ToolPage>

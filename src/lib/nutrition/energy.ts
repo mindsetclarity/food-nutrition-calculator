@@ -74,11 +74,14 @@ export function validateWeight(weightKg: number): string[] {
   return inRange(weightKg, 30, 300) ? [] : ['Enter a weight between 67 lb (30 kg) and 660 lb (300 kg).'];
 }
 
+export function validateHeight(heightCm: number): string[] {
+  return inRange(heightCm, 120, 230) ? [] : ['Enter a height between 4 ft (120 cm) and 7 ft 6 in (230 cm).'];
+}
+
 export function validateProfile(p: { age: number; weightKg: number; heightCm: number }): string[] {
   const errors: string[] = [];
   if (!inRange(p.age, 18, 100)) errors.push('Enter an age from 18 to 100. These formulas are for adults.');
-  if (!inRange(p.heightCm, 120, 230)) errors.push('Enter a height between 4 ft (120 cm) and 7 ft 6 in (230 cm).');
-  return [...errors, ...validateWeight(p.weightKg)];
+  return [...errors, ...validateHeight(p.heightCm), ...validateWeight(p.weightKg)];
 }
 
 const MIN_HEALTHY_BMI = 18.5;

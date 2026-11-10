@@ -1,0 +1,43 @@
+---
+import ToolPage from '../components/calculator/ToolPage.astro';
+import BodyCalculator from '../components/calculator/BodyCalculator.astro';
+
+export const prerender = true;
+
+const link = 'text-emerald-700 font-semibold hover:underline';
+const h2 = 'text-2xl font-black text-gray-900 pt-2';
+const faqs = [
+  { question: 'How much water should I drink a day?', answer: 'The US National Academies suggest a total of about 3.7 liters of water a day for men and 2.7 liters for women, from all drinks and food. Roughly 80% of that usually comes from drinks, about 3 liters for men and 2.2 for women.' },
+  { question: 'Do tea and coffee count?', answer: 'Yes. Tea, coffee, milk and other drinks all count towards your fluid intake. The mild diuretic effect of caffeine does not cancel out the water in a normal cup.' },
+  { question: 'Is drinking eight glasses a day right?', answer: 'It is a reasonable starting point. The NHS suggests 6 to 8 cups or glasses of fluid a day for most adults in the UK, and more in hot weather or when you exercise.' },
+  { question: 'Can you drink too much water?', answer: 'Yes, though it is rare. Drinking very large amounts in a short time can lower the salt level in your blood. If you have heart or kidney problems, your doctor may limit how much you should drink.' },
+];
+---
+<ToolPage
+  title="Water Intake Calculator | How Much Water Should I Drink a Day"
+  description="Free water intake calculator. Enter your sex, daily exercise and climate to estimate how much water to drink each day, in liters, ounces and cups."
+  heading="Water Intake Calculator"
+  intro="Estimate how much water you need each day, including the extra for exercise and hot weather."
+  path="/water-intake-calculator"
+  safety="Results are general guidance for healthy adults and are not medical advice. Needs are higher during pregnancy and breastfeeding. If you have heart or kidney disease, follow your doctor's advice on fluids."
+  faqs={faqs}
+>
+  <BodyCalculator slot="tool" mode="water" />
+
+  <h2 class="text-2xl font-black text-gray-900">How the estimate is made</h2>
+  <p>The starting point is the adequate intake set by the US National Academies of Sciences: about 3.7 liters of total water a day for men and 2.7 liters for women. That total includes water from food, which usually provides around 20%, so the amount to drink is roughly 3 liters for men and 2.2 liters for women. European guidance from EFSA is a little lower, at 2.5 and 2.0 liters of total water.</p>
+  <p>The calculator then adds about 0.35 liters (12 fl oz) for every 30 minutes of exercise, and 0.5 liters (17 fl oz) if you live or work somewhere hot, since sweating raises your needs. Long, hard workouts in the heat can need more.</p>
+
+  <h2 class={h2}>Signs you are drinking enough</h2>
+  <p>Your body is good at telling you. If you rarely feel thirsty and your urine is pale yellow, you are probably drinking enough. Dark yellow urine, headaches, tiredness and feeling dizzy can be signs you need more. Older adults may feel less thirsty, so it helps to drink regularly through the day rather than waiting for thirst.</p>
+  <p>Pregnancy and breastfeeding raise water needs to about 3.0 and 3.8 liters of total water a day, by the National Academies' figures. People with heart failure or kidney disease may be told to limit fluids, so follow medical advice first.</p>
+
+  <h2 class={h2}>Easy ways to drink more</h2>
+  <ul class="list-disc pl-6 space-y-2">
+    <li>Keep a refillable bottle where you can see it, and refill it at set times.</li>
+    <li>Have a glass of water with every meal and snack.</li>
+    <li>Choose water, sparkling water or unsweetened tea over sugary drinks. Our <a href="/foods/category/beverages" class={link}>drinks calorie chart</a> shows how quickly soda and juice calories add up.</li>
+    <li>Eat water-rich foods such as fruit, vegetables, yogurt and soup.</li>
+  </ul>
+  <p>If you exercise regularly, the <a href="/calories-burned-calculator" class={link}>calories burned calculator</a> shows what your workouts use, and the <a href="/tdee-calculator" class={link}>TDEE calculator</a> gives your total daily energy needs.</p>
+</ToolPage>

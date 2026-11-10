@@ -3,6 +3,7 @@ import SiteLayout from '../layouts/SiteLayout.astro';
 
 import HomeHero from '../components/home/HomeHero.astro';
 import HomeToolsGrid from '../components/home/HomeToolsGrid.astro';
+import HomeCalculators from '../components/home/HomeCalculators.astro';
 import VegetarianIntelligence from '../components/home/VegetarianIntelligence.astro';
 import SourceTruthHierarchy from '../components/home/SourceTruthHierarchy.astro';
 import RecipeWorkflow from '../components/home/RecipeWorkflow.astro';
@@ -30,6 +31,7 @@ const jsonLd = [buildWebSiteSchema(), buildOrganizationSchema()];
 <SiteLayout title={seo.title} description={seo.description} keywords={seo.keywords} ogImage={seo.ogImage} jsonLd={jsonLd}>
   <HomeHero />
   <HomeToolsGrid />
+  <HomeCalculators />
   <VegetarianIntelligence />
   <SourceTruthHierarchy />
   <RecipeWorkflow />

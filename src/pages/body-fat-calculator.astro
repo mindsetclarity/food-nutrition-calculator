@@ -1,0 +1,42 @@
+---
+import ToolPage from '../components/calculator/ToolPage.astro';
+import BodyCalculator from '../components/calculator/BodyCalculator.astro';
+
+export const prerender = true;
+
+const link = 'text-emerald-700 font-semibold hover:underline';
+const h2 = 'text-2xl font-black text-gray-900 pt-2';
+const faqs = [
+  { question: 'How accurate is the US Navy body fat method?', answer: 'It is usually within about 3 to 4 percentage points of lab methods such as DEXA scans for most people, which makes it a good, free way to track change over time. Single readings can be off, so measure consistently and watch the trend.' },
+  { question: 'What is a healthy body fat percentage?', answer: 'Using the American Council on Exercise ranges, about 14 to 24% is typical for fit and average men, and about 21 to 31% for fit and average women. Women naturally carry more essential fat than men.' },
+  { question: 'Why does the calculator need my neck measurement?', answer: 'Neck size is a rough guide to muscle mass and frame. Subtracting it from waist size, which mostly reflects fat, helps the formula separate fat from overall body size.' },
+  { question: 'Is a smart scale more accurate?', answer: 'Not necessarily. Home scales estimate body fat from a small electrical current, and their readings change with hydration, meals and time of day. Like tape measurements, they are best for spotting trends.' },
+];
+---
+<ToolPage
+  title="Body Fat Calculator | US Navy Method with a Tape Measure"
+  description="Free body fat calculator using the US Navy method. Enter your height and neck, waist and hip measurements to estimate your body fat percentage."
+  heading="Body Fat Calculator"
+  intro="Estimate your body fat percentage with a tape measure, using the US Navy method."
+  path="/body-fat-calculator"
+  safety="Results are estimates for adults and are not medical advice. They are not suitable during pregnancy or for under-18s."
+  faqs={faqs}
+>
+  <BodyCalculator slot="tool" mode="bodyfat" />
+
+  <h2 class="text-2xl font-black text-gray-900">How the US Navy method works</h2>
+  <p>The US Navy developed this method in the 1980s as a quick way to check service members' body composition without lab equipment. It uses your height and a few circumference measurements. For men these are the neck and waist; for women, the neck, waist and hips. Waist size mostly reflects fat, while neck size reflects frame and muscle, so the gap between them says a lot about how much of your body is fat.</p>
+  <p>The method is popular because it needs only a tape measure, gives repeatable results and is reasonably close to lab methods for most people. It is less accurate for very muscular people and for those with an unusual fat distribution.</p>
+
+  <h2 class={h2}>How to measure</h2>
+  <ul class="list-disc pl-6 space-y-2">
+    <li><strong class="text-gray-900">Neck:</strong> just below the Adam's apple, with the tape sloping slightly down at the front.</li>
+    <li><strong class="text-gray-900">Waist:</strong> men at the navel; women at the narrowest point, usually just above the navel. Breathe out normally and do not suck in.</li>
+    <li><strong class="text-gray-900">Hips (women):</strong> at the widest point of the buttocks.</li>
+  </ul>
+  <p>Keep the tape level and snug but not pressing into the skin. Measure at the same time of day, ideally in the morning before eating, and take each measurement twice.</p>
+
+  <h2 class={h2}>Making sense of your result</h2>
+  <p>Some fat is essential: about 2 to 5% for men and 10 to 13% for women. Above that, the American Council on Exercise groups results into athletes, fitness, average and above-average ranges. Rather than chasing a particular number, use the result to track change. If your weight stays the same but your body fat falls, you are likely gaining muscle and losing fat at the same time.</p>
+  <p>To compare this with a simpler measure, try the <a href="/bmi-calculator" class={link}>BMI calculator</a>. To change your body composition, the <a href="/protein-calculator" class={link}>protein calculator</a> and <a href="/macro-calculator" class={link}>macro calculator</a> give daily targets to support it.</p>
+</ToolPage>

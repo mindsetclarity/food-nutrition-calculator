@@ -1,0 +1,30 @@
+---
+// Homepage section linking every body and goal calculator.
+const calculators = [
+  { href: '/tdee-calculator', title: 'TDEE Calculator', text: 'Calories you burn in a day' },
+  { href: '/calorie-deficit-calculator', title: 'Calorie Deficit Calculator', text: 'What to eat to lose weight, and when you will get there' },
+  { href: '/macro-calculator', title: 'Macro Calculator', text: 'Daily protein, carbs and fat for your goal' },
+  { href: '/protein-calculator', title: 'Protein Calculator', text: 'How much protein you need a day' },
+  { href: '/bmi-calculator', title: 'BMI Calculator', text: 'Body mass index and healthy weight range' },
+  { href: '/body-fat-calculator', title: 'Body Fat Calculator', text: 'Body fat percentage with a tape measure' },
+  { href: '/ideal-weight-calculator', title: 'Ideal Weight Calculator', text: 'Healthy weight range for your height' },
+  { href: '/calories-burned-calculator', title: 'Calories Burned Calculator', text: 'Walking, running, cycling and more' },
+  { href: '/water-intake-calculator', title: 'Water Intake Calculator', text: 'How much water to drink a day' },
+];
+---
+<section class="py-16 bg-white border-t border-border-soft">
+  <div class="site-container">
+    <h2 class="text-3xl font-black text-ink-navy tracking-tight mb-2">Health and fitness calculators</h2>
+    <p class="text-soft-slate mb-8 max-w-2xl">Free, quick estimates in US or metric units. Nothing you type is sent or saved.</p>
+    <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {calculators.map(c => (
+        <li>
+          <a href={c.href} class="block h-full p-5 rounded-xl border border-border-soft bg-warm-ivory hover:border-usda-emerald transition-colors focus-ring">
+            <span class="block font-bold text-ink-navy">{c.title}</span>
+            <span class="block text-sm text-soft-slate mt-1">{c.text}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

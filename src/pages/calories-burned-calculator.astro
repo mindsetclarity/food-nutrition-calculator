@@ -1,0 +1,38 @@
+---
+import ToolPage from '../components/calculator/ToolPage.astro';
+import BodyCalculator from '../components/calculator/BodyCalculator.astro';
+
+export const prerender = true;
+
+const link = 'text-emerald-700 font-semibold hover:underline';
+const h2 = 'text-2xl font-black text-gray-900 pt-2';
+const faqs = [
+  { question: 'How many calories does walking burn?', answer: 'A 70 kg (154 lb) person walking briskly at about 3.5 mph burns roughly 160 calories in 30 minutes. Heavier people burn more for the same walk, and walking uphill or faster increases it.' },
+  { question: 'Why do fitness trackers show different numbers?', answer: 'Trackers estimate from heart rate and movement, and studies have found they often overestimate calories burned, sometimes by a lot. Treat any figure, including this one, as a rough guide.' },
+  { question: 'Should I eat back the calories I burn exercising?', answer: 'If you use a TDEE calculator, your activity level already includes regular exercise, so adding it again counts it twice. If you track exercise separately, eating back only about half is a common, cautious approach.' },
+  { question: 'What is a MET?', answer: 'A MET, or metabolic equivalent, compares an activity with sitting at rest. Sitting quietly is 1 MET; an activity of 4 METs uses about four times as much energy as resting.' },
+];
+---
+<ToolPage
+  title="Calories Burned Calculator | Walking, Running, Cycling and More"
+  description="Free calories burned calculator. Choose an activity, enter your weight and time, and estimate the calories burned for walking, running, cycling, swimming and more."
+  heading="Calories Burned Calculator"
+  intro="Estimate the calories you burn walking, running, cycling, swimming and other activities."
+  path="/calories-burned-calculator"
+  safety="Results are rough estimates and are not medical advice. Check with a doctor before starting a new exercise routine if you have a health condition."
+  faqs={faqs}
+>
+  <BodyCalculator slot="tool" mode="burn" />
+
+  <h2 class="text-2xl font-black text-gray-900">How the estimate is made</h2>
+  <p>Each activity has a MET value from the Compendium of Physical Activities, a research reference that lists the energy cost of hundreds of activities. One MET is the energy you use sitting at rest. Brisk walking is about 4.3 METs, running at 6 mph about 9.8, and leisurely cycling about 6.8.</p>
+  <p>The calculator multiplies the MET value by your body weight and the time spent, using the standard formula: calories per minute = MET × 3.5 × weight in kg ÷ 200. A heavier body takes more energy to move, which is why the same run burns more for a larger person.</p>
+
+  <h2 class={h2}>Why the number is only a guide</h2>
+  <p>Two people doing the same workout can burn noticeably different amounts. Fitness level, terrain, wind, technique and how hard you really pushed all change the result. MET values are averages for typical adults, so treat the figure as a reasonable estimate rather than a measurement.</p>
+  <p>The result also includes the calories you would have burned anyway in that time just by being alive. For a 30-minute walk that is roughly 35 calories, so the extra burned by the walk itself is a little lower than the total shown.</p>
+
+  <h2 class={h2}>Using exercise for weight loss</h2>
+  <p>Exercise is great for your heart, mood, sleep and muscle, but it burns fewer calories than most people expect. A 30-minute jog might use 300 to 400 calories, about the same as a bagel with cream cheese. That is why most weight loss comes from eating a little less, with exercise helping you keep muscle and stay healthy.</p>
+  <p>To set a daily calorie target, use the <a href="/tdee-calculator" class={link}>TDEE calculator</a> or the <a href="/calorie-deficit-calculator" class={link}>calorie deficit calculator</a>. To see how many calories are in what you eat, try the <a href="/calculator" class={link}>food calculator</a>.</p>
+</ToolPage>

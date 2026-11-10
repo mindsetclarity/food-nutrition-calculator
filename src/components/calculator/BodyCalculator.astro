@@ -1,0 +1,229 @@
+---
+// Shared form for the BMI, body fat, calories burned, water and ideal weight calculators.
+// Runs entirely in the browser.
+import { ACTIVITIES } from '../../lib/nutrition/bodyMetrics';
+
+interface Props {
+  mode: 'bmi' | 'bodyfat' | 'burn' | 'water' | 'ideal';
+}
+const { mode } = Astro.props;
+
+const has = {
+  sex: mode !== 'bmi' && mode !== 'burn',
+  height: mode === 'bmi' || mode === 'bodyfat' || mode === 'ideal',
+  weight: mode === 'bmi' || mode === 'burn',
+  tape: mode === 'bodyfat',
+  activity: mode === 'burn',
+  water: mode === 'water',
+};
+
+const input = 'block w-full h-11 px-3 border border-gray-300 rounded-lg bg-white text-gray-900 focus-ring';
+const label = 'block text-sm font-semibold text-gray-800 mb-1';
+const stat = 'rounded-xl border border-gray-200 bg-gray-50 p-4';
+const statValue = 'block text-2xl font-black text-gray-900 tabular-nums';
+const statLabel = 'block text-sm text-gray-600';
+
+// [us field, metric field, label] for the tape measurements.
+const TAPE = [['neck', 'Neck'], ['waist', 'Waist'], ['hip', 'Hips (women)']] as const;
+
+const STATS: Record<Props['mode'], [string, string][]> = {
+  bmi: [['bmi', 'Your BMI'], ['category', 'Category'], ['range', 'Healthy weight for your height']],
+  bodyfat: [['fat', 'Estimated body fat'], ['category', 'Category']],
+  burn: [['kcal', 'Calories burned'], ['hour', 'Per hour at this pace']],
+  water: [['total', 'Total water a day, from food and drinks'], ['drinks', 'From drinks'], ['cups', 'About this many']],
+  ideal: [['range', 'Healthy weight range (BMI 18.5 to 24.9)'], ['formulas', 'Classic formulas, average']],
+};
+---
+<section id="body-calculator" data-mode={mode} class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 sm:p-8">
+  <form novalidate class="space-y-5">
+    <div class="flex flex-wrap gap-x-8 gap-y-4">
+      <fieldset>
+        <legend class={label}>Units</legend>
+        <label class="mr-4"><input type="radio" name="units" value="us" checked /> US</label>
+        <label><input type="radio" name="units" value="metric" /> Metric</label>
+      </fieldset>
+      {has.sex && (
+        <fieldset>
+          <legend class={label}>Sex</legend>
+          <label class="mr-4"><input type="radio" name="sex" value="female" checked /> Female</label>
+          <label><input type="radio" name="sex" value="male" /> Male</label>
+        </fieldset>
+      )}
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+      {has.height && (
+        <>
+          <div data-units="us"><label for="ft" class={label}>Height (ft)</label><input id="ft" name="ft" type="number" inputmode="numeric" class={input} /></div>
+          <div data-units="us"><label for="in" class={label}>Height (in)</label><input id="in" name="in" type="number" inputmode="decimal" class={input} /></div>
+          <div data-units="metric" hidden><label for="cm" class={label}>Height (cm)</label><input id="cm" name="cm" type="number" inputmode="decimal" class={input} /></div>
+        </>
+      )}
+      {has.weight && (
+        <>
+          <div data-units="us"><label for="lb" class={label}>Weight (lb)</label><input id="lb" name="lb" type="number" inputmode="decimal" class={input} /></div>
+          <div data-units="metric" hidden><label for="kg" class={label}>Weight (kg)</label><input id="kg" name="kg" type="number" inputmode="decimal" class={input} /></div>
+        </>
+      )}
+      {has.tape && TAPE.map(([name, text]) => (
+        <>
+          <div data-units="us"><label for={`${name}-in`} class={label}>{text} (in)</label><input id={`${name}-in`} name={`${name}-in`} type="number" inputmode="decimal" class={input} /></div>
+          <div data-units="metric" hidden><label for={`${name}-cm`} class={label}>{text} (cm)</label><input id={`${name}-cm`} name={`${name}-cm`} type="number" inputmode="decimal" class={input} /></div>
+        </>
+      ))}
+      {has.activity && (
+        <div class="col-span-2">
+          <label for="activity" class={label}>Activity</label>
+          <select id="activity" name="activity" class={input}>
+            {ACTIVITIES.map(a => <option value={a.id} selected={a.id === 'walk-brisk'}>{a.label}</option>)}
+          </select>
+        </div>
+      )}
+      {(has.activity || has.water) && (
+        <div><label for="minutes" class={label}>{has.water ? 'Exercise (min a day)' : 'Minutes'}</label><input id="minutes" name="minutes" type="number" inputmode="numeric" value={has.water ? '0' : '30'} class={input} /></div>
+      )}
+    </div>
+
+    {has.tape && (
+      <p class="text-sm text-gray-600">Measure with a soft tape, snug but not tight: your neck just below the Adam's apple, your waist at the navel (men) or at its narrowest point (women), and your hips at their widest point.</p>
+    )}
+    {has.water && (
+      <label class="flex items-center gap-2 text-gray-800"><input type="checkbox" name="hot" /> I live or work somewhere hot</label>
+    )}
+
+    <button type="submit" class="px-6 py-3 rounded-lg bg-emerald-700 text-white font-bold hover:bg-emerald-800 focus-ring transition-colors">Calculate</button>
+  </form>
+
+  <div aria-live="polite" class="mt-6">
+    <ul data-errors hidden class="space-y-1 text-red-700 font-medium"></ul>
+    <div data-results hidden>
+      <h2 class="text-xl font-black text-gray-900 mb-3">Your estimate</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        {STATS[mode].map(([key, text]) => (
+          <div class={stat}><span class={statValue} data-out={key}></span><span class={statLabel}>{text}</span></div>
+        ))}
+      </div>
+      <p data-note class="mt-3 text-gray-700"></p>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { ACTIVITIES, bmi, bmiCategory, bodyFatCategory, caloriesBurned, healthyWeightRange, idealWeights, navyBodyFat, validateTape, waterIntake } from '../../lib/nutrition/bodyMetrics';
+  import { cmToFtIn, ftInToCm, kgToLb, lbToKg, validateHeight, validateUsHeight, validateWeight } from '../../lib/nutrition/energy';
+  import type { Sex } from '../../lib/nutrition/energy';
+
+  const root = document.getElementById('body-calculator')!;
+  const mode = root.dataset.mode;
+  const form = root.querySelector('form')!;
+  const errors = root.querySelector<HTMLElement>('[data-errors]')!;
+  const results = root.querySelector<HTMLElement>('[data-results]')!;
+  const note = root.querySelector<HTMLElement>('[data-note]')!;
+
+  const field = (name: string) => form.elements.namedItem(name) as HTMLInputElement | null;
+  // An empty or missing box is "not entered", not 0.
+  const num = (name: string) => {
+    const f = field(name);
+    return !f || f.value.trim() === '' ? NaN : Number(f.value);
+  };
+  const metric = () => (form.elements.namedItem('units') as RadioNodeList).value === 'metric';
+  const sex = () => ((form.elements.namedItem('sex') as RadioNodeList | null)?.value ?? 'female') as Sex;
+  const out = (name: string, text: string) => {
+    root.querySelector(`[data-out="${name}"]`)!.textContent = text;
+  };
+  const round1 = (v: number) => String(Math.round(v * 10) / 10);
+  const CM_PER_IN = 2.54;
+  const weight = (kg: number) => (metric() ? `${round1(kg)} kg` : `${Math.round(kgToLb(kg))} lb`);
+
+  // Keep what the person typed when they switch units.
+  const PAIRS: [string, string, (v: number) => number, (v: number) => number][] = [
+    ['lb', 'kg', lbToKg, kgToLb],
+    ['neck-in', 'neck-cm', v => v * CM_PER_IN, v => v / CM_PER_IN],
+    ['waist-in', 'waist-cm', v => v * CM_PER_IN, v => v / CM_PER_IN],
+    ['hip-in', 'hip-cm', v => v * CM_PER_IN, v => v / CM_PER_IN],
+  ];
+  form.querySelectorAll<HTMLInputElement>('input[name="units"]').forEach(radio => {
+    radio.addEventListener('change', () => {
+      const toMetric = metric();
+      for (const [us, si, toSi, toUs] of PAIRS) {
+        const from = field(toMetric ? us : si), to = field(toMetric ? si : us);
+        if (from && to && from.value !== '') to.value = round1((toMetric ? toSi : toUs)(Number(from.value)));
+      }
+      if (field('ft')) {
+        if (toMetric && field('ft')!.value !== '') field('cm')!.value = round1(ftInToCm(num('ft'), num('in') || 0));
+        if (!toMetric && field('cm')!.value !== '') {
+          const { ft, inches } = cmToFtIn(num('cm'));
+          field('ft')!.value = String(ft);
+          field('in')!.value = String(inches);
+        }
+      }
+      root.querySelectorAll<HTMLElement>('[data-units]').forEach(el => {
+        el.hidden = el.dataset.units !== (toMetric ? 'metric' : 'us');
+      });
+    });
+  });
+
+  const heightCm = () => (metric() ? num('cm') : ftInToCm(num('ft'), num('in') || 0));
+  const weightKg = () => (metric() ? num('kg') : lbToKg(num('lb')));
+  const tapeCm = (name: string) => (metric() ? num(`${name}-cm`) : num(`${name}-in`) * CM_PER_IN);
+
+  function check(): string[] {
+    const problems: string[] = [];
+    if (field('ft') || field('cm')) {
+      problems.push(...validateHeight(heightCm()));
+      if (!metric()) problems.push(...validateUsHeight(num('ft'), num('in') || 0));
+    }
+    if (field('lb') || field('kg')) problems.push(...validateWeight(weightKg()));
+    if (mode === 'bodyfat') {
+      problems.push(...validateTape({ sex: sex(), neckCm: tapeCm('neck'), waistCm: tapeCm('waist'), hipCm: tapeCm('hip') }));
+    }
+    if (mode === 'burn' && !(num('minutes') > 0 && num('minutes') <= 600)) problems.push('Enter how many minutes, from 1 to 600.');
+    if (mode === 'water' && !(num('minutes') >= 0 && num('minutes') <= 600)) problems.push('Enter your exercise in minutes a day, from 0 to 600.');
+    return problems;
+  }
+
+  form.addEventListener('submit', event => {
+    event.preventDefault();
+    const problems = check();
+    errors.hidden = problems.length === 0;
+    results.hidden = problems.length > 0;
+    errors.replaceChildren(...problems.map(p => Object.assign(document.createElement('li'), { textContent: p })));
+    if (problems.length) return;
+    note.textContent = '';
+
+    if (mode === 'bmi') {
+      const value = bmi(weightKg(), heightCm());
+      const range = healthyWeightRange(heightCm());
+      out('bmi', round1(value));
+      out('category', bmiCategory(value).label);
+      out('range', `${weight(range.min)} to ${weight(range.max)}`);
+      note.textContent = 'BMI does not measure body fat directly. Muscular people can score high, and the healthy range can differ for some ethnic groups and older adults.';
+    } else if (mode === 'bodyfat') {
+      const pct = navyBodyFat({ sex: sex(), heightCm: heightCm(), neckCm: tapeCm('neck'), waistCm: tapeCm('waist'), hipCm: tapeCm('hip') });
+      out('fat', `${pct}%`);
+      out('category', bodyFatCategory(sex(), pct));
+      note.textContent = 'Tape methods are usually within a few percentage points of lab measurements. Measure the same way each time and compare trends rather than single readings.';
+    } else if (mode === 'burn') {
+      const activity = ACTIVITIES.find(a => a.id === field('activity')!.value)!;
+      out('kcal', `${caloriesBurned({ met: activity.met, weightKg: weightKg(), minutes: num('minutes') }).toLocaleString('en-US')} kcal`);
+      out('hour', `${caloriesBurned({ met: activity.met, weightKg: weightKg(), minutes: 60 }).toLocaleString('en-US')} kcal`);
+      note.textContent = 'This includes the calories you would burn at rest in the same time, so the extra from the activity itself is a little lower.';
+    } else if (mode === 'water') {
+      const w = waterIntake({ sex: sex(), exerciseMinutes: num('minutes'), hot: Boolean(field('hot')?.checked) });
+      const OZ_PER_L = 33.814;
+      out('total', metric() ? `${w.totalL} L` : `${Math.round(w.totalL * OZ_PER_L)} fl oz`);
+      out('drinks', metric() ? `${w.drinksL} L` : `${Math.round(w.drinksL * OZ_PER_L)} fl oz`);
+      out('cups', metric() ? `${Math.round(w.drinksL / 0.25)} glasses (250 ml)` : `${Math.round((w.drinksL * OZ_PER_L) / 8)} cups (8 fl oz)`);
+      note.textContent = 'Water, milk, tea, coffee and other drinks all count. Pale yellow urine is a simple sign you are drinking enough.';
+    } else if (mode === 'ideal') {
+      const range = healthyWeightRange(heightCm());
+      const f = idealWeights(sex(), heightCm());
+      const values = [f.devine, f.robinson, f.miller, f.hamwi].filter((v): v is number => v !== null);
+      out('range', `${weight(range.min)} to ${weight(range.max)}`);
+      out('formulas', values.length ? weight(values.reduce((a, b) => a + b, 0) / values.length) : 'Not available');
+      note.textContent = values.length
+        ? `Devine ${weight(f.devine!)}, Robinson ${weight(f.robinson!)}, Miller ${weight(f.miller!)}, Hamwi ${weight(f.hamwi!)}. These older formulas give one number each; the range above is a better guide.`
+        : 'The classic formulas only work from 5 ft (152 cm), so only the healthy BMI range is shown.';
+    }
+  });
+</script>

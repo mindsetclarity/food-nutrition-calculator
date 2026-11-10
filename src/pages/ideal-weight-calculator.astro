@@ -1,0 +1,43 @@
+---
+import ToolPage from '../components/calculator/ToolPage.astro';
+import BodyCalculator from '../components/calculator/BodyCalculator.astro';
+
+export const prerender = true;
+
+const link = 'text-emerald-700 font-semibold hover:underline';
+const h2 = 'text-2xl font-black text-gray-900 pt-2';
+const faqs = [
+  { question: 'What is my ideal weight?', answer: 'There is no single ideal weight. For most adults, a healthy weight is any weight that gives a BMI between 18.5 and 24.9, which is a range of roughly 20 kg (45 lb) at most heights.' },
+  { question: 'Which ideal weight formula is most accurate?', answer: 'None of them is accurate for everyone. The Devine, Robinson, Miller and Hamwi formulas were made for things like medicine dosing and give one number based on height alone, ignoring muscle, frame and age. They are best used as rough comparisons.' },
+  { question: 'Why does the calculator show a range instead of one number?', answer: 'Because healthy bodies vary. Two people of the same height can both be healthy at weights several kilograms apart, depending on muscle, bone structure and where they carry fat.' },
+  { question: 'Does ideal weight change with age?', answer: 'The healthy BMI range is the same for all adults in most guidance, but some research suggests a slightly higher BMI may be fine for older adults. Strength and muscle become more important with age, so ask your doctor about what suits you.' },
+];
+---
+<ToolPage
+  title="Ideal Weight Calculator | Healthy Weight Range for Your Height"
+  description="Free ideal weight calculator. Enter your height to see the healthy weight range for your height, plus the Devine, Robinson, Miller and Hamwi formulas."
+  heading="Ideal Weight Calculator"
+  intro="See the healthy weight range for your height, alongside the classic ideal weight formulas."
+  path="/ideal-weight-calculator"
+  safety="Results are for adults and are not medical advice. They are not suitable during pregnancy, for under-18s, or if you have or have had an eating disorder."
+  faqs={faqs}
+>
+  <BodyCalculator slot="tool" mode="ideal" />
+
+  <h2 class="text-2xl font-black text-gray-900">Why a range, not one number</h2>
+  <p>The most widely used guide to a healthy weight is BMI, and a BMI from 18.5 to 24.9 is classed as a healthy weight by the WHO, the CDC and the NHS. The calculator turns that into the weights it means at your height. At 5 ft 9 in (175 cm), for example, that is about 125 to 168 lb (57 to 76 kg).</p>
+  <p>That range is wide on purpose. Healthy bodies come in different shapes, and someone with more muscle or a larger frame can be healthy towards the top of it. Your waist size, fitness, blood pressure and blood sugar all say more about your health than where you sit within the range.</p>
+
+  <h2 class={h2}>The classic ideal weight formulas</h2>
+  <p>You will also see four older formulas, named after the people who created them:</p>
+  <ul class="list-disc pl-6 space-y-2">
+    <li><strong class="text-gray-900">Devine (1974):</strong> created to help work out medicine doses, and still used in hospitals for that purpose.</li>
+    <li><strong class="text-gray-900">Robinson (1983)</strong> and <strong class="text-gray-900">Miller (1983):</strong> later adjustments of the Devine approach.</li>
+    <li><strong class="text-gray-900">Hamwi (1964):</strong> an early rule of thumb used by dietitians.</li>
+  </ul>
+  <p>Each gives one number based only on height and sex, and none accounts for muscle, frame or age. They are shown for comparison, because many people search for them, but the healthy range is the better guide. The formulas only work from 5 ft (152 cm), so below that height only the range is shown.</p>
+
+  <h2 class={h2}>Moving towards a healthy weight</h2>
+  <p>If you are above the range and want to change that, small, steady changes tend to last longest. The <a href="/calorie-deficit-calculator" class={link}>calorie deficit calculator</a> shows how much to eat and roughly how long it will take, and the <a href="/protein-calculator" class={link}>protein calculator</a> helps protect muscle while you lose weight. If you are below the range, or have lost weight without trying, please speak to a doctor.</p>
+  <p>You can also check your current <a href="/bmi-calculator" class={link}>BMI</a> or estimate your <a href="/body-fat-calculator" class={link}>body fat percentage</a>.</p>
+</ToolPage>
