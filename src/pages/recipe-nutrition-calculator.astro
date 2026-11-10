@@ -1,5 +1,6 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
+import RelatedLinks from '../components/site/RelatedLinks.astro';
 import RecipeHero from '../components/recipe/RecipeHero.astro';
 import RecipeCalculatorShell from '../components/recipe/RecipeCalculatorShell.astro';
 import ToolSeoFaq from '../components/seo/ToolSeoFaq.astro';
@@ -99,4 +100,7 @@ const faqs = [
     faqIntro="Common questions about calculating recipe calories, macros and per-serving nutrition facts."
     faqs={faqs}
   />
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+    <RelatedLinks kind="tool" id="/recipe-nutrition-calculator" />
+  </div>
 </SiteLayout>

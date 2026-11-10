@@ -1,5 +1,6 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
+import RelatedLinks from '../components/site/RelatedLinks.astro';
 import CalculatorHero from '../components/calculator/CalculatorHero.astro';
 import CalculatorShell from '../components/calculator/CalculatorShell.astro';
 import CalculatorSEOFAQ from '../components/calculator/CalculatorSEOFAQ.astro';
@@ -19,4 +20,7 @@ const jsonLd = buildSoftwareApplicationSchema({
   <CalculatorHero />
   <CalculatorShell />
   <CalculatorSEOFAQ />
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+    <RelatedLinks kind="tool" id="/calculator" />
+  </div>
 </SiteLayout>

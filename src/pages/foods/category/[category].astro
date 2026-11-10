@@ -2,6 +2,7 @@
 import SiteLayout from '../../../layouts/SiteLayout.astro';
 import PageHeader from '../../../components/site/PageHeader.astro';
 import CategoryTiles from '../../../components/foods/CategoryTiles.astro';
+import RelatedLinks from '../../../components/site/RelatedLinks.astro';
 import { CATEGORY_INTROS } from '../../../data/categoryIntros';
 import { getAllCategories, isIndexedCategory } from '../../../lib/foods/categories';
 import { buildWebPageSchema } from '../../../lib/seo/schema';
@@ -77,6 +78,8 @@ const value = (food: (typeof category.foods)[number], key: (typeof COLUMNS)[numb
           </table>
         </div>
       </section>
+
+      <RelatedLinks kind="chart" id={category.slug} />
 
       <section class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 sm:p-8">
         <h2 class="text-2xl font-black text-gray-900 mb-4">Browse other categories</h2>

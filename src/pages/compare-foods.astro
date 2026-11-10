@@ -1,5 +1,6 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
+import RelatedLinks from '../components/site/RelatedLinks.astro';
 import PageHeader from '../components/site/PageHeader.astro';
 import CompareFoodsShell from '../components/compare/CompareFoodsShell.astro';
 import ToolSeoFaq from '../components/seo/ToolSeoFaq.astro';
@@ -104,4 +105,7 @@ const faqs = [
     faqIntro="Common questions about comparing calories, macros and micronutrients between two foods."
     faqs={faqs}
   />
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+    <RelatedLinks kind="tool" id="/compare-foods" />
+  </div>
 </SiteLayout>

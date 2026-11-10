@@ -3,6 +3,7 @@ import SiteLayout from '../layouts/SiteLayout.astro';
 import PageHeader from '../components/site/PageHeader.astro';
 import ProteinCalculator from '../components/calculator/ProteinCalculator.astro';
 import FaqList from '../components/seo/FaqList.astro';
+import RelatedLinks from '../components/site/RelatedLinks.astro';
 import { buildFAQPageSchema, buildWebPageSchema } from '../lib/seo/schema';
 import { siteConfig } from '../lib/seo/siteConfig';
 
@@ -82,6 +83,7 @@ const link = 'text-emerald-700 font-semibold hover:underline';
       </section>
 
       <FaqList faqs={faqs} heading="Protein calculator FAQ" />
+      <RelatedLinks kind="tool" id="/protein-calculator" />
     </div>
   </div>
 </SiteLayout>

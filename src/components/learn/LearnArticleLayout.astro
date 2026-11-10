@@ -4,6 +4,7 @@ import ArticleTableOfContents from './ArticleTableOfContents.astro';
 import ArticleSection from './ArticleSection.astro';
 import ArticleFAQ from './ArticleFAQ.astro';
 import RelatedArticles from './RelatedArticles.astro';
+import RelatedLinks from '../site/RelatedLinks.astro';
 import ToolCTA from './ToolCTA.astro';
 import LearnDisclaimer from './LearnDisclaimer.astro';
 import Breadcrumbs from '../../components/seo/Breadcrumbs.astro';
@@ -125,6 +126,8 @@ if (article.faqs && article.faqs.length > 0) {
             <ArticleFAQ faqs={article.faqs} />
           )}
           
+          <div class="mt-12"><RelatedLinks kind="article" id={article.slug} skip={article.relatedTool ? [article.relatedTool.href] : []} /></div>
+
           <LearnDisclaimer />
         </article>
       </div>

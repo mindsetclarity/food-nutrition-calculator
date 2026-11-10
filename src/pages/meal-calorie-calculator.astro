@@ -1,5 +1,6 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
+import RelatedLinks from '../components/site/RelatedLinks.astro';
 import PageHeader from '../components/site/PageHeader.astro';
 import MealCalorieShell from '../components/meal/MealCalorieShell.astro';
 import ToolSeoFaq from '../components/seo/ToolSeoFaq.astro';
@@ -104,4 +105,7 @@ const faqs = [
     faqIntro="Common questions about calculating meal calories, macros and full-day nutrition totals."
     faqs={faqs}
   />
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+    <RelatedLinks kind="tool" id="/meal-calorie-calculator" />
+  </div>
 </SiteLayout>

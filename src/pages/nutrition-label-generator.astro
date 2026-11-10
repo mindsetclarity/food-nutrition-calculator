@@ -1,5 +1,6 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
+import RelatedLinks from '../components/site/RelatedLinks.astro';
 import RecipeCalculatorShell from '../components/recipe/RecipeCalculatorShell.astro';
 import ToolSeoFaq from '../components/seo/ToolSeoFaq.astro';
 import { buildEmbedHtml } from '../lib/nutrition-label/embedLabel';
@@ -107,4 +108,7 @@ const faqs = [
     faqIntro="Common questions from recipe writers about adding nutrition information to their posts."
     faqs={faqs}
   />
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+    <RelatedLinks kind="tool" id="/nutrition-label-generator" />
+  </div>
 </SiteLayout>

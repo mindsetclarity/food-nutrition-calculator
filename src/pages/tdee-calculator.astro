@@ -3,6 +3,7 @@ import SiteLayout from '../layouts/SiteLayout.astro';
 import PageHeader from '../components/site/PageHeader.astro';
 import EnergyCalculator from '../components/calculator/EnergyCalculator.astro';
 import FaqList from '../components/seo/FaqList.astro';
+import RelatedLinks from '../components/site/RelatedLinks.astro';
 import { buildFAQPageSchema, buildWebPageSchema } from '../lib/seo/schema';
 import { siteConfig } from '../lib/seo/siteConfig';
 
@@ -78,6 +79,7 @@ const jsonLd = [
       </section>
 
       <FaqList faqs={faqs} heading="TDEE calculator FAQ" />
+      <RelatedLinks kind="tool" id="/tdee-calculator" />
     </div>
   </div>
 </SiteLayout>
