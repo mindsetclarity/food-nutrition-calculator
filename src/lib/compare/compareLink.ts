@@ -18,6 +18,15 @@ export function compareHref(tokens: string[]): string {
   return qs ? `/compare-foods?${qs}` : '/compare-foods';
 }
 
+/** `search` with the a–d food params replaced by `tokens`; other params (utm_*, …) kept. */
+export function withCompareParams(search: string, tokens: string[]): string {
+  const params = new URLSearchParams(search);
+  for (const key of KEYS) params.delete(key);
+  tokens.slice(0, KEYS.length).forEach((t, i) => params.set(KEYS[i], t));
+  const qs = params.toString();
+  return qs ? `?${qs}` : '';
+}
+
 export function parseCompareParams(search: string): CompareParam[] {
   const params = new URLSearchParams(search);
   const out: CompareParam[] = [];

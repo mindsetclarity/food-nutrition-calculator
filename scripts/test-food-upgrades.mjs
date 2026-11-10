@@ -15,8 +15,8 @@ registerHooks({
   }
 });
 
-const { portionRows } = await import('../src/lib/foods/portions.ts');
-const { compareToken, compareHref, parseCompareParams } = await import('../src/lib/compare/compareLink.ts');
+const { portionRows, formatGrams } = await import('../src/lib/foods/portions.ts');
+const { compareToken, compareHref, parseCompareParams, withCompareParams } = await import('../src/lib/compare/compareLink.ts');
 
 // --- portions ---
 const banana = {
@@ -45,6 +45,34 @@ assert.deepEqual(portionRows({ nutrientsPer100g: { calories: 50, protein: 2, car
 // NaN / negative grams never produce a row.
 assert.equal(portionRows({ nutrientsPer100g: { calories: 50, protein: 2, carbohydrates: 0, fat: 0 }, servingSizes: [{ unit: 'x', label: 'bad', grams: NaN }, { unit: 'x', label: 'neg', grams: -5 }] }).length, 1);
 
+// Unusable rows are dropped: malformed USDA labels, repeated labels, 0-kcal specks.
+const odd = portionRows({
+  nutrientsPer100g: { calories: 36, protein: 3, carbohydrates: 0, fat: 0 },
+  servingSizes: [
+    { unit: 'x', label: '1 grams 1 serving', grams: 1 },
+    { unit: 'cup', label: '1 cup', grams: 248 },
+    { unit: 'cup', label: '1 Cup', grams: 246 },
+    { unit: 'x', label: '1 sprig', grams: 1 },
+  ],
+});
+assert.deepEqual(odd.map(r => r.label), ['1 cup', '100 g']);
+// A zero-calorie food (water) still shows its 0 kcal portions.
+assert.equal(portionRows({ nutrientsPer100g: { calories: 0, protein: 0, carbohydrates: 0, fat: 0 }, servingSizes: [{ unit: 'cup', label: '1 cup', grams: 237 }] })[0].calories, 0);
+assert.equal(formatGrams(28.3495), '28');
+assert.equal(formatGrams(4.26), '4.3');
+
+// Every real local food yields sensible rows.
+const { localFoods } = await import('../src/data/foods.ts');
+for (const food of localFoods) {
+  const rows = portionRows(food);
+  assert.ok(rows.length > 0, `${food.slug}: no portion rows`);
+  assert.equal(new Set(rows.map(r => r.label.toLowerCase())).size, rows.length, `${food.slug}: repeated portion label`);
+  for (const r of rows) {
+    assert.ok(!/\bgrams?\b/i.test(r.label), `${food.slug}: malformed label ${r.label}`);
+    if ((food.nutrientsPer100g.calories ?? 0) > 0) assert.ok(r.calories !== 0, `${food.slug}: ${r.label} shows 0 kcal`);
+  }
+}
+
 // --- compare links ---
 assert.equal(compareToken({ source: 'local', slug: 'banana', id: 'local_0001' }), 'banana');
 assert.equal(compareToken({ source: 'usda', slug: 'x', id: 'usda-171705' }), 'usda-171705');
@@ -62,6 +90,11 @@ assert.deepEqual(parseCompareParams('?a=banana&b=usda-171705'), [
 assert.deepEqual(parseCompareParams('?b=apple&a=<script>&c=apple&d=Usda-1&e=pear'), [{ id: 'apple', source: 'local' }]);
 assert.deepEqual(parseCompareParams('?a=' + 'x'.repeat(200)), []);
 assert.deepEqual(parseCompareParams(''), []);
+// Address sync keeps other params and replaces only a–d.
+assert.equal(withCompareParams('?utm_source=x&a=old&b=old2', ['banana']), '?utm_source=x&a=banana');
+assert.equal(withCompareParams('?a=old', []), '');
+assert.equal(withCompareParams('', ['oats', 'usda-9']), '?a=oats&b=usda-9');
+
 // Round trip.
 assert.deepEqual(parseCompareParams(compareHref(['oats', 'usda-9']).split('?')[1]).map(t => t.id), ['oats', 'usda-9']);
 

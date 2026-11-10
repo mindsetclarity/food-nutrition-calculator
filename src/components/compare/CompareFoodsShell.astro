@@ -41,7 +41,7 @@ import CompareNotice from './CompareNotice.astro';
   import { buildCompareResult } from '../../lib/compare/compareFoods';
   import { getFromCache, setInCache, generateCacheKey } from '../../lib/performance/clientCache';
   import { escapeHtml } from '../../lib/safety/escapeHtml';
-  import { compareHref, compareToken, parseCompareParams } from '../../lib/compare/compareLink';
+  import { compareToken, parseCompareParams, withCompareParams } from '../../lib/compare/compareLink';
   
   let selectedFoods: CompareFood[] = [];
   let currentBasis: CompareBasis = '100g';
@@ -49,6 +49,10 @@ import CompareNotice from './CompareNotice.astro';
   let searchAbortController: AbortController | null = null;
 
   const MAX_FOODS = 4;
+  // Bumped whenever the user adds a food or loads an example, so a shared link
+  // still loading in the background stops adding foods.
+  let prefillGen = 0;
+  let prefilling = false;
 
   document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('compare-search') as HTMLInputElement;
@@ -176,7 +180,9 @@ import CompareNotice from './CompareNotice.astro';
       });
     }
 
-    async function addFoodToCompare(item: any, quiet = false) {
+    // gen is set only by the ?a=… prefill; any other call cancels a running prefill.
+    async function addFoodToCompare(item: any, gen?: number) {
+      if (gen === undefined) prefillGen++;
       if (selectedFoods.length >= MAX_FOODS) return;
       
       searchResults?.classList.add('hidden');
@@ -192,6 +198,9 @@ import CompareNotice from './CompareNotice.astro';
           setInCache(cacheKey, data, 30);
         }
         
+        // Re-check after the fetch: the user or an example may have changed things meanwhile.
+        if ((gen !== undefined && gen !== prefillGen) || selectedFoods.length >= MAX_FOODS) return;
+
         const compareFood: CompareFood = {
            ...data.food,
            compareId: genId()
@@ -204,7 +213,7 @@ import CompareNotice from './CompareNotice.astro';
         
       } catch (err) {
         // A mistyped shared link shouldn't pop up a dialog; just skip that food.
-        if (!quiet) alert('Food details could not be loaded.');
+        if (gen === undefined) alert('Food details could not be loaded.');
         const el = document.getElementById('a11y-status');
         if (el) el.textContent = 'Error loading food details.';
       }
@@ -217,7 +226,8 @@ import CompareNotice from './CompareNotice.astro';
         const q1 = target.getAttribute('data-q1');
         const q2 = target.getAttribute('data-q2');
         
-        // Clear current comparison
+        // Clear current comparison and stop any shared link still loading.
+        prefillGen++;
         selectedFoods = [];
         updateUI();
         
@@ -245,10 +255,16 @@ import CompareNotice from './CompareNotice.astro';
     });
 
     // --- UI Update Logic ---
-    function updateUI() {
-      // Keep the address in step with the picked foods so a comparison can be shared.
+    // Keep the address in step with the picked foods so a comparison can be shared.
+    // Other params (utm_*) and the hash are kept; nothing is written mid-prefill.
+    function syncUrl() {
+      if (prefilling) return;
       const tokens = selectedFoods.map(compareToken).filter((t): t is string => t !== null);
-      history.replaceState(history.state, '', compareHref(tokens));
+      history.replaceState(history.state, '', location.pathname + withCompareParams(location.search, tokens) + location.hash);
+    }
+
+    function updateUI() {
+      syncUrl();
 
       renderSelectedCards();
       
@@ -436,7 +452,16 @@ import CompareNotice from './CompareNotice.astro';
 
     // --- Prefill from ?a=…&b=… (food pages link here with ?a=<slug>) ---
     (async () => {
-      for (const item of parseCompareParams(location.search)) await addFoodToCompare(item, true);
+      const items = parseCompareParams(location.search);
+      if (!items.length) return;
+      const gen = ++prefillGen;
+      prefilling = true;
+      for (const item of items) {
+        if (gen !== prefillGen) break;
+        await addFoodToCompare(item, gen);
+      }
+      prefilling = false;
+      syncUrl();
     })();
   });
 </script>

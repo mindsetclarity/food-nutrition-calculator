@@ -1,6 +1,6 @@
 ---
 import type { FoodItem } from '../../lib/nutrition/types';
-import { portionRows } from '../../lib/foods/portions';
+import { formatGrams, portionRows } from '../../lib/foods/portions';
 
 interface Props {
   food: FoodItem;
@@ -24,10 +24,10 @@ const rows = portionRows(food);
       {rows.map(row => (
         <tr>
           <th scope="row" class="py-3 pr-2 font-medium text-gray-700">
-            {row.label}{row.label !== `${row.grams} g` && <span class="block text-xs font-normal text-gray-500">{row.grams} g</span>}
+            {row.label}{row.label !== `${row.grams} g` && <span class="block text-xs font-normal text-gray-500">{formatGrams(row.grams)} g</span>}
           </th>
-          <td class="py-3 px-2 text-right tabular-nums font-semibold text-gray-900">{row.calories ?? '—'}{row.calories != null && <span class="font-normal text-gray-500 text-sm"> kcal</span>}</td>
-          <td class="py-3 pl-2 text-right tabular-nums text-gray-700">{row.protein != null ? `${row.protein} g` : '—'}</td>
+          <td class="py-3 px-2 text-right tabular-nums font-semibold text-gray-900">{row.calories != null ? <>{row.calories}<span class="font-normal text-gray-500 text-sm"> kcal</span></> : <><span aria-hidden="true">—</span><span class="sr-only">not available</span></>}</td>
+          <td class="py-3 pl-2 text-right tabular-nums text-gray-700">{row.protein != null ? `${row.protein} g` : <><span aria-hidden="true">—</span><span class="sr-only">not available</span></>}</td>
         </tr>
       ))}
     </tbody>
