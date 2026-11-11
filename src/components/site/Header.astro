@@ -2,17 +2,11 @@
 import Button from '../ui/Button.astro';
 import NavigationLink from './NavigationLink.astro';
 
-const navLinks = [
-  { name: 'Home', href: '/', exact: true },
-  { name: 'Calculator', href: '/calculator' },
-  { name: 'Recipe', href: '/recipe-nutrition-calculator' },
-  { name: 'Meal', href: '/meal-calorie-calculator' },
-  { name: 'TDEE', href: '/tdee-calculator' },
-  { name: 'Macros', href: '/macro-calculator' },
-  { name: 'Foods', href: '/foods' },
-  { name: 'Compare', href: '/compare-foods' },
-  { name: 'Learn', href: '/learn' },
-];
+import { NAV_GROUPS, NAV_LINKS } from '../../lib/site/navigation';
+import { cleanPathname } from '../../lib/seo/metadata';
+
+const pathname = cleanPathname(Astro.url.pathname);
+const inGroup = (links: { href: string }[]) => links.some(l => pathname === l.href);
 ---
 
 <header class="sticky top-0 z-40 w-full backdrop-blur-xl bg-warm-ivory/85 border-b border-border-soft shadow-sm transition-all duration-300">
@@ -27,18 +21,31 @@ const navLinks = [
         </a>
       </div>
       
-      <nav class="hidden lg:flex space-x-1 xl:space-x-2 items-center" aria-label="Desktop navigation">
-        {navLinks.filter((link) => !link.exact).map((link) => (
-          <NavigationLink href={link.href} exact={link.exact} class="text-[14px] xl:text-[15px] font-medium px-2 xl:px-3 py-2 rounded-md hover:bg-slate-100/50" activeClass="text-usda-emerald font-semibold bg-mint-wash/50" inactiveClass="text-soft-slate hover:text-ink-navy">
+      <nav class="hidden lg:flex gap-1 items-center" aria-label="Main">
+        {NAV_GROUPS.map(group => (
+          <details class="nav-menu relative">
+            <summary class:list={['list-none cursor-pointer select-none flex items-center gap-1 text-[15px] font-medium px-3 py-2 rounded-md hover:bg-slate-100/50 focus-ring', inGroup(group.links) ? 'text-usda-emerald font-semibold bg-mint-wash/50' : 'text-soft-slate hover:text-ink-navy']}>
+              {group.name}
+              <svg class="nav-chevron w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+            </summary>
+            <div class:list={['absolute left-0 top-full mt-2 rounded-2xl border border-border-soft bg-white shadow-premium p-3 grid gap-1', group.links.length > 6 ? 'w-[560px] grid-cols-2' : 'w-[320px]']}>
+              {group.links.map(link => (
+                <a href={link.href} aria-current={pathname === link.href ? 'page' : undefined} class:list={['block rounded-xl px-3 py-2.5 hover:bg-mint-wash/60 focus-ring', pathname === link.href && 'bg-mint-wash']}>
+                  <span class="block text-[15px] font-semibold text-ink-navy">{link.name}</span>
+                  <span class="block text-[13px] text-soft-slate">{link.description}</span>
+                </a>
+              ))}
+            </div>
+          </details>
+        ))}
+        {NAV_LINKS.map(link => (
+          <NavigationLink href={link.href} class="text-[15px] font-medium px-3 py-2 rounded-md hover:bg-slate-100/50" activeClass="text-usda-emerald font-semibold bg-mint-wash/50" inactiveClass="text-soft-slate hover:text-ink-navy">
             {link.name}
           </NavigationLink>
         ))}
       </nav>
 
       <div class="hidden lg:flex items-center space-x-4 shrink-0">
-        <span class="hidden xl:inline"><Button href="/contact" variant="secondary" size="sm" class="hover-lift interactive-button shadow-soft">
-          Feedback
-        </Button></span>
         <Button href="/calculator" variant="primary" size="sm" class="hover-lift interactive-button shadow-ink">
           Start Calculating
         </Button>
@@ -59,18 +66,28 @@ const navLinks = [
 
   <!-- Mobile menu -->
   <div id="mobile-menu" class="lg:hidden hidden bg-warm-ivory border-b border-border-soft shadow-premium absolute w-full left-0 top-[72px] origin-top motion-fade-in transition-all h-[calc(100vh-72px)] overflow-y-auto">
-    <nav class="px-4 pt-4 pb-6 space-y-2" aria-label="Mobile navigation">
-      {navLinks.map((link) => (
-        <NavigationLink href={link.href} exact={link.exact} class="block px-4 py-3.5 text-base font-medium rounded-xl hover:bg-slate-100/50 active:bg-slate-200/50 transition-colors" activeClass="text-usda-emerald bg-mint-wash" inactiveClass="text-deep-slate">
-          {link.name}
-        </NavigationLink>
+    <nav class="px-4 pt-4 pb-6" aria-label="Main">
+      {NAV_GROUPS.map(group => (
+        <div class="mb-5">
+          <h2 class="px-4 mb-1 text-xs font-bold uppercase tracking-wider text-soft-slate">{group.name}</h2>
+          {group.links.map(link => (
+            <NavigationLink href={link.href} class="block px-4 py-3 text-base font-medium rounded-xl hover:bg-slate-100/50 active:bg-slate-200/50" activeClass="text-usda-emerald bg-mint-wash" inactiveClass="text-deep-slate">
+              {link.name}
+            </NavigationLink>
+          ))}
+        </div>
       ))}
+      <div class="mb-5">
+        <h2 class="px-4 mb-1 text-xs font-bold uppercase tracking-wider text-soft-slate">Browse</h2>
+        {NAV_LINKS.map(link => (
+          <NavigationLink href={link.href} class="block px-4 py-3 text-base font-medium rounded-xl hover:bg-slate-100/50 active:bg-slate-200/50" activeClass="text-usda-emerald bg-mint-wash" inactiveClass="text-deep-slate">
+            {link.name}
+          </NavigationLink>
+        ))}
+      </div>
       <div class="mt-8 pt-6 border-t border-border-soft flex flex-col space-y-4 px-2">
         <Button href="/calculator" variant="primary" class="w-full justify-center interactive-button py-3.5 text-base">
           Start Calculating
-        </Button>
-        <Button href="/recipe-nutrition-calculator" variant="secondary" class="w-full justify-center interactive-button py-3.5 text-base">
-          Analyze a Recipe
         </Button>
         <Button href="/contact" variant="secondary" class="w-full justify-center interactive-button py-3.5 text-base">
           Feedback / Contact Us
@@ -80,7 +97,27 @@ const navLinks = [
   </div>
 </header>
 
+<style>
+  .nav-menu summary::-webkit-details-marker { display: none; }
+  .nav-menu[open] .nav-chevron { transform: rotate(180deg); }
+</style>
+
 <script>
+  // Desktop dropdowns are native <details>: keep one open at a time and close
+  // them on an outside click or Escape.
+  const menus = [...document.querySelectorAll<HTMLDetailsElement>('details.nav-menu')];
+  menus.forEach(m => m.addEventListener('toggle', () => {
+    if (m.open) menus.forEach(o => { if (o !== m) o.open = false; });
+  }));
+  document.addEventListener('click', e => {
+    menus.forEach(m => { if (m.open && !m.contains(e.target as Node)) m.open = false; });
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Escape') return;
+    const open = menus.find(m => m.open);
+    if (open) { open.open = false; open.querySelector('summary')?.focus(); }
+  });
+
   const btn = document.getElementById('mobile-menu-btn');
   const menu = document.getElementById('mobile-menu');
   const iconOpen = document.querySelector('.menu-icon-open');
