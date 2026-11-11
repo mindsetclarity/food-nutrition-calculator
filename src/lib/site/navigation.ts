@@ -31,6 +31,8 @@ export const NAV_GROUPS: NavGroup[] = [
 ];
 
 /** Plain top-level links next to the dropdowns. */
+export const HOME: NavLink = { name: 'Home', href: '/' };
+
 export const NAV_LINKS: NavLink[] = [
   { name: 'Calorie Charts', href: '/foods' },
   { name: 'Guides', href: '/learn' },

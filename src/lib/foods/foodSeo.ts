@@ -41,8 +41,15 @@ export function getFoodDetailSeo(food: FoodItem) {
   const f = nutrientFor(food, 'fat', s.grams);
   const macros = [p != null && `${p} g protein`, c != null && `${c} g carbs`, f != null && `${f} g fat`].filter(Boolean).join(', ');
   return {
-    title: `Calories in ${name}: ${kcal} kcal per ${s.label} | Nutrition Facts`,
-    description: `${name} (${servingText(s)}) has ${kcal} calories${macros ? `, ${macros}` : ''}. See per-100 g values, serving sizes, macros and a full nutrition label.`
+    // Longest form that fits Google's ~60-char title width; all keep a "|" so no site name is appended.
+    title: [
+      `Calories in ${name}: ${kcal} kcal per ${s.label} | Nutrition Facts`,
+      `Calories in ${name} | ${kcal} kcal per ${s.label}`,
+      `${name} Calories | ${kcal} kcal per ${s.label}`,
+    ].find(t => t.length <= 60) ?? `${name} Calories | Nutrition Facts`,
+    description: ['See per-100 g values, serving sizes, macros and a full nutrition label.', 'See serving sizes and a nutrition label.', '']
+      .map(tail => `${name} (${servingText(s)}) has ${kcal} calories${macros ? `, ${macros}` : ''}. ${tail}`.trim())
+      .find(d => d.length <= 160) ?? `${name} (${servingText(s)}) has ${kcal} calories.`
   };
 }
 

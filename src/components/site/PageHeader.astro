@@ -1,5 +1,7 @@
 ---
 import FoodChip from '../ui/FoodChip.astro';
+import JsonLd from '../seo/JsonLd.astro';
+import { buildBreadcrumbListSchema } from '../../lib/seo/schema';
 
 interface Props {
   title: string;
@@ -31,6 +33,11 @@ const getChips = () => {
 };
 
 const chips = getChips();
+// Structured breadcrumbs for Google; the last crumb is this page.
+const breadcrumbSchema = buildBreadcrumbListSchema([
+  { label: 'Home', href: '/' },
+  ...breadcrumbs.map(c => ({ label: c.label, href: c.href ?? Astro.url.pathname })),
+]);
 ---
 
 <div class="bg-warm-ivory border-b border-border-soft pb-12 pt-8 sm:pt-12 relative overflow-hidden">
@@ -49,12 +56,13 @@ const chips = getChips();
             {crumb.href ? (
               <a href={crumb.href} class="hover:text-usda-emerald transition-colors">{crumb.label}</a>
             ) : (
-              <span class="text-ink-navy font-medium">{crumb.label}</span>
+              <span class="text-ink-navy font-medium" aria-current={idx === breadcrumbs.length - 1 ? 'page' : undefined}>{crumb.label}</span>
             )}
           </li>
         ))}
       </ol>
     </nav>
+    <JsonLd schema={breadcrumbSchema} />
     
     <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
       <div class="max-w-3xl">

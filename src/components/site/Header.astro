@@ -2,7 +2,7 @@
 import Button from '../ui/Button.astro';
 import NavigationLink from './NavigationLink.astro';
 
-import { NAV_GROUPS, NAV_LINKS } from '../../lib/site/navigation';
+import { HOME, NAV_GROUPS, NAV_LINKS } from '../../lib/site/navigation';
 import { cleanPathname } from '../../lib/seo/metadata';
 
 const pathname = cleanPathname(Astro.url.pathname);
@@ -22,9 +22,10 @@ const inGroup = (links: { href: string }[]) => links.some(l => pathname === l.hr
       </div>
       
       <nav class="hidden lg:flex gap-1 items-center" aria-label="Main">
+        <NavigationLink href={HOME.href} exact class="whitespace-nowrap text-[14px] xl:text-[15px] font-medium px-2 xl:px-3 py-2 rounded-md hover:bg-slate-100/50" activeClass="text-usda-emerald font-semibold bg-mint-wash/50" inactiveClass="text-soft-slate hover:text-ink-navy">{HOME.name}</NavigationLink>
         {NAV_GROUPS.map(group => (
           <details class="nav-menu relative">
-            <summary class:list={['list-none cursor-pointer select-none flex items-center gap-1 text-[15px] font-medium px-3 py-2 rounded-md hover:bg-slate-100/50 focus-ring', inGroup(group.links) ? 'text-usda-emerald font-semibold bg-mint-wash/50' : 'text-soft-slate hover:text-ink-navy']}>
+            <summary class:list={['list-none cursor-pointer select-none whitespace-nowrap flex items-center gap-1 text-[14px] xl:text-[15px] font-medium px-2 xl:px-3 py-2 rounded-md hover:bg-slate-100/50 focus-ring', inGroup(group.links) ? 'text-usda-emerald font-semibold bg-mint-wash/50' : 'text-soft-slate hover:text-ink-navy']}>
               {group.name}
               <svg class="nav-chevron w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
             </summary>
@@ -39,13 +40,13 @@ const inGroup = (links: { href: string }[]) => links.some(l => pathname === l.hr
           </details>
         ))}
         {NAV_LINKS.map(link => (
-          <NavigationLink href={link.href} class="text-[15px] font-medium px-3 py-2 rounded-md hover:bg-slate-100/50" activeClass="text-usda-emerald font-semibold bg-mint-wash/50" inactiveClass="text-soft-slate hover:text-ink-navy">
+          <NavigationLink href={link.href} class="whitespace-nowrap text-[14px] xl:text-[15px] font-medium px-2 xl:px-3 py-2 rounded-md hover:bg-slate-100/50" activeClass="text-usda-emerald font-semibold bg-mint-wash/50" inactiveClass="text-soft-slate hover:text-ink-navy">
             {link.name}
           </NavigationLink>
         ))}
       </nav>
 
-      <div class="hidden lg:flex items-center space-x-4 shrink-0">
+      <div class="hidden xl:flex items-center space-x-4 shrink-0">
         <Button href="/calculator" variant="primary" size="sm" class="hover-lift interactive-button shadow-ink">
           Start Calculating
         </Button>
@@ -67,6 +68,7 @@ const inGroup = (links: { href: string }[]) => links.some(l => pathname === l.hr
   <!-- Mobile menu -->
   <div id="mobile-menu" class="lg:hidden hidden bg-warm-ivory border-b border-border-soft shadow-premium absolute w-full left-0 top-[72px] origin-top motion-fade-in transition-all h-[calc(100vh-72px)] overflow-y-auto">
     <nav class="px-4 pt-4 pb-6" aria-label="Main">
+      <NavigationLink href={HOME.href} exact class="block mb-4 px-4 py-3 text-base font-medium rounded-xl hover:bg-slate-100/50 active:bg-slate-200/50" activeClass="text-usda-emerald bg-mint-wash" inactiveClass="text-deep-slate">{HOME.name}</NavigationLink>
       {NAV_GROUPS.map(group => (
         <div class="mb-5">
           <h2 class="px-4 mb-1 text-xs font-bold uppercase tracking-wider text-soft-slate">{group.name}</h2>

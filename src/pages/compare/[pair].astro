@@ -70,7 +70,8 @@ const faqs = [
 ];
 
 // The "|" stops metadata.ts appending the site name, keeping the title near 60 chars.
-const title = `${a.displayName} vs ${b.displayName} | Calories & Nutrition Compared`;
+const base = `${a.displayName} vs ${b.displayName}`;
+const title = [` | Calories & Nutrition Compared`, ` | Nutrition Compared`, ` | Calories`].map(s => base + s).find(t => t.length <= 60) ?? `${base} | Calories`;
 const note = COMPARE_NOTES[pair.slug];
 // Meta descriptions are cut around 160 chars; trim at a word boundary.
 const clip = (s: string) => (s.length <= 160 ? s : s.slice(0, s.lastIndexOf(' ', 157)) + '…');

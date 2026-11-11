@@ -3,10 +3,16 @@
 import { siteConfig } from './siteConfig';
 import type { SeoMetadata, OpenGraphMetadata, TwitterMetadata, PageSeoInput } from './types';
 
+// Google shows about 60 characters of a title; the site name is added (or kept)
+// only when it fits, so the page's own words aren't the part that gets cut.
+const TITLE_MAX = 60;
+
 export function buildTitle(title?: string): string {
   if (!title) return siteConfig.defaultTitle;
+  const suffix = ` | ${siteConfig.siteName}`;
+  if (title.endsWith(suffix) && title.length > TITLE_MAX) return title.slice(0, -suffix.length);
   if (title.includes('|')) return title;
-  return `${title} | ${siteConfig.siteName}`;
+  return title.length + suffix.length <= TITLE_MAX ? title + suffix : title;
 }
 
 export function buildMetaDescription(description?: string): string {

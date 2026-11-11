@@ -1,10 +1,10 @@
 ---
 import { siteConfig } from '../../lib/seo/siteConfig';
-import { FOOTER_ABOUT, FOOTER_LEGAL, NAV_GROUPS, NAV_LINKS } from '../../lib/site/navigation';
+import { FOOTER_ABOUT, FOOTER_LEGAL, HOME, NAV_GROUPS, NAV_LINKS } from '../../lib/site/navigation';
 
 const columns = [
   ...NAV_GROUPS,
-  { name: 'Browse', links: [...NAV_LINKS, { name: 'Android App', href: siteConfig.playStoreUrl, external: true }] },
+  { name: 'Browse', links: [HOME, ...NAV_LINKS, { name: 'Android App', href: siteConfig.playStoreUrl, external: true }] },
   { name: 'About', links: FOOTER_ABOUT },
 ];
 const link = 'text-[15px] text-soft-slate hover:text-usda-emerald transition-colors focus-ring rounded-sm';
