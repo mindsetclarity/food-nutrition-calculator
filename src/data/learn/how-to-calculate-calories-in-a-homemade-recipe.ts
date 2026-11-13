@@ -74,7 +74,7 @@ export const article: LearnArticle = {
         'Parmesan: 20 g x 4.12 = 82 kcal',
         'Recipe total: about 2,840 kcal'
       ],
-      toolCta: { label: 'See ground beef nutrition', href: '/foods/ground-beef' }
+      toolCta: { label: 'See ground beef nutrition', href: '/compare-foods?a=ground-beef' }
     },
     {
       id: 'per-serving',

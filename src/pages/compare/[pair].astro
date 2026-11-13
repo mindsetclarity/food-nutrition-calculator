@@ -4,7 +4,7 @@ import Breadcrumbs from '../../components/seo/Breadcrumbs.astro';
 import FaqList from '../../components/seo/FaqList.astro';
 import FoodSourceNotice from '../../components/foods/FoodSourceNotice.astro';
 
-import { getAllComparePairs, getComparePairsForFood, isIndexedComparePair, type ComparePair } from '../../lib/compare/comparePairs';
+import { getPublishedComparePairs, getComparePairsForFood, isIndexedFood, type ComparePair } from '../../lib/compare/comparePairs';
 import { getDefaultServing, nutrientFor, servingText } from '../../lib/foods/foodSeo';
 import { buildFAQPageSchema, buildWebPageSchema } from '../../lib/seo/schema';
 import { siteConfig } from '../../lib/seo/siteConfig';
@@ -14,7 +14,7 @@ import { COMPARE_NOTES } from '../../data/compareNotes';
 export const prerender = true;
 
 export async function getStaticPaths() {
-  return getAllComparePairs().map(pair => ({ params: { pair: pair.slug }, props: { pair } }));
+  return getPublishedComparePairs().map(pair => ({ params: { pair: pair.slug }, props: { pair } }));
 }
 
 const { pair } = Astro.props as { pair: ComparePair };
@@ -96,7 +96,7 @@ const fmt = (v: number | null, unit: string) => (v == null ? '—' : `${v} ${uni
 const winner = (va: number | null, vb: number | null, side: 'a' | 'b') =>
   va != null && vb != null && va !== vb && (side === 'a' ? va > vb : vb > va);
 ---
-<Layout title={title} description={description} jsonLd={jsonLd} noindex={!isIndexedComparePair(pair.slug)}>
+<Layout title={title} description={description} jsonLd={jsonLd}>
   <main id="main-content" class="min-h-screen bg-gray-50 pb-24">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
       <Breadcrumbs items={breadcrumbItems} />
@@ -126,8 +126,8 @@ const winner = (va: number | null, vb: number | null, side: 'a' | 'b') =>
             <thead>
               <tr class="border-b border-gray-200 text-sm text-gray-500">
                 <th scope="col" class="py-3 pr-4 font-semibold">Nutrient</th>
-                <th scope="col" class="py-3 px-4 font-semibold"><a href={`/foods/${a.slug}`} class="text-emerald-700 hover:underline">{a.displayName}</a></th>
-                <th scope="col" class="py-3 pl-4 font-semibold"><a href={`/foods/${b.slug}`} class="text-emerald-700 hover:underline">{b.displayName}</a></th>
+                <th scope="col" class="py-3 px-4 font-semibold">{isIndexedFood(a.slug) ? <a href={`/foods/${a.slug}`} class="text-emerald-700 hover:underline">{a.displayName}</a> : a.displayName}</th>
+                <th scope="col" class="py-3 pl-4 font-semibold">{isIndexedFood(b.slug) ? <a href={`/foods/${b.slug}`} class="text-emerald-700 hover:underline">{b.displayName}</a> : b.displayName}</th>
               </tr>
             </thead>
             <tbody class="divide-y divide-gray-100">

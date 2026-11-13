@@ -562,7 +562,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
           'Double cheeseburger, 2 large patties (330 g): about 987 calories, 67 g protein',
           'Veggie burger patty, no bun (100 g): about 177 calories, 16 g protein'
         ],
-        toolCta: { label: 'Compare a cheeseburger and a hamburger', href: '/compare/cheeseburger-vs-hamburger' }
+        toolCta: { label: 'Compare a cheeseburger and a hamburger', href: '/compare-foods?a=cheeseburger&b=hamburger' }
       },
       {
         id: 'fries-and-sides',
@@ -623,7 +623,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
         body: [
           "A 6 oz (about 175 ml) glass of red wine is about 153 calories and white wine about 148. In the UK a standard glass is 175 ml and a large one 250 ml, which is about 210 calories."
         ],
-        toolCta: { label: 'Compare red and white wine', href: '/compare/red-wine-vs-white-wine' }
+        toolCta: { label: 'Compare red and white wine', href: '/compare-foods?a=red-wine&b=white-wine' }
       },
       {
         id: 'spirits',
@@ -667,7 +667,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
           'Shrimp, 4 oz raw: about 23 g protein, 96 calories',
           'Roast turkey, 1 medium slice (60 g): about 17 g protein, 101 calories'
         ],
-        toolCta: { label: 'See baked chicken breast nutrition', href: '/foods/baked-chicken-breast' }
+        toolCta: { label: 'See baked chicken breast nutrition', href: '/compare-foods?a=baked-chicken-breast' }
       },
       {
         id: 'dairy-and-eggs',
@@ -741,7 +741,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
           'Deli turkey, 2 slices: about 60 calories, 8 g protein',
           'Smoked salmon, 1 oz: about 33 calories, 5 g protein'
         ],
-        toolCta: { label: 'See hard-boiled egg nutrition', href: '/foods/hard-boiled-egg' }
+        toolCta: { label: 'See hard-boiled egg nutrition', href: '/compare-foods?a=hard-boiled-egg' }
       },
       {
         id: 'crunchy',
@@ -749,7 +749,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
         body: [
           'Air-popped popcorn is about 31 calories per cup, so three cups is under 100. Microwave butter popcorn is more than double that per cup. A small handful of chips, by contrast, uses up 100 calories fast: a single-serving bag of potato chips is about 319 calories.'
         ],
-        toolCta: { label: 'Compare popcorn types', href: '/foods/air-popped-popcorn' }
+        toolCta: { label: 'Compare popcorn types', href: '/compare-foods?a=air-popped-popcorn' }
       }
     ],
     faqs: [
@@ -791,7 +791,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
           'Milk is the main source in a latte or cappuccino, and a cup of whole milk carries about 8 g of fat that nonfat milk does not. Flavored syrups add mostly sugar, and whipped cream on top can add 50 to 100 calories on its own.',
           'Switching from a medium mocha to a medium nonfat latte saves about 170 calories.'
         ],
-        toolCta: { label: 'Compare cappuccino and latte', href: '/compare/cappuccino-vs-latte-nonfat-milk' }
+        toolCta: { label: 'Compare cappuccino and latte', href: '/compare-foods?a=cappuccino&b=latte-nonfat-milk' }
       }
     ],
     faqs: [
@@ -839,7 +839,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
           'Roti or chapati, 1 medium (40 g): about 120 calories'
         ],
         body: ['Bagels and croissants are where bread calories climb fastest, because one item is a large portion.'],
-        toolCta: { label: 'Compare naan and roti', href: '/compare/naan-vs-roti-chapati' }
+        toolCta: { label: 'Compare naan and roti', href: '/compare-foods?a=naan&b=roti-chapati' }
       }
     ],
     faqs: [
@@ -883,7 +883,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
           'USDA weighs a whole 10-inch naan at about 177 g. At 311 calories per 100 g, that is about 550 calories, as much as two cups of curry. A quarter of a naan is about 137.',
           'Roti or chapati is far lighter at about 120 calories for a medium one.'
         ],
-        toolCta: { label: 'Compare naan and roti', href: '/compare/naan-vs-roti-chapati' }
+        toolCta: { label: 'Compare naan and roti', href: '/compare-foods?a=naan&b=roti-chapati' }
       },
       {
         id: 'sides',
@@ -924,7 +924,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
           'Dry rice absorbs about twice its weight in water. 100 g of dry white rice becomes roughly 280 g cooked, but it still contains the same calories.',
           'The most common tracking mistake is weighing cooked rice and logging it as dry rice, which nearly triples the calories logged.'
         ],
-        toolCta: { label: 'See uncooked white rice nutrition', href: '/foods/dry-white-rice' }
+        toolCta: { label: 'See uncooked white rice nutrition', href: '/compare-foods?a=dry-white-rice' }
       },
       {
         id: 'per-cup',
@@ -936,7 +936,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
           'Fried rice, 1 cup: about 289 calories'
         ],
         body: ['Brown rice is about the same per gram as white rice. Its cup weighs more and it carries more fiber.'],
-        toolCta: { label: 'Compare brown and white rice', href: '/compare/cooked-brown-rice-vs-cooked-white-rice' }
+        toolCta: { label: 'Compare brown and white rice', href: '/compare-foods?a=cooked-brown-rice&b=cooked-white-rice' }
       }
     ],
     faqs: [
@@ -977,7 +977,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
         body: [
           'A cheese omelet is about 203 calories per cup in USDA data, and an egg, cheese and ham English muffin breakfast sandwich is about 322.'
         ],
-        toolCta: { label: 'Compare hard-boiled and scrambled eggs', href: '/compare/hard-boiled-egg-vs-scrambled-egg' }
+        toolCta: { label: 'Compare hard-boiled and scrambled eggs', href: '/compare-foods?a=hard-boiled-egg&b=scrambled-egg' }
       }
     ],
     faqs: [
@@ -1026,7 +1026,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
           'Raisins are about 299 calories per 100 g compared with 69 for fresh grapes. One ounce of raisins is about 85 calories, close to a whole cup of fresh grapes (about 104) but in a small handful.',
           'Juice keeps the sugar but loses most of the fiber. A cup of apple juice has a similar number of calories to a medium apple but far less fiber and much less staying power.'
         ],
-        toolCta: { label: 'See raisins nutrition', href: '/foods/dried-grape' }
+        toolCta: { label: 'See raisins nutrition', href: '/compare-foods?a=dried-grape' }
       }
     ],
     faqs: [

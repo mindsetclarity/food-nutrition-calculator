@@ -5,6 +5,7 @@ import CategoryTiles from '../../../components/foods/CategoryTiles.astro';
 import RelatedLinks from '../../../components/site/RelatedLinks.astro';
 import { CATEGORY_INTROS } from '../../../data/categoryIntros';
 import { getAllCategories, isIndexedCategory } from '../../../lib/foods/categories';
+import { isIndexedFood } from '../../../lib/foods/foodPageData';
 import { buildWebPageSchema } from '../../../lib/seo/schema';
 import { siteConfig } from '../../../lib/seo/siteConfig';
 
@@ -70,7 +71,7 @@ const value = (food: (typeof category.foods)[number], key: (typeof COLUMNS)[numb
             <tbody class="divide-y divide-gray-100">
               {category.foods.map(food => (
                 <tr data-name={food.displayName} {...Object.fromEntries(COLUMNS.map(c => [`data-${c.key}`, value(food, c.key) ?? '']))}>
-                  <th scope="row" class="py-2.5 pr-4 font-medium sticky left-0 bg-white"><a href={`/foods/${food.slug}`} class="text-emerald-700 hover:underline">{food.displayName}</a></th>
+                  <th scope="row" class="py-2.5 pr-4 font-medium sticky left-0 bg-white">{isIndexedFood(food.slug) ? <a href={`/foods/${food.slug}`} class="text-emerald-700 hover:underline">{food.displayName}</a> : food.displayName}</th>
                   {COLUMNS.map(c => <td class="py-2.5 px-3 text-right tabular-nums text-gray-700">{value(food, c.key) ?? '—'}</td>)}
                 </tr>
               ))}

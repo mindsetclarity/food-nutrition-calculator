@@ -3,7 +3,7 @@
  *
  *   node --experimental-strip-types scripts/test-editorial-notes.mjs
  *
- * A typo'd key would silently noindex a page; a missing note would drop a curated
+ * A typo'd key would silently remove a page; a missing note would drop a curated
  * page out of Google. Both must fail here instead.
  */
 import assert from 'node:assert/strict';
@@ -40,6 +40,15 @@ for (const [k, n] of Object.entries(COMPARE_NOTES)) {
 for (const [k, n] of Object.entries(FOOD_NOTES)) {
   const w = words(n.body.join(' '));
   assert.ok(w >= 100 && w <= 160, `${k}: ${w} words (want 100-160)`);
+}
+
+// Pages without a note are not built, so built pages must never link to them.
+const { getComparePairsForFood, isIndexedComparePair, isIndexedFood } = await import('../src/lib/compare/comparePairs.ts');
+const { getRelatedFoods } = await import('../src/lib/foods/foodPageData.ts');
+for (const slug of Object.keys(FOOD_NOTES)) {
+  const food = getAllFoodPages().find(f => f.slug === slug);
+  for (const r of getRelatedFoods(food, 4)) assert.ok(isIndexedFood(r.slug), `${slug} links to unbuilt food ${r.slug}`);
+  for (const p of getComparePairsForFood(slug)) assert.ok(isIndexedComparePair(p.slug), `${slug} links to unbuilt pair ${p.slug}`);
 }
 
 console.log(`editorial notes OK: ${Object.keys(COMPARE_NOTES).length} pairs, ${Object.keys(FOOD_NOTES).length} foods`);

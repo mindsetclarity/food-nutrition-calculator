@@ -115,7 +115,7 @@ export const article: LearnArticle = {
         "Read the UK way, start with the per-100 g colours: fat 1.27 g is green, saturates 0.15 g is green, sugars 32.5 g is red, and salt (516 mg x 2.5 = 1.29 g) is amber. Then the portion figures for 30 g: about 471 kJ / 113 kcal (6% RI), 9.8 g sugars (11% RI) and 0.39 g salt (6% RI).",
         "Same food, different first impression. The US panel shows a modest-looking 9% DV for sodium and no % for total sugars. The UK label puts a red light on sugars because a third of the cereal's weight is sugar."
       ],
-      toolCta: { label: 'See frosted corn flakes nutrition', href: '/foods/frosted-corn-flakes' }
+      toolCta: { label: 'See frosted corn flakes nutrition', href: '/compare-foods?a=frosted-corn-flakes' }
     },
     {
       id: 'per-serving-vs-per-100g',

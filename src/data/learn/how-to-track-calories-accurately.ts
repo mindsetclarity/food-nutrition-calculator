@@ -55,7 +55,7 @@ export const article: LearnArticle = {
         title: 'Cooking for more than one person',
         body: "Weigh the dry pasta or rice for the whole pot, then weigh the cooked total. Divide your portion's cooked weight by the cooked total and multiply by the dry-weight calories. Our recipe guide walks through this for a full meal."
       },
-      toolCta: { label: 'Compare dry and cooked pasta', href: '/foods/dry-pasta' }
+      toolCta: { label: 'Compare dry and cooked pasta', href: '/compare-foods?a=dry-pasta&b=cooked-pasta' }
     },
     {
       id: 'oils-sauces-spreads',

@@ -1,8 +1,7 @@
-import { getAllFoodPages } from '../foods/foodPageData';
+import { getAllFoodPages, isIndexedFood } from '../foods/foodPageData';
 import type { FoodItem } from '../nutrition/types';
 import { PUBLISHED_COMPARE_PAIRS } from '../../data/publishedComparePairs';
 import { COMPARE_NOTES } from '../../data/compareNotes';
-import { FOOD_NOTES } from '../../data/foodNotes';
 
 export interface ComparePair {
   slug: string; // "apple-vs-banana" (food slugs in alphabetical order)
@@ -63,12 +62,17 @@ export function getAllComparePairs(): ComparePair[] {
 }
 
 // AdSense rejected the site for low-value content: thousands of near-identical generated
-// pages. A page is indexed only when it has a hand-written note; the rest stay live for
-// visitors but are noindex and left out of the sitemap. scripts/test-editorial-notes.mjs
+// pages. A page is built only when it has a hand-written note; the rest are not built at
+// all (noindex alone did not help: the AdSense crawler still saw and followed them).
+// The compare tool (/compare-foods) still compares any two foods. scripts/test-editorial-notes.mjs
 // checks every CURATED pair and food has one.
 export const isIndexedComparePair = (slug: string) => Object.hasOwn(COMPARE_NOTES, slug);
-export const isIndexedFood = (slug: string) => Object.hasOwn(FOOD_NOTES, slug);
+export { isIndexedFood };
+
+export function getPublishedComparePairs(): ComparePair[] {
+  return getAllComparePairs().filter(p => isIndexedComparePair(p.slug));
+}
 
 export function getComparePairsForFood(slug: string): ComparePair[] {
-  return getAllComparePairs().filter(p => p.a.slug === slug || p.b.slug === slug);
+  return getPublishedComparePairs().filter(p => p.a.slug === slug || p.b.slug === slug);
 }

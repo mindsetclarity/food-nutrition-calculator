@@ -22,7 +22,7 @@ import { siteConfig } from '../../lib/seo/siteConfig';
 export const prerender = true;
 
 export async function getStaticPaths() {
-  const foods = getAllFoodPages();
+  const foods = getAllFoodPages().filter(f => isIndexedFood(f.slug));
   return foods.map(food => ({
     params: { slug: food.slug },
     props: { food },
@@ -81,7 +81,7 @@ const jsonLd = [
   ...(faqs.length ? [buildFAQPageSchema(faqs)] : []),
 ];
 ---
-<Layout title={seo.title} description={seo.description} jsonLd={jsonLd} noindex={!isIndexedFood(food.slug)}>
+<Layout title={seo.title} description={seo.description} jsonLd={jsonLd}>
   <main id="main-content" class="min-h-screen bg-gray-50 pb-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
       <Breadcrumbs items={breadcrumbItems} />

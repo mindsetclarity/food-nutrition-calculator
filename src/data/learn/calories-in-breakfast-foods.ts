@@ -42,7 +42,7 @@ export const article: LearnArticle = {
         "Made with 200 g of skim milk, the bowl is about 220 calories. With 2% milk (a little richer than UK semi-skimmed), about 252. With whole milk, about 274. Made with water, it stays at about 152. A US microwave cup of oatmeal prepared with milk (210 g) is about 233 calories.",
         "Toppings are where porridge climbs. A medium banana (118 g) adds about 105 calories and a tablespoon of honey (20 g) about 61, so a banana-and-honey bowl made with 2% milk is about 418. A tablespoon of peanut butter (16 g) adds about 96 calories and 4 g of protein."
       ],
-      toolCta: { label: 'See rolled oats nutrition', href: '/foods/oats' }
+      toolCta: { label: 'See rolled oats nutrition', href: '/compare-foods?a=oats' }
     },
     {
       id: 'cereal-and-milk',
@@ -77,7 +77,7 @@ export const article: LearnArticle = {
         "A full English adds up quickly. Here is one built from USDA values: 2 fried eggs (196), 2 slices of bacon (75), 2 pork sausages of 50 g each (325), 200 g of baked beans (210), 70 g of mushrooms (22) fried in a teaspoon of oil (45), a grilled tomato (22), and a slice of white toast with butter (111). That is about 1,006 calories and 52 g of protein. Add 80 g of hash browns and it passes 1,150. Black pudding and fried bread push it higher still.",
         "A lighter version keeps the feel of the meal: 2 poached eggs (143), 2 slices of bacon (75), 130 g of beans (137), dry-fried mushrooms (22), a grilled tomato (22) and a slice of wholewheat toast without butter (91). That is about 490 calories with around 31 g of protein."
       ],
-      toolCta: { label: 'See bacon nutrition', href: '/foods/bacon' }
+      toolCta: { label: 'See bacon nutrition', href: '/compare-foods?a=bacon' }
     },
     {
       id: 'pancakes-and-pastries',

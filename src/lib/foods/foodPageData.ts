@@ -1,5 +1,10 @@
 import { localFoods } from '../../data/foods';
 import type { FoodItem } from '../nutrition/types';
+import { FOOD_NOTES } from '../../data/foodNotes';
+
+// Only foods with a hand-written note get a page (AdSense rejected the site for thousands
+// of near-identical generated pages). The rest stay in the data for the tools.
+export const isIndexedFood = (slug: string) => Object.hasOwn(FOOD_NOTES, slug);
 
 export function getAllFoodPages(): FoodItem[] {
   return localFoods.filter(food => food.slug);
@@ -10,9 +15,9 @@ export function getFoodPageBySlug(slug: string): FoodItem | undefined {
 }
 
 export function getRelatedFoods(food: FoodItem, limit: number = 4): FoodItem[] {
-  // Only foods with a slug get a page, so only those can be linked to.
+  // Only foods with a note get a page, so only those can be linked to.
   return localFoods
-    .filter(f => f.slug && f.slug !== food.slug && f.category === food.category)
+    .filter(f => f.slug && isIndexedFood(f.slug) && f.slug !== food.slug && f.category === food.category)
     .slice(0, limit);
 }
 

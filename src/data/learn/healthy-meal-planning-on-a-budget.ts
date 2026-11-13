@@ -66,7 +66,7 @@ export const article: LearnArticle = {
         "Chicken thigh, grilled, 4 oz (113 g): about 217 calories, 27.2 g protein",
         "Plain nonfat Greek yogurt, 150 g pot: about 89 calories, 15.5 g protein"
       ],
-      toolCta: { label: 'See cooked lentil nutrition', href: '/foods/cooked-lentil' }
+      toolCta: { label: 'See cooked lentil nutrition', href: '/compare-foods?a=cooked-lentil' }
     },
     {
       id: 'frozen-and-canned',

@@ -89,7 +89,7 @@ export const article: LearnArticle = {
         'Brown rice, cooked, 1 cup (195 g): 3.1 g',
         'Broccoli, chopped, 1 cup (91 g): 2.4 g'
       ],
-      toolCta: { label: 'See cooked lentils nutrition', href: '/foods/cooked-lentil' }
+      toolCta: { label: 'See cooked lentils nutrition', href: '/compare-foods?a=cooked-lentil' }
     },
     {
       id: 'swaps',

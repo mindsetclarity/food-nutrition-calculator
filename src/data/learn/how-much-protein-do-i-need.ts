@@ -111,7 +111,7 @@ export const article: LearnArticle = {
         title: 'An easy swap',
         body: 'Replace the two eggs at lunch with a can of tuna in water (172 g) and the day jumps by about 28 g of protein: the tuna has about 40.6 g protein and 220 calories per can, according to USDA data.'
       },
-      toolCta: { label: 'See roasted chicken breast nutrition', href: '/foods/baked-chicken-breast' }
+      toolCta: { label: 'See roasted chicken breast nutrition', href: '/compare-foods?a=baked-chicken-breast' }
     },
     {
       id: 'protein-sources',

@@ -40,7 +40,7 @@ export const article: LearnArticle = {
         title: 'Doubles cost the most',
         body: "Adding a second patty roughly doubles a burger. In our data a double cheeseburger with two large patties is about 987 calories, so ordering a single instead of a double is a bigger saving than leaving off the cheese."
       },
-      toolCta: { label: 'Compare a cheeseburger and a hamburger', href: '/compare/cheeseburger-vs-hamburger' }
+      toolCta: { label: 'Compare a cheeseburger and a hamburger', href: '/compare-foods?a=cheeseburger&b=hamburger' }
     },
     {
       id: 'fries',
