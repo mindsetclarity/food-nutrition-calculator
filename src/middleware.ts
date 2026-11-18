@@ -17,6 +17,12 @@ export const onRequest: MiddlewareHandler = async (context, next) => {
     if (!response.headers.has(name)) response.headers.set(name, value);
   }
 
+  // The 3,326 thin food/compare pages were removed for good. 410 tells Google to drop
+  // them from its index faster than 404 does; the body is still the normal 404 page.
+  if (response.status === 404 && /^\/(foods|compare)\//.test(context.url.pathname)) {
+    return new Response(response.body, { status: 410, statusText: 'Gone', headers: response.headers });
+  }
+
   if (context.url.pathname.startsWith('/api/')) {
     response.headers.set('X-Robots-Tag', 'noindex');
   }
