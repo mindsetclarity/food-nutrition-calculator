@@ -1,4 +1,5 @@
 import type { MiddlewareHandler } from 'astro';
+import { removedPageRedirect } from './lib/seo/removedPageRedirect';
 
 // public/_headers only applies to static asset responses on Cloudflare Workers.
 // Worker-rendered pages (everything under output: 'server') need these set here.
@@ -17,9 +18,12 @@ export const onRequest: MiddlewareHandler = async (context, next) => {
     if (!response.headers.has(name)) response.headers.set(name, value);
   }
 
-  // The 3,326 thin food/compare pages were removed for good. 410 tells Google to drop
-  // them from its index faster than 404 does; the body is still the normal 404 page.
+  // The 3,326 thin food/compare pages were removed for good. Ones for a known food 301 to a
+  // live page with the same data so their visitors aren't lost; the rest get 410 so Google
+  // drops them faster than a 404 (the body is still the normal 404 page).
   if (response.status === 404 && /^\/(foods|compare)\//.test(context.url.pathname)) {
+    const to = removedPageRedirect(context.url.pathname);
+    if (to) return context.redirect(to + (to.includes('?') ? '' : context.url.search), 301);
     return new Response(response.body, { status: 410, statusText: 'Gone', headers: response.headers });
   }
 

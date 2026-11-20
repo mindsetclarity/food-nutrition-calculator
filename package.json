@@ -28,7 +28,8 @@
     "test:resolve-food": "node --experimental-strip-types scripts/test-resolve-food.mjs",
     "test:body-metrics": "node --experimental-strip-types scripts/test-body-metrics.mjs",
     "test:topic-clusters": "node --experimental-strip-types scripts/test-topic-clusters.mjs",
-    "test:food-upgrades": "node --experimental-strip-types scripts/test-food-upgrades.mjs"
+    "test:food-upgrades": "node --experimental-strip-types scripts/test-food-upgrades.mjs",
+    "test:removed-redirects": "node --experimental-strip-types scripts/test-removed-redirects.mjs"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.1",
