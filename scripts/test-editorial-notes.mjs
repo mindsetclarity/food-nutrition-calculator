@@ -42,7 +42,7 @@ for (const [k, n] of Object.entries(FOOD_NOTES)) {
   assert.ok(w >= 100 && w <= 160, `${k}: ${w} words (want 100-160)`);
 }
 
-// Pages without a note are not built, so built pages must never link to them.
+// Compare pages without a note are not built, so food pages must never link to them.
 const { getComparePairsForFood, isIndexedComparePair, isIndexedFood } = await import('../src/lib/compare/comparePairs.ts');
 const { getRelatedFoods } = await import('../src/lib/foods/foodPageData.ts');
 for (const slug of Object.keys(FOOD_NOTES)) {

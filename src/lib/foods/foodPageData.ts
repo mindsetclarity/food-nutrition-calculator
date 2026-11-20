@@ -1,10 +1,12 @@
 import { localFoods } from '../../data/foods';
 import type { FoodItem } from '../nutrition/types';
-import { FOOD_NOTES } from '../../data/foodNotes';
 
-// Only foods with a hand-written note get a page (AdSense rejected the site for thousands
-// of near-identical generated pages). The rest stay in the data for the tools.
-export const isIndexedFood = (slug: string) => Object.hasOwn(FOOD_NOTES, slug);
+// Every food with a slug gets a built, indexed page. They were cut to the 74 with notes for
+// AdSense on 2026-11-13, which removed the site's main search traffic ("calories in X" pages,
+// indexed since June). Traffic growth comes first, so they are back; a hand-written note
+// (src/data/foodNotes.ts) still makes a page stronger.
+const FOOD_SLUGS = new Set(localFoods.map(f => f.slug).filter(Boolean));
+export const isIndexedFood = (slug: string) => FOOD_SLUGS.has(slug);
 
 export function getAllFoodPages(): FoodItem[] {
   return localFoods.filter(food => food.slug);

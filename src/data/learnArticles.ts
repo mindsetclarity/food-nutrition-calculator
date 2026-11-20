@@ -667,7 +667,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
           'Shrimp, 4 oz raw: about 23 g protein, 96 calories',
           'Roast turkey, 1 medium slice (60 g): about 17 g protein, 101 calories'
         ],
-        toolCta: { label: 'See baked chicken breast nutrition', href: '/compare-foods?a=baked-chicken-breast' }
+        toolCta: { label: 'See baked chicken breast nutrition', href: '/foods/baked-chicken-breast' }
       },
       {
         id: 'dairy-and-eggs',
@@ -741,7 +741,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
           'Deli turkey, 2 slices: about 60 calories, 8 g protein',
           'Smoked salmon, 1 oz: about 33 calories, 5 g protein'
         ],
-        toolCta: { label: 'See hard-boiled egg nutrition', href: '/compare-foods?a=hard-boiled-egg' }
+        toolCta: { label: 'See hard-boiled egg nutrition', href: '/foods/hard-boiled-egg' }
       },
       {
         id: 'crunchy',
@@ -924,7 +924,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
           'Dry rice absorbs about twice its weight in water. 100 g of dry white rice becomes roughly 280 g cooked, but it still contains the same calories.',
           'The most common tracking mistake is weighing cooked rice and logging it as dry rice, which nearly triples the calories logged.'
         ],
-        toolCta: { label: 'See uncooked white rice nutrition', href: '/compare-foods?a=dry-white-rice' }
+        toolCta: { label: 'See uncooked white rice nutrition', href: '/foods/dry-white-rice' }
       },
       {
         id: 'per-cup',
@@ -1026,7 +1026,7 @@ export const LEARN_ARTICLES: LearnArticle[] = [
           'Raisins are about 299 calories per 100 g compared with 69 for fresh grapes. One ounce of raisins is about 85 calories, close to a whole cup of fresh grapes (about 104) but in a small handful.',
           'Juice keeps the sugar but loses most of the fiber. A cup of apple juice has a similar number of calories to a medium apple but far less fiber and much less staying power.'
         ],
-        toolCta: { label: 'See raisins nutrition', href: '/compare-foods?a=dried-grape' }
+        toolCta: { label: 'See raisins nutrition', href: '/foods/dried-grape' }
       }
     ],
     faqs: [

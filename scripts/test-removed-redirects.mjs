@@ -1,5 +1,6 @@
 /**
- * Removed food/compare URLs must 301 to a live page, not 410, so their visitors aren't lost.
+ * Every food has a page again, and removed compare URLs 301 to the compare tool, not 410,
+ * so their visitors aren't lost.
  *
  *   node --experimental-strip-types scripts/test-removed-redirects.mjs
  */
@@ -17,20 +18,16 @@ registerHooks({
 });
 
 const { localFoods } = await import('../src/data/foods/index.ts');
-const { categorySlug } = await import('../src/lib/foods/categories.ts');
+const { isIndexedFood } = await import('../src/lib/foods/foodPageData.ts');
 const { removedPageRedirect } = await import('../src/lib/seo/removedPageRedirect.ts');
 
-const [x, y] = localFoods.filter(f => f.slug && f.category);
-assert.equal(removedPageRedirect(`/foods/${x.slug}`), `/foods/category/${categorySlug(x.category)}`);
-assert.equal(removedPageRedirect(`/compare/${x.slug}-vs-${y.slug}`), `/compare-foods?a=${x.slug}&b=${y.slug}`);
-assert.equal(removedPageRedirect('/foods/not-a-food'), null);
-assert.equal(removedPageRedirect('/compare/not-vs-food'), null);
-assert.equal(removedPageRedirect('/foods/category/nope'), null);
+const foods = localFoods.filter(f => f.slug);
+assert.ok(foods.length > 1000, 'expected 1,000+ foods');
+for (const f of foods) assert.ok(isIndexedFood(f.slug), `food page not built: ${f.slug}`);
+assert.equal(isIndexedFood('not-a-food'), false);
 
-// Every removed food has a live category chart to land on.
-const { getAllCategories } = await import('../src/lib/foods/categories.ts');
-const live = new Set(getAllCategories().map(c => c.slug));
-for (const f of localFoods.filter(f => f.slug && f.category)) {
-  assert.ok(live.has(removedPageRedirect(`/foods/${f.slug}`).split('/').pop()), f.slug);
-}
-console.log('removed-page redirects ok');
+const [x, y] = foods;
+assert.equal(removedPageRedirect(`/compare/${x.slug}-vs-${y.slug}`), `/compare-foods?a=${x.slug}&b=${y.slug}`);
+assert.equal(removedPageRedirect('/compare/not-vs-food'), null);
+assert.equal(removedPageRedirect(`/foods/${x.slug}`), null);
+console.log('food pages and removed-page redirects ok');
