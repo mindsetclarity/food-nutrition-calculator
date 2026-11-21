@@ -8,7 +8,7 @@ export const article: LearnArticle = {
   category: 'Food Labels',
   tags: ['salt', 'sodium', 'food labels', 'blood pressure', 'nhs'],
   readingTimeMinutes: 7,
-  updatedAt: '2026-10-23',
+  updatedAt: '2026-11-21',
   relatedTool: { label: 'Food Nutrition Calculator', href: '/calculator' },
   heroSummary: "US guidance says adults should have less than 2,300 mg of sodium a day, and the NHS says adults should have no more than 6 g of salt a day. Those are almost the same limit in different units: 2,300 mg of sodium is about 5.75 g of salt, and 6 g of salt contains about 2,400 mg of sodium. Most people go over without ever touching a salt shaker, because most salt is already in bread, processed meat, cheese, sauces and takeaway food.",
   keyTakeaway: "Adults: under 2,300 mg sodium (US) or no more than 6 g salt (UK), roughly a level teaspoon of salt. Salt = sodium x 2.5. On UK labels, more than 1.5 g of salt per 100 g is high and 0.3 g or less is low.",
@@ -23,7 +23,7 @@ export const article: LearnArticle = {
         "Too much salt raises blood pressure, and high blood pressure increases the risk of heart disease and stroke. That is the reason every major health body sets a ceiling."
       ],
       bullets: [
-        'Dietary Guidelines for Americans 2020-2025: less than 2,300 mg of sodium a day for ages 14 and over',
+        'Dietary Guidelines for Americans 2025-2030: less than 2,300 mg of sodium a day for ages 14 and over (unchanged from the 2020-2025 edition)',
         'FDA Daily Value for sodium: 2,300 mg, used for the % DV on Nutrition Facts labels',
         'NHS (UK): no more than 6 g of salt a day for adults, about a level teaspoon',
         'American Heart Association: no more than 2,300 mg, with an ideal limit of 1,500 mg for most adults',
@@ -32,7 +32,7 @@ export const article: LearnArticle = {
       callout: {
         tone: 'info',
         title: 'Most people are over',
-        body: "The Dietary Guidelines report that average sodium intake in the US is around 3,400 mg a day, well above the 2,300 mg limit."
+        body: "The 2020-2025 Dietary Guidelines reported that average sodium intake in the US is around 3,400 mg a day, well above the 2,300 mg limit."
       }
     },
     {

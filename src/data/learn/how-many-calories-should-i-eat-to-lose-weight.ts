@@ -8,7 +8,7 @@ export const article: LearnArticle = {
   category: 'Calories',
   tags: ['weight loss', 'calorie deficit', 'BMR', 'TDEE', 'calorie target'],
   readingTimeMinutes: 8,
-  updatedAt: '2026-10-23',
+  updatedAt: '2026-11-21',
   relatedTool: { label: 'TDEE Calculator', href: '/tdee-calculator' },
   heroSummary: "To lose weight, most adults should eat about 500 calories a day less than they burn, which for many women lands around 1,400 to 1,800 kcal and for many men around 1,900 to 2,400 kcal. The exact number depends on your size, age, sex and how active you are, so the reliable way to find it is to estimate your maintenance calories first and then subtract from that. Below are the arithmetic, two worked examples and a realistic rate of loss.",
   keyTakeaway: "Estimate your BMR with the Mifflin-St Jeor equation, multiply it by an activity factor to get your maintenance calories, then subtract about 500 kcal a day. Aim to lose 0.5 to 1 kg (1 to 2 lb) a week, as the NHS advises, and do not go very low without medical supervision.",
@@ -72,7 +72,7 @@ export const article: LearnArticle = {
       heading: 'Worked example: a US woman in pounds',
       body: [
         "Sarah is 35, 5 ft 5 in (165 cm) tall and weighs 180 lb (81.6 kg). She works at a desk and walks or does a fitness class two or three times a week, so 'lightly active' fits.",
-        "Her estimated target of about 1,580 kcal a day sits within the range the Dietary Guidelines for Americans 2020-2025 give for adult women's energy needs, which is about 1,600 to 2,400 kcal depending on age and activity."
+        "Her estimated target of about 1,580 kcal a day sits within the range the 2020-2025 edition of the Dietary Guidelines for Americans gave for adult women's energy needs, about 1,600 to 2,400 kcal depending on age and activity. The current 2025-2030 edition no longer lists ranges by sex; it says the calories you need depend on your age, sex, height, weight and activity, which is exactly what this calculation uses."
       ],
       bullets: [
         'BMR: (10 x 81.6) + (6.25 x 165) - (5 x 35) - 161',
@@ -108,7 +108,7 @@ export const article: LearnArticle = {
       bullets: [
         'NHS: around 2,000 kcal a day for women and 2,500 kcal for men to maintain weight',
         'NHS weight loss rule of thumb: no more than about 1,400 kcal a day for women and 1,900 kcal for men',
-        'Dietary Guidelines for Americans 2020-2025: about 1,600 to 2,400 kcal a day for adult women and 2,000 to 3,000 kcal for adult men',
+        'Dietary Guidelines for Americans 2020-2025: about 1,600 to 2,400 kcal a day for adult women and 2,000 to 3,000 kcal for adult men (the 2025-2030 edition gives no ranges, only that needs depend on age, sex, height, weight and activity)',
         'UK reference intake and FDA Daily Values: both based on 2,000 kcal for label percentages'
       ]
     },
@@ -158,5 +158,5 @@ export const article: LearnArticle = {
       answer: 'The NHS figure is a general rule of thumb for an average man. A taller, heavier or more active man burns more, so his personal deficit target can be higher and still produce steady weight loss.'
     }
   ],
-  relatedSlugs: ['what-is-a-calorie-deficit', 'tdee-explained', 'how-to-track-calories-accurately']
+  relatedSlugs: ['new-year-weight-loss-plan', 'what-is-a-calorie-deficit', 'tdee-explained', 'how-to-track-calories-accurately']
 };

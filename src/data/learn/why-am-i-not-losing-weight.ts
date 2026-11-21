@@ -162,5 +162,5 @@ export const article: LearnArticle = {
       answer: "An underactive thyroid can cause weight gain and make loss harder. It usually comes with other symptoms such as tiredness, feeling cold and constipation. A GP can check it with a blood test, and treatment helps."
     }
   ],
-  relatedSlugs: ['how-to-track-calories-accurately', 'tdee-explained', 'what-is-a-calorie-deficit']
+  relatedSlugs: ['new-year-weight-loss-plan', 'how-to-track-calories-accurately', 'tdee-explained', 'what-is-a-calorie-deficit']
 };

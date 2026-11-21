@@ -8,12 +8,12 @@ export const article: LearnArticle = {
   category: 'Macros',
   tags: ['protein', 'macros', 'strength training', 'healthy ageing'],
   readingTimeMinutes: 8,
-  updatedAt: '2026-10-23',
+  updatedAt: '2026-11-21',
   relatedTool: { label: 'Protein Calculator', href: '/protein-calculator' },
-  heroSummary: "Most healthy adults need at least 0.8 g of protein per kilogram of body weight a day (about 0.36 g per pound), which is the US RDA; the UK reference figure is a little lower at 0.75 g/kg. People who lift weights, and adults over about 65, often do better with more, roughly 1.0 to 2.0 g/kg depending on the goal. This guide shows where those numbers come from, how to work out your own target in kilos, pounds or stone, and what a day of food that hits it actually looks like.",
-  keyTakeaway: "Multiply your weight in kg by 0.8 (or your weight in lb by 0.36) for the basic minimum. A 150 lb (68 kg) adult needs about 54 g a day. If you strength train, aim for 1.2 to 2.0 g/kg; if you are over 65, 1.0 to 1.2 g/kg is a common recommendation.",
+  heroSummary: "Most healthy adults need at least 0.8 g of protein per kilogram of body weight a day (about 0.36 g per pound), which is the US RDA; the UK reference figure is a little lower at 0.75 g/kg. The 2025-2030 Dietary Guidelines for Americans, published in January 2026, set a higher everyday goal of 1.2 to 1.6 g/kg. People who lift weights, and adults over about 65, often do better with more than the minimum, roughly 1.0 to 2.0 g/kg depending on the goal. This guide shows where those numbers come from, how to work out your own target in kilos, pounds or stone, and what a day of food that hits it actually looks like.",
+  keyTakeaway: "Multiply your weight in kg by 0.8 (or your weight in lb by 0.36) for the basic minimum. A 150 lb (68 kg) adult needs about 54 g a day. The new US Dietary Guidelines goal of 1.2 to 1.6 g/kg puts the same person at about 82 to 109 g. If you strength train, aim for 1.2 to 2.0 g/kg; if you are over 65, 1.0 to 1.2 g/kg is a common recommendation.",
   seoTitle: 'How Much Protein Do I Need a Day? (Per kg and Per lb) | Food Nutrition Calculator',
-  seoDescription: 'US RDA is 0.8 g protein per kg (0.36 g per lb); the UK uses 0.75 g/kg. Higher targets for lifting and over-65s, worked examples and a sample day.',
+  seoDescription: 'US RDA is 0.8 g protein per kg; the new 2025-2030 US guidelines say 1.2 to 1.6 g/kg; the UK uses 0.75 g/kg. Targets per kg and per lb, with a sample day.',
   sections: [
     {
       id: 'official-recommendations',
@@ -21,10 +21,12 @@ export const article: LearnArticle = {
       body: [
         'In the US, the National Academies (formerly the Institute of Medicine) set the Recommended Dietary Allowance (RDA) for protein at 0.8 g per kilogram of body weight per day for adults. Expressed as round numbers for a reference adult, that works out at 46 g a day for women and 56 g for men.',
         'In the UK, the Reference Nutrient Intake (RNI) for adults is 0.75 g per kilogram per day, which gives about 45 g for women and 55.5 g for men aged 19 to 50. The difference from the US figure is small and comes from slightly different assumptions, not a disagreement about how much protein people need.',
+        'The 2025-2030 Dietary Guidelines for Americans, released in January 2026, go further. They ask people to prioritise protein foods at every meal and set a protein goal of "1.2-1.6 grams of protein per kilogram of body weight per day, adjusting as needed based on your individual caloric requirements." The RDA has not changed: 0.8 g/kg is still the amount that meets the basic needs of nearly all healthy adults, while the guidelines goal is a higher everyday target. Some nutrition researchers have questioned whether everyone needs that much, but for most people it is easy and safe to reach with ordinary food.',
         'You will also see a single "50 g" figure on food packaging in both countries. On UK front-of-pack labels the reference intake (RI) for protein is 50 g, and the FDA Daily Value for protein on US Nutrition Facts labels is also 50 g. These are labelling benchmarks based on a 2,000 calorie diet, not personal targets. A tall man or someone who trains hard will need more.'
       ],
       bullets: [
         'US RDA (National Academies): 0.8 g/kg/day for adults',
+        'Dietary Guidelines for Americans 2025-2030: 1.2 to 1.6 g/kg/day',
         'UK RNI (Department of Health): 0.75 g/kg/day for adults',
         'UK front-of-pack reference intake: 50 g/day',
         'FDA Daily Value on US labels: 50 g/day',
@@ -143,6 +145,10 @@ export const article: LearnArticle = {
     {
       question: 'Is 0.8 g per kg enough protein?',
       answer: 'For most healthy, sedentary adults, yes. The US RDA is designed to meet the needs of nearly all healthy people. It may be on the low side if you train hard, are dieting to lose fat or are over 65.'
+    },
+    {
+      question: 'What do the new 2025-2030 Dietary Guidelines say about protein?',
+      answer: 'The 2025-2030 Dietary Guidelines for Americans, released in January 2026, recommend prioritising protein at every meal and set a goal of 1.2 to 1.6 g per kg of body weight a day. For a 150 lb (68 kg) adult that is about 82 to 109 g. The RDA of 0.8 g/kg is unchanged as the basic minimum.'
     },
     {
       question: 'Can you eat too much protein?',

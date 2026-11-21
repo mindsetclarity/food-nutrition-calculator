@@ -16,7 +16,11 @@ const description = 'Free protein calculator. Enter your weight, activity and go
 const faqs = [
   {
     question: 'How much protein do I need a day?',
-    answer: 'The US RDA is 0.8 g per kg of body weight, which is the amount that prevents deficiency in most adults. Active people, people losing weight and people building muscle usually do better with more, roughly 1.4 to 2.0 g per kg.',
+    answer: 'The US RDA is 0.8 g per kg of body weight, which is the amount that prevents deficiency in most adults. The 2025-2030 Dietary Guidelines for Americans set a higher everyday goal of 1.2 to 1.6 g per kg. Active people, people losing weight and people building muscle usually do better with more, roughly 1.4 to 2.0 g per kg.',
+  },
+  {
+    question: 'What do the new US Dietary Guidelines say about protein?',
+    answer: 'The 2025-2030 Dietary Guidelines for Americans, released in January 2026, recommend protein at every meal and a goal of 1.2 to 1.6 g per kg of body weight a day, adjusted for your calorie needs. For a 150 lb (68 kg) adult that is about 82 to 109 g a day.',
   },
   {
     question: 'Can I eat too much protein?',
@@ -59,7 +63,7 @@ const link = 'text-emerald-700 font-semibold hover:underline';
           There is no single correct protein number, so this calculator gives a range, based on your body weight and what you are trying to do:
         </p>
         <ul class="list-disc pl-6 space-y-2">
-          <li><strong class="text-gray-900">Less active, maintaining: 0.8 to 1.2 g per kg.</strong> This starts at the US RDA of 0.8 g per kg, the minimum for most adults, not necessarily the best amount. Our macro calculator uses a higher figure because it assumes regular exercise.</li>
+          <li><strong class="text-gray-900">Less active, maintaining: 0.8 to 1.2 g per kg.</strong> This starts at the US RDA of 0.8 g per kg, the minimum for most adults, not necessarily the best amount, and reaches the 1.2 g per kg where the 2025-2030 Dietary Guidelines for Americans goal of 1.2 to 1.6 g per kg begins. Our macro calculator uses a higher figure because it assumes regular exercise.</li>
           <li><strong class="text-gray-900">Active, maintaining: 1.4 to 1.6 g per kg.</strong> This sits within the 1.4 to 2.0 g per kg that the International Society of Sports Nutrition suggests for people who exercise.</li>
           <li><strong class="text-gray-900">Losing weight: 1.6 to 2.0 g per kg.</strong> Extra protein helps you hold on to muscle in a calorie deficit, and it is the most filling of the three macronutrients.</li>
           <li><strong class="text-gray-900">Building muscle: 1.6 to 2.2 g per kg.</strong> Research reviews suggest that the benefit of more protein for muscle tends to level off at around 1.6 g per kg, with 2.2 g per kg as a generous upper limit.</li>

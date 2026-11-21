@@ -8,22 +8,23 @@ export const article: LearnArticle = {
   category: 'Food Labels',
   tags: ['sugar', 'added sugar', 'free sugars', 'food labels', 'nhs'],
   readingTimeMinutes: 7,
-  updatedAt: '2026-10-23',
+  updatedAt: '2026-11-21',
   relatedTool: { label: 'Food Nutrition Calculator', href: '/calculator' },
-  heroSummary: "In the US, the Dietary Guidelines for Americans advise keeping added sugars under 10% of calories, which is 50 g a day on a 2,000 kcal diet and matches the FDA Daily Value. In the UK, the NHS says adults should have no more than 30 g of free sugars a day, about 7 teaspoons. Neither limit applies to the sugar naturally found in whole fruit, vegetables or plain milk, so the number on the label is not always the number that counts.",
-  keyTakeaway: "US: under 50 g of added sugars a day at 2,000 kcal. UK: no more than 30 g of free sugars for adults and children aged 11 and over. One teaspoon of sugar is about 4 g, so a single 12 oz can of regular cola, at about 37 g, already passes the UK limit.",
+  heroSummary: "In the US, the 2025-2030 Dietary Guidelines for Americans, released in January 2026, say no amount of added sugar is recommended and that one meal should contain no more than 10 g. US food labels still use a Daily Value of 50 g a day. In the UK, the NHS says adults should have no more than 30 g of free sugars a day, about 7 teaspoons. Neither limit applies to the sugar naturally found in whole fruit, vegetables or plain milk, so the number on the label is not always the number that counts.",
+  keyTakeaway: "US: no more than 10 g of added sugars in any one meal under the 2025-2030 guidelines, and labels still count against a 50 g Daily Value. UK: no more than 30 g of free sugars for adults and children aged 11 and over. One teaspoon of sugar is about 4 g, so a single 12 oz can of regular cola, at about 37 g, already passes the UK limit.",
   seoTitle: 'How Much Sugar Per Day? US and UK Limits in Grams and Teaspoons | Food Nutrition Calculator',
-  seoDescription: 'Daily sugar limits: under 50 g added sugar (US, 2,000 kcal) or 30 g free sugars (NHS, adults). What counts, hidden sources and grams to teaspoons.',
+  seoDescription: 'Sugar limits: the 2025-2030 US guidelines say no more than 10 g added sugar per meal; labels use 50 g a day; the NHS says 30 g. Grams to teaspoons.',
   sections: [
     {
       id: 'the-limits',
       heading: 'The official limits',
       body: [
         "Health bodies agree that sugar added to food is the part to limit, but they draw the line in slightly different places and use slightly different definitions.",
-        "Sugar provides about 4 calories per gram, so 10% of a 2,000 kcal day is 200 kcal, or 50 g."
+        "The US guidance changed in January 2026. The previous Dietary Guidelines (2020-2025) set the limit at under 10% of calories, which is 50 g on a 2,000 kcal day (sugar has about 4 calories per gram, so 10% of 2,000 kcal is 200 kcal, or 50 g). The 2025-2030 edition is stricter: it says no amount of added sugar is part of a healthy diet and caps any single meal at 10 g. The 50 g Daily Value on US labels has not changed."
       ],
       bullets: [
-        'US Dietary Guidelines for Americans 2020-2025: added sugars under 10% of calories per day from age 2, and avoid added sugars entirely for children under 2',
+        'US Dietary Guidelines for Americans 2025-2030: no amount of added sugar is recommended, and one meal should contain no more than 10 g',
+        'US Dietary Guidelines for children: avoid added sugars in infancy and early childhood (to age 4); no amount recommended for ages 5 to 10',
         'FDA Daily Value for added sugars: 50 g, based on a 2,000 kcal diet',
         'NHS (UK): no more than 30 g of free sugars a day for adults and children 11 and over',
         'SACN (UK scientific advisers): free sugars should make up no more than 5% of daily energy from age 2, which is where the NHS figures come from',
@@ -58,7 +59,7 @@ export const article: LearnArticle = {
       heading: 'Limits for children',
       body: [
         "The NHS sets lower free-sugar limits for younger children, based on their smaller energy needs.",
-        "In the US, the Dietary Guidelines advise no added sugars at all before age 2, and the under-10% guideline from age 2 onward. The American Heart Association suggests less than 25 g a day for children aged 2 to 18."
+        "In the US, the 2025-2030 Dietary Guidelines advise avoiding added sugars through infancy and early childhood (birth to 4 years) and say no amount is recommended for children aged 5 to 10. The American Heart Association suggests less than 25 g a day for children aged 2 to 18."
       ],
       bullets: [
         'Children 4 to 6 years: no more than 19 g of free sugars a day (about 5 teaspoons)',
@@ -142,8 +143,12 @@ export const article: LearnArticle = {
   ],
   faqs: [
     {
+      question: 'What do the new US Dietary Guidelines say about sugar?',
+      answer: 'The 2025-2030 Dietary Guidelines for Americans, released in January 2026, say no amount of added sugar or low-calorie sweetener is recommended, and that one meal should contain no more than 10 g of added sugars. Children should avoid added sugars up to age 4, and none is recommended for ages 5 to 10. This replaces the earlier limit of under 10% of calories.'
+    },
+    {
       question: 'Is 50 g of sugar a day too much?',
-      answer: "For added sugars, 50 g is the FDA Daily Value and the US guideline limit at 2,000 kcal, so it is the upper end in the US. The NHS limit for free sugars is lower, at 30 g for adults. Sugar in whole fruit and plain milk does not count toward either."
+      answer: "For added sugars, 50 g is the FDA Daily Value on US labels, but the 2025-2030 US Dietary Guidelines are stricter: no more than 10 g in any one meal, and no amount is recommended. The NHS limit for free sugars is lower, at 30 g for adults. Sugar in whole fruit and plain milk does not count toward either."
     },
     {
       question: 'Does sugar in fruit count?',

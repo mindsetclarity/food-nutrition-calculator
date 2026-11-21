@@ -150,5 +150,5 @@ export const article: LearnArticle = {
       answer: 'Most people see a drop in the first week, much of it water. Fat loss trends usually become clear after two to four weeks of consistent tracking.'
     }
   ],
-  relatedSlugs: ['how-many-calories-should-i-eat-to-lose-weight', 'tdee-explained', 'why-am-i-not-losing-weight']
+  relatedSlugs: ['new-year-weight-loss-plan', 'how-many-calories-should-i-eat-to-lose-weight', 'tdee-explained', 'why-am-i-not-losing-weight']
 };

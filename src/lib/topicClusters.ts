@@ -28,7 +28,7 @@ export const TOPIC_CLUSTERS: ({ id: string } & Related)[] = [
   {
     id: 'weight-loss',
     tools: ['/tdee-calculator', '/calorie-deficit-calculator', '/calories-burned-calculator'],
-    articles: ['tdee-explained', 'what-is-a-calorie-deficit', 'how-many-calories-should-i-eat-to-lose-weight', 'why-am-i-not-losing-weight', 'how-to-track-calories-accurately', 'low-calorie-snacks-under-100-calories'],
+    articles: ['tdee-explained', 'what-is-a-calorie-deficit', 'how-many-calories-should-i-eat-to-lose-weight', 'why-am-i-not-losing-weight', 'how-to-track-calories-accurately', 'low-calorie-snacks-under-100-calories', 'new-year-weight-loss-plan'],
     charts: ['snacks', 'fruits', 'vegetables'],
   },
   {
@@ -86,6 +86,9 @@ export const PINNED: Record<string, Partial<Related>> = {
   'calories-in-rice-cooked-vs-uncooked': { charts: ['grains-cereals'] },
   'high-protein-foods-list': { charts: ['protein-foods'] },
   'low-calorie-snacks-under-100-calories': { charts: ['snacks'] },
+  // tools: the New Year plan first on the weight-loss calculators through the January peak
+  '/calorie-deficit-calculator': { articles: ['new-year-weight-loss-plan'] },
+  '/tdee-calculator': { articles: ['new-year-weight-loss-plan'] },
 };
 
 const GROUP: Record<RelatedKind, keyof Related> = { tool: 'tools', article: 'articles', chart: 'charts' };
