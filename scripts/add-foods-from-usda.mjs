@@ -84,6 +84,7 @@ const SPEC = {
     ['Canned Pears', 'pears canned juice'],
   ]},
   vegetables: { exportName: 'vegetablesFoods', category: 'Vegetables', foods: [
+    ['Glazed Carrots', '=Carrots, glazed, cooked', /cup/i],
     ['Romaine Lettuce', 'lettuce cos romaine raw'], ['Iceberg Lettuce', 'lettuce iceberg raw'], ['Kale', 'kale raw'],
     ['Cabbage', '=Cabbage, green, raw', /cup/i], ['Cauliflower', 'cauliflower raw'], ['Brussels Sprouts', 'brussels sprouts cooked'],
     ['Asparagus', 'asparagus cooked', /cup/i], ['Green Beans', '=Green beans, fresh, cooked, no added fat'], ['Green Peas', 'peas green cooked'],
@@ -141,6 +142,7 @@ const SPEC = {
     ['Pickled Beets', 'beets pickled', /cup/i],
   ]},
   proteinfoods: { exportName: 'proteinfoodsFoods', category: 'Protein Foods', foods: [
+    ['Roast Beef', '=Beef, roast', { unit: 'oz', label: '3 oz', grams: 85 }],
     ['Bacon', 'pork bacon cooked', /slice/i], ['Deli Turkey', 'turkey deli'], ['Ham', 'ham sliced'],
     ['Pork Sausage', 'pork sausage'], ['Hot Dog (Frankfurter)', 'frankfurter beef', /frank|link|medium/i], ['Lamb Chop', '=Lamb, chop', { unit: 'oz', label: '3 oz', grams: 85 }],
     ['Baked Cod', 'cod baked'], ['Tilapia', 'tilapia cooked'],
@@ -272,6 +274,7 @@ const SPEC = {
     ['Strawberry Pancakes', 'pancakes fruit', /medium|pancake/i],
   ]},
   bakery: { exportName: 'bakeryFoods', category: 'Bread & Bakery', foods: [
+    ['Yorkshire Pudding (Popover)', '=Popover'],
     ['White Bread', 'bread white'], ['Whole Wheat Bread', 'bread whole wheat', /medium or regular slice/i], ['Sourdough Bread', 'bread sourdough'],
     ['Rye Bread', 'bread rye'], ['Multigrain Bread', 'bread multigrain'], ['Pita Bread', 'bread pita'],
     ['Flour Tortilla', 'tortilla flour'], ['Corn Tortilla', 'tortilla corn'], ['Hamburger Bun', 'roll hamburger'],
@@ -493,6 +496,7 @@ const SPEC = {
     ['Rice Crispy Treat', '=Cookie, marshmallow, with rice cereal, no bake'],
   ]},
   desserts: { exportName: 'dessertsFoods', category: 'Desserts', foods: [
+    ['Fruitcake (Christmas Cake)', '=Cake, fruitcake, commercially prepared'], ['Gingerbread Cake', '=Cake or cupcake, gingerbread', /piece/i],
     ['Vanilla Ice Cream', 'ice cream vanilla'], ['Chocolate Ice Cream', 'ice cream chocolate'], ['Frozen Yogurt', 'frozen yogurt', /cup|small/i],
     ['Chocolate Chip Cookie', 'cookie chocolate chip', /medium/i], ['Oatmeal Raisin Cookie', 'cookie oatmeal raisin'], ['Brownie', '=Cookie, brownie, without icing'],
     ['Chocolate Cake with Frosting', '=Cake or cupcake, chocolate with chocolate icing, bakery', /piece|slice/i], ['Cheesecake', 'cheesecake plain', /slice|piece/i], ['Apple Pie', 'pie apple'],
@@ -556,6 +560,7 @@ const SPEC = {
     ['Chocolate-Covered Fruit', '=Fruit, chocolate covered'],
   ]},
   beverages: { exportName: 'beveragesFoods', category: 'Beverages', foods: [
+    ['Cream Liqueur (Irish Cream)', '=Liqueur, cream', /shot/i],
     ['Black Coffee', 'coffee brewed', /cup|mug/i], ['Latte (Nonfat Milk)', '=Coffee, Latte, nonfat'], ['Cappuccino', 'cappuccino'], ['Mocha', 'coffee mocha'],
     ['Black Tea', '=Tea, hot, leaf, black', /cup/i], ['Cola', 'soft drink cola', /can/i], ['Diet Cola', '=Soft drink, cola, diet', /can/i], ['Lemonade', '=Lemonade, fruit flavored drink', { unit: 'cup', label: '1 cup', grams: 248 }],
     ['Sports Drink', 'sports drink'], ['Energy Drink', 'energy drink'], ['Beer', 'beer', /can|bottle|12/i], ['Light Beer', 'beer light', /can|bottle|12/i],

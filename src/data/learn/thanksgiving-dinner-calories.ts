@@ -161,5 +161,5 @@ export const article: LearnArticle = {
       answer: 'Not meaningfully from one meal. A day 1,000 calories over your needs adds well under half a pound of fat. A jump on the scale the next day is mostly water from salt and carbohydrates and usually goes within a few days.'
     }
   ],
-  relatedSlugs: ['how-to-calculate-calories-in-a-meal', 'calories-in-beer-wine-and-spirits', 'what-is-a-calorie-deficit']
+  relatedSlugs: ['christmas-dinner-calories', 'how-to-calculate-calories-in-a-meal', 'calories-in-beer-wine-and-spirits', 'what-is-a-calorie-deficit']
 };

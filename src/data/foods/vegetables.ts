@@ -5796,5 +5796,69 @@ export const vegetablesFoods: FoodItem[] = [
       "fdcId": 2710071,
       "dataType": "Survey (FNDDS)"
     }
+  },
+  {
+    "id": "usda_2709677",
+    "slug": "glazed-carrots",
+    "name": "Glazed Carrots",
+    "searchName": "glazed carrots",
+    "displayName": "Glazed Carrots",
+    "aliases": [
+      "glazed carrots",
+      "carrots, glazed, cooked"
+    ],
+    "category": "Vegetables",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "cup",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 160,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "baby",
+        "label": "1 baby carrot",
+        "grams": 10
+      },
+      {
+        "id": "serve_3",
+        "unit": "piece/slice",
+        "label": "1 piece/slice",
+        "grams": 5
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 97,
+      "protein": 0.9,
+      "carbohydrates": 17.3,
+      "fat": 2.78,
+      "fiber": 2.9,
+      "sugar": 12.1,
+      "sodium": 214,
+      "saturatedFat": 1.39,
+      "cholesterol": 7,
+      "potassium": 270
+    },
+    "tags": [
+      "vegetables"
+    ],
+    "compareGroup": "Vegetables",
+    "usda": {
+      "fdcId": 2709677,
+      "dataType": "Survey (FNDDS)"
+    }
   }
 ];

@@ -15,7 +15,7 @@ tool; numbers come from the site's data, and outside figures (NHS, USDA, FDA) ar
 | # | Target search | Angle | Status |
 |---|---|---|---|
 | 1 | thanksgiving dinner calories | Dish-by-dish table, typical vs lighter plate, pies compared | Draft written 2026-11-16, publish by 2026-11-20 |
-| 2 | christmas dinner calories (UK) | Roast turkey, roast potatoes, pigs in blankets, Yorkshire pudding, Christmas pudding, mince pies | Needs foods added first: roast potatoes, Yorkshire pudding, pigs in blankets, Christmas pudding. Publish by 2026-12-05 |
+| 2 | christmas dinner calories (UK) | Roast turkey, roast potatoes, pigs in blankets, Yorkshire pudding, Christmas pudding, mince pies | Written 2026-11-20 with 6 new foods (Yorkshire pudding, Christmas cake, gingerbread cake, Irish cream, glazed carrots, roast beef). No USDA data for Christmas pudding; pigs in blankets built from sausage + bacon |
 | 3 | how many calories in a banana | By size (small to extra large), ripe vs green, vs other fruit | |
 | 4 | calories in chicken breast | Raw vs cooked, per 100 g and per oz, skin on vs off, thigh compared | |
 | 5 | calories in pasta | Dry vs cooked weight, portion sizes (US cup, UK 75 g dry), sauces | |

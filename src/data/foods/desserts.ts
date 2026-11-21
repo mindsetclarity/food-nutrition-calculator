@@ -5546,5 +5546,121 @@ export const dessertsFoods: FoodItem[] = [
       "fdcId": 2709295,
       "dataType": "Survey (FNDDS)"
     }
+  },
+  {
+    "id": "usda_174939",
+    "slug": "fruitcake-christmas-cake",
+    "name": "Fruitcake (Christmas Cake)",
+    "searchName": "fruitcake (christmas cake)",
+    "displayName": "Fruitcake (Christmas Cake)",
+    "aliases": [
+      "fruitcake (christmas cake)",
+      "cake, fruitcake, commercially prepared"
+    ],
+    "category": "Desserts",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 piece",
+        "grams": 43,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "oz",
+        "label": "1 oz",
+        "grams": 28.4
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 324,
+      "protein": 2.9,
+      "carbohydrates": 61.6,
+      "fat": 9.1,
+      "fiber": 3.7,
+      "sugar": 27.42,
+      "sodium": 101,
+      "saturatedFat": 1.05,
+      "cholesterol": 5,
+      "potassium": 153
+    },
+    "tags": [
+      "desserts"
+    ],
+    "compareGroup": "Desserts",
+    "usda": {
+      "fdcId": 174939,
+      "dataType": "SR Legacy"
+    }
+  },
+  {
+    "id": "usda_2707876",
+    "slug": "gingerbread-cake",
+    "name": "Gingerbread Cake",
+    "searchName": "gingerbread cake",
+    "displayName": "Gingerbread Cake",
+    "aliases": [
+      "gingerbread cake",
+      "cake or cupcake, gingerbread"
+    ],
+    "category": "Desserts",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece/slice",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece/slice",
+        "label": "1 piece/slice, any size",
+        "grams": 115,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 100
+      },
+      {
+        "id": "serve_3",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 276,
+      "protein": 3.64,
+      "carbohydrates": 45.3,
+      "fat": 9.16,
+      "fiber": 1,
+      "sugar": 28.3,
+      "sodium": 411,
+      "saturatedFat": 2.35,
+      "cholesterol": 32,
+      "potassium": 217
+    },
+    "tags": [
+      "desserts"
+    ],
+    "compareGroup": "Desserts",
+    "usda": {
+      "fdcId": 2707876,
+      "dataType": "Survey (FNDDS)"
+    }
   }
 ];

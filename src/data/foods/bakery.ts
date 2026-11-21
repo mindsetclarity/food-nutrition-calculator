@@ -2414,5 +2414,57 @@ export const bakeryFoods: FoodItem[] = [
       "fdcId": 2707851,
       "dataType": "Survey (FNDDS)"
     }
+  },
+  {
+    "id": "usda_2707846",
+    "slug": "yorkshire-pudding-popover",
+    "name": "Yorkshire Pudding (Popover)",
+    "searchName": "yorkshire pudding (popover)",
+    "displayName": "Yorkshire Pudding (Popover)",
+    "aliases": [
+      "yorkshire pudding (popover)",
+      "popover"
+    ],
+    "category": "Bread & Bakery",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 popover",
+        "grams": 31,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 268,
+      "protein": 11,
+      "carbohydrates": 35.3,
+      "fat": 9.2,
+      "fiber": 1.1,
+      "sugar": 4.04,
+      "sodium": 284,
+      "saturatedFat": 4.14,
+      "cholesterol": 150,
+      "potassium": 221
+    },
+    "tags": [
+      "bread-bakery"
+    ],
+    "compareGroup": "Bread & Bakery",
+    "usda": {
+      "fdcId": 2707846,
+      "dataType": "Survey (FNDDS)"
+    }
   }
 ];

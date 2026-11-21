@@ -6383,5 +6383,75 @@ export const proteinfoodsFoods: FoodItem[] = [
       "fdcId": 167874,
       "dataType": "SR Legacy"
     }
+  },
+  {
+    "id": "usda_2705847",
+    "slug": "roast-beef",
+    "name": "Roast Beef",
+    "searchName": "roast beef",
+    "displayName": "Roast Beef",
+    "aliases": [
+      "roast beef",
+      "beef, roast"
+    ],
+    "category": "Protein Foods",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "oz",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "oz",
+        "label": "3 oz",
+        "grams": 85,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "regular/thin",
+        "label": "1 regular/thin slice",
+        "grams": 60
+      },
+      {
+        "id": "serve_3",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 135
+      },
+      {
+        "id": "serve_4",
+        "unit": "cubic",
+        "label": "1 cubic inch",
+        "grams": 17
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 206,
+      "protein": 29.1,
+      "carbohydrates": 0,
+      "fat": 9.72,
+      "fiber": 0,
+      "sugar": 0,
+      "sodium": 372,
+      "saturatedFat": 3.8,
+      "cholesterol": 89,
+      "potassium": 332
+    },
+    "tags": [
+      "protein-foods"
+    ],
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 2705847,
+      "dataType": "Survey (FNDDS)"
+    }
   }
 ];

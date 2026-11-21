@@ -4719,5 +4719,75 @@ export const beveragesFoods: FoodItem[] = [
       "fdcId": 2709187,
       "dataType": "Survey (FNDDS)"
     }
+  },
+  {
+    "id": "usda_2710624",
+    "slug": "cream-liqueur-irish-cream",
+    "name": "Cream Liqueur (Irish Cream)",
+    "searchName": "cream liqueur (irish cream)",
+    "displayName": "Cream Liqueur (Irish Cream)",
+    "aliases": [
+      "cream liqueur (irish cream)",
+      "liqueur, cream"
+    ],
+    "category": "Beverages",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "shot",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "shot",
+        "label": "1 shot",
+        "grams": 45,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "drink",
+        "label": "1 drink",
+        "grams": 68
+      },
+      {
+        "id": "serve_3",
+        "unit": "jigger",
+        "label": "1 jigger",
+        "grams": 45
+      },
+      {
+        "id": "serve_4",
+        "unit": "fl",
+        "label": "1 fl oz",
+        "grams": 30
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 296,
+      "protein": 0.15,
+      "carbohydrates": 33.5,
+      "fat": 2.74,
+      "fiber": 0,
+      "sugar": 33.5,
+      "sodium": 2,
+      "saturatedFat": 1.51,
+      "cholesterol": 8,
+      "potassium": 9
+    },
+    "tags": [
+      "beverages"
+    ],
+    "compareGroup": "Beverages",
+    "usda": {
+      "fdcId": 2710624,
+      "dataType": "Survey (FNDDS)"
+    }
   }
 ];

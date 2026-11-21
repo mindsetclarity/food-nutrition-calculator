@@ -19,7 +19,7 @@ export const CATEGORY_INTROS: Record<string, CategoryIntro> = {
   },
   vegetables: {
     heading: 'Vegetable Calorie Chart',
-    metaDescription: 'Calories, protein, carbs and fat for 104 vegetables per 100 g, from watercress to dried seaweed. See which ones are lowest and what cooking changes.',
+    metaDescription: 'Calories, protein, carbs and fat for 105 vegetables per 100 g, from watercress to dried seaweed. See which ones are lowest and what cooking changes.',
     body: [
       "Vegetables are the easiest way to add volume to a meal for very few calories. Leafy greens and salad vegetables, including watercress, bok choy, iceberg lettuce and cucumber, all come in at about 15 calories per 100 g or less, so you can eat them almost freely.",
       "The higher end of this chart shows what changes the numbers. Starchy vegetables such as sweet potato have more energy, at 86 calories per 100 g. Removing water concentrates calories, which is why sun-dried tomatoes reach 258 and dried seaweed 298. Added oil has a similar effect: home fries and potato skins are close to 200 calories per 100 g, far more than a plain potato.",
@@ -28,7 +28,7 @@ export const CATEGORY_INTROS: Record<string, CategoryIntro> = {
   },
   'protein-foods': {
     heading: 'Protein Foods Calorie Chart',
-    metaDescription: 'Calories, protein and fat for 109 meats, fish and seafood per 100 g, from oysters to pepperoni. Find the leanest protein for your calories.',
+    metaDescription: 'Calories, protein and fat for 110 meats, fish and seafood per 100 g, from oysters to pepperoni. Find the leanest protein for your calories.',
     body: [
       "This chart covers meat, poultry, fish and seafood, and the most useful way to read it is protein against calories. Seafood tends to be the leanest: oysters, crab, shrimp and pollock are all under 90 calories per 100 g. Most white fish and skinless chicken follow, at about 90 to 175.",
       "At the other end, the calories mostly come from fat rather than extra protein. Pork belly has 404 calories per 100 g, bacon 468 and pepperoni 504. Beef jerky is a special case at 410: it is high in calories because it has been dried, but it also has a lot of protein. Tuna shows how much the preparation matters, since tuna canned in oil has 198 calories per 100 g, far more than tuna in water.",
@@ -82,7 +82,7 @@ export const CATEGORY_INTROS: Record<string, CategoryIntro> = {
   },
   'bread-bakery': {
     heading: 'Bread and Bakery Calorie Chart',
-    metaDescription: 'Calories, protein, carbs and fat for 40 breads and bakery items per 100 g, from corn tortillas to taco shells. Compare breads by weight, not by slice.',
+    metaDescription: 'Calories, protein, carbs and fat for 41 breads and bakery items per 100 g, from corn tortillas to taco shells. Compare breads by weight, not by slice.',
     body: [
       "Most ordinary breads are surprisingly close per 100 g, roughly 220 to 300 calories. Corn tortillas are near the low end at 218, and pita bread is 275. What really separates one bread from another is how much you eat, since a thin slice, a large bagel and a thick slice of bakery bread can differ several times over.",
       "The high end of this chart is about fat and low moisture. Brioche, with its butter and eggs, reaches 427 calories per 100 g, and dried or fried items are higher still: croutons have 465 and hard taco shells 476.",
@@ -118,7 +118,7 @@ export const CATEGORY_INTROS: Record<string, CategoryIntro> = {
   },
   desserts: {
     heading: 'Desserts Calorie Chart',
-    metaDescription: 'Calories, protein, carbs and fat for 91 desserts per 100 g, from popsicles and sorbet to chocolate and toffee. Compare sweet treats by weight.',
+    metaDescription: 'Calories, protein, carbs and fat for 93 desserts per 100 g, from popsicles and sorbet to chocolate and toffee. Compare sweet treats by weight.',
     body: [
       "Desserts range from light, watery treats to some of the most energy-dense foods around. Popsicles have 79 calories per 100 g, custard 97 and sorbet 110. At the other end are chocolate and toffee, with milk chocolate at 535 and toffee at 560, along with shortbread at 514.",
       "As a rule, the more water a dessert contains, the lighter it is per bite. Fruit-based and frozen desserts tend to be lower, while baked goods with butter, and sweets with very little moisture, are higher. Blueberry pie at 300 and cupcakes at 352 sit in between.",
@@ -127,7 +127,7 @@ export const CATEGORY_INTROS: Record<string, CategoryIntro> = {
   },
   beverages: {
     heading: 'Drinks Calorie Chart',
-    metaDescription: 'Calories, carbs and more for 76 drinks per 100 g, from water and coffee to soda, beer, wine, spirits and milkshakes. See what you are really drinking.',
+    metaDescription: 'Calories, carbs and more for 77 drinks per 100 g, from water and coffee to soda, beer, wine, spirits and milkshakes. See what you are really drinking.',
     body: [
       "Drinks are easy to forget when counting calories, and because liquids do not fill you up much, those calories tend to come on top of what you eat. This chart runs from club soda, flavored water, black coffee and tea at almost nothing, to milkshakes at 112 calories per 100 g, spirits at 231 and coffee liqueur at 336.",
       "Because drinks are measured per 100 g, remember how much you actually pour. A 12 oz can or a glass of beer weighs about 350 g, so beer at 43 calories per 100 g comes to around 150 calories per can. A medium coffee-shop drink can weigh close to 500 g, so a mocha at 64 per 100 g comes to more than 300 calories.",
