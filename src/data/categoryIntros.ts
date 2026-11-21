@@ -161,4 +161,13 @@ export const CATEGORY_INTROS: Record<string, CategoryIntro> = {
       "Recipes vary a lot between home cooking and restaurants, where curries often contain more oil, cream or ghee, and portions are larger. A takeaway curry can easily weigh 300 to 400 g before the rice and naan, so multiply the figure for the amount you actually eat. Choosing either rice or bread, and adding a vegetable dish or dal, keeps a meal more balanced.",
     ],
   },
+  'restaurant-chains': {
+    heading: 'Fast Food Calories by Restaurant',
+    metaDescription: "Calories, protein, carbs and fat per 100 g for 104 items from McDonald's, Burger King, KFC, Subway, Taco Bell, Domino's and more, from USDA lab tests.",
+    body: [
+      "These are named menu items from 13 US chains, including McDonald's, Burger King, Wendy's, KFC, Popeyes, Chick-fil-A, Subway, Taco Bell, Domino's and Pizza Hut. The figures come from USDA laboratory analysis of each item as it was sold when USDA tested it. Chains change recipes and portion sizes, so a restaurant's current published numbers can differ.",
+      "Per 100 g, most items fall between about 200 and 300 calories. Subway subs sit lower, around 146 to 221, because bread and salad add weight without much fat. Fried sides and biscuits are highest: Burger King onion rings have 417 calories per 100 g and a Popeyes biscuit 401.",
+      "The whole item matters more than the figure per 100 g. A Big Mac is about 535 calories by USDA's analysis and a Whopper about 610, while a Burger King Double Whopper with Cheese reaches about 1,060. Open any item to see calories per burger, slice or piece, and add your sides and drink in the meal calculator.",
+    ],
+  },
 };

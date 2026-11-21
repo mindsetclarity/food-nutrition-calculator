@@ -1,4 +1,9 @@
 ---
+interface Props {
+  /** Set for named restaurant items, whose recipes change after USDA tests them. */
+  chainItem?: string;
+}
+const { chainItem } = Astro.props;
 ---
 <div class="bg-amber-50 border-l-4 border-amber-400 p-4 sm:p-6 rounded-r-xl my-8">
   <div class="flex">
@@ -10,9 +15,15 @@
     <div class="ml-3">
       <h3 class="text-sm font-bold text-amber-800">Source and Accuracy Notice</h3>
       <div class="mt-2 text-sm text-amber-700 space-y-2">
-        <p>
-          Values come from USDA FoodData Central and are averages; real foods vary by brand, recipe, preparation method, and serving size. 
-        </p>
+        {chainItem ? (
+          <p>
+            These values come from USDA FoodData Central's laboratory analysis of the {chainItem} as it was sold when USDA tested it. Restaurants change recipes and portion sizes, so the chain's current published nutrition may differ. Check the restaurant's own nutrition information for its latest figures.
+          </p>
+        ) : (
+          <p>
+            Values come from USDA FoodData Central and are averages; real foods vary by brand, recipe, preparation method, and serving size.
+          </p>
+        )}
         <p>
           For exact figures, check the label on your product. Not medical advice.
         </p>

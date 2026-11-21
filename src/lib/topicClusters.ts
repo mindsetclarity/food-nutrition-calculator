@@ -53,7 +53,7 @@ export const TOPIC_CLUSTERS: ({ id: string } & Related)[] = [
     id: 'meals',
     tools: ['/recipe-nutrition-calculator', '/meal-calorie-calculator', '/nutrition-label-generator'],
     articles: ['how-to-calculate-calories-in-a-meal', 'how-to-calculate-calories-in-a-homemade-recipe', 'how-recipe-nutrition-calculators-work', 'healthy-meal-planning-on-a-budget', 'how-many-calories-in-a-slice-of-pizza', 'calories-in-a-burger-and-fries', 'calories-in-beer-wine-and-spirits', 'calories-in-coffee-drinks', 'calories-in-bread', 'indian-takeaway-calories', 'how-many-calories-in-an-egg', 'calories-in-fruit-lowest-to-highest', 'calories-in-breakfast-foods', 'healthier-fast-food-swaps', 'thanksgiving-dinner-calories', 'christmas-dinner-calories'],
-    charts: ['breakfast', 'bread-bakery', 'fast-food-style', 'prepared-meals', 'desserts', 'indian-foods', 'beverages'],
+    charts: ['breakfast', 'bread-bakery', 'fast-food-style', 'restaurant-chains', 'prepared-meals', 'desserts', 'indian-foods', 'beverages'],
   },
 ];
 
@@ -63,6 +63,7 @@ export const PINNED: Record<string, Partial<Related>> = {
   // charts
   'indian-foods': { articles: ['indian-takeaway-calories'] },
   'fast-food-style': { articles: ['healthier-fast-food-swaps', 'calories-in-a-burger-and-fries', 'how-many-calories-in-a-slice-of-pizza'] },
+  'restaurant-chains': { articles: ['healthier-fast-food-swaps', 'calories-in-a-burger-and-fries', 'how-many-calories-in-a-slice-of-pizza'] },
   beverages: { tools: ['/water-intake-calculator'], articles: ['calories-in-coffee-drinks', 'calories-in-beer-wine-and-spirits'] },
   breakfast: { articles: ['calories-in-breakfast-foods', 'how-many-calories-in-an-egg'] },
   'bread-bakery': { articles: ['calories-in-bread'] },
@@ -73,9 +74,9 @@ export const PINNED: Record<string, Partial<Related>> = {
   // articles
   'calories-in-fruit-lowest-to-highest': { charts: ['fruits'] },
   'how-many-calories-in-an-egg': { charts: ['breakfast', 'protein-foods'] },
-  'calories-in-a-burger-and-fries': { charts: ['fast-food-style'] },
-  'how-many-calories-in-a-slice-of-pizza': { charts: ['fast-food-style'] },
-  'healthier-fast-food-swaps': { charts: ['fast-food-style'] },
+  'calories-in-a-burger-and-fries': { charts: ['restaurant-chains', 'fast-food-style'] },
+  'how-many-calories-in-a-slice-of-pizza': { charts: ['restaurant-chains', 'fast-food-style'] },
+  'healthier-fast-food-swaps': { charts: ['restaurant-chains', 'fast-food-style'] },
   'calories-in-coffee-drinks': { charts: ['beverages'] },
   'calories-in-beer-wine-and-spirits': { charts: ['beverages'] },
   'indian-takeaway-calories': { charts: ['indian-foods'] },
