@@ -15,12 +15,12 @@ export const restaurantsFoods: FoodItem[] = [
     "source": "local",
     "sourceLabel": "USDA FoodData Central",
     "isEstimated": false,
-    "defaultUnit": "mcdonald's",
+    "defaultUnit": "burger",
     "defaultQuantity": 1,
     "servingSizes": [
       {
         "id": "serve_1",
-        "unit": "mcdonald's",
+        "unit": "burger",
         "label": "1 burger",
         "grams": 205,
         "isDefault": true
@@ -67,12 +67,12 @@ export const restaurantsFoods: FoodItem[] = [
     "source": "local",
     "sourceLabel": "USDA FoodData Central",
     "isEstimated": false,
-    "defaultUnit": "cheeseburger",
+    "defaultUnit": "burger",
     "defaultQuantity": 1,
     "servingSizes": [
       {
         "id": "serve_1",
-        "unit": "cheeseburger",
+        "unit": "burger",
         "label": "1 burger",
         "grams": 200,
         "isDefault": true
@@ -119,12 +119,12 @@ export const restaurantsFoods: FoodItem[] = [
     "source": "local",
     "sourceLabel": "USDA FoodData Central",
     "isEstimated": false,
-    "defaultUnit": "cheeseburger",
+    "defaultUnit": "burger",
     "defaultQuantity": 1,
     "servingSizes": [
       {
         "id": "serve_1",
-        "unit": "cheeseburger",
+        "unit": "burger",
         "label": "1 burger",
         "grams": 170,
         "isDefault": true
@@ -171,12 +171,12 @@ export const restaurantsFoods: FoodItem[] = [
     "source": "local",
     "sourceLabel": "USDA FoodData Central",
     "isEstimated": false,
-    "defaultUnit": "double",
+    "defaultUnit": "burger",
     "defaultQuantity": 1,
     "servingSizes": [
       {
         "id": "serve_1",
-        "unit": "double",
+        "unit": "burger",
         "label": "1 burger",
         "grams": 140,
         "isDefault": true
@@ -501,7 +501,7 @@ export const restaurantsFoods: FoodItem[] = [
       },
       {
         "id": "serve_2",
-        "unit": "kids",
+        "unit": "serving",
         "label": "1 kids serving",
         "grams": 31
       },
@@ -871,7 +871,7 @@ export const restaurantsFoods: FoodItem[] = [
       },
       {
         "id": "serve_2",
-        "unit": "hotcakes",
+        "unit": "piece",
         "label": "1 hotcake",
         "grams": 49.7
       },
@@ -1177,12 +1177,12 @@ export const restaurantsFoods: FoodItem[] = [
     "source": "local",
     "sourceLabel": "USDA FoodData Central",
     "isEstimated": false,
-    "defaultUnit": "regular",
+    "defaultUnit": "serving",
     "defaultQuantity": 1,
     "servingSizes": [
       {
         "id": "serve_1",
-        "unit": "regular",
+        "unit": "serving",
         "label": "1 regular",
         "grams": 337,
         "isDefault": true
@@ -1443,12 +1443,12 @@ export const restaurantsFoods: FoodItem[] = [
     "source": "local",
     "sourceLabel": "USDA FoodData Central",
     "isEstimated": false,
-    "defaultUnit": "hamburger",
+    "defaultUnit": "burger",
     "defaultQuantity": 1,
     "servingSizes": [
       {
         "id": "serve_1",
-        "unit": "hamburger",
+        "unit": "burger",
         "label": "1 burger",
         "grams": 270,
         "isDefault": true
@@ -1495,12 +1495,12 @@ export const restaurantsFoods: FoodItem[] = [
     "source": "local",
     "sourceLabel": "USDA FoodData Central",
     "isEstimated": false,
-    "defaultUnit": "cheeseburger",
+    "defaultUnit": "burger",
     "defaultQuantity": 1,
     "servingSizes": [
       {
         "id": "serve_1",
-        "unit": "cheeseburger",
+        "unit": "burger",
         "label": "1 burger",
         "grams": 290,
         "isDefault": true
@@ -1547,12 +1547,12 @@ export const restaurantsFoods: FoodItem[] = [
     "source": "local",
     "sourceLabel": "USDA FoodData Central",
     "isEstimated": false,
-    "defaultUnit": "hamburger",
+    "defaultUnit": "burger",
     "defaultQuantity": 1,
     "servingSizes": [
       {
         "id": "serve_1",
-        "unit": "hamburger",
+        "unit": "burger",
         "label": "1 burger",
         "grams": 135,
         "isDefault": true
@@ -2201,7 +2201,7 @@ export const restaurantsFoods: FoodItem[] = [
       },
       {
         "id": "serve_2",
-        "unit": "fl",
+        "unit": "fl oz",
         "label": "1 fl oz",
         "grams": 24.8
       },
@@ -2525,7 +2525,7 @@ export const restaurantsFoods: FoodItem[] = [
       },
       {
         "id": "serve_2",
-        "unit": "kid's",
+        "unit": "serving",
         "label": "1 kids serving",
         "grams": 71
       },
@@ -2583,7 +2583,7 @@ export const restaurantsFoods: FoodItem[] = [
       },
       {
         "id": "serve_2",
-        "unit": "junior",
+        "unit": "serving",
         "label": "1 junior (6 oz)",
         "grams": 113
       },

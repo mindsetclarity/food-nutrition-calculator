@@ -163,11 +163,11 @@ export const CATEGORY_INTROS: Record<string, CategoryIntro> = {
   },
   'restaurant-chains': {
     heading: 'Fast Food Calories by Restaurant',
-    metaDescription: "Calories, protein, carbs and fat per 100 g for 104 items from McDonald's, Burger King, KFC, Subway, Taco Bell, Domino's and more, from USDA lab tests.",
+    metaDescription: "Calories, protein, carbs and fat per 100 g for 173 items from McDonald's, Burger King, KFC, Subway, Greggs, Pret and more. Open any item for its portion.",
     body: [
-      "These are named menu items from 13 US chains, including McDonald's, Burger King, Wendy's, KFC, Popeyes, Chick-fil-A, Subway, Taco Bell, Domino's and Pizza Hut. The figures come from USDA laboratory analysis of each item as it was sold when USDA tested it. Chains change recipes and portion sizes, so a restaurant's current published numbers can differ.",
-      "Per 100 g, most items fall between about 200 and 300 calories. Subway subs sit lower, around 146 to 221, because bread and salad add weight without much fat. Fried sides and biscuits are highest: Burger King onion rings have 417 calories per 100 g and a Popeyes biscuit 401.",
-      "The whole item matters more than the figure per 100 g. A Big Mac is about 535 calories by USDA's analysis and a Whopper about 610, while a Burger King Double Whopper with Cheese reaches about 1,060. Open any item to see calories per burger, slice or piece, and add your sides and drink in the meal calculator.",
+      "These are named menu items from 13 US chains, including McDonald's, Burger King, KFC, Subway, Taco Bell and Domino's, and from the UK bakery and coffee chains Greggs and Pret. US figures come from USDA laboratory analysis of each item as it was sold when USDA tested it. Greggs and Pret figures are the chains' own published nutrition from November 2026.",
+      "Per 100 g, most food items fall between about 200 and 300 calories. Subway subs sit lower, around 146 to 221, because bread and salad add weight without much fat. Cookies and shortbread are highest: a Greggs milk chocolate cookie has 490 calories per 100 g and Burger King onion rings 417. Milky coffees are lowest, at about 27 to 40.",
+      "The whole item matters more than the figure per 100 g. A Greggs sausage roll is 347 calories, a Big Mac about 535 by USDA's analysis, and a Burger King Double Whopper with Cheese about 1,060. Open any item to see calories per portion, and add your sides and drink in the meal calculator.",
     ],
   },
 };
