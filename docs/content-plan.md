@@ -18,11 +18,11 @@ tool; numbers come from the site's data, and outside figures (NHS, USDA, FDA) ar
 | 2 | christmas dinner calories (UK) | Roast turkey, roast potatoes, pigs in blankets, Yorkshire pudding, Christmas pudding, mince pies | Written 2026-11-20 with 6 new foods (Yorkshire pudding, Christmas cake, gingerbread cake, Irish cream, glazed carrots, roast beef). No USDA data for Christmas pudding; pigs in blankets built from sausage + bacon |
 | 3 | how many calories in a banana | By size (small to extra large), ripe vs green, vs other fruit | Written 2026-11-22 |
 | 4 | calories in chicken breast | Raw vs cooked, per 100 g and per oz, skin on vs off, thigh compared | Written 2026-11-22 |
-| 5 | calories in pasta | Dry vs cooked weight, portion sizes (US cup, UK 75 g dry), sauces | |
-| 6 | calories in potatoes | Baked, boiled, mashed, roast, fries/chips, sweet potato | |
+| 5 | calories in pasta | Dry vs cooked weight, portion sizes (US cup, UK 75 g dry), sauces | Written 2026-11-22 |
+| 6 | calories in potatoes | Baked, boiled, mashed, roast, fries/chips, sweet potato | Written 2026-11-22 |
 | 7 | calories in porridge / oatmeal | Water vs milk, toppings, rolled vs instant | Written 2026-11-22 |
 | 8 | calories in peanut butter | Per tablespoon, smooth vs crunchy, vs almond butter | |
-| 9 | calories in cheese | Cheddar, mozzarella, feta, cottage cheese, per slice and per oz | |
+| 9 | calories in cheese | Cheddar, mozzarella, feta, cottage cheese, per slice and per oz | Written 2026-11-22 |
 | 10 | calories in milk | Whole, 2% / semi-skimmed, skim, oat, almond, soy, per glass | |
 | 11 | calories in an avocado | Whole, half, per tablespoon of guacamole | |
 | 12 | calories in nuts | Per handful (1 oz / 30 g): almonds, walnuts, cashews, peanuts, pistachios | |

@@ -37,7 +37,7 @@ for (const c of TOPIC_CLUSTERS) for (const path of c.tools) {
 // Articles: read slugs as text, since the article index uses import.meta.glob.
 const articleFiles = ['src/data/learnArticles.ts', ...readdirSync('src/data/learn').map(f => `src/data/learn/${f}`)];
 const articleSlugs = new Set(articleFiles.flatMap(f => [...readFileSync(f, 'utf8').matchAll(/^\s*slug: '([^']+)'/gm)].map(m => m[1])));
-assert.equal(articleSlugs.size, 40, 'expected 40 articles; update this count when adding one');
+assert.equal(articleSlugs.size, 43, 'expected 43 articles; update this count when adding one');
 for (const slug of articleSlugs) assert.ok(inCluster('articles', slug), `article not in a cluster: ${slug}`);
 for (const c of TOPIC_CLUSTERS) for (const slug of c.articles) assert.ok(articleSlugs.has(slug), `unknown article ${slug}`);
 
