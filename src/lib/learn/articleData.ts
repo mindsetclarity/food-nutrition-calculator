@@ -7,6 +7,16 @@ export function getAllLearnArticles(): LearnArticle[] {
   });
 }
 
+// Seasonal guides shown first on the homepage and Learn hub; change these with the season.
+const HIGHLIGHT_FIRST = ['christmas-dinner-calories', 'new-year-weight-loss-plan'];
+
+/** Seasonal guides first, then the newest articles, so new content is linked from the top pages. */
+export function getHighlightedLearnArticles(limit: number): LearnArticle[] {
+  const all = getAllLearnArticles();
+  const first = HIGHLIGHT_FIRST.map(s => all.find(a => a.slug === s)).filter((a): a is LearnArticle => !!a);
+  return [...first, ...all.filter(a => !HIGHLIGHT_FIRST.includes(a.slug))].slice(0, limit);
+}
+
 export function getFeaturedLearnArticles(): LearnArticle[] {
   return getAllLearnArticles().filter(a => a.featured);
 }

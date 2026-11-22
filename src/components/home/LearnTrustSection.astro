@@ -1,5 +1,14 @@
 ---
 import Button from '../ui/Button.astro';
+import { getHighlightedLearnArticles } from '../../lib/learn';
+
+// Seasonal and newest guides, plus the newest charts, so new pages are linked from the homepage.
+const guides = getHighlightedLearnArticles(5);
+const charts = [
+  { href: '/foods/category/restaurant-chains', label: 'Fast food calories by restaurant' },
+  { href: '/foods/category/british-foods', label: 'British food calorie chart' },
+];
+const linkClass = 'text-[15px] font-medium text-ink-navy hover:text-usda-emerald flex items-center group';
 ---
 
 <section class="py-24 bg-warm-ivory border-t border-border-soft">
@@ -11,14 +20,17 @@ import Button from '../ui/Button.astro';
         <div class="w-12 h-12 bg-mint-wash text-usda-emerald rounded-full flex items-center justify-center mb-6 border border-emerald-soft">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
         </div>
-        <h3 class="text-2xl font-bold text-ink-navy mb-4">Learn Nutrition</h3>
+        <h3 class="text-2xl font-bold text-ink-navy mb-4">New guides and charts</h3>
         <p class="text-soft-slate mb-8 leading-relaxed">
-          Read our educational guides on calories, macros, reading nutrition labels, and understanding serving sizes. Empower yourself with knowledge before calculating.
+          Our latest calorie guides and food charts, worked out from USDA and UK government data.
         </p>
         <ul class="space-y-4 mb-8">
-          <li><a href="/learn/calories-vs-macros" class="text-[15px] font-medium text-ink-navy hover:text-usda-emerald flex items-center group">Calories vs Macros <span class="ml-2 transform transition-transform group-hover:translate-x-1">→</span></a></li>
-          <li><a href="/learn/how-to-read-a-nutrition-facts-label" class="text-[15px] font-medium text-ink-navy hover:text-usda-emerald flex items-center group">Reading Nutrition Labels <span class="ml-2 transform transition-transform group-hover:translate-x-1">→</span></a></li>
-          <li><a href="/learn/serving-size-vs-portion-size" class="text-[15px] font-medium text-ink-navy hover:text-usda-emerald flex items-center group">Serving vs Portion Size <span class="ml-2 transform transition-transform group-hover:translate-x-1">→</span></a></li>
+          {guides.map(a => (
+            <li><a href={`/learn/${a.slug}`} class={linkClass}>{a.title} <span class="ml-2 transform transition-transform group-hover:translate-x-1">→</span></a></li>
+          ))}
+          {charts.map(c => (
+            <li><a href={c.href} class={linkClass}>{c.label} <span class="ml-2 transform transition-transform group-hover:translate-x-1">→</span></a></li>
+          ))}
         </ul>
         <Button href="/learn" variant="secondary" class="w-full sm:w-auto">Visit Learn Hub</Button>
       </div>

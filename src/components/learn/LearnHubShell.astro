@@ -5,12 +5,13 @@ import Button from '../ui/Button.astro';
 
 import { 
   getAllLearnArticles, 
+  getHighlightedLearnArticles,
   getLearnHubSeo
 } from '../../lib/learn';
 
 const allArticles = getAllLearnArticles();
-const featuredSlugs = ['how-to-calculate-calories-in-food', 'calories-vs-macros', 'how-recipe-nutrition-calculators-work', 'how-to-read-a-nutrition-facts-label'];
-const featuredArticles = allArticles.filter(a => featuredSlugs.includes(a.slug));
+// Seasonal guides first, then the newest, so new articles are seen and linked from the hub's top.
+const featuredArticles = getHighlightedLearnArticles(6);
 
 const categories = [
   { name: 'Calories', desc: 'Learn how calorie estimates are calculated and why they can vary.', count: allArticles.filter(a => a.category === 'Calories').length },
@@ -74,11 +75,50 @@ const jsonLd = buildWebPageSchema({
           <a href="#start-here" class="text-soft-slate hover:text-usda-emerald transition-colors">Start Here</a>
           <a href="#learning-path" class="text-soft-slate hover:text-usda-emerald transition-colors">Learning Path</a>
           <a href="#categories" class="text-soft-slate hover:text-usda-emerald transition-colors">Categories</a>
-          <a href="#featured" class="text-soft-slate hover:text-usda-emerald transition-colors">Featured</a>
+          <a href="#featured" class="text-soft-slate hover:text-usda-emerald transition-colors">New</a>
           <a href="#all-guides" class="text-soft-slate hover:text-usda-emerald transition-colors">All Guides</a>
         </nav>
       </div>
     </div>
+
+    <!-- 2a. New and updated guides -->
+    <section id="featured" class="bg-mint-surface py-16 border-y border-border-soft scroll-mt-24">
+      <div class="site-container">
+        <h2 class="text-2xl sm:text-3xl font-black text-ink-navy mb-8 text-center">New and updated guides</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {featuredArticles.map(article => (
+            <div class="bg-white border border-emerald-100 rounded-2xl shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col sm:flex-row h-full">
+              <div class="p-6 flex flex-col flex-grow">
+                <div class="flex items-center space-x-3 mb-3">
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-50 text-usda-emerald uppercase tracking-wider border border-emerald-100">
+                    {article.category}
+                  </span>
+                  <span class="text-xs font-medium text-soft-slate">
+                    {article.readingTimeMinutes} min read
+                  </span>
+                </div>
+                <h3 class="text-lg font-bold text-ink-navy mb-2 leading-tight">
+                  {article.title}
+                </h3>
+                <p class="text-sm text-soft-slate mb-5 flex-grow line-clamp-2">
+                  {article.description}
+                </p>
+                <div class="mt-auto flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-4 border-t border-gray-100">
+                  <a href={`/learn/${article.slug}`} class="text-[13px] font-bold text-usda-emerald hover:underline flex items-center">
+                    Read guide <span class="ml-1">&rarr;</span>
+                  </a>
+                  {article.relatedTool && (
+                    <a href={article.relatedTool.href} class="text-[11px] font-medium text-soft-slate hover:text-ink-navy flex items-center bg-slate-50 px-2 py-1 rounded border border-slate-200 w-fit">
+                      {article.relatedTool.label}
+                    </a>
+                  )}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
 
     <!-- 2. Start Here Section -->
     <section id="start-here" class="site-container py-16 scroll-mt-24">
@@ -168,45 +208,6 @@ const jsonLd = buildWebPageSchema({
             <p class="text-[13px] text-soft-slate leading-relaxed">{cat.desc}</p>
           </div>
         ))}
-      </div>
-    </section>
-
-    <!-- 5. Featured Guides Section -->
-    <section id="featured" class="bg-mint-surface py-16 border-y border-border-soft scroll-mt-24">
-      <div class="site-container">
-        <h2 class="text-2xl sm:text-3xl font-black text-ink-navy mb-8 text-center">Featured guides</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {featuredArticles.map(article => (
-            <div class="bg-white border border-emerald-100 rounded-2xl shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col sm:flex-row h-full">
-              <div class="p-6 flex flex-col flex-grow">
-                <div class="flex items-center space-x-3 mb-3">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-50 text-usda-emerald uppercase tracking-wider border border-emerald-100">
-                    {article.category}
-                  </span>
-                  <span class="text-xs font-medium text-soft-slate">
-                    {article.readingTimeMinutes} min read
-                  </span>
-                </div>
-                <h3 class="text-lg font-bold text-ink-navy mb-2 leading-tight">
-                  {article.title}
-                </h3>
-                <p class="text-sm text-soft-slate mb-5 flex-grow line-clamp-2">
-                  {article.description}
-                </p>
-                <div class="mt-auto flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-4 border-t border-gray-100">
-                  <a href={`/learn/${article.slug}`} class="text-[13px] font-bold text-usda-emerald hover:underline flex items-center">
-                    Read guide <span class="ml-1">&rarr;</span>
-                  </a>
-                  {article.relatedTool && (
-                    <a href={article.relatedTool.href} class="text-[11px] font-medium text-soft-slate hover:text-ink-navy flex items-center bg-slate-50 px-2 py-1 rounded border border-slate-200 w-fit">
-                      {article.relatedTool.label}
-                    </a>
-                  )}
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
       </div>
     </section>
 
