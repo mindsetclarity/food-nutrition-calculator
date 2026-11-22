@@ -34,7 +34,7 @@ export const TOPIC_CLUSTERS: ({ id: string } & Related)[] = [
   {
     id: 'protein-macros',
     tools: ['/macro-calculator', '/protein-calculator'],
-    articles: ['how-much-protein-do-i-need', 'high-protein-foods-list', 'how-to-count-macros-for-beginners', 'calories-vs-macros', 'how-much-fiber-do-you-need'],
+    articles: ['how-much-protein-do-i-need', 'high-protein-foods-list', 'how-to-count-macros-for-beginners', 'calories-vs-macros', 'how-much-fiber-do-you-need', 'calories-in-chicken-breast'],
     charts: ['protein-foods', 'beans-plant-protein', 'dairy-alternatives', 'nuts-seeds'],
   },
   {
@@ -52,7 +52,7 @@ export const TOPIC_CLUSTERS: ({ id: string } & Related)[] = [
   {
     id: 'meals',
     tools: ['/recipe-nutrition-calculator', '/meal-calorie-calculator', '/nutrition-label-generator'],
-    articles: ['how-to-calculate-calories-in-a-meal', 'how-to-calculate-calories-in-a-homemade-recipe', 'how-recipe-nutrition-calculators-work', 'healthy-meal-planning-on-a-budget', 'how-many-calories-in-a-slice-of-pizza', 'calories-in-a-burger-and-fries', 'calories-in-beer-wine-and-spirits', 'calories-in-coffee-drinks', 'calories-in-bread', 'indian-takeaway-calories', 'how-many-calories-in-an-egg', 'calories-in-fruit-lowest-to-highest', 'calories-in-breakfast-foods', 'healthier-fast-food-swaps', 'thanksgiving-dinner-calories', 'christmas-dinner-calories'],
+    articles: ['how-to-calculate-calories-in-a-meal', 'how-to-calculate-calories-in-a-homemade-recipe', 'how-recipe-nutrition-calculators-work', 'healthy-meal-planning-on-a-budget', 'how-many-calories-in-a-slice-of-pizza', 'calories-in-a-burger-and-fries', 'calories-in-beer-wine-and-spirits', 'calories-in-coffee-drinks', 'calories-in-bread', 'indian-takeaway-calories', 'how-many-calories-in-an-egg', 'calories-in-fruit-lowest-to-highest', 'calories-in-breakfast-foods', 'healthier-fast-food-swaps', 'thanksgiving-dinner-calories', 'christmas-dinner-calories', 'calories-in-porridge-and-oatmeal', 'how-many-calories-in-a-banana'],
     charts: ['breakfast', 'bread-bakery', 'british-foods', 'fast-food-style', 'restaurant-chains', 'prepared-meals', 'desserts', 'indian-foods', 'beverages'],
   },
 ];
@@ -65,11 +65,11 @@ export const PINNED: Record<string, Partial<Related>> = {
   'fast-food-style': { articles: ['healthier-fast-food-swaps', 'calories-in-a-burger-and-fries', 'how-many-calories-in-a-slice-of-pizza'] },
   'restaurant-chains': { articles: ['healthier-fast-food-swaps', 'calories-in-a-burger-and-fries', 'how-many-calories-in-a-slice-of-pizza'] },
   beverages: { tools: ['/water-intake-calculator'], articles: ['calories-in-coffee-drinks', 'calories-in-beer-wine-and-spirits'] },
-  breakfast: { articles: ['calories-in-breakfast-foods', 'how-many-calories-in-an-egg'] },
+  breakfast: { articles: ['calories-in-breakfast-foods', 'calories-in-porridge-and-oatmeal', 'how-many-calories-in-an-egg'] },
   'bread-bakery': { articles: ['calories-in-bread'] },
-  fruits: { articles: ['calories-in-fruit-lowest-to-highest'] },
+  fruits: { articles: ['calories-in-fruit-lowest-to-highest', 'how-many-calories-in-a-banana'] },
   'grains-cereals': { articles: ['calories-in-rice-cooked-vs-uncooked'] },
-  'protein-foods': { articles: ['high-protein-foods-list', 'how-much-protein-do-i-need'] },
+  'protein-foods': { articles: ['calories-in-chicken-breast', 'high-protein-foods-list', 'how-much-protein-do-i-need'] },
   snacks: { articles: ['low-calorie-snacks-under-100-calories'] },
   // articles
   'calories-in-fruit-lowest-to-highest': { charts: ['fruits'] },
@@ -87,6 +87,9 @@ export const PINNED: Record<string, Partial<Related>> = {
   'calories-in-rice-cooked-vs-uncooked': { charts: ['grains-cereals'] },
   'high-protein-foods-list': { charts: ['protein-foods'] },
   'low-calorie-snacks-under-100-calories': { charts: ['snacks'] },
+  'calories-in-chicken-breast': { charts: ['protein-foods'] },
+  'calories-in-porridge-and-oatmeal': { charts: ['breakfast', 'grains-cereals'] },
+  'how-many-calories-in-a-banana': { charts: ['fruits', 'snacks'] },
   // tools: the New Year plan first on the weight-loss calculators through the January peak
   '/calorie-deficit-calculator': { articles: ['new-year-weight-loss-plan'] },
   '/tdee-calculator': { articles: ['new-year-weight-loss-plan'] },
