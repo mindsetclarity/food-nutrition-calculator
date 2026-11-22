@@ -6453,5 +6453,69 @@ export const proteinfoodsFoods: FoodItem[] = [
       "fdcId": 2705847,
       "dataType": "Survey (FNDDS)"
     }
+  },
+  {
+    "id": "usda_169457",
+    "slug": "sirloin-steak-cooked",
+    "name": "Sirloin Steak (Cooked)",
+    "searchName": "sirloin steak (cooked)",
+    "displayName": "Sirloin Steak (Cooked)",
+    "aliases": [
+      "sirloin steak (cooked)",
+      "beef, top sirloin, steak, separable lean and fat, trimmed to 0\" fat, all grades, cooked, broiled"
+    ],
+    "category": "Protein Foods",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "oz",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "oz",
+        "label": "3 oz",
+        "grams": 85,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "oz",
+        "label": "1 oz",
+        "grams": 28.3
+      },
+      {
+        "id": "serve_3",
+        "unit": "steak",
+        "label": "1 steak",
+        "grams": 384
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 212,
+      "protein": 29.33,
+      "carbohydrates": 0,
+      "fat": 9.67,
+      "fiber": 0,
+      "sugar": 0,
+      "sodium": 61,
+      "saturatedFat": 3.75,
+      "cholesterol": 88,
+      "potassium": 368
+    },
+    "tags": [
+      "protein-foods"
+    ],
+    "compareGroup": "Protein Foods",
+    "usda": {
+      "fdcId": 169457,
+      "dataType": "SR Legacy"
+    }
   }
 ];

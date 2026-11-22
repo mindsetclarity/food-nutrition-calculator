@@ -1820,5 +1820,56 @@ export const nutsseedsFoods: FoodItem[] = [
       "fdcId": 2710326,
       "dataType": "Survey (FNDDS)"
     }
+  },
+  {
+    "id": "usda_2707533",
+    "slug": "almond-butter",
+    "name": "Almond Butter",
+    "searchName": "almond butter",
+    "displayName": "Almond Butter",
+    "aliases": [
+      "almond butter"
+    ],
+    "category": "Nuts & Seeds",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "tbsp",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "tbsp",
+        "label": "1 tablespoon",
+        "grams": 16,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 641,
+      "protein": 20.7,
+      "carbohydrates": 21.1,
+      "fat": 52.7,
+      "fiber": 9.6,
+      "sugar": 4.4,
+      "sodium": 232,
+      "saturatedFat": 4.22,
+      "cholesterol": 0,
+      "potassium": 741
+    },
+    "tags": [
+      "nuts-seeds"
+    ],
+    "compareGroup": "Nuts & Seeds",
+    "usda": {
+      "fdcId": 2707533,
+      "dataType": "Survey (FNDDS)"
+    }
   }
 ];

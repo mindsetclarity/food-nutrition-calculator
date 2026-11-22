@@ -28,7 +28,7 @@ export const CATEGORY_INTROS: Record<string, CategoryIntro> = {
   },
   'protein-foods': {
     heading: 'Protein Foods Calorie Chart',
-    metaDescription: 'Calories, protein and fat for 110 meats, fish and seafood per 100 g, from oysters to pepperoni. Find the leanest protein for your calories.',
+    metaDescription: 'Calories, protein and fat for 111 meats, fish and seafood per 100 g, from oysters to pepperoni. Find the leanest protein for your calories.',
     body: [
       "This chart covers meat, poultry, fish and seafood, and the most useful way to read it is protein against calories. Seafood tends to be the leanest: oysters, crab, shrimp and pollock are all under 90 calories per 100 g. Most white fish and skinless chicken follow, at about 90 to 175.",
       "At the other end, the calories mostly come from fat rather than extra protein. Pork belly has 404 calories per 100 g, bacon 468 and pepperoni 504. Beef jerky is a special case at 410: it is high in calories because it has been dried, but it also has a lot of protein. Tuna shows how much the preparation matters, since tuna canned in oil has 198 calories per 100 g, far more than tuna in water.",
@@ -64,7 +64,7 @@ export const CATEGORY_INTROS: Record<string, CategoryIntro> = {
   },
   'dairy-alternatives': {
     heading: 'Dairy and Dairy Alternatives Calorie Chart',
-    metaDescription: 'Calories, protein and fat for 50 milks, yogurts, cheeses and plant milks per 100 g, from almond milk to butter. Compare dairy and non-dairy options.',
+    metaDescription: 'Calories, protein and fat for 51 milks, yogurts, cheeses and plant milks per 100 g, from almond milk to butter. Compare dairy and non-dairy options.',
     body: [
       "This chart runs from some of the lightest foods in the site to one of the heaviest. Unsweetened almond milk has 15 calories per 100 g and skim milk 34, while hard cheeses such as cheddar and parmesan are above 400 and butter reaches 717.",
       "Removing water and adding fat explains most of that range. It takes a lot of milk to make a small piece of cheese, so cheese is rich in both protein and calories. A small 30 g piece of cheddar comes to about 120 calories, which is a more realistic portion to think about than 100 g.",
@@ -73,7 +73,7 @@ export const CATEGORY_INTROS: Record<string, CategoryIntro> = {
   },
   'nuts-seeds': {
     heading: 'Nuts and Seeds Calorie Chart',
-    metaDescription: 'Calories, protein and fat for 32 nuts, seeds and nut products per 100 g, from chestnuts to pecans. Why small portions matter here.',
+    metaDescription: 'Calories, protein and fat for 33 nuts, seeds and nut products per 100 g, from chestnuts to pecans. Why small portions matter here.',
     body: [
       "Nuts and seeds are among the most calorie-dense whole foods you can eat, and nearly everything in this chart is above 450 calories per 100 g. Roasted chestnuts are the clear exception at 239, because they are mostly starch and water rather than fat.",
       "Those high numbers do not mean you should avoid them. Most of the fat is unsaturated, and nuts also bring protein, fiber and minerals. What matters is the portion. Nobody needs 100 g of nuts in one sitting, and a typical serving is about 28 g, or one ounce, which comes to around 150 to 200 calories for most of them.",
@@ -100,7 +100,7 @@ export const CATEGORY_INTROS: Record<string, CategoryIntro> = {
   },
   'prepared-meals': {
     heading: 'Prepared Meals Calorie Chart',
-    metaDescription: 'Calories and macros per 100 g for 89 prepared meals, from soups and salads to pot pies and Chinese takeout dishes. Typical values for common dishes.',
+    metaDescription: 'Calories and macros per 100 g for 91 prepared meals, from soups and salads to pot pies and Chinese takeout dishes. Typical values for common dishes.',
     body: [
       "This chart covers common homemade and restaurant dishes, and the range is wide. Thin soups are the lowest, with tomato soup at 19 calories per 100 g and miso soup at 24, which is why soup is such a filling start to a meal. Mixed dishes such as spaghetti with meat sauce are near 120.",
       "The top of the chart holds fried dishes and pies. Sesame chicken has 293 calories per 100 g and General Tso's chicken 295, because the battered chicken and sweet sauce both add energy. Beef pot pie, at 271, gets much of its total from pastry.",
@@ -109,7 +109,7 @@ export const CATEGORY_INTROS: Record<string, CategoryIntro> = {
   },
   snacks: {
     heading: 'Snack Foods Calorie Chart',
-    metaDescription: 'Calories, protein, carbs and fat for 44 snacks per 100 g, from pickles and salsa to chips and cheese puffs. Find lighter snacks that still satisfy.',
+    metaDescription: 'Calories, protein, carbs and fat for 46 snacks per 100 g, from pickles and salsa to chips and cheese puffs. Find lighter snacks that still satisfy.',
     body: [
       "Snacks show some of the biggest gaps of any category, and the reason is mainly water and fat. Dill pickles have 14 calories per 100 g and salsa 34, while many fried crunchy snacks are above 500: corn chips have 535, potato chips 559 and cheese puffs 567.",
       "Those crunchy snacks weigh very little, so a small-looking bag can hold a lot of energy. A standard 1 oz serving of chips is only about 28 g, or 150 to 160 calories, but many people eat two or three times that without noticing. Serving a portion into a bowl, instead of eating from the bag, is one of the simplest habits for keeping track.",
@@ -159,6 +159,15 @@ export const CATEGORY_INTROS: Record<string, CategoryIntro> = {
       "Indian food is often thought of as heavy, but this chart shows a wide range. Many everyday dishes are fairly light per 100 g, including vegetable curry and sambar at 86 calories, upma at 87, palak paneer at 101 and dal at 111. Lentils and vegetables give a lot of bulk and fiber for the calories.",
       "Fried items and sweets are at the other end. Samosas have 310 calories per 100 g, puri 409 and ladoo 411. Ghee, at 900, is pure fat, so even a small amount stirred into a curry or brushed on a roti adds up.",
       "Recipes vary a lot between home cooking and restaurants, where curries often contain more oil, cream or ghee, and portions are larger. A takeaway curry can easily weigh 300 to 400 g before the rice and naan, so multiply the figure for the amount you actually eat. Choosing either rice or bread, and adding a vegetable dish or dal, keeps a meal more balanced.",
+    ],
+  },
+  'british-foods': {
+    heading: 'British Food Calorie Chart',
+    metaDescription: 'Calories, protein, carbs and fat per 100 g for 50 British foods, from jacket potatoes and fish and chips to pasties, pies, biscuits and takeaways.',
+    body: [
+      "These are traditional British foods and takeaway favourites, with figures from the UK government's Composition of Foods Integrated Dataset (CoFID), the McCance and Widdowson's tables used by UK dietitians. Values are per 100 g, because pies, puddings and portions vary so much from one kitchen or shop to the next.",
+      "The lightest foods here are the plain ones. Mushy peas have 81 calories per 100 g and a jacket potato 97, while a homemade cottage pie is 126 and a Lancashire hotpot 119. Those are filling foods for the calories, as long as the butter and cheese stay modest.",
+      "Biscuits and anything fried or made with pastry sit at the top. Digestives have 463 calories per 100 g, custard creams 477 and prawn crackers 570. A pork pie is 370 and a sausage roll 352. Weigh your portion, or use the meal calculator, to turn these figures into the amount you actually eat.",
     ],
   },
   'restaurant-chains': {

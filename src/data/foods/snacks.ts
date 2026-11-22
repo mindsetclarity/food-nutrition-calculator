@@ -2857,5 +2857,121 @@ export const snacksFoods: FoodItem[] = [
       "fdcId": 2707938,
       "dataType": "Survey (FNDDS)"
     }
+  },
+  {
+    "id": "usda_2708127",
+    "slug": "protein-bar",
+    "name": "Protein Bar",
+    "searchName": "protein bar",
+    "displayName": "Protein Bar",
+    "aliases": [
+      "protein bar",
+      "nutrition bar or meal replacement bar, nfs"
+    ],
+    "category": "Snacks",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "bar",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "bar",
+        "label": "1 bar",
+        "grams": 34,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 386,
+      "protein": 22.4,
+      "carbohydrates": 55.2,
+      "fat": 9.94,
+      "fiber": 4.7,
+      "sugar": 29.3,
+      "sodium": 320,
+      "saturatedFat": 2.98,
+      "cholesterol": 4,
+      "potassium": 331
+    },
+    "tags": [
+      "snacks"
+    ],
+    "compareGroup": "Snacks",
+    "usda": {
+      "fdcId": 2708127,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2708118",
+    "slug": "clif-bar",
+    "name": "Clif Bar",
+    "searchName": "clif bar",
+    "displayName": "Clif Bar",
+    "aliases": [
+      "clif bar",
+      "nutrition bar (clif bar)"
+    ],
+    "category": "Snacks",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "bar",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "bar",
+        "label": "1 bar",
+        "grams": 68,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "miniature",
+        "label": "1 miniature bar",
+        "grams": 28
+      },
+      {
+        "id": "serve_3",
+        "unit": "bar",
+        "label": "1 bar",
+        "grams": 68
+      },
+      {
+        "id": "serve_4",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 346,
+      "protein": 14.7,
+      "carbohydrates": 65.4,
+      "fat": 5.88,
+      "fiber": 7.4,
+      "sugar": 31.6,
+      "sodium": 195,
+      "saturatedFat": 1.47,
+      "cholesterol": 0,
+      "potassium": 412
+    },
+    "tags": [
+      "snacks"
+    ],
+    "compareGroup": "Snacks",
+    "usda": {
+      "fdcId": 2708118,
+      "dataType": "Survey (FNDDS)"
+    }
   }
 ];

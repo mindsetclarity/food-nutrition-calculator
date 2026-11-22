@@ -3056,5 +3056,75 @@ export const dairyalternativesFoods: FoodItem[] = [
       "fdcId": 2705775,
       "dataType": "Survey (FNDDS)"
     }
+  },
+  {
+    "id": "usda_2705723",
+    "slug": "string-cheese-part-skim-mozzarella",
+    "name": "String Cheese (Part-Skim Mozzarella)",
+    "searchName": "string cheese (part-skim mozzarella)",
+    "displayName": "String Cheese (Part-Skim Mozzarella)",
+    "aliases": [
+      "string cheese (part-skim mozzarella)",
+      "cheese, mozzarella, part skim"
+    ],
+    "category": "Dairy & Alternatives",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "stick",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "stick",
+        "label": "1 stick",
+        "grams": 28,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "cup",
+        "label": "1 cup",
+        "grams": 113
+      },
+      {
+        "id": "serve_3",
+        "unit": "cubic",
+        "label": "1 cubic inch",
+        "grams": 17.6
+      },
+      {
+        "id": "serve_4",
+        "unit": "slice",
+        "label": "1 slice",
+        "grams": 21
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 296,
+      "protein": 23.7,
+      "carbohydrates": 4.44,
+      "fat": 20.4,
+      "fiber": 0,
+      "sugar": 1.81,
+      "sodium": 699,
+      "saturatedFat": 11.7,
+      "cholesterol": 65,
+      "potassium": 116
+    },
+    "tags": [
+      "dairy-alternatives"
+    ],
+    "compareGroup": "Dairy & Alternatives",
+    "usda": {
+      "fdcId": 2705723,
+      "dataType": "Survey (FNDDS)"
+    }
   }
 ];

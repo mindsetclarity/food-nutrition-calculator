@@ -4,8 +4,10 @@ interface Props {
   chainItem?: string;
   /** Set when the figures are the chain's own published nutrition rather than USDA's. */
   chainSource?: string;
+  /** Set for foods from a dataset other than USDA, e.g. the UK's CoFID. */
+  dataSource?: string;
 }
-const { chainItem, chainSource } = Astro.props;
+const { chainItem, chainSource, dataSource } = Astro.props;
 ---
 <div class="bg-amber-50 border-l-4 border-amber-400 p-4 sm:p-6 rounded-r-xl my-8">
   <div class="flex">
@@ -24,6 +26,10 @@ const { chainItem, chainSource } = Astro.props;
         ) : chainItem ? (
           <p>
             These values come from USDA FoodData Central's laboratory analysis of the {chainItem} as it was sold when USDA tested it. Restaurants change recipes and portion sizes, so the chain's current published nutrition may differ. Check the restaurant's own nutrition information for its latest figures.
+          </p>
+        ) : dataSource ? (
+          <p>
+            Values come from {dataSource}, the UK government's food composition tables, and are per 100 g averages; real foods vary by recipe, brand, preparation method and portion size.
           </p>
         ) : (
           <p>

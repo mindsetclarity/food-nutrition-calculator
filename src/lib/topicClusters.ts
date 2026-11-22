@@ -53,7 +53,7 @@ export const TOPIC_CLUSTERS: ({ id: string } & Related)[] = [
     id: 'meals',
     tools: ['/recipe-nutrition-calculator', '/meal-calorie-calculator', '/nutrition-label-generator'],
     articles: ['how-to-calculate-calories-in-a-meal', 'how-to-calculate-calories-in-a-homemade-recipe', 'how-recipe-nutrition-calculators-work', 'healthy-meal-planning-on-a-budget', 'how-many-calories-in-a-slice-of-pizza', 'calories-in-a-burger-and-fries', 'calories-in-beer-wine-and-spirits', 'calories-in-coffee-drinks', 'calories-in-bread', 'indian-takeaway-calories', 'how-many-calories-in-an-egg', 'calories-in-fruit-lowest-to-highest', 'calories-in-breakfast-foods', 'healthier-fast-food-swaps', 'thanksgiving-dinner-calories', 'christmas-dinner-calories'],
-    charts: ['breakfast', 'bread-bakery', 'fast-food-style', 'restaurant-chains', 'prepared-meals', 'desserts', 'indian-foods', 'beverages'],
+    charts: ['breakfast', 'bread-bakery', 'british-foods', 'fast-food-style', 'restaurant-chains', 'prepared-meals', 'desserts', 'indian-foods', 'beverages'],
   },
 ];
 
@@ -79,11 +79,11 @@ export const PINNED: Record<string, Partial<Related>> = {
   'healthier-fast-food-swaps': { charts: ['restaurant-chains', 'fast-food-style'] },
   'calories-in-coffee-drinks': { charts: ['beverages'] },
   'calories-in-beer-wine-and-spirits': { charts: ['beverages'] },
-  'indian-takeaway-calories': { charts: ['indian-foods'] },
+  'indian-takeaway-calories': { charts: ['indian-foods', 'british-foods'] },
   'calories-in-bread': { charts: ['bread-bakery'] },
   'calories-in-breakfast-foods': { charts: ['breakfast'] },
   'thanksgiving-dinner-calories': { charts: ['desserts', 'prepared-meals'] },
-  'christmas-dinner-calories': { charts: ['desserts', 'prepared-meals'] },
+  'christmas-dinner-calories': { charts: ['british-foods', 'desserts', 'prepared-meals'] },
   'calories-in-rice-cooked-vs-uncooked': { charts: ['grains-cereals'] },
   'high-protein-foods-list': { charts: ['protein-foods'] },
   'low-calorie-snacks-under-100-calories': { charts: ['snacks'] },

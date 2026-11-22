@@ -5050,5 +5050,145 @@ export const preparedmealsFoods: FoodItem[] = [
       "fdcId": 2708564,
       "dataType": "Survey (FNDDS)"
     }
+  },
+  {
+    "id": "usda_2708612",
+    "slug": "frozen-cheese-pizza-thin-crust",
+    "name": "Frozen Cheese Pizza (Thin Crust)",
+    "searchName": "frozen cheese pizza (thin crust)",
+    "displayName": "Frozen Cheese Pizza (Thin Crust)",
+    "aliases": [
+      "frozen cheese pizza (thin crust)",
+      "pizza, cheese, from frozen, thin crust"
+    ],
+    "category": "Prepared Meals",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 piece",
+        "grams": 97,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "frozen",
+        "label": "1 frozen personal size pizza",
+        "grams": 209
+      },
+      {
+        "id": "serve_3",
+        "unit": "weight",
+        "label": "1 Weight Watchers pizza",
+        "grams": 170
+      },
+      {
+        "id": "serve_4",
+        "unit": "surface",
+        "label": "1 surface inch",
+        "grams": 5.1
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 263,
+      "protein": 11.9,
+      "carbohydrates": 28.8,
+      "fat": 11.1,
+      "fiber": 3,
+      "sugar": 3.71,
+      "sodium": 471,
+      "saturatedFat": 5.7,
+      "cholesterol": 21,
+      "potassium": 201
+    },
+    "tags": [
+      "prepared-meals"
+    ],
+    "compareGroup": "Prepared Meals",
+    "usda": {
+      "fdcId": 2708612,
+      "dataType": "Survey (FNDDS)"
+    }
+  },
+  {
+    "id": "usda_2708613",
+    "slug": "frozen-cheese-pizza-thick-crust",
+    "name": "Frozen Cheese Pizza (Thick Crust)",
+    "searchName": "frozen cheese pizza (thick crust)",
+    "displayName": "Frozen Cheese Pizza (Thick Crust)",
+    "aliases": [
+      "frozen cheese pizza (thick crust)",
+      "pizza, cheese, from frozen, thick crust"
+    ],
+    "category": "Prepared Meals",
+    "source": "local",
+    "sourceLabel": "USDA FoodData Central",
+    "isEstimated": false,
+    "defaultUnit": "piece",
+    "defaultQuantity": 1,
+    "servingSizes": [
+      {
+        "id": "serve_1",
+        "unit": "piece",
+        "label": "1 piece",
+        "grams": 133,
+        "isDefault": true
+      },
+      {
+        "id": "serve_2",
+        "unit": "surface",
+        "label": "1 surface inch",
+        "grams": 7.1
+      },
+      {
+        "id": "serve_3",
+        "unit": "bagel",
+        "label": "1 bagel",
+        "grams": 93
+      },
+      {
+        "id": "serve_4",
+        "unit": "french",
+        "label": "1 French bread",
+        "grams": 147
+      },
+      {
+        "id": "serve_5",
+        "unit": "g",
+        "label": "100 g",
+        "grams": 100
+      }
+    ],
+    "nutrientsPer100g": {
+      "calories": 268,
+      "protein": 10.4,
+      "carbohydrates": 29,
+      "fat": 12.3,
+      "fiber": 2.2,
+      "sugar": 3.57,
+      "sodium": 447,
+      "saturatedFat": 4.27,
+      "cholesterol": 14,
+      "potassium": 152
+    },
+    "tags": [
+      "prepared-meals"
+    ],
+    "compareGroup": "Prepared Meals",
+    "usda": {
+      "fdcId": 2708613,
+      "dataType": "Survey (FNDDS)"
+    }
   }
 ];

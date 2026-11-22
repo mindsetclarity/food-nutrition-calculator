@@ -132,7 +132,7 @@ const jsonLd = [
 
           <FaqList faqs={faqs} heading={`${food.displayName} nutrition FAQ`} />
 
-          <FoodSourceNotice chainItem={food.category === 'Restaurant Chains' ? food.displayName : undefined} chainSource={food.category === 'Restaurant Chains' && !food.usda ? food.sourceLabel : undefined} />
+          <FoodSourceNotice chainItem={food.category === 'Restaurant Chains' ? food.displayName : undefined} chainSource={food.category === 'Restaurant Chains' && !food.usda ? food.sourceLabel : undefined} dataSource={food.category !== 'Restaurant Chains' && !food.usda ? food.sourceLabel : undefined} />
         </div>
         
         {/* Sidebar */}

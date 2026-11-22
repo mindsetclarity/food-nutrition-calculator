@@ -8,7 +8,7 @@ export const article: LearnArticle = {
   category: 'Calories',
   tags: ['christmas', 'holiday', 'turkey', 'roast dinner', 'calories'],
   readingTimeMinutes: 7,
-  updatedAt: '2026-11-20',
+  updatedAt: '2026-11-22',
   relatedTool: { label: 'Meal Calorie Calculator', href: '/meal-calorie-calculator' },
   heroSummary: 'A typical Christmas dinner of roast turkey, four roast potatoes, a Yorkshire pudding, three pigs in blankets, stuffing, sprouts, carrots, parsnips, gravy and cranberry sauce, followed by a bowl of trifle, with two glasses of red wine and a glass of prosecco, comes to about 1,880 calories. This guide breaks the meal down dish by dish using USDA data, shows a lighter plate of the same meal at about 1,170 calories, and covers the mince pies, Christmas cake and drinks that come before and after.',
   keyTakeaway: 'The turkey is one of the lighter things on the plate: 120 g of roast turkey is about 203 calories with 34 g of protein. Roast potatoes (63 calories each), pigs in blankets (about 68 each), stuffing, dessert and drinks carry most of the meal. Two fewer roast potatoes, two fewer pigs in blankets, half the trifle and one drink instead of three save about 710 calories without leaving anything off the table.',
@@ -105,7 +105,8 @@ export const article: LearnArticle = {
         'Most of the calories in Christmas puddings and cakes come from dried fruit, sugar and fat. Per typical portion:'
       ],
       bullets: [
-        'Mince pie, 1 individual pie (about 55 g): 159 calories, 16 g sugar',
+        'Christmas pudding, 100 g: 285 calories (UK shop-bought, CoFID)',
+        'Mince pie, 1 individual pie (about 55 g): 159 calories by USDA data, or about 207 for a UK shop-bought pie (CoFID)',
         'Trifle, 1 bowl (145 g): 245 calories, 23 g sugar',
         'Christmas cake (plain fruitcake), 1 thin slice (43 g): 139 calories; a 100 g slice is 324',
         'Gingerbread cake, 1 piece (115 g): 317 calories',
@@ -113,10 +114,10 @@ export const article: LearnArticle = {
       ],
       callout: {
         tone: 'info',
-        title: 'What about Christmas pudding?',
-        body: 'USDA has no record for a British Christmas pudding, so we do not give a figure we cannot back up. Recipes and brands vary widely, especially once brandy butter or cream goes on top. The pack label is the most reliable number; you can add it, with your topping, in the meal calculator. Iced Christmas cake with marzipan is also higher than the plain fruitcake above.'
+        title: 'Where the Christmas pudding figure comes from',
+        body: "USDA has no record for a British Christmas pudding, so its figure comes from the UK government's food composition tables (CoFID), which list shop-bought Christmas pudding at 285 calories per 100 g. A 100 g portion with 2 tablespoons of brandy butter or cream can easily pass 400. Home recipes vary, so the pack label is the best guide for a bought pudding. Iced Christmas cake with marzipan is also higher than the plain fruitcake above."
       },
-      toolCta: { label: 'Compare mince pie and Christmas cake', href: '/compare-foods?a=mince-pie&b=fruitcake-christmas-cake' }
+      toolCta: { label: 'Compare Christmas pudding and Christmas cake', href: '/compare-foods?a=christmas-pudding&b=fruitcake-christmas-cake' }
     },
     {
       id: 'drinks',
@@ -145,6 +146,10 @@ export const article: LearnArticle = {
   ],
   faqs: [
     {
+      question: 'How many calories are in Christmas pudding?',
+      answer: "Shop-bought Christmas pudding has about 285 calories per 100 g, according to the UK government's food composition tables (CoFID). Brandy butter, cream or custard on top adds more, so a typical serving with a topping can pass 400 calories."
+    },
+    {
       question: 'How many calories are in a Christmas dinner?',
       answer: 'A typical Christmas dinner with turkey, roast potatoes, a Yorkshire pudding, pigs in blankets, stuffing, vegetables, gravy, trifle and three drinks is about 1,880 calories using USDA data. Fewer roast potatoes and pigs in blankets, half the trifle and one drink bring the same meal to about 1,170.'
     },
@@ -162,7 +167,7 @@ export const article: LearnArticle = {
     },
     {
       question: 'How many calories are in a mince pie?',
-      answer: 'An individual mince pie of about 55 g has around 159 calories and 16 g of sugar, based on USDA data for mince pie at 289 calories per 100 g.'
+      answer: 'An individual mince pie of about 55 g has around 159 calories and 16 g of sugar, based on USDA data for mince pie at 289 calories per 100 g. UK shop-bought mince pies are richer: the UK food composition tables (CoFID) list them at 377 calories per 100 g, about 207 for a 55 g pie.'
     },
     {
       question: 'Will I gain weight from Christmas dinner?',

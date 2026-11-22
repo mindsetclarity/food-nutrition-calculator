@@ -142,6 +142,7 @@ const SPEC = {
     ['Pickled Beets', 'beets pickled', /cup/i],
   ]},
   proteinfoods: { exportName: 'proteinfoodsFoods', category: 'Protein Foods', foods: [
+    ['Sirloin Steak (Cooked)', '=Beef, top sirloin, steak, separable lean and fat, trimmed to 0" fat, all grades, cooked, broiled', { unit: 'oz', label: '3 oz', grams: 85 }],
     ['Roast Beef', '=Beef, roast', { unit: 'oz', label: '3 oz', grams: 85 }],
     ['Bacon', 'pork bacon cooked', /slice/i], ['Deli Turkey', 'turkey deli'], ['Ham', 'ham sliced'],
     ['Pork Sausage', 'pork sausage'], ['Hot Dog (Frankfurter)', 'frankfurter beef', /frank|link|medium/i], ['Lamb Chop', '=Lamb, chop', { unit: 'oz', label: '3 oz', grams: 85 }],
@@ -208,6 +209,7 @@ const SPEC = {
     ['Ham Steak', 'ham steak'],
   ]},
   dairyalternatives: { exportName: 'dairyalternativesFoods', category: 'Dairy & Alternatives', foods: [
+    ['String Cheese (Part-Skim Mozzarella)', '=Cheese, Mozzarella, part skim', { unit: 'stick', label: '1 stick', grams: 28 }],
     ['Mozzarella Cheese', 'cheese mozzarella', /oz|slice/i], ['Parmesan Cheese', 'cheese parmesan'], ['Cottage Cheese', 'cottage cheese'],
     ['Cream Cheese', '=Cheese, cream', /tablespoon|tbsp/i], ['Feta Cheese', 'cheese feta'], ['Swiss Cheese', 'cheese swiss', /slice/i],
     ['American Cheese', 'cheese american', /slice/i], ['Brie Cheese', 'cheese brie', { unit: 'oz', label: '1 oz', grams: 28.35 }], ['Greek Yogurt (Plain Nonfat)', 'yogurt greek plain nonfat'],
@@ -339,6 +341,7 @@ const SPEC = {
     ['Meatless Chicken (Breaded)', '=Chicken, meatless, breaded, fried'],
   ]},
   nutsseeds: { exportName: 'nutsseedsFoods', category: 'Nuts & Seeds', foods: [
+    ['Almond Butter', '=Almond butter', /tablespoon|tbsp/i],
     ['Cashews', 'cashew nuts'], ['Pistachios', 'pistachio nuts', /oz|cup/i], ['Pecans', 'pecans', /oz|cup/i],
     ['Macadamia Nuts', 'macadamia nuts'], ['Hazelnuts', 'hazelnuts'], ['Brazil Nuts', 'brazil nuts'],
     ['Chia Seeds', 'chia seeds'], ['Flaxseed', '=Seeds, flaxseed'], ['Sunflower Seeds', 'sunflower seeds'],
@@ -403,6 +406,7 @@ const SPEC = {
     ['Egg Salad Sandwich', 'egg salad sandwich on white', /regular/i],
   ]},
   preparedmeals: { exportName: 'preparedmealsFoods', category: 'Prepared Meals', foods: [
+    ['Frozen Cheese Pizza (Thin Crust)', '=Pizza, cheese, from frozen, thin crust', /slice|piece/i], ['Frozen Cheese Pizza (Thick Crust)', '=Pizza, cheese, from frozen, thick crust', /slice|piece/i],
     ['Mac and Cheese', 'macaroni cheese'], ['Spaghetti with Meat Sauce', '=Restaurant, Italian, spaghetti with meat sauce'], ['Lasagna with Meat', 'lasagna meat'],
     ['Chili con Carne with Beans', 'chili con carne beans'], ['Beef Stew', 'beef stew'], ['Chicken Noodle Soup', 'chicken noodle soup'],
     ['Tomato Soup', 'tomato soup'], ['Clam Chowder', 'clam chowder new england'], ['Caesar Salad', 'caesar salad'],
@@ -460,6 +464,7 @@ const SPEC = {
     ['Burrito Bowl with Beans', 'burrito bowl beans'],
   ]},
   snacks: { exportName: 'snacksFoods', category: 'Snacks', foods: [
+    ['Protein Bar', '=Nutrition bar or meal replacement bar, NFS', /bar/i], ['Clif Bar', '=Nutrition bar (Clif Bar)', { unit: 'bar', label: '1 bar', grams: 68 }],
     ['Potato Chips', 'potato chips salted', /oz|bag/i], ['Tortilla Chips', 'tortilla chips plain', /oz|bag/i], ['Air-Popped Popcorn', 'popcorn air popped', /cup/i],
     ['Microwave Popcorn (Butter)', 'popcorn microwave butter', /cup/i], ['Pretzels', 'pretzels hard'], ['Saltine Crackers', 'crackers saltine', /cracker/i],
     ['Graham Crackers', 'graham crackers'], ['Rice Cakes', 'rice cake', /cake/i], ['Granola Bar', 'granola bar', /^1 bar/i],

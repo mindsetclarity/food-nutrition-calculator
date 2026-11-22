@@ -19,6 +19,7 @@ import { bakingFoods } from './baking';
 import { indianFoods } from './indian';
 import { restaurantsFoods } from './restaurants';
 import { ukRestaurantsFoods } from './ukRestaurants';
+import { britishFoods } from './british';
 
 export const localFoods: FoodItem[] = [
   ...fruitsFoods,
@@ -40,4 +41,5 @@ export const localFoods: FoodItem[] = [
   ...indianFoods,
   ...restaurantsFoods,
   ...ukRestaurantsFoods,
+  ...britishFoods,
 ];
